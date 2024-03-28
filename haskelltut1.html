@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-06-02 Thu 20:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+</head>
+<body>
+<div id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<img src="./images/heading6.png"  style="padding: 0px 0px 22px 0px" alt="3-d graph" class="center">
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <a href="numbers.html" target="_blank"><li>Numbers</li></a>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+
+
+<div id="outline-container-org932f40a" class="outline-2">
+<h2 id="org932f40a">Haskell tutorial 1</h2>
+<div class="outline-text-2" id="text-org932f40a">
+<p>
+<label for="mn-demo" class="margin-toggle"></label>
+<input type="checkbox" id="mn-demo" class="margin-toggle">
+<span class="marginnote">
+<img src="images/HaskellCurrySign.jpg" alt="HaskellCurrySign.jpg" />
+</span>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcca06c4" class="outline-2">
+<h2 id="orgcca06c4">Rabbit holes</h2>
+<div class="outline-text-2" id="text-orgcca06c4">
+<p>
+Let&rsquo;s repeat (most of) the Haskell rabbit hole list
+</p>
+
+<p>
+<font color = "#375e79">
+⌜🐇 
+</p>
+<ol class="org-ol">
+<li><a href="http://learnyouahaskell.com/chapters">Learn You a Haskell for Great Good!</a> (LYAHFGG) is a widely-used,
+often-suggested beginners site for starting out with Haskell. Work
+through at least chapters 1 and 2 to understand a lot of what we&rsquo;ll
+be doing with Haskell below. (<i>R<sub>C</sub>-hole</i>)</li>
+<li>A site haskell.org is suggesting is the UPenn course CIS194. We
+suggest the <a href="https://www.seas.upenn.edu/~cis194/spring15/">Spring 2015</a> version since it includes haskell source
+files. This is a college course, but for beginners. Click on the
+<i>Lectures &amp; Assignments</i> link at the top. (If you&rsquo;ve got <a href="https://github.com/borgauf/omnimath">our github
+repository</a> there&rsquo;s a directory containing all the Haskell files.)
+(<i>R<sub>O</sub>-hole</i>)</li>
+<li>An older but still go-to site recommended by many is the <i><a href="http://book.realworldhaskell.org/read/">Real
+World Haskell</a></i> site (also book). As the title suggests, it has a
+more real-applications slant, and yes, the material can get into
+heavy lifting, but one great advantage is it has prodigious
+<i>comments</i> attached to ever web page section. So if you didn&rsquo;t
+understand something, typically somebody has already explained it
+in depth.</li>
+<li>Book-wise, a nice, well-paced text would be <i><a href="https://www.manning.com/books/get-programming-with-haskell#:~:text=about%20the%20book,dive%20into%20custom%20Haskell%20modules.">Get Programming with
+Haskell</a></i> by Will Kurt. Will bridges a lot of chasms between
+beginner, intermediary, and advanced ideas. In other words, GPWH
+gives plain-English explanations of things other treatments might go
+deep into theory on. Really helpful, that. (<i>R<sub>O</sub>-hole</i>)</li>
+<li>Another big favorite for Haskell starters, but slightly more
+challenging is <i><a href="https://www.haskell.org/tutorial/haskell-98-tutorial.pdf">A Gentle Introduction to Haskell 98</a></i>. AGITH uses
+more math terminology, which is what we&rsquo;re doing, but from the
+shallow end first. (<i>R<sub>O</sub>-hole</i>)</li>
+<li>A while back the programming language Prolog created a list of
+ninety-nine sample problems that were solved using Prolog. Since
+then many languages have cooked up their own versions of answering
+the ninety-nine. Haskell&rsquo;s is <a href="https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems">here</a>. We&rsquo;ll refer to this a
+lot. When you peek at the solutions, don&rsquo;t get psyched out by some
+of the answers. Haskell Wiki is a volunteer site and very smart
+people like show off their skills resulting in some serious
+overkill. Just make sure you can handle the basic answers, and
+maybe peruse the wilder versions. (<i>R<sub>O</sub>-hole</i>)</li>
+</ol>
+<p>
+</font>🐇⌟
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6cc1905" class="outline-2">
+<h2 id="org6cc1905">Setting up Haskell</h2>
+<div class="outline-text-2" id="text-org6cc1905">
+<p>
+We will use <a href="https://docs.haskellstack.org/en/stable/README/">The Haskell Tool Stack</a>, which is a project/package
+management system for Haskell. In a nutshell, we will install
+stack&#x2014;and then use stack to set up custom Haskell programming
+environments on a project-by-project basis. Besides the executable
+<code>stack</code>, there will also be the Haskell compiler <code>ghc</code> and the Haskell
+interactive mode <code>ghci</code> which are called as stack arguments <br />
+<code>&gt; stack ghci</code> <br />
+<code>&gt; stack ghc</code> <br />
+More on using them shortly.
+</p>
+
+<p>
+This guide will go into detail only on the Linux Haskell install. For
+full details (also for other OS types) see <a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/">The Haskell Tool Stack</a>.
+</p>
+
+<ul class="org-ul">
+<li>The very first step might not be needed, but we&rsquo;ll do it just to
+make sure. Haskell requires (and recommends) a set of Linux system
+programs and libraries. Run this at the command line (all on one
+line)</li>
+<li><code>&gt; sudo apt-get install g++ gcc libc6-dev libffi-dev libgmp-dev make
+  xz-utils zlib1g-dev git gnupg netbase curl</code> <br />
+Typically all of these (with the exception of curl) are already on
+board and won&rsquo;t be updated.</li>
+<li>To install stack run <br />
+<code>&gt; curl -sSL https://get.haskellstack.org/ | sh</code> <br />
+This will ask for your password; enter it to allow system-wide
+install.</li>
+<li>Now you should have Haskell stack on your system. For confirmation
+of success run <br />
+<code>&gt; which stack</code> <br />
+This should return <br />
+<code>/usr/local/bin/stack</code> <br />
+or wherever the <code>stack</code> executable was installed.</li>
+<li>Now, run <br />
+<code>&gt; echo 'PATH=$HOME/.local/bin:$PATH' &gt;&gt; ~/.bashrc</code> <br />
+This tells your shell environment<label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle"/><span class="sidenote">
+Another name for terminal or command line is <i>shell</i>. Each
+terminal you start with a command line interface is a <i>shell</i> with a
+<i>shell environment</i>. The <code>.bashrc</code> file is its configuration file that
+is read and set up each time you start another terminal command line
+instance. In our situation we have to let the environment know where
+the new Haskell stuff has been installed.
+</span> about this new location
+where some of Haskell executables might be later on if we choose to
+install them. We&rsquo;re not now, but it&rsquo;s good to have this ahead of
+time. Kill your terminal, restart it, then check with <br />
+<code>&gt; echo $PATH</code> <br />
+You should see something like <br />
+<code>&gt; /home/myhomedir/.local/bin:/usr/local/sbin:/usr/local/bin:...</code> <br />
+&#x2026;and many others possibly. But we see our
+<code>/home/myhomedir/.local/bin</code>. Good.</li>
+</ul>
+
+<p>
+Again, stack is project-oriented, but for the time being we only want
+to use the Haskell REPL loading the code we saved into <code>*.hs</code>
+files. Still, this will take place inside a project we set up with
+stack. Eventually, we&rsquo;ll convert from using <code>hs</code> files to using Emacs&rsquo;
+powerful <i>org-mode literate programming</i> with the REPL.
+</p>
+
+<ul class="org-ul">
+<li>In your top home directory<label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle"/><span class="sidenote">
+You can always get back home by typing <code>cd</code> and Enter. Then do
+<code>pwd</code> to confirm you&rsquo;ve gone to top home. And you can always test
+where you are with <code>&gt; pwd</code> (present working directory).
+</span> create an org directory <br />
+<code>&gt; mkdir org</code> <br />
+and <code>cd</code> into it <br />
+<code>&gt; cd org</code></li>
+<li>Now we will create a project, which will create a new directory
+under <code>~/org/</code>. Type <br />
+<code>&gt; stack new haskellwork1</code> <br />
+which will set up a project in a subdirectory of <code>org</code> called
+<code>haskellwork1</code>.</li>
+<li><code>cd</code> into <code>haskellwork1</code> and do <code>ls</code> to get a file listing. You&rsquo;ll
+see new files and directories newly created.</li>
+<li>Still in the <code>haskellwork1</code> directory type
+<code>&gt; stack setup</code> <br />
+which should give a short message about using a sandboxed GHC etc.</li>
+<li>Next, type
+<code>&gt; stack build</code> <br />
+which will run through a build procedure and return you the prompt.</li>
+<li>To test
+<code>&gt; stack exec haskellwork1-exe</code> <br />
+which will return <code>someFucn</code>, i.e., the output of the dummy starter
+code the project created.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense" class="center"></a>
+</p>
+</div>
+</div>
+<!-- Footnotes --><!-- 
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Another name for terminal or command line is <i>shell</i>. Each
+terminal you start with a command line interface is a <i>shell</i> with a
+<i>shell environment</i>. The <code>.bashrc</code> file is its configuration file that
+is read and set up each time you start another terminal command line
+instance. In our situation we have to let the environment know where
+the new Haskell stuff has been installed.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+You can always get back home by typing <code>cd</code> and Enter. Then do
+<code>pwd</code> to confirm you&rsquo;ve gone to top home. And you can always test
+where you are with <code>&gt; pwd</code> (present working directory).
+</p></div></div>
+
+ --></div>
+</body>
+</html>

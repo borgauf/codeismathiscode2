@@ -1,0 +1,156 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: Numbers
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: mathobjects1.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+#+html_head_extra: <style> .title { display: none; } </style>
+#+OPTIONS: html-style:nil
+
+* Mathematical objects
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/omnimath"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&doets2012haskell]]
+:END:
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle tamo1.hs :noweb yes
+module TAMO1 where
+
+#+end_src
+
+#+name: 6b14996d-7528-4c2a-a081-ccd244799b49
+#+begin_src haskell :results verbatim :exports both
+1 + 1
+#+end_src
+
+#+RESULTS: 6b14996d-7528-4c2a-a081-ccd244799b49
+: 2
+
+
+* Monday at the library
+
+It's a Monday morning in late July and the von der Surwitz siblings
+meet in a reserved study room at the main university library to go
+over what their /Introduction to Computer Science/ teacher, Professor
+Chandra, had said at Novalis Tech Open House.
+
+From Professor Chandra's course website they had already purchased
+online the two main texts for the course, /The Haskell Road to Logic,
+Maths and Programming/ by Kees Doets and Jan van Eijck, and /Thinking
+as Computation/ from Hector Levesque, and during the open house had
+sat around a table with the professor and discussed what the course
+would entail.
+
+The professor encouraged them to dive into to the logic and sets
+prereqs --- or to just dive into the books --- at least /The
+Haskell Road.../, as she probably wouldn't be going over much of the
+beginning material on either subject in class.
+
+
+Ursula von der Surwitz has plugged in her laptop to the big monitor
+and is scrolling through some of her personal notes.
+
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ So like
+Professor Chandra said yesterday, we need to see things in terms of
+logic and set theory from here on out. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ And like she said,
+with set theory we can properly define relations and function. All of
+which sounds rather ominous. Like everything we thought we knew was
+about to go away.\\
+[more agreement murmurs] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [paging through
+/Haskell Road.../ ] She told us not to worry about the first chapter,
+but to just start on the second. Did anyone look at the first chapter?
+\\
+[all nod affirmative] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing]
+Wasn't too bad. But I needed some of the /Learn You a Haskell.../ to
+get me through. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ I think it's cool
+how the whole prime number test, the greatest common divisor all
+blended together. He really packed a lot into that first chapter. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Do you remember
+that prime factorization way of figuring out unlike-denominator math?
+\\
+[affirmative murmurs]
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ And then the
+teacher just put two fractions with huge unlike denominators into
+this command line --- what was he using? \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ It started with an
+R[fn:1]? \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing]
+Right, so he added these monster unlike denominator fractions --- and
+it just spit out the answer in a split second /in rational form/! \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Then he worked
+through an /algorithm/ as to how it could have been done. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Using prime
+factorization. Yeah, impressive.
+
+
+
+
+
+
+
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So what do you all
+think of the
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing] So
+here's
+
+
+
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] That would be the programming language Racket where you can
+simply put in, e.g., \\
+~> (+ 1/3234 1/9437200)~ \\
+and get back \\
+~4720217/15259952400~ \\
+Haskell can do this as well, which we'll investigate.
+
+

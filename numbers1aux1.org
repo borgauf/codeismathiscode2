@@ -1,0 +1,260 @@
+# # -*- mode: org -*-
+# # -*- coding: utf-8 -*-
+#+TITLE:
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: numbers1aux1.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+
+
+* Numbers 1 Auxiliary
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/omnimath"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+:END:
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle numbers1aux1.hs :noweb yes
+<<55c9f8fc-0d8f-406b-a925-2197ea7c0d28>>
+module NUMBERS1AUX1 where
+
+<<af9a9412-4079-4a32-b630-04aed18c42b7>>
+
+<<4faede5c-ca07-4e53-880f-0b5be0914122>>
+<<bc960304-edc5-4c2b-bbd2-3ec06030127b>>
+<<7cd2a12b-f46b-4d66-b4ce-a48b5ee7280b>>
+
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+1 + 1 -- here to start the ghci REPL if needed
+#+end_src
+
+
+** Figuring out literal number data types
+:RESOURCES:
+- [[https://stackoverflow.com/questions/74292621/frominteger-is-a-cast][fromInteger is a cast?]]
+:END:
+
+#+name: 122f0d75-6670-446c-b8d0-960148f2ac06
+#+begin_src haskell :results verbatim :exports both
+:t 1
+#+end_src
+
+#+RESULTS: 122f0d75-6670-446c-b8d0-960148f2ac06
+: 1 :: Num p => p
+
+What does this actually mean? Likewise,
+
+#+name: 900544dd-0a23-4a00-9ac0-3d4831507b92
+#+begin_src haskell :results verbatim :exports both
+:t 3.149
+#+end_src
+
+#+RESULTS: 900544dd-0a23-4a00-9ac0-3d4831507b92
+: 3.149 :: Fractional p => p
+
+What does this mean? And what do these statements mean?
+
+#+begin_quote
+An integer literal represents the application of the function
+~fromInteger~ to the appropriate value of type ~Integer~.
+#+end_quote
+
+or this from Richard Bird [[cite:&bird2014thinking]]
+
+#+begin_quote
+A floating-point literal such as ~3.149~ represents the application of
+~fromRational~ to an appropriate rational number. Thus ~3.149 ::
+Fractional a => a~
+#+end_quote
+
+But this is apparently necessary in order to add unlike numbers, e.g.,
+~42 + 3.149~, which makes the answer a decimal number
+
+#+name: ad527633-c214-4e48-85c1-6d31871aa893
+#+begin_src haskell :results verbatim :exports both
+42 + 3.149
+#+end_src
+
+#+RESULTS: ad527633-c214-4e48-85c1-6d31871aa893
+: 45.149
+
+So let's look at some code
+
+#+name: 55c9f8fc-0d8f-406b-a925-2197ea7c0d28
+#+begin_src haskell :eval never :exports code
+{-# LANGUAGE FlexibleInstances #-}
+#+end_src
+
+#+name: 4faede5c-ca07-4e53-880f-0b5be0914122
+#+begin_src haskell :eval never :exports code
+class Thing a where
+  thing :: a
+
+instance Thing Bool where thing = True
+instance Thing Int where thing = 16
+instance Thing String where thing = "hello, world"
+instance Thing (Int -> String) where thing n = replicate n '*'  
+
+#+end_src
+
+#+name: bc960304-edc5-4c2b-bbd2-3ec06030127b
+#+begin_src haskell :eval never :exports code
+main1 = do
+  print (thing :: Bool)
+  print (thing :: Int)
+  print (thing :: String)
+  print $ (thing :: Int -> String) 15
+#+end_src
+
+Trying it out
+
+#+name: 05c7a358-1266-48e2-8ec1-d6106fc23a07
+#+begin_src haskell :results verbatim :exports both
+main1
+#+end_src
+
+#+RESULTS: 05c7a358-1266-48e2-8ec1-d6106fc23a07
+: True
+: 16
+: "hello, world"
+: "***************"
+
+As we've learned, the method ~thing~ is polymorphic, i.e., it can
+respond differently for different types[fn:1].
+
+Let's look at another type class. First, the import statements go at
+the top
+
+#+name: af9a9412-4079-4a32-b630-04aed18c42b7
+#+begin_src haskell :eval never :exports code
+import Data.Ratio
+import Data.Word
+import Unsafe.Coerce
+#+end_src
+
+then
+
+#+name: 7cd2a12b-f46b-4d66-b4ce-a48b5ee7280b
+#+begin_src haskell :eval never :exports code
+
+class Three a where
+  three :: a
+
+-- we use this unsafe coercion:
+castWord64ToDouble :: Word64 -> Double
+castWord64ToDouble w = unsafeCoerce w
+
+instance Three Int where
+  three = length "aaa"
+instance Three Double where
+  three = castWord64ToDouble 0x4008000000000000
+instance Three Rational where
+  three = (6 :: Integer) % (2 :: Integer)
+
+main2 = do
+  print (three :: Int)
+  print (three :: Double)
+  print (three :: Rational)
+  print $ take three "abcdef"
+  print $ (sqrt three :: Double)
+#+end_src
+
+Running it[fn:2]
+
+#+name: 20bd30b4-97b4-4215-9452-47704f660bf2
+#+begin_src haskell :results verbatim :exports both
+main2
+#+end_src
+
+#+RESULTS: 20bd30b4-97b4-4215-9452-47704f660bf2
+: 3
+: 3.0
+: 3 % 1
+: "abc"
+: 1.7320508075688772
+
+For example, ~print (three :: Int)~ is saying "print out the result of
+~three~ relative to ~Three Int~."
+
+So what type is the method ~three~
+
+#+name: 1b1e71cc-8a47-436b-9d4f-cdb684fc25f3
+#+begin_src haskell :results verbatim :exports both
+:t three
+#+end_src
+
+#+RESULTS: 1b1e71cc-8a47-436b-9d4f-cdb684fc25f3
+: three :: Three a => a
+
+Here we see the method ~three~, which in all of Haskell-dom is
+associated only with the type class ~Three~. And so class ~Three~ and
+its ~three~ method make real this custom concept of "three-ness". The
+idea of the method ~three~ being of type ~Three a => a~ means it is
+constrained to be one of the types for which ~Three~ has instances,
+namely, ~Three Int~, ~Three Double~, and ~Three Rational~[fn:3]. And
+so a different definition of ~three~ is invoked, depending on the type
+demanded by the caller.
+
+
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] Note the last instance ~instance Thing (Int -> String) where
+thing n = replicate n '*'~, which is not in the typical instance form
+of ~T~ then whatever arity, parameters ~a1 a2 ...~ are
+necessary. Therefore, we need to include the pragma ~{-# LANGUAGE
+FlexibleInstances #-}~ at the top of our program.
+
+[fn:2] That ~instance Three Double...~ has a crazy obfuscated way of
+generating ~3.0~, namely \\
+λ> ~castWord64ToDouble 0x4008000000000000~ \\
+~3.0~ \\
+...YMMV
+
+[fn:3] Notice ~print $ take three "abcdef"~ and ~print $ (sqrt three
+:: Double)~. These work because if we look at the type signature of
+~take~, namely, ~Int -> [a] -> [a]~, we see immediately that ~three~
+will rely on ~Three Int~ which is ~length "aaa"~ or ~3~. But we'll
+hold off for now explaining why ~sqrt three...~ works as it does. For
+now we'll just say it's relying on the instance ~Three Double~.

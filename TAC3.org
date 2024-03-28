@@ -1,0 +1,153 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: Thinking as Computation; Chapter 3
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: TACChapter3.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export (doesn't really work?):
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+# #+PROPERTY: results silent scalar
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+
+
+
+* Basic prolog source block
+
+#+name: f26ddc7f-0aa0-462f-a5b1-20304e93421a
+#+HEADER: :session *prolog-1*
+#+begin_src prolog :exports both
+:- format('Hello, ~a.', org_mode).
+#+end_src
+
+#+RESULTS: f26ddc7f-0aa0-462f-a5b1-20304e93421a
+| Hello, | org_mode. | : |
+| true.  |           |   |
+
+#+NAME: basic-test
+#+BEGIN_SRC prolog :results output :exports both
+:- format('Hello, ~a.', org_mode).
+#+END_SRC
+
+#+RESULTS: basic-test
+: Hello, org_mode.
+
+#+begin_src emacs-lisp
+(+ 1 1)
+#+end_src
+
+#+RESULTS:
+: 2
+
+ 
+* Source block with goal
+#+NAME: goal-test
+#+BEGIN_SRC prolog :goal main
+main :-
+    write('Hello, world!').
+#+END_SRC
+
+#+RESULTS: goal-test
+| Hello | world! |
+
+
+<pr
+
+  
+* Simple running session
+#+NAME: session-test
+#+HEADER: :session *prolog-1*
+#+HEADER: :goal fourtyone(A)
+#+BEGIN_SRC prolog 
+fourtyone(A) :- A is 41.
+#+END_SRC
+
+#+RESULTS: session-test
+: A = 41.
+
+
+#+BEGIN_SRC prolog :results output :session :goal fact(7,F)
+fact(0,1).
+fact(N,F):-
+    N #> 0,
+    F #> 0,
+    N1 #= N-1,
+    F #= N*F1,
+    fact(N1,F1).
+#+END_SRC 
+
+#+RESULTS:
+: 
+: ERROR: user://1:4:5: Syntax error: Operator expected
+: 
+: 
+
+
+* Calling predicate from session
+#+NAME: other-predicate-test
+#+HEADER: :goal answer(A)
+#+HEADER: :session *prolog-1*
+#+BEGIN_SRC prolog
+answer(C) :-
+    fourtyone(B),
+    C is B+1.
+#+END_SRC
+
+#+RESULTS:
+
+
+* Test interaction with other blocks
+#+NAME: f
+#+BEGIN_SRC elisp :results vector
+'(1 2 3)
+#+END_SRC
+
+#+RESULTS: f
+| 1 | 2 | 3 |
+
+#+NAME: interaction-test
+#+HEADER: :var a=f()
+#+HEADER: :var b=0
+#+HEADER: :goal main(A)
+#+HEADER: :session *prolog-1*
+#+BEGIN_SRC prolog
+main(B) :- recorded(a, A), recorded(b, C), append([C], A, B).
+#+END_SRC
+
+#+RESULTS: interaction-test
+| A = [0 | 1 | 2 | 3]. |
+
+#+RESULTS:
+
+
+#+INCLUDE: "../omnimath/footer.org" :minlevel 1

@@ -1,0 +1,158 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: Haskell Road; Getting Started Part 3
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: HRGettingStarted3.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export (doesn't really work?):
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* Getting started part 3
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/omnimath"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&doets2012haskell]]
+:END:
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle ./src/gs3.hs :noweb yes
+module GS3 where
+
+
+#+end_src
+
+#+name: 6b14996d-7528-4c2a-a081-ccd244799b49
+#+begin_src haskell :results verbatim :exports both
+1 + 1
+#+end_src
+
+#+RESULTS: 6b14996d-7528-4c2a-a081-ccd244799b49
+: 2
+
+
+* Monday at the library part 3
+
+** Breaktime
+:PROPERTIES:
+:ID:       2839c1ee-1426-4c01-8a38-481d3ab8f158
+:END:
+
+The von der Surwitzes are back at the student center cafe for a break.
+This time just a pastry and a tea.
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ I have to say, I'm
+very glad I'm approaching the whole post-calculus math world from this
+perspective. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Are we in fact
+post-calc?  [silence, mulling over question] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Yes. We've
+taken all our calc, Linear Algebra, Differential
+Equations. We're where a German /Gymnasiast/ would be entering
+a university. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Do you remember
+what Professor Chandra said about that MIT professor who would turn
+whatever math he wanted to remember into code[fn:1]? \\
+[eating and drinking pause] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ We've got to be
+careful not to --- /in Beschlag nehmen/? \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ You could say
+/hog/. \\
+[embarrassed laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Right. We can't
+/hog/ the professor. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ I don't think
+there's any risk of that. There's not that many of us. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ And we can't get
+too wild and far afield. We always need to follow her lead. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ I don't think
+there's any risk of that. The woman knows what she wants this to
+be. \\
+[eating and drinking and looking around the cafe] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ No, this had
+really worked out, you, Ursula, racing ahead with the Haskell. And I
+going ahead with the set theory, and you, Ute, going on ahead with the
+math logic. I mean, we're definitely making progress. It's just that
+we have so much to learn! \\
+[affirmations]
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Mama and Papa will
+be less help. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ You mean because
+they're in the empirical world. \\
+[murmurs of agreement] \\
+
+
+
+
+
+** Primes
+:RESOURCES:
+- [[cite:&cummings2021proofs]]
+- [[cite:&forman2015whole]]
+- [[cite:&doets2012haskell]]
+:END:
+
+Back at the library study room they've checked out the reserved books
+and are looking through sections of those that deal with the basic
+theory of division.
+
+#+name: 87303148-dd35-4e97-9045-ff9a93e54a0b
+#+begin_src haskell :results silent :exports code
+:{
+isPrime n = filter (\x -> n `mod` x == 0) [2..n] == [n]
+primes n = filter isPrime [1..n]
+:}
+#+end_src
+
+#+name: 24430b6d-8ff6-4b11-b0a9-a22c4614df5d
+#+begin_src haskell :results verbatim :exports both
+primes 100
+#+end_src
+
+#+RESULTS: 24430b6d-8ff6-4b11-b0a9-a22c4614df5d
+: [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
+
+
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] Gerald Sussman.

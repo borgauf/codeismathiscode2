@@ -1,0 +1,1290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-12-15 Thu 12:10 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Haskell Road; Getting Started</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-dejavu',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Haskell Road; Getting Started</h1>
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<img src="./images/heading6.png"  style="padding: 0px 0px 22px 0px" alt="3-d graph" class="center">
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+
+<div id="outline-container-orga331ba1" class="outline-2">
+<h2 id="orga331ba1">Getting started</h2>
+</div>
+
+
+<div id="outline-container-org1afe6ab" class="outline-2">
+<h2 id="org1afe6ab">Monday at the library</h2>
+<div class="outline-text-2" id="text-org1afe6ab">
+<p>
+It&rsquo;s a Monday morning in late July and the von der Surwitz siblings
+meet in a reserved study room at the main university library to go
+over what their <i>Introduction to Computer Science</i> teacher, Professor
+Chandra, had discussed with them at Novalis Tech Open House.
+</p>
+
+<p>
+Checking Professor Chandra&rsquo;s course syllabus on her website before,
+they had already made online purchases of the two main texts for the
+course, <i>The Haskell Road to Logic, Maths and Programming</i> by Kees
+Doets and Jan van Eijck, as well as <i>Thinking as Computation</i> from
+Hector Levesque. During the open house at the convention wing of the
+student center on the previous Saturday, they had sat around a table
+with the professor as she paged through the texts and talked
+extemporaneously about what parts she would handle and how. She also
+showed them some code on her laptop. She invited them to email her
+with any questions.
+</p>
+
+<p>
+The professor encouraged them to dive into to the logic and sets
+prereqs, alongside of the first few chapters of <i>The Haskell Road&#x2026;</i>,
+as well as to get through as much <i>Learn You a Haskell&#x2026;</i> as
+possible.
+</p>
+
+<p>
+Ursula von der Surwitz has plugged in her laptop to the big monitor
+and is scrolling through some of her personal notes.
+</p>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So like
+Professor Chandra said on Saturday, eventually everything we&rsquo;re doing
+will be in terms of logic and set theory. <br />
+[murmurs of agreement and then silence] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing] It
+seems a bit ominous. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Out with the old
+math, in with the new. <br />
+[nods and agreement] <br />
+<span class="fraktur">𝔘𝔱𝔢::</span> But like she was
+saying, comp-sci math is sort of a &ldquo;grab-bag&rdquo; of higher math, that is,
+the stuff you&rsquo;d be learning after all the calculus and differential
+equations and linear algebra. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Like the examples
+she gave, using set theory we can properly define relations and
+functions. <br />
+[more agreement murmurs] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> I&rsquo;m psyched. <br />
+[more agreement murmurs] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] I&rsquo;m
+psyched because &#x2014; as she said &#x2014; this course is totally
+experimental and open-ended. She&rsquo;s basically going to give us what
+she&rsquo;d be giving her college freshman and sophomores in the CS
+department. And she&rsquo;s giving us her total undivided attention.<br />
+<span class="fraktur">𝔘𝔴𝔢:</span> It&rsquo;s only us, her
+daughter &#x2014; and maybe three others who weren&rsquo;t there and might not
+take it. Exactly. She&rsquo;s on sabbatical; no other duties. Wow. This is
+completely unique.<br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Bottom line: We&rsquo;ve
+got a once-in-a-lifetime chance to really learn a ton about
+comp-sci. Like I say, I&rsquo;m psyched! <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> All we have to do
+is hang on for dear life. <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [paging through
+<i>Haskell Road&#x2026;</i> ] Did anyone look at the first chapter? <br />
+[affirmative nods] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+Wasn&rsquo;t too bad &#x2014; once I caught on to what he was saying. But I have
+to say, the <i>Learn You a Haskell&#x2026;</i> helped. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> I think it&rsquo;s cool
+how the whole prime number test, the greatest common divisor all
+blended together. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> But I&rsquo;m glad I&rsquo;d
+seen the prime factorization way of figuring out unlike-denominator
+math back in Kiel. <i>If</i> I can remember it. <br />
+[affirmative murmurs] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Oh, by the way,
+does anyone remember why the Greeks said, for example, \(7\) <i>measures</i>
+\(35\;\)?  <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Wasn&rsquo;t that
+because a rod or measuring tape that&rsquo;s \(7\) units long can then measure
+out a length of \(35\) perfectly? <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Well, I
+remember prime factorization was based on the <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic">Fundamental Theorem of
+Arithmetic</a> from dear old Euclid. [bringing up the Wikipedia article
+in both English and German, reading from the English page] <i>If a prime
+\(p\) divides the product \(a \cdot b\), then \(p\) divides either \(a\) or \(b\) or
+both</i>. And that really means [reading on] <i>Every positive integer \(n >
+1\) can be represented in exactly one way as a product of prime
+powers</i>. Got that? [pulling an ironic face] Do you see how the first
+and second statements are equivalent? <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> [also ironically]
+Oh sure, of course. <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> And here&rsquo;s the
+proof. [half-mumbling the German page&rsquo;s proof] It&rsquo;s a contradiction
+proof. Our favorite. <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Oh, right. That&rsquo;s
+where you take off at top speed at a brick wall, smash into brick
+wall, die &#x2026; and that proves you should have gone exactly the
+opposite direction. <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Wasn&rsquo;t it amazing
+how Professor Chandra just put two fractions with huge unlike
+denominators into the Racket command line<label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle"/><span class="sidenote">
+Professor Chandra has demonstrated at the Racket command line
+how rationals could be directly added, e.g., <br />
+<code>&gt; (+ 1/32 1/943720)</code> <br />
+and get back <br />
+<code>117969/3774880</code>
+</span>. Did anybody besides
+me install it? <br />
+[affirmative murmurs] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [bringing up
+Racket in a terminal] Here, I&rsquo;ll just try something. [typing] <br />
+</p>
+
+<pre class="example" id="org336e0e4">
+&gt; (+ 1/15 1/85)
+4/51
+</pre>
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> I see you learned
+the prefix way of doing Racket. <br />
+[Ursula nods.] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> [going to the
+whiteboard] I&rsquo;ll put the prime factorization method down just to
+refresh my memory. [writing] So \(15\) is multiplying prime numbers \(3\)
+and \(5\), and \(85\) is multiplying primes \(5\) and \(17\) together. Now
+we&rsquo;ve got the primes. I&rsquo;ll make a table of them
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="all" frame="border">
+<caption class="t-bottom"><span class="table-number">Table 1:</span> 15 factored into its primes</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(\quad\) 15 \(\quad\)</th>
+<th scope="col" class="org-left">\(\quad\) 2 \(\quad\)</th>
+<th scope="col" class="org-right">\(\quad\) 3 \(\quad\)</th>
+<th scope="col" class="org-right">\(\quad\) 5 \(\quad\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="all" frame="border">
+<caption class="t-bottom"><span class="table-number">Table 2:</span> 85 factored into its primes</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(\quad\) 85 \(\quad\)</th>
+<th scope="col" class="org-left">\(\;\) 2 \(\;\)</th>
+<th scope="col" class="org-left">\(\;\) 3 \(\;\)</th>
+<th scope="col" class="org-right">\(\;\) 5 \(\;\)</th>
+<th scope="col" class="org-left">\(\;\) 7 \(\;\)</th>
+<th scope="col" class="org-left">\(\;\) 11 \(\;\)</th>
+<th scope="col" class="org-left">\(\;\) 13 \(\;\)</th>
+<th scope="col" class="org-right">\(\;\) 17 \(\;\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">1</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] So we
+take the unique primes in common between the two denominators &#x2014; that
+would be \(3\;\), \(5\;\), and \(17\:\) and multiply them together to
+get&#x2026; <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [typing into
+Racket] That gives us \(255\;\). <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> So now \(255\) will
+be the common denominator. But we have to calculate the ratios
+[writing] <br />
+</p>
+
+\begin{align*}
+\frac{1}{15} &= \frac{x}{255} \\[.5em]
+\frac{1}{85} &= \frac{y}{255}
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [tabbing over
+to her org-mode buffer] Here, let me write a little Haskell function
+for that, a proverbial one-liner doing &#x2014; <i>Dreisatz</i>? What&rsquo;s
+<i>Dreisatz?</i> <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Ah, literally
+<i>rule of three.</i> <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [Ursula looks
+it up on Wikipedia] Or just <i>cross-multiplication</i>. [typing into a
+org-mode Babel source block] <br />
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">crossMult</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-operator">\</span>a b d <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>a <span class="org-haskell-operator">*</span> d<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">/</span> b<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">-- </span><span class="org-comment">a/b = x/d ... solve for unknown</span>
+</code></pre>
+
+<p>
+[running it with parameters] <br />
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">crossMult</span> 1 15 255
+</code></pre>
+
+<pre class="example">
+17.0
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> So you&rsquo;re doing an
+anonymous function<label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle"/><span class="sidenote">
+Check out anonymous or <i>lambda</i> functions <a href="http://learnyouahaskell.com/higher-order-functions#lambdas">here</a>.
+</span>, right? <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Right. Yeah,
+pretty neat, huh? <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> And you&rsquo;re not
+worrying about doing a type declaration. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Not really. I
+could. But I&rsquo;m just letting Haskell figure it out. I&rsquo;ll get the <i>type</i>
+with <code>:t</code> [typing at the REPL]
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t crossMult
+</code></pre>
+
+<pre class="example">
+crossMult :: Double -&gt; Double -&gt; Double -&gt; Double
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+Actually, I could have done it this way [typing in new source block]
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">crossMult2</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span>  
+<span class="org-haskell-definition">crossMult2</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-operator">\</span>a b d <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>a <span class="org-haskell-operator">*</span> d<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">`div`</span> b<span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">crossMult2</span> 1 85 255
+</code></pre>
+
+<pre class="example">
+3
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> So you
+specifically declared the type signature for your <code>crossMult2</code>. And it
+you specifically made it just <code>Integer</code> parameters producing an
+<code>Integer</code> answer. But then you&rsquo;re using <code>div</code>? Why then? <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Watch
+this. [typing into REPL] I&rsquo;ll get some information on regular division
+<code>/</code> versus <code>div</code>.
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">/</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+(/) :: Fractional a =&gt; a -&gt; a -&gt; a
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>i <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">/</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+type Fractional :: * -&gt; Constraint
+class Num a =&gt; Fractional a where
+  (/) :: a -&gt; a -&gt; a
+  ...
+  	-- Defined in ‘GHC.Real’
+infixl 7 /
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t div
+</code></pre>
+
+<pre class="example">
+div :: Integral a =&gt; a -&gt; a -&gt; a
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Wow. Still getting
+used to reading that stuff. <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> All right, so I&rsquo;m
+assuming they&rsquo;re calling the one type class [writing on the board]
+<code>Fractional</code> because that means literally something that&rsquo;s numerical
+and not a whole number. And then the other [writing] <code>Integral</code> is
+something related to an integer whole number. So basically, a type
+class adds a property or trait to types. It&rsquo;s starting to get clearer
+&#x2014; maybe. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Let me go to a
+link on <a href="https://stackoverflow.com/questions/35950600/why-it-is-impossible-to-divide-integer-number-in-haskell">stackoverflow</a> that talks about this<label for="3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="3" class="margin-toggle"/><span class="sidenote">
+See <a href="https://stackoverflow.com/questions/35950600/why-it-is-impossible-to-divide-integer-number-in-haskell">Why it is impossible to divide Integer number in Haskell?</a>
+</span>. Getting
+there&#x2026; [displays post on monitor] Right. So the original post has
+this and wonders why the error
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span>4 <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integer</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">/</span> 2
+</code></pre>
+
+<pre class="example" id="org4ae7502">
+&lt;interactive&gt;:36:16: error:
+    • No instance for (Fractional Integer) arising from a use of ‘/’
+    • In the expression: (4 :: Integer) / 2
+      In an equation for ‘it’: it = (4 :: Integer) / 2
+</pre>
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> I&rsquo;m guessing it&rsquo;s
+saying you can&rsquo;t do a regular <i>fractional</i> divide because you&rsquo;ve
+specifically said this is an integer, right?  <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [getting up and
+pointing on the monitor] Basically, yes. There&rsquo;s a type class called
+<code>Fractional</code> and it&rsquo;s saying that when we specifically make <code>4</code> an
+<code>Integer</code> this way [writing on the board] <code>(4 :: Integer)</code>, that makes
+it ineligible for doing regular <i>fractional</i> division. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> And that&rsquo;s because
+the type and class system behind all this doesn&rsquo;t allow it. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Yes, as far as
+I can tell. Did you get through the <i>Learn You&#x2026;</i> part on type
+classes<label for="4" class="margin-toggle sidenote-number"></label><input type="checkbox" id="4" class="margin-toggle"/><span class="sidenote">
+See <a href="http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101">Typeclasses 101</a> in <i>Learn You a Haskell&#x2026;</i>.
+</span>? <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Yes, but&#x2026; <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> I emailed the
+professor about this and she said she&rsquo;d soon go over it in detail. <br />
+[murmurs of acknowledgement] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+The bottom line &#x2014; as someone is saying in the comments &#x2014; is that
+<i>integer</i> division not the same as <i>fractional</i> division. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> This type and
+class stuff is why [pointing at the monitor] <code>4 / 2</code> works and this
+<code>(4 :: Integer) / 2</code> thing doesn&rsquo;t. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [typing into
+the ghci REPL] Here, see?
+</p>
+
+<pre class="code"><code>4 <span class="org-haskell-operator">/</span> 2
+</code></pre>
+
+<pre class="example">
+2.0
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> It knows how to
+pretend it&rsquo;s not integer division. It goes ahead and gives you back a
+decimal number. <br />
+[group studies the examples] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> In her email
+the professor said we shouldn&rsquo;t think of literal numbers like
+[pointing] <code>4</code> and <code>2</code> as any sort of definite type just by itself
+[typing into REPL]
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t 1
+</code></pre>
+
+<pre class="example">
+1 :: Num p =&gt; p
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> What this is
+saying is that <code>1</code> is <i>any</i> number &#x2014; until you commit to using it in
+a certain way. <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> So we need to use
+<code>div</code> if we specifically want integer division. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Exactly [typing
+into REPL]
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span>5 <span class="org-haskell-operator">`div`</span> 2<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+2
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> See? It&rsquo;s
+rounding down and throwing away the remainder just like it should with
+whole numbers [typing into REPL]
+</p>
+
+<pre class="code"><code>5 <span class="org-haskell-operator">/</span> 2
+</code></pre>
+
+<pre class="example">
+2.5
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span>5 <span class="org-haskell-operator">/</span> 2<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+(5 / 2) :: Fractional a =&gt; a
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span>5 <span class="org-haskell-operator">`div`</span> 2<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+(5 `div` 2) :: Integral a =&gt; a
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Good. I think I&rsquo;ve
+got it &#x2014; in a shaky sort of way. <br />
+[silence] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So back to the
+lowest common denominator thing&#x2026; <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+\(17\:\) is the amount the numerator of the original \(1/15\) has to be
+multiplied by to be equivalent using the new denominator \(255\:\). So
+now \(1/15\) <i>is equivalent to</i> \(17/255\;\). Next up, for \(1/85\:\) we&rsquo;ve
+got
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">crossMult</span> 1 85 255
+</code></pre>
+
+<pre class="example">
+3.0
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing on the
+board] That means \(1/85\:\) is equivalent to \(3/255\:\), and then adding
+gives us
+</p>
+
+\begin{align*}
+\frac{17}{255} + \frac{3}{255} = \frac{20}{255}
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] So we
+can reduce this by factoring out \(5\)
+</p>
+
+\begin{align*}
+\require{cancel}
+\frac{\cancel{5} \cdot 4}{\cancel{5} \cdot 51} \\
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Wait. I think
+we&rsquo;re doing this wrong. We shouldn&rsquo;t need to factor out the \(5\;\),
+right? So the common denominator should have been just the prime \(3\)
+times the prime \(17\) because the prime \(5\) should have been left
+out. Both \(15\) and \(85\) just have one \(5\) each as a factor. So if they
+both have \(5\) let&rsquo;s just leave it out.<br />
+[silence] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> [continuing] So
+those tables, Ute, maybe we can just subtract one table from the other
+and go with whatever&rsquo;s left? <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [typing
+calculations into the Racket command line] Not sure about that, dear
+brother. My gut tells me &#x2014; and my memory too &#x2014; that no, it&rsquo;s not
+that simple. So, just for sake of argument, if they have a common
+prime factor then let&rsquo;s leave it out &#x2026; <i>if</i> they&rsquo;re the same
+exponentially. So we had both denominators with the prime factor
+\(5^{1}\:\). Good. We drop it. But then what if they share a prime factor
+but different exponentiations of it?  What then? <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Explain,
+please. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [typing into
+Racket&rsquo;s REPL] So first, here&rsquo;s a contrived example where I know both
+have \(2^{2}\)
+</p>
+
+<pre class="example" id="org808238d">
+&gt; (+ 1/20 1/28)
+3/35
+</pre>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing] So
+\(20\) is \(2^{2}\) times \(5\:\), and \(28\) is that same \(2^{2}\) times \(7\;\). So
+yes, we&rsquo;ll get rid of the \(2^{2}\) &#x2014; they&rsquo;re the same prime factor
+raised to the same exponent &#x2014; and we just multiply the \(5\) and the
+\(7\) to get \(35\:\), which is the denominator \(35\;\). And the answer
+Racket gives us, \(3/35\;\), is in simplest form, so we know it&rsquo;s
+right. <i>But</i>, let me try an example where there&rsquo;s a prime to a power
+in one denominator and the same prime <i>to a higher power</i> in the other
+[she does calculations on a sheet of paper, then types into the
+command line]
+</p>
+
+<pre class="example" id="org9f1e9db">
+&gt; (+ 1/88 1/80)
+21/880
+</pre>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing] So
+I&rsquo;ve put together a situation where \(80\) is \(2^{4}\) times \(5\;\), and \(88\)
+is \(2^{3}\) times \(11\;\). And here we see \(880\:\) is the smallest
+denominator possible. And \(21/880\;\) is in simplest form, so there&rsquo;s
+no factoring out to get it into simpler terms. And yes, \(2^{4}\) times \(5\)
+times \(11\) went into making \(880\;\). <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Yeah, I see. The
+\(2^{4}\) did have to go into it. And it was the \(2\) with the higher
+exponent. So when I said subtract one table from the other I guess I
+was implying we could do exponent subtraction, like \(2^{4-3}\:\), get just
+the \(2\) and then make up a denominator out of \(2 \cdot 5 \cdot 11\) which would
+<i>not</i> have worked. Hey, should we try to write a Haskell function to
+check all this?  <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Hold that thought,
+not yet. And I say that because <i>The Haskell Road&#x2026;</i> has a way we
+should learn. I looked at it. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Well, I asked
+Mutti about this &#x2014; and she said we should look into the <i>least
+common multiple</i>, because that&rsquo;s what this lowest common denominator
+issue is all about. And yes, I knew that but had forgotten. So here&rsquo;s
+the Wikipedia article on it<label for="5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="5" class="margin-toggle"/><span class="sidenote">
+See the article <a href="https://en.wikipedia.org/wiki/Least_common_multiple">here</a>.
+</span>. [displays page on monitor] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> [mumbling the
+first sentence<label for="6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="6" class="margin-toggle"/><span class="sidenote">
+<font color = "#0d3db3">&#x2026;In arithmetic and number
+theory, the <i>least common multiple</i>, <i>lowest common multiple</i>, or
+<i>smallest common multiple</i> of two integers \(a\) and \(b\:\), usually
+denoted by \(lcm(a, b)\:\), is the smallest positive integer that is
+divisible by both \(a\) and \(b\;\)&#x2026;</font>
+</span>] You&rsquo;re right. I knew this but had lost track of
+it. <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Which means we
+<i>don&rsquo;t</i> want to kick out <i>any</i> primes with the same exponent just
+because the denominators share them. <br />
+[embarrassed laughter] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [typing into
+the Racket REPL] So trying \(20\) and \(28\) as denominators again, we
+thought \(35\) was the common denominator for all situations. But watch,
+I&rsquo;ll put in some different numerators
+</p>
+
+<pre class="example" id="org1b76df7">
+&gt; (+ 5/20 11/28)
+9/14
+&gt; (+ 1/20 11/28)
+31/70
+&gt; (+ 3/20 13/28)
+43/70
+</pre>
+
+<p>
+[laughter] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Oops. My bad. That
+was a complete fluke factoring out the \(2^{2}\) and just calling the
+lowest common denominator \(5\) times \(7\:\). So the real lowest common
+multiple, the smallest number that both \(20\) and \(28\) evenly divide
+into is, in fact, \(2^{2}\) times \(5\) times \(7\;\), which is \(140\;\). <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Now, let&rsquo;s get
+the numerators [typing]
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">crossMult</span> 5 20 140
+</code></pre>
+
+<pre class="example">
+35.0
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-definition">crossMult</span> 11 28 140
+</code></pre>
+
+<pre class="example">
+55.0
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [writing on the
+board] So this is what we have
+</p>
+
+\begin{align*}
+\frac{35}{140} + \frac{55}{140} = \frac{90}{140} = \frac{9}{14}
+\end{align*}
+
+<p>
+and no \(35\) in sight. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Got it. <br />
+[silence as they all read further into the article] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So yes, now I
+think we should try what they&rsquo;re saying where you list out multiples
+of the two denominators until you find the first common
+multiple. Let&rsquo;s try it as a Haskell program. <br />
+[agreement murmurs] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [making a new
+org-mode source block] Okay, so we&rsquo;re basically talking about an
+<i>arithmetic series</i> where a sequence of numbers increases or decreases
+at a fixed amount. In this case the series will increase by the amount
+of the denominators at each step. So let me do this [typing]
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">myLCM</span> dnom1 dnom2
+  <span class="org-haskell-operator">=</span> take 1  <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-haskell-operator">*</span>dnom1<span class="org-rainbow-delimiters-depth-4">)</span>x<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-3">[</span>1<span class="org-haskell-operator">..</span>200<span class="org-rainbow-delimiters-depth-3">]</span>,
+             y <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-3">[</span>1<span class="org-haskell-operator">..</span>200<span class="org-rainbow-delimiters-depth-3">]</span>,
+             <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-haskell-operator">*</span>dnom1<span class="org-rainbow-delimiters-depth-4">)</span>x <span class="org-haskell-operator">==</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-haskell-operator">*</span>dnom2<span class="org-rainbow-delimiters-depth-4">)</span>y<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+Now for denominators \(15\) and \(85\) like before
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">myLCM</span> 15 85
+</code></pre>
+
+<pre class="example">
+[255]
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing] So
+it works. But I don&rsquo;t think it&rsquo;s good for really big
+denominators. This is strictly proof of concept. <br />
+[Uwe and Ute study the code] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Again, wow. But
+you lost me on the <code>(*dnom1)</code> and <code>(*dnom2)</code>. What&rsquo;s going on there?
+<br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> That&rsquo;s what
+they call a <i>section</i>. I got that the other day from <i>A Gentle
+Introduction to Haskell</i><label for="7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="7" class="margin-toggle"/><span class="sidenote">
+Available <a href="https://www.haskell.org/tutorial/">here</a>. The page dealing with <i>sections</i> is <a href="https://www.haskell.org/tutorial/functions.html">here</a> in
+3.2.1. Also The <a href="https://wiki.haskell.org/Section_of_an_infix_operator">wiki.haskell.org</a> has a page on sections as well.
+</span>. Basically, <code>*dnom1</code> is made into a
+function that takes whatever <code>dnom1</code> is and applies it just as if it
+were a function to the <code>x</code>. So <code>(*dnom1)x</code> is the same as just <code>x *
+dnom1</code>. Here&rsquo;s an example [typing into the ghci REPL]
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">*</span>2<span class="org-rainbow-delimiters-depth-1">)</span>5 <span class="org-haskell-operator">==</span> <span class="org-rainbow-delimiters-depth-1">(</span>2<span class="org-haskell-operator">*</span><span class="org-rainbow-delimiters-depth-1">)</span>5 
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+Since multiplication is commutative, the <code>*</code> sign can be in front of
+the multiplicand or behind it. But that&rsquo;s not always the case. For
+example [typing]
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span>2<span class="org-haskell-operator">^</span><span class="org-rainbow-delimiters-depth-1">)</span>3
+</code></pre>
+
+<pre class="example">
+8
+</pre>
+
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">^</span>2<span class="org-rainbow-delimiters-depth-1">)</span>3
+</code></pre>
+
+<pre class="example">
+9
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing] So
+the second one <i>flips</i> the \(3\) to the other side. Not to get too far
+down this rabbit hole, I could write something like this [typing]
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">myTimesTwo</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">*</span>2<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">myTimesTwo</span> 5
+</code></pre>
+
+<pre class="example">
+10
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Okay, I get
+it. Impressive. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So here&rsquo;s one
+more cool thing about sections. Look at this and try to guess what it
+does [typing into a source block]
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">myListOfAddFuncs</span> <span class="org-haskell-operator">=</span> map <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">+</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> Aaah, not
+sure. Give us a hint. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Right, so
+according to <i>The Gentle Introduction&#x2026;</i> we&rsquo;ve got [writing on the
+board]
+</p>
+
+<pre class="example" id="org4f139e8">
+(+) = \x y -&gt; x + y
+</pre>
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> So with sections
+the operator and whatever variable you include has to be in
+parentheses, right? <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Yes. We&rsquo;re
+packaging up a common operator like plus or times, and maybe a
+variable, to work as a function. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> <i>Luft von anderem
+Planeten</i><label for="8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="8" class="margin-toggle"/><span class="sidenote">
+A famous line from a Stefan Georg poem: <i>Ich fühle Luft von
+anderem Planeten</i> or <i>I feel (the) air of (the other) another planet.</i>
+</span> <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> [continuing] No,
+really, I barely understand that anonymous stuff, but I hear you
+saying <code>myListOfAddFuncs</code> could have been written with an anonymous
+function [writes on the board]
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">myLOAF</span> <span class="org-haskell-operator">=</span> map <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>x y <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">+</span> y<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> [continuing] And
+I&rsquo;m guessing that this creates a <i>list of functions</i> like [writing]
+</p>
+
+<pre class="example" id="org6017c39">
+[(1+),(2+),(3+)]
+</pre>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So let&rsquo;s just
+test it [typing]
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">map</span> <span class="org-rainbow-delimiters-depth-1">(</span>myListOfAddFuncs <span class="org-haskell-operator">!!</span> 2<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[4,5,6]
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> Again, I just
+barely understand all these components. I sort of understand <code>map</code>. I
+sort of understand what you&rsquo;re doing with sections, as they&rsquo;re
+called. I sort of understand what Brother just said. So I&rsquo;m going to
+guess that you have the list of functions in the form of sections, and
+you just told it to apply this list of functions to the list
+<code>[1,2,3]</code>. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Not
+exactly. I&rsquo;m still trying to figure that one out. No, what I&rsquo;m doing
+is using the Haskell index operator <code>!!</code> to say &ldquo;give me the third
+element,&rdquo; which is the function <code>(3+)</code>. Even though it says <code>2</code>, the
+index starts at <code>0</code>, so the third function in <code>myListOfAddFuncs</code> is
+<code>(3+)</code> and <code>map</code> then applies it across <code>[1,2,3]</code> giving <code>[4,5,6]</code>
+since it adds <code>3</code> to each element of the input list. See? <br />
+[nods and murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> So back to the &#x2014;
+list comprehension? Is that what it&rsquo;s called? <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Right
+[scrolling back]
+</p>
+
+<pre class="example" id="orgf684eeb">
+myLCM dnom1 dnom2
+  = take 1  [((*dnom1)x) | x &lt;- [1..200],
+             y &lt;- [1..200],
+             ((*dnom1)x == (*dnom2)y) ]
+</pre>
+
+<pre class="code"><code><span class="org-haskell-definition">myLCM</span> 15 85
+</code></pre>
+
+<pre class="example">
+[255]
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So this is a
+<i>list comprehension</i><label for="9" class="margin-toggle sidenote-number"></label><input type="checkbox" id="9" class="margin-toggle"/><span class="sidenote">
+See <a href="http://learnyouahaskell.com/starting-out#im-a-list-comprehension">this</a> from LYAHFGG.
+</span>, and a list comprehension is just the
+Haskell version of a set comprehension or <i>set-builder
+notation</i><label for="10" class="margin-toggle sidenote-number"></label><input type="checkbox" id="10" class="margin-toggle"/><span class="sidenote">
+See Wikipedia&rsquo;s <a href="https://en.wikipedia.org/wiki/Set-builder_notation">Set-builder notation</a>
+</span> from set theory. And it&rsquo;s going through the multiples
+of \(15\) and \(85\), one after the other like this [writing on the board]
+</p>
+
+<pre class="example" id="org2cfb240">
+15 30 45 60 75 90 105 120 ... 240 255
+85 170 225
+</pre>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+making pairs of all these possible combinations until there&rsquo;s a pair
+that match, that share the same multiple, which is \(255\;\). <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> So let&rsquo;s change it
+a bit. What happens if you <i>don&rsquo;t</i> have the filter that selects just
+the equal pairs <i>and</i> you don&rsquo;t take just the first one like you did
+with that <code>take 1</code>? <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Right, I know
+what you mean. Here it is [typing]. Here&rsquo;s all the pairs of the two
+intervals in all possible combinations &#x2014; this time only the first
+\(15\) multiples of \(15\) and \(85\:\) so it doesn&rsquo;t get too big
+</p>
+
+<pre class="example" id="orgc4535ce">
+myLCM2 dnom1 dnom2 = [((*dnom1)x,(*dnom2)y) |
+                         x &lt;- [1..15], y &lt;- [1..15] ]
+</pre>
+
+<pre class="example" id="orgadabe2d">
+myLCM2 15 85
+</pre>
+
+<pre class="example" id="orgfdec440">
+[(15,85),(15,170),(15,255),(15,340),(15,425),(15,510),(15,595),(15,680),
+(15,765),(15,850),(15,935),(15,1020),(15,1105),(15,1190),(15,1275),
+(30,85),(30,170),(30,255),(30,340),(30,425),(30,510),(30,595),(30,680),
+(30,765),(30,850),(30,935),(30,1020),(30,1105),(30,1190),(30,1275),
+(45,85),(45,170),(45,255),(45,340),(45,425),(45,510),(45,595),(45,680),
+(45,765),(45,850),(45,935),(45,1020),(45,1105),(45,1190),(45,1275),
+(60,85),(60,170),(60,255),(60,340),(60,425),(60,510),(60,595),(60,680),
+(60,765),(60,850),(60,935),(60,1020),(60,1105),(60,1190),(60,1275),
+(75,85),(75,170),(75,255),(75,340),(75,425),(75,510),(75,595),(75,680),
+(75,765),(75,850),(75,935),(75,1020),(75,1105),(75,1190),(75,1275),
+(90,85),(90,170),(90,255),(90,340),(90,425),(90,510),(90,595),(90,680),
+(90,765),(90,850),(90,935),(90,1020),(90,1105),(90,1190),(90,1275),
+(105,85),(105,170),(105,255),(105,340),(105,425),(105,510),(105,595),
+(105,680),(105,765),(105,850),(105,935),(105,1020),(105,1105),
+(105,1190),(105,1275),(120,85),(120,170),(120,255),(120,340),
+(120,425),(120,510),(120,595),(120,680),(120,765),(120,850),
+(120,935),(120,1020),(120,1105),(120,1190),(120,1275),(135,85),
+(135,170),(135,255),(135,340),(135,425),(135,510),(135,595),(135,680),
+(135,765),(135,850),(135,935),(135,1020),(135,1105),(135,1190),
+(135,1275),(150,85),(150,170),(150,255),(150,340),(150,425),(150,510),
+(150,595),(150,680),(150,765),(150,850),(150,935),(150,1020),(150,1105),
+(150,1190),(150,1275),(165,85),(165,170),(165,255),(165,340),
+(165,425),(165,510),(165,595),(165,680),(165,765),(165,850),
+(165,935),(165,1020),(165,1105),(165,1190),(165,1275),(180,85),
+(180,170),(180,255),(180,340),(180,425),(180,510),(180,595),(180,680),
+(180,765),(180,850),(180,935),(180,1020),(180,1105),(180,1190),(180,1275),
+(195,85),(195,170),(195,255),(195,340),(195,425),(195,510),(195,595),
+(195,680),(195,765),(195,850),(195,935),(195,1020),(195,1105),(195,1190),
+(195,1275),(210,85),(210,170),(210,255),(210,340),(210,425),(210,510),
+(210,595),(210,680),(210,765),(210,850),(210,935),(210,1020),(210,1105),
+(210,1190),(210,1275),(225,85),(225,170),(225,255),(225,340),(225,425),
+(225,510),(225,595),(225,680),(225,765),(225,850),(225,935),(225,1020),
+(225,1105),(225,1190),(225,1275)]
+</pre>
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Right. Wow. So
+this is literally taking all combinations of the multiples of \(15\) and
+\(85\;\), and there towards the end you can see the <code>(255,255)</code>, which
+is the very first common multiples match, which makes it the <i>lowest</i>
+match. But then your original code is filtering out all the
+unnecessary combinations of the multiples. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> So with the
+original code, the <code>x &lt;- [1..200]</code> and the <code>y &lt;- [1..200]</code> simply
+you&rsquo;re going through \(200\) of the arithmetic progression for both the
+\(15\) and the \(85\;\), and you&rsquo;re creating all the different combination
+pairs of these multiples of \(15\) and \(85\;\), the first time the
+multiples are the same, you&rsquo;ve got a winner. This time it was when it
+returned \((225,225)\;\). So you just take the first parameter, which is
+\(15\) times all these different combinations of multiples of \(15\) and
+\(85\;\), and with that qualifier <code>(*dnom1)x == (*dnom2)y</code> you&rsquo;re
+keeping only the times you get a hit, that is, \(255\) equals \(255\;\)
+&#x2014; and then you take the first one of that list. <br />
+[silence while studying the code] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> [dramatically] And
+now, dear siblings, we can honestly say that we can solve
+unlike-denominator fractions. <br />
+[laughter] <span class="fraktur">𝔘𝔴𝔢:</span> I have
+to say, when we have to pull math out of our heads and put on a
+computer, it&rsquo;s, yeah, <i>involved</i>, to say the least. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> But I can see the
+day when we&rsquo;re good enough at coding to just immediately shake
+something out of our sleave. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> But it won&rsquo;t be
+easy getting there. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Take a break?
+<br />
+[agreement]
+</p>
+</div>
+
+<div id="outline-container-orgc46b23e" class="outline-3">
+<h3 id="orgc46b23e">Greatest common divisor</h3>
+<div class="outline-text-3" id="text-orgc46b23e">
+<p>
+The von der Surwitzes pop over to the student center cafe for a break.
+They grab a large mineral water, a brand they knew in Germany, and Ute
+has packed some <i>Vollkornbrot</i> sandwiches of hummus and
+cucumbers. They sit at a table and pour out the water and break out
+the sandwiches.
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> All right, so I
+emailed the professor about a couple of questions from that first
+chapter of <i>The Haskell Road</i>, and she replied saying, first, she&rsquo;s
+happy we&rsquo;re tackling the material early. And she mentioned some
+resources &#x2014; a few texts she has on reserve at the library. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Sort of like, I&rsquo;m
+not going to answer your questions directly. I&rsquo;m going to point you in
+the right direction. What books are they? <br />
+[murmurs of acknowledgement] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> They&rsquo;re
+math. Upper level college texts. Abstract algebra and number
+theory. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> I read somewhere
+that computer science has all these higher math concepts, but then you
+don&rsquo;t go as far as a math major does. <br />
+[silence, eating and drinking] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> [continuing] I
+guess you&rsquo;re just supposed to learn as much as you can. But like she
+said at the open house, a computer scientist is really an <i>applied</i>
+mathematician. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> And the math
+part is the hardest part for incoming CS students, those first four
+semesters, ergo, that&rsquo;s what we&rsquo;ll emphasize in this course. <br />
+[nods of agreement then silence as they eat and drink] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing] So
+no quick hand-waving. And the course is open-ended. She doesn&rsquo;t have a
+set amount she wants us to get through. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> But I&rsquo;m sure we
+need to move along and not be laggards about it. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> It seems crazy,
+but we could do this for more than a year. So her sabbatical ends next
+summer, but I&rsquo;m pretty sure I want to continue. <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Novalis is sort of
+an open <i>Gynmasium</i>. It sounds crazy, but we can be here as long as we
+like. <br />
+[soft laughter] <span class="fraktur">𝔘𝔴𝔢:</span>
+And what happens afterward? They definitely want you to just keep
+going at the U. Which I wouldn&rsquo;t mind at all. <br />
+[looks about the table] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Well, Father
+has tenure. But I don&rsquo;t know if Mutti can go on working from
+here. [shrugging and sighing] Anyway, I guess you two will cross that
+bridge before I will. <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> [laughing] Hardly!
+You&rsquo;re right there with us in everything we&rsquo;re doing this coming
+year. <br />
+</p>
+
+
+
+
+
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Good.
+</p>
+
+
+
+
+
+
+
+
+
+
+<p>
+gold standard for figuring out lowest common denominator. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> I&rsquo;d say so, but
+now we need to see how Haskell does it internally, and how <i>The
+Haskell Road&#x2026;</i> does it and stop being amateurs. <br />
+[laughter] <br />
+</p>
+
+
+
+
+
+
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> I feel like you
+and the professor are like very strong bakers kneading and kneading
+and kneading my brain [demonstrates with imaginary brain-dough] <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> No, this had
+really worked out, you, Ursula, racing ahead with the Haskell. And I
+going ahead with the set theory, and you, Ute, going on ahead with the
+math logic. I mean, we&rsquo;re definitely making progress. It&rsquo;s just that
+we have so much to learn! <br />
+[affirmations]
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</div>
+<!-- Footnotes --><!-- 
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Professor Chandra has demonstrated at the Racket command line
+how rationals could be directly added, e.g., <br />
+<code>&gt; (+ 1/32 1/943720)</code> <br />
+and get back <br />
+<code>117969/3774880</code>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Check out anonymous or <i>lambda</i> functions <a href="http://learnyouahaskell.com/higher-order-functions#lambdas">here</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+See <a href="https://stackoverflow.com/questions/35950600/why-it-is-impossible-to-divide-integer-number-in-haskell">Why it is impossible to divide Integer number in Haskell?</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+See <a href="http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101">Typeclasses 101</a> in <i>Learn You a Haskell&#x2026;</i>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+See the article <a href="https://en.wikipedia.org/wiki/Least_common_multiple">here</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<font color = "#0d3db3">&#x2026;In arithmetic and number
+theory, the <i>least common multiple</i>, <i>lowest common multiple</i>, or
+<i>smallest common multiple</i> of two integers \(a\) and \(b\:\), usually
+denoted by \(lcm(a, b)\:\), is the smallest positive integer that is
+divisible by both \(a\) and \(b\;\)&#x2026;</font>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Available <a href="https://www.haskell.org/tutorial/">here</a>. The page dealing with <i>sections</i> is <a href="https://www.haskell.org/tutorial/functions.html">here</a> in
+3.2.1. Also The <a href="https://wiki.haskell.org/Section_of_an_infix_operator">wiki.haskell.org</a> has a page on sections as well.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8" role="doc-backlink">8</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+A famous line from a Stefan Georg poem: <i>Ich fühle Luft von
+anderem Planeten</i> or <i>I feel (the) air of (the other) another planet.</i>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9" role="doc-backlink">9</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+See <a href="http://learnyouahaskell.com/starting-out#im-a-list-comprehension">this</a> from LYAHFGG.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10" role="doc-backlink">10</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+See Wikipedia&rsquo;s <a href="https://en.wikipedia.org/wiki/Set-builder_notation">Set-builder notation</a>
+</p></div></div>
+
+ --></div>
+</body>
+</html>

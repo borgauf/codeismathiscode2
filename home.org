@@ -1,0 +1,63 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE:
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: index.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+
+#+begin_export html
+<span style="margin-top: -40px; margin-left: 5px; text-align: left; font-size: 85%" class="cap">Art taken from <a href="https://mastodon.social/@ianh" target="_blank" class="inline">Ian Henderson</a>. See <a href="https://johncarlosbaez.wordpress.com/2022/12/22/dividing-a-square-into-similar-rectangles/" target="_blank" class="inline">this</a> article.</span>
+#+end_export
+
+
+
+* 🟄 . . . code is math is code is math is code is math is code is math . . .
+
+#+begin_export html
+<img src="./images/DoesntFitThroughTheDoor.png" width="725px" style="padding: 15px 0px 0px 0px" alt="Doesn't fit through the door." class="center">
+<span class="cap">The new computer doesn't fit through the door scene from the film <i>Hidden Figures</i>.</span>
+#+end_export
+
+**** Learning math and learning programming/computer science should happen simultaneously. Click on the icon top-left and get started.
+
+* 🟄 About
+
+#+begin_export html
+<img src="./images/inlandseagmharbour20220414_2.png" width="725px" style="padding: 15px 0px 0px 0px" alt="Doesn't fit through the door." class="center">
+<span class="cap">The Inland Sea aka Lake Superior.</span>
+#+end_export
+ 
+**** *codeismathiscode* is located in Grand Marais, Minnesota, USA, on the coast of the Inland Sea, aka, Lake Superior. Reach us at @@html:<font color = "#650d1c">@@codeismathiscode@gmail.com@@html:</font>@@
+
+#+INCLUDE: "./footer.org" :minlevel 1

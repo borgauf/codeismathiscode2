@@ -1,0 +1,203 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: Rabbit Holes, Preliminaries
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: preliminaries.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+#+OPTIONS: html-style:nil
+
+# @@html:<label for="mn-demo" class="margin-toggle"></label>
+# <input type="checkbox" id="mn-demo" class="margin-toggle">
+# <span class="marginnote">@@
+# [[file:images/AliceRabbitHole.jpg]]
+# \\
+# \\
+# @@html:</span>@@
+
+* Preliminary rabbit holes
+
+#+begin_export html
+<img src="./images/AliceRabbitHole.jpg" width="725px" style="padding: 15px 0px 0px 0px" alt="Alice rabbit hole" class="center">
+<span class="cap">Alice about to go down the Haskell rabbit hole</span>
+#+end_export
+
+This will be our starter hutch of rabbit holes[fn:1]. Keep in mind
+that the length of this "preliminaries" list may be long, but you
+should do what you can when you can. After all, this is open-ended,
+with you as the timekeeper and the pacesetter. The goal is, again, to
+climb the on-ramp to college-level comp-sci, e.g., computational
+methods.
+
+There will be two main texts:
+
+- /[[https://staff.fnwi.uva.nl/d.j.n.vaneijck2/HR/][The Haskell Road to Logic, Maths and Programming]]/ by Kees Doets and
+ [[https://staff.fnwi.uva.nl/d.j.n.vaneijck2/HR/][Jan van Eijck]], ([[https://www.amazon.com/Haskell-Logic-Maths-Programming-Computing/dp/0954300696/ref=sr_1_1?ie=UTF8&qid=1290598326&sr=8-1][Amazon]]) and
+- /[[https://mitpress.mit.edu/9780262534741/thinking-as-computation/][Thinking as Computation]]/ by [[https://www.cs.toronto.edu/~hector/][Hector Levesque]], ([[https://www.amazon.com/Thinking-Computation-First-Course-Press/dp/0262534746/ref=sr_1_1?crid=R9PAL98I08OE&keywords=Thinking+as+Computation&qid=1671140532&sprefix=thinking+as+computation%2Caps%2C127&sr=8-1][Amazon]]) .
+
+We will work through these at a beginner's, secondary-school level.
+
+** Math rabbit holes
+
+It's really important that we get familiar with the math of the
+computer science world. Luckily, most of comp-sci math comes directly
+from, builds on top of long-established abstract algebra, discrete
+math, and math logic, i.e., there are plenty of good introductory
+materials. Most of this is just getting familiar with the definitions
+and terminology. We'll start with /set theory/, which is a must. Then
+we'll learn about mathematical logic. Then we'll branch out into the
+other areas of a typical comp-sci discrete mathematics curriculum.
+
+@@html:<font color = "#375e79">@@
+⌜🐇 
+1. The /LibreTexts series/ on /[[https://math.libretexts.org/Bookshelves/Mathematical_Logic_and_Proof/Book%3A_Mathematical_Reasoning__Writing_and_Proof_(Sundstrom)][Mathematical Reasoning - Writing and
+   Proof]]/ by Ted Sudstrom at Grand Valley State University is a good
+   starting point for us. Start [[https://math.libretexts.org/Bookshelves/Mathematical_Logic_and_Proof/Book%3A_Mathematical_Reasoning__Writing_and_Proof_(Sundstrom)/05%3A_Set_Theory][here]] with /Set Theory/, the concepts
+   of which we'll be diving into straightaway. Then go back and start
+   at the beginning with the chapter [[https://math.libretexts.org/Bookshelves/Mathematical_Logic_and_Proof/Book%3A_Mathematical_Reasoning__Writing_and_Proof_(Sundstrom)/01%3A_Introduction_to_Writing_Proofs_in_Mathematics][Introduction to Writing Proofs in
+   Mathematics]] and make as much progress as you can through the
+   book.
+   (/R_{C}-hole/)
+2. ...or try LibreTexts' [[https://math.libretexts.org/Bookshelves/Combinatorics_and_Discrete_Mathematics/Applied_Discrete_Structures_(Doerr_and_Levasseur)/16%3A_An_Introduction_to_Rings_and_Fields/16.01%3A_Rings_Basic_Definitions_and_Concepts][Applied Discrete Structures]] (Doerr and
+   Levasseur), which combines many comp-sci preliminaries very
+   well. Again, Haskell, probably more than any other language, is
+   based on this stuff. (/R_{C}-hole/)
+3. Another great treatment of sets, etc. is from Oscar Levin's online
+   [[https://discrete.openmathbooks.org/dmoi3/sec_intro-sets.html][Discrete Mathematics: An Open Introduction]]. Sudstrom,
+   Doerr/Levasseur, or this Levin treatment would be great to start
+   with. And as mentioned with the previous two, once done with sets,
+   go back and start at the beginning.  (/R_{C}-hole/)
+4. We need to learn mathematical logic, since logic is simply baked
+   into every programming language. Try [[https://math.libretexts.org/Courses/Monroe_Community_College/MATH_220_Discrete_Math/2%3A_Logic][this LibreTexts series]] on
+   logic to get more thorough than the previous rabbit hole. Pay
+   particular attention to the notation used on logic operators and
+   the terminology as well. This stuff comes up all the time in
+   programming. (/R_{C}-hole/)
+5. Jessica Sklar is a math professor at Pacific Lutheran and her
+   online book [[https://sklarjk.github.io/fsaa/sets.html][First-Semester Abstract Algebra: A Structural Approach]]
+   is meant for college math majors, but here we can get another view
+   of sets and then functions. Do something between a grok and a skim
+   for the first two chapters. (/R_{O}-hole/)
+6. These basic [[https://www.inf.ed.ac.uk/teaching/courses/inf1/fp/lectures/2017/set-theory.pdf][set theory slides]] with their tie-in to Haskell at the
+   end are very good as well. Do something between a grok and a
+   skim. We'll eventually be covering all the material therein.
+   (/R_{O}-hole/)
+7. Browse through this [[https://en.wikipedia.org/wiki/Set_(mathematics)][Wikipedia Set article]][fn:2], paying special
+   attention to the Basic Operations section---maybe even rabbit-hole
+   into the /[[https://en.wikipedia.org/wiki/Union_(set_theory)][union]]/ article to understand some basic algebraic
+   operations on sets. You've probably seen this stuff before with
+   /Venn diagrams;/ this is some of the algebra behind the
+   diagrams. (/R_{O}-hole/)
+8. Make sure you get comfortable with LaTeX math typesetting. What's
+   that you ask? Watch [[https://youtu.be/Jp0lPj2-DQA][Trefor Bazett's excellent intro video]]. After
+   that, have a look at the /[[https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference][MathJax basic tutorial and quick
+   reference]]/. At this point you should open up Emacs, open up a test
+   org mode buffer and start experimenting. We'll concentrate on
+   MathJax since it 
+@@html:</font>@@🐇⌟
+
+** Programming rabbit holes
+
+We will start experimenting with Haskell in the first chapter
+/Numbers/. Make sure you're getting along with the first rabbit hole,
+/Learn you a Haskell.../. Try to get through it ASAP. You can't know
+Haskell enough. We include so many learning sources mainly because if
+you didn't get something first try from one source, you can try it in
+another source. But yes, LYAHFGG should be start-to-finish grokked.
+
+@@html:<font color = "#375e79">@@
+⌜🐇 
+1. [[http://learnyouahaskell.com/chapters][Learn You a Haskell for Great Good!]] (LYAHFGG) is a widely-used,
+   often-suggested beginners site for starting out with Haskell. Work
+   through at least chapters 1 and 2 to understand a lot of what we'll
+   be doing with Haskell below[fn:3]. Pay particular attention to lists and
+   /list comprehensions/. (/R_{C}-hole/)
+2. A site haskell.org is suggesting is the UPenn course CIS194. We
+   suggest the [[https://www.seas.upenn.edu/~cis194/spring15/][Spring 2015]] version since it includes haskell source
+   files. This is a college course, but for beginners. Click on the
+   /Lectures & Assignments/ link at the top. (If you've got [[https://github.com/borgauf/omnimath][our github
+   repository]] there's a directory containing all the Haskell files.)
+   (/R_{O}-hole/)
+3. An older but still go-to site recommended by many is the /[[http://book.realworldhaskell.org/read/][Real
+   World Haskell]]/ site (also book). As the title suggests, it has a
+   more real-applications slant, and yes, the material can get into
+   heavy lifting, but one great advantage is it has prodigious
+   /comments/ attached to ever web page section. So if you didn't
+   understand something, typically somebody has already explained it
+   in depth.
+4. Book-wise, a nice, well-paced text would be /[[https://www.manning.com/books/get-programming-with-haskell#:~:text=about%20the%20book,dive%20into%20custom%20Haskell%20modules.][Get Programming with
+   Haskell]]/ by Will Kurt. Will bridges a lot of chasms between
+   beginner, intermediary, and advanced ideas. In other words, GPWH
+   gives plain-English explanations of things other treatments might go
+   deep into theory on. Really helpful, that. (/R_{O}-hole/)
+5. Maybe try the Australian National University Haskell course
+   [[https://comp.anu.edu.au/courses/comp1100/][COMP1100]]. It came highly recommended.
+6. Another big favorite for Haskell starters, but slightly more
+   challenging is /[[https://www.haskell.org/tutorial/haskell-98-tutorial.pdf][A Gentle Introduction to Haskell 98]]/. AGITH uses
+   more math terminology, which is what we're doing, but from the
+   shallow end first. (/R_{O}-hole/)
+7. You might take a look at the [[https://wiki.haskell.org/List_comprehension][Haskell Wiki article]][fn:4] too,
+   especially the examples, but don't expect to fully understand it yet. (/R_{O}-hole/)
+8. Another big-league site to be aware of is the [[http://www.rosettacode.org/wiki/Rosetta_Code][Rosetta Code]]
+   site. Here you can search on hundreds of algorithms and numerical
+   analysis articles, each task done in the code of dozens of
+   programming languages[fn:5]. Here you get to compare Haskell with
+   other languages. One thing you'll notice consistently is how much
+   shorter Haskell programs are than other languages. That's because
+   Haskell is very powerful and packs a large punch when solving
+   tasks. (/R_{FYI}-hole/)
+@@html:</font>@@🐇⌟
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] R_{C}-hole: *critical*; get into it! \\
+R_{O}-hole: *optional*; but it's good stuff that helps \\
+R_{FYI}-hole: *for your information*; interesting side-trip
+
+[fn:2] Mathematics as experienced in Wikipedia's articles can be like
+trying to drink from a full-blast fire hose; still, good can be
+gleaned. And it's good to learn how to deal with the Wikipedia way of
+handling math and CS.
+
+[fn:3] Truthfully, this will be your go-to reference/tutorial for the
+immediate CIMIC future. Get going with it and try to self-pace your
+way through it all. It's not in-depth per se but will get you in the
+Haskell ballpark, so to speak.
+
+[fn:4] The Haskell Wiki can be like trying to drink from a fire hose,
+but good can be had for the brave and virtuous.
+
+[fn:5] [[http://rosettacode.org/wiki/Category:Haskell][Category:Haskell]]. 

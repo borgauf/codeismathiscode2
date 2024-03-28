@@ -1,0 +1,2116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-12-04 Sun 21:26 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Numbers</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<style> .title { display: none; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-tex',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Numbers</h1>
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<img src="./images/heading6.png"  style="padding: 0px 0px 22px 0px" alt="3-d graph" class="center">
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+
+<div id="outline-container-org6aea065" class="outline-2">
+<h2 id="org6aea065">Numbers</h2>
+</div>
+
+
+<div id="outline-container-org8af822f" class="outline-2">
+<h2 id="org8af822f">Thursday at the library</h2>
+<div class="outline-text-2" id="text-org8af822f">
+<p>
+It&rsquo;s Thursday afternoon and the von der Surwitz siblings meet in their
+reserved study room at the main university library to go over
+Wednesday&rsquo;s lecture and examples. After Wednesday&rsquo;s class, they&rsquo;re
+glad they and the other ItCS participants had met with Professor
+Chandra at the Novalis Tech Open House two weeks prior to the start of
+school and had gotten a heads-up on what was ahead, including her
+repository. As a result they all had gone down the minimal
+prerequisite rabbit holes and were more or less ready.
+</p>
+
+<p>
+Ursula von der Surwitz has plugged in her laptop to the big monitor
+and is scrolling through Professor Chandra&rsquo;s first substantive lecture
+on Wednesday of the first week of classes<label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle"/><span class="sidenote">
+This is also on her GitHub repository.
+</span>.
+</p>
+
+<p>
+⌜&#x2026;<br />
+For most of us our first experience with the abstraction power of
+numbers begins when our parents teach us to hold up three fingers to
+show everyone we&rsquo;re three years old. And so we were introduced to the
+idea of seeing an abstract numerical magnitude such as the number
+three as a mapping or connection of three fingers to three years of
+life.
+</p>
+
+<p>
+Then at some point we learn what mathematician Eugenia Cheng<label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle"/><span class="sidenote">
+See her popular layman&rsquo;s book <i>How To Bake \(\pi\;\)</i>. One
+interesting aspect of this book is her treatment of <i>category theory</i>,
+which is a superset of type theory, much of which is baked into
+Haskell.
+</span>
+calls the &ldquo;counting poem,&rdquo; i.e., we learn how to count from one to
+ten, usually on our fingers. And about this time we learn to negotiate
+numerically, like when we said, <i>I&rsquo;ll give so many of these if you
+give me so many of that</i>. But then begins formal school math, and each
+year math becomes progressively less interesting, less popular &#x2014; to
+the point of being a hated subject. This in my opinion is due to the
+curriculum being based on conditioned learning, the <i>when you see
+this, do this</i> method &#x2026; unfortunately.
+</p>
+
+<p>
+But if you major in math in college you eventually start to see in the
+later years<label for="3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="3" class="margin-toggle"/><span class="sidenote">
+In many places in the world the typical American college
+Freshman-Sophomore math sequence of calculus, diff-eqs, and linear
+algebra is completed at the college-prep level. For example, Germany
+and Switzerland have college freshmen starting with Analysis.
+</span> &#x2014; after the four Freshman and Sophomore semesters
+of calculus, differential equations, and linear algebra &#x2014; what is
+commonly called &ldquo;higher math.&rdquo;  And these upper-semester math courses
+can be a complete reboot of math, weeding out vague, ad hoc,
+<i>parochial</i><label for="4" class="margin-toggle sidenote-number"></label><input type="checkbox" id="4" class="margin-toggle"/><span class="sidenote">
+<b>parochial</b>: &#x2026; very limited or narrow in scope or outlook;
+provincial&#x2026;
+</span> notions, replacing them with a rigorous,
+theoretical, formalistic, foundational understanding of math. As
+mathematician Joe Fields says, this is when you stop being a &ldquo;see
+this, do this&rdquo; calculator and become a prover, i.e., a deeper thinker
+about math.
+</p>
+
+<p>
+<i><a href="https://en.wikipedia.org/wiki/Set_theory">Set theory</a></i> is a big part of this formalism<label for="5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="5" class="margin-toggle"/><span class="sidenote">
+Make sure you&rsquo;re attacking the <i>LibreTexts</i> series, e.g.,
+one of the first three rabbit holes in the math section.
+</span>. Set theory is an
+exacting, don&rsquo;t-take-stuff-for-granted world, which turns out to be
+good for the computer world as well since computer circuits don&rsquo;t
+attend human grade school, don&rsquo;t learn poems, and don&rsquo;t have
+fingers<label for="6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="6" class="margin-toggle"/><span class="sidenote">
+If machines were capable of conditioned learning, your car
+should be able to self-drive certain oft-travelled routes, e.g., from
+your home to the grocery store.
+</span>. Again, if you want a computer to understand something,
+you have to spell it out in very precise and exacting ways. That is to
+say, you&rsquo;re always facing <i>logical entailment</i> (LE) with computers. So
+how then <i>does</i> a computer understand numbers? And isn&rsquo;t a computer
+doing numbers the same way a clock does time? Think about it. Does a
+ticking clock that you have to wind up have any real concept of time?
+No, it doesn&rsquo;t.
+</p>
+
+<p>
+One fascinating twist of mathematical history is how, on the whole,
+the Greeks seemed to favor geometry over numbers. Their mastery of
+geometry really got going with <a href="https://en.wikipedia.org/wiki/Euclid%27s_Elements">Euclid&rsquo;s Elements</a> ca. 300 BC, which
+starts with just a point and a line and from there builds up expansive
+theorems about complex geometric shapes, i.e., no numbers<label for="7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="7" class="margin-toggle"/><span class="sidenote">
+It was a long-revered feat of logical minimalism that all
+two-dimensional shapes in <i>Elements</i> could be produced with just a
+compass and a straightedge. Follow the Wikipedia link and note the
+animation of <a href="https://en.wikipedia.org/wiki/Euclid%27s_Elements#/media/File:HexagonConstructionAni.gif">the construction of a hexagon</a>. It wasn&rsquo;t until the
+development of calculus and infinitesimal methods in the Renaissance
+that this compass-and-stick purity was set aside.
+</span>. Even
+when Euclid&rsquo;s geometry worked with the concepts of length and angles,
+no numbers were employed<label for="8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="8" class="margin-toggle"/><span class="sidenote">
+Later we&rsquo;ll explore how Descartes united algebra and geometry.
+</span>. And as the physicist Julian Barbour
+said, A triangle is known for its shape not its size.
+</p>
+
+<p>
+This week we&rsquo;ll talk about numbers in a fairly theoretical but not
+really difficult manner. Along with the math, we&rsquo;ll do some work with
+Haskell that you should be ready for<label for="9" class="margin-toggle sidenote-number"></label><input type="checkbox" id="9" class="margin-toggle"/><span class="sidenote">
+Make sure you&rsquo;re getting along with the Haskell rabbit hole materials &#x2014; at
+the very least worked through half of LYAHFFG.
+</span>. <br />
+&#x2026;⌟
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So like
+Professor Chandra said yesterday, we need to see things in terms of
+set theory from here on out. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> And like she said,
+with set theory we can properly define relations and function. All of
+which sounds rather ominous. Like everything we thought we knew was
+about to go away.<br />
+[more agreement murmurs] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing] So
+here&rsquo;s her breakdown of what she called number classification or
+taxonomy. [scrolling&#x2026;] <br />
+</p>
+
+<p>
+⌜&#x2026;
+</p>
+<ul class="org-ul">
+<li>\(\mathbb{N}\;\): the <i>natural</i> counting numbers, often starting with
+\(0\;\); otherwise, with \(1\;\).</li>
+<li>\(\mathbb{Z}\;\): whole number <i>integers</i> &#x2014; just like \(\mathbb{N}\;\)
+but with the positive numbers duplicated as negative numbers, along
+with \(0\;\) between them.</li>
+<li>\(\mathbb{Q}\;\): the <i>rational</i> numbers &#x2014; composed as
+\(\frac{a}{b}\;\) where \(a\) and \(b\) are integers and \(b\) cannot be
+\(0\;\) &#x2014; although this is really too simple and we&rsquo;ll be expanding
+on it later.</li>
+<li>\(\mathbb{R}\;\): the <i>real</i> numbers are the limit of a convergent
+sequence of rational numbers&#x2026; Really? Yes, but this is a higher
+math sort of definition. Suffice it to say for now reals are the
+rational numbers (including recurring decimals) along with
+<b>ir</b>-rational numbers (non-recurring decimals), e.g., the square
+root of \(2\;\). In other words, numbers that are expressed with
+decimals<label for="10" class="margin-toggle sidenote-number"></label><input type="checkbox" id="10" class="margin-toggle"/><span class="sidenote">
+Two questions: Are repeating decimal numbers also rational? If
+yes, then why can&rsquo;t rational numbers represent all numbers? That is,
+why do we need real and complex numbers? Programming challenge: Write
+a function that takes a real decimal number and figures out its
+fraction, e.g. \(3.14\) is \(157/50\:\). Does Haskell have a built-in way
+to do this? Hint: Check out <a href="https://rosettacode.org/wiki/Convert_decimal_number_to_rational#Haskell">Convert decimal number to rational</a>. Maybe
+compare with how Julia and Racket do it.
+</span>. <i>Lots</i> more to come&#x2026;</li>
+<li>\(\mathbb{C}\;\): the <i>complex</i> numbers are of the form \(a + bi\;\)
+where \(a\) and \(b\) are real numbers and \(i\) is the square root of
+\(-1\;\). Again, lots more later.</li>
+</ul>
+<p>
+&#x2026;⌟
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Right. We&rsquo;re not
+supposed to worry about this too much yet; we&rsquo;ll go into it more
+later. Just realize that we&rsquo;re talking about the <i>set</i> of natural
+numbers, the <i>set</i> of real numbers, et cetera. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Their traits and
+properties, as she said. And the fact that each number &ldquo;species&rdquo; is a
+subset of the next one up [writing on the whiteboard]
+</p>
+
+\begin{align*}
+\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}\ \subset \mathbb{C}
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] One
+is contained by the other. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> [paging through
+his written notes] Then she once more drove home the point that set
+theory is important [quoting]
+</p>
+
+<p>
+⌜&#x2026; <br />
+Set theory is the basic foundation of math, and is fundamental to the
+discrete math of computer science. But there&rsquo;s a new kid is on the
+block, namely, <i>category theory</i>, which is even more foundational than
+set theory. With Haskell we&rsquo;ll encounter some of the rudiments of
+category theory now and then. <br />
+&#x2026;⌟
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Anybody know what
+that means? <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> We all watched
+the video? [clicking on <a href="https://youtu.be/ZG6t0-JMrw0">this</a> YouTube link] Did you all watch it? <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Ahhh, yes, but I
+can tell I&rsquo;m a long way from really getting it, or why it&rsquo;s such a big
+deal. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> So we see a bunch
+of stuff we supposedly already know being repackaged in a way that
+uncovers how we really only had a superficial understanding of the
+concepts. <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> I watched it,
+but it&rsquo;ll take some time to sink in because [nodding to Uwe] on one
+level I guess I understood, but I don&rsquo;t think I caught what the whole
+point was<label for="11" class="margin-toggle sidenote-number"></label><input type="checkbox" id="11" class="margin-toggle"/><span class="sidenote">
+Professor Chandra connected this to Haskell by mentioning
+Haskell&rsquo;s &ldquo;point-free&rdquo; programming &#x2026; but didn&rsquo;t elaborate.
+</span>. I suppose that&rsquo;s coming as well. <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> But wasn&rsquo;t it a
+bit ominous the way she said this is higher math &#x2014; if not grad
+school stuff? But we&rsquo;re not supposed to be intimidated! No! At least
+not yet. <br />
+[nods and laughter] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Like they&rsquo;ve been
+saying, we&rsquo;re <i>Versuchskaninchen</i>. <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Guinea pigs. No,
+but I&rsquo;m getting the impression this could be a great course. <br />
+[nods]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org84e44b4" class="outline-2">
+<h2 id="org84e44b4">Numbers in Haskell</h2>
+<div class="outline-text-2" id="text-org84e44b4">
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [scrolling] So
+we then come to Haskell&rsquo;s version of the numbers. <br />
+[all study the screen] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Which is supposed
+to be close to the whole mathematical taxonomy. <br />
+</p>
+
+<p>
+⌜&#x2026;
+</p>
+<ul class="org-ul">
+<li><code>Int</code>: limited-precision integers in at least the range \([-2^{29} ,
+  2^{29})\;\).</li>
+<li><code>Integer</code>: arbitrary-precision integers (read <i>lots</i> of integers,
+lots more than <code>Int</code>).</li>
+<li><code>Rational</code>: arbitrary-precision rational numbers.</li>
+<li><code>Float</code>: single-precision floating-point numbers.</li>
+<li><code>Double</code>: double-precision floating-point numbers</li>
+<li><code>Complex</code>: complex numbers as defined in <code>Data.Complex</code>.</li>
+</ul>
+<p>
+&#x2026;⌟
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> And she tells
+us not to worry about what <i>precision</i> and <i>floating-point</i> mean for
+the time being. <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Right, because
+they&rsquo;re part of how the electrical logic circuits do numbers. The
+whole &ldquo;logical entailment&rdquo; of doing numbers on an electric machine
+thing. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> And we&rsquo;re not to
+worry about natural numbers yet. We&rsquo;ll do those separate. <br />
+[murmurs of agreement] <br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb86acaa" class="outline-2">
+<h2 id="orgb86acaa">The qualities of quantity</h2>
+<div class="outline-text-2" id="text-orgb86acaa">
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [scrolling] So
+here&rsquo;s more.
+</p>
+
+<p>
+⌜&#x2026; <br />
+A number is a concept, first and foremost a symbol related to
+<i>quantity</i> and <i>magnitude</i>. And as such a number has great powers of
+abstraction. Numbers may be applied in the abstraction exercises of
+counting or enumerating, as well as measuring things<label for="12" class="margin-toggle sidenote-number"></label><input type="checkbox" id="12" class="margin-toggle"/><span class="sidenote">
+But then measuring must be &ldquo;quantified&rdquo; by counting unit-wise
+what was measured; hence, everything comes back to counting. This will
+come up when we explore real numbers versus rational numbers.
+</span>.
+</p>
+
+<img src="./images/threediagram1.png" style="padding: 10px 0px 0px 0px" width="280" alt="Diagram of three" class="center">
+<span class="cap">The concept, the embodiment of three and "three-ness"</span>
+
+<p>
+Consider these <i>qualities</i> of quantities
+</p>
+
+<ul class="org-ul">
+<li>cardinality, or <i>how many?</i></li>
+<li>ordinality, or <i>what order?</i></li>
+<li>enumeration, or, generally, <i>how do we count out things?</i></li>
+</ul>
+
+<p>
+As we&rsquo;ve said, when we bring the computer into this quantification
+game, we cannot assume these basic qualities as given<label for="13" class="margin-toggle sidenote-number"></label><input type="checkbox" id="13" class="margin-toggle"/><span class="sidenote">
+Inside your head you automatically know how many and in what
+order the numbers \(1\) through \(10\) are. However, a computer must be
+taught such basic quantitative qualities.
+</span>. <br />
+&#x2026;⌟
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+Any thoughts, questions? <br />
+[all study the screen] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Let&rsquo;s go on.
+</p>
+</div>
+
+<div id="outline-container-org01ccaf4" class="outline-3">
+<h3 id="org01ccaf4">Cardinality</h3>
+<div class="outline-text-3" id="text-org01ccaf4">
+<p>
+⌜&#x2026; <br />
+In everyday language <a href="https://en.wikipedia.org/wiki/Cardinal_numeral">cardinal numbers</a> are simply the counting numbers,
+\(\mathbb{N}\;\), either as words or numerical symbols. In set theory,
+however, <i>cardinality</i> has a different meaning, i.e., <i>the number the
+objects in a set</i>. So if we consider the box of stars in the diagram
+above to be a <i>set</i> of stars, then the cardinality of this set is \(3\)
+since there are three stars<label for="14" class="margin-toggle sidenote-number"></label><input type="checkbox" id="14" class="margin-toggle"/><span class="sidenote">
+We indicate the set&rsquo;s cardinality by surrounding the symbol for
+a set with <i>pipes</i> ( <b><b>|</b></b> ), e.g., \(|S_{stars}|\;\). This is not the same
+as <i>absolute value</i>, although they might be cousins.
+</span>
+</p>
+
+\begin{align*}
+|\,S_{stars} \,| &= 3 \\
+|\,\{a, b, c\}\,| &= 3 \\
+|\,\mathbb{N}\,| &= \infty \\
+|\,\mathbb{Z}\,| &= \infty
+\end{align*}
+
+<p>
+But why are we being so &ldquo;conceptual&rdquo; about the simple idea of amount,
+and why must we give it a fancy name? Again, math likes to <i>formalize</i>
+things, nail things down. Starting with exactness and precision we can
+then build very complex and logically-based math<label for="15" class="margin-toggle sidenote-number"></label><input type="checkbox" id="15" class="margin-toggle"/><span class="sidenote">
+Have a look at <a href="https://en.wikipedia.org/wiki/Cardinality">this Wikipedia discussion of cardinality</a>. Later
+we will look into <i><a href="https://en.wikipedia.org/wiki/Cardinal_number">cardinal numbers</a></i>, which is a deeper dive into set
+theory.
+</span>. Now, if two
+sets have the same cardinality, is this somehow significant? Above, we
+see that both the set of natural numbers and the set of integers have
+infinity as their cardinality. Are, therefore, \(\mathbb{N}\) and
+\(\mathbb{Z}\) the same &ldquo;size?&rdquo;
+</p>
+
+<p>
+<font color = "#650d1c">The <i>bijection principle</i> states that
+two sets have the same size <i>if and only if</i> there is a <i>bijection</i>
+(injective <i>and</i> surjective together) between
+them</font><label for="16" class="margin-toggle sidenote-number"></label><input type="checkbox" id="16" class="margin-toggle"/><span class="sidenote">
+We&rsquo;ll look at injective, surjective, and bijective when we
+delve into functions from a set theory perspective. Also, mathematical
+logic will introduce us to <i>if and only if</i>.
+</span>.
+</p>
+
+<p>
+Which means \(|\,S_{stars} \,|\;\) and \(|\,\{a, b, c\}\,|\;\) can be matched
+up one-to-one, thus, they must have the same cardinality. But again,
+what about sets of things that supposedly have an infinite size? How
+do we &ldquo;count,&rdquo; or &ldquo;pair up&rdquo; infinite sets<label for="17" class="margin-toggle sidenote-number"></label><input type="checkbox" id="17" class="margin-toggle"/><span class="sidenote">
+To excite your curiosity, isn&rsquo;t \(\infty + 1\) still just \(\infty\;\)? The
+Greeks contemplated this and concluded that infinity has the power to
+consume, destroy individual numbers. It wasn&rsquo;t until the German
+mathematician Georg Cantor came along in the late nineteenth century
+that we learned to wrangle infinity.
+</span>?  Surprisingly, there
+are different kinds of infinity &#x2014; which necessitates this exactness
+and preciseness. More about cardinality theory later. <br />
+&#x2026;⌟
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> So basically,
+cardinality is a formalism from set theory about amount and
+magnatude. Fair enough. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> What about this
+section? [scrolling]
+</p>
+</div>
+
+<div id="outline-container-orgc5a6f9f" class="outline-4">
+<h4 id="orgc5a6f9f">Haskell and cardinality</h4>
+<div class="outline-text-4" id="text-orgc5a6f9f">
+<p>
+⌜&#x2026; <br />
+The first thing to know about Haskell and set theory is, yes, we can
+do real set theory with Haskell&rsquo;s <code>Data.Set</code> package. But as beginners
+learning the ropes we will start with a simpler representation of sets
+through Haskell&rsquo;s basic <i>list</i> data structure. Realize, however, that
+a list is not a set; they are two different beasts, and we&rsquo;ll have to
+account for that. For one, a set may have duplicates, whereas a list
+holds a definite <i>sequence</i> of things, i.e., every element of the list
+is unique, even if some elements are repeated<label for="18" class="margin-toggle sidenote-number"></label><input type="checkbox" id="18" class="margin-toggle"/><span class="sidenote">
+So it&rsquo;s not really a &ldquo;grocery list,&rdquo; it&rsquo;s a &ldquo;grocery set&rdquo;
+since \(\{eggs,sugar,coffee,eggs\}\;\;\;\) is invariably interpreted as
+just \(\{eggs,sugar,coffee\}\;\;\), right? Or would you go ahead and get
+eggs twice? Can you come up with another real-world example where a
+set of things doesn&rsquo;t care about order or duplicates?
+</span>. So the <i>set</i>
+\(\{1,2,1\}\;\) is the same as \(\{1,2\}\;\) is the same as \(\{2,1,1\}\;\)
+because sets don&rsquo;t mind duplicates, nor do they worry about
+order<label for="19" class="margin-toggle sidenote-number"></label><input type="checkbox" id="19" class="margin-toggle"/><span class="sidenote">
+Why is this? There is a LE to the definition
+of a set union, namely, \(A \cup B = \{x \;\;|\;\; x \in A \;\;\;or\;\;\; x \in
+B \}\quad\). Consider the sets \(A = \{1,2,3\}\;\), \(B = \{2,3,4\}\;\),
+and \(C = \{3,4,5\}\;\). If you draw out Their union \(A \cup B \cup C = \{x
+\;|\; x \in A \;\;\text{or}\;\;x \in B\;\; \text{or}\;\;x \in C \}\quad\;\;\) as
+a Venn diagram, you&rsquo;ll see how duplicates get left out.
+</span>. But the <i>lists</i> <code>[1,2,1]</code>, <code>[1,2]</code>, and <code>[2,1,1]</code> are in
+fact all different lists. Initially, we&rsquo;ll practice set theory with
+lists and build alternate set theory code based on lists. Then when we
+understand &ldquo;squirrel math&rdquo; a little more, i.e., how to work with the
+data structures known as <i>trees</i>, we&rsquo;ll do proper set theory with
+Haskell&rsquo;s set theory module, <a href="https://hackage.haskell.org/package/containers-0.6.6/docs/Data-Set.html">Data.Set</a><label for="20" class="margin-toggle sidenote-number"></label><input type="checkbox" id="20" class="margin-toggle"/><span class="sidenote">
+Take a look at this Hackage page. It has <a href="https://haskell-containers.readthedocs.io/en/latest/set.html">an intro to Haskell&rsquo;s
+sets</a>. Get in the habit of perusing Hackage whenever you&rsquo;re using a
+Haskell function or data type you don&rsquo;t quite understand. Sometimes
+you&rsquo;ll have to just dive into the code, but sometimes there are
+excellent intro docs like this. And yet there are also set operations
+in <code>Data.List</code>. Perhaps look into these two options.
+</span>.  For the immediate
+future we&rsquo;ll consider a list to be a beginner&rsquo;s substitute for a
+set. And so a simple &ldquo;how many&rdquo; function on a list standing in for a
+set is <i>length</i>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">length</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4,5<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+5
+</pre>
+
+
+<p>
+Again, more to come. Watch this space<label for="21" class="margin-toggle sidenote-number"></label><input type="checkbox" id="21" class="margin-toggle"/><span class="sidenote">
+Meanwhile, here&rsquo;s a brain-teaser that goes to the heart of
+this set-list issue &#x2014; especially in Haskell, Why are set union and
+intersection commutative and associative due to their lack of order?
+</span>. <br />
+&#x2026;⌟
+</p>
+
+
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> So, bottom line,
+we&rsquo;re not going to have real sets with Haskell right away, just a sort
+of <i>Ersatz</i> sets with lists. Are we all sort of familiar with Haskell
+lists from the <i>Learn You&#x2026;</i>?  <br />
+[murmurs of affirmation as Ursula clicks on a tab showing LYAHFGG&rsquo;s
+section on lists] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> So what about
+finding another example of sets having duplicates and being in
+different order?  [looks back and forth] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Well, here&rsquo;s
+mine [scrolling to her personal annotation of the professors notes and
+reading aloud]
+</p>
+
+<p>
+⌜&#x2026; <br />
+A &ldquo;set&rdquo; of students in a class pass around a sign-in sheet each day on
+which they sign their name. Some days the names are in one order,
+other days another order, depending on how it was passed around the
+room. And sometimes a student accidentally signs twice. But it&rsquo;s still
+the same set of students, order and duplicate sign-ins
+notwithstanding. <br />
+&#x2026;⌟
+</p>
+
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Oooh,
+<i>notwithstanding</i>! You&rsquo;re getting fancy with your English. <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Hey, no
+brain-shaming! <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> [continuing] No,
+really, that&rsquo;s a great example because it brings out the difference
+between the actual set and how it&rsquo;s being &#x2014; <i>represented</i>. <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> So do we all
+understand her side note about set unions? <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> I drew some Venn
+diagrams [pulls out a hand drawing and places it on the table] and,
+yes, you can see how all the overlaps are telling us not to worry
+about the duplicates of the individual sets making up the union. <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Right, and it&rsquo;s
+curious how when you just look at the set notations, you don&rsquo;t
+necessarily see that. At least I don&rsquo;t. I mean [writing on the board]
+\(A \cup B \cup C = \{x \;|\; x \in A \;\;\text{or}\;\;x \in B\;\; \text{or}\;\;x
+\in C \}\quad\;\;\) doesn&rsquo;t necessarily tell you it doesn&rsquo;t want
+duplicates. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> By the way, don&rsquo;t
+forget union and intersection are <i>binary</i>, right? <br />
+[nods of agreement] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> All right then,
+[correcting her formula] \(A \cup B = \{x \;|\; x \in A \;\;\text{or}\;\;x \in
+B\;\}\;\;\;\;\). Satisfied? <br />
+[Ursula giggles] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> All right, unless
+you have the word <i>or</i> to mean that we don&rsquo;t keep picking up the same
+element from the different sets. But the <i>inclusive or</i> of set union
+means it can be from one <i>or</i> the other &#x2014; <i>or</i> from <i>both</i> of
+them. So I definitely see your point, the set notation <i>doesn&rsquo;t</i> tell
+us not to include duplicates &#x2014; without some <i>exclusive</i> sort of
+<i>inclusive or</i>. Only the Venn diagram really shows us this. I mean,
+the whole point of this is to think about whether the definition of
+set union rules out duplicates, doesn&rsquo;t worry about order, and has
+commutativity. I don&rsquo;t see that <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> So in the rabbit
+hole on logic, we had the truth tables, right? So they talked about
+<i>logical or</i>, which they also called <i>disjunction</i>. And then they had
+a truth table for <i>or</i> which showed how the only time something wasn&rsquo;t
+true was when <i>both</i> of the statements were false. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Basically, it&rsquo;s
+the same operations with both sets and logic. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> More later. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> All right, so
+what about this brain teaser? <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Right. [getting up
+and writing on the board]
+</p>
+
+\begin{align*}
+A \cup B &= B \cup A, \\[.5em]
+A \cap B &= B \cap A, \\[.5em]
+(A \cup B) \cup C &= A \cup (B \cup C), \quad and \\[.5em]
+(A \cap B) \cap C &= A \cap (B \cap C)
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] The
+first thing we have to know is what are union and intersection in the
+world of lists?  I figured out that putting lists together come in two
+forms, the <i>cons</i> operation, and the concatenation operator. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Right. Like
+this. [creating a source block]
+</p>
+
+<pre class="code"><code>1 <span class="org-haskell-constructor">:</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span>
+</code></pre>
+
+<pre class="example">
+[1]
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+for <code>cons</code> and then this for concatenation
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">[</span>1<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">++</span> <span class="org-rainbow-delimiters-depth-1">[</span>2<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> You showed me that
+<a href="https://stackoverflow.com/questions/19238091/union-function-in-haskell">stackoverflow post</a> where they created a <code>union</code> function for
+lists. But then one commentor noted how no, these list versions of
+union didn&rsquo;t allow for commutativity and all. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Exactly. Only
+the <code>Data.Set</code>, the true set theory package did. <br />
+[silence while digesting the ideas] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Yeah, right, I
+looked through it, but I consider myself just a beginner with Haskell,
+but it seemed to be talking mainly about how you eliminate
+duplicates. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> But what about
+that &ldquo;equational reasoning&rdquo;? One of you guys went into that, didn&rsquo;t
+you? <br />
+[Ursula and Ute trade glances] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Well, I looked it
+up on Wikipedia and was redirected to an article that was actually
+called <a href="https://en.wikipedia.org/wiki/Universal_algebra">Universal algebra</a> [Ursula brings up the article on the
+monitor], and in the <i>Basic idea</i> section <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Once again, on
+that fateful day when we sat down and talked with Professor Chandra
+she told us to not fear the rabbit hole! <br />
+[laughter] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> <i>And</i> to expect a
+whole new way of seeing math. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Right, that didn&rsquo;t
+present itself serially, one thing after another. No, we&rsquo;re taking
+this on in parallel. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> I did email
+Professor Chandra, and she said the Universal algebra page was not
+very specific for what Haskell meant by equational reasoning &#x2014; and
+she gave me another link, which we can look at &#x2014; but that it
+contained a lot of good stuff, and we should try to get the gist of
+it. <br />
+[rueful murmurs] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing,
+reading from her laptop]
+</p>
+
+<p>
+⌜&#x2026; <br />
+An <i>algebraic structure</i> consists of a nonempty set \(A\) (called the
+<i>underlying set</i>, <i>carrier set</i> or <i>domain</i>), a collection of
+operations on \(A\) (typically binary operations such as addition and
+multiplication), and a finite set of identities, known as axioms, that
+these operations must satisfy. <br />
+&#x2026;⌟
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [bringing the
+page up on the monitor] Here it is.
+</p>
+
+
+<pre class="code"><code><span class="org-haskell-keyword">import</span> <span class="org-haskell-constructor">Data.Set</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Set</span>, lookupMin, lookupMax<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-haskell-keyword">import</span> <span class="org-haskell-keyword">qualified</span> <span class="org-haskell-constructor">Data.Set</span> <span class="org-haskell-keyword">as</span> <span class="org-haskell-constructor">Set</span>
+</code></pre>
+
+<pre class="code"><code>Set<span class="org-haskell-definition">.</span>union <span class="org-rainbow-delimiters-depth-1">(</span>Set.fromList <span class="org-rainbow-delimiters-depth-2">[</span>1, 3, 5, 7<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">(</span>Set.fromList <span class="org-rainbow-delimiters-depth-2">[</span>0, 2, 4, 6<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+fromList [0,1,2,3,4,5,6,7]
+</pre>
+
+
+<pre class="code"><code>Set<span class="org-haskell-definition">.</span>union <span class="org-rainbow-delimiters-depth-1">(</span>Set.fromList <span class="org-rainbow-delimiters-depth-2">[</span>0, 2, 4, 6<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">(</span>Set.fromList <span class="org-rainbow-delimiters-depth-2">[</span>1, 3, 5, 7<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+fromList [0,1,2,3,4,5,6,7]
+</pre>
+
+
+<pre class="code"><code>Set<span class="org-haskell-definition">.</span>empty
+</code></pre>
+
+<pre class="example">
+fromList []
+</pre>
+
+
+<pre class="code"><code>Set<span class="org-haskell-definition">.</span>union <span class="org-rainbow-delimiters-depth-1">(</span>fromList <span class="org-rainbow-delimiters-depth-2">[</span>1,2,3<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">(</span>Set.empty<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+fromList [1,2,3]
+</pre>
+
+
+<pre class="code"><code>Set<span class="org-haskell-definition">.</span>intersection  <span class="org-rainbow-delimiters-depth-1">(</span>fromList <span class="org-rainbow-delimiters-depth-2">[</span>1,2,3<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">(</span>Set.empty<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+fromList []
+</pre>
+
+
+
+
+<pre class="code"><code><span class="org-haskell-keyword">import</span> <span class="org-haskell-constructor">Data.Ratio</span>
+</code></pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Let&rsquo;s leave it
+for now. So moving on [scrolling].
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgebc065e" class="outline-3">
+<h3 id="orgebc065e">Ordinality</h3>
+<div class="outline-text-3" id="text-orgebc065e">
+<p>
+⌜&#x2026; <br />
+In everyday language the concept of order is conveyed when we say
+<i>first, second, third, fourth,</i> etc<label for="22" class="margin-toggle sidenote-number"></label><input type="checkbox" id="22" class="margin-toggle"/><span class="sidenote">
+See <a href="https://en.wikipedia.org/wiki/Ordinal_numeral">this</a> brief discussion.
+</span>. And we&rsquo;re done, right? But
+again, as seen from set theory &#x2014; as well as from the computer world
+&#x2014; (re-)establishing order is important and cannot always be taken
+for granted. In fact, a great deal of investigation surrounds
+ordinality.
+</p>
+
+<p>
+The counting numbers, the set \(\mathbb{N}\;\), would seem to have order
+built in. For example, everybody knows that \(3\) comes after \(2\;\)
+etc., they&rsquo;re in ascending order based on the incrementally greater
+amounts they represent. And neither does the set \(\mathbb{N}\;\) have
+repeats. Also, if we create a geometric visual for \(\mathbb{N}\;\),
+that is to say, we draw a line and mark places on the line for each
+number, we can subdivide the line into <i>intervals</i><label for="23" class="margin-toggle sidenote-number"></label><input type="checkbox" id="23" class="margin-toggle"/><span class="sidenote">
+Typically, real numbers are represented geometrically by a
+&ldquo;number line&rdquo; whereby <i>interval notation</i> allows for sections of this
+line to be considered, e.g., <i>closed interval</i> \([\,a,b\,]\;\), <i>open
+interval</i> \((a,b)\:\), and more exotics like an <i>open ray</i> \((-\infty, a)\:\).
+</span> and order is
+related to inequalities.
+</p>
+
+<p>
+But order, and all it&rsquo;s implications, is not always a given
+in real life. What if we wrote the numbers from one to ten on small
+squares of paper, put them in a box, and then shook them out on the
+floor in a straight line?  Would they be in order? Chances are,
+no. And what about sets of things that aren&rsquo;t inherently numerical,
+such as colors?
+</p>
+
+<p>
+So if we don&rsquo;t have things in proper order&#x2014;which is often the case
+in the real world&#x2014;we have to put things in order ourselves. And that
+means we will need to <i>sort</i> a set of unsorted elements into some
+order. Sorting, in fact, is one of the more basic tasks computers do
+in the everyday world<label for="24" class="margin-toggle sidenote-number"></label><input type="checkbox" id="24" class="margin-toggle"/><span class="sidenote">
+We will eventually investigate how costly in computer time and
+resources an operation like sorting is. Stay tuned.
+</span>.
+</p>
+
+<p>
+But to sort we need to compare things. Obviously, ten whole numbers
+written clearly on ten squares of paper can be easily sorted by
+hand<label for="25" class="margin-toggle sidenote-number"></label><input type="checkbox" id="25" class="margin-toggle"/><span class="sidenote">
+A jigsaw puzzle can be seen as a sorting game based on shape,
+color, and patterns of the pieces.
+</span>. But what if we had thousands of squares of paper, each
+with a unique number? Then we&rsquo;d have a long task ahead of us. But no
+matter how big or small the task, we would compare <i>two</i> numbers at a
+time and then make a judgement based on whether one number was
+</p>
+
+<ul class="org-ul">
+<li>greater than</li>
+<li>equal to</li>
+<li>less than</li>
+</ul>
+
+<p>
+the other number, then rearranging as needed. <br />
+&#x2026;⌟
+</p>
+</div>
+
+
+
+
+
+
+<div id="outline-container-orgb97fb9b" class="outline-4">
+<h4 id="orgb97fb9b">Ordinality in Haskell</h4>
+<div class="outline-text-4" id="text-orgb97fb9b">
+<p>
+Haskell is a typed language with a feature called <i>type
+classes</i><label for="26" class="margin-toggle sidenote-number"></label><input type="checkbox" id="26" class="margin-toggle"/><span class="sidenote">
+For a quick introduction with examples go <a href="http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101">here</a> in LYAHFGG.
+</span>. A Haskell type class encompasses traits, patterns,
+concepts, or what we might call a certain &ldquo;-ness&rdquo; that can be imparted
+to data types. In Haskell, for example, numbers and the characters of
+the alphabet can be directly compared for &ldquo;equal-ness,&rdquo; and when we
+test at the ghci REPL prompt, this seems to be built-in
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>5 <span class="org-haskell-operator">==</span> 3<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">||</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">'a'</span> <span class="org-haskell-operator">==</span> <span class="org-string">'a'</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">||</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'b'</span> <span class="org-haskell-operator">==</span> <span class="org-string">'B'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+<p>
+Mindful of LE, we see that Haskell&rsquo;s <code>Eq</code> class
+housing this equal-ness must have some sort of behind-the-scenes
+mechanism that allows us to take two things, analyze them, then return
+a decision, true or false (yes they are equal, no they&rsquo;re not equal),
+on whether two said things were equal or not &#x2014; all of this just for
+doing some typing, e.g., <code>5 == 3</code> into the REPL.
+</p>
+
+<p>
+Something else to consider is how some things don&rsquo;t necessarily have
+the concept of equal or not equal straight out of the box. What if we
+created a data type for colors and we wanted to compare the individual
+color values for equal-ness? Intuitively, we might say red, yellow,
+and blue are equal since they are all primary colors; likewise,
+orange, green, and violet are equal because they&rsquo;re the secondary
+colors. But what if we just say each color is equal to itself and not
+equal to any of the others? &#x2026; So how would we establish equal-ness
+for colors? If we want to type <code>Green == Blue</code> into the REPL it&rsquo;s up
+to us to have created some sort of equal-ness and told Haskell about
+it.
+</p>
+
+<p>
+Data types that need to establish equal-ness for themselves can apply
+to the Haskell <code>Eq</code> type class for membership. Type class membership
+is registered with an <i>instance</i> statement. To see all the data types
+that have an instance registered with <code>Eq</code> we can use <code>:info</code>
+(abbreviated <code>:i</code>) at the REPL<label for="27" class="margin-toggle sidenote-number"></label><input type="checkbox" id="27" class="margin-toggle"/><span class="sidenote">
+Go ahead and check out the <a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Eq.html">hackage.haskell.org</a> entry for <code>Eq</code>
+<a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Eq.html">here</a>. Note the properties <code>(==)</code> should follow: reflexivity, symmetry,
+transitivity, extentionality, and negation. We&rsquo;ll dive into what this
+all means when we look closer into the higher algebra of sets and
+functions. Note all the built-in, &ldquo;batteries-included&rdquo; <code>Eq</code> instances
+for the various types. Some are rather exotic.
+</span>
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Eq</span>
+</code></pre>
+
+<pre class="example" id="orga8c37d2">
+type Eq :: * -&gt; Constraint
+class Eq a where
+  (==) :: a -&gt; a -&gt; Bool
+  (/=) :: a -&gt; a -&gt; Bool
+  {-# MINIMAL (==) | (/=) #-}
+  	-- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+...
+instance Eq Int -- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance Eq Float -- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance Eq Double -- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance Eq Char -- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance Eq Bool -- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+...
+</pre>
+
+<p>
+which gives us a long list (abbreviated above) of data types that have
+equal-ness defined<label for="28" class="margin-toggle sidenote-number"></label><input type="checkbox" id="28" class="margin-toggle"/><span class="sidenote">
+Quick LE question: Can functions be compared for equal-ness?
+Here&rsquo;s a direct quote from a prominent combinatorics text: <i>When two
+formulas enumerate the same set, then they must be equal.</i> But not so
+fast in the computer world. To say <code>f x == g x</code> Haskell isn&rsquo;t
+logically set up to actually prove (demonstrate) and accept that <code>f</code>
+and <code>g</code> always give the same results given the same <code>x</code> input. We
+would literally have to test every possible <code>x</code>, which is not
+possible. Still, we&rsquo;ll examine this idea a bit closer soon. It&rsquo;s a
+real big deal in numerical math.
+</span>. Notice the two &ldquo;prescribed&rdquo; methods (functions)
+<code>(==)</code> and <code>(/=)</code>. These functions are the mechanism used by <code>Eq</code> to
+establish equal-ness. They must be custom defined in each instance
+declaration in order for a data type to have its own established
+equal-ness<label for="29" class="margin-toggle sidenote-number"></label><input type="checkbox" id="29" class="margin-toggle"/><span class="sidenote">
+Note <code>{-# MINIMAL (==) | (/=) #-}</code> which is a directive
+meaning we may choose to define <b>either</b> <code>(==)</code> <b>or</b> (note the <b>or</b>
+pipe <b>|</b> ) <code>(/=)</code>, i.e., we don&rsquo;t actually have to define both because
+by defining one, the other will be automatically generated. Neat.
+</span>. And so if you create a new type, you, the
+programmer, must come up with your own version of these two functions,
+<code>(==)</code> and <code>(/=)</code> to establish the trait, the property of equal-ness
+for that new data type. As <i>LYAHFGG</i> notes, the type signature for the
+equal-ness function <code>(==)</code> is<label for="30" class="margin-toggle sidenote-number"></label><input type="checkbox" id="30" class="margin-toggle"/><span class="sidenote">
+<code>:t</code> is short for <code>:type</code>.
+</span>
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">==</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+(==) :: Eq a =&gt; a -&gt; a -&gt; Bool
+</pre>
+
+
+<p>
+which indicates <code>(==)</code> takes two inputs of some type <code>a</code> and returns a
+<code>Bool</code> type, i.e., either <code>True</code> or <code>False</code>. Good, we saw how that
+works with our examples above. But there&rsquo;s another wrinkle to this
+story. So if <code>(==)</code> is a function that takes two objects of type <code>a</code>,
+e.g., two integers, real numbers, characters, booleans, etc., how can
+we use this same symbol <code>(==)</code> in so many different contexts?  Looking
+above, how did Haskell know to use <i>integer</i> equal-ness rules (defined
+by <code>instance Eq Int</code>) when comparing integers, and then <i>letter</i>
+equal-ness rules (defined by <code>instance Eq Char</code>) when comparing
+letters? This feat is what we call <i>ad hoc polymorphism</i><label for="31" class="margin-toggle sidenote-number"></label><input type="checkbox" id="31" class="margin-toggle"/><span class="sidenote">
+<i>ad hoc</i>, from Latin <i>to this</i>, is something put together on
+the fly for one narrow, pressing, or special purpose. <i>polymorphic</i>,
+from Greek <i>polus</i> much, many, and <i>morphism</i>, having the shape, form,
+or structure, i.e., having many shapes.
+</span>, which
+allows just a single function symbol, e.g., <code>(==)</code>, to be used
+(<a href="https://en.wikipedia.org/wiki/Operator_overloading">overloaded</a>) in many different contexts. And so Haskell figures out
+behind the scenes which instance to apply. Neat.
+</p>
+
+<p>
+Let&rsquo;s take a closer look at a color type by defining our own<label for="32" class="margin-toggle sidenote-number"></label><input type="checkbox" id="32" class="margin-toggle"/><span class="sidenote">
+As LYAHFGG says, <code>Read</code> and <code>Show</code> are also type classes to
+which you may register your data type. Here we&rsquo;ve used the <code>deriving</code>
+keyword to let Haskell figure it out, i.e., we&rsquo;re not defining
+<code>Read</code> and <code>Show</code> ourselves; rather, we&rsquo;re telling Haskell to
+auto-generate and register these instances for us.
+</span> <label for="33" class="margin-toggle sidenote-number"></label><input type="checkbox" id="33" class="margin-toggle"/><span class="sidenote">
+We&rsquo;ll go into more detail about declaring our own data types
+as we progress. But for now we&rsquo;ll say <code>Color</code> is a <i>sum</i> type, as
+opposed to a <i>product</i> type. Sum types are patterned after the
+<i>addition principle</i> which we&rsquo;ll also go into later. Note, the pipes
+\(\;|\;\) between the colors can be understood as logical <i>or</i>&#x2014;as in
+we must choose one <i>or</i> the other of the colors.
+</span>
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">data</span> <span class="org-haskell-type">Color</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Red</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Yellow</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Blue</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Green</span> <span class="org-haskell-keyword">deriving</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Show</span>,<span class="org-haskell-constructor">Read</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<p>
+Obviously, the colors red, yellow, blue, and green have no intrinsic
+numerical properties by which to compare one with the other. However,
+Haskell&rsquo;s type class system still allows us to create some manner of
+equal-ness for it. And so we write this version of an <i>instance</i> of
+<code>Eq</code> for <code>Color</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">instance</span> <span class="org-haskell-type">Eq</span> <span class="org-haskell-type">Color</span> <span class="org-haskell-keyword">where</span>
+  <span class="org-haskell-constructor">Red</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-constructor">Red</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">True</span>      <span class="org-comment-delimiter">-- </span><span class="org-comment">could also be (==) Red Red = True</span>
+  <span class="org-haskell-constructor">Yellow</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-constructor">Yellow</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">True</span>
+  <span class="org-haskell-constructor">Blue</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-constructor">Blue</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">True</span>
+  <span class="org-haskell-constructor">Green</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-constructor">Green</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">True</span>
+  <span class="org-haskell-keyword">_</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">False</span>         <span class="org-comment-delimiter">-- </span><span class="org-comment">anything getting to this point must be false</span>
+</code></pre>
+
+<p>
+And so we&rsquo;ve hand-coded our own equal-ness for <code>Color</code> by spelling out
+how <code>(==)</code> works for <code>Color</code>. This literally tells Haskell what
+<code>Color</code> equal-ness should be by customizing how the function <code>(==)</code>
+should work. Let&rsquo;s have another look at the type signature for <code>(==)</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">==</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+(==) :: Eq a =&gt; a -&gt; a -&gt; Bool
+</pre>
+
+
+<p>
+As LYAHFGG notes, the <code>Eq a</code> part is known as a <i>class
+constraint</i>. This means whatever <code>a</code> might be<label for="34" class="margin-toggle sidenote-number"></label><input type="checkbox" id="34" class="margin-toggle"/><span class="sidenote">
+&#x2026;and this is an example of <i>parametric polymorphism</i> where
+the <i>parameter</i> (aka <i>type variable</i>) <code>a</code> can be any data type. In
+Haskell, smaller-case letters such as <code>a</code>, <code>b</code>, <code>c</code>, etc., are generic
+parameter names and can indicate any data type. In <code>(==) :: Eq a =&gt; a
+-&gt; a -&gt; Bool</code> we see that two inputs of the same type <code>a</code> are fed to
+<code>(==)</code>, which produces a <code>Bool</code> output. Another example would be
+<code>myFunc :: a -&gt; b -&gt; a</code>. Here the type signature says the inputs don&rsquo;t
+have to be of the same type (although they could be), but no matter
+what type the parameter <code>b</code> is, the output will be of type <code>a</code>.
+</span>, it must have an
+equal-ness instance already registered for it &#x2014; which we do &#x2014;
+otherwise, Haskell won&rsquo;t know how to compare two things of <code>a</code> for
+equal-ness<label for="35" class="margin-toggle sidenote-number"></label><input type="checkbox" id="35" class="margin-toggle"/><span class="sidenote">
+For our <code>Color</code> we&rsquo;ve created our own equal-ness, although in
+this example we could have let Haskell figure it out, i.e., <code>...|
+Green deriving (Eq)</code> would have done the same thing. This was an easy
+one. Haskell can&rsquo;t always figure out the less obvious cases.
+</span>.
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Red</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-constructor">Red</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">&amp;&amp;</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Red</span> <span class="org-haskell-operator">/=</span> <span class="org-haskell-constructor">Green</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+<p>
+Good, it&rsquo;s working and we now can compare <code>Color</code> values for
+equal-ness, but how do we <i>order</i> colors? No matter how we establish
+one color before the other, it might seem arbitrary, but we can do it
+if we want. For basic order-ness Haskell has the type class <code>Ord</code> to
+which types can register
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Ord</span>
+</code></pre>
+
+<pre class="example" id="org59844da">
+type Ord :: * -&gt; Constraint
+class Eq a =&gt; Ord a where
+  compare :: a -&gt; a -&gt; Ordering
+  (&lt;) :: a -&gt; a -&gt; Bool
+  (&lt;=) :: a -&gt; a -&gt; Bool
+  (&gt;) :: a -&gt; a -&gt; Bool
+  (&gt;=) :: a -&gt; a -&gt; Bool
+  max :: a -&gt; a -&gt; a
+  min :: a -&gt; a -&gt; a
+  {-# MINIMAL compare | (&lt;=) #-}
+  	-- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+...
+instance Ord Ordering -- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance Ord Int -- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance Ord Float -- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance Ord Double -- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance Ord Char -- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance Ord Bool -- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance Ord Integer -- Defined in ‘GHC.Num.Integer’
+...
+</pre>
+
+<p>
+Note how the <code>Ord</code> declaration itself has a class constraint, i.e.,
+<code>Eq a =&gt;</code>. This means any data type <code>a</code> must already have its <code>Eq</code>
+instance registered. Hence, <code>Eq</code> is a sort of super-class, and yes,
+type classes can build hierarchies of themselves.
+</p>
+
+<p>
+Again, we see <code>Ord</code> has a minimum requirement for order-ness, namely,
+that we define the method<label for="36" class="margin-toggle sidenote-number"></label><input type="checkbox" id="36" class="margin-toggle"/><span class="sidenote">
+The habit of calling a set of functions associated with a
+Haskell type class <i>methods</i> might be a hold/spill-over from the world
+of object-oriented programming where an OOP class will have method
+functions attached to it. This is called <i>encapsulation</i>, i.e., a
+system for keeping things that belong together together. However, an
+OOP class and a Haskell type class are entirely different beasts. So
+let&rsquo;s keep our head stuck in the Haskell particle accelerator for
+now&#x2026;
+</span> (function) <code>compare</code> &#x2026; and then we
+get all the other order-ness methods, <code>(&lt;)</code> &#x2026; <code>min</code> for free, as in
+Haskell is smart enough to figure them out just based on what you gave
+for <code>compare</code>. Neat<label for="37" class="margin-toggle sidenote-number"></label><input type="checkbox" id="37" class="margin-toggle"/><span class="sidenote">
+In general, anytime your programming language starts writing
+code for you, it&rsquo;s cool&#x2026;
+</span>.
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t compare
+</code></pre>
+
+<pre class="example">
+compare :: Ord a =&gt; a -&gt; a -&gt; Ordering
+</pre>
+
+
+<p>
+The function <code>compare</code> is, like <code>(==)</code>, a binary (two inputs)
+operation that takes inputs of the same data type <code>a</code> and returns
+something of type <code>Ordering</code>. So what is <code>Ordering</code>? Let&rsquo;s ask
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Ordering</span>
+</code></pre>
+
+<pre class="example" id="orgb191b2d">
+type Ordering :: *
+data Ordering = LT | EQ | GT
+  	-- Defined in ‘ghc-prim-0.7.0:GHC.Types’
+instance Eq Ordering -- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance Monoid Ordering -- Defined in ‘GHC.Base’
+instance Ord Ordering -- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance Semigroup Ordering -- Defined in ‘GHC.Base’
+instance Enum Ordering -- Defined in ‘GHC.Enum’
+instance Show Ordering -- Defined in ‘GHC.Show’
+instance Read Ordering -- Defined in ‘GHC.Read’
+instance Bounded Ordering -- Defined in ‘GHC.Enum’
+</pre>
+
+<p>
+There&rsquo;s a lot of information here. Note the data type declaration for
+<code>Ordering</code> is
+</p>
+
+<pre class="example" id="orge9c9ac6">
+...
+data Ordering = LT | EQ | GT
+...
+</pre>
+
+<p>
+While the type <code>Bool</code> had two <i>data constructors</i> <code>True</code> and <code>False</code>,
+<code>Ordering</code> has three &#x2014; <code>LT</code>, <code>EQ</code>, and <code>GT</code>. Now, let&rsquo;s write code
+to register an instance of <code>Ord</code> for <code>Color</code><label for="38" class="margin-toggle sidenote-number"></label><input type="checkbox" id="38" class="margin-toggle"/><span class="sidenote">
+We make heavy use of the <i>wildcard</i> <code>_</code> by which we mean <i>any</i>
+variable can be in the <code>_</code> position. For example <code>compare Red _ = GT</code>
+means when we compare <code>Red</code> to anything else, <code>Red</code> will always be
+greater than it. We also leveraged the order of these declarations,
+i.e., by having <code>compare Red _ = GT</code> at the very start, <code>Red</code> versus
+anything will be sorted out first. This is a <i>conditional</i> situation
+implicitly, which we&rsquo;ll use lots more.
+</span>
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">instance</span> <span class="org-haskell-type">Ord</span> <span class="org-haskell-type">Color</span> <span class="org-haskell-keyword">where</span>
+  compare <span class="org-haskell-constructor">Red</span> <span class="org-haskell-constructor">Red</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">EQ</span>
+  compare <span class="org-haskell-constructor">Red</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">GT</span>
+  compare <span class="org-haskell-keyword">_</span> <span class="org-haskell-constructor">Red</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">LT</span>
+  compare <span class="org-haskell-constructor">Yellow</span> <span class="org-haskell-constructor">Yellow</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">EQ</span>
+  compare <span class="org-haskell-constructor">Yellow</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">GT</span>
+  compare <span class="org-haskell-keyword">_</span> <span class="org-haskell-constructor">Yellow</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">LT</span>
+  compare <span class="org-haskell-constructor">Blue</span> <span class="org-haskell-constructor">Blue</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">EQ</span>
+  compare <span class="org-haskell-constructor">Blue</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">GT</span>
+  compare <span class="org-haskell-keyword">_</span> <span class="org-haskell-constructor">Blue</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">LT</span>
+  compare <span class="org-haskell-constructor">Green</span> <span class="org-haskell-constructor">Green</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">EQ</span>
+</code></pre>
+
+<p>
+Again, the <code>Ord</code> type class required us to create our own <code>compare</code>
+method, which painstakingly we did. Now we can compare two values
+of <code>Color</code> for order-ness with our basic <code>Ord</code> comparison operators<label for="39" class="margin-toggle sidenote-number"></label><input type="checkbox" id="39" class="margin-toggle"/><span class="sidenote">
+Remember, math operators in Haskell are just a sort of
+function. Which means <code>(==) Red Red</code> is identical to <code>Red ==
+Red</code>. Haskell requires operators in the function (<i>prefix</i>) position
+to be in parentheses, whereas in the <i>infix</i> (between) position they
+can be naked operators. Notice <code>min Red Yellow</code> that <code>min</code> is in the
+prefix position. Just put back-ticks around it to use it infix: <code>Red `min` Yellow</code>.
+</span>,
+<code>&gt;</code>, <code>&lt;</code>, and <code>==</code>,
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-constructor">Blue</span> <span class="org-haskell-operator">&lt;</span> <span class="org-haskell-constructor">Green</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">||</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-constructor">Red</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-constructor">Red</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">&amp;&amp;</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Yellow</span> <span class="org-haskell-operator">&gt;=</span> <span class="org-haskell-constructor">Blue</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span>min <span class="org-haskell-constructor">Red</span> <span class="org-haskell-constructor">Yellow</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">&gt;</span> <span class="org-rainbow-delimiters-depth-1">(</span>max <span class="org-haskell-constructor">Blue</span> <span class="org-haskell-constructor">Green</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+<p>
+Now, how many possible combinations of these four colors would we have
+to make in order to test <i>all possible cases</i>? This is a topic the
+basics of which we&rsquo;ll explore later. But here&rsquo;s a taste of these
+future endeavors. Perhaps you noticed in LYAHFGG the talk about <i><a href="http://learnyouahaskell.com/starting-out#im-a-list-comprehension">list
+comprehensions</a></i>. These mimic <i>set comprehensions</i> fairly closely
+</p>
+
+\begin{align*}
+& C = \{Red,Yellow,Blue,Green \} \\
+& \{(x,y) \;|\; x \in C, \;y \in C \}
+\end{align*}
+
+<p>
+And in Haskell
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">cset</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-constructor">Red</span>,<span class="org-haskell-constructor">Yellow</span>,<span class="org-haskell-constructor">Blue</span>,<span class="org-haskell-constructor">Green</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">[</span> <span class="org-rainbow-delimiters-depth-2">(</span>x,y<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> cset, y <span class="org-haskell-operator">&lt;-</span> cset<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[(Red,Red),(Red,Yellow),(Red,Blue),(Red,Green),(Yellow,Red),(Yellow,Yellow),(Yellow,Blue),(Yellow,Green),(Blue,Red),(Blue,Yellow),(Blue,Blue),(Blue,Green),(Green,Red),(Green,Yellow),(Green,Blue),(Green,Green)]
+</pre>
+
+
+<p>
+Let&rsquo;s define another color type and simply rely on Haskell&rsquo;s
+<code>deriving</code> to create instances for <code>Eq</code> and <code>Ord</code> 
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">data</span> <span class="org-haskell-type">Color2</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Green2</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Blue2</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Yellow2</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Red2</span> <span class="org-haskell-keyword">deriving</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Show</span>,<span class="org-haskell-constructor">Read</span>,<span class="org-haskell-constructor">Eq</span>,<span class="org-haskell-constructor">Ord</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Red2</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-constructor">Red2</span> <span class="org-haskell-operator">&amp;&amp;</span> <span class="org-haskell-constructor">Red2</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-constructor">Green2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+False
+</pre>
+
+
+<p>
+For equal-ness <code>deriving</code> simply made everything equal to itself and
+not equal to other colors&#x2014;just like we did before by hand. Then for
+order-ness <code>deriving</code> simply took the <code>Color2</code> data constructors in
+the order they were declared and ranked them in ascending order
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-constructor">Green2</span> <span class="org-haskell-operator">&lt;</span> <span class="org-haskell-constructor">Blue2</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">==</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-constructor">Blue2</span> <span class="org-haskell-operator">&lt;</span> <span class="org-haskell-constructor">Yellow2</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">==</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Yellow2</span> <span class="org-haskell-operator">&lt;</span> <span class="org-haskell-constructor">Red2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+</div>
+
+<div id="outline-container-org037689e" class="outline-5">
+<h5 id="org037689e">Types of types</h5>
+<div class="outline-text-5" id="text-org037689e">
+<p>
+We should explain one more thing at this point, namely, what that
+first line of our <code>:i</code> readouts says
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Color</span>
+</code></pre>
+
+<pre class="example" id="org77d9bc3">
+: type Color :: *
+: data Color = Red | Yellow | Blue | Green
+:   	-- Defined at omni1.1.hs:29:1
+: instance [safe] Eq Color -- Defined at omni1.1.hs:30:10
+: instance [safe] Ord Color -- Defined at omni1.1.hs:36:10
+: instance [safe] Read Color -- Defined at omni1.1.hs:29:57
+: instance [safe] Show Color -- Defined at omni1.1.hs:29:52
+</pre>
+
+<p>
+<code>type Color :: *</code> is telling us that the <i>type</i> of the type <code>Color</code> is
+<code>*</code>. Huh? So if the type of values <code>Red</code> or <code>Green</code> is <code>Color</code>, the
+<i>type</i> of <code>Color</code> is it&rsquo;s <i>kind</i>, here expressed by the symbol
+<code>*</code>. <font color = "#650d1c"> <code>Color</code> has kind <code>*</code>, which
+says <code>Color</code> is a type constructor of <b>arity</b> null, or a <i>nullary</i>
+type constructor.</font> So what does this mean? Let&rsquo;s take
+it apart&#x2026;
+</p>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/Arity">Arity</a> is something functions have. \(f(x) = x^2\;\) has an arity of one
+since it takes just the one parameter, \(x\). For \(f(x,y) = x^2y^{1/3\;\;}\)
+arity is two &#x2014; and we usually say <i>binary</i> since it takes two
+parameters, \(x\) and \(y\;\). But \(f() = 5\;\) is a function that takes no
+parameters and always returns \(5\;\). It&rsquo;s arity is null<label for="40" class="margin-toggle sidenote-number"></label><input type="checkbox" id="40" class="margin-toggle"/><span class="sidenote">
+This may be slightly confusing since in Algebra you probably
+learned about constant functions expressed as, e.g., \(f(x) = 5\;\),
+which is just a horizontal line \(y = 5\) for any \(x\;\) you plug in.
+</span>.
+</p>
+
+<p>
+In the second line, the data type declaration line, we see the left
+side of the <code>=</code> is <code>Color</code>, which is the <i>type constructor</i>, and on
+the right side are the <i>data constructors</i> or <i>value constructors</i>,
+which are <code>Red | Yellow | Blue | Green</code>, which are also referred to as
+just the <i>values</i> of <code>Color</code>. Again, the type of <code>Red</code> is <code>Color</code>, and
+the type of <code>Color</code> is <code>*</code>, which is Haskell&rsquo;s way of noting <code>Color</code>
+has an arity of null. Which is just like \(f() = 5\;\) only that it has
+values<label for="41" class="margin-toggle sidenote-number"></label><input type="checkbox" id="41" class="margin-toggle"/><span class="sidenote">
+If a data constructor (also called <i>value</i> constructor) has a
+nullary type constructor, as does <code>Color</code>, then just like with \(f() =
+5\) the \(5\) is a <i>constant</i>, and so are the values <code>Red</code>, <code>Yellow</code>, <code>Blue</code>,
+<code>Green</code> considered constants.
+</span> <code>Red</code>, <code>Yellow</code>, <code>Blue</code>, <b>or</b> <code>Green</code> as possible values
+instead of just \(5\). And like \(5\), we can consider them as
+constants. Yes, it might be odd to consider a data type as a sort of
+function taking parameters, but under Haskell&rsquo;s hood they do. So we
+might say <code>Color</code> takes the null parameter and returns one of its
+color data constructors as a value. Odd, but that&rsquo;s Haskell.
+</p>
+
+<p>
+So what would be an example of type with higher arity? What would a
+data type look like that had a type constructor on the left side of
+<code>=</code> that did in fact take input like a function &#x2014; and what does such
+a thing give us?  Consider this data type
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">data</span> <span class="org-haskell-type">StreetShops</span> a <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Grant</span> a <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Lee</span> a <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Lincoln</span> a <span class="org-haskell-keyword">deriving</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Show</span>,<span class="org-haskell-constructor">Read</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<p>
+And its kind will look like this
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>k <span class="org-haskell-constructor">StreetShops</span>
+</code></pre>
+
+<pre class="example">
+StreetShops :: * -&gt; *
+</pre>
+
+
+<p>
+The form <code>* -&gt; *</code> is Haskell&rsquo;s way of saying the data type
+<code>StreetShops</code> indeed takes a single parameter like a function. And
+that parameter <code>a</code> is, like before, leveraging parametric
+polymorphism, meaning <code>a</code> can be any data type. This in turn makes
+<code>StreetShops</code> polymorphic, i.e., its values <code>Grant</code>, <code>Lee</code>, and
+<code>Lincoln</code> are able to take input of different data types. For example,
+if we want our <code>StreetShops</code> value <code>Grant</code> to represent a list of all
+the shops we visit on Grant Street<label for="42" class="margin-toggle sidenote-number"></label><input type="checkbox" id="42" class="margin-toggle"/><span class="sidenote">
+We&rsquo;ll give data constructor <code>Grant</code> a list of elements of type
+<code>String</code>, a Haskell <code>String</code> being, in reality, a <i><a href="http://learnyouahaskell.com/making-our-own-types-and-typeclasses#type-synonyms">type synonym</a></i> for
+list of type <code>Char</code>, which are individual Unicode characters. <br />
+<code>λ&gt; "Tre Chic" == ['T','r','e',' ','C','h','i','c']</code> <br />
+<code>True</code>
+</span>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">shopsOnGrant</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Grant</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Tre Chic"</span>,<span class="org-string">"Dollar Chasm"</span>,<span class="org-string">"Gofer Burgers"</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="code"><code>shopsOnGrant
+</code></pre>
+
+<pre class="example">
+Grant ["Tre Chic","Dollar Chasm","Gofer Burgers"]
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t shopsOnGrant
+</code></pre>
+
+<pre class="example">
+shopsOnGrant :: StreetShops [String]
+</pre>
+
+
+<p>
+So each of the data constructors can take a parameter <code>a</code>, which can
+be anything. If we want a <code>StreetShops</code> value to hold the average
+number of visitors per day<label for="43" class="margin-toggle sidenote-number"></label><input type="checkbox" id="43" class="margin-toggle"/><span class="sidenote">
+Haskell has great powers of inferring, i.e., when we ask it
+what type <code>visitorsOnGrant</code> is, it deduces this from how we created
+<code>visitorsOnGrant</code>, namely: <code>visitorsOnGrant :: Num a =&gt; StreetShops a</code>.
+</span>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">visitorsOnGrant</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Grant</span> 1294
+</code></pre>
+
+<pre class="code"><code>visitorsOnGrant
+</code></pre>
+
+<pre class="example">
+Grant 1294
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t visitorsOnGrant
+</code></pre>
+
+<pre class="example">
+visitorsOnGrant :: Num a =&gt; StreetShops a
+</pre>
+
+
+<p>
+Again, <code>StreetShops</code>, by having kind or arity of one, is polymorphic
+in its one parameter <code>a</code>.  And in reality there is no <i>just</i>
+<code>StreetShops</code> type; instead, <code>StreetShops</code> has to be teamed up with
+another type to be used. To be sure, <code>StreetShops</code> is a contrived
+example of the <code>* -&gt; *</code> kind. In reality there are probably better
+ways of managing data about streets. But we&rsquo;ll certainly use lots of
+data types with higher arity, especially when we start going deeper
+into some of the more math-derived features in Haskell. And so that&rsquo;s
+why we wanted to introduce what may seem pretty abstract at this
+point<label for="44" class="margin-toggle sidenote-number"></label><input type="checkbox" id="44" class="margin-toggle"/><span class="sidenote">
+As another example of introducing an abstract subject out of
+the blue and way early, do you remember middle school math trying to
+show you commutativity, distributivity, and associativity? Well, they
+become important in higher math, especially in abstract
+algebra. Haskell has lots of higher algebra baked in, and yes, you&rsquo;ll
+finally see a real-world application of commutativity, distributivity,
+and associativity soon!
+</span>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd485275" class="outline-5">
+<h5 id="orgd485275">The <code>Num</code> super class</h5>
+<div class="outline-text-5" id="text-orgd485275">
+<p>
+Did you notice that <code>Num a =&gt;</code> class constraint in the type details of
+<code>visitorsOnGrant</code>? When we created the variable <code>visitorsOnGrant</code> we
+gave the value constructor <code>Grant</code> a number &#x2014; but we didn&rsquo;t say what
+sort of number, <code>Int</code>, <code>Integer</code>, <code>Float</code>&#x2026; Haskell then inferred
+that it was something numerical and constrained it with the type class
+<code>Num</code>&#x2026;
+</p>
+
+<p>
+Let&rsquo;s take another look at the concept of class hierarchy. Remember
+how we had <code>Eq</code> equal-ness as a prerequisite for <code>Ord</code> order-ness? We
+needed equal-ness to then create order-ness. Consider this
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t 1
+</code></pre>
+
+<pre class="example">
+1 :: Num p =&gt; p
+</pre>
+
+
+<p>
+This is Haskell&rsquo;s way of saying, Yes, this is some sort of <i>literal</i>
+number you gave me. And all I can say back to you is it is a
+number. And so the generic parameter <code>p</code> has the class constraint that
+whatever <code>p</code> may be (here we provided <code>1</code>), it must be registered with
+the type class <code>Num</code>. So what is this <code>Num</code> class?
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Num</span>
+</code></pre>
+
+<pre class="example" id="org86dd398">
+type Num :: * -&gt; Constraint
+class Num a where
+  (+) :: a -&gt; a -&gt; a
+  (-) :: a -&gt; a -&gt; a
+  (*) :: a -&gt; a -&gt; a
+  negate :: a -&gt; a
+  abs :: a -&gt; a
+  signum :: a -&gt; a
+  fromInteger :: Integer -&gt; a
+  {-# MINIMAL (+), (*), abs, signum, fromInteger, (negate | (-)) #-}
+  	-- Defined in ‘GHC.Num’
+instance Num Word -- Defined in ‘GHC.Num’
+instance Num Integer -- Defined in ‘GHC.Num’
+instance Num Int -- Defined in ‘GHC.Num’
+instance Num Float -- Defined in ‘GHC.Float’
+instance Num Double -- Defined in ‘GHC.Float’
+...
+</pre>
+
+<p>
+Here we see number-ness defined through its methods. Whatever type
+might want to be considered a number will need to have these
+operations of addition, subtraction, multiplication, negation, etc.,
+i.e., register an instance with the <code>Num</code> class<label for="45" class="margin-toggle sidenote-number"></label><input type="checkbox" id="45" class="margin-toggle"/><span class="sidenote">
+Actually, our example <code>:t 1</code> relies on the method
+<code>fromInteger</code>, but we&rsquo;ll unpack that later. Even more actually, a
+whole lot of complex magic is going on behind the scenes when dealing
+with naked (literal) numbers like this. So yes, this is an example of
+LE for doing numbers on computers with programming languages.
+</span>.
+</p>
+
+<p>
+Actually, <code>Num</code> is a great place to start really seeing how
+mathematical Haskell is. <code>:i Num</code> gives us good look, but, as we
+mentioned before, <a href="https://hackage.haskell.org/">hackage.haskell.org</a>, in this case <a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/GHC-Num.html">GHC.Num</a>.
+</p>
+</div>
+
+<div id="outline-container-org308bbf0" class="outline-6">
+<h6 id="org308bbf0">GHC.Num</h6>
+<div class="outline-text-6" id="text-org308bbf0">
+<img src="./images/numclass1.png" style="padding: 15px 0px 0px 0px"  alt="Fundamental laws of arithmetic" class="center">
+<span class="cap">Fundamental laws of arithetic according to Num</span>
+
+<p>
+What is this? Why is this mentioned? A simple starter explanation is
+that we have here a set of guidelines for how addition and
+multiplication must behave in order to have an instance of
+<code>Num</code>. Let&rsquo;s continue&#x2026;
+</p>
+
+<p>
+So if multiplication is just a glorified sort of addition, and
+division is glorified subtraction<label for="46" class="margin-toggle sidenote-number"></label><input type="checkbox" id="46" class="margin-toggle"/><span class="sidenote">
+Multiplication is often phrased, e.g., &ldquo;five fives,&rdquo; i.e.,
+five sets of five are to be considered (read added)
+together. Likewise, division &ldquo;divide \(8\) by \(2\) is just <i>subtract</i> \(2\)
+from \(8\) over and over and keep track of how many times you can do
+this until there&rsquo;s either nothing left or a number less than \(2\;\).
+</span>, then that makes addition and
+subtraction the basis of arithmetic, <i>but</i> they have a very
+fundamentally different behavior when used in the wild that we must,
+in turn, account for. Yes, addition puts things together and
+subtraction takes something away from another thing. But there&rsquo;s
+further <i>-ness</i> to addition that subtraction doesn&rsquo;t have, namely,
+<i>order doesn&rsquo;t seem to matter, whereas it does with subtraction (and
+of course division)</i>. Obviously it matters which number gets
+subtracted or divided by which, but not with addition and
+multiplication.
+</p>
+
+<p>
+We mentioned <i>binary</i> operators before, which means whenever we add or
+subtract we&rsquo;re really taking just two numbers at a time<label for="47" class="margin-toggle sidenote-number"></label><input type="checkbox" id="47" class="margin-toggle"/><span class="sidenote">
+Think about it, even when you&rsquo;ve got a whole list (vertical or
+horizontal) of numbers to add, you&rsquo;re really doing them two at a
+time. One number becomes the <i>addend</i> and the other becomes the
+<i>augend</i>, which is sort of a carrying-over holder to which the next
+addend is added. So if we&rsquo;re adding \(1 + 2 + 5\;\) we might add \(1 + 2\;\)
+and then remember the augend is \(3\;\), then take addend \(5\) and add it
+to augend \(3\) to get \(8\;\).
+</span>, i.e.,
+the arity of the <code>(+)</code> operator is two, or <code>(+)</code> is a <i>binary</i>
+operation. But again, why are we concerned with this?
+</p>
+
+<p>
+Notice at <a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/GHC-Num.html">GHC.Num</a> it says
+</p>
+
+<div class="epigraph"><blockquote>
+<p>
+The Haskell Report defines no laws for <code>Num</code>. However, (+) and (*) are
+customarily expected to define a ring and &#x2026;
+</p>
+
+</blockquote></div>
+
+<p>
+The Haskell Report is a reference manual for how Haskell is put
+together, often just showing us how certain pieces of the language are
+coded under the hood. Typically, you see a Backus-Naur
+description<label for="48" class="margin-toggle sidenote-number"></label><input type="checkbox" id="48" class="margin-toggle"/><span class="sidenote">
+More on Backus–Naur Form later. It&rsquo;s used extensively to
+create a <a href="https://en.wikipedia.org/wiki/Metasyntax">metasyntax</a> for programming languages. Maybe rabbit-hole <a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">this
+Wikipedia treatment</a>.
+</span>, then some description/talk, maybe also examples
+and &ldquo;translations<label for="49" class="margin-toggle sidenote-number"></label><input type="checkbox" id="49" class="margin-toggle"/><span class="sidenote">
+Try Haskell&rsquo;s <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-420003.11">list comprehension</a>. Don&rsquo;t expect to understand
+what they&rsquo;re saying just yet, but appreciate the magic and all the
+devilish details. And while you&rsquo;re at it you might further appreciate
+just what a list comprehension is by looking at <a href="https://rosettacode.org/wiki/List_comprehensions">this Rosetta Code
+article</a>. Again, YMMV on what you can grasp at this point, but maybe
+notice how Haskell is <i>very</i> <a href="https://en.wikipedia.org/wiki/Set-builder_notation">Set-builder notation</a>-friendly, while
+other languages just seem to be kludging something together. Again,
+maybe a bit too advanced, but check out <a href="https://rosettacode.org/wiki/List_comprehensions#Haskell">Haskell&rsquo;s entry</a> for the
+Pythagorean triplets. Experiment with the code. A big part of learning
+to program is to read and experiment with code.
+</span>.&rdquo;  GHC.Num says there is no particular
+mention in the HR of these arithmetical laws, but <code>(+)</code> and <code>(*)</code>
+should <i>define a ring</i>. So here the lore is getting deep. What is
+meant by a <i>ring</i><label for="50" class="margin-toggle sidenote-number"></label><input type="checkbox" id="50" class="margin-toggle"/><span class="sidenote">
+Have a look at <a href="https://math.libretexts.org/Bookshelves/Combinatorics_and_Discrete_Mathematics/Applied_Discrete_Structures_(Doerr_and_Levasseur)/16%3A_An_Introduction_to_Rings_and_Fields/16.01%3A_Rings_Basic_Definitions_and_Concepts">this LibreText explanation</a> but don&rsquo;t try it
+without first getting through the basic set theory stuff in the
+assigned rabbit-hole.
+</span>? Well, a ring is something from abstract
+algebra, which you&rsquo;ll see in a mathematics curriculum once you&rsquo;re
+beyond Frosh college math including calculus, differential equations,
+and linear algebra. The basic idea is that a ring is a <i>set</i>
+containing a <i>set</i> of numbers, along with key arithmetical operators
+behaving in certain ways. In other words, a ring is a sort of like a
+package which includes numbers and the operations that work on those
+numbers<label for="51" class="margin-toggle sidenote-number"></label><input type="checkbox" id="51" class="margin-toggle"/><span class="sidenote">
+Algebra in higher math is redefined to be a system that always
+&ldquo;packages&rdquo; a set of numbers with a set of useful operators/operations
+on those numbers. It&rsquo;s good to start thinking this way in order to
+understand what Haskell and lots of computer science is doing and
+saying.
+</span>. Then neatly bundled like this, we can do and say things about
+them as a whole. But let&rsquo;s leave it at that for now. We&rsquo;ll soon
+explore other similar &ldquo;packagings&rdquo; (semigroups, monoids, etc.) from
+abstract algebra that are brought over for use in Haskell.
+</p>
+
+<p>
+Continuing, if the so-called <i>fundamental laws of arithmetic</i><label for="52" class="margin-toggle sidenote-number"></label><input type="checkbox" id="52" class="margin-toggle"/><span class="sidenote">
+&#x2026;taken from Richard Courant&rsquo;s seminal <i>What is Mathematics?</i>
+</span> say
+</p>
+
+<ol class="org-ol">
+<li>\(a + b = b + a\quad\) (additive commutativity, AC)</li>
+<li>\(ab = bc\quad\) (multiplicative commutativity, MC)</li>
+<li>\(a + (b + c) = (a + b) + c\quad\) (additive associativity, AA)</li>
+<li>\(a(bc) = (ab)c\quad\) (multiplicative associativity, MA)</li>
+<li>\(a(b + c) = ab + ac\quad\) (distributive law, DL)</li>
+</ol>
+
+<p>
+then in order to have &ldquo;number-ness&rdquo; a <code>Num</code> instance for a number type
+should have these behaviors when added or multiplied. But if we
+compare, these <i>five</i> laws concerning addition and multiplication
+aren&rsquo;t exactly the same as those Haskell laws mentioned above from
+GHC.Num. For one, Where&rsquo;s #2, multiplicative commutativity, i.e., \(ab
+= bc\;\)? It turns out not everything has MC; hence, we don&rsquo;t want to
+be obligated to defining MC for everything. An example is when
+multiplying matrices. Maybe we&rsquo;re not that far, but no, matrix
+multiplication does not guarantee \(ab = bc\;\). Another potential
+divergence is <i>additive inverse</i> and <i>multiplicative inverse</i>. These
+should be defined on any type wanting to join the <code>Num</code> class. More on
+that later.
+</p>
+
+<p>
+\(\mathfrak{Fazit}\;\): <code>Num</code> is a super-class that is a prerequisite
+&ldquo;constraint&rdquo; for anything number-like in Haskell. And so any type with
+which we want to do basic arithmetic, i.e., to have number-ness, must
+register an instance with the type class <code>Num</code>, defining the minimum
+set of methods in order to perform basic math operations.
+</p>
+
+
+<p>
+This has been a brief, hurried introduction to ordinality &#x2014; with a
+small detour to explore some of the LE of what numbers are vis-à-vis
+Haskell and computers. The notion of order is everywhere and cannot be
+taken for granted. And the idea of ordinality goes pretty deep in
+higher math. See <a href="https://en.wikipedia.org/wiki/Ordered_field">this</a> and <a href="https://math.libretexts.org/Bookshelves/Analysis/Introduction_to_Mathematical_Analysis_I_(Lafferriere_Lafferriere_and_Nguyen)/01%3A_Tools_for_Analysis/1.04%3A_Ordered_Field_Axioms">this</a> fire hose treatments as somewhere
+between R<sub>O</sub> and R<sub>FYI</sub>. (And see <a href="https://en.wikipedia.org/wiki/Ordinal_number#Von_Neumann_definition_of_ordinals">this</a> for something we&rsquo;ll eventually take
+a Haskell stab at.) Note especially the <i>order axioms</i> and the
+<i>properties of ordered fields</i>. In general, these treatments are
+upper-level/grad math &#x2014; or, yes, upper-level comp-sci, depending on
+your future school&rsquo;s program. Remember, comp-sci dips and weaves
+around and through higher math with little or no warning &#x2014; a bit
+like physics routinely takes off into high math-land as well.
+</p>
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footnotes --><!-- 
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+This is also on her GitHub repository.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+See her popular layman&rsquo;s book <i>How To Bake \(\pi\;\)</i>. One
+interesting aspect of this book is her treatment of <i>category theory</i>,
+which is a superset of type theory, much of which is baked into
+Haskell.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+In many places in the world the typical American college
+Freshman-Sophomore math sequence of calculus, diff-eqs, and linear
+algebra is completed at the college-prep level. For example, Germany
+and Switzerland have college freshmen starting with Analysis.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<b>parochial</b>: &#x2026; very limited or narrow in scope or outlook;
+provincial&#x2026;
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Make sure you&rsquo;re attacking the <i>LibreTexts</i> series, e.g.,
+one of the first three rabbit holes in the math section.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+If machines were capable of conditioned learning, your car
+should be able to self-drive certain oft-travelled routes, e.g., from
+your home to the grocery store.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+It was a long-revered feat of logical minimalism that all
+two-dimensional shapes in <i>Elements</i> could be produced with just a
+compass and a straightedge. Follow the Wikipedia link and note the
+animation of <a href="https://en.wikipedia.org/wiki/Euclid%27s_Elements#/media/File:HexagonConstructionAni.gif">the construction of a hexagon</a>. It wasn&rsquo;t until the
+development of calculus and infinitesimal methods in the Renaissance
+that this compass-and-stick purity was set aside.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8" role="doc-backlink">8</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Later we&rsquo;ll explore how Descartes united algebra and geometry.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9" role="doc-backlink">9</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Make sure you&rsquo;re getting along with the Haskell rabbit hole materials &#x2014; at
+the very least worked through half of LYAHFFG.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10" role="doc-backlink">10</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Two questions: Are repeating decimal numbers also rational? If
+yes, then why can&rsquo;t rational numbers represent all numbers? That is,
+why do we need real and complex numbers? Programming challenge: Write
+a function that takes a real decimal number and figures out its
+fraction, e.g. \(3.14\) is \(157/50\:\). Does Haskell have a built-in way
+to do this? Hint: Check out <a href="https://rosettacode.org/wiki/Convert_decimal_number_to_rational#Haskell">Convert decimal number to rational</a>. Maybe
+compare with how Julia and Racket do it.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11" role="doc-backlink">11</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Professor Chandra connected this to Haskell by mentioning
+Haskell&rsquo;s &ldquo;point-free&rdquo; programming &#x2026; but didn&rsquo;t elaborate.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.12" class="footnum" href="#fnr.12" role="doc-backlink">12</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+But then measuring must be &ldquo;quantified&rdquo; by counting unit-wise
+what was measured; hence, everything comes back to counting. This will
+come up when we explore real numbers versus rational numbers.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.13" class="footnum" href="#fnr.13" role="doc-backlink">13</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Inside your head you automatically know how many and in what
+order the numbers \(1\) through \(10\) are. However, a computer must be
+taught such basic quantitative qualities.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.14" class="footnum" href="#fnr.14" role="doc-backlink">14</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+We indicate the set&rsquo;s cardinality by surrounding the symbol for
+a set with <i>pipes</i> ( <b><b>|</b></b> ), e.g., \(|S_{stars}|\;\). This is not the same
+as <i>absolute value</i>, although they might be cousins.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.15" class="footnum" href="#fnr.15" role="doc-backlink">15</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Have a look at <a href="https://en.wikipedia.org/wiki/Cardinality">this Wikipedia discussion of cardinality</a>. Later
+we will look into <i><a href="https://en.wikipedia.org/wiki/Cardinal_number">cardinal numbers</a></i>, which is a deeper dive into set
+theory.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.16" class="footnum" href="#fnr.16" role="doc-backlink">16</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+We&rsquo;ll look at injective, surjective, and bijective when we
+delve into functions from a set theory perspective. Also, mathematical
+logic will introduce us to <i>if and only if</i>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.17" class="footnum" href="#fnr.17" role="doc-backlink">17</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+To excite your curiosity, isn&rsquo;t \(\infty + 1\) still just \(\infty\;\)? The
+Greeks contemplated this and concluded that infinity has the power to
+consume, destroy individual numbers. It wasn&rsquo;t until the German
+mathematician Georg Cantor came along in the late nineteenth century
+that we learned to wrangle infinity.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.18" class="footnum" href="#fnr.18" role="doc-backlink">18</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+So it&rsquo;s not really a &ldquo;grocery list,&rdquo; it&rsquo;s a &ldquo;grocery set&rdquo;
+since \(\{eggs,sugar,coffee,eggs\}\;\;\;\) is invariably interpreted as
+just \(\{eggs,sugar,coffee\}\;\;\), right? Or would you go ahead and get
+eggs twice? Can you come up with another real-world example where a
+set of things doesn&rsquo;t care about order or duplicates?
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.19" class="footnum" href="#fnr.19" role="doc-backlink">19</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Why is this? There is a LE to the definition
+of a set union, namely, \(A \cup B = \{x \;\;|\;\; x \in A \;\;\;or\;\;\; x \in
+B \}\quad\). Consider the sets \(A = \{1,2,3\}\;\), \(B = \{2,3,4\}\;\),
+and \(C = \{3,4,5\}\;\). If you draw out Their union \(A \cup B \cup C = \{x
+\;|\; x \in A \;\;\text{or}\;\;x \in B\;\; \text{or}\;\;x \in C \}\quad\;\;\) as
+a Venn diagram, you&rsquo;ll see how duplicates get left out.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.20" class="footnum" href="#fnr.20" role="doc-backlink">20</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Take a look at this Hackage page. It has <a href="https://haskell-containers.readthedocs.io/en/latest/set.html">an intro to Haskell&rsquo;s
+sets</a>. Get in the habit of perusing Hackage whenever you&rsquo;re using a
+Haskell function or data type you don&rsquo;t quite understand. Sometimes
+you&rsquo;ll have to just dive into the code, but sometimes there are
+excellent intro docs like this. And yet there are also set operations
+in <code>Data.List</code>. Perhaps look into these two options.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.21" class="footnum" href="#fnr.21" role="doc-backlink">21</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Meanwhile, here&rsquo;s a brain-teaser that goes to the heart of
+this set-list issue &#x2014; especially in Haskell, Why are set union and
+intersection commutative and associative due to their lack of order?
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.22" class="footnum" href="#fnr.22" role="doc-backlink">22</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+See <a href="https://en.wikipedia.org/wiki/Ordinal_numeral">this</a> brief discussion.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.23" class="footnum" href="#fnr.23" role="doc-backlink">23</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Typically, real numbers are represented geometrically by a
+&ldquo;number line&rdquo; whereby <i>interval notation</i> allows for sections of this
+line to be considered, e.g., <i>closed interval</i> \([\,a,b\,]\;\), <i>open
+interval</i> \((a,b)\:\), and more exotics like an <i>open ray</i> \((-\infty, a)\:\).
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.24" class="footnum" href="#fnr.24" role="doc-backlink">24</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+We will eventually investigate how costly in computer time and
+resources an operation like sorting is. Stay tuned.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.25" class="footnum" href="#fnr.25" role="doc-backlink">25</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+A jigsaw puzzle can be seen as a sorting game based on shape,
+color, and patterns of the pieces.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.26" class="footnum" href="#fnr.26" role="doc-backlink">26</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+For a quick introduction with examples go <a href="http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101">here</a> in LYAHFGG.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.27" class="footnum" href="#fnr.27" role="doc-backlink">27</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Go ahead and check out the <a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Eq.html">hackage.haskell.org</a> entry for <code>Eq</code>
+<a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Eq.html">here</a>. Note the properties <code>(==)</code> should follow: reflexivity, symmetry,
+transitivity, extentionality, and negation. We&rsquo;ll dive into what this
+all means when we look closer into the higher algebra of sets and
+functions. Note all the built-in, &ldquo;batteries-included&rdquo; <code>Eq</code> instances
+for the various types. Some are rather exotic.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.28" class="footnum" href="#fnr.28" role="doc-backlink">28</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Quick LE question: Can functions be compared for equal-ness?
+Here&rsquo;s a direct quote from a prominent combinatorics text: <i>When two
+formulas enumerate the same set, then they must be equal.</i> But not so
+fast in the computer world. To say <code>f x == g x</code> Haskell isn&rsquo;t
+logically set up to actually prove (demonstrate) and accept that <code>f</code>
+and <code>g</code> always give the same results given the same <code>x</code> input. We
+would literally have to test every possible <code>x</code>, which is not
+possible. Still, we&rsquo;ll examine this idea a bit closer soon. It&rsquo;s a
+real big deal in numerical math.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.29" class="footnum" href="#fnr.29" role="doc-backlink">29</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Note <code>{-# MINIMAL (==) | (/=) #-}</code> which is a directive
+meaning we may choose to define <b>either</b> <code>(==)</code> <b>or</b> (note the <b>or</b>
+pipe <b>|</b> ) <code>(/=)</code>, i.e., we don&rsquo;t actually have to define both because
+by defining one, the other will be automatically generated. Neat.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.30" class="footnum" href="#fnr.30" role="doc-backlink">30</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<code>:t</code> is short for <code>:type</code>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.31" class="footnum" href="#fnr.31" role="doc-backlink">31</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<i>ad hoc</i>, from Latin <i>to this</i>, is something put together on
+the fly for one narrow, pressing, or special purpose. <i>polymorphic</i>,
+from Greek <i>polus</i> much, many, and <i>morphism</i>, having the shape, form,
+or structure, i.e., having many shapes.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.32" class="footnum" href="#fnr.32" role="doc-backlink">32</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+As LYAHFGG says, <code>Read</code> and <code>Show</code> are also type classes to
+which you may register your data type. Here we&rsquo;ve used the <code>deriving</code>
+keyword to let Haskell figure it out, i.e., we&rsquo;re not defining
+<code>Read</code> and <code>Show</code> ourselves; rather, we&rsquo;re telling Haskell to
+auto-generate and register these instances for us.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.33" class="footnum" href="#fnr.33" role="doc-backlink">33</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+We&rsquo;ll go into more detail about declaring our own data types
+as we progress. But for now we&rsquo;ll say <code>Color</code> is a <i>sum</i> type, as
+opposed to a <i>product</i> type. Sum types are patterned after the
+<i>addition principle</i> which we&rsquo;ll also go into later. Note, the pipes
+\(\;|\;\) between the colors can be understood as logical <i>or</i>&#x2014;as in
+we must choose one <i>or</i> the other of the colors.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.34" class="footnum" href="#fnr.34" role="doc-backlink">34</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+&#x2026;and this is an example of <i>parametric polymorphism</i> where
+the <i>parameter</i> (aka <i>type variable</i>) <code>a</code> can be any data type. In
+Haskell, smaller-case letters such as <code>a</code>, <code>b</code>, <code>c</code>, etc., are generic
+parameter names and can indicate any data type. In <code>(==) :: Eq a =&gt; a
+-&gt; a -&gt; Bool</code> we see that two inputs of the same type <code>a</code> are fed to
+<code>(==)</code>, which produces a <code>Bool</code> output. Another example would be
+<code>myFunc :: a -&gt; b -&gt; a</code>. Here the type signature says the inputs don&rsquo;t
+have to be of the same type (although they could be), but no matter
+what type the parameter <code>b</code> is, the output will be of type <code>a</code>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.35" class="footnum" href="#fnr.35" role="doc-backlink">35</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+For our <code>Color</code> we&rsquo;ve created our own equal-ness, although in
+this example we could have let Haskell figure it out, i.e., <code>...|
+Green deriving (Eq)</code> would have done the same thing. This was an easy
+one. Haskell can&rsquo;t always figure out the less obvious cases.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.36" class="footnum" href="#fnr.36" role="doc-backlink">36</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+The habit of calling a set of functions associated with a
+Haskell type class <i>methods</i> might be a hold/spill-over from the world
+of object-oriented programming where an OOP class will have method
+functions attached to it. This is called <i>encapsulation</i>, i.e., a
+system for keeping things that belong together together. However, an
+OOP class and a Haskell type class are entirely different beasts. So
+let&rsquo;s keep our head stuck in the Haskell particle accelerator for
+now&#x2026;
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.37" class="footnum" href="#fnr.37" role="doc-backlink">37</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+In general, anytime your programming language starts writing
+code for you, it&rsquo;s cool&#x2026;
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.38" class="footnum" href="#fnr.38" role="doc-backlink">38</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+We make heavy use of the <i>wildcard</i> <code>_</code> by which we mean <i>any</i>
+variable can be in the <code>_</code> position. For example <code>compare Red _ = GT</code>
+means when we compare <code>Red</code> to anything else, <code>Red</code> will always be
+greater than it. We also leveraged the order of these declarations,
+i.e., by having <code>compare Red _ = GT</code> at the very start, <code>Red</code> versus
+anything will be sorted out first. This is a <i>conditional</i> situation
+implicitly, which we&rsquo;ll use lots more.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.39" class="footnum" href="#fnr.39" role="doc-backlink">39</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Remember, math operators in Haskell are just a sort of
+function. Which means <code>(==) Red Red</code> is identical to <code>Red ==
+Red</code>. Haskell requires operators in the function (<i>prefix</i>) position
+to be in parentheses, whereas in the <i>infix</i> (between) position they
+can be naked operators. Notice <code>min Red Yellow</code> that <code>min</code> is in the
+prefix position. Just put back-ticks around it to use it infix: <code>Red `min` Yellow</code>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.40" class="footnum" href="#fnr.40" role="doc-backlink">40</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+This may be slightly confusing since in Algebra you probably
+learned about constant functions expressed as, e.g., \(f(x) = 5\;\),
+which is just a horizontal line \(y = 5\) for any \(x\;\) you plug in.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.41" class="footnum" href="#fnr.41" role="doc-backlink">41</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+If a data constructor (also called <i>value</i> constructor) has a
+nullary type constructor, as does <code>Color</code>, then just like with \(f() =
+5\) the \(5\) is a <i>constant</i>, and so are the values <code>Red</code>, <code>Yellow</code>, <code>Blue</code>,
+<code>Green</code> considered constants.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.42" class="footnum" href="#fnr.42" role="doc-backlink">42</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+We&rsquo;ll give data constructor <code>Grant</code> a list of elements of type
+<code>String</code>, a Haskell <code>String</code> being, in reality, a <i><a href="http://learnyouahaskell.com/making-our-own-types-and-typeclasses#type-synonyms">type synonym</a></i> for
+list of type <code>Char</code>, which are individual Unicode characters. <br />
+<code>λ&gt; "Tre Chic" == ['T','r','e',' ','C','h','i','c']</code> <br />
+<code>True</code>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.43" class="footnum" href="#fnr.43" role="doc-backlink">43</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Haskell has great powers of inferring, i.e., when we ask it
+what type <code>visitorsOnGrant</code> is, it deduces this from how we created
+<code>visitorsOnGrant</code>, namely: <code>visitorsOnGrant :: Num a =&gt; StreetShops a</code>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.44" class="footnum" href="#fnr.44" role="doc-backlink">44</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+As another example of introducing an abstract subject out of
+the blue and way early, do you remember middle school math trying to
+show you commutativity, distributivity, and associativity? Well, they
+become important in higher math, especially in abstract
+algebra. Haskell has lots of higher algebra baked in, and yes, you&rsquo;ll
+finally see a real-world application of commutativity, distributivity,
+and associativity soon!
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.45" class="footnum" href="#fnr.45" role="doc-backlink">45</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Actually, our example <code>:t 1</code> relies on the method
+<code>fromInteger</code>, but we&rsquo;ll unpack that later. Even more actually, a
+whole lot of complex magic is going on behind the scenes when dealing
+with naked (literal) numbers like this. So yes, this is an example of
+LE for doing numbers on computers with programming languages.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.46" class="footnum" href="#fnr.46" role="doc-backlink">46</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Multiplication is often phrased, e.g., &ldquo;five fives,&rdquo; i.e.,
+five sets of five are to be considered (read added)
+together. Likewise, division &ldquo;divide \(8\) by \(2\) is just <i>subtract</i> \(2\)
+from \(8\) over and over and keep track of how many times you can do
+this until there&rsquo;s either nothing left or a number less than \(2\;\).
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.47" class="footnum" href="#fnr.47" role="doc-backlink">47</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Think about it, even when you&rsquo;ve got a whole list (vertical or
+horizontal) of numbers to add, you&rsquo;re really doing them two at a
+time. One number becomes the <i>addend</i> and the other becomes the
+<i>augend</i>, which is sort of a carrying-over holder to which the next
+addend is added. So if we&rsquo;re adding \(1 + 2 + 5\;\) we might add \(1 + 2\;\)
+and then remember the augend is \(3\;\), then take addend \(5\) and add it
+to augend \(3\) to get \(8\;\).
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.48" class="footnum" href="#fnr.48" role="doc-backlink">48</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+More on Backus–Naur Form later. It&rsquo;s used extensively to
+create a <a href="https://en.wikipedia.org/wiki/Metasyntax">metasyntax</a> for programming languages. Maybe rabbit-hole <a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">this
+Wikipedia treatment</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.49" class="footnum" href="#fnr.49" role="doc-backlink">49</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Try Haskell&rsquo;s <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-420003.11">list comprehension</a>. Don&rsquo;t expect to understand
+what they&rsquo;re saying just yet, but appreciate the magic and all the
+devilish details. And while you&rsquo;re at it you might further appreciate
+just what a list comprehension is by looking at <a href="https://rosettacode.org/wiki/List_comprehensions">this Rosetta Code
+article</a>. Again, YMMV on what you can grasp at this point, but maybe
+notice how Haskell is <i>very</i> <a href="https://en.wikipedia.org/wiki/Set-builder_notation">Set-builder notation</a>-friendly, while
+other languages just seem to be kludging something together. Again,
+maybe a bit too advanced, but check out <a href="https://rosettacode.org/wiki/List_comprehensions#Haskell">Haskell&rsquo;s entry</a> for the
+Pythagorean triplets. Experiment with the code. A big part of learning
+to program is to read and experiment with code.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.50" class="footnum" href="#fnr.50" role="doc-backlink">50</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Have a look at <a href="https://math.libretexts.org/Bookshelves/Combinatorics_and_Discrete_Mathematics/Applied_Discrete_Structures_(Doerr_and_Levasseur)/16%3A_An_Introduction_to_Rings_and_Fields/16.01%3A_Rings_Basic_Definitions_and_Concepts">this LibreText explanation</a> but don&rsquo;t try it
+without first getting through the basic set theory stuff in the
+assigned rabbit-hole.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.51" class="footnum" href="#fnr.51" role="doc-backlink">51</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Algebra in higher math is redefined to be a system that always
+&ldquo;packages&rdquo; a set of numbers with a set of useful operators/operations
+on those numbers. It&rsquo;s good to start thinking this way in order to
+understand what Haskell and lots of computer science is doing and
+saying.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.52" class="footnum" href="#fnr.52" role="doc-backlink">52</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+&#x2026;taken from Richard Courant&rsquo;s seminal <i>What is Mathematics?</i>
+</p></div></div>
+
+ --></div>
+</body>
+</html>

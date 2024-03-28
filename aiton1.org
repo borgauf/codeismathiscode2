@@ -1,0 +1,183 @@
+# # -*- mode: org -*-
+# # -*- coding: utf-8 -*-
+#+TITLE:
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: numbers1aux1.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+
+
+* AITON Chapter 1
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/omnimath"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+:END:
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle aiton1.hs :noweb yes
+
+module AITON1 where
+
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+1 +
+  1 -- here to start the ghci REPL if needed
+#+end_src
+
+#+RESULTS:
+: λ> 2
+
+** Adding numbers
+
+@@html:<font color = "#650d1c" size = 5%>@@
+⇲ Add the odd numbers between $1$ and $30\:$, i.e., what is $1 + 3 +
+5 + \cdots + 25 + 27 + 29
+@@html:</font>@@
+
+#+name: f868e12d-9fc2-47fa-832d-08542e08c1d7
+#+begin_src haskell :results verbatim :exports both
+sum [1,3..30]
+#+end_src
+
+#+RESULTS: f868e12d-9fc2-47fa-832d-08542e08c1d7
+: 225
+
+
+#+name: 95e7ea2b-1fd9-4a3d-aa26-6feeafab1fd4
+#+begin_src haskell :results silent :exports code
+:{
+addOdd 
+:}
+#+end_src
+
+#+name: 4407ffd6-630a-4237-8e12-0f7bd8fce14c
+#+begin_src haskell :results verbatim :exports both
+sum [1..21]
+#+end_src
+
+#+RESULTS: 4407ffd6-630a-4237-8e12-0f7bd8fce14c
+: 231
+
+Create a list of square numbers
+
+#+name: ffc1a5b0-e605-45af-91cb-d22c8f371927
+#+begin_src haskell :results verbatim :exports both
+[(^2) x | x <- [1..10]]
+#+end_src
+
+#+RESULTS: ffc1a5b0-e605-45af-91cb-d22c8f371927
+: [1,4,9,16,25,36,49,64,81,100]
+
+or
+
+#+name: fb20d966-6469-460e-a4c5-96e8be4e045d
+#+begin_src haskell :results verbatim :exports both
+map (^2) [1..10]
+#+end_src
+
+#+RESULTS: fb20d966-6469-460e-a4c5-96e8be4e045d
+: [1,4,9,16,25,36,49,64,81,100]
+
+Sum the first ten square numbers
+
+#+name: 2e788813-00b9-4029-80e1-eafa3810255d
+#+begin_src haskell :results verbatim :exports both
+sum [(^2) x | x <- [1..10]]
+#+end_src
+
+#+RESULTS: 2e788813-00b9-4029-80e1-eafa3810255d
+: 385
+
+#+name: d9d2cfaf-7f7d-4520-85bc-e0d73e292fcc
+#+begin_src haskell :results silent :exports code
+triangular n = sum [1..n]
+#+end_src
+
+#+name: bd3e2b78-2dfd-4970-9862-328ada5eab53
+#+begin_src haskell :results verbatim :exports both
+map triangular [1..10]
+#+end_src
+
+#+RESULTS: bd3e2b78-2dfd-4970-9862-328ada5eab53
+: [1,3,6,10,15,21,28,36,45,55]
+
+@@html:<span class="fraktur"><script
+src="https://gist.github.com/lattenwald/bc97a668641df7e77ef0.js">@@
+@@html:</script></span>@@
+
+#+name: 22d2534a-d402-471e-b30e-7817d0c0b1cb
+#+begin_src haskell :results silent :exports code
+triangleNumsAlt = map (\i -> i * (i+1) `div` 2) [1..]
+#+end_src
+
+#+name: f2885284-4d6c-4760-ab3b-610b45d68b05
+#+begin_src haskell :results verbatim :exports both
+take 10 triangleNumsAlt
+#+end_src
+
+#+RESULTS: f2885284-4d6c-4760-ab3b-610b45d68b05
+: [1,3,6,10,15,21,28,36,45,55]
+
+#+name: b82f934e-08b1-40b4-a22b-5ab444362335
+#+begin_src haskell :results silent :exports code
+:{
+triangleNums = map fst triangleNums'
+  where
+    triangleNums' = (1, 2) : map (\(n, i) -> (n+i, i+1)) triangleNums'
+:}
+#+end_src
+
+#+name: 71dcc005-f4d9-4a55-a8ee-55c097975adb
+#+begin_src haskell :results verbatim :exports both
+take 10 triangleNums
+#+end_src
+
+#+RESULTS: 71dcc005-f4d9-4a55-a8ee-55c097975adb
+: [1,3,6,10,15,21,28,36,45,55]
+
+
+
+
+
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes

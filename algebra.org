@@ -1,0 +1,106 @@
+# # -*- mode: org -*-
+# # -*- coding: utf-8 -*-
+# Place title here
+#+TITLE:
+# Place author here
+#+AUTHOR:
+# Place email here
+#+EMAIL: 
+# Call borgauf/insert-dateutc.1 here
+#+DATE: 
+# #+Filetags: :SAGA
+# #+TAGS: experiment_nata(e) idea_nata(i) chem_nata(c) logs_nata(l) y_stem(y)
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline path:http://orgmode.org/org-info.js
+# #+HTML_HEAD: <link rel="stylesheet" href="../data/stylesheet.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+OPTIONS: H:15 num:15 toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+# #+OPTIONS: prop:t
+# This makes MathJax not work
+# #+OPTIONS: tex:imagemagick
+# this makes MathJax work
+#+OPTIONS: tex:t
+# This also replaces MathJax with images, i.e., don’t use.
+# #+OPTIONS: tex:dvipng
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+HTML_MATHJAX: align: left indent: 5em tagside: left font: Neo-Euler
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer
+# This makes pictures appear in buffer
+# #+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+# #+BIBLIOGRAPHY: ref plain
+
+
+* Some preliminary thoughts on algebra
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/omnimath"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&van2013history]]
+:END:
+
+
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle algebra.hs :noweb yes
+module ALGEBRA where
+
+
+#+end_src
+
+
+
+** Rabbit holes
+@@html:<font color = "#375e79">@@
+⌜🐇 *Rabbit holes* to get started with CIMMIC are:
+
+1. We need to learn mathematical logic, since logic is simply baked
+   into every programming language. Try [[https://math.libretexts.org/Courses/Monroe_Community_College/MATH_220_Discrete_Math/2%3A_Logic][this LibreTexts series]] on
+   logic. Pay particular attention to the notation used on logic
+   operators and the terminology as well. This stuff comes up all the
+   time in programming. (/R_{O}-hole/)
+@@html:</font>@@🐇⌟
+
+** Al-Khwärizmi
+
+Al-Khwärizmi is credited with inventing algebra. The word algebra
+comes from /al-jabr/, which is Al-Khwärizmi's word---along with
+/al-muqabala/---for adding, subtracting, in general, balancing terms
+on both sides of an equation. His first equation was
+
+\begin{align*}
+x^2 = 40x - 4 x^2
+\end{align*}
+
+then using /al-jabr/ and /al-muqabala/
+
+\begin{align*}
+5x^2 &= 40x \\
+x^2 &= 8x \\
+x &= 8
+\end{align*}
+

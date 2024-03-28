@@ -1,0 +1,298 @@
+# # -*- mode: org -*-
+# # -*- coding: utf-8 -*-
+#+TITLE:
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: linearalgebra.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+
+* Linear Algebra: Systems of Linear Equations
+:RESOURCES:
+- [[cite:&margalit2019interactive]]
+:END:
+
+** Systems of linear equations
+
+@@html:<font color = "#650d1c">@@ ➝ An equation in the unknowns $x\;$,
+$y\;$, $z\;$, ..., is called /linear/ if both sides of the equation
+are a /sum/ of (constant) multiples of $x\;$, $y\;$, $z\;$, ..., plus
+an optional constant[fn:1].  @@html:</font>@@
+
+- A /solution/ of a system of equations is a list of numbers $x\;$,
+  $y\;$, $z\;$, ... that make all of the equations true
+  simultaneously.
+- The /solution set/ of a system of equations is the collection of all
+  solutions.
+- /Solving/ the system means finding all solutions with formulas
+  involving some number of parameters.
+
+@@html:<font color = "#650d1c">@@
+➝ A system of equations is called /inconsistent/ if it has no solutions. It
+is called /consistent/ otherwise.
+@@html:</font>@@
+
+@@html:<font color = "#650d1c">@@ ➝ Let $n\;$ be a positive whole
+number. We define $\mathbb{R^n}\;$ = all ordered n-tuples of real
+numbers $(x_1, x_2, x_3,\ldots, x_n )\;\;\;$.  @@html:</font>@@
+
+Hence, an /n/-tuple of real numbers is called a /point/ of
+$\mathbb{R^n}\;\;$
+
+𝖟𝕭: The real number line is when $n\;= 1\;$ of $\mathbb{R^n}\;$.
+
+𝖟𝕭: Consider the linear equation $x + y + z = 1\;\;$. This is the
+implicit equation for a plane in space that is hinged on the three
+coordinates totaling $1\;\;$.
+
+#+begin_export html
+<img src="./images/planein3Dspace.png" width="300px" style="padding: 15px 0px 0px 0px" alt="3DPlane" class="center">
+<span class="cap">The plane defined by x + y + z = 1</span>
+#+end_export
+
+#+begin_export html
+<img src="./images/xplusypluszequals1.png" width="400px" style="padding: 15px 0px 0px 0px" alt="3DPlane" class="center">
+<span class="cap">Another view of the plane defined by x + y + z = 1</span>
+#+end_export
+
+
+
+#+name: f7b3c8db-d998-49a9-bb24-34952f4339bd
+#+begin_src haskell :eval never :exports code
+
+#+end_src
+
+** Examples
+
+#+name: c701fafe-b333-4bea-9a06-f1330a10df00
+#+begin_src haskell :results silent :exports code
+:{
+a = (4><3)
+  [ 1, 2, 3
+  , 4, 0, 5
+  , 7, 7, 2
+  , 3, 3, 1] :: Matrix R
+:}
+#+end_src
+
+#+name: 16877668-3db4-4903-a464-30899585efa0
+#+begin_src haskell :results silent :exports code
+:{
+b = (3><1)
+  [ 2
+  , 2
+  , 2] :: Matrix R
+:}
+#+end_src
+
+#+name: a1f1b17e-9626-4a35-8477-eb5e5d9d0c06
+#+begin_src haskell :results verbatim :exports both
+a Numeric.LinearAlgebra.<> b
+#+end_src
+
+#+RESULTS: a1f1b17e-9626-4a35-8477-eb5e5d9d0c06
+: (4><1)
+:  [ 12.0
+:  , 18.0
+:  , 32.0
+:  , 14.0 ]
+
+#+name: c9d48771-bdd7-4d8a-b096-a0d01d67f605
+#+begin_src haskell :results silent :exports code
+:{
+c = (2><3)
+  [ 4,5,6
+  , 7,8,9] :: Matrix R
+:}
+#+end_src
+
+#+name: 797e4f3a-64d8-4cbb-a223-fce62abe9e20
+#+begin_src haskell :results silent :exports code
+:{
+d = (3><1)
+  [ 1
+  , 1
+  , 1] :: Matrix R
+:}
+#+end_src
+
+#+name: ec375671-3a71-4c13-9559-1a2bf3077761
+#+begin_src haskell :results silent :exports code
+:{
+e = (3><2)
+  [1..] :: Matrix R
+:}
+#+end_src
+
+#+name: 14c4d988-30c6-4d6e-a955-1973b997a0d5
+#+begin_src haskell :results verbatim :exports both
+c Numeric.LinearAlgebra.<> d
+#+end_src
+
+#+RESULTS: 14c4d988-30c6-4d6e-a955-1973b997a0d5
+: (2><1)
+:  [ 15.0
+:  , 24.0 ]
+
+#+name: 7d6e7836-22df-4830-bd39-03a81239a779
+#+begin_src haskell :results verbatim :exports both
+a Numeric.LinearAlgebra.<> e
+#+end_src
+
+#+RESULTS: 7d6e7836-22df-4830-bd39-03a81239a779
+: (4><2)
+:  [ 22.0, 28.0
+:  , 29.0, 38.0
+:  , 38.0, 54.0
+:  , 17.0, 24.0 ]
+
+#+name: 4c4b546b-e92c-4845-a8dc-1288d48e986c
+#+begin_src haskell :results silent :exports code
+:{
+f = (3><2)
+  [1..] :: Matrix R
+:}
+#+end_src
+
+#+name: 9ffab422-5a77-4e46-a5c2-9ed8cd4ae40a
+#+begin_src haskell :results silent :exports code
+:{
+g = (3><2)
+  [6,5..] :: Matrix R
+:}
+#+end_src
+
+#+name: 81893190-e4f0-455b-b935-7506edd3355e
+#+begin_src haskell :results verbatim :exports both
+f + g
+#+end_src
+
+#+RESULTS: 81893190-e4f0-455b-b935-7506edd3355e
+: (3><2)
+:  [ 7.0, 7.0
+:  , 7.0, 7.0
+:  , 7.0, 7.0 ]
+
+
+\begin{align*}
+A(u + v) = Au + Av
+\end{align*}
+
+
+#+name: bf94e067-a253-4d3e-b77a-96e9cf2ff88c
+#+begin_src haskell :results verbatim :exports both
+(a Numeric.LinearAlgebra.<> (f + g)) == ((a Numeric.LinearAlgebra.<> f) + (a Numeric.LinearAlgebra.<> g))
+#+end_src
+
+#+RESULTS: bf94e067-a253-4d3e-b77a-96e9cf2ff88c
+: True
+
+\begin{align*}
+A(cu) = cAu
+\end{align*}
+
+#+name: 4b76f5ca-7547-4e8b-b089-62b582c38af7
+#+begin_src haskell :results verbatim :exports both
+a Numeric.LinearAlgebra.<> (5 * f)
+#+end_src
+
+#+RESULTS: 4b76f5ca-7547-4e8b-b089-62b582c38af7
+: (4><2)
+:  [ 110.0, 140.0
+:  , 145.0, 190.0
+:  , 190.0, 270.0
+:  ,  85.0, 120.0 ]
+
+#+name: 0dd31f10-ed9b-4df0-bd95-0faff9005800
+#+begin_src haskell :results verbatim :exports both
+(a Numeric.LinearAlgebra.<> (5 * f)) == 5 * (a Numeric.LinearAlgebra.<> f)
+#+end_src
+
+#+RESULTS: 0dd31f10-ed9b-4df0-bd95-0faff9005800
+: True
+
+
+
+
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Bibliography :noexport:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- 
+:END:
+
+* Not exported :noexport:
+
+#+begin_src haskell :results silent :exports both
+1 + 1
+#+end_src
+
+#+name: 9112ba33-5066-4dc1-81eb-ac2bd934d18a
+#+begin_src haskell :eval never :exports code
+import Data.List
+#+end_src
+
+#+name: a2095fc2-b353-4c05-9606-2353ee242b24
+#+begin_src haskell :eval never :exports code
+import Data.Int
+#+end_src
+
+#+name: 40b6509a-71c3-471d-9ba4-7bdef1ea6411
+#+begin_src haskell :eval never :exports code
+import Numeric.LinearAlgebra
+#+end_src
+
+
+#+begin_src haskell :eval never :exports code :tangle omni3.1.hs :noweb yes
+module OMNI3_1 where
+
+-- first come import statements
+<<9112ba33-5066-4dc1-81eb-ac2bd934d18a>>
+<<a2095fc2-b353-4c05-9606-2353ee242b24>>
+<<40b6509a-71c3-471d-9ba4-7bdef1ea6411>>
+
+--then everything else  
+
+
+#+end_src
+
+
+
+
+* Footnotes
+
+[fn:1] We will usually move the unknowns to the left side of the
+equation, and move the constants to the right.

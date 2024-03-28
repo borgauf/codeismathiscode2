@@ -1,0 +1,916 @@
+# # -*- mode: org -*-
+# # -*- coding: utf-8 -*-
+#+TITLE:
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: numbers1aux1.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+
+
+* Numbers 2 Auxiliary 1: Sequences, recursion, and induction
+
+In this Auxiliary we'll wend our way into /induction/ by way of
+looking at sequences and recursion. Induction is a very important
+concept seen all over higher math and computer science. Induction
+seems odd at first glance. It seems to be saying, "We know this case
+is true, so we'll say the very next case is true also. And then we'll
+just continue doing this until..." Right. So we'll take apart and see
+why it actually works.
+
+* Tuesday at the library
+
+It's Tuesday afternoon and the siblings meet in their usual study room
+at the library to go over their honors computer science course
+assignments. Yesterday, Professor Chandra gave the first of the week's
+three lectures where she introduced the topic of [[https://en.wikipedia.org/wiki/Mathematical_induction][mathematical
+induction]]. She had made the upcoming week's lecture notes and a
+homework assignment available at the class' GitHub repository last
+Friday. The von der Surwitzs are going over their own initial
+annotations to the lecture notes, as well as comparing their
+assignment code so far...
+
+But before we join their discussion, we'll first start out with a key
+piece of math logic behind the whole idea of induction starting with
+/modus ponens/. The von der Surwitzes got most of this material in
+Monday's lecture, and reading on in the notes, they're now ready to
+discuss it...
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/omnimath"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+:END:
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle numbers2aux1.hs :noweb yes
+
+module NUMBERS2AUX1 where
+
+<<0cfdbd2f-4928-4888-9b6c-4cbcfc6e20c6>>
+<<5734a6c5-5bb7-4b36-b54a-7f47898c22cb>>
+<<e7aead7f-53ba-4831-b82f-2d6076fb3c6a>>
+<<8167873d-8684-469b-88e8-76fe654602ef>>
+<<ba80b736-62ea-4737-baff-f7c62e31b373>>
+
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+1 + 1 -- here to start the ghci REPL if needed
+#+end_src
+
+#+RESULTS:
+: λ> 2
+
+** Modus ponens[fn:3]
+
+#+begin_quote
+@@html:<font color = "#0d3db3">@@Modus ponendo ponens ... the way that
+ affirms by affirming, mode that affirms, Latin@@html:</font>@@
+#+end_quote
+
+or the /law of detachment/ that says
+
++ we start with a /conditional premise/, e.g., /if $R$, then $B$/, or,
+  /$R$ implies $B$/, ($R \supset B\;$)[fn:4] and we consider it to be true,
+  then
++ we consider the /antecedent/ (first half) of the conditional premise
+  $R \supset B\;$, i.e., $R$ as a stand-alone premise that is also true,
++ /therefore/, we logically conclude the /consequent/ of the
+  initial conditional premise, $B$, is true as a stand-alone too.
+
+e.g.,
+
++ /If/ you are $R\!$ eading this, /then/ you must be $B\!$ right ($R \supset B\;\;$)
++ Yes, you are $R\!$ eading this, ($R$).
++ Therefore[fn:5], you must be $B\!$ right ($\therefore B\;$).
+
+This can also be written as $((R \implies B) \land R) \implies
+B\;\;\;$. Spoken,
+
+#+begin_quote
+R *implies* B, *and* R is true, *implies* (therefore) B is true.
+#+end_quote
+
+Modus ponens is called the law of detachment because after asserting
+that both the conditional premise and its /antecedent/ are true we
+then /detach/ the /consequent/ from the conditional premise as a
+stand-alone truth in and of itself[fn:6].
+
+Modus ponens is a /rule of inference/ that says anytime we can assert
+the truth of the two premises, namely, $R \supset B\;$ as well as $R\;$, we
+can assert the truth of the conclusion $B\;$.
+
+** Sequences prelims
+:RESOURCES:
+- [[cite:&bender2010lists]]
+:END:
+
+*** Friday's lecture
+@@html:<font color = "#650d1c">@@⇲ This was right at the end of
+Dr. Chandra's intriguing lecture in class on Friday...
+@@html:</font>@@
+
+⌜ If we have a bag of marbles, and each marble seems to be a different
+color, and we empty them out on the floor in a straight line, could we
+make any sense out of their order? Using our imagination, sure, why
+not? For just that first pouring-out we could make up any story we
+wanted about the order we see. But we would only have to dump out the
+marbles one more time to see our imaginings were false. Why? Because
+they would invariably come out in a different order. And if we
+repeated this dumping out over and over we would see only random
+order, that is, no rhyme or reason to how they're lining up from one
+dump to the next.
+
+But let's say we have "magic" marbles that do in fact come out of the
+bag in a certain order. Yes, it might be interesting to know why they
+have this self-ordering thing going on. Is there some machine in the
+bag that's sending them out in a particular order? So this week we're
+going to look at something deeper with order. What if creating a
+sequence were based on a formula or algorithm, and not just some
+built-in ordering principle that we give it with a Haskell ~Ord~
+instance? What if we could /create/ an ordered sequence by applying a
+formula?
+
+Now, we know about sequences from Haskell lists, and in math a
+sequence is defined as @@html:<font color = "#650d1c">@@an enumerated
+collection of objects in which repetitions are allowed and order
+matters@@html:</font>@@ ... that's a quote from the [[https://en.wikipedia.org/wiki/Sequence][Wikipedia page on
+sequences]]. And no, let's not confuse sequences and series. In math
+they're not interchangeable. A series in math is a /summation/ of an
+infinitely many quantities to some starting quantity. We'll see more
+of them later. So going forth, we're going to see how sequences can be
+created. One way is through recurrence relationships, where one
+element is built from the previous element. We'll take a look at some
+things you saw in basic algebra but probably didn't realize were about
+sequences and recurrence. ⌟
+
+*** Lead-up to recursion and induction
+
+At first glance, the first homework problem seems trivial to the von
+der Surwitzes
+
+@@html:<font color = "#650d1c">@@⇲ How high would you be if you
+climbed a certain number of steps, e.g., $127\:$, up a set of stairs
+on a hill, given the starting altitude $A = 800\:$ feet at the bottom
+of the stairs, and each step has height $B = 8\:$ inches?  Write a
+Haskell function that takes in the number of steps as the single input
+parameter, incorporates already knows $A$ and $B\:$, and gives the
+answer in feet.@@html:</font>@@
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ The steps are all the same so their order doesn't really
+matter. That's obvious. \\
+@@html:<font color = "#111" size = 5%>@@𝔘𝔴𝔢:@@html:</font>@@ Right, and we just enumerate them with the natural
+numbers. Gosh, I don't think I'll ever get "enumerate with natural
+numbers" out of my head again.\\
+[Laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ So we don't need to take the $127$ and do anything with
+it. Did you see that next problem? It's just an algebra problem, but
+still...\\
+[Rueful murmurs of agreement.] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [Gestures with hands.] So without overthinking this, it's just
+saying that you need to multiply $127\:$, or whatever steps you give
+it, by $8$ inches. That's not very hard. And then you convert it to
+feet and then add that to the altitude. I guess this is mainly to get
+us to use Haskell's ~let~[fn:7].\\
+*Uwe, Ursula*: Yeah.
+
+Ursula had plugged her laptop into the big monitor on the wall. She
+pulled up her homework
+
+#+name: 0cfdbd2f-4928-4888-9b6c-4cbcfc6e20c6
+#+begin_src haskell :eval never :exports code
+stepsAltCalc steps =
+  let stepinches = 8 -- 8 inch step height basealt
+      basealt = 800 -- 800 feet base altitude
+  in ((stepinches * steps) / 12) + basealt -- divide by 12 for feet
+  
+#+end_src
+
+#+name: bced4877-58f5-476a-9f15-7967416d20de
+#+begin_src haskell :results verbatim :exports both
+stepsAltCalc 127
+#+end_src
+
+#+RESULTS: bced4877-58f5-476a-9f15-7967416d20de
+: 884.6666666666666
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So like the professor said, the take-away here is that when we
+declare variables like ~stepinches~ and ~basealt~ inside the ~let~ and
+~in~, they're visible only inside that ~let...in~ structure and never
+outside them. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ And then she asks if we can rewrite it with /another/
+~let...in~ inside the first one, right? And the stuff inside the
+nested ~let...in~ can't be seen by the outside, but the outside
+~let...in~ can be seen by the inside.
+
+And so they did another version of ~stepsAltCalc~
+
+#+name: e7aead7f-53ba-4831-b82f-2d6076fb3c6a
+#+begin_src haskell :eval never :exports code
+stepsAltCalc2 steps =
+  let basealt = 800
+      stepasfeet = 8/12
+  in
+    let feethigh =  stepasfeet * steps
+    in feethigh + basealt
+
+#+end_src
+
+#+name: 81d9d8ad-52fc-4a0e-8b0c-59ab73c7d985
+#+begin_src haskell :results verbatim :exports both
+stepsAltCalc2 127
+#+end_src
+
+#+RESULTS: 81d9d8ad-52fc-4a0e-8b0c-59ab73c7d985
+: 884.6666666666666
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ And then we still need to tame those decimal places. What do
+you think?
+
+They then followed the professor's link to a [[https://stackoverflow.com/questions/18723381/rounding-to-specific-number-of-digits-in-haskell][stackoverflow question]],
+as well as an [[https://typeclasses.com/featured/rounding][article on rounding in Haskell]]. They studied them for a
+while, then traded glances.
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Sometimes I can't tell if Professor Chandra is, yeah,
+/was heißt zerstreut, geistesabwesend/? \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Absent-minded? \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Right. Absent-minded. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Why? \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Well, do you remember she's talking about rounding, but then
+she's off on this tangent about how [writing on the board] $2/2$
+should also be seen as $2$ times the inverse of $2\:$? And then she's
+talking about how "literal" numbers, like ~51~, is actually
+~fromIntegral 51~ to the system. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ And [paging through her written notes] right, ~3.14~ is
+actually, ahh, here it is: ~fromRational 3.14~ internally.
+
+Ursula then typed this in at the REPL
+
+#+name: b057c9a4-30d1-4d2c-bee7-9def5a29f2eb
+#+begin_src haskell :results verbatim :exports both
+fromRational 3.14
+#+end_src
+
+#+RESULTS: b057c9a4-30d1-4d2c-bee7-9def5a29f2eb
+: 3.14
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Get the type for it.
+
+Ursula then typed in
+
+#+name: f24e5478-ae98-4e84-9288-3d294e4dd049
+#+begin_src haskell :results verbatim :exports both
+:t fromRational 3.14
+#+end_src
+
+#+RESULTS: f24e5478-ae98-4e84-9288-3d294e4dd049
+: fromRational 3.14 :: Fractional a => a
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ And get the type for an integer, non-decimal number, can you? \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [complies] Got it.
+
+#+name: 79eb62b8-178d-4bf9-8dca-93fbfda27040
+#+begin_src haskell :results verbatim :exports both
+:t fromIntegral 1
+#+end_src
+
+#+RESULTS: 79eb62b8-178d-4bf9-8dca-93fbfda27040
+: fromIntegral 1 :: Num b => b
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [slapping his thighs and exhaling loudly] Okay bright sisters,
+what does all this mean? \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [reading her notes] Well, for one it means you're not really
+ever dealing with just the naked numbers, because they're always
+packaged with either ~fromIntegral~ for a non-decimal number and
+~fromRational~ with a decimal number. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So the naked literal numbers are part of the type class system,
+it's got the class methods ~fromIntegral~ and ~fromRational~
+involved. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Okay, let's get back to the example code. Here, look
+[pulling up the stackoverflow example on the monitor]
+
+#+name: 8167873d-8684-469b-88e8-76fe654602ef
+#+begin_src haskell :eval never :exports code
+round' :: Double -> Integer -> Double
+round' num sg = (fromIntegral . round $ num * f) / f
+    where f = 10^sg
+
+#+end_src
+
+She evaluated it, then ran a test case
+
+#+name: 0472c828-cd0f-499b-8364-dfdf38e41018
+#+begin_src haskell :results verbatim :exports both
+round' 884.6666666666666 2
+#+end_src
+
+#+RESULTS: 0472c828-cd0f-499b-8364-dfdf38e41018
+: 884.67
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [going to the board and writing ] So as the professor explained
+it, you always start at the inner-most operation. That would the
+~num * f~. So we know ~num~ is a ~Double~. Right? I mean it's declared
+as one in the type declaration. And ~(*)~ is a binary operation of
+type ~Num a => a -> a -> a~. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So we can assume that ~f~ becomes a ~Double~ because they have
+to be of the same type ~a~. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ And then we look at the division [typing into the REPL]
+
+#+name: 773958cd-8d24-45ac-bb06-572a59abd480
+#+begin_src haskell :results verbatim :exports both
+: (/)
+#+end_src
+
+#+RESULTS: 773958cd-8d24-45ac-bb06-572a59abd480
+: (/) :: Fractional a => a -> a -> a
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing] So just ~(num * f) / f~ would be division of a
+~Double~ by a ~Double~ since the class ~Fractional~ has an instance
+~Fractional Double~ [typing into the REPL]
+
+#+name: ad4f5a8e-1479-491f-97db-75ed795d40a4
+#+begin_src haskell :results verbatim :exports both
+:i Fractional
+#+end_src
+
+#+RESULTS: ad4f5a8e-1479-491f-97db-75ed795d40a4
+#+begin_example
+type Fractional :: * -> Constraint
+class Num a => Fractional a where
+  (/) :: a -> a -> a
+  recip :: a -> a
+  fromRational :: Rational -> a
+  {-# MINIMAL fromRational, (recip | (/)) #-}
+  	-- Defined in ‘GHC.Real’
+instance Integral a => Fractional (Ratio a)
+  -- Defined in ‘GHC.Real’
+instance Fractional Float -- Defined in ‘GHC.Float’
+instance Fractional Double -- Defined in ‘GHC.Float’
+#+end_example
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ But now we need to put the numerator through ~round~ [Ursulu
+types into the REPL]
+
+#+name: c259d971-bc59-4c16-ab2f-ed08ed6a1610
+#+begin_src haskell :results verbatim :exports both
+:t round
+#+end_src
+
+#+RESULTS: c259d971-bc59-4c16-ab2f-ed08ed6a1610
+: round :: (RealFrac a, Integral b) => a -> b
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [continuing] Right, so the output of ~round~ will have an
+instance of ~Integral~. But we're trying to divide... \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [writing on the board] ~(/)~ demands that the result of ~round~
+has to have the same as the denominator ~f :: Double~. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [typing into the REPL]
+
+#+name: 93eac39f-d0e7-420d-99d6-efe6de69878b
+#+begin_src haskell :results verbatim :exports both
+:i Integral
+#+end_src
+
+#+RESULTS: 93eac39f-d0e7-420d-99d6-efe6de69878b
+#+begin_example
+type Integral :: * -> Constraint
+class (Real a, Enum a) => Integral a where
+  quot :: a -> a -> a
+  rem :: a -> a -> a
+  div :: a -> a -> a
+  mod :: a -> a -> a
+  quotRem :: a -> a -> (a, a)
+  divMod :: a -> a -> (a, a)
+  toInteger :: a -> Integer
+  {-# MINIMAL quotRem, toInteger #-}
+  	-- Defined in ‘GHC.Real’
+instance Integral Word -- Defined in ‘GHC.Real’
+instance Integral Integer -- Defined in ‘GHC.Real’
+instance Integral Int -- Defined in ‘GHC.Real’
+#+end_example
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing] And since there is no instance of ~Double~ in
+~Integral~. We can't go into the ~Integral b => b~ and pull out a
+~Double~. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So the numerator part won't work as is. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [typing into the REPL] It shouldn't.
+
+#+name: 53b6e7bd-37eb-4c25-bfc2-899253d612d5
+#+begin_src haskell :results verbatim :exports both
+:t (round (844.666 * 100.0)) / 100.0
+#+end_src
+
+#+RESULTS: 53b6e7bd-37eb-4c25-bfc2-899253d612d5
+: (round (844.666 * 100.0)) / 100.0
+:   :: (Integral a, Fractional a) => a
+
+The siblings study this for a while.
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Try an example. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [types into the REPL] Got it. But this should blow up.
+
+#+name: 477eb3e3-169b-4520-bc54-7b53bc50c084
+#+begin_src haskell :results verbatim :exports both
+(round (844.666 * 100.0)) / 100.0
+#+end_src
+
+#+RESULTS: 477eb3e3-169b-4520-bc54-7b53bc50c084
+#+begin_example
+<interactive>:208:1-33: error:
+    • Ambiguous type variable ‘a0’ arising from a use of ‘print’
+      prevents the constraint ‘(Show a0)’ from being solved.
+      Probable fix: use a type annotation to specify what ‘a0’ should be.
+      These potential instances exist:
+        instance (Show a, Show b) => Show (Either a b)
+          -- Defined in ‘Data.Either’
+        instance Show a => Show (Ratio a) -- Defined in ‘GHC.Real’
+        instance Show Ordering -- Defined in ‘GHC.Show’
+        ...plus 25 others
+        ...plus 82 instances involving out-of-scope types
+        (use -fprint-potential-instances to see them all)
+    • In a stmt of an interactive GHCi command: print it
+#+end_example
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Now put in the ~fromIntegral~ in front of ~round~ in the
+numerator. Use some actual numbers. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [typing] Exactly.
+
+#+name: a1658863-6221-4301-8f6f-5112f2e3dd75
+#+begin_src haskell :results verbatim :exports both
+(fromIntegral (round (844.666 * 100.0))) / 100.0
+#+end_src
+
+#+RESULTS: a1658863-6221-4301-8f6f-5112f2e3dd75
+: 844.67
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Of course. It works now. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [typing] Let me do a type on this. \\
+
+#+name: 11d94bd1-013f-44fc-b8ad-56ff15dccd82
+#+begin_src haskell :results verbatim :exports both
+:t (fromIntegral (round (844.666 * 100.0)))
+#+end_src
+
+#+RESULTS: 11d94bd1-013f-44fc-b8ad-56ff15dccd82
+: (fromIntegral (round (844.666 * 100.0))) :: Num b => b
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Yes! \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ We get something that has an instance in ~Num~ and will do
+division. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ That's because ~fromIntegral~ is magical, right? \\
+[Laughter.]
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ No it's because [searching her notes] because [reading]
+
+#+begin_quote
+~fromIntegral~ converts from any ~Integral~ type into a ~Num~ type.
+#+end_quote
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [pointing at the code] Which does include ~Double~ like we need
+to be in the numerator of ~Double~ dividing ~Double~. \\
+
+The siblings surveyed the code and then looked at each other with
+blank face.
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ And why was all this in and out of types and classes necessary?
+\\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Well, like she said, it's because having types controlling how
+they play together is a /logical entailment/ of working with numbers
+on a computer. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ She said other languages tend to /coerce/ things to work
+without understanding all the consequences. That's all we can say at
+this point, I suppose. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ I suppose we'll understand it more as we go along. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Time for a break.
+
+They visited the campus student center where they all got hot
+chocolates. While enjoying their drinks, they discussed some of the
+things Professor Chandra had said about how they were getting a
+preview of what the incoming university Freshman students are hit with
+in the Computer Science program. She had said their department ---
+like many other schools --- had a high flunk-out, major-change rate,
+which she believed was attributable to the math of computer science
+being completely new.
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ She also said a lot of new students come into comp-sci with
+completely wrong ideas about what computer science studies are
+about. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Yeah, they're expecting to learn a bunch of programming
+hacks for phone apps or video games, and instead they're hit with
+applied math. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ She floored me when she said you can go a whole semester and
+not even touch a computer. It's all just applied math theory. \\
+[Rueful murmurs of acknowledgement.] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Well, I think we're all grateful to be getting some of it here
+before college. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ It's not like regular math where you get at least ten years,
+but it's better than nothing. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Reduces that shock. \\
+[Murmurs of agreement.]
+Upon returning Ursula scrolled to the next problem
+
+@@html:<font color = "#650d1c">@@⇲ If a population increases at a rate
+of $1.5\%\:$ per year, find the doubling period.@@html:</font>@@
+
+@@html:<span
+class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ So again we'll
+probably use ~let~ or ~where~. \\
+@@html:<span
+class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ This is one of those
+"compound interest rate" calculator things.  @@html:<font color =
+"#111"><span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [writing on
+the board] Right. First, the rate
+
+\begin{align*}
+rate &= 1.5\% \;\: \text{per year} \\[.5em]
+&= \frac{1.5}{100} \\[.5em]
+&= 0.015
+\end{align*}
+
+@@html:<span
+class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [continuing] Or the
+factor of $1.015\:$. So now we set up a formula for population
+$P(t)\:$, which is a function of time, based on an initial population
+$P_{0}\:$ times the rate per year \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ And this
+time we don't really care about what $P_{0}$ is. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [writing]
+No, just how long in years until there's a doubling.
+
+\begin{align*}
+P(t) &= P_{0} \cdot(1.015)^{t}
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [continuing] So it's that initial population times two because
+it's doubled
+
+\begin{align*}
+P(t) &= 2P_{0} \;\; \text{for} \;\; t = ?
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [continuing] So now we just sub in. And we use $\log_{10}$ to deal
+with the $\text{t}$ exponent
+
+\begin{align*}
+2P_{0} &= P_{0} \cdot(1.015)^{t}  \quad\quad \ldots \text{factor out $P_0$ on both sides} \\[.5em]
+2 &= (1.015)^t \quad\quad \ldots \text{take $\log_{10}$ of both sides}\\[.5em]
+\log_{10}\, 2 &= \log_{10} \,(1.015)^t \\[.5em]
+\log_{10}\, 2 &= t\cdot\log_{10} \,(1.015) \\[.5em]
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [typing] Let me just plug this in to see what it gives
+us. [going out on the Internet to look up how Haskell does base-10
+logarithms] Okay, it's ~logBase~ and then two parameters, the first is
+the base you want, the second the number you want done --- and I'll
+run it through the decimal-tamer \\
+
+#+name: 5e70c87d-8d90-4ecc-812e-d9077f1689ef
+#+begin_src haskell :results verbatim :exports both
+round' ((logBase 10 2) / (logBase 10 1.015)) 2
+#+end_src
+
+#+RESULTS: 5e70c87d-8d90-4ecc-812e-d9077f1689ef
+: 46.56
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Do we need to code this? \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Nah. I think she just wanted to jar our memory with the basic
+ $N = N_{0} (1 + 4)^{t}\;\;$ situation and exponential functions. All right,
+next one.\\
+
+As was noted, the question came from Serge Lang's /Basic
+Mathematics/. The professor had reserved the book at the university
+library and encouraged the students to peruse it and note his formal
+style in describing very basic pre-Algebra material
+
+@@html:<font color = "#650d1c">@@ A chemical substance disintegrates
+in such a way that it gets halved every $10$ minutes. If there are
+$20$ grams (g) of the substance present at a given time, how much will
+be left after $50$ minutes?@@html:</font>@@
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ So look at this
+org-mode table she gave us. [scrolling down]
+
+#+begin_example
+#+NAME: ratetable
+| 0 min | 10 min | 20 min | 30 min | 40 min | 50 min |
+|  20.0 |    10. |     5. |    2.5 |   1.25 |  0.625 |
+#+TBLFM: @2$2..@2$> = @2$-1/2
+#+end_example
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ She doesn't expect
+us to learn that sort of Emacs spreadsheet stuff, does she? \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ No, I think she
+just wants to show us --- once again --- how getting the math out of
+books and paper and your brain and onto the computer is what this is
+all about. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ You're not done
+until the math's been turned into code. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [continuing] But
+still it's cool to know this stuff. Remember early on she showed us
+all the org-mode stuff about being able to chain things together. So
+you can take this table and plug it in other places. It's modular. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Yeah, sort of
+like when she showed us how to /pipe/ things at the command line. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Right. But I think
+Haskell will take up all of our time for the immediate future. Linux
+and Emacs will have to wait. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So once again,
+we're supposed to recall what we know about /geometric
+progression/. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So following [[https://en.wikipedia.org/wiki/Geometric_progression][the
+link to the Wikipedia page]], she wants us to understand that this is a
+form of recursion. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Yes, we're
+slowly easing into, being funneled into the idea of recursion. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So does everybody
+have a basic understanding of recursion? \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Yeah, it's just
+the idea that you
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ But remember
+that talk she gave about proofs?\\
+[murmurs of acknowledgement] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ All right, let's
+tackle the Bird book. [pulling Richard Bird's /Thinking Functionally
+with Haskell/ and opening it to a bookmarked page] So we're supposed
+to read these sections and try out the code. It's supposed to get us
+prepared from induction. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ That's on reserve,
+right? \\
+[Ute nods.] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Did you read it
+yet? \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Yes, and it's
+fairly straightforward. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ I read her
+notes on this and ... /ja, verstehe nur Bahnhof/.[fn:8]
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ We covered that
+chapter in /Learn You.../ on recursion[fn:9]. [murmurs of agreement]
+All right, so this first part goes over how to set up an alternative
+version of the natural numbers. You might want to pull up file,
+Ursula, and code this in [writing on the board] ~data Nat = Zero |
+Succ Nat~ \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [typing] Got
+it. Evaluating.
+
+#+name: ba80b736-62ea-4737-baff-f7c62e31b373
+#+begin_src haskell :eval never :exports code
+data Nat = Zero | Succ Nat
+#+end_src
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing] So
+reading the text I'm getting that this is a data declaration where you
+get a choice of either a ~Zero~ or a ~Succ Nat~. That much is
+clear. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ She didn't go over
+this in class, right? \\
+
+
+
+
+
+
+
+
+
+
+
+
+Then they went on in the lecture notes
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Okay, next. Here's the pictures of the strange broccoli and the
+sunflower head she showed us in class. There's supposed to be a
+pattern and she wanted us to think about it. Without looking ahead in
+the notes. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ I had no idea where to go on that one. Anyone have any luck?
+\\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Maybe. I looked it up and it's got something to do with what
+they call the /Fibonacci sequence/. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Yeah, I've heard of it, but that's about all. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ I just quickly looked at it, but basically it's a sequence of
+numbers that you can build according to a rule, a formula. [He got up
+and went to the whiteboard and started to write.] So you start the
+sequence with $\{0,1\}\;$, then to get a new sequence element, you
+just add the last two numbers of the sequence you already have. So if
+you started with $\{0,1\}\;$ then $0$ plus $1$ is $1\;$. Now you've
+got $\{0,1,1\}\;$. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So then to get then next number you add the last two numbers
+$1$ and $1$, you get $2\;$ and now the sequence is
+$\{0,1,1,2\}\;$. Then do it again and get $\{0,1,1,2,3\}\;$. Again,
+the last two to get $\{0,1,1,2,3,5\}\;$. You can do this and make the
+sequence as long as you like. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Right. So instead of the sixty-first step being, er, step
+$127\;$, the the sixty-first Fibonacci number will have to be figured
+out by a formula that does some sort of calculation.  \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Maybe. I'm not totally sure about that. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Anyway, a number in the sequence depends on the numbers before
+it. That's the bottom line. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Well, I did look at the Wikipedia page... \\
+
+They then took a look on the monitor at the Wikipedia article called
+/[[https://en.wikipedia.org/wiki/Fibonacci_number][Fibonacci number]]/, but when they got to the [[https://en.wikipedia.org/wiki/Fibonacci_number#Definition][definition]], they got
+stuck
+
+#+begin_quote
+The Fibonacci numbers may be defined by the recurrence relation
+
+\begin{align*}
+F_{n} &= 0, F_{1} = 1 \\[.5em]
+F_{n} &= F_{n-1}  + F_{n-2} \quad \text{for} \;\; n > 1
+\end{align*}
+
+#+end_quote
+
+They decided that this was some new sort of [[https://en.wikipedia.org/wiki/Piecewise][piecewise function]],
+although they weren't sure. They followed the link to [[https://en.wikipedia.org/wiki/Recurrence_relation][recurrence
+relation]] and studied it, but didn't quite understand the
+definition. However, they skipped on to the examples and found the
+formula for /factorial/
+
+\begin{align*}
+0! &= 1\;, \\[.5em]
+n! &= n(n-1)! \quad \text{for}\;\; n> 0
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [getting up and writing on the whiteboard] Okay, remember the
+definition of the absolute value function? [continuing on the board]
+
+\begin{align*}
+|x| =
+\begin{cases}
+x,  & \text{if $x \ge 0$} \\[.5em]
+-x, & \text{if $x \lt 0$}
+\end{cases}
+\end{align*}
+
+This is two-part just like factorial is is all I'm saying. \\
+*Uwe, Ursula*: [murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So the $0! = 1$ is
+just your "starter" case, your /base case/, you get that one for
+free. But after that --- and that's where it gets into defining
+something based on itself. A bit confusing. \\
+[murmurs of agreement then silence as the buddies digested the
+formula] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Well, when in
+doubt, /plug something in/. \\
+[laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [writing on the
+board] So let's start with $1$, and that's $1!  = 1(1-1)!\:$, which is
+just $1(0)!\:$ [pausing] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [jumping in] That
+has to be $1$ /times/ $0$ factorial, not $1$ times $0$ first, /then/
+factorial that. Otherwise we would never get anywhere. \\
+[laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Sure, so the $0$
+factorial we know to be $1$ and $1$ times $1$ is $1$. So $1!$ is
+$1$. So let's try it for $2$. [writing]
+
+\begin{align*}
+2! &= 2(2-1)!
+&= 2(1)!
+&= 2(1)
+&= 2
+\end{align*}
+
+
+
+
+Much simpler
+would be your feet and legs going up a flight of steps, each step the
+same as the last, except that it's higher and more forward than the
+last. With the certainty of one step being a given amount up and over
+the other we would be able to, e.g., calculate our altitude given how
+many steps we had climbed.
+
+Anytime we have a sequence of things following a certain regular
+pattern from one to the next, this "one to the next" phenomenon can be
+leveraged. This means we may figure out a "solution," in that we
+create a formula to compute /any/ element in the sequence.
+
+** Cousin recursion
+
+Consider the /[[https://en.wikipedia.org/wiki/Factorial][factorial]]/ of a number, $n!\;$. In Haskell we may
+express factorial as a recursion[fn:10]
+
+#+name: 5734a6c5-5bb7-4b36-b54a-7f47898c22cb
+#+begin_src haskell :eval never :exports code
+fac :: (Integral a) => a -> a
+fac 0 = 1
+fac n = n * fac (n - 1)
+#+end_src
+
+If you've covered Chapter 5 /[[http://learnyouahaskell.com/recursion][Recursion]]/ of LYAHFGG, you're familiar
+with the idea of recursive functions as Haskell does it. What makes
+recursion a special case of this concept of knowing sequences is that
+we go from one to the next by /building/ on the previous step. With
+~fac~ above, we go down a recursion rabbit hole, then come back out
+the rabbit hole, multiplying the previous result to the next. So for
+~3!~ we're creating
+
+#+begin_example
+fac (3)
+3 * fac (2)
+3 * 2 * fac (1)
+3 * 2 * 1 * fac (0)
+3 * 2 * 1 * 1
+#+end_example
+
+i.e., each line, starting at the top, resolves to the next as it goes
+into the recursive process of a function calling itself[fn:11]. Again, this
+is a building process. That is to say recursive ~fac~ is not an
+algorithm, per se, a "solution" for drilling directly into any place
+in a sequence. What would a solution look like for going straight to a
+place in a sequence?
+
+** Gauss the child prodigy
+
+
+
+
+
+
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:3] Professor Chandra assumes the students have worked up to if not
+beyond Kwong's [[https://math.libretexts.org/Courses/Monroe_Community_College/MTH_220_Discrete_Math/2%3A_Logic/2.6_Arguments_and_Rules_of_Inference][Arguments and Rules of Inference]].
+
+[fn:4] also written as $R \implies B\;$. Both $\supset$ and $\implies$ are
+used to mean /implies/.
+
+[fn:5] $\therefore\;$ is the LaTeX symbol for /therefore/.
+
+[fn:6] A good study technique is to read the theoretical explanation,
+then some examples, then go back to the theoretical explanation to see
+how it is the perfect generalization of all the examples.
+
+[fn:7] See [[http://learnyouahaskell.com/syntax-in-functions#let-it-be][this]] LYAGFGG treatment of ~let~.
+
+[fn:8] German phrase meaning "It's Greek to me."
+
+[fn:9] Check it out [[http://learnyouahaskell.com/recursion][here]].
+
+[fn:10] Another version of factorial would be simply ~fac n = product
+[1..n]~. See ~product~ [[http://zvon.org/other/haskell/Outputprelude/product_f.html][here]]. Try it out. And if you're feeling really
+brave, look under the hood [[https://hackage.haskell.org/package/base-4.17.0.0/docs/src/GHC.List.html#product][here]]. What you're seeing is a special
+/fold/ function that --- and only if you're really brave --- is talked
+about [[https://wiki.haskell.org/Foldr_Foldl_Foldl'][here]]. So ~product~ is based on a more basic concept of a
+fold. More later.
+
+[fn:11] By the way, why is the result of ~fac~ with input ~0~ set to
+~1~? In math, a product of no factors is considered to be the
+/multiplicative identity/, i.e., that number when multiplied by any
+number gives that number back. ~1~ times something is just that
+something again.

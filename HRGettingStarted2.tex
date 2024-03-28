@@ -1,0 +1,370 @@
+% Created 2022-12-18 Sun 22:13
+% Intended LaTeX compiler: pdflatex
+\documentclass[american]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tikz}
+\usepackage{commath}
+\usepackage{pgfplots}
+\usepackage{sansmath}
+\usepackage{mathtools}
+\date{}
+\title{Haskell Road; Getting Started Part 2}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={Haskell Road; Getting Started Part 2},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.2 (Org mode 9.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section*{Getting started part 2}
+\label{sec:org7bfc1b4}
+
+
+\section*{Monday at the library part 2}
+\label{sec:org71987b3}
+
+\subsection*{Breaktime}
+\label{sec:org4fec33f}
+
+The von der Surwitzes pop over to the student center cafe for a break.
+They grab a large mineral water, a brand they knew in Germany, and Ute
+has packed some \emph{Vollkornbrot} sandwiches of hummus and cucumber. They
+sit at a table and pour the water and pass around out the sandwiches.
+
+𝔘𝔱𝔢: All right, so I
+emailed the professor about a couple of questions from that first
+chapter of \emph{The Haskell Road}, and she replied saying, first, she's
+happy we're tackling the material early. And she mentioned some
+resources --- a few texts she has on reserve at the library. \\[0pt]
+𝔘𝔴𝔢: Sort of like, I'm
+not going to give you the answers. I'm going to point you in the right
+direction. What books are they? \\[0pt]
+[murmurs of acknowledgement] \\[0pt]
+𝔘𝔱𝔢: Math. Upper level
+college texts. Abstract algebra and number theory. \\[0pt]
+𝔘𝔴𝔢: I've heard
+computer science has all these higher math concepts, but then you
+don't go as far as a math major does. \\[0pt]
+[silence, eating and drinking] \\[0pt]
+𝔘𝔴𝔢: [continuing] I
+guess you're just supposed to learn as much as you can. But like she
+said at the open house, a computer scientist is really an \emph{applied}
+mathematician. \\[0pt]
+[murmurs of agreement] \\[0pt]
+𝔘𝔯𝔰𝔲𝔩𝔞: And the math is
+the hardest part for incoming CS students, those first four semesters,
+ergo, that's what we're emphasizing it in this course. \\[0pt]
+[nods of agreement then silence as they eat and drink] \\[0pt]
+𝔘𝔯𝔰𝔲𝔩𝔞: [continuing] So
+no hand-waving. And she doesn't have a set amount she wants us to get
+through. The course is open-ended. I just find that amazing. \\[0pt]
+[murmurs of agreement] \\[0pt]
+𝔘𝔴𝔢: But I'm sure we'll
+need to keep moving and not be laggards about it. \\[0pt]
+[murmurs of agreement] \\[0pt]
+𝔘𝔯𝔰𝔲𝔩𝔞: A whole year,
+the whole school year. Her sabbatical ends next summer, but I'm pretty
+sure I'll want to continue. I don't know if I want to be a computer
+scientist or software engineer, but learning this can't hurt. \\[0pt]
+𝔘𝔱𝔢: I guess you could
+say Novalis is sort of an open \emph{Gynmasium}. \\[0pt]
+[soft laughter] \\[0pt]
+𝔘𝔴𝔢: And what happens
+afterward? They definitely want you to just keep going at the U. Which
+I wouldn't mind at all. \\[0pt]
+[looks about the table] \\[0pt]
+𝔘𝔱𝔢: Yes, and lots of
+people just drift into a half-and-half situation where there taking
+courses over at the U. \\[0pt]
+𝔘𝔯𝔰𝔲𝔩𝔞: Well, Father
+has tenure now. But I don't know if Mutti can go on working from
+here. [shrugging and sighing] Anyway, I guess you two will cross that
+bridge before I will. \\[0pt]
+𝔘𝔱𝔢: [laughing] Hardly!
+You're right there with us in everything we're doing this coming year.
+
+\subsection*{Divided by}
+\label{sec:orgce0892d}
+Back at the library study room they've checked out the reserved books
+and are looking through sections of those that deal with the basic
+theory of division.
+
+𝔘𝔱𝔢: [reading from the
+Divisibility section of \emph{Proofs, A Long-Form Mathematical
+Textbook}\footnote{\emph{\href{https://longformmath.com/proofs-home}{Proofs; A Long-Form Mathematics Textbook}} by Jay Cummings}] All right, so Professor Chandra wants us to
+understand divisibility before we go to \emph{greatest common divisor}, and
+before we talk about primes. She said, You have to know all of the
+implications of ``divided by'' before you can advance. And like it's
+saying in here, [reading] you could just say, \emph{\(a\) divides \(b\) if
+\(\frac{a}{b}\) is an integer}. \\[0pt]
+[Ursula and Uwe read the section from a second copy] \\[0pt]
+𝔘𝔱𝔢: [continuing] But
+we don't want that definition, we want \emph{this} definition [getting up
+and writing on the board]
+
+\begin{align}
+\exists \: k \in \mathbb{Z},\; a \neq 0, \;\;a \mid b \;\; \text{if} \;\; b = a \cdot k  
+\end{align}
+
+𝔘𝔱𝔢: [continuing] The
+symbol \(a \mid b\:\) means \(a\) divides \(b\) for some \(k\) where \(b = a \cdot
+k\;\) and \(a\) is not equal to zero. [pausing] Right, all that makes
+sense. So basically, this turns the whole question of divisibility
+into finding a proper integer value for \(k\:\) to \emph{multiply} with . Now
+we have a math-formalist way of seeing divisibility. \\[0pt]
+[murmurs of approval] \\[0pt]
+𝔘𝔴𝔢: I like how he says
+good definitions don't just fall out of the sky. \\[0pt]
+[murmurs of agreement] \\[0pt]
+𝔘𝔯𝔰𝔲𝔩𝔞: Then the
+examples, like \(2 \mid 14\) is true because \(14 = 2 \cdot 7\:\), in other
+words we've found a whole number integer, \(k = 7\:\) and we're
+happy. \\[0pt]
+𝔘𝔱𝔢: Again, we've
+turned division into an issue of true-false logic and
+multiplication. [writing on the board] So \(7 \mid 23\) doesn't work
+because we have no solution for \(7k = 23\;\). \\[0pt]
+𝔘𝔴𝔢: And look at that
+last one where it's \(a \mid 0\;\). That's true, for a non-zero \(a\)
+since we can say \(0 = a \cdot 0\) is always true for any \(a\) as long as \(k
+= 0\;\). \\[0pt]
+[murmurs of agreement] \\[0pt]
+𝔘𝔱𝔢: And like he says
+we're not supposed to look at \(2 \mid 14\) and just say it \emph{equals}
+\(7\;\). It's not supposed to be seen as a calculation, it's a logic
+\emph{expression} that is true or false --- for some value \(k\:\). \\[0pt]
+𝔘𝔴𝔢: Right. We're in
+the world of logic now, not grade school arithmetic. So everything has
+to be reexplained and reworked. \\[0pt]
+[murmurs of agreement] \\[0pt]
+𝔘𝔱𝔢: Good, now he's
+talking about the \emph{transitive} property of divisibility. It is a
+\emph{proposition}, which is a type of theorem, and that means it comes
+with a proof. [writing on the board] Here it is in the compact math
+logic form
+
+\begin{align*}
+a, b, c \in \mathbb{Z},\;\; a \mid b \;\land\; b \mid c \implies a \mid c
+\end{align*}
+
+𝔘𝔱𝔢: [continuing] And
+then he goes on to prove it by saying assume the \emph{if} part, the \(a
+\mid b \;\land\; b \mid c\:\) part is true, that means the \emph{then} part, the
+\(a \mid c\) part is true. So [writing]
+
+\begin{align*}
+b &= a \cdot s \\[.4em]
+c &= b \cdot t
+\end{align*}
+
+𝔘𝔱𝔢: [continuing] for
+some integers \(s\) and \(t\;\). And now [writing]
+
+\begin{align*}
+c &= b \cdot t \\[.4em]
+&= (a \cdot s) \cdot t   \\[.4em]
+&= a \cdot (s \cdot t) \quad\quad \ldots \; \text{associativity}
+\end{align*}
+
+𝔘𝔱𝔢: [continuing] So
+since we have the form \(c = a \cdot (s \cdot t)\) where we assumed \(s\) and \(t\)
+are integers, and that's the basic form of divisibility, so yes, \(a
+\mid c\) since we've shown \(c = a \cdot k\) where \(k = (s \cdot t)\:\). \\[0pt]
+𝔘𝔯𝔰𝔲𝔩𝔞: Good. Let's
+switch over to this other book [she picks up a Springer Verlag
+book\footnote{\emph{\href{https://www.google.com/books/edition/The\_Whole\_Truth\_About\_Whole\_Numbers/ahUGswEACAAJ?hl=en}{The Whole Truth About Whole Numbers}} by Sylvia Forman and
+Agnes M. Rash;} and pages through it] Ah, in this book there's a section
+called \emph{Divisors and the Greatest Common Divisor}. [paging to section,
+reading] Oh, here's one, \emph{Determine whether true or false} [writing on
+the board]
+
+\begin{align*}
+2 \mid (6n + 4)
+\end{align*}
+
+𝔘𝔴𝔢: Interesting. So
+writing it in the divisibility way [gets up and writes on the board]
+
+\begin{align*}
+(6n + 4) = 2k
+\end{align*}
+
+𝔘𝔴𝔢: So before we freak
+out and get lost, let's just notice that [writing]
+
+\begin{align}
+2(3n + 4) &= 2k \\[.4em]
+3n + 4 &= k
+\end{align}
+
+𝔘𝔴𝔢: [continuing] I'd
+say we don't need to go any further with this. \(2 \mid (6n + 4)\) is
+true --- which means it's got solutions --- because \(2\) will go into
+\((6n + 4)\) for whatever \(n\) wants to be. \\[0pt]
+𝔘𝔱𝔢: And this whole
+formal divisibility thing helps because if you just saw this one day
+[writing on the board]
+
+\begin{align}
+\frac{(6n + 4)}{2} = 3n + 2 
+\end{align}
+
+𝔘𝔱𝔢: [continuing]
+you've now got a second way to see the idea that the equation is true
+for any \(n\), that it's dependent on \(n\;\). \\[0pt]
+𝔘𝔯𝔰𝔲𝔩𝔞: [looking
+ironically] Thanks, Uwe, Ute, for keeping it real. \\[0pt]
+[laughter] \\[0pt]
+𝔘𝔱𝔢: [reading text] All
+right, we have this example [writing on board]
+
+\begin{align*}
+0 \mid 11
+\end{align*}
+
+𝔘𝔱𝔢: [continuing] which
+is false because there can't be any \(k\) where \(k \cdot 0\) equals
+\(11\;\). Agreed? \\[0pt]
+[nods of agreement] \\[0pt]
+𝔘𝔱𝔢: [continuing] All
+right, how about this?
+
+\begin{quote}
+Prove that if \(\,a \mid b\) then \(-\, a \mid b\)
+\end{quote}
+
+𝔘𝔯𝔰𝔲𝔩𝔞: Let's just
+logic it out [getting up and writing on the board]
+
+\begin{align*}
+b & = a \cdot k \\[.4em]
+b &= (-a) \cdot (-k) \\[.4em]
+b &= - (a) \cdot (k) \\[.4em]
+b &= - a \cdot k 
+\end{align*}
+
+then
+
+\begin{align*}
+- a \mid b  \quad \text{for some}\; k \in \mathbb{Z}
+\end{align*}
+
+𝔘𝔯𝔰𝔲𝔩𝔞: [continuing] So
+\(k\) by virtue of being an integer, which can be either positive or
+negative, we've derived \(-\, a \mid b\) from \(a \mid b\;\). \\[0pt]
+[silence while the others study the board] \\[0pt]
+𝔘𝔴𝔢: Hold it. I'm not
+sure we've got the spirit of this, quite. \\[0pt]
+𝔘𝔯𝔰𝔲𝔩𝔞: How so? \\[0pt]
+𝔘𝔴𝔢: [going to the
+board] We need to make sure we understand this as [writing] \((-a) \mid
+b\;\) and not as \(-(a \mid b)\:\), right? \\[0pt]
+[murmurs of agreement] \\[0pt]
+𝔘𝔴𝔢: So that means
+we've got [writing] \(b = (-a)(-k)\) as the only possible solution to
+keep that \(b\) positive. And I don't think you meant to factor out
+\(-1\:\) like you did. So \(k\) must be negative to go with the \(-a\:\),
+which then gives positive \(b\;\). That's what is meant, I think. Yes,
+\(k\) being an integer allows this. But again, we're dealing with a
+multiplicative relationship, we're not doing division. And I'm sure
+we'll find out why this is so important in a while. \\[0pt]
+𝔘𝔯𝔰𝔲𝔩𝔞: Oh, I think
+that was in here. [pulling a large-format book from her messenger
+bag\footnote{\emph{\href{http://illustratedtheoryofnumbers.com/}{An Illustrated Theory of Numbers}} by Martin H. Weissman.} and pages to tabbed page]. Right, and he shows that \(0 \mid
+0\:\), that zero divides zero, is true --- because [writing on board]
+\(0 = 0 \cdot k\:\), meaning \(k\) can be anything and the expression remains
+true. [reading further] And he's calling \(k\) the \emph{accessory
+number}. [reading further] So his wording is the integers \(x\) that
+satisfy \(7 \mid x\) are \(x = 7 \cdot k\) --- and that will be the arithmetic
+progression of the multiples of \(7\:\). They're evenly
+spaced. Good. And there's this [going to the board and writing] \\[0pt]
+
+\begin{quote}
+Plot the integers \(x\) which satisfy \(5 \mid (x - 2)\)
+\end{quote}
+
+𝔘𝔱𝔢: [going to the
+board and writing] So if that's to be true then we've got \(x - 2 =
+5k\:\), and that means for the multiples of \(5\:\), the \emph{set} of
+integers \(x\) must keep \(x - 2\) multiples of \(5\) also. So for example
+
+\begin{align*}
+-3 - 2 &= 5 \cdot -1 \\[.4em]
+2 - 2 &= 5 \cdot 0 \\[.4em]
+7 - 2 &= 5 \cdot 1 \\[.4em]
+12 - 2 &= 5 \cdot 2 \\[.4em]
+\ldots
+\end{align*}
+
+𝔘𝔱𝔢: [continuing] And
+the so-called \emph{geometric} view of this set of \$x\$s would be a number
+line with points [writing on the board]
+
+
+\begin{center}
+\includesvg[width=.9\linewidth]{images/testsine1}
+\end{center}
+
+
+
+\begin{center}
+\includesvg[width=.9\linewidth]{tikztest3}
+\end{center}
+
+\begin{center}
+\includesvg[width=.9\linewidth]{tikztest2}
+\end{center}
+
+
+\begin{center}
+\includesvg[width=.9\linewidth]{tikztest4}
+\end{center}
+
+
+\begin{center}
+\includesvg[width=.9\linewidth]{tikztest5a}
+\end{center}
+
+
+\begin{center}
+\includesvg[width=.9\linewidth]{tikztest5b}
+\end{center}
+
+
+\begin{center}
+\includesvg[width=.9\linewidth]{tikztest5c}
+\end{center}
+
+𝔘𝔴𝔢: Good. gold
+standard for figuring out lowest common denominator. \\[0pt]
+𝔘𝔯𝔰𝔲𝔩𝔞: I'd say so, but
+now we need to see how Haskell does it internally, and how \emph{The
+Haskell Road\ldots{}} does it and stop being amateurs. \\[0pt]
+[laughter] \\[0pt]
+
+𝔘𝔴𝔢: I feel like you
+and the professor are like very strong bakers kneading and kneading
+and kneading my brain [demonstrates with imaginary brain-dough] \\[0pt]
+[laughter] \\[0pt]
+𝔘𝔴𝔢: No, this had
+really worked out, you, Ursula, racing ahead with the Haskell. And I
+going ahead with the set theory, and you, Ute, going on ahead with the
+math logic. I mean, we're definitely making progress. It's just that
+we have so much to learn! \\[0pt]
+[affirmations]
+\end{document}

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-05-25 Wed 14:28 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="../tufte-css/tufte.css" type="text/css">
+</head>
+<body>
+<div id="content" class="content">
+
+<div id="outline-container-org862ac22" class="outline-2">
+<h2 id="org862ac22"><span class="section-number-2">1.</span> Complex numbers; getting started</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgb9b1161" class="outline-3">
+<h3 id="orgb9b1161"><span class="section-number-3">1.1.</span> Rabbit holes</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+These are rabbit holes about <i>complex numbers</i>
+</p>
+
+<p>
+<font color = "#375e79">
+⌜🐇 <b>Rabbit holes</b> to get started with CIMMIC are:
+</p>
+<ol class="org-ol">
+<li><a href="https://math.libretexts.org/Bookshelves/Precalculus/Book%3A_Trigonometry_(Sundstrom_and_Schlicker)/05%3A_Complex_Numbers_and_Polar_Coordinates/5.01%3A_The_Complex_Number_System">This</a> would be a good text-based starter for complex
+numbers. (<i>R<sub>C</sub>-hole</i>)</li>
+<li><a href="https://www.youtube.com/watch?v=gHUHZXjpwOE&amp;list=PL5KkMZvBpo5CE__2qeqZQa5e8gSkt1Ypy">This</a> is Eddie Woo&rsquo;s excellent series of YouTube videos on complex
+numbers. (<i>R<sub>C</sub>-hole</i>)</li>
+<li><a href="https://en.wikipedia.org/wiki/Complex_number">This</a> is the Wikipedia article. (<i>R<sub>O</sub>-hole</i>)</li>
+<li>(<i>R<sub>O</sub>-hole</i>)</li>
+<li>(<i>R<sub>FYI</sub>-hole</i>)</li>
+</ol>
+<p>
+</font>🐇⌟
+</p>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-orgc6fecb0" class="outline-3">
+<h3 id="orgc6fecb0"><span class="section-number-3">1.2.</span> Complex numbers</h3>
+<div class="outline-text-3" id="text-1-2">
+<pre class="code"><code><span class="org-haskell-keyword">import</span> <span class="org-haskell-constructor">Data.Complex</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">x</span> <span class="org-haskell-operator">=</span> 0 <span class="org-haskell-constructor">:+</span> 3
+</code></pre>
+
+<pre class="code"><code>x
+</code></pre>
+
+<pre class="example">
+0.0 :+ 3.0
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-definition">realPart</span> x
+</code></pre>
+
+<pre class="example">
+0.0
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-definition">imagPart</span> x
+</code></pre>
+
+<pre class="example">
+3.0
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-definition">y</span> <span class="org-haskell-operator">=</span> 1 <span class="org-haskell-operator">+</span> x
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-keyword">let</span> z <span class="org-haskell-operator">=</span> y <span class="org-haskell-operator">^</span> 2
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">a</span> <span class="org-haskell-operator">=</span> 0 <span class="org-haskell-constructor">:+</span> 1
+</code></pre>
+
+<pre class="code"><code>a <span class="org-haskell-definition">^</span> 1
+</code></pre>
+
+<pre class="example">
+0.0 :+ 1.0
+</pre>
+
+
+<pre class="code"><code>a <span class="org-haskell-definition">^</span> 2
+</code></pre>
+
+<pre class="example">
+(-1.0) :+ 0.0
+</pre>
+
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">(</span>0 <span class="org-haskell-constructor">:+</span> 1<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-haskell-operator">^</span>x <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span>0<span class="org-haskell-operator">..</span>15<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1.0 :+ 0.0,0.0 :+ 1.0,(-1.0) :+ 0.0,(-0.0) :+ (-1.0),1.0 :+ (-0.0),0.0 :+ 1.0,(-1.0) :+ 0.0,(-0.0) :+ (-1.0),1.0 :+ (-0.0),0.0 :+ 1.0,(-1.0) :+ 0.0,(-0.0) :+ (-1.0),1.0 :+ (-0.0),0.0 :+ 1.0,(-1.0) :+ 0.0,(-0.0) :+ (-1.0)]
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">complxPower</span> nx <span class="org-haskell-operator">|</span> null nx <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span>
+<span class="org-haskell-definition">complxPower</span> <span class="org-rainbow-delimiters-depth-2">(</span>n<span class="org-haskell-constructor">:</span>nx<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>0 <span class="org-haskell-constructor">:+</span> 1<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-haskell-operator">^</span>n <span class="org-haskell-constructor">:</span> complxPower nx               
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">complxPower</span> <span class="org-rainbow-delimiters-depth-1">[</span>0<span class="org-haskell-operator">..</span>15<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:294:1-11: error:
+    Variable not in scope: complxPower :: [a0] -&gt; t
+</pre>
+
+
+<p>
+We can try to make this print prettier
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">import</span> <span class="org-haskell-constructor">Numeric</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">showFFloat</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Just</span> 0<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">-</span>5.014<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-string">""</span>
+</code></pre>
+
+<pre class="example">
+-5
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">complxPower2</span> nx <span class="org-haskell-operator">|</span> null nx <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span>
+<span class="org-haskell-definition">complxPower2</span> <span class="org-rainbow-delimiters-depth-2">(</span>n<span class="org-haskell-constructor">:</span>nx<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> ri <span class="org-haskell-constructor">:</span> complxPower2 nx
+  <span class="org-haskell-keyword">where</span> ri <span class="org-haskell-operator">=</span> <span class="org-haskell-keyword">let</span> ccalc <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>0 <span class="org-haskell-constructor">:+</span> 1<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-haskell-operator">^</span>n<span class="org-rainbow-delimiters-depth-2">)</span>
+             <span class="org-haskell-keyword">in</span> <span class="org-haskell-keyword">if</span> <span class="org-rainbow-delimiters-depth-2">(</span>realPart ccalc<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">/=</span> 0
+                <span class="org-haskell-keyword">then</span> <span class="org-rainbow-delimiters-depth-2">(</span>showFFloat <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-constructor">Just</span> 0<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">(</span>realPart ccalc<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-string">""</span><span class="org-rainbow-delimiters-depth-2">)</span>
+                <span class="org-haskell-keyword">else</span> <span class="org-string">"i"</span>      
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">complxPower2</span> <span class="org-rainbow-delimiters-depth-1">[</span>0<span class="org-haskell-operator">..</span>10<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:298:1-12: error:
+    Variable not in scope: complxPower2 :: [a0] -&gt; t
+</pre>
+
+
+<p>
+or just
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">complxPower6</span> nx <span class="org-haskell-operator">|</span> null nx <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span>
+<span class="org-haskell-definition">complxPower6</span> <span class="org-rainbow-delimiters-depth-2">(</span>n<span class="org-haskell-constructor">:</span>nx<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span>
+  <span class="org-haskell-keyword">let</span>
+    ccalc <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>0 <span class="org-haskell-constructor">:+</span> 1<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-haskell-operator">^</span>n<span class="org-rainbow-delimiters-depth-2">)</span>
+    ri <span class="org-haskell-operator">=</span>
+      <span class="org-haskell-keyword">if</span> <span class="org-rainbow-delimiters-depth-2">(</span>realPart ccalc<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">/=</span> 0
+      <span class="org-haskell-keyword">then</span> <span class="org-rainbow-delimiters-depth-2">(</span>showFFloat <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-constructor">Just</span> 0<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">(</span>realPart ccalc<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-string">""</span><span class="org-rainbow-delimiters-depth-2">)</span>
+      <span class="org-haskell-keyword">else</span> <span class="org-string">"i"</span>
+   <span class="org-haskell-keyword">in</span> ri <span class="org-haskell-constructor">:</span> complxPower6 nx
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2022-05-25 Wed 14:28</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

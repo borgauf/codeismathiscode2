@@ -1,0 +1,932 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: Haskell Road; Getting Started Part 2
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: HRGettingStarted2.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export (doesn't really work?):
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* Getting started part 2
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/omnimath"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&doets2012haskell]]
+:END:
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle ./src/gs2.hs :noweb yes
+module GS2 where
+
+
+<<4e25b856-24e4-4f5d-87e8-3a68faf56e10>>
+#+end_src
+
+#+name: 6b14996d-7528-4c2a-a081-ccd244799b49
+#+begin_src haskell :results verbatim :exports both
+1 + 1
+#+end_src
+
+#+RESULTS: 6b14996d-7528-4c2a-a081-ccd244799b49
+: λ> 2
+
+
+* Monday at the library part 2
+
+** Breaktime
+
+The von der Surwitzes pop over to the student center cafe for a break.
+They grab a large mineral water, a brand they knew in Germany, and Ute
+has packed some /Vollkornbrot/ sandwiches of hummus and cucumber. They
+sit at a table and pour the water and pass around out the sandwiches.
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ All right, so I
+emailed the professor about a couple of questions from that first
+chapter of /The Haskell Road/, and she replied saying, first, she's
+happy we're tackling the material early. And she mentioned some
+resources --- a collection of texts she has on reserve at the
+library. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Sort of like, I'm
+not going to give you the answers. I'm going to point you in the right
+direction.  \\
+[murmurs of acknowledgement] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ What books are
+they? \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Math. Upper level
+college texts. Abstract algebra and number theory, mainly. \\
+[silence] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ I getting the
+general impression that computer science has all these higher math
+concepts, but then you don't go as far as a math major does. \\
+[silence, eating and drinking] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [continuing] I
+guess you're just supposed to learn as much as you can. But like she
+said at the open house, computer science is a lot of /applied/
+mathematics. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ And the math is
+the hardest part for incoming CS students, those first four
+semesters. And that's why we're emphasizing the math in this
+course. \\
+[nods of agreement then silence as they eat and drink] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing]
+Not so much hand-waving. And she doesn't have set in stone what she
+wants us to get through. The course is open-ended. Wow, I just find
+that amazing. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ But I'm sure we'll
+need to keep moving and not be laggards about it. We're high
+schoolers, true, but this is like a super-AP course that's exclusively
+college-level material.\\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ And that's because
+so much of the first year or so of a college comp-sci curriculum
+really could and should be taught at the high school level. That's her
+theory --- and we're her /Versuchskaninchen/[fn:1]?\\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ A /whole/ year,
+the /whole/ school year. Her sabbatical ends next summer, but I'm
+pretty sure I'll want to continue. I don't know if I want to be a
+computer scientist or software engineer, but learning this can't
+hurt. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ I guess you could
+say Novalis is sort of an open /Gynmasium/. \\
+[soft laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ And what happens
+afterward? They definitely want you to just keep going at the U. Which
+I wouldn't mind at all. \\
+[looks about the table] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Yes, and lots of
+people just drift into a half-and-half situation where there taking
+courses over at the U. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Well, Father
+has tenure now. But I don't know if Mutti can go on working from
+here. [shrugging and sighing] Anyway, I guess you two will cross that
+bridge before I will. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [laughing] Hardly!
+You're right there with us in everything we're doing this coming year.
+
+** Divided by
+:RESOURCES:
+- [[cite:&cummings2021proofs]]
+- [[cite:&forman2015whole]]
+:END:
+
+Back at the library study room they've checked out the reserved books
+and are looking through sections of those that deal with the basic
+theory of division.
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [reading from the
+Divisibility section of /Proofs, A Long-Form Mathematical
+Textbook/[fn:2]] All right, so Professor Chandra wants us to
+understand divisibility before we go to /greatest common divisor/, and
+before we talk about primes. She said, You have to know all of the
+implications of "divided by" before you can advance. And like it's
+saying in here, [reading] you could just say, $a$ divides $b$ if
+$\frac{a}{b}$ produces an integer. \\
+[Ursula and Uwe read the section from a second copy] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] But
+we don't want that definition, we want /this/ definition [writing on
+the board]
+
+\begin{align}
+\exists \: k \in \mathbb{Z},\; a \neq 0, \;\;a \mid b \;\; \text{if} \;\; b = a \cdot k  
+\end{align}
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] The
+symbol $a \mid b\:$ means $a$ divides $b$ for some $k$ where $b = a \cdot
+k\;$ and $a$ is not equal to zero. [pausing] Right, all that makes
+sense. So basically, this turns the whole question of divisibility
+into finding a proper integer value for $k\:$ to /multiply/ with. Now
+we have a mathy formalist way of seeing divisibility. \\
+[murmurs of approval] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ I like how he says
+good definitions don't just fall out of the sky. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Then the
+examples, like $2 \mid 14$ is true because $14 = 2 \cdot 7\:$, in other
+words we've found a whole number integer, $k = 7$, and we're happy. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Again, we've
+turned division into an issue of true-false logic and
+multiplication. [writing on the board] So $7 \mid 23$ doesn't work
+because we have no solution for $7 \cdot k = 23$. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ And look at that
+last one where it's $a \mid 0\;$. That's true, for a non-zero $a$
+since we can say $0 = a \cdot 0$ is always true for any $a$ as long as $k
+= 0\;$. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ So for [writing
+on the board] $a \mid b$, we can say $a$ is a /divisor/ of $b$, and
+$b$ is a /multiple/ of $a$, and $b$ is /divisible/ by $a$. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So they want us to
+understand that we're not supposed to see $2 \mid 14$ and just say it
+/equals/ $7$. It's not supposed to be seen as a calculation, it's a
+logic /expression/ that's true or false --- for some value $k\:$. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Right. We're in
+the world of logic now, not grade school arithmetic. So everything has
+to be reexplained and reworked. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ All right, so in
+this book[fn:3] they have a theorem about divisibility. [writing on
+the board]
+
+a. $a \mid a$, $1 \mid a$, and $a \mid 0$;
+b. $0 \mid a \iff a = 0$;
+c. $a \mid b \iff -a \mid b \iff a \mid -b$;
+d. $a \mid b \land a \mid c \implies a \mid (b + c)$;
+e. $a \mid b \land b \mid c \implies a \mid c$
+
+[silence as they study the theorem]   \\
+<
+
+
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Good, now he's
+talking about the /transitive/ property of divisibility. It is a
+/proposition/, which is a type of theorem, and that means it comes
+with a proof. [writing on the board] Here it is in the compact math
+logic form
+
+\begin{align*}
+a, b, c \in \mathbb{Z},\;\; a \mid b \;\land\; b \mid c \implies a \mid c
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] And
+then he goes on to prove it by saying assume the /if/ part, the $a
+\mid b \;\land\; b \mid c\:$ part is true, that means the /then/ part, the
+$a \mid c$ part is true. So [writing]
+
+\begin{align*}
+b &= a \cdot s \\[.4em]
+c &= b \cdot t
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] for
+some integers $s$ and $t\;$. And now [writing]
+
+\begin{align*}
+c &= b \cdot t \\[.4em]
+&= (a \cdot s) \cdot t   \\[.4em]
+&= a \cdot (s \cdot t) \quad\quad \ldots \; \text{associativity}
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] So
+since we have the form $c = a \cdot (s \cdot t)$ where we assumed $s$ and $t$
+are integers, and that's the basic form of divisibility, so yes, $a
+\mid c$ since we've shown $c = a \cdot k$ where $k = (s \cdot t)\:$. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Good. Let's
+switch over to this other book [she picks up a Springer Verlag
+book[fn:4] and pages through it] Ah, in this book there's a section
+called /Divisors and the Greatest Common Divisor/. [paging to section,
+reading] Oh, here's one, /Determine whether true or false/ [writing on
+the board]
+
+\begin{align*}
+2 \mid (6n + 4)
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Interesting. So
+writing it in the divisibility way [gets up and writes on the board]
+
+\begin{align*}
+(6n + 4) = 2k
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So before we freak
+out and get lost, let's just notice that [writing]
+
+\begin{align}
+2(3n + 4) &= 2k \\[.4em]
+3n + 4 &= k
+\end{align}
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [continuing] I'd
+say we don't need to go any further with this. $2 \mid (6n + 4)$ is
+true --- which means it's got solutions --- because $2$ will go into
+$(6n + 4)$ for whatever $n$ wants to be. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ And this whole
+formal divisibility thing helps because if you just saw this one day
+[writing on the board]
+
+\begin{align}
+\frac{(6n + 4)}{2} = 3n + 2 
+\end{align}
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing]
+you've now got a second way to see the idea that the equation is true
+for any $n$, that it's dependent on $n\;$. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [looking
+ironically] Thanks, Uwe, Ute, for keeping it real. \\
+[laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [reading text] All
+right, we have this example [writing on board]
+
+\begin{align*}
+0 \mid 11
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] which
+is false because there can't be any $k$ where $k \cdot 0$ equals
+$11\;$. Agreed? \\
+[nods of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] All
+right, how about this?
+
+#+begin_quote
+Prove that if $\,a \mid b$ then $-\, a \mid b$
+#+end_quote
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Let's just
+logic it out [getting up and writing on the board]
+
+\begin{align*}
+b & = a \cdot k \\[.4em]
+b &= (-a) \cdot (-k) \\[.4em]
+b &= - (a) \cdot (k) \\[.4em]
+b &= - a \cdot k 
+\end{align*}
+
+then
+
+\begin{align*}
+- a \mid b  \quad \text{for some}\; k \in \mathbb{Z}
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing] So
+$k$ by virtue of being an integer, which can be either positive or
+negative, we've derived $-\, a \mid b$ from $a \mid b\;$. \\
+[silence while the others study the board] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Hold it. I'm not
+sure we've got the spirit of this, quite. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ How so? \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [going to the
+board] We need to make sure we understand this as [writing] $(-a) \mid
+b\;$ and not as $-(a \mid b)\:$, right? \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So that means
+we've got [writing] $b = (-a)(-k)$ as the only possible solution to
+keep that $b$ positive. And I don't think you meant to factor out
+$-1\:$ like you did. So $k$ must be negative to go with the $-a\:$,
+which then gives positive $b\;$. That's what is meant, I think. Yes,
+$k$ being an integer allows this. But again, we're dealing with a
+multiplicative relationship, we're not doing division. And I'm sure
+we'll find out why this is so important in a while. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Oh, I think
+that was in here. [pulling a large-format book from her messenger
+bag[fn:5] and pages to tabbed page]. Right, and he shows that $0 \mid
+0\:$, that zero divides zero, is true --- because [writing on board]
+$0 = 0 \cdot k\:$, meaning $k$ can be anything and the expression remains
+true. [reading further] And he's calling $k$ the /accessory
+number/. [reading further] So his wording is the integers $x$ that
+satisfy $7 \mid x$ are $x = 7 \cdot k$ --- and that will be the arithmetic
+progression of the multiples of $7\:$. They're evenly
+spaced. Good. And there's this [going to the board and writing] \\
+
+#+begin_quote
+Plot the integers $x$ which satisfy $5 \mid (x - 2)$
+#+end_quote
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [going to the
+board and writing] So if that's to be true then we've got $x - 2 =
+5k\:$, and that means for the multiples of $5\:$, the /set/ of
+integers $x$ must keep $x - 2$ multiples of $5$ also. So for example
+
+\begin{align*}
+-3 - 2 &= 5 \cdot -1 \\[.4em]
+2 - 2 &= 5 \cdot 0 \\[.4em]
+7 - 2 &= 5 \cdot 1 \\[.4em]
+12 - 2 &= 5 \cdot 2 \\[.4em]
+\ldots
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] And
+the so-called /geometric/ view of this set of $x$'s would be a number
+line with points [drawing on the board]
+
+#+begin_export html
+<img src="./images/divisibilityline1.svg" width="725px" style="padding: 15px 0px 0px 0px" alt="Number Line 1" class="center">
+<span class="cap">Divisibility number line where x-2 must be a multiple of 5 </span>
+#+end_export
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] Which
+is to say, $x$ is two more than a multiple of $5\:$. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Okay, next one
+[writing on the board]
+
+#+begin_quote
+Plot the integers $x$ which satisfy $x \mid 12\:$.
+#+end_quote
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing
+writing] So that means $12 = x \cdot k$ where $k$ will just be the
+integers. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Again, I would say
+we shouldn't read too much into this. The basic fact is [going to the
+board and writing] we have the set of integers that divide $12$
+
+\begin{align}
+[-1,-2,-3,-4,6,-12,1,2,3,4,6,12]
+\end{align}
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ And however that
+works out with $x \cdot k$ is incidental, since whatever $x$ and $k$ need
+to be, their product has to be in this [point at (5)] set.\\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ I'll draw that
+quickly [drawing number line]
+
+#+begin_export html
+<img src="./images/divisibilityline2.svg" width="725px" style="padding: 15px 0px 0px 0px" alt="Number Line 2" class="center">
+<span class="cap">Divisors of 12 on an integer line</span>
+#+end_export
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ All right,
+Weissman deals with /transitive/ again. But before that he talks about
+/reflexive/ and /antisymmetric/ in relation to divisibility. [writing
+on the board]
+
+#+begin_quote
+For every integer $x$, $x \mid x$
+#+end_quote
+
+[smiles of ironic mute astonishment] \\
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing] So
+this is showing us the /reflexivity of divisibility/ $\mid\:$. Then he
+says in the margin, /Every integer is a multiple of itself/. And then
+he has [writing on board] $x = x \cdot 1$ \\
+[silence] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [reading from her
+laptop] According to Wikipedia, a /reflexive relation/ is a binary
+relation --- or let's say a /binary operator/ --- on a set $X$ that
+"relates" an element of $X$ to itself. \\
+[silence] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [reading his
+laptop] I'm on the /Encyclopedia of Mathematics/ site[fn:6] for
+reflexivity[fn:7] and it talks about it in terms of relations as
+well. But we don't want to really unpack the whole Cartesian product,
+relations, functions thing yet do we, no. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ It says a relation
+is reflexive if it contains the /diagonal/ or /identity/ relation
+[writing on the board] $\{(a,a) : a \in A\}$ for set $A\:$. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ So if that
+$(a,a)$ is seen as just a coordinate pair on a regular Cartesian
+coordinate plane, [drawing a graph on the board] then yes, it's just
+points on the diagonal
+
+#+begin_export html
+<img src="./images/reflexivecartesian1.svg" width="425px" style="padding: 15px 0px 0px 0px" alt="reflexivity" class="center">
+<span class="cap">Approximation of Ursula's Cartesian plane reflexive relation drawing.</span>
+#+end_export
+
+[silence] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So without getting
+too lost in the details, reflexive means things are related somehow to
+themselves. So equality would work, even /greater than or equal/, and
+/less than or equal/ since the equal part is true. So for example, all
+integers are greater than /or/ equal to themselves. [gives ironic
+look] Well, it's true. \\
+[laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Antisymmetric is next? \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Right. And I'd
+like to understand what /symmetric/ means first --- just to get /very/
+confused. \\
+[laughter, then all searching on their laptops] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Again, we're
+looking for /symmetric relation/. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Okay, Wikipedia
+says a /symmetric relation/ is basically, as I paraphrase it, a
+situation where if $a = b$ is true, then $b = a$ is also true [writing
+on the board]
+
+\begin{align*}
+\forall a,b \in X, \;\; aRb \iff bRa
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] And
+the $aRb$ means $a$ and $b$ are in a relationship. And then examples
+might be we're in symmetric relationships with each other because
+we're all blood siblings to each other. So you Ursula are my sibling,
+and I am your sibling. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Right, but
+blood sibling is /not/ reflexive, it's /irreflexive/ because you can't
+be called a sibling of yourself. But then a number can be a multiple
+of itself --- $1$ times itself --- and we established that as
+reflexive; but I'm not my own sibling. \\
+[murmurs of agreement]. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So in a round
+robin binary way, we share the same parents. That's symmetric, but
+it's not reflexive, is it? You can't share a parent with yourself, can
+you? \\
+[silence] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ If it were
+worded /my mother is my mother/ or /my father is my father/, it's the
+same as saying /$a$ is equal to $a$/, isn't it? So the wording "parent
+in common with myself" is misleading, because we're not relating me
+and my parent directly, we're relating the parent to that same parent
+by means of me as the joiner. Does that make sense? It's in the basic
+spirit of a binary relation that relates an element to itself. \\
+[half-hearted murmurs of agreement and ironic smirking] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ And then we've
+said the equals relation is reflexive /and/ symmetric, right? Do we
+want to say this, really? \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Sure, why not?
+You know, so often I learn the "official" way, the accepted answer ---
+and then I talk myself into believing it. \\
+[laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Are we ready to
+tackle /antisymmetry/? \\
+[eager murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Okay, I've
+searched on /antisymmetry/ and gone to a Wolfram MathWorld page[fn:8]
+that says [reading]
+
+#+begin_quote
+A relation $R$ on a set $S$ is antisymmetric provided that distinct
+elements are never both related to one another. In other words $xRy$
+and $yRx$ together imply that $x = y\:$.
+#+end_quote
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] And
+then from the Wikipedia article [going to the board and writing]
+
+#+begin_quote
+If $aRb$ with $a \ne b$ then $bRa$ must not hold.
+#+end_quote
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Good. So now
+Weissman says [writing on the board]
+
+#+begin_quote
+For integers $x$, $y$, if $x \mid y$ and $y \mid x$, then $x = \pm y\:$.
+#+end_quote
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing]
+And then he shows it by saying [writing on the board]
+
+\begin{align*}
+\text{if}\;\;y &= mx \quad \text{and} \\[.5em]
+x &= ny \quad \text {for some integers}\;\; x, y
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing]
+And then we can say [writing]
+
+\begin{align}
+x = ny = n(mx) = (nm)x
+\end{align}
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing]
+And now if we say $x \ne 0$ we can divide this [pointing to (6)] by
+$x\:$ [writing on board]
+
+\begin{align*}
+\frac{x}{x} &= \frac{ny}{x} = \frac{n(mx)}{x} = \frac{(nm)x}{x} \\[.5em]
+1 &= \frac{ny}{x} = nm = nm
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing] So
+multiplying by a number is the same as dividing by its reciprocal ---
+and vice versa. And now we have a reciprocal relationship between $n$
+and $m$ since two numbers multiplied equaling $1$ means they must be
+reciprocals of each other [writing on the board]
+
+\begin{align*}
+1 &= nm \\[.5em]
+\frac{1}{m} &= n \\[.5em]
+\frac{1}{n} &= m
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing,
+writing on the board] But as he's saying, $\frac{1}{m}$ and
+$\frac{1}{n}$ cannot be anything but $1$ and still be integers, so
+it's proven that $n = m = \pm1\:$ So subbing into [points to (6)]
+
+\begin{align*}
+x &= ny \\[.5em]
+x &= (\pm1)y
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Which is, again,
+showing us that division is not ever going to be symmetric unless
+we're just talking about an integer dividing itself, basically ---
+that is, plus or minus itself. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [looking at the
+Weissman text] So then he does /transitivity/ with divisibility, and
+it's the same as we did before. Then he does [writing on the board]
+
+\begin{align*}
+d,x,y \in \mathbb{Z}\; \land\; d \mid x \implies d \mid xy 
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ There's his
+proof, that is [writing on the board]
+
+\begin{align*}
+x &= md \\[.5em]
+xy &= (md)y \quad \text{(multiply both sides by $y$)} \\[.5em]
+xy &= (my)d
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ So $xy$ is a
+multiple of $d$, that multiple being $(my)$. Okay? \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Next, is this
+one [writing on the board]
+
+#+begin_quote
+If $d \mid x$ and $d \mid y$, then $d \mid (x + y)$ and  $d \mid (x - y)$.
+#+end_quote
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing]
+And the proof is we can say [writing on board] for $x = md$ and $y =
+nd$ for integers $m$ and $n$
+
+\begin{align*}
+x \pm y = (md) \pm (nd) = (m \pm n)d
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing]
+And this shows that $x \pm y$ is a multiple of $d$. [reading further in
+the Weissman text] Then he gives a variation on this idea, which he
+calls the /two out of three principle for divisibility/. [writing on
+the board]
+
+#+begin_quote
+Let $a$,$b$,$c$ be integers satisfying the equation $a + b = c$. Let
+$d$ bye an integer. If two of the set $\{a,b,c\}$ are multiples of
+$d$, then the third number must also be a multiple of $d$.
+#+end_quote
+
+[silence] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ This is just the
+previous one reworded, right? The basic situation [writing on the
+board] $a + b = c$ can be rearranged into $a = c - b$ or $b = c -
+a$. So whichever two you have as multiples of $d$, we add or subtract
+them to get the third, and that's covered by $d \mid (x \pm y)$. \\
+[soft murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ This
+demonstrates two-out-of-three [reading from
+the text and copying on the board]
+
+#+begin_quote
+Demonstrate that $2\,999\,997$ is a multiple of $3$.
+#+end_quote
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Okay, my
+turn. [going to the board and writing] Since $3\,000\,000 - 3 =
+2\,999\,997$, we know because of the two-out-of-three principle[fn:9]
+
+\begin{align*}
+3 &\mid 3\,000\,000 \quad &\text{(first known)}\\[.5em]
+3 &\mid 3 \quad &\text{(second known)} \\[.5em]
+\therefore \;\; 3 &\mid (3\,000\,000 - 3)
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Exactly. We knew
+two were divisible by $d$, so those two added or subtracted from one
+another we could know as well. Good. \\
+[murmurs of satisfaction] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Hey, we're really
+going down this rabbit hole. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [perusing
+Weissman] It's only one, no, two more exercises, then it goes on to
+something else. Let's do this next one and go back to Cummings. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ No matter what,
+I'll never see division the same again. \\
+[laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Hey, I just
+searched on ~haskell divisibility~ and a stackoverflow came
+up[fn:10]. It basically asks whether an integer is divisible by
+$11$. And then it has some trick about adding and subtracting the
+digits of the number, right. But then somebody gives the answer
+[writing on the board]
+
+#+name: 4e25b856-24e4-4f5d-87e8-3a68faf56e10
+#+begin_src haskell :eval never :exports code
+divisibleBy11 x = x `rem` 11 == 0
+#+end_src
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ I'll try it
+[typing into her monitor-connected laptop and running]
+
+#+name: 128ef333-2335-4df2-8280-84f67ae3ba67
+#+begin_src haskell :results verbatim :exports both
+divisibleBy11 33
+#+end_src
+
+#+RESULTS: 128ef333-2335-4df2-8280-84f67ae3ba67
+: True
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ I assume that
+~rem~ means remainder, as in, Give me the remainder of a division. And
+then that's checked if equal to $0$. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Again, we're
+getting the true-false nature of divisibility. It's not just dividing
+a number by another. It's asking yes or no whether a number properly
+divides another. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Okay, here's
+the next problem
+
+#+begin_quote
+Find all integers $x$ which satisfy $x \mid (x + 6)$.
+#+end_quote
+
+[silence] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [reading on]
+Then he's solving it with his two out of three principle. So if we can
+find two parts of this that are divisible, then the sum or difference
+of these is then divisible as well. \\
+[silence] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ A hint is that
+we're supposed to /assume/ the $x \mid (x + 6)$ is one of the
+givens. Then we need another given. Then we add or subtract these two
+givens to get the final formula. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Formula? \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ In the last one we
+had $3$ divides one thing, and then $3$ divides another thing,
+therefore those two things $3$ divides, when added or subtracted, also
+are divisible by $3$. So we could say the thing dividing is an unknown
+variable $x$. It divides, supposedly, $(x + 6)$, but then we need
+another thing that $x$ divides. \\
+[silence] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [writing on the
+board] So, just pulling something out of thin air, if we assume the
+second give is $x \mid 7$, then we've got something...
+
+\begin{align*}
+x \mid (x + 6) - 7 = x \mid x - 1
+\end{align*}
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ ...that doesn't
+help us much. It's just a new "what can $x$ be" question. That is,
+we're going in circles. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Something tells me
+we want to get rid of stuff on the right hand side of the
+$\mid$. Either get rid of the $x$ or the $6$. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] So
+why don't we assume --- oh, I know! Let's say $x \mid x$ is the other
+given since that's always true. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Good. [writing on
+board]
+
+\begin{align*}
+x &\mid x \quad \text{...second given after $x \mid (x + 6)$}\\[.5em]
+x &\mid (x + 6) - x = 6 \quad \text{...subtracting one given from another}\\[.5em]
+x &\mid 6
+\end{align*}
+
+[silence] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ What that's saying
+--- as far as I can tell [writing on the board] $x \mid (x + 6) \iff x
+\mid 6$. Right? So whatever $x$'s divide $6$ will be our desired set
+for $x \mid (x + 6)$ as well. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Let me test it
+with something Haskell. [starts a new source block]
+
+#+name: 508fa55f-f63d-4bd4-ba11-5906ea9d47c1
+#+begin_src haskell :results verbatim :exports both
+[x | x <- [-20,-19..20], ((x `rem` 6) == 0)]
+#+end_src
+
+#+RESULTS: 508fa55f-f63d-4bd4-ba11-5906ea9d47c1
+: [-18,-12,-6,0,6,12,18]
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ No, wrong, I've
+got the ~6~ trying to go into the ~x~. Need to reverse them.
+
+#+name: 9da3710a-25b0-4666-935a-7f0609a1ea4d
+#+begin_src haskell :results verbatim :exports both
+[x | x <- [-20,-19..20], ((6 `rem` x) == 0)]
+#+end_src
+
+#+RESULTS: 9da3710a-25b0-4666-935a-7f0609a1ea4d
+: [-6,-3,-2,-1*** Exception: divide by zero
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ And obviously
+we can't divide by zero. We need to filter out the zero. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Right. [searching
+on her laptop] Okay, there's a ~filter~ function. All you need to do
+is say [writing on the board] ~filter (\=0) [-20,-19..20]~ and with
+that /not equals zero/ in the middle, ~0~ should get filtered out. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Got
+it. [typing]
+
+#+name: 8f8cddbb-f22e-4507-a121-46adc8aaead6
+#+begin_src haskell :results verbatim :exports both
+[x | x <- filter (/=0) [-20,-19..20], ((6 `rem` x) == 0)]
+#+end_src
+
+#+RESULTS: 8f8cddbb-f22e-4507-a121-46adc8aaead6
+: [-6,-3,-2,-1,1,2,3,6]
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Or I could do
+it this way [typing]
+
+#+name: 4b223182-a375-45a3-85af-88005b62a495
+#+begin_src haskell :results silent :exports code
+:{
+xDivides6 = [x | x <- sampleList, ((6 `rem` x) == 0)]
+  where sampleList = [-20,-19..(-1)] ++ [1..20]
+:}
+#+end_src
+
+#+name: 8d622eb7-1e00-4d75-91f5-16105c5a106c
+#+begin_src haskell :results verbatim :exports both
+xDivides6
+#+end_src
+
+#+RESULTS: 8d622eb7-1e00-4d75-91f5-16105c5a106c
+: [-6,-3,-2,-1,1,2,3,6]
+
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Good. gold
+standard for figuring out lowest common denominator. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ I'd say so, but
+now we need to see how Haskell does it internally, and how /The
+Haskell Road.../ does it and stop being amateurs. \\
+[laughter] \\
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ I feel like you
+and the professor are like very strong bakers kneading and kneading
+and kneading my brain [demonstrates with imaginary brain-dough] \\
+[laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ No, this had
+really worked out, you, Ursula, racing ahead with the Haskell. And I
+going ahead with the set theory, and you, Ute, going on ahead with the
+math logic. I mean, we're definitely making progress. It's just that
+we have so much to learn! \\
+[affirmations]
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Our parents are
+both firmly in the empirical world. \\
+[murmurs of agreement] \\
+
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] /Versuchskaninchen/: test rabbit $\simeq$ guinea pig.
+
+[fn:2] /[[https://longformmath.com/proofs-home][Proofs; A Long-Form Mathematics Textbook]]/ by Jay Cummings
+
+[fn:3] She holds up /A Computational Introduction To Number Theory and
+Algebra/ by Victor Shoup; [[cite:&shoup2009computational]].  }
+
+[fn:4] /[[https://www.google.com/books/edition/The_Whole_Truth_About_Whole_Numbers/ahUGswEACAAJ?hl=en][The Whole Truth About Whole Numbers]]/ by Sylvia Forman and
+Agnes M. Rash;
+
+[fn:5] /[[http://illustratedtheoryofnumbers.com/][An Illustrated Theory of Numbers]]/ by Martin H. Weissman.
+
+[fn:6] See [[https://encyclopediaofmath.org/wiki/Main_Page][The Encyclopedia of Mathematics]].
+
+[fn:7] [[https://encyclopediaofmath.org/index.php?title=Reflexivity][Reflexivity; Encyclopedia of Mathematics.]]
+
+[fn:8] [[https://mathworld.wolfram.com/AntisymmetricRelation.html][Antisymmetric Relation]].
+
+[fn:9] Uwe uses the $\therefore$ which is the symbol for /therefore/.
+
+[fn:10] See [[https://stackoverflow.com/questions/3990095/testing-divisibility-of-ints-by-11][Testing divisibility of Ints by 11]].
+
+[fn:20] Professor Chandra has demonstrated at the Racket command line
+how rationals could be directly added, e.g., \\
+~> (+ 1/32 1/943720)~ \\
+and get back \\
+~117969/3774880~
+
+[fn:19] Check out anonymous or /lambda/ functions [[http://learnyouahaskell.com/higher-order-functions#lambdas][here]].
+
+[fn:18] See [[https://stackoverflow.com/questions/35950600/why-it-is-impossible-to-divide-integer-number-in-haskell][Why it is impossible to divide Integer number in Haskell?]]
+
+[fn:17] See [[http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101][Typeclasses 101]] in /Learn You a Haskell.../.
+
+[fn:16] See the article [[https://en.wikipedia.org/wiki/Least_common_multiple][here]].
+
+[fn:15] @@html:<font color = "#0d3db3">@@...In arithmetic and number
+theory, the /least common multiple/, /lowest common multiple/, or
+/smallest common multiple/ of two integers $a$ and $b\:$, usually
+denoted by $lcm(a, b)\:$, is the smallest positive integer that is
+divisible by both $a$ and $b\;$...@@html:</font>@@
+
+[fn:14] Available [[https://www.haskell.org/tutorial/][here]]. The page dealing with /sections/ is [[https://www.haskell.org/tutorial/functions.html][here]] in
+3.2.1. Also The [[https://wiki.haskell.org/Section_of_an_infix_operator][wiki.haskell.org]] has a page on sections as well.
+
+[fn:13] A famous line from a Stefan Georg poem: /Ich fühle Luft von
+anderem Planeten/ or /I feel (the) air of (the other) another planet./
+
+[fn:12] See [[http://learnyouahaskell.com/starting-out#im-a-list-comprehension][this]] from LYAHFGG.
+
+[fn:11] See Wikipedia's [[https://en.wikipedia.org/wiki/Set-builder_notation][Set-builder notation]]

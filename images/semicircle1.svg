@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"  standalone="no"?>
+<svg 
+ width="600" height="480"
+ viewBox="0 0 600 480"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+
+<title>Gnuplot</title>
+<desc>Produced by GNUPLOT 5.4 patchlevel 2 </desc>
+
+<g id="gnuplot_canvas">
+
+<rect x="0" y="0" width="600" height="480" fill="none"/>
+<defs>
+
+	<circle id='gpDot' r='0.5' stroke-width='0.5' stroke='currentColor'/>
+	<path id='gpPt0' stroke-width='0.190' stroke='currentColor' d='M-1,0 h2 M0,-1 v2'/>
+	<path id='gpPt1' stroke-width='0.190' stroke='currentColor' d='M-1,-1 L1,1 M1,-1 L-1,1'/>
+	<path id='gpPt2' stroke-width='0.190' stroke='currentColor' d='M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1'/>
+	<rect id='gpPt3' stroke-width='0.190' stroke='currentColor' x='-1' y='-1' width='2' height='2'/>
+	<rect id='gpPt4' stroke-width='0.190' stroke='currentColor' fill='currentColor' x='-1' y='-1' width='2' height='2'/>
+	<circle id='gpPt5' stroke-width='0.190' stroke='currentColor' cx='0' cy='0' r='1'/>
+	<use xlink:href='#gpPt5' id='gpPt6' fill='currentColor' stroke='none'/>
+	<path id='gpPt7' stroke-width='0.190' stroke='currentColor' d='M0,-1.33 L-1.33,0.67 L1.33,0.67 z'/>
+	<use xlink:href='#gpPt7' id='gpPt8' fill='currentColor' stroke='none'/>
+	<use xlink:href='#gpPt7' id='gpPt9' stroke='currentColor' transform='rotate(180)'/>
+	<use xlink:href='#gpPt9' id='gpPt10' fill='currentColor' stroke='none'/>
+	<use xlink:href='#gpPt3' id='gpPt11' stroke='currentColor' transform='rotate(45)'/>
+	<use xlink:href='#gpPt11' id='gpPt12' fill='currentColor' stroke='none'/>
+	<path id='gpPt13' stroke-width='0.190' stroke='currentColor' d='M0,1.330 L1.265,0.411 L0.782,-1.067 L-0.782,-1.076 L-1.265,0.411 z'/>
+	<use xlink:href='#gpPt13' id='gpPt14' fill='currentColor' stroke='none'/>
+	<filter id='textbox' filterUnits='objectBoundingBox' x='0' y='0' height='1' width='1'>
+	  <feFlood flood-color='white' flood-opacity='1' result='bgnd'/>
+	  <feComposite in='SourceGraphic' in2='bgnd' operator='atop'/>
+	</filter>
+	<filter id='greybox' filterUnits='objectBoundingBox' x='0' y='0' height='1' width='1'>
+	  <feFlood flood-color='lightgrey' flood-opacity='1' result='grey'/>
+	  <feComposite in='SourceGraphic' in2='grey' operator='atop'/>
+	</filter>
+</defs>
+<g fill="none" color="white" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='rgb(  0, 158, 115)'  d='M103.73,318.86 L520.73,318.86  '/></g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='rgb(  0, 158, 115)'  d='M282.44,438.00 L282.44,21.01  '/></g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,21.01 L103.73,438.00 L520.73,438.00 L520.73,21.01 L103.73,21.01 Z  '/></g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<use xlink:href='#gpPt6' transform='translate(312.23,229.50) scale(2.10)' color='black'/>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+	<g id="gnuplot_plot_1" ><title>f(x)</title>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<g transform="translate(441.70,46.56)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text>f(x)</text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='rgb(  0,  96, 173)'  d='M451.49,42.01 L501.15,42.01 M166.28,259.14 L170.45,275.09 L174.62,286.45 L178.79,295.64 L182.96,303.46 L187.13,310.31
+		L191.30,316.43 L195.47,321.95 L199.64,326.99 L203.81,331.60 L207.98,335.86 L212.15,339.79 L216.32,343.44 L220.49,346.82
+		L224.66,349.96 L228.83,352.89 L233.00,355.61 L237.17,358.13 L241.34,360.48 L245.51,362.65 L249.68,364.66 L253.85,366.51
+		L258.02,368.21 L262.19,369.77 L266.36,371.19 L270.53,372.47 L274.70,373.62 L278.87,374.65 L283.04,375.54 L287.21,376.31
+		L291.38,376.96 L295.55,377.49 L299.72,377.90 L303.89,378.20 L308.06,378.37 L312.23,378.43 L316.40,378.37 L320.57,378.20
+		L324.74,377.90 L328.91,377.49 L333.08,376.96 L337.25,376.31 L341.42,375.54 L345.59,374.65 L349.76,373.62 L353.93,372.47
+		L358.10,371.19 L362.27,369.77 L366.44,368.21 L370.61,366.51 L374.78,364.66 L378.95,362.65 L383.12,360.48 L387.29,358.13
+		L391.46,355.61 L395.63,352.89 L399.80,349.96 L403.97,346.82 L408.14,343.44 L412.31,339.79 L416.48,335.86 L420.65,331.60
+		L424.82,326.99 L428.99,321.95 L433.16,316.43 L437.33,310.31 L441.50,303.46 L445.67,295.64 L449.84,286.45 L454.01,275.09
+		L458.18,259.14  '/></g>
+	</g>
+	<g id="gnuplot_plot_2" ><title>g(x)</title>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<g transform="translate(441.70,67.56)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text>g(x)</text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='rgb(221,  24,  31)'  d='M451.49,63.01 L501.15,63.01 M166.28,199.87 L170.45,183.92 L174.62,172.56 L178.79,163.37 L182.96,155.55 L187.13,148.70
+		L191.30,142.58 L195.47,137.06 L199.64,132.02 L203.81,127.41 L207.98,123.15 L212.15,119.22 L216.32,115.57 L220.49,112.19
+		L224.66,109.05 L228.83,106.12 L233.00,103.40 L237.17,100.88 L241.34,98.53 L245.51,96.36 L249.68,94.35 L253.85,92.50
+		L258.02,90.80 L262.19,89.24 L266.36,87.82 L270.53,86.54 L274.70,85.39 L278.87,84.36 L283.04,83.47 L287.21,82.70
+		L291.38,82.05 L295.55,81.52 L299.72,81.11 L303.89,80.81 L308.06,80.64 L312.23,80.58 L316.40,80.64 L320.57,80.81
+		L324.74,81.11 L328.91,81.52 L333.08,82.05 L337.25,82.70 L341.42,83.47 L345.59,84.36 L349.76,85.39 L353.93,86.54
+		L358.10,87.82 L362.27,89.24 L366.44,90.80 L370.61,92.50 L374.78,94.35 L378.95,96.36 L383.12,98.53 L387.29,100.88
+		L391.46,103.40 L395.63,106.12 L399.80,109.05 L403.97,112.19 L408.14,115.57 L412.31,119.22 L416.48,123.15 L420.65,127.41
+		L424.82,132.02 L428.99,137.06 L433.16,142.58 L437.33,148.70 L441.50,155.55 L445.67,163.37 L449.84,172.56 L454.01,183.92
+		L458.18,199.87  '/></g>
+	</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,438.00 L520.73,438.00  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,438.00 L114.23,438.00 M520.73,438.00 L510.23,438.00  '/>	<g transform="translate(93.94,442.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" >-4</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,408.21 L520.73,408.21  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,408.21 L114.23,408.21 M520.73,408.21 L510.23,408.21  '/>	<g transform="translate(93.94,412.76)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" >-3</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,378.43 L520.73,378.43  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,378.43 L114.23,378.43 M520.73,378.43 L510.23,378.43  '/>	<g transform="translate(93.94,382.98)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" >-2</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,348.64 L520.73,348.64  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,348.64 L114.23,348.64 M520.73,348.64 L510.23,348.64  '/>	<g transform="translate(93.94,353.19)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" >-1</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,318.86 L520.73,318.86  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,318.86 L114.23,318.86 M520.73,318.86 L510.23,318.86  '/>	<g transform="translate(93.94,323.41)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" > 0</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,289.07 L520.73,289.07  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,289.07 L114.23,289.07 M520.73,289.07 L510.23,289.07  '/>	<g transform="translate(93.94,293.62)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" > 1</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,259.29 L520.73,259.29  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,259.29 L114.23,259.29 M520.73,259.29 L510.23,259.29  '/>	<g transform="translate(93.94,263.84)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" > 2</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,229.50 L520.73,229.50  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,229.50 L114.23,229.50 M520.73,229.50 L510.23,229.50  '/>	<g transform="translate(93.94,234.05)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" > 3</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,199.72 L520.73,199.72  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,199.72 L114.23,199.72 M520.73,199.72 L510.23,199.72  '/>	<g transform="translate(93.94,204.27)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" > 4</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,169.93 L520.73,169.93  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,169.93 L114.23,169.93 M520.73,169.93 L510.23,169.93  '/>	<g transform="translate(93.94,174.48)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" > 5</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,140.15 L520.73,140.15  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,140.15 L114.23,140.15 M520.73,140.15 L510.23,140.15  '/>	<g transform="translate(93.94,144.70)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" > 6</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,110.36 L520.73,110.36  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,110.36 L114.23,110.36 M520.73,110.36 L510.23,110.36  '/>	<g transform="translate(93.94,114.91)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" > 7</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,80.58 L520.73,80.58  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,80.58 L114.23,80.58 M520.73,80.58 L510.23,80.58  '/>	<g transform="translate(93.94,85.13)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" > 8</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,50.79 L402.54,50.79 M510.94,50.79 L520.73,50.79  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,50.79 L114.23,50.79 M520.73,50.79 L510.23,50.79  '/>	<g transform="translate(93.94,55.34)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" > 9</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,21.01 L520.73,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,21.01 L114.23,21.01 M520.73,21.01 L510.23,21.01  '/>	<g transform="translate(93.94,25.56)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="end">
+		<text><tspan font-family="Bungee Hairline" > 10</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M103.73,438.00 L103.73,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,438.00 L103.73,427.50 M103.73,21.01 L103.73,31.51  '/>	<g transform="translate(103.73,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" >-6</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M133.52,438.00 L133.52,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M133.52,438.00 L133.52,427.50 M133.52,21.01 L133.52,31.51  '/>	<g transform="translate(133.52,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" >-5</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M163.30,438.00 L163.30,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M163.30,438.00 L163.30,427.50 M163.30,21.01 L163.30,31.51  '/>	<g transform="translate(163.30,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" >-4</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M193.09,438.00 L193.09,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M193.09,438.00 L193.09,427.50 M193.09,21.01 L193.09,31.51  '/>	<g transform="translate(193.09,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" >-3</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M222.87,438.00 L222.87,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M222.87,438.00 L222.87,427.50 M222.87,21.01 L222.87,31.51  '/>	<g transform="translate(222.87,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" >-2</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M252.66,438.00 L252.66,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M252.66,438.00 L252.66,427.50 M252.66,21.01 L252.66,31.51  '/>	<g transform="translate(252.66,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" >-1</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M282.44,438.00 L282.44,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M282.44,438.00 L282.44,427.50 M282.44,21.01 L282.44,31.51  '/>	<g transform="translate(282.44,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" > 0</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M312.23,438.00 L312.23,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M312.23,438.00 L312.23,427.50 M312.23,21.01 L312.23,31.51  '/>	<g transform="translate(312.23,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" > 1</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M342.02,438.00 L342.02,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M342.02,438.00 L342.02,427.50 M342.02,21.01 L342.02,31.51  '/>	<g transform="translate(342.02,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" > 2</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M371.80,438.00 L371.80,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M371.80,438.00 L371.80,427.50 M371.80,21.01 L371.80,31.51  '/>	<g transform="translate(371.80,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" > 3</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M401.59,438.00 L401.59,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M401.59,438.00 L401.59,427.50 M401.59,21.01 L401.59,31.51  '/>	<g transform="translate(401.59,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" > 4</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M431.37,438.00 L431.37,73.51 M431.37,31.51 L431.37,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M431.37,438.00 L431.37,427.50 M431.37,21.01 L431.37,31.51  '/>	<g transform="translate(431.37,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" > 5</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M461.16,438.00 L461.16,73.51 M461.16,31.51 L461.16,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M461.16,438.00 L461.16,427.50 M461.16,21.01 L461.16,31.51  '/>	<g transform="translate(461.16,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" > 6</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M490.94,438.00 L490.94,73.51 M490.94,31.51 L490.94,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M490.94,438.00 L490.94,427.50 M490.94,21.01 L490.94,31.51  '/>	<g transform="translate(490.94,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" > 7</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M520.73,438.00 L520.73,21.01  '/></g>
+<g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M520.73,438.00 L520.73,427.50 M520.73,21.01 L520.73,31.51  '/>	<g transform="translate(520.73,463.55)" stroke="none" fill="black" font-family="Bungee Hairline" font-size="14.00"  font-weight="bold"  text-anchor="middle">
+		<text><tspan font-family="Bungee Hairline" > 8</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='rgb(  0, 158, 115)'  d='M103.73,318.86 L520.73,318.86  '/></g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='rgb(  0, 158, 115)'  d='M282.44,438.00 L282.44,21.01  '/></g>
+<g fill="none" color="black" stroke="rgb(  0, 158, 115)" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="black" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke='black'  d='M103.73,21.01 L103.73,438.00 L520.73,438.00 L520.73,21.01 L103.73,21.01 Z  '/></g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="round" stroke-linejoin="round">
+</g>
+</g>
+</svg>
+

@@ -1,0 +1,107 @@
+# # -*- mode: org -*-
+# # -*- coding: utf-8 -*-
+#+TITLE:
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: logic.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{tikz-network}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+LaTeX_HEADER: \usepackage[utf8]{inputenc}
+#+LaTeX_HEADER: \usepackage[T1]{fontenc}
+#+LaTeX_HEADER: \usepackage{graphicx}
+#+LaTeX_HEADER: \usepackage{longtable}
+#+LaTeX_HEADER: \usepackage{wrapfig}
+#+LaTeX_HEADER: \usepackage{rotating}
+#+LaTeX_HEADER: \usepackage[normalem]{ulem}
+#+LaTeX_HEADER: \usepackage{amsmath}
+#+LaTeX_HEADER: \usepackage{amssymb}
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+
+* Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/omnimath"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&rautenberg2010concise]]
+:END:
+
+
+
+* Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle logic.hs :noweb yes
+module LOGIC where
+
+<<3cc32050-dc6b-4c6f-8916-efe7c8b8c94f>>
+
+#+end_src
+
+#+name: 3cc32050-dc6b-4c6f-8916-efe7c8b8c94f
+#+begin_src haskell :eval never :exports code
+import Test.QuickCheck
+#+end_src
+
+#+name: 473a8324-d0b6-46be-87b7-812b0cda3166
+#+begin_src haskell :results verbatim :exports both
+1 + 1
+#+end_src
+
+#+RESULTS: 473a8324-d0b6-46be-87b7-812b0cda3166
+: 2
+
+
+* Some preliminary thoughts on logic
+
+
+** QuickCheck
+
+
+
+
+
+** Rabbit holes
+@@html:<font color = "#375e79">@@
+⌜🐇 *Rabbit holes* to get started with CIMIC are:
+
+1. We need to learn mathematical logic, since logic is simply baked
+   into every programming language. Try [[https://math.libretexts.org/Courses/Monroe_Community_College/MATH_220_Discrete_Math/2%3A_Logic][this LibreTexts series]] on
+   logic. Pay particular attention to the notation used on logic
+   operators and the terminology as well. This stuff comes up all the
+   time in programming. (/R_{O}-hole/)
+@@html:</font>@@🐇⌟
+
+** 
+
+#+INCLUDE: "./footer.org" :minlevel 1

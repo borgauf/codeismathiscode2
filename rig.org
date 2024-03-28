@@ -1,0 +1,375 @@
+# # -*- mode: org -*-
+# # -*- coding: utf-8 -*-
+#+TITLE:
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: rigrundown.html
+#+OPTIONS: H:15 num:16 toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+
+* Rig rundown
+
+Here we will discuss in some detail how to get set up for /CIMIC/.
+
+* The Box
+
+Your "box" should be a desktop or laptop computer with a monitor
+capable of displaying at least 1920x1080. Don't try anything
+less. Why? For one, the /CIMIC/ webpages are utilizing the Edward
+Tufte CSS, which will require at least 1920x1080 screen resolution to
+fit without scrolling and slider bar weirdness. Another consideration
+is screen real estate, i.e., you'll want as much as you can get when
+you start coding.
+
+Actually, you should have two monitors. Why? Because the study-coding
+workflow goes smoothest that way. Personally, I've got two 4K monitors
+running off of a Lenovo Thinkpad T14 gen 1 (8 cores/50GB RAM). But you
+can get by with less. The lowest Thinkpad model would be a T430, but
+maybe consider upgrading its RAM memory, as well as the hard drive to
+a much faster SSD. Then think about a docking station specific to your
+model in order to connect two 1920x1089 or better monitors. I have a
+few Lenovo Thinkpads that I got from Ebay for cheap. Starting with the
+Thinkpad T470 they support 4K monitors. But of course Apple Macs are
+fine, too. If you go with Ebay and primarily used equipment, you
+should be able to stay under $500: laptop, docking station, monitors,
+keyboard, mouse.
+
+- Q: What about a Raspberry Pi---or one of its similar competitors?
+- A: Sure, but get the very latest, i.e., nothing less than 8 GB
+  memory. The latest RPi (as of now) is the Raspberry Pi 4 available with
+  8 GB. It has two micro-HDMI ports supporting up to 2 4k-resolution
+  monitors.
+
+*** OS
+
+The preferred operating system for CIMIC is Linux and this chapter
+will assume a Linux Ubuntu install. But Macs are fine, too, and
+Windows can be made to work with everything we'll be doing. Still, the
+professional and academic STEM world has lots of Linux and Mac. Linux
+is free for the downloading, by the way. I use the latest desktop
+Ubuntu version 22.04, which is easy to install. If you're using an
+older machine with not as much speed, power, and memory (e.g., a
+Thinkpad T430), then you might consider [[https://lubuntu.me/][lubuntu]], which is a
+lightweight version of regular desktop Ubuntu. Make sure to go with a
+64-bit version, though. 32-bit versions cannot use more than 4 GB of
+RAM memory, and much software these days depends on a 64-bit OS.
+
+
+** A typical OS install on older equipment
+
+If you have a machine that is three years old or less, go ahead and
+install a modern version of Linux. I use the latest Ubuntu 22.04 on my
+Thinkpad T14, but for this tutorial I pulled out an old Lenovo T430s
+and will install [[https://lubuntu.me/][lubuntu]] on it. From the Download page, it makes
+lighter demands on the hardware[fn:1].
+
+- Download lubuntu from their site; choose the latest Desktop 64-bit
+  version.
+- Once downloaded, make a bootable USB drive[fn:2] . If you only have access to a Windows
+  machine, follow [[https://itsfoss.com/create-live-usb-of-ubuntu-in-windows/][these]] instructions. If you only have a Mac follow
+  [[https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#1-overview][these]] instructions. If you have a Linux machine, e.g., Ubuntu,
+  simply
+  - download
+  - make sure you got it; find in the file manager
+  - open Startup Disk Creator
+  - make sure it has your USB drive and lubuntu selected and click Start
+- Once prepared, the bootable drive should be ready for your
+  destination machine. Simply plug it into the machine while off,
+  start the machine, and it should boot to a live trial/install
+  version of lubuntu[fn:3]. At this point the whole OS will be running
+  in live memory, the USB acting as the hard drive. This may take a
+  while as it needs time to set itself up.
+- Once the desktop has started, it should look like a regular running
+  computer.
+  - At this point you should connect the machine to the Internet by
+    selecting at the lower right-hand corner the Internet symbol.
+  - Once online, double-click the Install Lubuntu icon on the
+    left-hand side of the screen.
+- Work through the Location and Keyboard screens. Once you're at
+  Partitions, you have the option of dual booting (if you're
+  installing lubuntu on a machine that already has Windows installed)
+  /or/ you will do what I'll do, namely, blow away what's on the disk
+  and reinstall lubuntu new as the only system. For this choose Erase
+  disk and click Next.
+- Fill out the Users section with your name, chosen ID, computer
+  network name, and password. Do /not/ choose to log in without
+  password. Check the Summary and click Install. This will run through
+  its install procedure, which can take a few minutes.
+- The system will not reboot, this you do yourself. Once rebooting
+  make sure the USB has been removed.
+- Once back in, press Control-Alt-t to get a command line
+  terminal[fn:4]. Here you will type in commands and hit Enter[fn:5]
+#+begin_example
+  > sudo apt update
+#+end_example
+#+begin_example
+  > sudo apt upgrade
+#+end_example
+- This last command should bring down the latest update/upgrades for
+  your lubuntu. It may take some time, and it may require a
+  reboot. Follow that up with going to the menu (lower left corner),
+  choosing Preferences, Apply Full Upgrade. This might do more
+  installing and might require another restart. Do so.
+- Now you have a basic Linux system.
+
+
+* Installing software
+
+- Again, open a terminal with Ctr-Alt-t. With the up-arrow, your
+  terminal should have remembered your previous commands. Redo the
+  update and upgrade commands just to be safe.
+- Go to menu and select Preferences, Software Sources.
+  - Check Source code on the Ubuntu Software tab
+  - Click on the Other Software tab and check ~...jammy partner~
+  - Click Close
+  - Say yes to update
+
+
+** Synaptic package manager
+
+Synaptic Package Manager is a slightly easier way to get most of the
+software we'll need. We'll go back and forth between the command line
+and Synaptic to get new software
+
+- In the terminal type
+#+begin_example
+> sudo apt install synaptic
+#+end_example
+- Once installed, go to Preferences, Synaptic and open it, enter your
+  password.
+- In filter, type ~wget~. If not already installed, install it.
+- For more practice, let's install Gnuplot with Synaptic
+  - type gnuplot in the filter
+  - check the box for gnuplot; it should be green when selected
+  - agree to the additional packages
+  - click Apply
+  - kill Synaptic[fn:6]
+
+** Chrome browser
+
+I use the Google Chrome browser. YMMV. We'll install it manually from
+a raw ~.deb~ package for practice[fn:7].
+
+- Go to [[https://itsfoss.com/install-chrome-ubuntu/][this guide]].
+- Skip down to the section /Install Google Chrome in Ubuntu Terminal
+  [Method 2]/
+- At the command line type ~cd~ which will return you to the Home
+  directory, your top directory. Then type ~cd Downloads~ to get to
+  the Downloads directory.
+- Copy and paste the command below from the website guide into the
+  command line and run. This will download the Chrome ~.deb~ file into
+  Downloads.
+#+begin_example
+> wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#+end_example
+- Run the next command in the guide. This will install Chrome, as well
+  as adding Chrome to your Software Sources, Other Software section
+  for updates.
+#+begin_example
+> sudo dpkg -i google-chrome-stable_current_amd64.deb
+#+end_example
+
+
+** Emacs
+
+You are free to use any text editor you please, but the "official"
+text editor of CIMMIC will be Gnu Emacs. The main reason is that Emacs
+is used extensively in the upper echelons of the STEM commercial and
+research world. It is a very powerful piece of software. Some have
+called it an operating system in and of itself. It is maximally
+programmable and has its own built-in language called Emacs Lisp,
+which is a dialect of Common Lisp.
+
+To install it on our lubuntu
+
+- Download the latest from [[http://mirror.team-cymru.com/gnu/emacs/][here]] into your Downloads directory. You
+  want the latest, so scroll to the bottom. Right now that will be
+  ~emacs-28.1.tar.gz~ at 71 MB.
+- Before we unzip and install it, we need to install some supporting
+  software. At the command line enter
+#+begin_example
+> sudo apt install build-essential
+#+end_example
+- We'll refresh again /and/ get more Emacs dependencies with a
+  one-liner (here two commands are joined with ~&&~)[fn:8]
+#+begin_example
+> sudo apt update && sudo apt build-dep emacs
+#+end_example
+- Once completed, open your GUI File Manager. On the bottom tray click
+  on the file drawer icon.
+  - Go to Downloads
+  - Right-click on ~emacs-28.1.tar.gz~
+  - From dialog box choose Extract here.
+- In your terminal ~cd~ into the ~emacs-...~ directory and enter this
+  command
+#+begin_example
+./autogen.sh
+#+end_example
+- in the terminal, type
+#+begin_example
+> gcc --version
+#+end_example
+- From the menu select Preferences, Synaptic
+  - In Quick filter type ~libgccjit~. This will give a list libraries.
+  - My ~gcc~ version is 11.2, so in Synaptic I chose
+    ~libgccjit-11-dev~
+  - Once installed, *close* Synaptic.
+- At the command line make sure you're still in the ~emacs...~
+  directory by typing ~pwd~
+- Type this command
+#+begin_example
+> ./configure --with-cairo --with-native-compilation
+#+end_example
+- Once this completes, enter this command
+#+begin_example
+> make
+#+end_example
+- Once this completes, enter this command
+#+begin_example
+> sudo make install
+#+end_example
+- Lastly
+#+begin_example
+sudo make clean
+#+end_example
+- Now a plain-vanilla, bare-bones Emacs is installed, enter this to
+  start it up[fn:9]
+#+begin_example
+> emacs &
+#+end_example
+
+
+Soon we will start configuring and customizing Emacs for our uses. But
+to get a taste of Emacs wrangling, let's change the default font by
+installing the very popular programmer's font Julia Mono.
+
+- Start by checking at the command line whether the version control
+  system ~git~ is installed
+#+begin_example
+> which git
+#+end_example
+- If it is not, enter this[fn:10]
+#+begin_example
+> sudo apt install git
+#+end_example
+- Go to [[https://github.com/cormullion/juliamono][this]] Github site where we will "clone" a git repository
+  - ~cd~ to Downloads
+  - On the Github page click the Code drop-down and copy the whole
+    ~https...~ line
+  - Back at the command line type ~git clone~ then paste in the
+    ~http...~ string[fn:11]
+#+begin_example
+> git clone https://github.com/cormullion/juliamono.git
+#+end_example
+  - Next,
+
+
+** Installing LaTeX
+
+You'll want to install *[[https://www.tug.org/texlive/][TeX Live]]* from the /TeX Users Group/, on your
+system, even though we won't be using it right away. In fact, we'll
+rely on Emacs Org Mode to do mainly just web page generation at
+first. Still, these days LaTeX is in demand by many professors who
+want, e.g., assignments submitted as LaTeX documents. Learn now before
+the rush is our whole idea here at CIMIC.
+
+- In the terminal type...
+#+begin_example
+> sudo apt install texlive-full
+#+end_example
+- ...which will take a while since it's quite large.
+- test whether it's there with
+#+begin_example
+> tex --version
+#+end_example
+
+
+** Installing Gnuplot
+
+[[http://www.gnuplot.info/][Gnuplot]] has been around for a while and is a bread-and-butter go-to
+package for STEM diagrams, graphs, and charts. We'll provide a
+separate tutorial on getting some rudimentary things going on
+it. Actually, we installed it above as a practice run for the Synaptic
+Package Manager, but it won't hurt to make sure with a command-line
+install
+
+- In a terminal type...
+#+begin_example
+> sudo apt install gnuplot gnuplot-data gnuplot-qt
+#+end_example
+- ...you should get back message saying ~gnuplot is already the newest
+  version...~. Good.
+  
+
+
+
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] If you have only 4 GB of RAM you don't want the UI windowing
+system taking up 2 GB of that.
+
+[fn:2] The USB drive must have 4 GB storage or greater.
+
+[fn:3] On my particular machine I had to interrupt the startup and
+change a BIOS setting to get it to boot from the USB drive. YMMV (your
+mileage may vary).
+
+[fn:4] You might want to take [[https://ubuntu.com/tutorials/command-line-for-beginners#1-overview][this tutorial]] to learn your way around a
+Linux command line terminal.
+
+[fn:5] Don't type ~>~. That's just meant to be the command line prompt.
+
+[fn:6] FYI, if Synaptic is left open, you cannot install software from
+the command line. So it's Synaptic *or* the command line, not both.
+
+[fn:7] FYI, there are two other software install methods on Ubuntu,
+/snaps/ and /flatpak/. More later.
+
+[fn:8] If you get a screen asking about mail configuration, just
+choose ~No configuration~, hit Tab to ~<Ok>~ and hit Enter. Repeat if
+another screen appears. Software will continue to download and
+install.
+
+[fn:9] The ~&~ after the executable ~emacs~ has Emacs start, but gives
+you back your command line. Otherwise, that command line would be tied
+up until you ended Emacs. In any case, Ctr-Shift-t will start a new
+command line tab inside the terminal.
+
+[fn:10] Don't worry if you initiate an install for something already
+installed. lubuntu will just tell you it's already installed.
+
+[fn:11] This might take a while to download...

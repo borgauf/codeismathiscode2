@@ -1,0 +1,623 @@
+# # -*- mode: org -*-
+# # -*- coding: utf-8 -*-
+# Place title here
+#+TITLE:
+# Place author here
+#+AUTHOR:
+# Place email here
+#+EMAIL: 
+# Call borgauf/insert-dateutc.1 here
+#+DATE: 
+# #+Filetags: :SAGA
+# #+TAGS: experiment_nata(e) idea_nata(i) chem_nata(c) logs_nata(l) y_stem(y)
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline path:http://orgmode.org/org-info.js
+# #+HTML_HEAD: <link rel="stylesheet" href="../data/stylesheet.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="../tufte-css/tufte.css" type="text/css">
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+OPTIONS: H:15 num:15 toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+# #+OPTIONS: prop:t
+# This makes MathJax not work
+# #+OPTIONS: tex:imagemagick
+# this makes MathJax work
+#+OPTIONS: tex:t
+# This also replaces MathJax with images, i.e., don’t use.
+# #+OPTIONS: tex:dvipng
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+HTML_MATHJAX: align: left indent: 5em tagside: left font: Neo-Euler
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer
+# This makes pictures appear in buffer
+# #+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+# #+BIBLIOGRAPHY: ref plain
+
+[[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+
+* Numbers
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle omni1aux.hs :noweb yes
+module OMNI1 where
+
+
+<<c7b27de7-bd6e-49fb-bf65-8453e6242ab7>>
+<<6e231094-1d98-4e5c-99f9-541f140e390a>>
+<<35167592-7de1-424b-aac2-8918ffa2d3a0>>
+<<2191f911-a28c-4081-9803-e6873933991c>>
+#+end_src
+
+
+** Peano arithmetic
+:RESOURCES:
+- [[http://cmsc-16100.cs.uchicago.edu/2015/Notes/arithmetic.php]]
+- [[https://en.wikipedia.org/wiki/Peano_axioms][Peano axioms]]
+:END:
+
+*** Discussion
+
+N/A
+
+*** Unary numeral system
+:PROPERTIES:
+:ID:       aa8cbb55-a4fe-45d9-bf74-c6467dcc39db
+:END:
+
+As with all numerical treatments of mathematics, We must first decide
+which data structure to use. As is often the case with Haskell, we
+will utilize lists to do our work. This may seem ironic in some cases,
+since so much of math can be seen as, e.g., set theory-based. Yes,
+Haskell has a library for sets, but beginners in most programming
+languages start with lists and arrays as the go-to data
+structure. Hence, we will manipulate our UNS with lists. This means a
+set or string of ones will be represented as a list with integer ones
+as its sole elements, e.g., ~[1,1,1,1,1]~ is $11111$.
+
+**** UNS Subtraction
+:RESOURCES:
+- [[http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101][LYAHFGG Typeclasses 101]]
+:END:
+
+We will start with a brute-force, not very interesting way to do *UNS
+subtraction*, namely, we just employ the built-in Haskell function
+~length~ (see [[http://zvon.org/other/haskell/Outputprelude/length_f.html][length]]) to count the elements of each list, then
+subtract one from the other
+
+#+begin_src haskell :results verbatim :exports both
+length [1,1,1,1] - length [1,1]
+#+end_src
+
+#+RESULTS:
+: 2
+
+This can be done as a function
+
+#+name: c7b27de7-bd6e-49fb-bf65-8453e6242ab7
+#+begin_src haskell :eval never :exports code
+uns1 list1 list2 = (length list1) - (length list2)
+#+end_src
+
+
+#+begin_src haskell :results verbatim :exports both
+uns1 [1,1,1,1] [1,1]
+#+end_src
+
+#+RESULTS:
+: 2
+
+Now, let's create a better function utilizing Haskell's type and
+recursion features
+
+#+begin_src haskell :results silent :exports code
+:{
+unsSub2 :: [a] -> [a] -> [a]
+unsSub2 l1x l2x | null l1x = l2x
+                | null l2x = l1x
+unsSub2 (l1:l1x) (l2:l2x) = unsSub2 l1x l2x
+:}
+#+end_src
+
+but a quick test exposes a problem, i.e., ~unsSub2~ doesn't seem to
+know what to do when the subtrahend is larger than the minuend
+
+#+begin_src haskell :results verbatim :exports both
+unsSub2 [1,1,1,1] [1,1,1,1,1]
+#+end_src
+
+#+RESULTS:
+: [1]
+
+~unsSub3~ below would seem to fix it, but the first evaluation gives
+an error: There is something wrong with the type declaration.
+
+#+begin_src haskell :results silent :exports code
+:{
+unsSub3 :: [a] -> [a] -> [a]
+unsSub3 l1x l2x | null l1x = (map negate l2x)
+                | null l2x = l1x
+unsSub3 (l1:l1x) (l2:l2x) = unsSub3 l1x l2x
+:}
+#+end_src
+
+#+begin_example
+No instance for (Num a) arising from a use of ‘negate’
+  ...
+#+end_example
+
+One trick is to simply comment out your type declaration and try again
+
+#+begin_src haskell :results silent :exports code
+:{
+-- unsSub3 :: [a] -> [a] -> [a]
+unsSub3 l1x l2x | null l1x = (map negate l2x)
+                | null l2x = l1x
+unsSub3 (l1:l1x) (l2:l2x) = unsSub3 l1x l2x
+:}
+#+end_src
+
+When we allow Haskell to infer the type, we have success.
+
+#+begin_src haskell :results verbatim :exports both
+:t unsSub3
+#+end_src
+
+#+RESULTS:
+: unsSub3 :: Num a => [a] -> [a] -> [a]
+
+Because we're using ~negate~ our list type ~[a]~ cannot be just
+anything, rather, the ~a~'s, the list elements, must be instances
+of the class ~Num~[fn:1]. Retrying with Haskell's type declaration
+
+#+begin_src haskell :results silent :exports code
+:{
+unsSub3 :: Num a => [a] -> [a] -> [a]
+unsSub3 l1x l2x | null l1x = (map negate l2x)
+                | null l2x = l1x
+unsSub3 (l1:l1x) (l2:l2x) = unsSub3 l1x l2x
+:}
+#+end_src
+
+this evaluates. Now
+
+#+begin_src haskell :results verbatim :exports both
+unsSub3 [1,1] [1,1,1,1,1]
+#+end_src
+
+#+RESULTS:
+: [-1,-1,-1]
+
+One improvement would be to make sure our input lists are made up of
+just ones. For this we have a choice of Haskell built-ins like
+~filter~, ~all~, ~map~, ~any~, and ~elem~
+
+#+name: 35167592-7de1-424b-aac2-8918ffa2d3a0
+#+begin_src haskell :eval never :exports code
+list1 = [1,1,1,1]
+list2 = [-1,1,1,1,1]
+#+end_src
+
+One version using ~any~ to test for not equal to ~1~
+
+#+begin_src haskell :results verbatim :exports both
+any (/=1) list2
+#+end_src
+
+#+RESULTS:
+: True
+
+Another version of testing for not equal to ~1~ using a (lambda)
+anonymous function
+
+#+begin_src haskell :results verbatim :exports both
+any (\x -> x /= 1) list2  -- checks if any in the list conform to test
+#+end_src
+
+#+RESULTS:
+: True
+
+We can test /two/ lists by using ~Boolean~ /or/ ~(||)~ 
+
+#+begin_src haskell :results verbatim :exports both
+(any (\x -> x /= 1) list1) || (any (\x -> x /= 1) list2)
+#+end_src
+
+#+RESULTS:
+: True
+
+~filter~ returns a list with elements conforming to the test
+
+#+begin_src haskell :results verbatim :exports both
+filter (/=1) [1,1,1,1]
+#+end_src
+
+#+RESULTS:
+: []
+
+~all~ checks if all elements conform to test and returns ~Boolean~
+
+#+begin_src haskell :results verbatim :exports both
+all (==1)  [1,1,1,2]
+#+end_src
+
+#+RESULTS:
+: False
+
+~map~, (see [[http://learnyouahaskell.com/higher-order-functions#maps-and-filters][Maps and filters]]) which we'll use extensively, applies the
+test to a list and outputs a new list with the outcomes of each test
+on each input list element. Here the test is an anonymous function
+testing again for not equal to ~1~
+
+#+begin_src haskell :results verbatim :exports both
+map (\x -> (x > 1) || (x < 1)) [-1,1,2,3,4]
+#+end_src
+
+#+RESULTS:
+: [True,False,True,True,True]
+
+~elem~ with type ~Eq a => a -> [a] -> Bool~ is not quite as handy
+since it doesn't allow for a ~Boolean~ predicate test. So yes, we
+could test if ~1~ is an element of a list, but not if /all/ are
+
+#+begin_src haskell :results verbatim :exports both
+elem 1 [1,1,1,1] || elem 1 [1,2,3]
+#+end_src
+
+#+RESULTS:
+: True
+
+We can "trick" ~elem~ into helping us. First, we produce a list
+created from ~map~ as above testing each element for ~1~
+
+#+begin_src haskell :results verbatim :exports both
+map (\x -> x /= 1) [1,1,-1,1]
+#+end_src
+
+#+RESULTS:
+: [False,False,True,False]
+
+Then ~elem~ will tell us if any elements were not equal to ~1~
+
+#+begin_src haskell :results verbatim :exports both
+elem True $ map (\x -> x /= 1) [1,1,-1,1]
+#+end_src
+
+#+RESULTS:
+: True
+
+We'll build in a test using ~any~, but like before, this code doesn't
+evaluate properly
+
+#+begin_example
+unsSub4 :: Num a => [a] -> [a] -> [a]
+unsSub4 l1x l2x | (any (\x -> x /= 1) l1x) || (any (\y -> y /= 1) l2x) = []
+unsSub4 l1x l2x | null l1x = (map negate l2x)
+                | null l2x = l1x
+unsSub4 (l1:l1x) (l2:l2x) = unsSub4 l1x l2x
+#+end_example
+
+The error once again complains of something to do with the elements
+~a~ of the input arrays
+
+#+begin_example
+Could not deduce (Eq a) arising from a use of ‘/=’
+...
+Possible fix:
+        add (Eq a) to the context of
+          the type signature for:
+            unsSub4 :: forall a. Num a => [a] -> [a] -> [a]
+#+end_example
+
+Again, we'll leave out a type declaration and see what Haskell thinks
+it is
+
+#+begin_src haskell :results silent :exports code
+:{
+-- unsSub4 :: Num a => [a] -> [a] -> [a]
+unsSub4 l1x l2x | (any (\x -> x /= 1) l1x) || (any (\y -> y /= 1) l2x) = []
+unsSub4 l1x l2x | null l1x = (map negate l2x)
+                | null l2x = l1x
+unsSub4 (l1:l1x) (l2:l2x) = unsSub4 l1x l2x
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+:t unsSub4
+#+end_src
+
+#+RESULTS:
+: unsSub4 :: (Eq a, Num a) => [a] -> [a] -> [a]
+
+Trying this
+
+#+begin_src haskell :results silent :exports code
+:{
+unsSub4 :: (Eq a, Num a) => [a] -> [a] -> [a]
+unsSub4 l1x l2x | (any (\x -> x /= 1) l1x) || (any (\y -> y /= 1) l2x) = []
+unsSub4 l1x l2x | null l1x = (map negate l2x)
+                | null l2x = l1x
+unsSub4 (l1:l1x) (l2:l2x) = unsSub4 l1x l2x
+:}
+#+end_src
+
+and it evaluates. What's happening? As before, the input element ~a~'s
+type must also be an instance of the ~Eq~ class, which means there has
+to be a way to /equate/ any pair of ~a~'s
+
+#+begin_src haskell :results silent :exports both
+:i Eq
+#+end_src
+
+#+begin_example
+type Eq :: * -> Constraint
+class Eq a where
+  (==) :: a -> a -> Bool
+  (/=) :: a -> a -> Bool
+  {-# MINIMAL (==) | (/=) #-}
+  	-- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+instance (Eq a, Eq b) => Eq (Either a b)
+  -- Defined in ‘Data.Either’
+instance Eq a => Eq [a] -- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+instance Eq Word -- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+instance Eq Ordering -- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+instance Eq Int -- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+...
+#+end_example
+
+What ~:i~ or ~:info~ is saying about the typeclass ~Eq~ is that in
+order to be an instance of it, input ~a~ must have defined what
+happens when two of its members are subjected to an equality tests
+~(==)~ and ~(/=)~.
+
+Now ~unsSub4 :: (Eq a, Num a) => [a] -> [a] -> [a]~ restricts ~a~ to
+being a value that has instances for ~Eq~ /and/ ~Num~ registered. Why
+is this important? Because without specifying, /anticipating/ the
+ability to perform equality (~Eq~) comparisons on only numerical
+values (~Num~), other non-numerical values for ~a~ might give false
+output. When we declare the function ~unsSub4~'s input and output
+types with ~unsSub4 :: (Eq a, Num a) => [a] -> [a] -> [a]~, we are
+guaranteeing sane behavior.
+
+#+begin_src haskell :results verbatim :exports both
+unsSub4 [1,2] [1,1,1,1,1,1]
+#+end_src
+
+#+RESULTS:
+: []
+
+What will happen if we use lists of strings of ~1~?
+
+#+begin_src haskell :results verbatim :exports both
+unsSub4 ["1","1"] ["1","1","1","1"]
+#+end_src
+
+#+RESULTS:
+: <interactive>:2516:1-35: error:
+:     • No instance for (Num [Char]) arising from a use of ‘unsSub4’
+:     • In the expression: unsSub4 ["1", "1"] ["1", "1", "1", "1"]
+:       In an equation for ‘it’:
+:           it = unsSub4 ["1", "1"] ["1", "1", "1", ....]
+
+Again, Haskell is playing it safe. We haven't made Haskell aware of
+any way to handle strings as list elements. We use ~(/=)~, which will work
+
+#+begin_src haskell :results verbatim :exports both
+'1' /= '2'
+#+end_src
+
+#+RESULTS:
+: True
+
+but we haven't accounted for ~negate~ which wants to negate an actual
+number. Looking into ~negate~'s type
+
+#+begin_src haskell :results verbatim :exports both
+:t negate
+#+end_src
+
+#+RESULTS:
+: negate :: Num a => a -> a
+
+we see it cannot handle anything but numbers registered with the
+typeclass ~Num~. So yes, we can use string versions of ~1~, but that's
+because there is a registered instance for ~Char~ which defines behind
+the scenes how to equate numbers
+
+#+begin_src haskell :results silent :exports both
+:i Eq
+#+end_src
+
+#+RESULTS:
+#+begin_example
+type Eq :: * -> Constraint
+class Eq a where
+  (==) :: a -> a -> Bool
+  (/=) :: a -> a -> Bool
+  {-# MINIMAL (==) | (/=) #-}
+  	-- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+...
+instance Eq Char -- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+...
+#+end_example
+
+**** UNS Addition
+:RESOURCES:
+- [[http://learnyouahaskell.com/recursion#hello-recursion][LYAHFFG Hello Recursion!]]
+:END:
+
+As you saw in LYAHFGG, recursion[fn:2] is the Haskell way of looping. UNS
+addition, as represented by lists, will be a simple matter of
+combining two lists of ~1~'s into one total list. Borrowing from
+above, we can start out very simple by concatenating the lists
+
+#+begin_src haskell :results verbatim :exports both
+[1,1,1,1] ++ [1,1]
+#+end_src
+
+#+RESULTS:
+: [1,1,1,1,1,1]
+
+#+name: 2191f911-a28c-4081-9803-e6873933991c
+#+begin_src haskell :eval never :exports code
+uns2 list1 list2 = list1 ++ list2
+#+end_src
+
+
+#+begin_src haskell :results silent :exports code
+:{
+unsAdd1 :: (Eq a, Num a) => [a] -> [a] -> [a]
+unsAdd1 l1x l2x | (any (\x -> x /= 1) l1x) || (any (\y -> y /= 1) l2x) = []
+unsAdd1 l1x l2x | null l1x = l2x
+                | null l2x = l1x
+unsAdd1 (l1:l1x) (l2:l2x) = l1 : l2 : unsAdd1 l1x l2x
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+unsAdd1 [1,1] [1]
+#+end_src
+
+#+RESULTS:
+: [1,1,1]
+
+~unsAdd1~ gives a nice example of recursion. But what if any of the
+list elements are negative ~1~'s? Let's say if the lists contain
+~-1~'s we'll take away a positive ~1~. One approach would be to just
+concatenate both lists, then go through removing positive and negative
+pairs
+
+#+begin_src haskell :results silent :exports code
+:{
+unsAdd2 :: (Eq a, Num a) => [a] -> [a] -> [a]
+unsAdd2 l1x l2x | ((any (/=1) l1x) && (any (/=(-1)) l1x))
+                  || ((any (/=1) l2x) && (any (/=(-1)) l2x)) = []
+unsAdd2 l1x l2x | null l1x = l2x
+                | null l2x = l1x
+unsAdd2 (l1:l1x) (l2:l2x) = l1 : l2 : unsAdd2 l1x l2x
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+unsAdd2 [1,1] [-1,-1,-1]
+#+end_src
+
+#+RESULTS:
+: [1,-1,1,-1,-1]
+
+Here's a variant where the test for ~1~ and ~-1~ is somewhat shorter
+building on this idea
+
+#+begin_src haskell :results verbatim :exports both
+all (`elem` [1,-1]) [1,1,1,-1,1,-1,-1]
+#+end_src
+
+#+RESULTS:
+: True
+
+
+#+begin_src haskell :results silent :exports code
+:{
+unsAdd3 l1x l2x | not (all (`elem` [1,-1]) l1x) && not (all (`elem` [1,-1]) l2x) = []
+unsAdd3 l1x l2x | null l1x = l2x
+                | null l2x = l1x
+unsAdd3 (l1:l1x) (l2:l2x) = l1 : l2 : unsAdd3 l1x l2x
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+unsAdd3 [1,1] [-1,-1,-1]
+#+end_src
+
+#+RESULTS:
+: [1,-1,1,-1,-1]
+
+One simple idea would be to use a /fold/[fn:3], e.g.
+
+#+begin_src haskell :results verbatim :exports both
+foldr (\x acc -> x + acc) 0 [1,-1,1,1,1,-1,1]
+#+end_src
+
+#+RESULTS:
+: 3
+
+#+begin_src haskell :results verbatim :exports both
+foldr (\x acc -> x + acc) 0 [1,-1,1,-1,-1,-1,1]
+#+end_src
+
+#+RESULTS:
+: -1
+
+#+begin_src haskell :results silent :exports code
+:{
+unsAdd4 l1x l2x = let ux = l1x ++ l2x
+                  in collps ux
+                     where collps = foldr (\x acc -> x + acc) 0
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+unsAdd4 [1,1,1,-1] [1,-1]
+#+end_src
+
+#+RESULTS:
+: 2
+
+#+begin_src haskell :results silent :exports code
+:{
+unsAdd5 ux = let pux = filter (==1) ux
+                 mux = filter (==(-1)) ux
+             in pux ++ mux
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+unsAdd5 [1,-1,1,1,-1,-1,1,-1,1,1,1,1]
+#+end_src
+
+#+RESULTS:
+: [1,1,1,1,1,1,1,1,-1,-1,-1,-1]
+
+*** In closing: Some UNS Theory
+:RESOURCES:
+- [[https://en.wikipedia.org/wiki/Unary_numeral_system][Unary numeral system]]
+- [[https://math.stackexchange.com/questions/4444174/why-is-a-unary-numeral-system-bijective][Why is a unary numeral system bijective?]]
+:END:
+
+The UNS is considered a /bijective base-1 numeral system/. How is
+/bijective/ meant here? The answer is to imagine the set of all whole
+numerals $1,2,\ldots,\infin\;$, and then the set of all UNS 1-strings,
+e.g., ~1~, ~11~, ~111~. These two sets are mapped bijectively, as with
+bijective functions. The term /unary/ can be interpreted mainly as a
+number system having only one digit. However, when we explore Peano
+numbers, we will revisit the idea of unary functions and unary
+operators.
+
+
+
+* Footnotes
+
+[fn:1] At this point it would be good to review /Learn You/'s section
+on typeclasses: [[http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101][LYAHFGG Typeclasses 101]].
+
+[fn:2] At this point it would be good to know what LYAHFGG says about
+recursion: [[http://learnyouahaskell.com/recursion#hello-recursion][LYAHFGG Hello Recursion!]].
+
+[fn:3] See [[http://learnyouahaskell.com/higher-order-functions#folds][LYAHFGG folds]].

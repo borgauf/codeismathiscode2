@@ -1,0 +1,118 @@
+# # -*- mode: org -*-
+# # -*- coding: utf-8 -*-
+# Place title here
+#+TITLE:
+# Place author here
+#+AUTHOR:
+# Place email here
+#+EMAIL: 
+# Call borgauf/insert-dateutc.1 here
+#+DATE: 
+# #+Filetags: :SAGA
+# #+TAGS: experiment_nata(e) idea_nata(i) chem_nata(c) logs_nata(l) y_stem(y)
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline path:http://orgmode.org/org-info.js
+# #+HTML_HEAD: <link rel="stylesheet" href="../data/stylesheet.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+OPTIONS: H:15 num:15 toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+# #+OPTIONS: prop:t
+# This makes MathJax not work
+# #+OPTIONS: tex:imagemagick
+# this makes MathJax work
+#+OPTIONS: tex:t
+# This also replaces MathJax with images, i.e., don’t use.
+# #+OPTIONS: tex:dvipng
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+HTML_MATHJAX: align: left indent: 5em tagside: left font: Neo-Euler
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer
+# This makes pictures appear in buffer
+# #+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+# #+BIBLIOGRAPHY: ref plain
+
+
+* Getting started with Haskell
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/omnimath"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&brezov2018introduction]]
+- [[cite:&weissman2020illustrated]]
+- [[cite:&levesque2012thinking]]
+:END:
+
+** Rabbit holes
+@@html:<font color = "#375e79">@@
+⌜🐇 *Rabbit holes* to get started with CIMMIC are:
+1. [[http://learnyouahaskell.com/chapters][Learn You a Haskell for Great Good!]] (LYAHFGG) is a widely-used,
+   often-suggested beginners site for starting out with
+   Haskell[fn:1]. And so this will be your go-to reference/tutorial
+   for the immediate CIMMIC future. Get going with it and try to
+   self-pace your way through it all. It's not super-in-depth per se,
+   but will get you in the Haskell ballpark, so to speak. We will
+   build on, out this material as we go along. (/R_{C}-hole/)
+2. A site haskell.org is suggesting is the UPenn course CIS194. We
+   suggest the [[https://www.seas.upenn.edu/~cis194/spring15/][Spring 2015]] version since it includes haskell source
+   files. This is a college course, but for beginners. Click on the
+   /Lectures & Assignments/ link at the top. (If you've got [[https://github.com/borgauf/omnimath][our github
+   repository]] there's a directory containing all the Haskell files.)
+   (/R_{O}-hole/)
+3. Book-wise, a nice, well-paced text would be /[[https://www.manning.com/books/get-programming-with-haskell#:~:text=about%20the%20book,dive%20into%20custom%20Haskell%20modules.][Get Programming with
+   Haskell]]/ by Will Kurt. Will bridges a lot of chasms between
+   beginner, intermediary, and advanced ideas. In other words, Will
+   give plain-English explanations of things other treatments might go
+   deep into theory on. Really helpful, that. (/R_{O}-hole/)
+4. Another big favorite for Haskell starters, but slightly more
+   challenging is /[[https://www.haskell.org/tutorial/haskell-98-tutorial.pdf][A Gentle Introduction to Haskell 98]]/. AGITH was
+   written by elite school Comp-Sci professors (Yale) and uses more
+   math terminology than LYAHFGG. Which is what we'll be doing, but
+   usually with a shallower on-ramp. (/R_{O}-hole/)
+5. The [[https://wiki.haskell.org/Special:AllPages][Haskell Wiki]] [fn:2] is full of knowledge gems, but don't expect
+   to fully understand it yet. Maybe start with [[https://wiki.haskell.org/99_questions/1_to_10][this]] article and
+   peruse through the rest of the "99 Questions." (/R_{O}-hole/)
+6. Another big-league site to be aware of is the [[http://www.rosettacode.org/wiki/Rosetta_Code][Rosetta Code]]
+   site. Here you can search on hundreds of algorithms and numerical
+   analysis articles, each task done in the code of dozens of
+   programming languages[fn:4]. (/R_{FYI}-hole/)
+@@html:</font>@@🐇⌟
+
+
+* Footnotes
+
+[fn:1] See the rig rundown to get Haskell installed and running.
+
+[fn:2] Grokking /Haskell Wiki/ articles can be like trying to drink
+from a full-blast fire hose, but good can be gained from them by the
+brave and virtuous.
+
+[fn:3] Mathematics as experienced in Wikipedia's articles can also be
+a firehose experience, but again good can be gleaned.
+
+[fn:4] Peruse [[http://www.rosettacode.org/wiki/Proof][this article]] and then the Haskell code [[http://www.rosettacode.org/wiki/Proof#Haskell][here]] ... realize,
+however, this is graduate-level Comp-Sci stuff. Notice, perhaps, the
+list of 19 languages. These are the biggest of the big in the realm of
+doing math with computers, and learning one of them (such as Haskell)
+will definitely be on the curriculum of a good CS program.

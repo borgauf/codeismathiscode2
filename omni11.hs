@@ -1,0 +1,31 @@
+module OMNI1_1 where
+
+-- data Color = Red | Yellow | Blue | Green deriving (Show,Read)
+
+-- uns1 list1 list2 = (length list1) - (length list2)
+-- unsSub2 :: [a] -> [a] -> [a]
+-- unsSub2 l1x l2x | null l1x = l2x
+--                 | null l2x = l1x
+-- unsSub2 (l1:l1x) (l2:l2x) = unsSub2 l1x l2x
+-- -- unsSub3 :: [a] -> [a] -> [a]
+-- unsSub3 l1x l2x | null l1x = (map negate l2x)
+--                 | null l2x = l1x
+-- unsSub3 (l1:l1x) (l2:l2x) = unsSub3 l1x l2x
+-- 
+-- list1 = [1,1,1,1]
+-- list2 = [-1,1,1,1,1]
+-- uns2 list1 list2 = list1 ++ list2
+-- 
+-- primeEnum n | (n < 11) && (n > 0) = case (n) of
+--                           1  -> 2
+--                           2  -> 3
+--                           3  -> 5
+--                           4  -> 7
+--                           5  -> 11
+--                           6  -> 13
+--                           7  -> 17
+--                           8  -> 19
+--                           9  -> 23
+--                           10 -> 29
+--             | otherwise = error "We only know the first ten primes."
+--

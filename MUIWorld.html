@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-03-05 Sun 12:41 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'left',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'left',
+      displayIndent: '5em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'left',
+      displayIndent: '5em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<p>
+<label for="mn-demo" class="margin-toggle"></label>
+<input type="checkbox" id="mn-demo" class="margin-toggle">
+<span class="marginnote">
+<img src="images/ByrneProposition1.png" alt="ByrneProposition1.png" />
+<br />
+The first page from Byrne&rsquo;s colorful treatment of Euclid from
+the early 1800s
+</span>
+</p>
+
+<div id="outline-container-orgd8a8737" class="outline-2">
+<h2 id="orgd8a8737"><span class="section-number-2">1.</span> Axioms, theorems, proofs</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org14881f9" class="outline-3">
+<h3 id="org14881f9"><span class="section-number-3">1.1.</span> Axioms, then theorems</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+One departure point from conditioned math to real, grown-up math is
+the whole idea of proving things mathematically. To prove something we
+take basic definitions and <i>axioms</i> and derive theorems based on these
+definitions and axioms. According to <a href="https://en.wikipedia.org/wiki/Axiom">Wikipedia</a>, <font color =
+"#4715b3"> an <i>axiom</i>, <i>postulate</i>, or <i>assumption</i> is a statement
+that is taken to be true, to serve as a premise or starting point for
+further reasoning and arguments.</font> The word comes from
+the Greek axíōma (ἀξίωμα) &rsquo;that which is thought worthy or fit&rsquo; or
+&rsquo;that which commends itself as evident.&rsquo;
+</p>
+
+<p>
+It is generally accepted that Euclid&rsquo;s <i>Elements</i> was the first
+to use axioms as a starting point to build and derive mathematical
+statements, rather than simply stating, formulaic or anecdotally,
+math. That is to say, with Euclid we <i>prove</i> a mathematical statement
+by backing up what we&rsquo;re saying with definitions and axioms as
+proof. Here are the famous Euclidean postulates
+</p>
+
+<p>
+<font color = "#4715b3">
+</p>
+<ol class="org-ol">
+<li>A straight line segment may be drawn from any given point to any
+other.</li>
+<li>A straight line may be extended to any finite length.</li>
+<li>A circle may be described with any given point as its center and
+any distance as its radius.</li>
+<li>All right angles are congruent.</li>
+<li>If a straight line intersects two other straight lines, and so
+makes the two interior angles on one side of it together less than
+two right angles, then the other straight lines will meet at a
+point if extended far enough on the side on which the angles are
+less than two right angles.</li>
+</ol>
+<p>
+</font>
+</p>
+
+<p>
+Included with is postulates are his &ldquo;common notions,&rdquo; which are his
+general mathematical axioms
+</p>
+
+<p>
+<font color = "#4715b3">
+</p>
+<ol class="org-ol">
+<li>Things which are equal to the same thing are also equal to one another<label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle"/><span class="sidenote">
+or if \(a = b\) and \(c = b\;\), then \(a = c\).
+</span>.</li>
+<li>If equal things are added to equal things, the results are equal<label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle"/><span class="sidenote">
+or if a = b, then a + c = b + c.
+</span>.</li>
+<li>If equal things are subtracted from equal things, the remainders
+are equal.</li>
+<li>Things that coincide with one another are equal to one another.</li>
+<li>The whole is greater than the part.</li>
+</ol>
+<p>
+</font>
+</p>
+
+<p>
+Let&rsquo;s analyze the Proposition
+</p>
+
+<pre class="example" id="orgafef8ee">
+We may construct an equilateral triangle from a given line
+segment.
+</pre>
+
+<p>
+<label for="mn-demo"
+class="margin-toggle">⊕</label> <input type="checkbox" id="mn-demo"
+class="margin-toggle"> <span class="marginnote">
+<b><i>Euclid&rsquo;s Proposition 1</i></b> <br />
+<img src="images/EuclidP1.png" alt="EuclidP1.png" /> 
+</span>
+</p>
+
+<p>
+<b>Proof</b>
+</p>
+
+<ul class="org-ul">
+<li>We start with a line segment \(AB\;\)</li>
+<li>Form two circles around \(AB\;\): one with center \(A\) and radius
+\(AB\;\), the other with center \(B\) and radius \(AB\;\).</li>
+<li>Let C be a point where the circles intersect.</li>
+<li>By Postulate 3, \(AB \cong AC\;\) and \(AB \cong BC\)</li>
+<li>By Common Notion 1, \(AC \cong BC\;\)</li>
+<li>Since the segments \(AB\;\), \(AC\;\), and \(BC\;\) are all congruent to
+each other, \(ABC\;\) is an <i>equilateral</i> triangle.</li>
+</ul>
+
+
+<p>
+The <i>MU puzzle</i><label for="3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="3" class="margin-toggle"/><span class="sidenote">
+From <i>Gödel, Escher, Bach, An Eternal Golden Braid</i> by Douglas
+Hofstadter
+</span> is an example of an unsolvable question we might
+ask of a small, restricted, &ldquo;toy&rdquo; math world that is nevertheless a
+<i>formal system</i><label for="4" class="margin-toggle sidenote-number"></label><input type="checkbox" id="4" class="margin-toggle"/><span class="sidenote">
+See <a href="https://en.wikipedia.org/wiki/Formal_system">https://en.wikipedia.org/wiki/Formal_system</a>
+</span>. The object of this experiment is to go from one
+state of the system, namely, the initial string state <code>MI</code>, then by
+applying the system&rsquo;s <i>inference rules</i>, get to the string state <code>MU</code>.
+</p>
+
+<p>
+For our toy world we are given only a starting string <code>MI</code> and
+<i>inference rules</i><label for="5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="5" class="margin-toggle"/><span class="sidenote">
+i.e., <i>if</i> you have this state, <i>then</i> you can do this to it.
+</span>, or <i>transformation rules</i> on how to start changing
+this string, i.e., building &ldquo;new things&rdquo;, which in effect amount to
+theorems in our toy world:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">No.</th>
+<th scope="col" class="org-left">Rule</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">xI → xIU</td>
+<td class="org-left">Append U at a string ending in I</td>
+<td class="org-left">MI → MIU</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">Mx → Mxx</td>
+<td class="org-left">Double the string after M</td>
+<td class="org-left">MIU → MIUIU</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">xIIIy → xUy</td>
+<td class="org-left">Replace III inside a string with U</td>
+<td class="org-left">MUIIIU → MUUU</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-left">xUUy → xy</td>
+<td class="org-left">Remove UU from inside a string</td>
+<td class="org-left">MUUU → MU</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+And so our system has two rules to build up new string states and two
+rules to reduce them down. In these inference rules the symbols <code>M</code>,
+<code>I</code>, and <code>U</code> are the elements to build or reduce strings, while <code>x, y</code>
+are simply variables that stand for sequences of the symbols. For
+example, the string <code>MI</code> matches rule 2 for <code>x = I</code>, as well as rule 1
+for <code>x = M</code>. Another possible string state is <code>MII</code> which matches rule
+2 for <code>x = II</code>, and rule 1 for <code>x = MI</code>.
+</p>
+
+<p>
+We&rsquo;ll take a preliminary stab at getting from state <code>MI</code> of the system
+to <code>MU</code> of the system by using the inference rules<label for="6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="6" class="margin-toggle"/><span class="sidenote">
+In this &ldquo;mini-system&rdquo;, if 1. is an axiom, the 2. through
+8.&#x2014;and whatever further legal letter combinations&#x2014;are, technically
+speaking, the <i>theorems</i> of our mini-system.
+</span>:
+</p>
+
+<ol class="org-ol">
+<li><code>MI</code> (axiom &#x2026; we haven&rsquo;t started yet)</li>
+<li><code>MII</code> (applying rule 2, <code>x = I</code>)</li>
+<li><code>MIIII</code> (rule 2 again, <code>x = II</code>)</li>
+<li><code>MIIIIIIII</code> (rule 2 again, <code>x = IIII</code>)</li>
+<li><code>MUIIIII</code> (applying rule 3, <code>x = M</code>, <code>y = IIIII</code>)</li>
+<li><code>MUUII</code> (rule 3, <code>x = MU</code>, <code>y = II</code>)</li>
+<li><code>MII</code> (rule 4, <code>x = M</code>, <code>y = II</code>)</li>
+<li><code>MIIU</code> (rule 1, <code>x = MI</code>)</li>
+</ol>
+
+<p>
+&#x2026;but this isn&rsquo;t getting us to <code>MU</code>, there seems to be a problem&#x2026;
+</p>
+
+<p>
+Let&rsquo;s give a formal description-specification for our toy system
+</p>
+
+<ol class="org-ol">
+<li>The <i>set</i> of symbols is <code>{M,I,U}</code></li>
+<li>A string is <i>well-formed</i> if the first letter is <code>M</code> and there are
+no other <code>M</code> letters. Examples: <code>M</code>, <code>MIUIU</code>, <code>MUUUIII</code></li>
+<li><code>MI</code> is the starting string, i.e. an axiom, i.e., a base, given
+rule</li>
+<li>The rules of inference are defined in the basic rules towards
+building new theorems, aka, string states</li>
+</ol>
+
+<p>
+Rephrasing the task, Can we get from <code>MI</code> to <code>MU</code> using the system
+rules&#x2014;and not just be churning out endless combinations of <code>M</code>, <code>I</code>,
+and <code>U</code> to see what happens? That is, can we come up with a sequence
+of string states theorems that result get to the desired state <code>MU</code>,
+in effect a <i>proof</i>? Because if we can&rsquo;t, we&rsquo;re facing the whole
+<i>decidability</i> issue, e.g., whether any program we write, no matter
+how clever, might just generate string state after string state but
+never arrive at a final definitive answer, yes or no.
+</p>
+
+<p>
+As it turns out, no we cannot go from <code>MI</code> to <code>MU</code>. Which means we
+should give up on attempting to show a path from <code>MI</code> to <code>MU</code> and
+argue instead exactly why it can&rsquo;t be done. But how?
+</p>
+
+<p>
+The answer lies <i>outside</i> our toy system. And so by viewing this
+situation from above, from outside, we might notice the basic fact
+that we can never get the rules to produce the right number of <code>I</code>&rsquo;s
+that can then be dropped to leave just <code>MU</code>. We have rules to grow
+strings with <code>I</code>&rsquo;s, and one rule to take away <code>I</code>&rsquo;s, but they never
+sync up to do what we want. And to prove this, we will use an
+<i>invariant</i><label for="7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="7" class="margin-toggle"/><span class="sidenote">
+An <i>invariant</i> is a property that holds true whenever we apply
+any of the inference rules.
+</span> with mathematical induction.
+</p>
+
+<p>
+First, note that to leverage rule 3 we would need to have a string in
+a state where there are sequences of <code>I</code>&rsquo;s divisible by \(3\). But since
+we&rsquo;re trying to prove the opposite, let’s come up with an invariant
+that alludes to this
+</p>
+
+<p>
+<i>There is never a discrete sequence of <code>I</code>&rsquo;s in any system-produced
+string state with length divisible by 3&#x2026;</i>
+</p>
+
+<p>
+Let&rsquo;s check each of the rules that deal with <code>I</code>&rsquo;s to see whether this
+holds
+</p>
+
+<ol class="org-ol">
+<li>For the starting axiom, we have just one <code>I</code>. \(\Rightarrow\) Invariant
+trivially holds.</li>
+<li>Applying rule 2 means doubling the number of <code>I</code>&rsquo;s, i.e., we can
+produce <code>I</code>, <code>II</code>, <code>IIII</code>, <code>IIIIIII</code> (i.e., \(2^n\) <code>I</code>&rsquo;s), but none
+of these sequence lengths are ever <code>mod 3 = 0</code> \(\Rightarrow\) Invariant holds.</li>
+<li>Yes, applying rule 3 will reduce the number of <code>I</code>&rsquo;s by 3 each
+application. However<label for="8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="8" class="margin-toggle"/><span class="sidenote">
+Actually, \(2^n -3\) is never <code>mod 3 = 0</code> needs to be proved as
+well.
+</span>, those \(2^{n}-3\) <code>I</code>&rsquo;s sequences produced
+by rule 2 will never be divisible by <code>3</code>, meaning leftover
+<code>I</code>&rsquo;s. \(\Rightarrow\) Invariant holds.</li>
+</ol>
+
+<p>
+Thus, we’ve shown that with the starting axiom <code>MI</code> it is <i>not</i>
+possible to get to <code>MU</code>, because no sequence of rule-following steps
+can turn a string starting with one <code>I</code> into a string with no <code>I</code>&rsquo;s by
+following the rules.
+</p>
+
+<p>
+But again realize we’ve stepped <i>outside</i> our system and its rules to
+do this bit of reasoning about <code>MI</code> to <code>MU</code>, i.e. our divisibility by
+<code>3</code> trick isn&rsquo;t part of our toy system. That is to say, the <code>MI</code> to
+<code>MU</code> question&#x2014;and any program written to solve it&#x2014;cannot be
+answered by just following the system rules system. And so any
+algorithm or program we might write would run and run, trying
+different combinations of the inference rules indefinitely, not ever
+able to derive the <code>mod 3 = 0</code> trick, i.e., whether getting to <code>MU</code> is
+possible or impossible. No, we had to insert the <code>mod 3 = 0</code> trick
+from outside the system to get to an answer.
+</p>
+
+<p>
+➝ <b>Bottom line:</b> According to Kurt Gödel’s landmark <i>Incompleteness
+Theorem</i>, it turns out every mathematical formal system has this
+limitation<label for="9" class="margin-toggle sidenote-number"></label><input type="checkbox" id="9" class="margin-toggle"/><span class="sidenote">
+&#x2026;and this was a <b>huge</b> shock (if not disappointment) to the
+logic and math world at the time, dashing the hopes of David Hilbert
+of settling the solvability issue. This coming on the heels of the
+Russell&rsquo;s Paradox &ldquo;scandal&rdquo; that also wreaked havoc on mathematical
+logic&#x2026;
+</span>. The Incompleteness Theorem basically says with any
+formal system we <b>cannot</b> produce all possible (and necessary) truths
+about it. Why?  Because no system can prove (know) all truths about
+its own structure and behavior. In our example, using an artificially
+limited set of rules, we could not ascertain whether <code>MI</code> could ever
+evolve to <code>MU</code>, and we needed to go <i>outside</i> the system&rsquo;s rules to
+find that out. Gödel means that whatever mathematical systems we might
+cook up, we&rsquo;ll eventually have to come up with something outside,
+above that system&rsquo;s set of rules, to prove <i>all</i> of its
+postulates&#x2026;
+</p>
+
+<p>
+To say the least, this was and is a real game-changer! But as it
+applies to computers, it implies that any computer running any sort of
+software <b>cannot</b> be guaranteed to solve all manner of problems.
+</p>
+</div>
+</div>
+</div>
+<!-- Footnotes --><!-- 
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+or if \(a = b\) and \(c = b\;\), then \(a = c\).
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+or if a = b, then a + c = b + c.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+From <i>Gödel, Escher, Bach, An Eternal Golden Braid</i> by Douglas
+Hofstadter
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+See <a href="https://en.wikipedia.org/wiki/Formal_system">https://en.wikipedia.org/wiki/Formal_system</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+i.e., <i>if</i> you have this state, <i>then</i> you can do this to it.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+In this &ldquo;mini-system&rdquo;, if 1. is an axiom, the 2. through
+8.&#x2014;and whatever further legal letter combinations&#x2014;are, technically
+speaking, the <i>theorems</i> of our mini-system.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+An <i>invariant</i> is a property that holds true whenever we apply
+any of the inference rules.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8" role="doc-backlink">8</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Actually, \(2^n -3\) is never <code>mod 3 = 0</code> needs to be proved as
+well.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9" role="doc-backlink">9</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+&#x2026;and this was a <b>huge</b> shock (if not disappointment) to the
+logic and math world at the time, dashing the hopes of David Hilbert
+of settling the solvability issue. This coming on the heels of the
+Russell&rsquo;s Paradox &ldquo;scandal&rdquo; that also wreaked havoc on mathematical
+logic&#x2026;
+</p></div></div>
+
+ --></div>
+<div id="postamble" class="status">
+<p class="date">Created: 2023-03-05 Sun 12:41</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

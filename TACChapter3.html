@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-12-23 Fri 15:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Thinking as Computation; Chapter 3</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Thinking as Computation; Chapter 3</h1>
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<img src="./images/heading6.png"  style="padding: 0px 0px 22px 0px" alt="3-d graph" class="center">
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+
+
+
+
+<div id="outline-container-orga6a1ab8" class="outline-2">
+<h2 id="orga6a1ab8">Basic prolog source block</h2>
+<div class="outline-text-2" id="text-orga6a1ab8">
+<pre class="code"><code>:- format<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Hello, ~a.'</span>, org_mode<span class="org-rainbow-delimiters-depth-1">)</span>.
+</code></pre>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Hello,</td>
+<td class="org-left">org_mode.</td>
+<td class="org-left">:</td>
+</tr>
+
+<tr>
+<td class="org-left">true.</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<pre class="code"><code>:- format<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Hello, ~a.'</span>, org_mode<span class="org-rainbow-delimiters-depth-1">)</span>.
+</code></pre>
+
+<pre class="example">
+Hello, org_mode.
+</pre>
+
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span>+ 1 1<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+</div>
+</div>
+
+
+<div id="outline-container-org53c0c5d" class="outline-2">
+<h2 id="org53c0c5d">Source block with goal</h2>
+<div class="outline-text-2" id="text-org53c0c5d">
+<pre class="code"><code><span class="org-function-name">main</span> :-
+    write<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Hello, world!'</span><span class="org-rainbow-delimiters-depth-1">)</span>.
+</code></pre>
+
+
+<p>
+&lt;pr
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org7de1b4b" class="outline-2">
+<h2 id="org7de1b4b">Simple running session</h2>
+<div class="outline-text-2" id="text-org7de1b4b">
+<pre class="code"><code><span class="org-function-name">fourtyone</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">A</span><span class="org-rainbow-delimiters-depth-1">)</span> :- <span class="org-variable-name">A</span> is 41.
+</code></pre>
+
+
+<pre class="code"><code><span class="org-function-name">fact</span><span class="org-rainbow-delimiters-depth-1">(</span>0,1<span class="org-rainbow-delimiters-depth-1">)</span>.
+<span class="org-function-name">fact</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">N</span>,<span class="org-variable-name">F</span><span class="org-rainbow-delimiters-depth-1">)</span>:-
+    <span class="org-variable-name">N</span> #&gt; 0,
+    <span class="org-variable-name">F</span> #&gt; 0,
+    <span class="org-variable-name">N1</span> #= <span class="org-variable-name">N</span>-1,
+    <span class="org-variable-name">F</span> #= <span class="org-variable-name">N</span>*<span class="org-variable-name">F1</span>,
+    fact<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">N1</span>,<span class="org-variable-name">F1</span><span class="org-rainbow-delimiters-depth-1">)</span>.
+</code></pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgf9193bc" class="outline-2">
+<h2 id="orgf9193bc">Calling predicate from session</h2>
+<div class="outline-text-2" id="text-orgf9193bc">
+<pre class="code"><code><span class="org-function-name">answer</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">C</span><span class="org-rainbow-delimiters-depth-1">)</span> :-
+    fourtyone<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">B</span><span class="org-rainbow-delimiters-depth-1">)</span>,
+    <span class="org-variable-name">C</span> is <span class="org-variable-name">B</span>+1.
+</code></pre>
+</div>
+</div>
+
+
+<div id="outline-container-orge8a0068" class="outline-2">
+<h2 id="orge8a0068">Test interaction with other blocks</h2>
+<div class="outline-text-2" id="text-orge8a0068">
+<pre class="code"><code>'<span class="org-rainbow-delimiters-depth-1">(</span>1 2 3<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-function-name">main</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">B</span><span class="org-rainbow-delimiters-depth-1">)</span> :- recorded<span class="org-rainbow-delimiters-depth-1">(</span>a, <span class="org-variable-name">A</span><span class="org-rainbow-delimiters-depth-1">)</span>, recorded<span class="org-rainbow-delimiters-depth-1">(</span>b, <span class="org-variable-name">C</span><span class="org-rainbow-delimiters-depth-1">)</span>, append<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="org-rainbow-delimiters-depth-2">[</span></span><span class="org-variable-name">C</span><span class="org-keyword"><span class="org-rainbow-delimiters-depth-2">]</span></span>, <span class="org-variable-name">A</span>, <span class="org-variable-name">B</span><span class="org-rainbow-delimiters-depth-1">)</span>.
+</code></pre>
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

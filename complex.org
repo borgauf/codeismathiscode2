@@ -1,0 +1,580 @@
+# # -*- mode: org -*-
+# # -*- coding: utf-8 -*-
+# Place title here
+#+TITLE:
+# Place author here
+#+AUTHOR:
+# Place email here
+#+EMAIL: 
+# Call borgauf/insert-dateutc.1 here
+#+DATE: 
+# #+Filetags: :SAGA
+# #+TAGS: experiment_nata(e) idea_nata(i) chem_nata(c) logs_nata(l) y_stem(y)
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline path:http://orgmode.org/org-info.js
+# #+HTML_HEAD: <link rel="stylesheet" href="../data/stylesheet.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="../tufte-css/tufte.css" type="text/css">
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+OPTIONS: H:15 num:15 toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+# #+OPTIONS: prop:t
+# This makes MathJax not work
+# #+OPTIONS: tex:imagemagick
+# this makes MathJax work
+#+OPTIONS: tex:t
+# This also replaces MathJax with images, i.e., don’t use.
+# #+OPTIONS: tex:dvipng
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+# #+HTML_MATHJAX: align: left indent: 5em tagside: left font: Neo-Euler
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer
+# This makes pictures appear in buffer
+# #+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+# #+BIBLIOGRAPHY: ref plain
+
+* Complex numbers; getting started
+
+**  Bibliography :noexport:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&brezov2018introduction]]
+- [[cite:&axler2015linear]]
+:END:
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle complex1.hs :noweb yes
+module COMPLEX11 where
+
+<<54ef4a9a-bb7a-4a16-b784-9358112cc5bb>>
+<<f416fe1d-454d-4ba3-a5ee-5d06503bccca>>
+
+<<1f722ef1-cb26-450c-b08f-633473dfabc5>>
+<<44add852-d766-4e71-af8f-ca3d20f5e9b1>>
+
+#+end_src
+
+#+name: ed1083c1-98e0-4796-86e0-ab28f006792b
+#+begin_src haskell :results verbatim :exports both
+1 + 1
+#+end_src
+
+#+RESULTS: ed1083c1-98e0-4796-86e0-ab28f006792b
+: λ> 2
+
+** Rabbit holes
+
+These are rabbit holes about /complex numbers/
+
+@@html:<font color = "#375e79">@@
+⌜🐇 *Rabbit holes* to get started with CIMMIC are:
+1. [[https://math.libretexts.org/Bookshelves/Precalculus/Book%3A_Trigonometry_(Sundstrom_and_Schlicker)/05%3A_Complex_Numbers_and_Polar_Coordinates/5.01%3A_The_Complex_Number_System][This]] would be a good text-based starter for complex
+   numbers. (/R_{C}-hole/)
+2. [[https://www.youtube.com/watch?v=gHUHZXjpwOE&list=PL5KkMZvBpo5CE__2qeqZQa5e8gSkt1Ypy][This]] is Eddie Woo's excellent series of YouTube videos on complex
+   numbers. (/R_{C}-hole/)
+3. [[https://en.wikipedia.org/wiki/Complex_number][This]] is the Wikipedia article. (/R_{O}-hole/)
+4. (/R_{O}-hole/)
+5. (/R_{FYI}-hole/)
+@@html:</font>@@🐇⌟
+
+
+
+
+
+** Complex numbers
+:RESOURCES:
+- [[cite:&larson2007precalculus]]
+:END:
+
+
+
+
+#+name: 54ef4a9a-bb7a-4a16-b784-9358112cc5bb
+#+begin_src haskell :eval never :exports code
+import Data.Complex
+#+end_src
+
+#+name: 1f722ef1-cb26-450c-b08f-633473dfabc5
+#+begin_src haskell :eval never :exports code
+x = 0 :+ 3
+#+end_src
+
+#+name: 4ae993d0-a427-4018-a5cf-e63257035586
+#+begin_src haskell :results verbatim :exports both
+x
+#+end_src
+
+#+RESULTS: 4ae993d0-a427-4018-a5cf-e63257035586
+: 0 :+ 3
+
+#+name: ddc3df01-7ec9-4a8d-80ac-3460b65e0fd3
+#+begin_src haskell :results verbatim :exports both
+realPart x
+#+end_src
+
+#+RESULTS: ddc3df01-7ec9-4a8d-80ac-3460b65e0fd3
+: 0.0
+
+#+name: d36d3714-5041-477e-badb-8eac5733deeb
+#+begin_src haskell :results verbatim :exports both
+imagPart x
+#+end_src
+
+#+RESULTS: d36d3714-5041-477e-badb-8eac5733deeb
+: 3.0
+
+#+name: 44add852-d766-4e71-af8f-ca3d20f5e9b1
+#+begin_src haskell :eval never :exports code
+y = 1 + x
+#+end_src
+
+#+name: 609da23c-2761-4d0f-a631-161f562420bb
+#+begin_src haskell :results verbatim :exports both
+let z = y ^ 2
+#+end_src
+
+#+RESULTS: 609da23c-2761-4d0f-a631-161f562420bb
+
+#+name: 376fbb3a-3dd3-4f5b-bb74-9cfe2cea11cb
+#+begin_src haskell :results verbatim :exports both
+a = 0 :+ 1
+#+end_src
+
+#+RESULTS: 376fbb3a-3dd3-4f5b-bb74-9cfe2cea11cb
+
+#+name: 580ac69a-b8fb-447e-8138-258c164ffe0d
+#+begin_src haskell :results verbatim :exports both
+a ^ 1
+#+end_src
+
+#+RESULTS: 580ac69a-b8fb-447e-8138-258c164ffe0d
+: 0.0 :+ 1.0
+
+#+name: 95ca8331-a3f4-4c18-b8e1-6a057d500bff
+#+begin_src haskell :results verbatim :exports both
+a ^ 2
+#+end_src
+
+#+RESULTS: 95ca8331-a3f4-4c18-b8e1-6a057d500bff
+: (-1.0) :+ 0.0
+
+#+name: 6e9e87c7-d369-4fe9-bc25-a77747ed525f
+#+begin_src haskell :results verbatim :exports both
+[(0 :+ 1)^x | x <- [0..15]]
+#+end_src
+
+#+RESULTS: 6e9e87c7-d369-4fe9-bc25-a77747ed525f
+: [1.0 :+ 0.0,0.0 :+ 1.0,(-1.0) :+ 0.0,(-0.0) :+ (-1.0),1.0 :+ (-0.0),0.0 :+ 1.0,(-1.0) :+ 0.0,(-0.0) :+ (-1.0),1.0 :+ (-0.0),0.0 :+ 1.0,(-1.0) :+ 0.0,(-0.0) :+ (-1.0),1.0 :+ (-0.0),0.0 :+ 1.0,(-1.0) :+ 0.0,(-0.0) :+ (-1.0)]
+
+#+name: f16f31cb-a8c7-441d-bb6d-ab655944f891
+#+begin_src haskell :results silent :exports code
+:{
+complxPower nx | null nx = []
+complxPower (n:nx) = (0 :+ 1)^n : complxPower nx               
+:}
+#+end_src
+
+#+name: 948a11a7-f640-4d9a-b6d1-800aa696edf6
+#+begin_src haskell :results verbatim :exports both
+complxPower [0..15]
+#+end_src
+
+#+RESULTS: 948a11a7-f640-4d9a-b6d1-800aa696edf6
+: [1.0 :+ 0.0,0.0 :+ 1.0,(-1.0) :+ 0.0,(-0.0) :+ (-1.0),1.0 :+ (-0.0),0.0 :+ 1.0,(-1.0) :+ 0.0,(-0.0) :+ (-1.0),1.0 :+ (-0.0),0.0 :+ 1.0,(-1.0) :+ 0.0,(-0.0) :+ (-1.0),1.0 :+ (-0.0),0.0 :+ 1.0,(-1.0) :+ 0.0,(-0.0) :+ (-1.0)]
+
+We can try to make this print prettier
+
+#+name: f416fe1d-454d-4ba3-a5ee-5d06503bccca
+#+begin_src haskell :eval never :exports code
+import Numeric
+#+end_src
+
+#+name: b55daf8d-16f0-47d8-8015-bea2a4d99bbd
+#+begin_src haskell :results verbatim :exports both
+showFFloat (Just 0) (-5.014) ""
+#+end_src
+
+#+RESULTS: b55daf8d-16f0-47d8-8015-bea2a4d99bbd
+: -5
+
+#+name: 9d24f477-c1a5-45b2-b7ea-377676a03a65
+#+begin_src haskell :results silent :exports code
+:{
+complxPower2 nx | null nx = []
+complxPower2 (n:nx) = ri : complxPower2 nx
+  where ri = let ccalc = ((0 :+ 1)^n)
+             in if (realPart ccalc) /= 0
+                then (showFFloat (Just 0) (realPart ccalc) "")
+                else "i"      
+:}
+#+end_src
+
+#+name: 61806dfa-8f68-4e2a-8f42-a3444c8ff971
+#+begin_src haskell :results verbatim :exports both
+complxPower2 [0..10]
+#+end_src
+
+#+RESULTS: 61806dfa-8f68-4e2a-8f42-a3444c8ff971
+: ["1","i","-1","i","1","i","-1","i","1","i","-1"]
+
+or just
+
+#+name: 09890251-e7b4-4eab-8e75-37f9994d9a03
+#+begin_src haskell :results silent :exports code
+:{
+complxPower6 nx | null nx = []
+complxPower6 (n:nx) =
+  let
+    ccalc = ((0 :+ 1)^n)
+    ri =
+      if (realPart ccalc) /= 0
+      then (showFFloat (Just 0) (realPart ccalc) "")
+      else "i"
+   in ri : complxPower6 nx
+:}
+#+end_src
+
+
+** Haskell experiment  :noexport:
+
+#+name: 9c5f472e-6eb7-489b-a214-61502feb6f78
+#+begin_src haskell :results verbatim :exports both
+1 + 1
+#+end_src
+
+#+RESULTS: 9c5f472e-6eb7-489b-a214-61502feb6f78
+: 2
+
+
+
+#+begin_src haskell :results silent :exports code
+import Numeric.LinearAlgebra
+#+end_src
+
+#+begin_src haskell :results silent :exports code
+import Prelude hiding ((<>))
+#+end_src
+
+#+begin_src haskell :results silent :exports code
+:{
+a = (4><3)
+ [ 1, 2, 3
+ , 4, 0, 5
+ , 7, 7, 2
+ , 3, 3, 1 ] :: Matrix R
+
+b = (4><2)
+ [ 10, 1
+ , 20, 2
+ , 30, 3
+ , 15, 1 ] :: Matrix R
+
+x = linearSolveLS a b
+residual = norm_Frob (a <> x - b)  
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+x
+#+end_src
+
+#+RESULTS:
+: (3><2)
+:  [  2.862124248496993, 0.2739078156312625
+:  , 1.0300601202404813, 8.7374749498998e-2
+:  , 1.7134268537074153, 0.1803607214428857 ]
+
+
+#+begin_src haskell :results verbatim :exports both
+residual
+#+end_src
+
+#+RESULTS:
+: 1.7692315735147401
+
+
+#+begin_src haskell :results silent :exports code
+:{
+c =  (2><2)
+  [ 1, 2
+  , 3, 4 ] :: Matrix I
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+c
+#+end_src
+
+#+RESULTS:
+: (2><2)
+:  [ 1, 2
+:  , 3, 4 ]
+
+#+begin_src haskell :results silent :exports code
+:{
+-- 2D vector
+v1 = vector [1,2,3]
+v2 = vector [3,0,-2]
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+v1 * v2
+#+end_src
+
+#+RESULTS:
+: [3.0,0.0,-6.0]
+
+#+begin_src haskell :results verbatim :exports both
+matrix 3 [1..9] * ident 3
+#+end_src
+
+#+RESULTS:
+: (3><3)
+:  [ 1.0, 0.0, 0.0
+:  , 0.0, 5.0, 0.0
+:  , 0.0, 0.0, 9.0 ]
+
+#+begin_src haskell :results verbatim :exports both
+i3 = ident 3
+#+end_src
+
+#+RESULTS:
+
+#+begin_src haskell :results verbatim :exports both
+i3
+#+end_src
+
+#+RESULTS:
+: (3><3)
+:  [ 1.0, 0.0, 0.0
+:  , 0.0, 1.0, 0.0
+:  , 0.0, 0.0, 1.0 ]
+
+#+begin_src haskell :results silent :exports code
+:{
+d =  (2><1)
+  [ 1
+    , 4 ] :: Matrix I
+g = (1><2)
+  [6, 3] :: Matrix I
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+g
+#+end_src
+
+#+RESULTS:
+
+#+begin_src haskell :results silent :exports code
+:{
+f = (1><2)
+  [6, 3] :: Matrix I
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+f
+#+end_src
+
+#+RESULTS:
+: (1><2)
+:  [ 6, 3 ]
+
+#+begin_src haskell :results verbatim :exports both
+d * f
+#+end_src
+
+#+RESULTS:
+: (2><2)
+:  [  6,  3
+:  , 24, 12 ]
+
+#+begin_src haskell :results silent :exports code
+:{
+vec21 = (2><1)
+        [ 5
+        , 6 ] :: Matrix R
+
+vec12 = (1><2) [2
+        , 3 ] :: Matrix R
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+vec12
+#+end_src
+
+#+RESULTS:
+: (1><2)
+:  [ 2.0, 3.0 ]
+
+#+begin_src haskell :results verbatim :exports both
+vec21 <> vec12
+#+end_src
+
+#+RESULTS:
+: (2><2)
+:  [ 10.0, 15.0
+:  , 12.0, 18.0 ]
+
+#+begin_src haskell :results verbatim :exports both
+vec12 <> vec21
+#+end_src
+
+#+RESULTS:
+: (1><1)
+:  [ 28.0 ]
+
+#+begin_src haskell :results verbatim :exports both
+e * d
+#+end_src
+
+#+RESULTS:
+: (2><2)
+:  [  6.0,  3.0
+:  , 24.0, 12.0 ]
+
+#+begin_src haskell :results verbatim :exports both
+d * e
+#+end_src
+
+#+RESULTS:
+: (2><2)
+:  [  6,  3
+:  , 24, 12 ]
+
+#+begin_src haskell :results silent :exports code
+:{
+
+:}
+#+end_src
+
+
+** Hmatrix documentation  :noexport:
+
+#+begin_src haskell :results silent :exports code
+m = (3><4) [1..] :: Matrix Double
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+m
+#+end_src
+
+#+RESULTS:
+: (3><4)
+:  [ 1.0,  2.0,  3.0,  4.0
+:  , 5.0,  6.0,  7.0,  8.0
+:  , 9.0, 10.0, 11.0, 12.0 ]
+
+#+begin_src haskell :results silent :exports code
+w = 4 |> [2,0,-3,0::Double]
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+w
+#+end_src
+
+#+RESULTS:
+: [2.0,0.0,-3.0,0.0]
+
+#+begin_src haskell :results verbatim :exports both
+m <> (asColumn w)
+#+end_src
+
+#+RESULTS:
+: (3><1)
+:  [  -7.0
+:  , -11.0
+:  , -15.0 ]
+
+#+begin_src haskell :results verbatim :exports both
+vector [1,2,3] * vector [3,0,-2]
+#+end_src
+
+#+RESULTS:
+: [3.0,0.0,-6.0]
+
+#+begin_src haskell :results verbatim :exports both
+:t vector [1,2,3] * vector [3,0,-2]
+#+end_src
+
+#+RESULTS:
+: vector [1,2,3] * vector [3,0,-2] :: Vector R
+
+#+begin_src haskell :results verbatim :exports both
+matrix 3 [1..9] * ident 3
+#+end_src
+
+#+RESULTS:
+: (3><3)
+:  [ 1.0, 0.0, 0.0
+:  , 0.0, 5.0, 0.0
+:  , 0.0, 0.0, 9.0 ]
+
+#+begin_src haskell :results verbatim :exports both
+ident 3
+#+end_src
+
+#+RESULTS:
+: (3><3)
+:  [ 1.0, 0.0, 0.0
+:  , 0.0, 1.0, 0.0
+:  , 0.0, 0.0, 1.0 ]
+
+** Test :noexport:
+
+
+#+begin_src haskell :results silent :exports code
+import Graphics.Gnuplot.Simple
+#+end_src
+
+#+begin_src haskell :results silent :exports code
+import qualified Graphics.Gnuplot.Terminal.SVG as SVG
+#+end_src
+
+#+begin_src haskell :results silent :exports code
+:{
+-- carGraph :: IO ()
+type R = Double
+carGraph = plotFunc [Title "Car on an air track"
+                    ,XLabel "Time (s)"
+                    ,YLabel "Velocity of Car (m/s)"
+                    , terminal (SVG.cons "images/projectile2.svg")
+                    -- ,PNG "CarVelocity.png"
+                    ,Key Nothing
+                    ] [0..4 :: R] (\t -> 0.6 - 0.4 * t)
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+carGraph
+#+end_src
+
+#+RESULTS:
+
+
+
+* Footnotes
+
+[fn:1] /Cardinality/ of a set is simply the number count of
+elements therein.

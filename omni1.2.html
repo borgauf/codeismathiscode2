@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-05-26 Thu 15:32 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "5em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "Neo-Euler"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "Neo-Euler"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "left",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+
+
+<div id="outline-container-orge5f8fa1" class="outline-2">
+<h2 id="orge5f8fa1"><span class="section-number-2">1.</span> Rational numbers</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org9d4da61" class="outline-3">
+<h3 id="org9d4da61"><span class="section-number-3">1.1.</span> Rabbit holes</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+<font color = "#375e79">
+⌜🐇 <b>Rabbit holes</b> to get started with CIMMIC are:
+</p>
+
+<p>
+</font>🐇⌟
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org93baa29" class="outline-2">
+<h2 id="org93baa29"><span class="section-number-2">2.</span> Introduction to rational numbers</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Rational numbers come out of asking how to divide<label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle"/><span class="sidenote">
+Division is another sort of binary operator.
+</span>. So what happens
+when we divide a number by another? Two possibilities:
+</p>
+
+<ul class="org-ul">
+<li>One number divides the other &ldquo;evenly,&rdquo; i.e., with no &ldquo;remainder.&rdquo;</li>
+<li>One number cannot divide the other without producing a &ldquo;residual,&rdquo; a
+&ldquo;leftover&rdquo; number you know as a <i>remainder</i>. For example, \(8\)
+divided by \(3\) cannot happen as a binary.</li>
+</ul>
+
+
+<p>
+So what do we do? When our ancestors were confronted with this dual
+nature of division, they envisioned a new sort of number they called a
+<i>rational number</i><label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle"/><span class="sidenote">
+Ironically, <i>rational</i> doesn&rsquo;t mean mentally rational, sane,
+level-headed; rather, it is an adjective derived from <i>ratio</i>, as in a
+<i>ratio</i> of two numbers. Likewise, in math, <i>irrational</i> simply means a
+number that cannot be represented as a rational number.
+</span>.
+</p>
+</div>
+
+<div id="outline-container-org76b2f0c" class="outline-3">
+<h3 id="org76b2f0c"><span class="section-number-3">2.1.</span> Where do rational numbers fit in?</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+So if rational numbers are a step up in abstraction from naturals and
+integers, are they a step down from anything, i.e., are they
+sandwiched in between \(\mathbb{N}\) and \(\mathbb{Z}\;\)
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org14e7ed5" class="outline-2">
+<h2 id="org14e7ed5"><span class="section-number-2">3.</span> Rational numbers</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+In Haskell rational numbers are handled by <code>Data.Ratio</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">import</span> <span class="org-haskell-constructor">Data.Ratio</span>
+</code></pre>
+
+<p>
+The basic &ldquo;give back the simplest form&rdquo; function is <code>%</code>
+</p>
+
+<pre class="code"><code>50 <span class="org-haskell-operator">%</span> 10
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:6327:4: error:
+    Variable not in scope: (%) :: t0 -&gt; t1 -&gt; t
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-definition">numerator</span> <span class="org-rainbow-delimiters-depth-1">(</span>60 <span class="org-haskell-operator">%</span> 20<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:6329:1-9: error:
+    Variable not in scope: numerator :: t2 -&gt; t
+
+&lt;interactive&gt;:6329:15: error:
+    Variable not in scope: (%) :: t0 -&gt; t1 -&gt; t2
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-comment-delimiter">-- </span><span class="org-comment">combRatio :: Ratio</span>
+<span class="org-haskell-definition">combRatio</span> r <span class="org-haskell-operator">=</span> show <span class="org-rainbow-delimiters-depth-2">(</span>numerator <span class="org-rainbow-delimiters-depth-3">(</span>r<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">++</span> <span class="org-string">"/"</span> <span class="org-haskell-operator">++</span> show <span class="org-rainbow-delimiters-depth-2">(</span>denominator <span class="org-rainbow-delimiters-depth-3">(</span>r<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">combRatio</span> <span class="org-rainbow-delimiters-depth-1">(</span>60 <span class="org-haskell-operator">%</span> 20<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:6331:1-9: error:
+    Variable not in scope: combRatio :: t2 -&gt; t
+
+&lt;interactive&gt;:6331:15: error:
+    Variable not in scope: (%) :: t0 -&gt; t1 -&gt; t2
+</pre>
+
+
+<p>
+⇲ Tip: Put an infix operator in parentheses to use as prefix
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">r1</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">%</span><span class="org-rainbow-delimiters-depth-1">)</span> 50 10
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t r1
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:1:1-2: error: Variable not in scope: r1
+</pre>
+
+
+<pre class="code"><code>60 <span class="org-haskell-operator">%</span> 20 <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> <span class="org-haskell-type">Ratio</span> a
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:6335:28-32: error:
+    Not in scope: type constructor or class ‘Ratio’
+    A data constructor of that name is in scope; did you mean DataKinds?
+</pre>
+
+
+<pre class="code"><code>60 <span class="org-haskell-operator">%</span> 20 <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Rational</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:6337:4: error:
+    Variable not in scope: (%) :: t0 -&gt; t1 -&gt; Rational
+</pre>
+
+
+<p>
+First, the data type
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">data</span>  <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> <span class="org-haskell-type">Ratio</span> a <span class="org-haskell-operator">=</span> <span class="org-haskell-operator">!</span>a <span class="org-haskell-constructor">:%</span> <span class="org-haskell-operator">!</span>a  <span class="org-haskell-keyword">deriving</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Eq</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<p>
+The <code>:%</code> is a data constructor (the <code>:</code> insures it&rsquo;s a <i>constructor</i>
+and not just an operator function) that is placed between the two
+<code>Integral</code> parameters. But in the source <code>%</code> calls <code>reduce</code><label for="3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="3" class="margin-toggle"/><span class="sidenote">
+<code>quot</code> returns the quotient, discards the remainder; <code>gcd</code> is
+the built-in <i>greatest common divisor</i>; <code>signum</code> gives back <code>1</code> if
+argument is greater than zero, <code>-1</code> if less than zero, zero if zero.
+</span>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">reduce</span> <span class="org-haskell-operator">::</span>  <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Ratio</span> a
+<span class="org-haskell-pragma">{-# SPECIALISE reduce :: Integer -&gt; Integer -&gt; Rational #-}</span>
+<span class="org-haskell-definition">reduce</span> <span class="org-haskell-keyword">_</span> 0              <span class="org-haskell-operator">=</span>  ratioZeroDenominatorError
+<span class="org-haskell-definition">reduce</span> x y              <span class="org-haskell-operator">=</span>  <span class="org-rainbow-delimiters-depth-1">(</span>x <span class="org-haskell-operator">`quot`</span> d<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-constructor">:%</span> <span class="org-rainbow-delimiters-depth-1">(</span>y <span class="org-haskell-operator">`quot`</span> d<span class="org-rainbow-delimiters-depth-1">)</span>
+                           <span class="org-haskell-keyword">where</span> d <span class="org-haskell-operator">=</span> gcd x y
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-definition">%</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Ratio</span> a
+x <span class="org-haskell-definition">%</span> y <span class="org-haskell-operator">=</span>  reduce <span class="org-rainbow-delimiters-depth-1">(</span>x <span class="org-haskell-operator">*</span> signum y<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">(</span>abs y<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">quot</span> 6 3 <span class="org-comment-delimiter">-- </span><span class="org-comment">returns the quotient, discards the remainder, if any</span>
+</code></pre>
+
+<pre class="example">
+2
+</pre>
+</div>
+
+<div id="outline-container-org07ec014" class="outline-4">
+<h4 id="org07ec014"><span class="section-number-4">3.0.1.</span> GCD and the Euclidean algorithm</h4>
+<div class="outline-text-4" id="text-3-0-1">
+<p>
+The built-in Haskell <code>gcd</code> was used to reduce the rational number,
+e.g., fraction, to its lowest terms.
+</p>
+
+<p>
+𝖟𝕭. Find the lowest terms of \(42/56\)
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">gcd</span> 42 56
+</code></pre>
+
+<pre class="example">
+14
+</pre>
+
+
+<p>
+i.e., \(14\) is the greatest common divisor of both \(42\) and \(56\)
+</p>
+
+<p>
+\[
+\frac{42}{56}
+\]
+</p>
+
+
+<p>
+<i>Euclid&rsquo;s algorithm</i>, is an efficient method for computing the
+greatest common divisor (GCD) of two integers (numbers), the largest
+number that divides them both without a remainder.
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">eGCD</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integral</span> i <span class="org-haskell-operator">=&gt;</span> i <span class="org-haskell-operator">-&gt;</span> i <span class="org-haskell-operator">-&gt;</span> i
+<span class="org-haskell-definition">eGCD</span> 0 b <span class="org-haskell-operator">=</span> b
+<span class="org-haskell-definition">eGCD</span> a b <span class="org-haskell-operator">=</span> eGCD <span class="org-rainbow-delimiters-depth-2">(</span>b <span class="org-haskell-operator">`mod`</span> a<span class="org-rainbow-delimiters-depth-2">)</span> a
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">eGCD</span> 60 25
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:6343:1-4: error:
+    Variable not in scope: eGCD :: t0 -&gt; t1 -&gt; t
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org0f3f44f" class="outline-4">
+<h4 id="org0f3f44f"><span class="section-number-4">3.0.2.</span> Perfect numbers</h4>
+<div class="outline-text-4" id="text-3-0-2">
+<p>
+This code give the first four <i>perfect numbers</i><label for="4" class="margin-toggle sidenote-number"></label><input type="checkbox" id="4" class="margin-toggle"/><span class="sidenote">
+In number theory, a <i>perfect number</i> is a positive integer that
+is equal to the sum of its positive divisors, excluding the number
+itself. For instance, \(6\) has divisors \(1\), \(2\) and \(3\) (excluding
+itself), and \(1 + 2 + 3 = 6\;\), so \(6\) is a perfect number.
+</span>
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">main</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-keyword">do</span>
+  <span class="org-haskell-keyword">let</span> n <span class="org-haskell-operator">=</span> 4
+  mapM_ print <span class="org-haskell-operator">$</span>
+    take n <span class="org-rainbow-delimiters-depth-2">[</span>candidate <span class="org-haskell-operator">|</span> candidate <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-3">[</span>2 <span class="org-haskell-operator">..</span> 2 <span class="org-haskell-operator">^</span> 19<span class="org-rainbow-delimiters-depth-3">]</span>, getSum candidate <span class="org-haskell-operator">==</span> 1 <span class="org-rainbow-delimiters-depth-2">]</span>
+    <span class="org-haskell-keyword">where</span>
+      getSum candidate <span class="org-haskell-operator">=</span>
+        1 <span class="org-haskell-operator">%</span> candidate <span class="org-haskell-operator">+</span> sum <span class="org-rainbow-delimiters-depth-2">[</span>1 <span class="org-haskell-operator">%</span> factor <span class="org-haskell-operator">+</span> 1 <span class="org-haskell-operator">%</span> <span class="org-rainbow-delimiters-depth-3">(</span>candidate <span class="org-haskell-operator">`div`</span> factor<span class="org-rainbow-delimiters-depth-3">)</span>
+                            <span class="org-haskell-operator">|</span> factor <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-3">[</span>2 <span class="org-haskell-operator">..</span> floor <span class="org-rainbow-delimiters-depth-4">(</span>sqrt <span class="org-rainbow-delimiters-depth-5">(</span>fromIntegral candidate<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span>
+                            , candidate <span class="org-haskell-operator">`mod`</span> factor <span class="org-haskell-operator">==</span> 0 <span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code>main
+</code></pre>
+
+<pre class="example">
+• Perhaps you meant ‘min’ (imported from Prelude)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org44b5b95" class="outline-3">
+<h3 id="org44b5b95"><span class="section-number-3">3.1.</span> Power series</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Something<label for="5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="5" class="margin-toggle"/><span class="sidenote">
+This is the crummier, brute-force version <br />
+
+<table id="org331a007" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">0 min</td>
+<td class="org-right">10 min</td>
+<td class="org-right">20 min</td>
+<td class="org-right">30 min</td>
+<td class="org-right">40 min</td>
+<td class="org-right">50 min</td>
+</tr>
+
+<tr>
+<td class="org-right">20.0</td>
+<td class="org-right">10.</td>
+<td class="org-right">5.</td>
+<td class="org-right">2.5</td>
+<td class="org-right">1.25</td>
+<td class="org-right">0.625</td>
+</tr>
+</tbody>
+</table></span> else<label for="6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="6" class="margin-toggle"/><span class="sidenote">
+Another attempt <br />
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">0 min</td>
+<td class="org-right">10 min</td>
+<td class="org-right">20 min</td>
+<td class="org-right">30 min</td>
+<td class="org-right">40 min</td>
+<td class="org-right">50 min</td>
+</tr>
+
+<tr>
+<td class="org-right">20.0</td>
+<td class="org-right">10.</td>
+<td class="org-right">5.</td>
+<td class="org-right">2.5</td>
+<td class="org-right">1.25</td>
+<td class="org-right">0.625</td>
+</tr>
+</tbody>
+</table></span>
+</p>
+</div>
+</div>
+</div>
+<!-- Footnotes --><!-- 
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Division is another sort of binary operator.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Ironically, <i>rational</i> doesn&rsquo;t mean mentally rational, sane,
+level-headed; rather, it is an adjective derived from <i>ratio</i>, as in a
+<i>ratio</i> of two numbers. Likewise, in math, <i>irrational</i> simply means a
+number that cannot be represented as a rational number.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<code>quot</code> returns the quotient, discards the remainder; <code>gcd</code> is
+the built-in <i>greatest common divisor</i>; <code>signum</code> gives back <code>1</code> if
+argument is greater than zero, <code>-1</code> if less than zero, zero if zero.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+In number theory, a <i>perfect number</i> is a positive integer that
+is equal to the sum of its positive divisors, excluding the number
+itself. For instance, \(6\) has divisors \(1\), \(2\) and \(3\) (excluding
+itself), and \(1 + 2 + 3 = 6\;\), so \(6\) is a perfect number.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+This is the crummier, brute-force version <br />
+</p>
+<table id="org331a007" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">0 min</td>
+<td class="org-right">10 min</td>
+<td class="org-right">20 min</td>
+<td class="org-right">30 min</td>
+<td class="org-right">40 min</td>
+<td class="org-right">50 min</td>
+</tr>
+
+<tr>
+<td class="org-right">20.0</td>
+<td class="org-right">10.</td>
+<td class="org-right">5.</td>
+<td class="org-right">2.5</td>
+<td class="org-right">1.25</td>
+<td class="org-right">0.625</td>
+</tr>
+</tbody>
+</table></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Another attempt <br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">0 min</td>
+<td class="org-right">10 min</td>
+<td class="org-right">20 min</td>
+<td class="org-right">30 min</td>
+<td class="org-right">40 min</td>
+<td class="org-right">50 min</td>
+</tr>
+
+<tr>
+<td class="org-right">20.0</td>
+<td class="org-right">10.</td>
+<td class="org-right">5.</td>
+<td class="org-right">2.5</td>
+<td class="org-right">1.25</td>
+<td class="org-right">0.625</td>
+</tr>
+</tbody>
+</table></div></div>
+
+ --></div>
+<div id="postamble" class="status">
+<p class="date">Created: 2022-05-26 Thu 15:32</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

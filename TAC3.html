@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-12-23 Fri 15:20 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Galaxy Being" />
+<meta name="generator" content="Org Mode" />
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org99cdb68">1. Basic prolog source block</a></li>
+<li><a href="#org52be7bb">2. Source block with goal</a></li>
+<li><a href="#org4abb0c6">3. Simple running session</a></li>
+<li><a href="#orge1d9d8e">4. Calling predicate from session</a></li>
+<li><a href="#org6247a41">5. Test interaction with other blocks</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org99cdb68" class="outline-2">
+<h2 id="org99cdb68"><span class="section-number-2">1.</span> Basic prolog source block</h2>
+<div class="outline-text-2" id="text-1">
+<pre class="code"><code>:- format<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Hello, ~a.'</span>, org_mode<span class="org-rainbow-delimiters-depth-1">)</span>.
+</code></pre>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span>+ 1 1<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+</div>
+</div>
+
+
+<div id="outline-container-org52be7bb" class="outline-2">
+<h2 id="org52be7bb"><span class="section-number-2">2.</span> Source block with goal</h2>
+<div class="outline-text-2" id="text-2">
+<pre class="code"><code><span class="org-function-name">main</span> :-
+    write<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Hello, world!'</span><span class="org-rainbow-delimiters-depth-1">)</span>.
+</code></pre>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-org4abb0c6" class="outline-2">
+<h2 id="org4abb0c6"><span class="section-number-2">3.</span> Simple running session</h2>
+<div class="outline-text-2" id="text-3">
+<pre class="code"><code><span class="org-function-name">fourtyone</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">A</span><span class="org-rainbow-delimiters-depth-1">)</span> :- <span class="org-variable-name">A</span> is 41.
+</code></pre>
+
+
+<pre class="code"><code><span class="org-function-name">fact</span><span class="org-rainbow-delimiters-depth-1">(</span>0,1<span class="org-rainbow-delimiters-depth-1">)</span>.
+<span class="org-function-name">fact</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">N</span>,<span class="org-variable-name">F</span><span class="org-rainbow-delimiters-depth-1">)</span>:-
+    <span class="org-variable-name">N</span> #&gt; 0,
+    <span class="org-variable-name">F</span> #&gt; 0,
+    <span class="org-variable-name">N1</span> #= <span class="org-variable-name">N</span>-1,
+    <span class="org-variable-name">F</span> #= <span class="org-variable-name">N</span>*<span class="org-variable-name">F1</span>,
+    fact<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">N1</span>,<span class="org-variable-name">F1</span><span class="org-rainbow-delimiters-depth-1">)</span>.
+</code></pre>
+</div>
+</div>
+
+
+<div id="outline-container-orge1d9d8e" class="outline-2">
+<h2 id="orge1d9d8e"><span class="section-number-2">4.</span> Calling predicate from session</h2>
+<div class="outline-text-2" id="text-4">
+<pre class="code"><code><span class="org-function-name">answer</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">C</span><span class="org-rainbow-delimiters-depth-1">)</span> :-
+    fourtyone<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">B</span><span class="org-rainbow-delimiters-depth-1">)</span>,
+    <span class="org-variable-name">C</span> is <span class="org-variable-name">B</span>+1.
+</code></pre>
+</div>
+</div>
+
+
+<div id="outline-container-org6247a41" class="outline-2">
+<h2 id="org6247a41"><span class="section-number-2">5.</span> Test interaction with other blocks</h2>
+<div class="outline-text-2" id="text-5">
+<pre class="code"><code>'<span class="org-rainbow-delimiters-depth-1">(</span>1 2 3<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-function-name">main</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">B</span><span class="org-rainbow-delimiters-depth-1">)</span> :- recorded<span class="org-rainbow-delimiters-depth-1">(</span>a, <span class="org-variable-name">A</span><span class="org-rainbow-delimiters-depth-1">)</span>, recorded<span class="org-rainbow-delimiters-depth-1">(</span>b, <span class="org-variable-name">C</span><span class="org-rainbow-delimiters-depth-1">)</span>, append<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="org-rainbow-delimiters-depth-2">[</span></span><span class="org-variable-name">C</span><span class="org-keyword"><span class="org-rainbow-delimiters-depth-2">]</span></span>, <span class="org-variable-name">A</span>, <span class="org-variable-name">B</span><span class="org-rainbow-delimiters-depth-1">)</span>.
+</code></pre>
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Galaxy Being</p>
+<p class="date">Created: 2022-12-23 Fri 15:20</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

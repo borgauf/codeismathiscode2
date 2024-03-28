@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-05-12 Thu 23:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="../tufte-css/tufte.css" type="text/css">
+</head>
+<body>
+<div id="content" class="content">
+<p>
+<a href="~/Dropbox/org/biblio/ref.bib">Bibliography</a>
+</p>
+
+<div id="outline-container-orgeb7df6b" class="outline-2">
+<h2 id="orgeb7df6b"><span class="section-number-2">1.</span> Rig rundown</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Here we will discuss in some detail how to get set up for <i>CIMMIC</i>.
+</p>
+</div>
+
+<div id="outline-container-org33c9ccb" class="outline-3">
+<h3 id="org33c9ccb"><span class="section-number-3">1.1.</span> Box</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Your &ldquo;box&rdquo; should be a desktop or laptop computer with a monitor
+capable of displaying at least 1920x1080. Don&rsquo;t try anything
+less. Why? For one, the <i>CIMMIC</i> webpages are utilizing the Edward
+Tufte CSS, which will require at least 1920x1080 screen resolution to
+fit without scrolling and slider bar weirdness. Another consideration
+is screen real estate, i.e., you&rsquo;ll want as much as you can get when
+you start coding.
+</p>
+
+<p>
+Actually, you should have two monitors. Why? Because the study-coding
+workflow goes smoothest that way. Personally, I&rsquo;ve got two 4K monitors
+running off of a Lenovo Thinkpad T14 gen 1 (8 cores/50GB RAM). But you
+can get by with less. The lowest Thinkpad model would be a T430, but
+maybe consider upgrading its RAM memory, as well as the hard drive to
+a much faster SSD. Then think about a docking station specific to your
+model in order to connect two 1920x1089 or better monitors. I have a
+few Lenovo Thinkpads that I got from Ebay for cheap. Starting with the
+Thinkpad T470 they support 4K monitors. But of course Apple Macs are
+fine, too. If you go with Ebay and primarily used equipment, you
+should be able to stay under $500: laptop, docking station, monitors,
+keyboard, mouse.
+</p>
+
+<ul class="org-ul">
+<li>Q: What about a Raspberry Pi?</li>
+<li>A: Sure, but get the very latest, i.e., nothing less than 8 GB
+memory. The latest (as of now) is the Raspberry Pi 4 available with
+8 GB. It has two micro-HDMI ports supporting up to 2 4k-resolution
+monitors.</li>
+</ul>
+</div>
+
+<div id="outline-container-org95107bf" class="outline-4">
+<h4 id="org95107bf"><span class="section-number-4">1.1.1.</span> OS</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+The preferred operating system for CIMMIC is Linux, but Macs are fine,
+too. Windows can be made to work with everything we&rsquo;ll be doing, but
+the professional STEM world is predominantly Linux and, increasingly,
+Mac. Linux is free for the downloading, by the way. I use the latest
+desktop Ubuntu version 22.04, which is easy to install. If you&rsquo;re
+using an older machine with not as much speed, power, and memory
+(e.g., a Thinkpad T430), then you might consider <a href="https://lubuntu.me/">lubuntu</a>, which is a
+lightweight version of regular desktop Ubuntu. Make sure to go with a
+64-bit version, though. 32-bit versions cannot use more than 4 GB of
+RAM memory, and much software these days depends on a 64-bit OS.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4a14765" class="outline-3">
+<h3 id="org4a14765"><span class="section-number-3">1.2.</span> A typical OS install on older equipment</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+If you have a machine that is three years old or less, go ahead and
+install a modern version of Linux. I use the latest Ubuntu 22.04 on my
+Thinkpad T14, but for this tutorial I pulled out an old Lenovo T430s
+and will install <a href="https://lubuntu.me/">lubuntu</a> on it. From the Download page, it makes
+lighter demands on the hardware<label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle"/><span class="sidenote">
+If you have on 4 GB of RAM, then you don&rsquo;t want the user
+interface windowing system taking up 2 GB of that.
+</span>.
+</p>
+
+<ul class="org-ul">
+<li>Download lubuntu from their site; choose the latest Desktop 64-bit
+version.</li>
+<li>Once downloaded, make a bootable USB drive<label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle"/><span class="sidenote">
+The USB drive must have 4 GB storage or greater.
+</span> . If you only have access to a Windows
+machine, follow <a href="https://itsfoss.com/create-live-usb-of-ubuntu-in-windows/">these</a> instructions. If you only have a Mac follow
+<a href="https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#1-overview">these</a> instructions. If you have a Linux machine, e.g., Ubuntu,
+simply
+<ul class="org-ul">
+<li>download</li>
+<li>make sure you got it; find in the file manager</li>
+<li>open Startup Disk Creator</li>
+<li>make sure it has your USB drive and lubuntu selected and click Start</li>
+</ul></li>
+<li>Once prepared, the bootable drive should be ready for your
+destination machine. Simply plug it into the machine while off,
+start the machine, and it should boot to a live trial/install
+version of lubuntu<label for="3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="3" class="margin-toggle"/><span class="sidenote">
+On my particular machine I had to interrupt the startup and
+change a BIOS setting to get it to boot from the USB drive. YMMV (your
+mileage may vary).
+</span>. At this point the whole OS will be running
+in live memory, the USB acting as the hard drive. This may take a
+while as it needs time to set itself up.</li>
+<li>Once the desktop has started, it should look like a regular running
+computer.
+<ul class="org-ul">
+<li>At this point you should connect the machine to the Internet by
+selecting at the lower right-hand corner the Internet symbol.</li>
+<li>Once online, double-click the Install Lubuntu icon on the
+left-hand side of the screen.</li>
+</ul></li>
+<li>Work through the Location and Keyboard screens. Once you&rsquo;re at
+Partitions, you have the option of dual booting (if you&rsquo;re
+installing lubuntu on a machine that already has Windows installed)
+<i>or</i> you will do what I&rsquo;ll do, namely, blow away what&rsquo;s on the disk
+and reinstall lubuntu new as the only system. For this choose Erase
+disk and click Next.</li>
+<li>Fill out the Users section with your name, chosen ID, computer
+network name, and password. Do <i>not</i> choose to log in without
+password. Check the Summary and click Install. This will run through
+its install procedure, which can take a few minutes.</li>
+<li>The system will not reboot, this you do yourself. Once rebooting
+make sure the USB has been removed.</li>
+<li>Once back in, press Control-Alt-t to get a command line
+terminal<label for="4" class="margin-toggle sidenote-number"></label><input type="checkbox" id="4" class="margin-toggle"/><span class="sidenote">
+You might want to take <a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">this tutorial</a> to learn your way around a
+Linux command line terminal.
+</span>. Here you will type in commands and hit Enter<label for="5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="5" class="margin-toggle"/><span class="sidenote">
+Dont type <code>&gt;</code>. That&rsquo;s just meant to be the command line prompt.
+</span></li>
+</ul>
+<pre class="example" id="org69e69ee">
+  &gt; sudo apt update
+</pre>
+<pre class="example" id="org75d77ff">
+  &gt; sudo apt upgrade
+</pre>
+<ul class="org-ul">
+<li>This last command should bring down the latest update/upgrades for
+your lubuntu. It may take some time, and it may require a
+reboot. Follow that up with going to the menu (lower left corner),
+choosing Preferences, Apply Full Upgrade. This might do more
+installing and might require another restart. Do so.</li>
+<li>Now you have a basic Linux system.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org100f88a" class="outline-3">
+<h3 id="org100f88a"><span class="section-number-3">1.3.</span> Installing software</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>Again, open a terminal with Ctr-Alt-t. With the up-arrow, your
+terminal should have remembered your previous commands. Redo the
+update and upgrade commands just to be safe.</li>
+<li>Go to menu and select Preferences, Software Sources.
+<ul class="org-ul">
+<li>Check Source code on the Ubuntu Software tab</li>
+<li>Click on the Other Software tab and check <code>...jammy partner</code></li>
+<li>Click Close</li>
+<li>Say yes to update</li>
+</ul></li>
+</ul>
+</div>
+
+
+<div id="outline-container-org72fd3dc" class="outline-4">
+<h4 id="org72fd3dc"><span class="section-number-4">1.3.1.</span> Synaptic package manager</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+Synaptic Package Manager is a slightly easier way to get most of the
+software we&rsquo;ll need. We&rsquo;ll go back and forth between the command line
+and Synaptic to get new software
+</p>
+
+<ul class="org-ul">
+<li>In the terminal type</li>
+</ul>
+<pre class="example" id="org81c7bc4">
+&gt; sudo apt install synaptic
+</pre>
+<ul class="org-ul">
+<li>Once installed, go to Preferences, Synaptic and open it, enter your
+password.</li>
+<li>In filter, type <code>wget</code>. If not already installed, install it.</li>
+<li>For more practice, let&rsquo;s install Gnuplot with Synaptic
+<ul class="org-ul">
+<li>type gnuplot in the filter</li>
+<li>check the box for gnuplot; it should be green when selected</li>
+<li>agree to the additional packages</li>
+<li>click Apply</li>
+<li>kill Synaptic<label for="6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="6" class="margin-toggle"/><span class="sidenote">
+FYI, if Synaptic is left open, you cannot install software from
+the command line. So it&rsquo;s Synaptic or the command line, not both.
+</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org55d1bba" class="outline-4">
+<h4 id="org55d1bba"><span class="section-number-4">1.3.2.</span> Chrome browser</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+I use the Google Chrome browser. YMMV. We&rsquo;ll install it manually from
+a raw <code>.deb</code> package for practice<label for="7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="7" class="margin-toggle"/><span class="sidenote">
+FYI, there are two other software install methods on Ubuntu,
+<i>snaps</i> and <i>flatpak</i>. More later.
+</span>.
+</p>
+
+<ul class="org-ul">
+<li>Go to <a href="https://itsfoss.com/install-chrome-ubuntu/">this guide</a>.</li>
+<li>Skip down to the section <i>Install Google Chrome in Ubuntu Terminal
+[Method 2]</i></li>
+<li>At the command line type <code>cd</code> which will return you to the Home
+directory, your top directory. Then type <code>cd Downloads</code> to get to
+the Downloads directory.</li>
+<li>Copy and paste the command below from the website guide into the
+command line and run. This will download the Chrome <code>.deb</code> file into
+Downloads.</li>
+</ul>
+<pre class="example" id="org8389c25">
+&gt; wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+</pre>
+<ul class="org-ul">
+<li>Run the next command in the guide. This will install Chrome, as well
+as adding Chrome to your Software Sources, Other Software section
+for updates.</li>
+</ul>
+<pre class="example" id="org8eaa5c9">
+&gt; sudo dpkg -i google-chrome-stable_current_amd64.deb
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgc520e6c" class="outline-4">
+<h4 id="orgc520e6c"><span class="section-number-4">1.3.3.</span> Emacs</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+You are free to use any text editor you please, but the &ldquo;official&rdquo;
+text editor of CIMMIC will be Gnu Emacs. The main reason is that Emacs
+is used extensively in the upper echelons of the STEM commercial and
+research world. It is a very powerful piece of software. Some have
+called it an operating system in and of itself. It is maximally
+programmable and has its own built-in language called Emacs Lisp,
+which is a dialect of Common Lisp.
+</p>
+
+<p>
+To install it on our lubuntu
+</p>
+
+<ul class="org-ul">
+<li>Download the latest from <a href="http://mirror.team-cymru.com/gnu/emacs/">here</a> into your Downloads directory. You
+want the latest, so scroll to the bottom. Right now that will be
+<code>emacs-28.1.tar.gz</code> at 71 MB.</li>
+<li>Before we unzip and install it, we need to install some supporting
+software. At the command line enter</li>
+</ul>
+<pre class="example" id="orge8adf90">
+&gt; sudo apt install build-essential
+</pre>
+<ul class="org-ul">
+<li>We&rsquo;ll refresh again <i>and</i> get more Emacs dependencies with a
+one-liner (here two commands are joined with <code>&amp;&amp;</code>)<label for="8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="8" class="margin-toggle"/><span class="sidenote">
+If you get a screen asking about mail configuration, just
+choose <code>No configuration</code>, hit Tab to <code>&lt;Ok&gt;</code> and hit Enter. Repeat if
+another screen appears. Software will continue to download and
+install.
+</span></li>
+</ul>
+<pre class="example" id="orgbf8f36a">
+&gt; sudo apt update &amp;&amp; sudo apt build-dep emacs
+</pre>
+<ul class="org-ul">
+<li>Once completed, open your GUI File Manager. On the bottom tray click
+on the file drawer icon.
+<ul class="org-ul">
+<li>Go to Downloads</li>
+<li>Right-click on <code>emacs-28.1.tar.gz</code></li>
+<li>From dialog box choose Extract here.</li>
+</ul></li>
+<li>In your terminal <code>cd</code> into the <code>emacs-...</code> directory and enter this
+command</li>
+</ul>
+<pre class="example" id="orgad471ed">
+./autogen.sh
+</pre>
+<ul class="org-ul">
+<li>in the terminal, type</li>
+</ul>
+<pre class="example" id="orgad5007d">
+&gt; gcc --version
+</pre>
+<ul class="org-ul">
+<li>From the menu select Preferences, Synaptic
+<ul class="org-ul">
+<li>In Quick filter type <code>libgccjit</code>. This will give a list libraries.</li>
+<li>My <code>gcc</code> version is 11.2, so in Synaptic I chose
+<code>libgccjit-11-dev</code></li>
+<li>Once installed, <b>close</b> Synaptic.</li>
+</ul></li>
+<li>At the command line make sure you&rsquo;re still in the <code>emacs...</code>
+directory by typing <code>pwd</code></li>
+<li>Type this command</li>
+</ul>
+<pre class="example" id="org4d7dc4c">
+&gt; ./configure --with-cairo --with-native-compilation
+</pre>
+<ul class="org-ul">
+<li>Once this completes, enter this command</li>
+</ul>
+<pre class="example" id="org3415e06">
+&gt; make
+</pre>
+<ul class="org-ul">
+<li>Once this completes, enter this command</li>
+</ul>
+<pre class="example" id="orga167f9c">
+&gt; sudo make install
+</pre>
+<ul class="org-ul">
+<li>Lastly</li>
+</ul>
+<pre class="example" id="org8fa36d2">
+sudo make clean
+</pre>
+<ul class="org-ul">
+<li>Now a plain-vanilla, bare-bones Emacs is installed, enter this to
+start it up<label for="9" class="margin-toggle sidenote-number"></label><input type="checkbox" id="9" class="margin-toggle"/><span class="sidenote">
+The <code>&amp;</code> after the executable <code>emacs</code> has Emacs start, but gives
+you back your command line. Otherwise, that command line would be tied
+up until you ended Emacs. In any case, Ctr-Shift-t will start a new
+command line tab inside the terminal.
+</span></li>
+</ul>
+<pre class="example" id="org4d104aa">
+&gt; emacs &amp;
+</pre>
+
+
+<p>
+Soon we will start configuring and customizing Emacs for our uses. But
+to get a taste of Emacs wrangling, let&rsquo;s change the default font by
+installing the very popular programmer&rsquo;s font Julia Mono.
+</p>
+
+<ul class="org-ul">
+<li>Start by checking at the command line whether the version control
+system <code>git</code> is installed</li>
+</ul>
+<pre class="example" id="org64f4c98">
+&gt; which git
+</pre>
+<ul class="org-ul">
+<li>If it is not, enter this<label for="10" class="margin-toggle sidenote-number"></label><input type="checkbox" id="10" class="margin-toggle"/><span class="sidenote">
+Don&rsquo;t worry if you initiate an install for something already
+installed. lubuntu will just tell you it&rsquo;s already installed.
+</span></li>
+</ul>
+<pre class="example" id="orgdb68d16">
+&gt; sudo apt install git
+</pre>
+<ul class="org-ul">
+<li>Go to <a href="https://github.com/cormullion/juliamono">this</a> Github site where we will &ldquo;clone&rdquo; a git repository
+<ul class="org-ul">
+<li><code>cd</code> to Downloads</li>
+<li>On the Github page click the Code drop-down and copy the whole
+<code>https...</code> line</li>
+<li>Back at the command line type <code>git clone</code> then paste in the
+<code>http...</code> string<label for="11" class="margin-toggle sidenote-number"></label><input type="checkbox" id="11" class="margin-toggle"/><span class="sidenote">
+This might take a while to download&#x2026;
+</span></li>
+</ul></li>
+</ul>
+<pre class="example" id="org5975b95">
+&gt; git clone https://github.com/cormullion/juliamono.git
+</pre>
+<ul class="org-ul">
+<li>Next,</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Footnotes --><!-- 
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+If you have on 4 GB of RAM, then you don&rsquo;t want the user
+interface windowing system taking up 2 GB of that.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+The USB drive must have 4 GB storage or greater.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+On my particular machine I had to interrupt the startup and
+change a BIOS setting to get it to boot from the USB drive. YMMV (your
+mileage may vary).
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+You might want to take <a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">this tutorial</a> to learn your way around a
+Linux command line terminal.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Dont type <code>&gt;</code>. That&rsquo;s just meant to be the command line prompt.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+FYI, if Synaptic is left open, you cannot install software from
+the command line. So it&rsquo;s Synaptic or the command line, not both.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+FYI, there are two other software install methods on Ubuntu,
+<i>snaps</i> and <i>flatpak</i>. More later.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8" role="doc-backlink">8</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+If you get a screen asking about mail configuration, just
+choose <code>No configuration</code>, hit Tab to <code>&lt;Ok&gt;</code> and hit Enter. Repeat if
+another screen appears. Software will continue to download and
+install.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9" role="doc-backlink">9</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+The <code>&amp;</code> after the executable <code>emacs</code> has Emacs start, but gives
+you back your command line. Otherwise, that command line would be tied
+up until you ended Emacs. In any case, Ctr-Shift-t will start a new
+command line tab inside the terminal.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10" role="doc-backlink">10</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Don&rsquo;t worry if you initiate an install for something already
+installed. lubuntu will just tell you it&rsquo;s already installed.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11" role="doc-backlink">11</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+This might take a while to download&#x2026;
+</p></div></div>
+
+ --></div>
+<div id="postamble" class="status">
+<p class="date">Created: 2022-05-12 Thu 23:49</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

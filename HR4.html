@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-12-07 Wed 11:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Haskell Road; Getting Started</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Haskell Road; Getting Started</h1>
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<img src="./images/heading6.png"  style="padding: 0px 0px 22px 0px" alt="3-d graph" class="center">
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+
+<div id="outline-container-org0366df2" class="outline-2">
+<h2 id="org0366df2">Getting started</h2>
+</div>
+
+
+<div id="outline-container-org8670731" class="outline-2">
+<h2 id="org8670731">Monday at the library</h2>
+<div class="outline-text-2" id="text-org8670731">
+<p>
+It&rsquo;s a Monday morning in late July and the von der Surwitz siblings
+meet in a reserved study room at the main university library to go
+over what their <i>Introduction to Computer Science</i> teacher, Professor
+Chandra, had discussed with them at Novalis Tech Open House.
+</p>
+
+<p>
+Checking Professor Chandra&rsquo;s course syllabus on her website, they had
+already made online purchases of the two main texts for the course,
+<i>The Haskell Road to Logic, Maths and Programming</i> by Kees Doets and
+Jan van Eijck, and <i>Thinking as Computation</i> from Hector
+Levesque. During the open house at the convention wing of the student
+center, they sat around a table with the professor as she paged
+through the texts and talked extemporaneously about what parts she
+would handle and how. She also showed them some code on her laptop.
+</p>
+
+<p>
+The professor encouraged them to dive into to the logic and sets
+prereqs, along side of the first few chapters of <i>The Haskell
+Road&#x2026;</i>, as well as to get through as much <i>Learn You a Haskell&#x2026;</i>
+as possible.
+</p>
+
+<p>
+Ursula von der Surwitz has plugged in her laptop to the big monitor
+and is scrolling through some of her personal notes.
+</p>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So like
+Professor Chandra said yesterday, we&rsquo;re going to do things in terms of
+logic and set theory from here on out. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> And like she said,
+with set theory we can properly define relations and function. All of
+which sounds rather ominous. Like everything we thought we knew was
+about to go away.<br />
+[more agreement murmurs] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [paging through
+<i>Haskell Road&#x2026;</i> ] Did anyone look at the first chapter? <br />
+[all nod affirmative] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+Wasn&rsquo;t too bad. But I needed some of the <i>Learn You a Haskell&#x2026;</i> to
+get me through. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> I think it&rsquo;s cool
+how the whole prime number test, the greatest common divisor all
+blended together. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Do you remember
+that prime factorization way of figuring out unlike-denominator math?
+<br />
+[affirmative murmurs] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> That was amazing
+how Professor Chandra just put two fractions with huge unlike
+denominators into this command line &#x2014; what was it she was using? <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> It started with an
+R<label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle"/><span class="sidenote">
+That would be the programming language Racket where you can
+simply put in, e.g., <br />
+<code>&gt; (+ 1/3234 1/9437200)</code> <br />
+and get back <br />
+<code>4720217/15259952400</code> <br />
+Haskell can do this as well, which we&rsquo;ll investigate.
+</span>? <br />
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing]
+Right, so he added these monster unlike denominator fractions &#x2014; and
+it just spit out the answer in a split second <i>in rational form</i>! <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Then he worked
+through an <i>algorithm</i> as to how it could have been done. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Using prime
+factorization. Yeah, impressive.
+</p>
+
+
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+<!-- Footnotes --><!-- 
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+That would be the programming language Racket where you can
+simply put in, e.g., <br />
+<code>&gt; (+ 1/3234 1/9437200)</code> <br />
+and get back <br />
+<code>4720217/15259952400</code> <br />
+Haskell can do this as well, which we&rsquo;ll investigate.
+</p></div></div>
+
+ --></div>
+</body>
+</html>

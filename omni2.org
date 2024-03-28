@@ -1,0 +1,1579 @@
+#+TITLE:
+# Place author here
+#+AUTHOR:
+# Place email here
+#+EMAIL: 
+# Call borgauf/insert-dateutc.1 here
+#+DATE: 
+# #+Filetags: :SAGA +TAGS: experiment_nata(e) idea_nata(i)
+# #chem_nata(c) logs_nata(l) y_stem(y)
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+# #path:http://orgmode.org/org-info.js +HTML_HEAD: <link
+# #rel="stylesheet" href="../data/stylesheet.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+OPTIONS: H:15 num:15 toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+# #+OPTIONS: prop:t # This makes MathJax not work +OPTIONS:
+# #tex:imagemagick # this makes MathJax work
+#+OPTIONS: tex:t
+# This also replaces MathJax with images, i.e., don’t use.  #+OPTIONS:
+# tex:dvipng
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+# #+HTML_MATHJAX: align: left indent: 5em tagside: left font:
+# #Neo-Euler
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+# #+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+# #+BIBLIOGRAPHY: ref plain
+
+* Functions in a functional world
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/omnimath"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&brezov2018introduction]]
+- [[cite:&weissman2020illustrated]]
+- [[cite:&levesque2012thinking]]
+:END:
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle FUNCS.hs :noweb yes
+module FUNCS where
+
+<<7cce8ee3-71ee-4429-b782-52e133aa09c5>>
+
+
+  
+#+end_src
+
+** Rabbit holes
+@@html:<font color = "#375e79">@@
+⌜🐇 *Rabbit holes* for this section are:
+1. [[http://learnyouahaskell.com/chapters][Learn You a Haskell for Great Good!]] (LYAHFGG) is a widely-used,
+   often-suggested beginners site for starting out with Haskell. Work
+   through at least chapters 1 and 2 to understand a lot of what we'll
+   be doing with Haskell below[fn:1]. Pay particular attention to lists and
+   /list comprehensions/. (/R_{C}-hole/)
+2. Another big favorite for Haskell starters, but slightly more
+   challenging is /[[https://www.haskell.org/tutorial/haskell-98-tutorial.pdf][A Gentle Introduction to Haskell 98]]/. AGITH uses
+   more math terminology, which is what we're doing, but from the
+   shallow end first. (/R_{O}-hole/)
+3. You might take a look at the [[https://wiki.haskell.org/List_comprehension][Haskell Wiki article]][fn:2] too, especially
+  the examples, but don't expect to fully understand it yet. (/R_{O}-hole/)
+4. We need to learn mathematical logic, since logic is simply baked
+   into every programming language. Try [[https://math.libretexts.org/Courses/Monroe_Community_College/MATH_220_Discrete_Math/2%3A_Logic][this LibreTexts series]] on
+   logic. Pay particular attention to the notation used on logic
+   operators and the terminology as well. This stuff comes up all the
+   time in programming. (/R_{C}-hole/)
+5. These basic [[https://www.inf.ed.ac.uk/teaching/courses/inf1/fp/lectures/2017/set-theory.pdf][set theory slides]] with their tie-in to Haskell at the
+   end are very good as well. Do something between a grok and a
+   skim. We'll eventually be covering all the material therein.
+   (/R_{O}-hole/)
+6. Read through this [[https://en.wikipedia.org/wiki/Set_(mathematics)][Wikipedia Set]][fn:3] article, paying special attention
+   to the Basic Operations section---maybe even R-hole into the
+   /[[https://en.wikipedia.org/wiki/Union_(set_theory)][union]]/ article to understand some basic algebraic operations on
+   sets. You've probably seen this stuff before with /Venn diagrams;/
+   this is some of the algebra behind the
+   diagrams. (/R_{O}-hole/)
+@@html:</font>@@🐇⌟
+
+
+
+** Introduction
+
+This will be a very informative trip, weaving math lore about
+functions with how Haskell sees and uses functions. By really picking
+apart what a function is we hope to throw light on some dark corners
+of the basic math, as well as show how fundamental a good grasp of
+functions is to Haskell and functional programming. But why worry so
+much about functions at this stage?  Can't we just start using them in
+Haskell?  So if you did Rabbit-hole #1, you've got a glimpse of a
+Haskell function. Just a computer version of middle school functions,
+i.e., plug-and-chug. But that's just the surface. We really need to
+grok the math side of functions better. And once we gain a good
+understanding of how the math world sees functions, we'll better
+understand what a functional programming language is trying to
+accomplish with functions.
+
+We'll start out by making some intuitive points, some connections to
+your middle school introduction to the Cartesian coordinate
+system. We'll eventually start adding in some Haskell coding as we
+go. We'll be doing a lot of rabbit-hole, parallel investigations, so
+don't get antsy if it feels we're lost in the weeds. Slowly the
+picture will emerge, our stride will lengthen, and we'll be able to
+deal with things in a more exacting, more abstract, more logically
+precise way necessary for true grasp and meaning.
+
+** Functions, where do they come from?
+
+*** Some history
+
+Some may not agree, but it might be said that [[https://en.wikipedia.org/wiki/Ren%C3%A9_Descartes][René Descartes]] and his
+Cartesian coordinate system (CCS)[fn:4] gave birth of the modern
+function as we know it today. Twenty years after Decartes' death, the
+German mathematician Gottfried Leibniz first used the term
+/function/. Fifty years later Johann Bernoulli gave the function its
+definite algebraic syntax. Still, the CCS is where we get our first
+introduction in school to the idea of one thing related, connected to,
+dependent on another in an algebraically-expressible, formulaic way,
+i.e., one thing is a /function/ of another.
+
+As one math historian noted, Euclid's geometry considered a point to
+be a dimensionless object on a plane---end of story, full stop. But
+with the CCS, the point---once just an abstract creature of ancient
+geometry---finally had a real address. The CCS allowed a pair of
+numbers, e.g., $(3,6)\;$, to identify a point at an exact location on
+the plane[fn:5]. The CCS coordinate system gave everything on a plane
+a clear geographic location similar to a grid-based city, e.g.,
+"They're located at 3rd Street and 5th Avenue." But aren't addresses
+usually just a number and street name[fn:6]? Yes, but to know best
+spatially-geographically where an address is, it's good to know the
+nearest "cross street."
+
+*** The Cartesian product
+
+A point on a CCS is represented with what we've learned to call a
+/coordinate pair/, algebraically of the form $(a,b)$. We've been
+taught to understand the first variable of $(a,b)$ as the
+/x-coordinate/ and the second the /y-coordinate/. So where do these
+pairs come from, how are they produced? By an abstract sort of
+multiplication called the /Cartesian product/[fn:7]. And so, a CCS is
+a conceptual reimagining of a plane to be infinitely many addressable
+locations. This means every possible address is theoretically there
+waiting for us, /conceived/ as /all/ the points on the x-coordinate
+real number line and the y-coordinate real number line paired up, one
+from each, /in all possible combinations/.
+
+*** Plotting algebraic functions
+
+Our first experience with the CCS was no doubt plotting algebraic
+functions. An algebraic function was expressed as $y$ /in terms of/
+$x$. For example $y = 2x\;$ or $y = x^{2}$. We then plugged in x
+coordinates to generate the corresponding y coordinates---until we
+had enough points to draw a graph. And so functions are explained in
+your early math years as devices that create plots on CCSes.
+
+The real boon brought about by the CCS was the ability to compare,
+associate, match up, couple, corelate phenomena from the real world in
+the form of algebraic formulae. And so functions expressible,
+drawable, plottable on a CCS could be visually seen as one thing
+reacting to another. Today, we can't imagine a world without models,
+graphs and charts comparing, e.g., temperature to expansion, depth to
+water pressure, friction to heat, altitude to radiation exposure, and
+a gazillion more. Middle school math was where we all heard the
+phrase, "this is a /function/ of that." And so with the birth of the
+CCS we combined the geometry of a space with algebraic formulae
+linking each and every response of one phenomenon to another, visually
+teamed with a picture in lines and arcs.
+
+*** To the computer
+
+With this understanding of functions and the CCS, we're taught to see
+any data, any sequence of numbers as something /plottable/. For
+example, take the sequence $(2,9,22,41,66,97,134,177)\;\;\;$. Let's
+represent this sequence in Haskell as a simple list[fn:8] (as seen in
+LYAHFGG).
+
+#+begin_src haskell :results silent :exports code
+myseq1 = [2,9,22,41,66,97,134,177]
+#+end_src
+
+Giving it back
+
+#+begin_src haskell :results verbatim :exports both
+myseq1
+#+end_src
+
+#+RESULTS:
+: [2,9,22,41,66,97,134,177]
+
+With the symbol ~myseq1~ equated to our list and evaluated by our
+running Haskell REPL, the computer knows about our particular sequence
+of whole numbers. Now what? At first you might not see any potential
+for graphing, but if we create another list of just counting numbers
+from the natural numbers, $\mathbb{N}\;$, and then "zip" the two lists
+together into a new list of /tuples/[fn:9], we can then interpret
+these tuples as a set of coordinate points. And this list of tuples we
+can plot. Haskell has a neat trick for doing this you saw in
+LYAHFGG[fn:10]
+
+#+begin_src haskell :results verbatim :exports both
+zip [1..] myseq1
+#+end_src
+
+#+RESULTS:
+: [(1,2),(2,9),(3,22),(4,41),(5,66),(6,97),(7,134),(8,177)]
+
+We run it again with the org-mode flag for a table output format
+
+#+begin_src haskell :results verbatim table :exports both
+zip [1..] myseq1
+#+end_src
+
+#+RESULTS:
+#+NAME: myfirsttable
+| 1 |   2 |
+| 2 |   9 |
+| 3 |  22 |
+| 4 |  41 |
+| 5 |  66 |
+| 6 |  97 |
+| 7 | 134 |
+| 8 | 177 |
+
+And now we plot it with Gnuplot[fn:11]
+
+#+begin_src gnuplot :session none :var data=myfirsttable  :file images/myfirstgraph1.svg :exports none
+reset
+set terminal svg enhanced fname 'Bungee Hairline bold, 14' rounded dashed standalone
+set size ratio 1.0
+set style line 1 linecolor rgb '#0060ad' linetype 1 linewidth 1  # blue
+set style line 2 linecolor rgb '#dd181f' linetype 1 linewidth 1  # red
+set xrange[-2:10]
+set yrange[-10:180]
+set xzeroaxis linetype 2 linewidth 1
+set yzeroaxis linetype 2 linewidth 1
+set grid x,y front
+#set tics scale 0.75
+set xtics 1
+set ytics 50
+# set label at 1,4 point pt 7 ps 0.4
+plot data with lines ls 1 notitle, "" with point pt 7 ps 0.5 notitle
+#+end_src
+
+#+CAPTION: Simple graph from data set
+#+CAPTION:  
+#+RESULTS:
+#+ATTR_HTML: :alt simple graph
+[[file:images/myfirstgraph1.svg]]
+
+
+
+** A function definition from set theory
+
+@@html:<font color = "#375e79">@@
+⌜🐇 *Rabbit holes*:
+1. This [[https://math.libretexts.org/Courses/Monroe_Community_College/MATH_220_Discrete_Math/1%3A_Introduction_to_Discrete_Mathematics/1.5%3A_Introduction_to_Sets_and_Real_Numbers][LibreTexts page]] is a good set theory starter, too. We'll build
+   on this. (/R_{O}-hole/)
+2. This [[https://web.uvic.ca/~gmacgill/LFNotes/Cardinality.pdf][Cardinality of Sets]] pdf is a resource for understanding more
+   set-function nuances. Try to get through the pages 1-3 or so. (/R_{O}-hole/)
+@@html:</font>@@ 🐇⌟
+
+*** Definition
+
+There are various definitions of a function---depending on just how
+abstract we want to make things. We'll look at a few and dive into
+what they're saying, implying. Let's start with this one
+
+@@html:<font color = "#4715b3">@@ A *function* is a binary relation
+between two sets associating, /mapping/ the elements of the first set,
+the *domain*, to /never more than one element/ of the second set, the
+*codomain* or *range*.  @@html:</font>@@
+
+There's a lot of interesting nuances in this wording, but let's start
+with the phrase /binary relation/. Intuitively, anything binary means
+two objects are involved, or some process is going on two at a
+time. Famous binary relations would be addition and subtraction. But
+while ~+~ (plus) is both left-and-right /associative/[fn:12], ~-~
+(minus) is only left associative. If we do subtraction on a sequence
+of numbers, e.g., $(5,2,1)\;$, that is, $5 - 2 - 1\;$, it matters
+where we start. We know from earlier math that parentheses can
+compartmentalize and enforce an order on the calculations---in effect,
+forcing the operation of subtraction to be binary, two at a time,
+/and/ in a certain order. Here is our calculation forced to be left
+associative: $((5 - 2) - 1)$
+
+\begin{align}
+\begin{array}{r}
+((5 - 2) - 1) \\
+(3 - 1) \\
+2
+\end{array}
+\end{align}
+
+which is different than right associative
+
+\begin{align}
+\begin{array}{r}
+(5 - (2 - 1)) \\
+(5 - 1) \\
+4
+\end{array}
+\end{align}
+
+So the subtraction operator applied to a sequence of numbers is /not/
+left-/and/-right associative[fn:13]. Wait, you might say, subtraction
+is binary, i.e., one step at a time between two things, but addition
+doesn't need to be. If I have this
+
+\begin{align}
+\begin{array}{r}
+  43  \\[-2pt]
+  10  \\[-2pt]
+  67  \\[-2pt]
+\underline{+\;34} \\[-2pt]
+  154 \\[-2pt]
+  \end{array}
+\end{align}
+
+I see /four/ numbers and only /one/ ~+~ operator adding them; ~+~
+doesn't look binary here. Yes, well, our grade school introduction to
+adding a column of numbers was short on theory, long on "do this, then
+do this, then..." conditioning. We weren't really made aware at such
+an early stage that addition is indeed binary, that addition is an
+operation taking just /two numbers at a time/, and carrying the
+result, called the /augend/, to the next number, the /addend/.
+
+Think about an /[[https://en.wikipedia.org/wiki/Accumulator_(computing)][accumulator]]/, the idea of doing a sequence of binary
+calculations, i.e., two pieces at a time, stepping down the line,
+saving the result of each operation for the next operation. So with
+addition, one number will be the /augend/ and the other the
+/addend/. The augend is then /accumulating/ the results as the
+computation moves down the line of numbers. Left-to-right,
+top-to-bottom addition seems natural, but the expression $(1 + (2 +
+(3 + 4)))\;\;$ is forced by the parentheses to be right
+associative. Natural, left associative addition would look like this:
+$(((1 + 2) + 3) + 4)\;\;$. Either way, this is a binary operation with
+an augend and addend at each iteration, regardless of from which end
+we start[fn:14].
+
+*** Theoretically, the Cartesian product and binary relation
+
+Enough intuitive for now. Let's get more general-abstract. The formal
+definition of a binary relation or operation (as gleaned from
+[[https://en.wikipedia.org/wiki/Binary_relation][Wikipedia]]) also uses the idea of associating a domain and a codomain
+
+:RESOURCES:
+- [[cite:&enwiki:1056761369]]
+:END:
+@@html:<font color = "#4715b3">@@ Given sets $X$ and $Y$, the
+/Cartesian product/ (or /cross product/), $X\!\!\times\!\!Y$, is defined
+as[fn:15]
+
+\begin{align}
+X\!\!\times\!\!Y = \{(x,y) \;|\; x \in X \;\; \land \;\; y \in Y \}
+\end{align}
+
+Its elements, $(x,y)\;$, are called /ordered pairs/. A *binary
+relation* $R$ over sets $X$ and $Y$ is, in turn, a subset of
+$X\!\!\times\!\!Y\;$.
+@@html:</font>@@
+
+- Q: So we're defining a /binary relation/ as something derived from,
+  a subset of a /[[https://en.wikipedia.org/wiki/Cartesian_product][Cartesian product]]/?
+- A: Yes, that's what it says.
+- Q: And a binary relation is what a binary operator creates?
+- A: Yes. That means $2 + 2$ is a binary relation. It could be
+  expressed in set notation as $\{x \;|\; x \in \mathbb{N}, x = 2, x +
+  x\}\;$.
+- Q: Isn't this a lot of rigmarole just to add two numbers?
+- Maybe...
+
+
+*** Do you comprehension?
+
+Let's add $2 + 2$ in Haskell's /[[http://learnyouahaskell.com/starting-out#im-a-list-comprehension][list comprehension]]/. First, just for
+show-and-tell, we'll import[fn:16] Haskell's version of the natural
+numbers $\mathbb{N}$ making it available to our running REPL
+
+#+name: 7cce8ee3-71ee-4429-b782-52e133aa09c5
+#+begin_src haskell :eval never :exports code
+import Numeric.Natural
+#+end_src
+
+Let's test if it is indeed just the positive integers
+
+#+begin_src haskell :results verbatim :exports both
+myNat = -5 :: Natural
+#+end_src
+
+#+RESULTS:
+: <interactive>:487:10: warning: [-Woverflowed-literals]
+:     Literal -5 is negative but Natural only supports positive numbers
+
+#+begin_src haskell :results verbatim :exports both
+myNat
+#+end_src
+
+#+RESULTS:
+: *** Exception: arithmetic underflow
+
+Haskell rejects our trying to sneak a negative number into a variable
+that is supposed to be just a ~Natural~[fn:17]. Proceeding, using our
+first /list comprehension/
+
+#+begin_src haskell :results verbatim :exports both
+[x+x :: Natural | x <- [2]]
+#+end_src
+
+#+RESULTS:
+: [4]
+
+
+
+So where does our friend the function fit in? Hold that thought,
+because it's time for some "in-place" rabbit-holing...
+
+Above we see the most basic, generic /set comprehension/[fn:18] way of
+expressing a Cartesian product.  It turns out that set theory and
+higher math both use the general concept of a Cartesian product to
+describe /anything/ binary between one set and another where /all/
+possible combinations of $X$ and $Y$ is the value of
+$X\!\!\times\!\!Y\;$. As mentioned before, the CCS is the abstraction of a
+2D space as countless coordinate points on that 2D space, each
+addressable coordinate point made up of a number $x$ from the set of
+real numbers and a second number $y$ also from the set of real numbers
+as well[fn:19].
+
+The proper general term for a coordinate point is, as we alluded
+above, an /ordered pair/[fn:20]. Again, all the real numbers along the
+x-axis are placed in one set, and all the real numbers along the
+y-axis are placed in another set. Then they are paired in all possible
+combinations to generate the entire plane's ordered pair
+addresses. And that is essentially what any /Cartesian product/[fn:21]
+is.
+
+It won't be very illustrative, but let's try to give a set roster
+version of the CCS
+
+\begin{align}
+\mathbb{R_{x-axis}}_{}\!\!\times\!\!\mathbb{R_{y-axis}} &= \{\ldots, (0,0),\ldots, (5.203,4.0000219),\ldots\} \quad \text{same as} \\
+\mathbb{R^2} &= \{\ldots, (0,0),\ldots, (5.203,4.0000219),\ldots\}
+\end{align}
+
+Obviously we can't list all the gazillions of ordered pairs that make
+up the CCS. (We show only two actual point.) But yes, the CCS is
+indeed considered a Cartesian product of the /real/ numbers with
+themselves, i.e., the abscissa and ordinate in a binary relation. Now,
+what about functions? How do functions fit into this picture?
+
+If we compare the definitions of a function and a Cartesian product
+above, both speak in terms of two sets being matched up, but the
+function has one key proviso, namely, that we have a restricted binary
+relation where the /domain/ elements each connect to /only one/
+element of the /range/. 
+
+It turns out Haskell has a very handy device for creating Cartesian
+products that you saw in LYAHFGG, i.e., the Haskell /list
+comprehension/. Here's an example of a Cartesian product
+$X\!\!\times\!\!Y\;$ with only three elements in each set
+
+#+begin_src haskell :results silent :exports code
+:{
+setX = [1,2,3]
+setY = [1,2,3]
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+[(x,y) | x <- setX, y <- setY]
+#+end_src
+
+#+RESULTS:
+: [(1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(3,2),(3,3)]
+
+Can you spot why the value above cannot be the result of a function?
+Notice the first three pairs. The wording of the Cartesian product
+/requires/ each element from $X$ to be matched with /all/ the elements
+of $Y\;$ --- and that's what we see above. So yes ~(1,1)~ could be the
+value of a function --- but then we see ~(1,2)~, then ~(1,3)~...
+
+Let's take a look at a fascinating site called /[[http://rosettacode.org/wiki/Rosetta_Code][Rosetta Code]]/[fn:22],
+Rosetta Code is a wiki-format site that gathers together many math and
+computer science problems and theory topics and shows them worked out
+in many different programming languages. For our discussion we'll take
+a look at their page on list comprehensions, which, again, should be a
+computer version of what we see with a set comprehension. Go [[http://rosettacode.org/wiki/List_comprehensions][here]].
+
+You probably won't understand what they're on about with their
+"attribute list" or specs, but they basically want some code that will
+duplicate the functionality, the look and feel of a set
+comprehension. The specific problem they want solved is to create a
+set of /ordered triples/ that are the possible [[https://en.wikipedia.org/wiki/Pythagorean_triple][Pythagorean
+triples]]. Scroll down and click on the link to Haskell and you'll see
+this as the first version
+
+
+#+begin_src haskell :eval never :exports code
+pyth n = [(x,y,z) | x<-[1..n], y<-[x..n], z<-[y..n], x^2+y^2 == z^2]
+#+end_src
+
+
+Like our first list comprehension example above, it looks vaguely like
+a set comprehension, and, best of all, it very much operates like
+one. Let's run it[fn:23]
+
+#+begin_src haskell :results silent :exports code
+:{
+pyth :: Int -> [(Int, Int, Int)]
+pyth n = [(x,y,z) | x<-[1..n], y<-[x..n], z<-[y..n], x^2+y^2 == z^2]
+:}
+#+end_src
+
+then
+
+#+begin_src haskell :results verbatim :exports both
+pyth 20
+#+end_src
+
+#+RESULTS:
+: [(3,4,5),(5,12,13),(6,8,10),(8,15,17),(9,12,15),(12,16,20)]
+
+which is a list of the Pythagorean triples[fn:24] with the largest
+diagonal value of ~20~. Don't worry about this code's actual meaning,
+perhaps just marvel at it a bit. Perhaps browse some of the other
+code. Very few offer anything that even sort of resembles the set
+comprehension structure. Python yes, Racket yes. Others may be
+following the letter but not really the spirit of the set
+comprehension form. Realize we're using a Haskell list to reproduce a
+set. Again, we'll dive into lists in detail, but what you saw in those
+first chapters of LYAHFGG will be good for now.
+
+Let's do a slightly different version of our first example. We'll turn
+$X\!\!\times\!\!Y = \{(x,y) \;|\; x \in X\; \land \; y \in Y \}\;\;\;\;$ into a
+Haskell function that can take a variable for the maximum side length
+
+#+begin_src haskell :results silent :exports code
+cartesianXxY n = [(x,y) | x <- [1..n], y <- [1..n]]
+#+end_src
+
+#+begin_src haskell :results output :exports both
+cartesianXxY 3
+#+end_src
+
+#+RESULTS:
+: [(1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(3,2),(3,3)]
+
+We told ~cartesianXxY~ to make the sets have three elements each
+(cardinality $3$), $X = \{1,2,3\}\;$ and $Y = \{1,2,3\}\;\;$ --- and
+it gave us back ordered pairs with /every possible combination of the
+two sets/[fn:25]. So yes, we see a pretty good match-up of a Haskell
+list comprehension to set comprehension.
+
+Let's try to trick the list comprehension. What would be the Cartesian
+product of a set $A = \{1,2,3\}\;$ with the empty set $\varnothing\;$?
+
+#+begin_src haskell :results verbatim :exports both
+[(x,y) | x <- [1,2,3], y <- []]
+#+end_src
+
+#+RESULTS:
+: []
+
+We won't go into why now, but yes, the mathematics of the Cartesian
+product says that the product of any sets where one is the empty set
+will produce the empty set at the final result --- and Haskell picked
+this up.
+
+In general the concept of /how many ways of doing it?/ runs through this
+discussion of the Cartesian product. Let's count the value of ~cartesianXxY~
+
+#+begin_src haskell :results output :exports both
+length (cartesianXxY 3)
+#+end_src
+
+#+RESULTS:
+: 9
+
+Let's set up a table of increasing set cardinality
+
+<
+
+
+
+This is because it is an example
+of the basic /product rule/ of combinatorics, namely,
+
+@@html:<font color = "#4715b3">@@
+If there are $n$ ways of doing $A$ and $m$ ways of doing $B$, then the
+number of ways of doing $A$ /and/ $B$ (make that logical and
+conjunction) is $m \cdot n\;$.
+@@html:</font>@@
+
+Let's try another example that's a bit more abstract. How about all
+the natural numbers, $\mathbb{N}\;$, 
+
+
+
+
+Ach, we really should look down another rabbit hole, namely, the
+concept of a /relation/. But before that, we need to think more
+logically. So we go down the /logic rabbit hole/.
+
+
+Okay, back to our function definition. Our definition is based on,
+couched in set theory --- as will be lots of things you'll eventually
+study in math[fn:26]. This definition contains nothing about number
+lines or coordinate-generating formulae like $f(x) = \dots\;$ or $y =
+\dots\;$, nor one thing changing makes another thing change. Instead, it
+speaks only of the elements of one set matching up to the elements of
+another set, and it a very particular way, namely that the elements of
+the domain must be paired with elements of the codomain, but never can
+an element from the domain be matched to more than one element of the
+codomain[fn:27]. If that happens ... right, it's not a function[fn:28]
+
+Seeing this in terms of sets is a subtle difference from algebra
+formulae. Seen from this perspective things just got more abstract. No
+longer are we "generating" a set of coordinates by plugging in
+numbers; instead, we're /mapping/, connecting, pairing one set of
+things with another. It's as if with the CCS-based formulae like $y =
+x^{2}$ we were sticking in $x$'s and out came the $y$'s. However, our new
+definition seems to imply the $x$'s /and/ the $y$'s were there all
+along, and that we're just matching them up.
+
+An insightful example comes from a plotting package named
+/Gnuplot/. When creating a Gnuplot graph an algebraic formula
+generates a computer line display. Consider an algebraic formula
+version of a circle centered at $(1,3)$ on the CCS
+
+\begin{align}
+(x-1)^{2 }+ (y-3)^{2} = 5^{2}
+\end{align}
+
+If we try to solve (1) for $y$, i.e., change this general circle
+equation of two variables into the standard CCS version where $y$ is a
+function of $x$, we come up with /two/ equations due to the square
+root
+
+\begin{align}
+y &= +\sqrt{25 - (x-1)^{2}} + 3 \quad \text{and,} \\
+y &= -\sqrt{25 - (x-1)^{2}} + 3
+\end{align}
+
+which is less than optimal because we now have to "fake" a circle by
+putting two semicircles together[fn:29], i.e., a top half joined to a
+bottom half. When we see the Gnuplot code and the plot
+
+
+#+begin_src gnuplot -n :session none  :file images/semicircle1.svg :exports both
+reset
+set terminal svg enhanced fname 'Bungee Hairline bold, 14' rounded dashed standalone
+set size ratio 1.0
+set style line 1 linecolor rgb '#0060ad' linetype 1 linewidth 1  # blue
+set style line 2 linecolor rgb '#dd181f' linetype 1 linewidth 1  # red
+set xrange[-6:8]
+set yrange[-4:10]
+set xzeroaxis linetype 2 linewidth 1
+set yzeroaxis linetype 2 linewidth 1
+set grid x,y front
+#set tics scale 0.75
+set xtics 1
+set ytics 1
+set label at 1,3 point pt 7 ps 0.4
+set samples 101
+f(x) = -sqrt(25-(x-1)**2)+3
+g(x) = sqrt(25-(x-1)**2)+3
+plot f(x) with lines ls 1, \
+     g(x) with lines ls 2 #, \
+     '-' with points
+#+end_src
+
+#+RESULTS:
+[[file:images/semicircle1.svg]]
+
+there seems to be a gap in the plots of $f(x)$ and $g(x)$ (lines 16
+and 17)[fn:30]; the two semicircles don't meet up. Why?  /Because the
+set of points used to plot the semicircles is too small./ Notice line
+15, ~set samples 101~. If we plot 101 points spread equidistant in a
+semicircle, then connect them with lines, we get what appears to be a
+smooth arc[fn:31]. But there aren't quite enough points on the extreme
+ends to make the semicircles meet up. To do that, we would have to
+throw many more points into the plot to take care of the far ends at
+exactly $(-4,3)$ and $(6,3)$[fn:32]. And so, in a sort-of way Gnuplot
+has combined the set theory side of a function with the algebraic
+side. In fact, a typical Gnuplot graph of a function is based on a set
+of input data --- just like you might have plotted function graphs in
+your younger days by plugging in numbers to the formula and then
+hand-plotting them --- only on steroids. And so the /domain/ provided
+by the data set and the /range/, derived by plugging them into the
+algebraic formula, creates the points that are plotted by Gnuplot.
+
+** ...never more than one element of the second set...
+
+Let's think for a moment about the phrase from our definition
+/...never more than one element of the second set/. Back to plotting
+simple 2D formulae, recall that a /linear/ function creates a straight
+line[fn:33], e.g.
+
+\begin{align}
+f(x) &= x + 2 \quad \text{or}\\
+y &= x + 2\;\text{,}
+\end{align}
+
+Take a look at the plot below. The purple line climbing from left to
+right is a plotting of $y = x + 2$
+
+
+#+begin_src gnuplot :session none :exports none :file images/simpleline2.svg
+reset
+set terminal svg enhanced fname 'Bungee Hairline bold, 14' rounded dashed standalone size 450,450
+set size ratio 1.0
+set xtics 1.0
+set ytics 1.0
+set xlabel "X axis" textcolor rgb "blue"
+set ylabel "Y axis" textcolor rgb "blue"
+set xrange [-8:8]
+set yrange [-8:8]
+set xzeroaxis linetype 2 linewidth 1
+set yzeroaxis linetype 2 linewidth 1
+set style line 1 \
+    linecolor rgb '#0060ad' \
+    linetype 1 linewidth 2 #\
+   # pointtype 7 pointsize 1.0
+set grid back ls 0.5
+set arrow from 3, graph 0 to 3, graph 1 nohead ls 1 lc "#95aff2"
+f(x) = x + 2
+plot f(x) # with ls 1 #, "" with points
+#+end_src
+
+
+#+CAPTION: Simple linear function
+#+CAPTION:  
+#+RESULTS:
+#+ATTR_HTML: :alt simple linear equation
+[[file:images/simpleline2.svg]]
+
+As you may recall, your middle-school math teacher insisted that a
+function like $y = x + 2\;$ was a "good function" because it passed
+the "vertical line test," i.e., you could place vertical lines
+anywhere in the graph[fn:34] and /any/ of those gazillions of possible
+vertical lines would cross $y = x + 2\;$ *only once*[fn:35].
+
+$\mathfrak{Fazit}$[fn:36]: This is the middle-school intuitive way to
+understand the statement above that insists a function associates
+every $x$ to *only one* $y$. We're emphasizing this point about
+y-only-once because it's a foundational concept in functional
+programming, something we mentioned in the Preface called /referential
+transparency/. Lots more later.
+
+** Function /mapping/ and pigeons
+
+
+The set theory way of seeing functions, along with the set notation
+way of expressing them, is, again, a step up in generality and
+abstraction, but a necessary one. But yes, you can go through
+practically all of high school math and a lot of college math before
+getting beyond functions as just plug-and-chug formulae. However, we
+feel it's critical to get moving on the higher-math version of
+functions sooner than later. If you did your rabbit-holing, you'll
+understand enough of the basics of set theory and set theory notation
+to follow what we're about to take on.
+
+Sets are very simple to intuit.  It's easy to have a "mental
+representation" of sets in your head and describe them
+verbally. In everyday life a set is just another /aggregation/, such
+as a /flock/ of birds, or a /bunch/ of bananas. You've known about
+sets of things since childhood: a /set/ of dishes, a /set/ of
+tools. We call the objects in a set /elements/, i.e., a /set/ of
+/elements/. This is automatically more abstract and general than
+bunches of bananas, flocks of birds.
+
+In set theory the different families of numbers are described in terms
+of endless or /infinite/ sets. For example, there's the /set/ of
+natural numbers, the /set/ of integers, the /set/ of rational numbers,
+all of which can be considered as going on forever. They can be
+written, /enumerated/, in /roster notation/ as
+
+\begin{align}
+\mathbb{N} &= \{1,2,3\cdots\} \\
+\mathbb{Z} &= \{\cdots,-2,-1,0,1,2,3\cdots\}
+\end{align}
+
+However, roster enumeration doesn't work when it comes to rational
+numbers, $\mathbb{Q}\;$. Here we need something more descriptive that
+can /generate/ the rational numbers based on rules --- the rule in
+this case being the denominator cannot be $0\;$. (Note: This
+[[https://math.libretexts.org/Courses/Monroe_Community_College/MATH_220_Discrete_Math/2%3A_Logic/2.7%3A_Quantiers][LibreTexts]] chapter might have slightly different notation, but it's
+all good.)
+
+\begin{align}
+\mathbb{Q} &= \{\frac{a}{b} \; | \; a,b \in \mathbb{Z}, \; b \ne 0\}
+\end{align}
+
+This is a formulaic or /generative/ way of describing a set. For
+another example, consider
+
+@@html:<font color = "#4715b3">@@
+➝ The set of all integers /between/ (not including) $0$ and $10$.
+@@html:</font>@@
+
+This is a word description, but we may also use set theory
+shorthand. The simplest expression is when all the elements of the set
+are between curly brackets, separated by commas. Below would be an
+enumeration or roster notation of the set described above
+
+\begin{align}
+S_{n} = \{1,2,3,4,5,6,7,8,9\}
+\end{align}
+
+The set comprehension version of our example would look like this
+
+\begin{align}
+S_{n} = \{\,a \in \mathbb{Z} \,\;|\,\; 0 \lt a \lt 10\}
+\end{align}
+
+Turning it back into words
+
+#+begin_quote
+$S_{n}$ is the set of integers, $a$, such that $0$ is less than
+$a$ AND $a$ is less than $10$.
+#+end_quote
+
+Let's have another comprehension with the /logical and/ we see above
+
+\begin{align}
+S_{n} = \{\,a \in \mathbb{Z} \,\;|\,\; a > 0 \; \land a \lt 10\}
+\end{align}
+
+Here we have two /predicates/ $a \gt 0$ and $a \lt 10$ joined by a logical
+and[fn:37].
+
+Now let's consider how two sets match up in a way that makes that
+matching-up binary operation
+
+
+
+** A Haskell list is ... almost a set...
+:RESOURCES:
+- [[cite:&hudak2018haskell]]
+:END:
+
+When we study expression (10) or (11) on the page or screen an M-rep
+forms, our minds can see what is meant, and with pencil and paper, we
+turn (10) and (11) into (9). But we cannot simply feed the computer
+these set comprehensions character-for-character and expect it to know
+what to do. Such a block of text by itself, $\LaTeX$ formatted or not,
+inside or outside a computer, is not "computationally available" for
+the computer to work on. Think about it, when you type up a document
+in a word processing package like Microsoft Word you're not asking the
+computer to do anything other than to take in, format, and remember
+what you're typing. No real computation on your content is
+happening. Even if you typed a math formula in your document, it would
+just be a visual representation. Perhaps some day we'll be able to
+scan whole math texts into a computer and, instantaneously, all
+formulae will be converted to perfectly optimized numerical
+software. Unfortunately, we're not quite there yet. /Fortunately/,
+we're not quite there yet, meaning we'll still have jobs for a while
+longer!
+
+So how different will be sets written down on paper and flashing in
+your M-rep from the Haskell code representing them? A logical
+starting point would be to figure out how to tell the computer how to
+make the generator-predicate part $0 \lt a \lt 10\;$ in (10) give us back
+the roster set elements in (9). But before we tackle that logic, we
+need to have a suitable /data structure/ to represent a set in our
+computer language, Haskell. That is, a mathematical set must be in a
+form the computer can understand and work with. Our data structure for
+this task will be the /list/[fn:38].
+
+Luckily, a list is just as intuitive as was a set. From doing the
+suggested R-holing above, you'll know some of the basics of Haskell
+lists. As data structures go, lists are arguably the
+simplest[fn:39]. We won't go "under the hood" with the computer memory
+or pointer details, but list's full name is /linked list/. This
+means lists are actually individual memory locations joined,
+connected, /linked/ together by pointers. This means that a location
+in memory reserved for a list cell will have two compartments: A) one for
+that list cell's contents, and B) one for the pointer pointing to the
+next list cell. Imagine beads on a string or links in a chain.
+
+But again, all this memory stuff is safely under the hood with
+Haskell. As you saw in LYAHFGG's friendly presentation, Haskell
+/conses/ (cons as a verb) a single new item onto the /front/ of an
+existing list. A /cons operation/ is Haskell's way of snapping on new
+list items, like stringing the beads, forging the chain, one bead, one
+link at a time --- /without/ any memory tweaking like some other
+languages. The cons operator in Haskell is ~:~, a simple colon. Let's
+cons a ~0~ onto an existing list of integers
+
+#+begin_example
+#+begin_src haskell :results verbatim :exports both
+0 : [1,2,3]
+#+end_src
+
+#+RESULTS:
+: [0,1,2,3]
+#+end_example
+
+But this is just quick one-liner input/output and not a real
+program. And yet what we're seeing here is a good example of Haskell's
+unique /expression-value/ world. In Haskell an /expression/ is
+everything a math expression is, i.e., what we might call a "statement
+of algebraic form." Here's something from the [[https://en.wikipedia.org/wiki/Expression_(mathematics)][Wikipedia article on
+expressions]]
+
+#+begin_quote
+Many authors distinguish an expression from a formula, the former
+denoting a mathematical object, and the latter denoting a statement
+about mathematical objects. For example, $8x-5\;$ is
+an expression, while $8x-5 \ge 5x-8\;$ is a formula. However, in modern
+mathematics, and in particular in computer algebra, formulas are
+viewed as expressions that can be evaluated to ~True~ or ~False~,
+depending on the values that are given to the variables occurring in
+the expressions. For example $8x-5 \ge 5x-8\;$ takes the value ~False~ if
+$x$ is given a value less than $–1$, and the value ~True~ otherwise.
+#+end_quote
+
+We can say ~0 : [1,2,3]~ is an expression, but then the RESULTS of
+having the REPL evaluate it would be a /value/. Actually, values are
+also expressions, just ones that have no further work to be done on
+them --- similar to a fraction in its "simplest form". So the
+/expression/ $\frac{3}{6}$ is a rational number and if evaluated
+directly at the REPL, would have a /value/ of $\frac{1}{2}$[fn:40].
+
+To write real programs we need to think about holding onto
+data like ~[1,2,3]~. So let's do a short R-hole and introduce the
+concept of a Haskell /variable/. For example
+
+#+begin_example
+#+begin_src haskell :results silent :exports code
+mylist1 = [1,2,3]
+#+end_src
+#+end_example
+
+#+begin_src haskell :results silent :exports none
+mylist1 = [1,2,3]
+#+end_src
+
+Above we've equated a symbol, ~mylist1~, with ~[1,2,3]~. Now ~myList1~
+can stand in for it. This is just like in math when we say $x = 5\;$
+and $x$ becomes a symbol for $5$, and now we can do algebraic things
+with $x$.
+
+However, a Haskell variable is not like a variable in your typical
+non-functional imperative programming language like C or C++. One very
+important distinction is
+
+@@html:<font color = "#4715b3">@@
+➝ /In a language like C or C++ a variable is a symbolic name used to
+refer to a value, *as well as to a place in memory*./
+@@html:</font>@@
+
+However, in Haskell a variable is simply a symbol
+equated with an expression, with no memory location, no "under the
+hood" stuff implied. Again, Haskell lives in the math world, not in
+the von Neumann machine world.
+
+Also, and probably most importantly, a C/C++ variable can be changed
+by moving something new into that memory location. And then that
+variable name no longer refers to the original value. And each
+additional assignments overwrites the last. The classic C (or Python)
+code demonstrating this is
+
+#+begin_example
+x = 1;
+x = x + 1;
+#+end_example
+
+If we evaluate this code in Python and check ~x~, its value will have
+been changed in the second line to ~2~. So ~x~ had ~1~ added to it,
+then the result stuffed back into ~x~ ... the original value of ~x~
+forever gone. /Counters/ like this are common in /loops/. Bottom line:
+C/C+ is quite fluid with overwriting a memory location with new
+stuff...
+
+...which is a big no-no in the functional world. Why?  Because the
+functional world believes all these memory gymnastics are fertile
+ground for bugs and nasty surprises --- not to mention serious
+security vulnerabilities. In this simple example, the idea was to
+/increment/ ~x~, i.e., ~x~ is meant to be a counter
+accumulator. Haskell, however, doesn't allow direct memory
+manipulations, thus, no such changing of a variable. Haskell is truly
+a mathematical language, which means the expression $x = x + 1$ is
+nonsense[fn:41].
+
+Let's test this strictness out[fn:42] 
+
+#+begin_example
+#+begin_src haskell :results verbatim :exports both
+:{
+x = 1
+x = 2
+:}
+#+end_src
+
+#+RESULTS:
+: Prelude| Prelude| Prelude| 
+: <interactive>:124:1: error:
+:     Multiple declarations of ‘x’
+:     Declared at: <interactive>:123:1
+:                  <interactive>:124:1
+#+end_example
+
+This error message is clear enough.
+
+Let's cons some numbers onto ~mylist1~, the symbol for ~[1,2,3]~
+
+#+begin_example
+#+begin_src haskell :results verbatim :exports both
+-2 : -1 : 0 : mylist1
+#+end_src
+
+#+RESULTS:
+: [-2,-1,0,1,2,3]
+#+end_example
+
+The value is as we expected, but note we only get a printed output
+line. The original ~mylist1~ is still ~[1,2,3]~. But what if we try
+what we've been told is nonsense with ~mylist1~? No, don't actually
+try this as is!
+
+#+begin_example
+#+begin_src haskell :eval never :exports code
+mylist1 = -2 : -1 : 0 : mylist1
+#+end_src
+#+end_example
+
+because this is an infinite /recursion relation/.
+
+#+begin_example
+#+begin_src haskell :results verbatim :exports both
+0 : [1,2,3]
+#+end_src
+
+#+RESULTS:
+: [0,1,2,3]
+#+end_example
+
+As many Haskell tutorials will say, writing a list in this square
+brackets form, e.g., ~[1,2,3]~, is just /syntactic sugar/ for a more
+primitive form of a linked list. But yes, it looks and feels similar
+to set elements enclosed in curly brackets. Let's see ~[1,2,3]~
+without any sugar added
+
+#+begin_example
+1 : 2 : 3 : []
+#+end_example
+
+and let's just hand this to the ghci REPL verbatim and see what it
+does with it
+
+@@html:<label for="mn-demo" class="margin-toggle">⊕</label>
+<input type="checkbox" id="mn-demo" class="margin-toggle">
+<span class="marginnote">@@
+Don't worry about the ~:~ in the ~RESULTS~. It has no special meaning.
+@@html:</span>@@
+
+#+begin_example
+#+begin_src haskell :results verbatim :exports both
+1 : 2 : 3 : []
+#+end_src
+
+#+RESULTS:
+: [1,2,3]
+#+end_example
+
+
+
+That little R-hole was meant to show you consing a list together is
+/right associative/. We must start at the far-right with the empty
+set, then start linking leftward
+
+#+begin_example
+#+begin_src haskell :results verbatim :exports both
+(1 : (2 : (3 : [])))
+#+end_src
+
+#+RESULTS:
+: [1,2,3]
+#+end_example
+
+Why doesn't this work[fn:43]?
+
+#+begin_example
+#+begin_src haskell :results verbatim :exports both
+1 : 2 : 3
+#+end_src
+
+#+RESULTS:
+: <interactive>:42:1-9: error:
+:     • Non type-variable argument in the constraint: Num [a]
+:       (Use FlexibleContexts to permit this)
+:     • When checking the inferred type
+:         it :: forall a. (Num [a], Num a) => [a]
+#+end_example
+
+So that part we left out, ~[]~, was necessary. ~[]~ is called the
+/empty list/ and comes at the end of any cons sequence. Think of it as
+the string on which the beads are strung, the box in which the list
+items are placed. No box, big error like we just saw. Here's the data
+type declaration of a list
+
+#+begin_example
+#+begin_src haskell :results verbatim :exports both
+:info []
+#+end_src
+
+#+RESULTS:
+data [] a = [] | a : [a] 	-- Defined in ‘GHC.Types’
+instance Eq a => Eq [a] -- Defined in ‘GHC.Classes’
+instance Monad [] -- Defined in ‘GHC.Base’
+instance Functor [] -- Defined in ‘GHC.Base’
+instance Ord a => Ord [a] -- Defined in ‘GHC.Classes’
+instance Read a => Read [a] -- Defined in ‘GHC.Read’
+instance Show a => Show [a] -- Defined in ‘GHC.Show’
+instance Applicative [] -- Defined in ‘GHC.Base’
+instance Foldable [] -- Defined in ‘Data.Foldable’
+instance Traversable [] -- Defined in ‘Data.Traversable’
+instance Monoid [a] -- Defined in ‘GHC.Base’
+instance Plated [a] -- Defined in ‘Control.Lens.Plated’
+instance Reversing [a] -- Defined in ‘Control.Lens.Internal.Iso’
+instance TraversableWithIndex Int []
+  -- Defined in ‘Control.Lens.Indexed’
+instance FunctorWithIndex Int []
+  -- Defined in ‘Control.Lens.Indexed’
+instance FoldableWithIndex Int []
+  -- Defined in ‘Control.Lens.Indexed’
+instance AsEmpty [a] -- Defined in ‘Control.Lens.Empty’
+instance Each [a] [b] a b -- Defined in ‘Control.Lens.Each’
+instance Snoc [a] [b] a b -- Defined in ‘Control.Lens.Cons’
+instance Cons [a] [b] a b -- Defined in ‘Control.Lens.Cons’
+instance Ixed [a] -- Defined in ‘Control.Lens.At’
+instance [safe] Default [a] -- Defined in ‘Data.Default.Class’
+type instance IxValue [a] = a 	-- Defined in ‘Control.Lens.At’
+type instance Index [a] = Int 	-- Defined in ‘Control.Lens.At’
+#+end_example
+
+
+Thank you, Haskell! We won't worry about anything but that first line
+for now
+
+#+begin_example
+data [] a = [] | a : [a]
+#+end_example
+
+which doesn't really look like anything from set theory. This the
+actual definition of a Haskell list. This is a Haskell data type
+definition. The keyword ~data~ indicates what follows is a type
+definition, while the ~[] a~ is the /type constructor/.
+
+If you did
+R-hole #4, you'll know about /intersect/ and /union/, which are set
+theory's way of putting two sets together
+
+- /intersection/ $\Rightarrow$ /just/ the elements the sets have in common,
+  excluding all other elements or,
+- /union/ $\Rightarrow$ /all/ elements from both (however duplicates are not
+  duplicated).
+
+Below we import ~Data.List~, which is the main Haskell list package,
+which has some rudimentary set theory-like operations, and try some of
+these on lists as sets
+
+#+begin_example
+#+begin_src haskell :results silent :exports code
+import Data.List
+#+end_src
+#+end_example
+
+the we can use ~intersect~
+
+#+begin_example
+#+begin_src haskell :results verbatim :exports both
+intersect [1,2,3] [0,1,2]
+#+end_src
+
+#+RESULTS:
+: [1,2]
+#+end_example
+
+Now, what if we try it with sets that have nothing in common
+
+#+begin_example
+#+begin_src haskell :results verbatim :exports both
+intersect [1] [2]
+#+end_src
+
+#+RESULTS:
+: []
+#+end_example
+
+This gives the empty list or, as we're imagining, the empty set. The
+math symbol for the empty set is $\emptyset\;$. What about the /union/ of
+sets?
+
+#+begin_example
+#+begin_src haskell :results verbatim :exports both
+union [1,2] [2,3]
+#+end_src
+
+#+RESULTS:
+: [1,2,3]
+#+end_example
+
+Union seems like an everybody's welcome way of combining sets. But
+like ~intersect~, what happens when the two lists have no shared
+members?
+
+#+begin_src haskell :results verbatim :exports both
+union [1,2] [3,4]
+#+end_src
+
+#+RESULTS:
+: [1,2,3,4]
+
+Yes, we get all the elements combined in one set; however, in
+math-speak this would be a /disjoint union/, exactly, because the
+union had no shared, no overlapping elements[fn:44]. In set theory,
+two sets are called /disjoint/ if they share no common elements. Their
+Venn diagrams would show two circles that did not touch or
+overlap. Let's introduce some more set theory notation. So if we have
+sets $A_{1}$ and $A_{2}$
+
+\begin{align}
+A_{1} = \{1,2\} \\
+A_{2} = \{3,4\}
+\end{align}
+
+We can see the /intersection/, just the elements in common, will be as
+we're saying the empty set, $\emptyset$
+
+\begin{align}
+A_{1} \cap A_{2} = \emptyset
+\end{align}
+
+Now, let's imagine that we wanted to create an algebraic structure
+that simulated what lists and list-building with cons do. Remember,
+when we "create" a set on paper, it's just your hand, the pencil, and
+the paper. But to accomplish this task with a computer we've got to
+jump through some Remember,
+we're building lists with an empty list to start, then consing on to
+the front the elements. Well, set theory does have intersection and
+union, but they don't quite help, especially when it comes to taking
+some sequence of things and making a list or set of them. As we
+discussed earlier, math on paper, whiteboards, and in your M-rep don't
+need special computer handling, but a set as a computer list
+does. Recall how lists are actually linked places in memory that have
+to be built? Again, that building, stringing together starts with an
+empty list ~[]~ then we cons on elements (in Haskell they must be the
+same sort of elements) one after the other.
+
+This situation is similar to when we compared, contrasted a written
+out set such as $\{1,2,3,4,5,6,7,8,9\}$ and the algebraic set notation
+version with its "generator" $0 \lt a \lt 10$. So what would a algebraic
+set comprehension look like for any set of any size?
+
+\begin{align}
+A = \{a \in \mathbb{N}\}
+\end{align}
+
+Not exactly /any/ sort of elements can be part of set $A$. But with a
+Haskell list we do have that capability with this
+
+#+begin_example
+data [] a = [] | a : [a]
+#+end_example
+
+only the pipe, as we noted before as something to do with set theory,
+doesn't function as "such that." Instead, this is an example of
+something we'll be studying in depth in the future. This is an example
+of an /algebraic data type/ (ADT), which is a very power sort of data
+structure. The Haskell list is defined as an ADT, and yes, it
+"generates."
+
+
+So right from the start we have two different possible
+scenarios: We 
+
+
+
+
+
+
+
+
+Another list-building operator is /concatenation/. Its operator is
+~++~. Concatenation allows us to snap together two or more existing
+lists. What's the difference between ~:~ and ~++~? With ~:~ we cons a
+new naked element to the front of an existing list, while ~++~ is
+always two or more existing lists.
+
+Let's take a quick look at the actual data type
+
+
+
+
+
+
+
+
+Cartesian product
+
+
+
+
+
+Some number theory can help "lengthen your math stride." We'll start
+with an interesting problem from Hector Levesque's /Thinking as
+Computation/, then riff on Martin Weissman's /An Illustrated Theory of
+Numbers/. Throughout we'll be writing code to keep it real.
+
+*** Adding and subtracting
+
+Teaching a young child to subtract, for instance, is quite a "cottage
+industry" undertaking, i.e., there doesn't seem to be a [ ] way to
+describe the process of subtracting, say,
+
+\begin{align}
+\begin{array}{r}
+  53  \\[-3pt]
+\underline{-\;17} \\[-3pt]
+  \end{array}
+\end{align}
+
+* Footnotes
+
+[fn:1] Truthfully, this will be your go-to reference/tutorial for the
+immediate CIMMIC future. Get going with it and try to self-pace your
+way through it all. It's not in-depth per se but will get you in the
+Haskell ballpark, so to speak.
+
+[fn:2] The Haskell Wiki can be like trying to drink from a fire hose,
+but good can be had for the brave and virtuous.
+
+[fn:3] Mathematics as experienced in Wikipedia's articles can also be
+a firehose experience, but good can be gleaned.
+
+[fn:4] Descartes' /La Géométrie/ including his development of the
+Cartesian coordinate system and analytic geometry was published
+in 1637.
+
+[fn:5] For the meantime we'll just speak of Cartesian coordinates for
+two dimensions, when actually they're applicable for spaces of higher
+dimensions as well.
+
+[fn:6] In the western world the number part of a street address
+typically adds an /ordinal/ quality to the address, linking number
+order to position on the street---just like a number line. In
+everyday life this means the address numbers are descending or
+ascending, depending on which direction we assign to "up" and
+"down". (Check out the Wikipedia on [[https://en.wikipedia.org/wiki/Well-order][well-order]].) BTW, in Japan, the
+traditional street numbering system is based on the age of the
+building, not its location.
+
+[fn:7] We'll go much deeper into the lore of the /Cartesian product/,
+i.e., the set of all possible x-y-coordinates just ahead.
+
+[fn:8] A set and a Haskell list are two different things. But for our
+beginning treatments, we'll represent sets with list. More later.
+
+[fn:9] See LYAHFGG's section on tuples. A more math-centered
+definition later.
+
+[fn:10] In the code snippet below we use an open-ended, /infinite/ list
+generator with ~[1..]~, but we keep it under control by harnessing it
+with ~zip~ to the eight-element ~myseq1~. Be careful! Entered into the
+REPL by itself ~[1..]~ would go on forever and lock up your Haskell
+REPL! By the way, ~zip~ can be found in [[http://learnyouahaskell.com/higher-order-functions][this section]] of LYAHFGG.
+
+[fn:11] There are methods to create a polynomial function from this
+data set that would give us an exact plot; however, as you can see if
+you're looking at the original ~.org~ file of this page, Gnuplot
+hasn't been given an actual function that might produce these
+points. Instead, it simply plots the points and draws straight line
+segments between them.
+
+[fn:12] You've heard about /associativity/, now we're going to
+actually use it. It's important. See [[https://en.wikipedia.org/wiki/Associative_property][this Wikipedia article]] and [[https://en.wikipedia.org/wiki/Operator_associativity][this
+Wikipedia article]] on associativity. The more you grok these pages the
+better.
+
+[fn:13] Notice how both examples went through a step-by-step
+process. Now, how would we do step-by-step, line-by-line computations
+in a computer language? We would need a device, a method that allowed
+us to /repeat/ something until we were done. We'll spend a lot of time
+discussing this soon....
+
+[fn:14] The idea of accumulators will be explored more when we talk
+about /folds/ and /tail recursion/.
+
+[fn:15] Note the $\land$ /logical and/ (also called /conjunction/) is a
+"strict and" meaning both clauses before and after must be ~True~,
+present, involved, at hand.
+
+[fn:16] Jump ahead in LYAHFGG to [[http://learnyouahaskell.com/modules#loading-modules][this]] section to get the gist about
+modules and importing them.
+
+[fn:17] Haskell, being a typed language, makes sure we can't put a
+negative integer into a type meant only for positive integers.
+
+[fn:18] A /set comprehension/ (or /set notation-builder/) is an
+algebraic shorthand way to express how a set is to be formed. The
+elements of the set are to the left of the pipe, and everything to the
+right of the pipe is a /generator/, i.e., formulae for creating the
+set elements. A generator is also called a /predicate/, and acts as a
+test or filter that is either true or false. Make sure to see [[https://www.inf.ed.ac.uk/teaching/courses/inf1/fp/lectures/2017/set-theory.pdf][#3
+R-hole]] above.
+
+[fn:19] The proper name for the x-axis is the /abscissa/ and the y-axis
+is the /ordinate/.
+
+[fn:20] An /ordered pair/ is two elements associated together in a
+given order, e.g., $(a,b)\;$, but, again, in a particular order. With
+the CCS, an ordered pair representing a point on a plane has the x
+coordinate always first, and the y coordinate always second. Haskell's
+structure for ordered pairs is, as noted above, a tuple.
+
+[fn:21] Later when we start exploring Haskell types, we'll refer to
+anything Cartesian product-like as just a /product/, i.e., something
+that deals in ordered groups of like things.
+
+[fn:22] /Rosetta Code/ is a word play on the famous ancient artifact,
+the [[https://en.wikipedia.org/wiki/Rosetta_Stone][Rosetta Stone]], a stone slab with, etched into it, a one-to-one
+translation of previous unreadable Egyptian hieroglyphics into
+well-known Attic Greek.
+
+[fn:23] BTW, don't worry about the first line. It's a type declaration
+that says we restrict our code to just integers. Lot's more to come on
+types.
+
+[fn:24] To be a Pythagorean triple, three /positive whole numbers/
+must plug perfectly into the Pythagorean theorem $a^2 + b^2 = c^2
+\;$. Notice how instead of just two sets, we're doing a Cartesian
+product on /three/ sets, one for each of the triangle's sides:
+$A\!\times\!B\!\times\!C = \{(a,b,c) \;|\; a \in A \; \land \; b \in B \; \land \; c \in
+C\}\quad\quad$. The idea of a Cartesian product scales up into as many
+dimensions as we please.
+
+[fn:25] We urge you to go back to LYAHFGG if anything in this code is
+not clear...
+
+[fn:26] Not until we start taking a serious dive into /category theory/
+will we see a paradigm shift away from set theory. Don't worry about
+it for now. Suffice it to say that CT is a [[https://www.lexico.com/definition/sea_change][sea change]] in math which is
+moving the field away from set theory --- and Haskell is very
+CT-friendly, one of the reasons we've chosen it.
+
+[fn:27] Remember $y = x^{2}\;$? Here we have /two/ members of the domain
+paired with one member of the codomain. So yes, one or more from the
+domain, but still, no more than one match in the codomain. More later.
+
+[fn:28] So what would such a pairing of domain and codomain be if we
+were allowed to have, e.g., some $x$ paired with not just one, but
+more than one $y\;$? We would have what are called /relations/. And
+relations are a subset of the so-called /Cartesian product/, which
+provides an address for every possible place on the Cartesian
+plane. Coming soon...
+
+[fn:29] The /parametrization/ of $(x-1)^{2 }+ (y-3)^{2} = 5^{2}\;\;$ would be to
+plot the pair $(r \cdot sin(t),\; r \cdot cos(t))\;$ for $t$ increasing
+counter-clockwise from $0$ through $\pi$ to $2\pi$. Maybe review some of
+the YouTube vids on the parameterization of circles. More about
+graphing software later.
+
+[fn:30] These orange line numbers are not part of the Gnuplot code.
+
+[fn:31] Under great magnification you can just begin to see the
+/straight/ line segments connected to make the semicircles.
+
+[fn:32] Experimenting, we had to set samples to $14,000$ to see the
+semicircles actually touch.
+
+[fn:33] BTW, when we write $f(x)=\ldots\;$ this is the more general
+form of the function, while $y =\ldots\;$ is a form specific to a
+Cartesian coordinate system based on the CCS.
+
+[fn:34] We'll use /plot/ and /graph/ interchangeably.
+
+[fn:35] Note in our plot how the vertical blue line $x = 3$ crosses,
+/intersects/ the plot of $y = x + 2\;$ /just once/. Yes, it's a big
+deal.
+
+[fn:36] *Fazit* (pronounced /fah-tzeet'/) is a handy German word,
+derived from Latin, that means /in summary/, /in conclusion/, /all in
+all/, /bottom line/. Yes, we'll be learning all sorts of terminology.
+
+[fn:37] From our middle-school CCS formulae standpoint there was no
+formal way to describe in detail what an algebraic function did and
+didn't do. A function was usually considered "active" on the entire
+real number x-y axes. Typically, a restriction such as $x \ne 0$ was
+simply added in as descriptive words.
+
+[fn:38] Ironically, Haskell already has a whole package for handling
+math sets, and it's /not/ based on lists, rather a more complex data
+structure we'll study later. But as beginners we need first to grok
+lists as sets. Crawl before we walk.
+
+[fn:39] However, as our section title hints, lists are not a perfect
+data structure for sets because sets do not have duplicates, and order
+doesn't matter. However with a Haskell list, duplicates are allowed
+and order does matter. But we won't worry about that now.
+
+[fn:40] Remember adding and subtracting fractions with really big,
+gnarly unlike denominators? If you evaluate the /expression/ ~3/5~
+in the REPL it will give you the /value/ ~0.5~. However, there is a
+Haskell package, ~Data.Ratio~, that can take rational numbers and
+directly do math on them, giving back the value in rational form,
+~1/2~. More later.
+
+[fn:41] Think about it. Yes to $x = x$. Yes to $x + 1 = x + 2 -
+1\;$. With $x = x + 1\;$ if we do some algebra: $x + (-x) = x + (-x_{}) +
+1\;\;$, this would result in $0 = 1\;$, which is absurd.
+
+[fn:42] Ironically, the ghci REPL allows you to declare
+$\color{green}{λ\!\!\gt} x = 1\;$, then right after
+$\color{green}{λ\!\!\gt} x = 2\;$ without complaining. This is due to
+variable /scope/ that we'll get into later. But no, don't do
+$\color{green}{λ\!\!\gt} x = x + 1\;$ We'll get into why later.
+
+[fn:43] Look out! Haskell can at times give you obfuscated
+gobbledygook that you'll have to be very advanced to decipher.
+
+[fn:44] Have you heard the phrase /mutually exclusive/?
+
+[fn:52] This graph was plotted using Gnuplot, which requires converting
+this circle's standard Cartesian equation, namely, $x^{2} + y^{2} = 1$ to a
+parametrized form whereby each point of the circle was plotted by the
+pair $(r \cdot sin(t), r \cdot cos(t))\;$ for $t$ increasing counter-clockwise
+from $0$ through $\pi$ to $2\pi$. Maybe review some of the YouTube vids on
+parameterization. More about graphing software later.
+
+[fn:51] A bunch of ravens is an /[[https://www.lexico.com/definition/unkindness][unkindness]]/. Not lying.
+
+[fn:50] In the famous CS textbook /[[https://sarabander.github.io/sicp/html/index.xhtml][Structure and Interpretation of
+Computer Programs]]/ they call (7) /procedural decomposition/.
+
+[fn:49] Think about it, when you type up a document in a word
+processing package like Microsoft Word you're not asking the computer
+to do anything other than take and remember what you're typing. No
+computation on your content is happening.
+
+[fn:48] ...and some blub languages even have you reserving and
+returning memory for your computing operations by yourself, i.e.,
+memory management is not automatic as in most modern languages. This
+is a hold-over from the early days of the so-called [[https://en.wikipedia.org/wiki/Von_Neumann_architecture][von Neumann
+machine]] digital computers of the 1950s, a computer architecture the
+computing world has been trying to escape for decades now.
+
+[fn:47] More about what "typed" means and why it's important later.
+
+[fn:46] Soon we'll see how Haskell's /types/ serve the same purpose as
+declaring an algebraic variable to be of a certain number family such
+as natural numbers, integers, real numbers, and complex numbers.
+
+[fn:45] Let's abbreviate /mental representation/ as /M-rep/ from now
+on.

@@ -1,0 +1,183 @@
+#+TITLE: Beginnings 1
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="./ox-tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: Beginnings1.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* Getting started part 1
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/HaskellAlgebra"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&doets2012haskell]]
+:END:
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle ./src/bg1.hs :noweb yes
+module BG1 where
+
+
+<<23dd7da9-8620-471f-8642-f854785656ea>>
+#+end_src
+
+#+name: 6b14996d-7528-4c2a-a081-ccd244799b49
+#+begin_src haskell :results verbatim :exports both
+(1 + 1 :: Integer)
+#+end_src
+
+#+RESULTS: 6b14996d-7528-4c2a-a081-ccd244799b49
+: 2
+
+
+#+name: b383fcfe-7297-4cd0-a811-6fcce0af5b69
+#+begin_src haskell
+import Test.QuickCheck.All
+#+end_src
+
+
+#+name: fd3492aa-74da-417b-a92a-83ee758ad58c
+#+begin_src haskell :results verbatim :exports both
+:{
+import Data.Complex
+import Numeric
+
+x = 0 :+ 3
+y = 1 + x
+:}
+#+end_src
+
+#+RESULTS: fd3492aa-74da-417b-a92a-83ee758ad58c
+
+
+* Abstractions
+
+** Objects alone or together, formalizing things
+
+Objects by themselves or objects together. No doubt many life forms
+have an instinctual, intuitive, working grasp of these two basic
+contrasting situations. We humans have language, and this brings logic
+and symbolism to intuition. Consider the statement
+
+@@html:<font color = "#0d3db3">@@
+together $\implies$ not alone, not separate
+@@html:</font>@@
+
+The $\implies$ arrow is from mathematical logic and means /implies/,
+or, roughly, "/if/ you say this, /then/ you are also saying this."
+Reading the statement backwards
+
+@@html:<font color = "#0d3db3">@@
+not alone, not separate $\implies$ together
+@@html:</font>@@
+
+we notice a simple "if /not/ this then that" situation, i.e.,
+/negation/, i.e., /not/ alone, as well as /not/ separate would be
+together. A negation of yes is no and a negation of positive is
+negative.[fn:1]
+
+Math logic has a toolkit of exacting methods and a whole zoo of
+symbols to establish truth. Consider this
+
+\begin{align*}
+
+\end{align*}
+
+
+
+/Logical entailment/ or /logical consequence/ is the notion that one
+statement can follow from another. A formal definition of entailment
+would be
+
+\begin{align*}
+\alpha \vDash \beta \iff M(\alpha) \subseteq M(\beta)
+\end{align*}
+
+
+
+
+
+** If together, how many?
+
+Abstraction and symbolism have taken humanity into a modern science
+and technology landscape that, as far as we know, is unique in the
+known universe.
+
+
+things that were /together/, not just
+singular by themselves? We would see more than one thing---perhaps
+similar, perhaps close to one another---and the notion of relatedness,
+togetherness, /clumpiness/ would come to us. Human language Some vague idea,
+if not language, dealing with /amount/ rose from /how big/ the clump
+of things we mentally clumped together seemed.
+
+The general phenomenon of singular and plural, one or more, seemed to
+beg the question /if more, then how many more?/ And so the /size/ or
+/degree/ of a clump of things means something and should be
+considered.
+
+Along with clumpiness, groupings, stuff together, we probably also
+were aware of the passing, the demarcation of
+time, such as the seasons cycling. And /shapes/ could be categorized
+as well.[fn:2] But let's stick with clumpiness for a while.
+
+Communication, semantics of these clump details evolved. A couple, a
+pair, a herd, a school, a few, many, lots, lots and lots, lots and
+lots and lots. And today terms like /cardinality/ or /degrees of
+multiplicity/ offer a high level of /abstraction/ of one or many.
+
+All of this points to a very unique thing about humans, namely, our
+high levels of cognizance, awareness, our ability to note our
+intuitive awareness and build on it. Of course other critters are able
+to distinguish between one and many. But do they put these notions,
+these impulses into words---and then build these ideas into higher and
+more exacting and more abstract ideas? Of course humans experience
+life at an intuitive level, but unlike animals, we take the intuitive
+and give it logical structure, we codify these notions, ideas,
+intuitive hunches. We, far more than any other species take basic
+phenomena and create abstract representative mental structures.
+
+* Footnotes
+
+[fn:1] You have no doubt heard of /double negatives/ where "It's not
+that I don't like you" (I do like you) or "There is no way you are not going to clean
+your room" (you /are/ going to clean your room).
+
+[fn:2] Geometry.

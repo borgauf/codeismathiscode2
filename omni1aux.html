@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-05-10 Tue 22:38 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="../tufte-css/tufte.css" type="text/css">
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "5em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "Neo-Euler"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "Neo-Euler"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "left",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<p>
+<a href="~/Dropbox/org/biblio/ref.bib">Bibliography</a>
+</p>
+
+<div id="outline-container-org38e46d8" class="outline-2">
+<h2 id="org38e46d8"><span class="section-number-2">1.</span> Numbers</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org523e053" class="outline-3">
+<h3 id="org523e053"><span class="section-number-3">1.1.</span> Peano arithmetic</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+
+<div id="outline-container-orgf982ea9" class="outline-4">
+<h4 id="orgf982ea9"><span class="section-number-4">1.1.1.</span> Discussion</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+N/A
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3b38472" class="outline-4">
+<h4 id="org3b38472"><span class="section-number-4">1.1.2.</span> Unary numeral system</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+As with all numerical treatments of mathematics, We must first decide
+which data structure to use. As is often the case with Haskell, we
+will utilize lists to do our work. This may seem ironic in some cases,
+since so much of math can be seen as, e.g., set theory-based. Yes,
+Haskell has a library for sets, but beginners in most programming
+languages start with lists and arrays as the go-to data
+structure. Hence, we will manipulate our UNS with lists. This means a
+set or string of ones will be represented as a list with integer ones
+as its sole elements, e.g., <code>[1,1,1,1,1]</code> is \(11111\).
+</p>
+</div>
+
+<div id="outline-container-orgc61c269" class="outline-5">
+<h5 id="orgc61c269"><span class="section-number-5">1.1.2.1.</span> UNS Subtraction</h5>
+<div class="outline-text-5" id="text-1-1-2-1">
+<p>
+We will start with a brute-force, not very interesting way to do <b>UNS
+subtraction</b>, namely, we just employ the built-in Haskell function
+<code>length</code> (see <a href="http://zvon.org/other/haskell/Outputprelude/length_f.html">length</a>) to count the elements of each list, then
+subtract one from the other
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">length</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1,1,1<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-</span> length <span class="org-rainbow-delimiters-depth-1">[</span>1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+2
+</pre>
+
+
+<p>
+This can be done as a function
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">uns1</span> list1 list2 <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>length list1<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">-</span> <span class="org-rainbow-delimiters-depth-1">(</span>length list2<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+
+<pre class="code"><code><span class="org-haskell-definition">uns1</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1,1,1<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:47:1-4: error:
+    Variable not in scope: uns1 :: [a0] -&gt; [a1] -&gt; t
+</pre>
+
+
+<p>
+Now, let&rsquo;s create a better function utilizing Haskell&rsquo;s type and
+recursion features
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">unsSub2</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">unsSub2</span> l1x l2x <span class="org-haskell-operator">|</span> null l1x <span class="org-haskell-operator">=</span> l2x
+                <span class="org-haskell-operator">|</span> null l2x <span class="org-haskell-operator">=</span> l1x
+<span class="org-haskell-definition">unsSub2</span> <span class="org-rainbow-delimiters-depth-2">(</span>l1<span class="org-haskell-constructor">:</span>l1x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>l2<span class="org-haskell-constructor">:</span>l2x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> unsSub2 l1x l2x
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<p>
+but a quick test exposes a problem, i.e., <code>unsSub2</code> doesn&rsquo;t seem to
+know what to do when the subtrahend is larger than the minuend
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">unsSub2</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1,1,1<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1,1,1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:49:1-7: error:
+    Variable not in scope: unsSub2 :: [a0] -&gt; [a1] -&gt; t
+</pre>
+
+
+<p>
+<code>unsSub3</code> below would seem to fix it, but the first evaluation gives
+an error: There is something wrong with the type declaration.
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">unsSub3</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">unsSub3</span> l1x l2x <span class="org-haskell-operator">|</span> null l1x <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>map negate l2x<span class="org-rainbow-delimiters-depth-2">)</span>
+                <span class="org-haskell-operator">|</span> null l2x <span class="org-haskell-operator">=</span> l1x
+<span class="org-haskell-definition">unsSub3</span> <span class="org-rainbow-delimiters-depth-2">(</span>l1<span class="org-haskell-constructor">:</span>l1x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>l2<span class="org-haskell-constructor">:</span>l2x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> unsSub3 l1x l2x
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="example" id="org6270882">
+No instance for (Num a) arising from a use of ‘negate’
+  ...
+</pre>
+
+<p>
+One trick is to simply comment out your type declaration and try again
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-comment-delimiter">-- </span><span class="org-comment">unsSub3 :: [a] -&gt; [a] -&gt; [a]</span>
+<span class="org-haskell-definition">unsSub3</span> l1x l2x <span class="org-haskell-operator">|</span> null l1x <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>map negate l2x<span class="org-rainbow-delimiters-depth-2">)</span>
+                <span class="org-haskell-operator">|</span> null l2x <span class="org-haskell-operator">=</span> l1x
+<span class="org-haskell-definition">unsSub3</span> <span class="org-rainbow-delimiters-depth-2">(</span>l1<span class="org-haskell-constructor">:</span>l1x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>l2<span class="org-haskell-constructor">:</span>l2x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> unsSub3 l1x l2x
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<p>
+When we allow Haskell to infer the type, we have success.
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t unsSub3
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:1:1-7: error: Variable not in scope: unsSub3
+</pre>
+
+
+<p>
+Because we&rsquo;re using <code>negate</code> our list type <code>[a]</code> cannot be just
+anything, rather, the <code>a</code>&rsquo;s, the list elements, must be instances
+of the class <code>Num</code><label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle"/><span class="sidenote">
+At this point it would be good to review <i>Learn You</i>&rsquo;s section
+on typeclasses: <a href="http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101">LYAHFGG Typeclasses 101</a>.
+</span>. Retrying with Haskell&rsquo;s type declaration
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">unsSub3</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Num</span> a <span class="org-haskell-operator">=&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">unsSub3</span> l1x l2x <span class="org-haskell-operator">|</span> null l1x <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>map negate l2x<span class="org-rainbow-delimiters-depth-2">)</span>
+                <span class="org-haskell-operator">|</span> null l2x <span class="org-haskell-operator">=</span> l1x
+<span class="org-haskell-definition">unsSub3</span> <span class="org-rainbow-delimiters-depth-2">(</span>l1<span class="org-haskell-constructor">:</span>l1x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>l2<span class="org-haskell-constructor">:</span>l2x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> unsSub3 l1x l2x
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<p>
+this evaluates. Now
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">unsSub3</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1,1,1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:53:1-7: error:
+    Variable not in scope: unsSub3 :: [a0] -&gt; [a1] -&gt; t
+</pre>
+
+
+<p>
+One improvement would be to make sure our input lists are made up of
+just ones. For this we have a choice of Haskell built-ins like
+<code>filter</code>, <code>all</code>, <code>map</code>, <code>any</code>, and <code>elem</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">list1</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1,1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-haskell-definition">list2</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-operator">-</span>1,1,1,1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<p>
+One version using <code>any</code> to test for not equal to <code>1</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">any</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">/=</span>1<span class="org-rainbow-delimiters-depth-1">)</span> list2
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:55:11-15: error:
+    Variable not in scope: list2 :: t0 a0
+</pre>
+
+
+<p>
+Another version of testing for not equal to <code>1</code> using a (lambda)
+anonymous function
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">any</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>x <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">/=</span> 1<span class="org-rainbow-delimiters-depth-1">)</span> list2  <span class="org-comment-delimiter">-- </span><span class="org-comment">checks if any in the list conform to test</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:57:20-24: error:
+    Variable not in scope: list2 :: t0 a0
+</pre>
+
+
+<p>
+We can test <i>two</i> lists by using <code>Boolean</code> <i>or</i> <code>(||)</code> 
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span>any <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-operator">\</span>x <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">/=</span> 1<span class="org-rainbow-delimiters-depth-2">)</span> list1<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">||</span> <span class="org-rainbow-delimiters-depth-1">(</span>any <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-operator">\</span>x <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">/=</span> 1<span class="org-rainbow-delimiters-depth-2">)</span> list2<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:59:21-25: error:
+    Variable not in scope: list1 :: t1 a1
+
+&lt;interactive&gt;:59:51-55: error:
+    Variable not in scope: list2 :: t0 a0
+</pre>
+
+
+<p>
+<code>filter</code> returns a list with elements conforming to the test
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">filter</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">/=</span>1<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1,1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[]
+</pre>
+
+
+<p>
+<code>all</code> checks if all elements conform to test and returns <code>Boolean</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">all</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">==</span>1<span class="org-rainbow-delimiters-depth-1">)</span>  <span class="org-rainbow-delimiters-depth-1">[</span>1,1,1,2<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+False
+</pre>
+
+
+<p>
+<code>map</code>, (see <a href="http://learnyouahaskell.com/higher-order-functions#maps-and-filters">Maps and filters</a>) which we&rsquo;ll use extensively, applies the
+test to a list and outputs a new list with the outcomes of each test
+on each input list element. Here the test is an anonymous function
+testing again for not equal to <code>1</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">map</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>x <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">(</span>x <span class="org-haskell-operator">&gt;</span> 1<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">||</span> <span class="org-rainbow-delimiters-depth-2">(</span>x <span class="org-haskell-operator">&lt;</span> 1<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-operator">-</span>1,1,2,3,4<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[True,False,True,True,True]
+</pre>
+
+
+<p>
+<code>elem</code> with type <code>Eq a =&gt; a -&gt; [a] -&gt; Bool</code> is not quite as handy
+since it doesn&rsquo;t allow for a <code>Boolean</code> predicate test. So yes, we
+could test if <code>1</code> is an element of a list, but not if <i>all</i> are
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">elem</span> 1 <span class="org-rainbow-delimiters-depth-1">[</span>1,1,1,1<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">||</span> elem 1 <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+<p>
+We can &ldquo;trick&rdquo; <code>elem</code> into helping us. First, we produce a list
+created from <code>map</code> as above testing each element for <code>1</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">map</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>x <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">/=</span> 1<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1,<span class="org-haskell-operator">-</span>1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[False,False,True,False]
+</pre>
+
+
+<p>
+Then <code>elem</code> will tell us if any elements were not equal to <code>1</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">elem</span> <span class="org-haskell-constructor">True</span> <span class="org-haskell-operator">$</span> map <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>x <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">/=</span> 1<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1,<span class="org-haskell-operator">-</span>1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+<p>
+We&rsquo;ll build in a test using <code>any</code>, but like before, this code doesn&rsquo;t
+evaluate properly
+</p>
+
+<pre class="example" id="orgd725316">
+unsSub4 :: Num a =&gt; [a] -&gt; [a] -&gt; [a]
+unsSub4 l1x l2x | (any (\x -&gt; x /= 1) l1x) || (any (\y -&gt; y /= 1) l2x) = []
+unsSub4 l1x l2x | null l1x = (map negate l2x)
+                | null l2x = l1x
+unsSub4 (l1:l1x) (l2:l2x) = unsSub4 l1x l2x
+</pre>
+
+<p>
+The error once again complains of something to do with the elements
+<code>a</code> of the input arrays
+</p>
+
+<pre class="example" id="org1c85178">
+Could not deduce (Eq a) arising from a use of ‘/=’
+...
+Possible fix:
+        add (Eq a) to the context of
+          the type signature for:
+            unsSub4 :: forall a. Num a =&gt; [a] -&gt; [a] -&gt; [a]
+</pre>
+
+<p>
+Again, we&rsquo;ll leave out a type declaration and see what Haskell thinks
+it is
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-comment-delimiter">-- </span><span class="org-comment">unsSub4 :: Num a =&gt; [a] -&gt; [a] -&gt; [a]</span>
+<span class="org-haskell-definition">unsSub4</span> l1x l2x <span class="org-haskell-operator">|</span> <span class="org-rainbow-delimiters-depth-2">(</span>any <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">\</span>x <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">/=</span> 1<span class="org-rainbow-delimiters-depth-3">)</span> l1x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">||</span> <span class="org-rainbow-delimiters-depth-2">(</span>any <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">\</span>y <span class="org-haskell-operator">-&gt;</span> y <span class="org-haskell-operator">/=</span> 1<span class="org-rainbow-delimiters-depth-3">)</span> l2x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span>
+<span class="org-haskell-definition">unsSub4</span> l1x l2x <span class="org-haskell-operator">|</span> null l1x <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>map negate l2x<span class="org-rainbow-delimiters-depth-2">)</span>
+                <span class="org-haskell-operator">|</span> null l2x <span class="org-haskell-operator">=</span> l1x
+<span class="org-haskell-definition">unsSub4</span> <span class="org-rainbow-delimiters-depth-2">(</span>l1<span class="org-haskell-constructor">:</span>l1x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>l2<span class="org-haskell-constructor">:</span>l2x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> unsSub4 l1x l2x
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t unsSub4
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:1:1-7: error: Variable not in scope: unsSub4
+</pre>
+
+
+<p>
+Trying this
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">unsSub4</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-type">Eq</span> a, <span class="org-haskell-type">Num</span> a<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">unsSub4</span> l1x l2x <span class="org-haskell-operator">|</span> <span class="org-rainbow-delimiters-depth-2">(</span>any <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">\</span>x <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">/=</span> 1<span class="org-rainbow-delimiters-depth-3">)</span> l1x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">||</span> <span class="org-rainbow-delimiters-depth-2">(</span>any <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">\</span>y <span class="org-haskell-operator">-&gt;</span> y <span class="org-haskell-operator">/=</span> 1<span class="org-rainbow-delimiters-depth-3">)</span> l2x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span>
+<span class="org-haskell-definition">unsSub4</span> l1x l2x <span class="org-haskell-operator">|</span> null l1x <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>map negate l2x<span class="org-rainbow-delimiters-depth-2">)</span>
+                <span class="org-haskell-operator">|</span> null l2x <span class="org-haskell-operator">=</span> l1x
+<span class="org-haskell-definition">unsSub4</span> <span class="org-rainbow-delimiters-depth-2">(</span>l1<span class="org-haskell-constructor">:</span>l1x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>l2<span class="org-haskell-constructor">:</span>l2x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> unsSub4 l1x l2x
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<p>
+and it evaluates. What&rsquo;s happening? As before, the input element <code>a</code>&rsquo;s
+type must also be an instance of the <code>Eq</code> class, which means there has
+to be a way to <i>equate</i> any pair of <code>a</code>&rsquo;s
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Eq</span>
+</code></pre>
+
+<pre class="example" id="org453644a">
+type Eq :: * -&gt; Constraint
+class Eq a where
+  (==) :: a -&gt; a -&gt; Bool
+  (/=) :: a -&gt; a -&gt; Bool
+  {-# MINIMAL (==) | (/=) #-}
+  	-- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+instance (Eq a, Eq b) =&gt; Eq (Either a b)
+  -- Defined in ‘Data.Either’
+instance Eq a =&gt; Eq [a] -- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+instance Eq Word -- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+instance Eq Ordering -- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+instance Eq Int -- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+...
+</pre>
+
+<p>
+What <code>:i</code> or <code>:info</code> is saying about the typeclass <code>Eq</code> is that in
+order to be an instance of it, input <code>a</code> must have defined what
+happens when two of its members are subjected to an equality tests
+<code>(==)</code> and <code>(/=)</code>.
+</p>
+
+<p>
+Now <code>unsSub4 :: (Eq a, Num a) =&gt; [a] -&gt; [a] -&gt; [a]</code> restricts <code>a</code> to
+being a value that has instances for <code>Eq</code> <i>and</i> <code>Num</code> registered. Why
+is this important? Because without specifying, <i>anticipating</i> the
+ability to perform equality (<code>Eq</code>) comparisons on only numerical
+values (<code>Num</code>), other non-numerical values for <code>a</code> might give false
+output. When we declare the function <code>unsSub4</code>&rsquo;s input and output
+types with <code>unsSub4 :: (Eq a, Num a) =&gt; [a] -&gt; [a] -&gt; [a]</code>, we are
+guaranteeing sane behavior.
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">unsSub4</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1,1,1,1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:77:1-7: error:
+    Variable not in scope: unsSub4 :: [a0] -&gt; [a1] -&gt; t
+</pre>
+
+
+<p>
+What will happen if we use lists of strings of <code>1</code>?
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">unsSub4</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"1"</span>,<span class="org-string">"1"</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"1"</span>,<span class="org-string">"1"</span>,<span class="org-string">"1"</span>,<span class="org-string">"1"</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:79:1-7: error:
+    Variable not in scope: unsSub4 :: [String] -&gt; [String] -&gt; t
+</pre>
+
+
+<p>
+Again, Haskell is playing it safe. We haven&rsquo;t made Haskell aware of
+any way to handle strings as list elements. We use <code>(/=)</code>, which will work
+</p>
+
+<pre class="code"><code><span class="org-string">'1'</span> <span class="org-haskell-operator">/=</span> <span class="org-string">'2'</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+<p>
+but we haven&rsquo;t accounted for <code>negate</code> which wants to negate an actual
+number. Looking into <code>negate</code>&rsquo;s type
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>t negate
+</code></pre>
+
+<pre class="example">
+negate :: Num a =&gt; a -&gt; a
+</pre>
+
+
+<p>
+we see it cannot handle anything but numbers registered with the
+typeclass <code>Num</code>. So yes, we can use string versions of <code>1</code>, but that&rsquo;s
+because there is a registered instance for <code>Char</code> which defines behind
+the scenes how to equate numbers
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Eq</span>
+</code></pre>
+
+<pre class="example" id="org8d42f20">
+type Eq :: * -&gt; Constraint
+class Eq a where
+  (==) :: a -&gt; a -&gt; Bool
+  (/=) :: a -&gt; a -&gt; Bool
+  {-# MINIMAL (==) | (/=) #-}
+  	-- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+...
+instance Eq Char -- Defined in ‘ghc-prim-0.6.1:GHC.Classes’
+...
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgfa7c568" class="outline-5">
+<h5 id="orgfa7c568"><span class="section-number-5">1.1.2.2.</span> UNS Addition</h5>
+<div class="outline-text-5" id="text-1-1-2-2">
+<p>
+As you saw in LYAHFGG, recursion<label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle"/><span class="sidenote">
+At this point it would be good to know what LYAHFGG says about
+recursion: <a href="http://learnyouahaskell.com/recursion#hello-recursion">LYAHFGG Hello Recursion!</a>.
+</span> is the Haskell way of looping. UNS
+addition, as represented by lists, will be a simple matter of
+combining two lists of <code>1</code>&rsquo;s into one total list. Borrowing from
+above, we can start out very simple by concatenating the lists
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">[</span>1,1,1,1<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">++</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1,1,1,1,1,1]
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-definition">uns2</span> list1 list2 <span class="org-haskell-operator">=</span> list1 <span class="org-haskell-operator">++</span> list2
+</code></pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">unsAdd1</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-type">Eq</span> a, <span class="org-haskell-type">Num</span> a<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">unsAdd1</span> l1x l2x <span class="org-haskell-operator">|</span> <span class="org-rainbow-delimiters-depth-2">(</span>any <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">\</span>x <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">/=</span> 1<span class="org-rainbow-delimiters-depth-3">)</span> l1x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">||</span> <span class="org-rainbow-delimiters-depth-2">(</span>any <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">\</span>y <span class="org-haskell-operator">-&gt;</span> y <span class="org-haskell-operator">/=</span> 1<span class="org-rainbow-delimiters-depth-3">)</span> l2x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span>
+<span class="org-haskell-definition">unsAdd1</span> l1x l2x <span class="org-haskell-operator">|</span> null l1x <span class="org-haskell-operator">=</span> l2x
+                <span class="org-haskell-operator">|</span> null l2x <span class="org-haskell-operator">=</span> l1x
+<span class="org-haskell-definition">unsAdd1</span> <span class="org-rainbow-delimiters-depth-2">(</span>l1<span class="org-haskell-constructor">:</span>l1x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>l2<span class="org-haskell-constructor">:</span>l2x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> l1 <span class="org-haskell-constructor">:</span> l2 <span class="org-haskell-constructor">:</span> unsAdd1 l1x l2x
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">unsAdd1</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:89:1-7: error:
+    Variable not in scope: unsAdd1 :: [a0] -&gt; [a1] -&gt; t
+</pre>
+
+
+<p>
+<code>unsAdd1</code> gives a nice example of recursion. But what if any of the
+list elements are negative <code>1</code>&rsquo;s? Let&rsquo;s say if the lists contain
+<code>-1</code>&rsquo;s we&rsquo;ll take away a positive <code>1</code>. One approach would be to just
+concatenate both lists, then go through removing positive and negative
+pairs
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">unsAdd2</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-type">Eq</span> a, <span class="org-haskell-type">Num</span> a<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">unsAdd2</span> l1x l2x <span class="org-haskell-operator">|</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>any <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-haskell-operator">/=</span>1<span class="org-rainbow-delimiters-depth-4">)</span> l1x<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">&amp;&amp;</span> <span class="org-rainbow-delimiters-depth-3">(</span>any <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-haskell-operator">/=</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span> l1x<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+                  <span class="org-haskell-operator">||</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>any <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-haskell-operator">/=</span>1<span class="org-rainbow-delimiters-depth-4">)</span> l2x<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">&amp;&amp;</span> <span class="org-rainbow-delimiters-depth-3">(</span>any <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-haskell-operator">/=</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span> l2x<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span>
+<span class="org-haskell-definition">unsAdd2</span> l1x l2x <span class="org-haskell-operator">|</span> null l1x <span class="org-haskell-operator">=</span> l2x
+                <span class="org-haskell-operator">|</span> null l2x <span class="org-haskell-operator">=</span> l1x
+<span class="org-haskell-definition">unsAdd2</span> <span class="org-rainbow-delimiters-depth-2">(</span>l1<span class="org-haskell-constructor">:</span>l1x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>l2<span class="org-haskell-constructor">:</span>l2x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> l1 <span class="org-haskell-constructor">:</span> l2 <span class="org-haskell-constructor">:</span> unsAdd2 l1x l2x
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">unsAdd2</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-operator">-</span>1,<span class="org-haskell-operator">-</span>1,<span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:91:1-7: error:
+    Variable not in scope: unsAdd2 :: [a0] -&gt; [a1] -&gt; t
+</pre>
+
+
+<p>
+Here&rsquo;s a variant where the test for <code>1</code> and <code>-1</code> is somewhat shorter
+building on this idea
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">all</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">`elem`</span> <span class="org-rainbow-delimiters-depth-2">[</span>1,<span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1,1,<span class="org-haskell-operator">-</span>1,1,<span class="org-haskell-operator">-</span>1,<span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">unsAdd3</span> l1x l2x <span class="org-haskell-operator">|</span> not <span class="org-rainbow-delimiters-depth-2">(</span>all <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">`elem`</span> <span class="org-rainbow-delimiters-depth-4">[</span>1,<span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span> l1x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">&amp;&amp;</span> not <span class="org-rainbow-delimiters-depth-2">(</span>all <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">`elem`</span> <span class="org-rainbow-delimiters-depth-4">[</span>1,<span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span> l2x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span>
+<span class="org-haskell-definition">unsAdd3</span> l1x l2x <span class="org-haskell-operator">|</span> null l1x <span class="org-haskell-operator">=</span> l2x
+                <span class="org-haskell-operator">|</span> null l2x <span class="org-haskell-operator">=</span> l1x
+<span class="org-haskell-definition">unsAdd3</span> <span class="org-rainbow-delimiters-depth-2">(</span>l1<span class="org-haskell-constructor">:</span>l1x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>l2<span class="org-haskell-constructor">:</span>l2x<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> l1 <span class="org-haskell-constructor">:</span> l2 <span class="org-haskell-constructor">:</span> unsAdd3 l1x l2x
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">unsAdd3</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-operator">-</span>1,<span class="org-haskell-operator">-</span>1,<span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:95:1-7: error:
+    Variable not in scope: unsAdd3 :: [a0] -&gt; [a1] -&gt; t
+</pre>
+
+
+<p>
+One simple idea would be to use a <i>fold</i><label for="3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="3" class="margin-toggle"/><span class="sidenote">
+See <a href="http://learnyouahaskell.com/higher-order-functions#folds">LYAHFGG folds</a>.
+</span>, e.g.
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">foldr</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>x acc <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">+</span> acc<span class="org-rainbow-delimiters-depth-1">)</span> 0 <span class="org-rainbow-delimiters-depth-1">[</span>1,<span class="org-haskell-operator">-</span>1,1,1,1,<span class="org-haskell-operator">-</span>1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+3
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-definition">foldr</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>x acc <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">+</span> acc<span class="org-rainbow-delimiters-depth-1">)</span> 0 <span class="org-rainbow-delimiters-depth-1">[</span>1,<span class="org-haskell-operator">-</span>1,1,<span class="org-haskell-operator">-</span>1,<span class="org-haskell-operator">-</span>1,<span class="org-haskell-operator">-</span>1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+-1
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">unsAdd4</span> l1x l2x <span class="org-haskell-operator">=</span> <span class="org-haskell-keyword">let</span> ux <span class="org-haskell-operator">=</span> l1x <span class="org-haskell-operator">++</span> l2x
+                  <span class="org-haskell-keyword">in</span> collps ux
+                     <span class="org-haskell-keyword">where</span> collps <span class="org-haskell-operator">=</span> foldr <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-operator">\</span>x acc <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">+</span> acc<span class="org-rainbow-delimiters-depth-2">)</span> 0
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">unsAdd4</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1,1,<span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,<span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:101:1-7: error:
+    Variable not in scope: unsAdd4 :: [a0] -&gt; [a1] -&gt; t
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">unsAdd5</span> ux <span class="org-haskell-operator">=</span> <span class="org-haskell-keyword">let</span> pux <span class="org-haskell-operator">=</span> filter <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-operator">==</span>1<span class="org-rainbow-delimiters-depth-2">)</span> ux
+                 mux <span class="org-haskell-operator">=</span> filter <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-operator">==</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span> ux
+             <span class="org-haskell-keyword">in</span> pux <span class="org-haskell-operator">++</span> mux
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">unsAdd5</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,<span class="org-haskell-operator">-</span>1,1,1,<span class="org-haskell-operator">-</span>1,<span class="org-haskell-operator">-</span>1,1,<span class="org-haskell-operator">-</span>1,1,1,1,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+&lt;interactive&gt;:103:1-7: error:
+    Variable not in scope: unsAdd5 :: [a0] -&gt; t
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd1e6976" class="outline-4">
+<h4 id="orgd1e6976"><span class="section-number-4">1.1.3.</span> In closing: Some UNS Theory</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+The UNS is considered a <i>bijective base-1 numeral system</i>. How is
+<i>bijective</i> meant here? The answer is to imagine the set of all whole
+numerals \(1,2,\ldots,\infin\;\), and then the set of all UNS 1-strings,
+e.g., <code>1</code>, <code>11</code>, <code>111</code>. These two sets are mapped bijectively, as with
+bijective functions. The term <i>unary</i> can be interpreted mainly as a
+number system having only one digit. However, when we explore Peano
+numbers, we will revisit the idea of unary functions and unary
+operators.
+</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footnotes --><!-- 
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+At this point it would be good to review <i>Learn You</i>&rsquo;s section
+on typeclasses: <a href="http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101">LYAHFGG Typeclasses 101</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+At this point it would be good to know what LYAHFGG says about
+recursion: <a href="http://learnyouahaskell.com/recursion#hello-recursion">LYAHFGG Hello Recursion!</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+See <a href="http://learnyouahaskell.com/higher-order-functions#folds">LYAHFGG folds</a>.
+</p></div></div>
+
+ --></div>
+<div id="postamble" class="status">
+<p class="date">Created: 2022-05-10 Tue 22:38</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

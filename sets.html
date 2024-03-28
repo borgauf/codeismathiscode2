@@ -1,0 +1,1937 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-07-19 Tue 21:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<img src="./images/heading6.png"  style="padding: 0px 0px 22px 0px" alt="3-d graph" class="center">
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <a href="numbers.html" target="_blank"><li>Numbers</li></a>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+
+<div id="outline-container-orgb669a31" class="outline-2">
+<h2 id="orgb669a31">Sets, types, and lists</h2>
+<div class="outline-text-2" id="text-orgb669a31">
+</div>
+
+<div id="outline-container-orga41e36d" class="outline-3">
+<h3 id="orga41e36d">Why sets?</h3>
+<div class="outline-text-3" id="text-orga41e36d">
+<p>
+In the latter part of the nineteenth century, mathematicians wanted to
+create a ground floor for mathematics that would be fundamental,
+theoretical, formal, and <i>abstracted</i> enough in order base all of
+mathematics. They developed <b>set theory</b> to be this base. German
+mathematicians Georg Cantor and Richard Dedekind are credited as the
+originators of they called <i>Mengenlehre</i>.
+</p>
+
+<p>
+For example, set theory allowed all manner of numbers to be formally
+defined and grouped. It also allowed the Cartesian coordinate system
+(CCS) to be formally based, as well as an exacting description of
+relations and functions.
+</p>
+
+<p>
+Cantor&rsquo;s contemporary, Gottlob Frege, came up with what was supposed
+to be the definitive starter definition of a set, which later became
+known as the <i>Schema of Comprehension</i>
+</p>
+
+\begin{align}
+Y = \{x : \varphi\,(x)\}
+\end{align}
+
+<p>
+(1) demonstrates the <i>set comprehension</i> notation, an abstraction tool
+which we&rsquo;ll have a closer look at below. It reads
+</p>
+
+<p>
+➝<font color = "#650d1c"> <i>\(Y\) is/equals the set of all \(x\)&rsquo;s
+such that they have the property \(\varphi\)</i> </font>.
+</p>
+
+<p>
+This emphasizes the importance of <i>properties</i> on sets. Properties,
+also known as <i>predicates</i>, act as a sort of filter, qualifier on
+possible set members. Good. But there&rsquo;s one problem with (1), <b>it can
+be proven false</b>. As it turned out, this particular wording allowed a
+circular argument known as <i>Russell&rsquo;s Paradox</i> after Bertrand Russell
+that could not initially be resolved. He introduced the bizarre
+predicate \(X \notin X\;\), which made (1) illogical impossible
+</p>
+
+<p>
+Russell said,
+</p>
+
+<div class="epigraph"><blockquote>
+<p>
+Consider the set \(S\) whose elements are all those (and only those)
+sets that are not members of themselves: \(S = \{X:X\notin X\}\;\;\). So does
+\(S\) belong to \(S\;\)? If \(S\) belongs to \(S\;\) then \(S\) is not a member
+of itself, and so \(S \notin S\;\). On the other hand, if \(S \notin S\;\), then \(S\)
+belongs to \(S\;\).
+</p>
+
+</blockquote></div>
+
+<p>
+Got that? If not, it has been reworded into plain English
+versions. One is known as the &ldquo;Town Barber.&rdquo; So a town has a barber
+who shaves all the men who do not shave themselves. Now, does the
+barber shave himself?  Similar is this paradox
+</p>
+
+<ul class="org-ul">
+<li>the sentence below is false</li>
+<li>the sentence above is true</li>
+</ul>
+
+<p>
+For a time, Russell&rsquo;s Paradox pulled the rug out from under the whole
+idea of using set theory as a basis for mathematics. It was not until
+mathematicians Ernst Zermelo and Abraham Fraenkel came up with a
+variation of the Schema of Comprehension, called the <i>Schema of
+Separation</i>, that set theory could go on being math&rsquo;s basis. What came
+to be known as Zermelo–Fraenkel set theory, with its solid <i>axioms</i>,
+corrected this paradox by simply not allowing the idea of a set of all
+sets. Obviously, allowing a <i>universal set</i><label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle"/><span class="sidenote">
+More on the <i>universal set</i> later.
+</span> of all sets begs the
+question if this supposedly universal set contains itself, and if it
+does, is it truly the ultimate container<label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle"/><span class="sidenote">
+Consider the man who obligated a wizard to tell him the secrets
+of the universe. But in that same instant as the man knew the secrets
+of the universe, the secrets changed and the secrets he knew were no
+longer <i>the</i> secrets of the universe, rather, common knowledge. The
+man was angry with the wizard for cheating him, but the wizard argued
+that they would not be the secrets of the universe if a mortal man
+could actually know them.
+</span>?
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgffd28d9" class="outline-3">
+<h3 id="orgffd28d9">Back down to earth</h3>
+<div class="outline-text-3" id="text-orgffd28d9">
+<p>
+Another more down-to-earth description of mathematical sets would be
+to say
+</p>
+
+<p>
+➝ <font color = "#650d1c">
+Sets are <i>unordered</i> collections of <i>distinct objects</i>.
+</font>
+</p>
+
+<p>
+Here <i>unordered</i> means no one element of a set is before or after
+another. So a set is like a bag. You may reach in and pull any element
+out at random<label for="3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="3" class="margin-toggle"/><span class="sidenote">
+We&rsquo;ll speak of how sets may be ordered later. But for now a
+basic set is unordered.
+</span>. But then how do we make order out of unorder,
+since, e.g., numbers have the property of being ordered? We&rsquo;ll look
+into that at a formalistic set theoretical level.
+</p>
+
+<p>
+<i>Distinct objects</i> sounds clear enough, but this also means any
+<i>repeated element</i> in a set really only represent one truly distinct,
+single thing &#x2026; which means an element only appears once in a set,
+even though you may see it more than once &#x2026; which means duplicates
+don&rsquo;t add anything &#x2026; which means we can always remove duplicate
+elements and not change the set<label for="4" class="margin-toggle sidenote-number"></label><input type="checkbox" id="4" class="margin-toggle"/><span class="sidenote">
+Contrast sets with <i>sequences</i> where order and repeating of
+elements <i>do</i> matter. Technically speaking, from the idea of a
+<i>vector</i>, a <i>sequence</i> is an <font color = "#650d1c">
+an ordered n-tuple \((a_1,\ldots,a_n) \in A^n\;\;\) of elements from \(A\) for
+some number \(n\;\). </font> and we&rsquo;ll get into what that
+means later.
+</span>. For example
+</p>
+
+\begin{align*}
+\{a,b,c\} = \{b,a,c\} = \{c,b,a\} = \{a,b,b,c,b\}
+\end{align*}
+
+<p>
+are all the same set.
+</p>
+
+<p>
+Sets can be <i>finite</i>, i.e., limited to a given numbers of elements. Or
+sets can be <i>infinite</i>, i.e., an endless number of elements. For now
+we&rsquo;ll deal with finite lists, but occasionally allude to infinite
+sets. Representing an infinite set as a Haskell list, we utilize the
+<i>range</i> operator, e.g., <code>[1,2..]</code>, which would continue building a
+list of all positive integers endlessly. Be careful. Use only in
+conjunction with a limiting function, e.g.,
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">take</span> 10 <span class="org-rainbow-delimiters-depth-1">[</span>1,2<span class="org-haskell-operator">..</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1,2,3,4,5,6,7,8,9,10]
+</pre>
+
+
+<p>
+otherwise <code>[1,2..]</code> just by itself will run forever and lock up your
+computer<label for="5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="5" class="margin-toggle"/><span class="sidenote">
+Why <code>take</code> stops <code>[1,2..]</code> from running wild has to do with
+Haskell being a <i>lazy</i> language, i.e., evaluation can be JIT (just in
+time). Literally, when Haskell saw <code>take</code> it knew <i>not</i> to let
+<code>[1,2..]</code> run forever. Neat trick.
+</span>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9922be0" class="outline-3">
+<h3 id="org9922be0">Describing sets</h3>
+<div class="outline-text-3" id="text-org9922be0">
+<p>
+So far we&rsquo;ve done some hand-waving at our formal set
+notation. <a href="https://en.wikipedia.org/wiki/Set-builder_notation">Set-builder notation</a> can be as simple as just listing out
+the members of a set, e.g., \(A = \{1,2,3,4\}\;\;\). This is known as
+the <i>roster method</i>. This works &#x2014; for shorter finite sets. And we
+can even throw in the intuitive idea of <i>ellipsis</i>, \(\ldots\;\;\), when
+we want to &ldquo;continue this pattern,&rdquo; i.e., good for representing
+infinite lists, e.g., \(B = \{1,2,3,\ldots\}\;\;\).
+</p>
+
+<p>
+But a more abstract depiction of sets is the <i>set comprehension</i>,
+which we saw above. This is a mathematical description, a machine of
+sorts, of what elements should be included in a set for building a
+roster of set elements. In its simplest form we can say
+</p>
+
+\begin{align}
+S = \{x\; |\; \varphi \; x\}
+\end{align}
+
+<p>
+where the set \(S\) is constructed from \(x\;\), a representative
+<i>variable</i> in the algebraic sense, and \(\varphi\;\), the <i>predicate</i>, applied
+to \(x\;\). Hence, the qualifying rule, \(\varphi\;x\;\), creates a
+true-or-false, in-or-out qualification for potential set members. The
+pipe or vertical bar in between means &ldquo;such that<label for="6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="6" class="margin-toggle"/><span class="sidenote">
+Contrast with (1) above where <b>:</b> served as &ldquo;such that&rdquo; and \(\varphi
+()\) in the classic function form was used.
+</span>.&rdquo;  And so we
+read (2) as <font color = "#650d1c"> \(S\) is the set of \(x\)&rsquo;s
+such that \(\varphi\; x\) holds</font>. In other words, the elements
+of \(S\) are only those which pass the predicate \(\varphi\;\)&rsquo;s test. But where
+are the possible candidates for this predicate test coming from?
+</p>
+
+<p>
+One variation of this basic set comprehension is to include on the
+left of the pipe the <i>domain</i> of the variable. For example, the set
+\(S_{\mathbb{R>0}}\) of all real numbers greater than \(0\) could be
+</p>
+
+\begin{align*}
+S_{\mathbb{R>0}} = \{x \in \mathbb{R} \; | \; x \gt 0\}
+\end{align*}
+
+<p>
+where on the left side we &ldquo;pre-provide&rdquo; a source of potential set
+elements from \(\mathbb{R}\;\), then &ldquo;filter&rdquo; them with our \(x \gt 0\;\)
+predicate. This gives the set of all strictly positive real numbers,
+which can also be written as \((0,\infty)\;\).
+</p>
+
+<p>
+Consider intervals expressed as set comprehensions
+</p>
+
+\begin{align*}
+(a,b) &= \{x \in \mathbb{R} \;|\; a < x < b\} \\
+[\,a,b) &= \{x \in \mathbb{R} \;|\; a \leq x < b\} \\
+(a,b\,] &= \{x \in \mathbb{R} \;|\; a < x \leq b\} \\
+[\,a,b\,] &= \{x \in \mathbb{R} \;|\; a \leq x \leq b\}
+\end{align*}
+
+<p>
+Again, we&rsquo;re assuming \(\mathbb{R}\;\) to be the <i>set</i> of all real
+numbers, i.e., set theory has crept into our language.
+</p>
+
+<p>
+Now, let&rsquo;s try a more complicated set comprehension
+</p>
+
+\begin{align*}
+\mathbb{Q} = \{a \in \mathbb{R}\ \;|\; \exists\, p \in \mathbb{Z}, \exists\, q \in \mathbb{Z}\; [\,q \ne 0 \land aq = p\,]\}
+\end{align*}
+
+<p>
+&#x2026; or the set of rational numbers, i.e., real numbers expressible as
+a ratio of two integers. Another way of saying this would be of the
+general form \(\{ f\; x \;|\; p\;x \}\;\)
+</p>
+
+\begin{align*}
+\mathbb{Q} = \{p/q \;|\; p, q \in \mathbb{Z},\; q \ne 0\}
+\end{align*}
+
+<p>
+where we have the <i>function</i> \(f(p, q) = p/q\;\;\) left of the
+pipe<label for="7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="7" class="margin-toggle"/><span class="sidenote">
+And yet another more intuitive way would be \(\{x \;|\; x = a/b
+\;\;\text{for some}\;\; a,b \in \mathbb{Z}, b \neq 0\}\;\;\).
+</span>. Another example of a function on the left is
+</p>
+
+\begin{align*}
+\{\sqrt{x} \;|\; x \in \{1,2,3,4\}\}
+\end{align*}
+
+<p>
+Or as a Haskell list comprehension
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">[</span>sqrt x <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span>1,2,3,4<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1.0,1.4142135623730951,1.7320508075688772,2.0]
+</pre>
+
+
+<p>
+Consider the following and try to understand why the left- and
+right-hand sides of the <i>equivalence</i>, \(\equiv\;\), are the same
+</p>
+
+\begin{align*}
+\{ \Psi(x) \;|\; \Phi(x)\} \equiv \{y \;|\; \exists(x),\; y=\Psi(x) \land \Phi(x)\}
+\end{align*}
+
+<p>
+For another example consider a system of linear equations
+</p>
+
+\begin{align*}
+2x - 4y &= 6 \\
+3x - 6x &= 9
+\end{align*}
+
+<p>
+If we do row manipulations, we see these are actually the same
+equation. Now, let&rsquo;s express one of them as a comprehension
+</p>
+
+\begin{align*}
+\{(x,y) \;|\; 2x - 4y = 6\}
+\end{align*}
+
+<p>
+Let&rsquo;s try Haskell versions
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">(</span>x,y<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span>1<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>, y <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span>1<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>, 2<span class="org-haskell-operator">*</span>x <span class="org-haskell-operator">-</span> 4<span class="org-haskell-operator">*</span>y <span class="org-haskell-operator">==</span> 6<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[(5,1),(7,2),(9,3),(11,4),(13,5),(15,6),(17,7),(19,8)]
+</pre>
+
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">(</span>x,y<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span>1<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>, y <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span>1<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>, <span class="org-rainbow-delimiters-depth-2">(</span>2<span class="org-haskell-operator">*</span>x <span class="org-haskell-operator">-</span> 4<span class="org-haskell-operator">*</span>y <span class="org-haskell-operator">==</span> 6<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">||</span> <span class="org-rainbow-delimiters-depth-2">(</span>3<span class="org-haskell-operator">*</span>x <span class="org-haskell-operator">-</span> 6<span class="org-haskell-operator">*</span>y <span class="org-haskell-operator">==</span> 9<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[(5,1),(7,2),(9,3),(11,4),(13,5),(15,6),(17,7),(19,8)]
+</pre>
+
+
+<p>
+These are the possible values of \(x\) and \(y\) between \(1\) and \(20\;\).
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org071f527" class="outline-3">
+<h3 id="org071f527">Doing sets in Haskell</h3>
+<div class="outline-text-3" id="text-org071f527">
+<p>
+Haskell does have its own complete version of math sets which can be
+imported. However, for didactic purposes we will start out with an
+approximation of mathematical sets using Haskell&rsquo;s <i>list</i> data
+structure<label for="8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="8" class="margin-toggle"/><span class="sidenote">
+Once we have more Haskell prowess we will go into a detailed
+version of math sets in Haskell&#x2026;
+</span>.
+</p>
+
+<p>
+At first glance a math set and a Haskell list look the same, e.g., \(A
+= \{1,2,3,4\}\;\) on the math text page and
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">a</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<p>
+on the computer screen look similar. And once Haskell has evaluated
+the above expression, your computer knows about four elements
+considered together, which are then referred to by the symbol <code>a</code>. But
+unlike a math set, a Haskell list <i>does</i> care about order and <i>does</i>
+care about duplicates. This means
+</p>
+
+\begin{align*}
+A &= \{1,2,3,4\} \\
+&= \{1,2,3,4,2,1\} \\
+&= \{3,4,2,1\}
+\end{align*}
+
+<p>
+might all be the same set, but
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">a</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4<span class="org-rainbow-delimiters-depth-1">]</span> b <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4,2,1<span class="org-rainbow-delimiters-depth-1">]</span> c <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span>3,4,2,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<p>
+are different lists. Again, think of a Haskell list as a <i>sequence</i> of
+like-typed elements. These constraints, however, can be worked around
+if we want a Haskell list to represent a math set.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org952026c" class="outline-3">
+<h3 id="org952026c">⇲ Haskell aside: Duplicates</h3>
+<div class="outline-text-3" id="text-org952026c">
+<p>
+So if our &ldquo;list-as-set&rdquo; shouldn&rsquo;t have duplicates, then we need a
+means of removing them. There is built-in (<code>Data.List</code>) <code>delete</code> which
+returns a new list<label for="9" class="margin-toggle sidenote-number"></label><input type="checkbox" id="9" class="margin-toggle"/><span class="sidenote">
+Remember, Haskell <i>never</i> alters a list; instead, it copies it,
+works on the copy, then returns that worked-on copy. However, just
+entering expressions at the ghci REPL, yes, you may create <code>a =
+[1,2,3]</code> then <i>redefine</i> <code>a = [1,2,3,4]</code> and the new value of <code>a</code> will
+be <code>[1,2,3,4]</code>. Likewise, you may redefine functions. However, this
+redefining is just a convenience to you when working directly with
+ghci command line. This will <i>not</i> work in code in a file submitted to
+ghc or ghci; instead, producing <code>Multiple declarations of ‘a’</code>
+error. In general, Haskell does not allow declaring a variable or
+function symbol, then allow your program to reassign the symbol
+somewhere else in the code.
+</span> with the first instance of the argument missing
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">import</span> <span class="org-haskell-constructor">Data.List</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">delete</span> 1 <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[2,3]
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-definition">delete</span> 1 <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[2,3,1]
+</pre>
+
+
+<p>
+As we see above, <code>delete</code> is too primitive to consider duplicates. How
+could we fix this? Playing around, we could <code>reverse</code> the list  
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">reverse</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1,3,2,1]
+</pre>
+
+
+<p>
+and at least take off that back <code>1</code>, then reverse again to get it back
+to its normal list order. This leverages Haskell&rsquo;s higher-order
+function <i>composition</i>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">delLast1</span> <span class="org-haskell-operator">=</span> reverse <span class="org-haskell-operator">.</span> delete 1 <span class="org-haskell-operator">.</span> reverse
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">delLast1</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1,2,3]
+</pre>
+
+
+<p>
+For practice we create our own <code>delete'</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">delete'</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Eq</span> a <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">delete'</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span>
+<span class="org-haskell-definition">delete'</span> y <span class="org-rainbow-delimiters-depth-2">(</span>x<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">==</span> y <span class="org-haskell-operator">=</span> delete' y xs
+                 <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> x <span class="org-haskell-constructor">:</span> delete' y xs
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">delete'</span> 1 <span class="org-rainbow-delimiters-depth-1">[</span>5,1,2,3,1,3,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[5,2,3,3]
+</pre>
+
+
+<p>
+We could specify <i>which</i> element is to be removed if there are
+duplicates
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-comment-delimiter">-- </span><span class="org-comment">delDup :: Eq a =&gt; a -&gt; [a] -&gt; [a]</span>
+<span class="org-haskell-definition">delDup</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span>
+<span class="org-haskell-definition">delDup</span> n y <span class="org-rainbow-delimiters-depth-2">(</span>x<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">|</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>x <span class="org-haskell-operator">==</span> y<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">&amp;&amp;</span> <span class="org-rainbow-delimiters-depth-3">(</span>n <span class="org-haskell-operator">==</span> 1<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> xs
+                  <span class="org-haskell-operator">|</span> <span class="org-rainbow-delimiters-depth-2">(</span>x <span class="org-haskell-operator">/=</span> y<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> x <span class="org-haskell-constructor">:</span> delDup n y xs
+                  <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> x <span class="org-haskell-constructor">:</span> delDup <span class="org-rainbow-delimiters-depth-2">(</span>n<span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-2">)</span> y xs
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<p>
+Remove the first occurrence of <code>6</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">delDup</span> 1 6 <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,1,1,2,4,6,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1,2,3,1,1,2,4,1]
+</pre>
+
+
+<p>
+or the second occurrence of <code>1</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">delDup</span> 2 1 <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,1,1,2,4,6,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1,2,3,1,2,4,6,1]
+</pre>
+
+
+<p>
+But again, this isn&rsquo;t getting rid of all duplicates. We would need a
+function that took each element of the list and searched the rest of
+the list for duplicates, removing any found.
+</p>
+
+<p>
+One quick-and-dirty way just like <code>delete'</code> above is to leverage
+<code>elem</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">rmDups</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Eq</span> a <span class="org-haskell-operator">=&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">rmDups</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span>
+<span class="org-haskell-definition">rmDups</span> <span class="org-rainbow-delimiters-depth-2">(</span>x<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-2">)</span>   <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">`elem`</span> xs <span class="org-haskell-operator">=</span> rmDups xs
+                <span class="org-haskell-operator">|</span> otherwise   <span class="org-haskell-operator">=</span> x <span class="org-haskell-constructor">:</span> rmDups xs
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">rmDups</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,1,1,2,4,6,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[3,2,4,6,1]
+</pre>
+
+
+<p>
+But this is complex in that it takes many steps<label for="10" class="margin-toggle sidenote-number"></label><input type="checkbox" id="10" class="margin-toggle"/><span class="sidenote">
+As many as \(O(n^2)\;\). More about <i>Big-O</i> later.
+</span>. Another
+approach that is not so complex is to again <i>compose</i> useful functions
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">rmDups2</span> <span class="org-haskell-operator">=</span> map head <span class="org-haskell-operator">.</span> group <span class="org-haskell-operator">.</span> sort
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">rmDups2</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,1,1,2,4,6,1,5,5,5<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1,2,3,4,5,6]
+</pre>
+
+
+<p>
+Let&rsquo;s end with Haskell&rsquo;s built-in function called <code>nub</code> (part of
+<code>Data.List</code>) for complete elimination of list duplicates. One simple
+implementation of <code>nub</code> that leverages <code>filter</code> would be
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">nub</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Eq</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-haskell-definition">nub</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span>
+<span class="org-haskell-definition">nub</span> <span class="org-rainbow-delimiters-depth-1">(</span>x<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=</span> x <span class="org-haskell-constructor">:</span> nub <span class="org-rainbow-delimiters-depth-1">(</span>filter <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-operator">\</span>y <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">/=</span> y<span class="org-rainbow-delimiters-depth-2">)</span> xs<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">nub</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,1,3,4,1,1,4,2,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1,2,3,4]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org7a376fd" class="outline-3">
+<h3 id="org7a376fd">Set abstraction</h3>
+<div class="outline-text-3" id="text-org7a376fd">
+<p>
+Sets become considerably more abstract when we begin to formalize and
+abstract a set&rsquo;s interactions with itself and other sets. If, for
+example, we have the set \(A = \{1,2,3,4\}\;\) and we want \(A\) be a
+<i>totally ordered set</i>, we must be able to compare any two elements of
+\(A\) for sameness, for greater- or less-ness. This may seem formalistic
+trivial tedious<label for="11" class="margin-toggle sidenote-number"></label><input type="checkbox" id="11" class="margin-toggle"/><span class="sidenote">
+&#x2026;tedious because numbers have <i>quantities</i> built-in, i.e., we
+can already see what&rsquo;s big, small, greater-than, equal, less-than.
+</span>, but consider a set of colors \(C = \{Red, Green,
+Blue, Yellow\}\quad\). Yes, intuitively, any two elements of \(C\) may be
+the same, equal or not, but how can we talk about one color being
+greater or less than another color<label for="12" class="margin-toggle sidenote-number"></label><input type="checkbox" id="12" class="margin-toggle"/><span class="sidenote">
+We&rsquo;ll explain Haskell&rsquo;s take on a set of colors in just a
+moment.
+</span>?
+</p>
+
+<p>
+In this discussion we will speak of <i>relations</i>, i.e., operations on a
+set that establish rules for how set elements relate to one
+another. But initially we&rsquo;ll do this at an intuitive level, without
+going into exacting mathematical detail as to what a relation really
+is. That comes a bit later.
+</p>
+
+<p>
+One way we can express a relation on a set is to create a separate set
+made up of the given set&rsquo;s elements. So, for the set \(A =
+\{1,2,3,4\}\;\;\) let us create a <i>less than</i> set
+</p>
+
+\begin{align*}
+R_{A\,:\,x \lt y} = \{(1,2),(1,3),(1,4),(2,3),(2,4),(3,4)\}
+\end{align*}
+
+<p>
+Here we have created a set of pairs, as with Cartesian coordinate
+pairs, made up of all the elements of \(A\) conforming to the \(x \lt y\;\)
+property. Hence, in this case the property or <i>predicate</i> \(\varphi\) is \(x \lt
+y\;\).
+</p>
+
+<p>
+This is similar to, e.g., having a grocery list on one piece of paper,
+then on another piece of paper rearranging the grocery items into
+fresh, frozen/cooled, and dry/canned categories. Then on a third piece
+of paper listing the grocery items by cheapest to most expensive per
+unit weight. Now you have three grocery lists: the original and two
+lists that express useful relationships on the original grocery list.
+</p>
+
+<p>
+Let&rsquo;s create with a Haskell <i>list comprehension</i> a <i>greater than or
+equal to</i> relation among the elements of \(A = \{1,2,3,4\}\;\;\)
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">(</span>x,y<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">|</span> y <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span>1<span class="org-haskell-operator">..</span>4<span class="org-rainbow-delimiters-depth-2">]</span>, x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span>1<span class="org-haskell-operator">..</span>4<span class="org-rainbow-delimiters-depth-2">]</span>, x <span class="org-haskell-operator">&gt;=</span> y<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[(1,1),(2,1),(3,1),(4,1),(2,2),(3,2),(4,2),(3,3),(4,3),(4,4)]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org32488e2" class="outline-3">
+<h3 id="org32488e2">🟄Logical sum, logical product</h3>
+<div class="outline-text-3" id="text-org32488e2">
+<p>
+If \(A\) and \(B\) are two sets, then \(A \cup B\;\) (or \(A \lor B\;\)) is the
+<i>union</i> of \(A\) and \(B\;\). This is also called a <i>logical or</i> since we
+are combining the elements of \(A\) and \(B\) in such a way that the
+result contains everything in <i>both</i> \(A\) <i>and</i> \(B\;\); hence, a union
+of two sets will contain elements from one set <b>or</b> the
+other<label for="13" class="margin-toggle sidenote-number"></label><input type="checkbox" id="13" class="margin-toggle"/><span class="sidenote">
+From logic this the <i>inclusive or</i>, like &ldquo;I&rsquo;ll take strawberry
+<i>or</i> raspberry <i>or</i> both,&rdquo; not the <i>exclusive or</i> like &ldquo;I will go to
+his party <i>or</i> her party, <i>not</i> both&rdquo;.
+</span>. Yes, this is a tricky dance semantically between how we
+normally use <i>and</i> and <i>or</i>. It&rsquo;s most formal name is <i>logical
+disjunction</i>.
+</p>
+
+<img src="./images/union.svg" width="300px" style="padding: 15px 0px 0px 0px" alt="Union" class="center">
+<span class="cap">Logical disjunction.</span>
+
+<p>
+The <i>truth table</i> for logical disjunction would be<label for="14" class="margin-toggle sidenote-number"></label><input type="checkbox" id="14" class="margin-toggle"/><span class="sidenote">
+&#x2026;if it&rsquo;s true that it&rsquo;s in \(A\) and it&rsquo;s true that it&rsquo;s in
+\(B\), then it&rsquo;s in \(A \lor B\;\); if it&rsquo;s true that it&rsquo;s in \(A\) but not
+true that it&rsquo;s in \(B\) &#x2014; then it&rsquo;s still in \(A \lor B\;\)&#x2026;
+</span>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">A</th>
+<th scope="col" class="org-left">B</th>
+<th scope="col" class="org-left">A &or; B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">True</td>
+<td class="org-left">True</td>
+<td class="org-left">True</td>
+</tr>
+
+<tr>
+<td class="org-left">True</td>
+<td class="org-left">False</td>
+<td class="org-left">True</td>
+</tr>
+
+<tr>
+<td class="org-left">False</td>
+<td class="org-left">True</td>
+<td class="org-left">True</td>
+</tr>
+
+<tr>
+<td class="org-left">False</td>
+<td class="org-left">False</td>
+<td class="org-left">False</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+An <i>intersection</i> of \(A\) and \(B\), \(A \cap B\;\) (or \(A \land B\;\)) &#x2014; also
+called a <i>logical product</i>, <i>logical and</i> and most formally <i>logical
+conjunction</i> &#x2014; is made up exclusively of the shared elements in
+<i>both</i> \(A\) and \(B\;\).
+</p>
+
+<img src="./images/intersection.svg" width="300px" style="padding: 15px 0px 0px 0px" alt="Union" class="center">
+<span class="cap">Logical conjunction.</span>
+
+<p>
+and the truth table for logical conjunction is<label for="15" class="margin-toggle sidenote-number"></label><input type="checkbox" id="15" class="margin-toggle"/><span class="sidenote">
+&#x2026;if it&rsquo;s in \(A\) <b>and</b> it&rsquo;s in \(B\), then it&rsquo;s in \(A \land
+B\;\). Otherwise, if it&rsquo;s not in \(A\) or it&rsquo;s not in \(B\;\), or it&rsquo;s
+neither in \(A\) nor in \(B\;\), then it&rsquo;s not in \(A \land B\;\).
+</span>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">A</th>
+<th scope="col" class="org-left">B</th>
+<th scope="col" class="org-left">A &and; B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">True</td>
+<td class="org-left">True</td>
+<td class="org-left">True</td>
+</tr>
+
+<tr>
+<td class="org-left">True</td>
+<td class="org-left">False</td>
+<td class="org-left">False</td>
+</tr>
+
+<tr>
+<td class="org-left">False</td>
+<td class="org-left">True</td>
+<td class="org-left">False</td>
+</tr>
+
+<tr>
+<td class="org-left">False</td>
+<td class="org-left">False</td>
+<td class="org-left">False</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+⇲ <b>Mind-bender</b>: What about the statement<label for="16" class="margin-toggle sidenote-number"></label><input type="checkbox" id="16" class="margin-toggle"/><span class="sidenote">
+Consider the <i>negate</i> operator \(\neg\;\;\). It is considered a
+unary operator, i.e., it works on just one thing at a time. We can
+also abstract <i>negate</i> to mean, in general, an operator that sends
+\(x\;\) to \(x'\;\) such that it can send it back, \(x'\;\) to \(x\;\),
+again. In this broader sense, <i>negate</i> flips a thing back and forth.
+</span>
+</p>
+
+\begin{align}
+\lnot\; (\lnot\; A \;\lor\; \lnot\; B)\;=\;A \land B
+\end{align}
+
+<p>
+Is this true, i.e., can we create logical conjunction out of negation
+and logical disjunction? Just puzzling it out is hard. But if we look
+at the last line of the logical disjunction truth table <code>False |
+False | False</code>, then we see that negating \(A\;\), \(B\;\) and \(A \lor B\;\),
+as we see on the left side of (3), makes it the same as the logical
+conjunction&rsquo;s first line <code>True | True | True</code>. Likewise, sticking in
+any of the other truth table values translates one to the other. So
+yes, they are equivalent. Keep this machine-like logic translation in
+mind. We&rsquo;ll see it later.
+</p>
+</div>
+
+<div id="outline-container-orga09d36c" class="outline-4">
+<h4 id="orga09d36c">Ordering real numbers</h4>
+<div class="outline-text-4" id="text-orga09d36c">
+<p>
+Real numbers? Why real numbers? Isn&rsquo;t computer science more interested
+in whole numbers and discrete things? Yes, but in order to talk about
+the OFA (and then move forward with sets) we have to work with the
+reals. Why?  Because certain operations on whole numbers are not
+possible. For example, to properly define the OFA we will need to be
+able to solve \(ax = 1\;\) for \(x\;\) for any \(a \in \mathbb{R}\;\;\). But
+since natural numbers \(\mathbb{N}\;\) and integers \(\mathbb{Z}\;\;\)
+have no rationals (fractions), we cannot use them. Solving \(ax =
+1\;\;\) for \(x\;\) is just another way of saying we need any number
+\(a\;\) to have an inverse \(1/a\;\;\). Again, whole numbers integrals
+have no concept of inverse/reciprocal.
+</p>
+
+<p>
+In higher math, i.e., <i>abstract algebra</i>, they speak of <i>fields</i>,
+<i>groups</i>, and <i>rings</i>. These concepts lend a high degree of
+abstraction to the idea of numbers. And so
+</p>
+
+<p>
+<font color = "#650d1c"> The <i>field of real numbers</i>,
+\((\mathbb{R}, +, \times, \leq)\;\), is the set of real numbers under the two
+operations of addition and multiplication, with an ordering
+\(\leq\;\). </font>
+</p>
+</div>
+</div>
+
+
+
+
+
+
+<div id="outline-container-orgd4068b6" class="outline-4">
+<h4 id="orgd4068b6">Set properties</h4>
+<div class="outline-text-4" id="text-orgd4068b6">
+<p>
+It its purest form, axiomatic<label for="17" class="margin-toggle sidenote-number"></label><input type="checkbox" id="17" class="margin-toggle"/><span class="sidenote">
+When we say something is <i>axiomatic</i> we mean it is a system
+based on axioms or ground rules, from which theorems are built.
+</span> set theory only deals with sets
+as the most basic and fundamental entities &#x2014; not even considering
+their elements. Thus, an entire abstract world is built around just
+the sets themselves. Beginners, used to numbers, are often baffled by
+this new abstraction, having grown up in a world of the natural
+counting numbers, of whole number integers with the possibility of
+negative values, of numbers expressed as fractions, numbers expressed
+with unlimited decimal exactness, numbers that never have a decimal or
+fractional resolution, and then even so-called imaginary numbers built
+out of the impossible number \(\sqrt{-1}\;\;\). Numbers are an
+infinitely large bag of precise, high-resolution objects with all
+manner of hands-on manipulations happening to them. Sets, on the other
+hand, are like opaque blocks meant to be moved around by seemingly
+arcane, often trivial-sounding rules.
+</p>
+
+<p>
+Even more problematic is how set theory doesn&rsquo;t always hold to its
+axiomatic sets-only philosophy. Yes, the other aspect of sets is how
+<i>relations</i> are built among their elements. We&rsquo;ll start this dance
+between sets-only and set-with-elements by considering the idea of a
+<i>universal set</i>, \(\mathbb{U}\;\), by which we mean some <i>hyper-set</i>
+above and including all <i>subsets</i> of a certain type. For example, all
+the numbers on a number line, e.g., integers, reals, etc., could be a
+universal set relative to bunches of these numbers gathered into
+subsets of that universal set<label for="18" class="margin-toggle sidenote-number"></label><input type="checkbox" id="18" class="margin-toggle"/><span class="sidenote">
+Remember, we cannot allow \(\mathbb{U}\) to include itself;
+otherwise, Russell&rsquo;s Paradox comes back.
+</span>. Hence, a universal set will be
+in some context of its subsets.
+</p>
+
+
+
+<p>
+Recall the idea of a property \(\varphi\) on a set. Here we&rsquo;re speaking of
+sets as holders of elements. One trivial property would be \(S = \{x
+\;|\; \varphi\, (x) = x\}\;\;\), which is simply all the elements of the set
+\(S\;\;\). The opposite in a restricted, non-paradoxical set world would
+be \(\varnothing = \{x \;|\; \varphi\, (x) \neq x\}\;\;\), or the <i>empty
+set</i>. We&rsquo;re literally saying, &ldquo;All \(x\;\) with the property of not
+being \(x\;\).&rdquo;  Yes, odd. But a set made up of elements that have the
+property of not being equal to themselves we must simply declare as
+impossible, <i>no such elements</i>, i.e., an empty set.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9ce3a0a" class="outline-4">
+<h4 id="org9ce3a0a">Subsets</h4>
+<div class="outline-text-4" id="text-org9ce3a0a">
+<p>
+A set \(A\) is a <i>subset</i> of set \(B\) if there are no elements of \(A\)
+that are not in \(B\;\). Hence, \(A\) is contained in \(B\;\). Symbol-wise
+we write \(A \subseteq B\;\;\) and this actually indicates &ldquo;contained by
+or equal to&rdquo;. Another sort of subset is the <i>proper subset</i> \(A \subset B\;\)
+where \(A\) is wholly contained in \(B\;\) but they are not equal, i.e.,
+\(A\) is contained by \(B\;\) but at least one element smaller than \(B\;\).
+</p>
+
+<p>
+But now let&rsquo;s go back into just-sets axiomatic set theory. As it so
+happens, there are parallels between a subset relation \(A \subseteq
+B\;\) and the general order relation \(x \leq y\;\) between numbers. Sort
+of.
+</p>
+
+<ol class="org-ol">
+<li>\(A \subseteq A\;\).</li>
+<li>If \(A \subseteq B\;\) and \(B \subseteq A\;\), then \(A = B\;\).</li>
+<li>If \(A \subseteq B\;\) and \(B \subseteq C\;\), then \(A \subseteq C\;\).</li>
+</ol>
+
+<p>
+By these three rules \(A \subseteq B\;\) parallels the order relation \(a
+\leq b\;\); hence, \(A \subseteq B\;\) can be considered an <i>order
+relation</i>. So let&rsquo;s simply substitute \(\leq\) for \(\subseteq\;\).
+</p>
+
+<ul class="org-ul">
+<li>By 1. the numeric version would be \(a \leq a\;\).<label for="19" class="margin-toggle sidenote-number"></label><input type="checkbox" id="19" class="margin-toggle"/><span class="sidenote">
+Happily, \(x \leq x\) includes the possibility of \(x = y\;\).
+</span></li>
+<li>By 2. if \(x \leq y\;\) and \(y \leq x\;\), then \(x = y\;\).</li>
+<li>By 3. if \(x \leq y\;\) and \(y \leq z\;\), then \(x \leq z\;\).</li>
+</ul>
+
+<p>
+But there is a slight hitch in the interchangeability of \(\leq\) with
+\(\subseteq\;\). With <i>any</i> two numbers we will have either \(x \leq y\;\) or
+\(y \leq x\;\), i.e., one number is before, abreast with, or after another
+&#x2014; but we can&rsquo;t really say that about all sets. For example if \(A =
+\{1,2,3\}\;\) and \(B = \{2,3,4\}\;\) then we cannot have 2. or 3. since
+neither \(A \subseteq B\;\) nor \(B \subseteq A\;\). Therefore we have to
+fall back to saying \(A \subseteq B\;\) is a <i>partial ordering among
+sets</i>, while \(x \leq y\;\) defines a <i>complete ordering among
+numbers</i>. Yes, but why do we bother with this comparison? Because in
+Haskell &#x2014; and by association computer theory &#x2014; keys on such
+parallels. More to come on this front.
+</p>
+
+<p>
+Let&rsquo;s list some more rules
+</p>
+
+<ol class="org-ol">
+<li value="4">\(\varnothing \subseteq A\;\;\) for any set \(A\).</li>
+<li>\(A \subseteq \mathbb{U}\;\).</li>
+</ol>
+
+<p>
+The &ldquo;proof&rdquo; of 4. is simply that \(\varnothing \subseteq A\;\;\) could
+only be false if \(\varnothing\) as a set contained an element that was
+not an element of \(A\;\), but since \(\varnothing\) contains no such
+thing due to its emptiness, we never have this situation, no matter
+what \(A\) has for elements. Right. Such are math proofs.
+</p>
+
+<p>
+Now, let&rsquo;s get back to logical sums and logical products. Let&rsquo;s again
+have \(A = \{1,2,3\}\;\;\) and \(B = \{2,3,4\}\;\). Then \(A \lor B =
+\{1,2,3,4\}\;\;\) and \(A \land B = \{2,3\}\;\;\). Rules for sums and
+products are
+</p>
+
+<ol class="org-ol">
+<li value="6">\(A \lor B = B \lor A\;\;\) &#x2026;or <i>commutativity</i>.</li>
+<li>\(A \land B = B \land A\;\;\) &#x2026;again <i>commutativity</i>.</li>
+<li>\(A \lor (B \lor C) = (A \lor B) \lor C\quad\) &#x2026;or <i>associativity</i>.</li>
+<li>\(A \land (B \land C) = (A \land B) \land C\quad\) &#x2026;again <i>associativity</i>.</li>
+<li>\(A \lor A = A\quad\) &#x2026;huh, what&rsquo;s this?!</li>
+<li>\(A \land A = A\quad\) &#x2026;again, what&rsquo;s going on here?!</li>
+<li>\(A \land (B \lor C) = (A \land B) \lor (A \land C) \quad\) &#x2026;the <i>distributive</i> law.</li>
+<li>\(A \lor (B \land C) = (A \lor B) \land (A \lor C) \quad\) &#x2026;do numbers do this?</li>
+<li>\(A \lor \varnothing = A\quad\).</li>
+<li>\(A \land \mathbb{U} = A\quad\) &#x2026;what would be the number analogy?</li>
+<li>\(A \lor \mathbb{U} = \mathbb{U} \quad\) &#x2026;again, the parallel to numbers?</li>
+<li>\(A \land \varnothing = \varnothing \quad\) &#x2026;yes, numbers do this.</li>
+<li>\(A \subseteq B \equiv A \lor B = B \equiv A \land B = A \quad\) &#x2026;numbers do this?</li>
+</ol>
+
+<p>
+Again, if we compare <b>logical disjunction to addition</b> and <b>logical
+conjunction to multiplication</b>,
+</p>
+
+
+
+
+<p>
+Now, how do we bring this sort of abstraction into the computer?
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org57442e9" class="outline-3">
+<h3 id="org57442e9">Ordering: sets and regular algebraic math</h3>
+<div class="outline-text-3" id="text-org57442e9">
+<p>
+There are two big ideas about numbers &#x2014; beyond their main uses as
+indicators of quantity and enumerating things. They are <i>equivalence</i>
+and <i>order</i>. We&rsquo;ll talk about order here. But why bring in set theory?
+Set theory may seem a strange abstraction off in its own world, but
+there exists enlightening overlap between handling sets and handling
+numbers vis-à-vis order. If we think about ordinary addition and
+multiplication, the set version of these is <i>union</i> or <i>logical sum</i>
+for addition, and <i>intersection</i> or <i>logical product</i> for
+multiplication. But before we go further, let&rsquo;s formalize an
+interesting corner of numbers by looking at the <i>complete ordered
+field axioms</i> (OFA). It turns out the whole idea of <i>ordering</i> things
+is a very important, fundamental concept in math.
+</p>
+
+<p>
+Let&rsquo;s take a stab at the idea of ordering. Intuitively, we can say
+that <font color = "#650d1c"> a collection of elements is
+ordered if choosing any given element, it is either <i>before</i> another,
+<i>alongside</i> another, or <i>ahead of</i> another.  </font> But we
+can&rsquo;t turn this definition into computer code very easily. It is too
+naive and intuitive. We delve into abstract mathematics in order to
+find mathematical forms that it can be translated into code
+expressions to run on a computer.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga9f838f" class="outline-3">
+<h3 id="orga9f838f">Colors</h3>
+<div class="outline-text-3" id="text-orga9f838f">
+</div>
+<div id="outline-container-org7e45679" class="outline-4">
+<h4 id="org7e45679">Formalizing color mathematically</h4>
+<div class="outline-text-4" id="text-org7e45679">
+<p>
+Above, we mentioned a possible set where the elements were not
+numbers, rather, <i>colors</i>. But how can we do math with colors? With
+numbers we have many possible operations and relationships between
+sets of numbers, each of which represents a quantity. But how can we
+objectively talk about orderings such as &ldquo;greater than&rdquo; with a set of
+colors?
+</p>
+
+<p>
+In the world of abstract algebra and discrete mathematics the concept
+of sets is sufficiently formal and abstract to allow us to construct
+something mathematical out of a set of colors. As we saw above, we
+formalized, <i>codified</i> the idea of &ldquo;greater than&rdquo; for the set \(A =
+\{1,2,3,4\}\;\;\) by creating a separate set \(R_{A\,:\,x \lt y}\) to hold all
+possible pairs of \(A\) elements that expressed a greater-than
+relationship. That is to say, we took the greater than relationship on
+our set out of the ether, out of our intuitive mental representation
+and put it down in black-and-white.
+</p>
+
+<p>
+Addition and subtraction. In everyday life we take the arithmetic of
+addition and subtraction for granted. Again, we have an intuitive
+mental representation of these two operations without having to think
+about how addition is commutative and associative, while subtraction
+is neither nor<label for="20" class="margin-toggle sidenote-number"></label><input type="checkbox" id="20" class="margin-toggle"/><span class="sidenote">
+The <i>minuend</i> (that which is subtracted from) and the
+<i>subtrahend</i> (that which is being subtracted away) are not
+interchangeable, rather, subtraction depends on which is first and
+second.
+</span>. For example, we typically don&rsquo;t think about
+switching from the natural numbers \(\mathbb{N}\) to the <i>integers</i>
+\(\mathbb{Z}\) (whole numbers including negatives) when we evaluate
+something like \(3 - 5\;\). So how would we add colors? But then how do
+we add sets<label for="21" class="margin-toggle sidenote-number"></label><input type="checkbox" id="21" class="margin-toggle"/><span class="sidenote">
+Just below we&rsquo;ll tackle when set operations and regular
+numerical calculations coincide and when they don&rsquo;t.
+</span>? We&rsquo;ll first look at how Haskell creates a color
+type.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7d0454d" class="outline-4">
+<h4 id="org7d0454d">Haskell <code>Color</code></h4>
+<div class="outline-text-4" id="text-org7d0454d">
+<p>
+Haskell is not an object-oriented language, rather, a typed language,
+which in our case means we first need to define a <i>type</i> for colors,
+not an object as you would with C++, Java, Ruby, or Python. We start
+by defining our <code>Color</code> type
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">data</span> <span class="org-haskell-type">Color</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Red</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Yellow</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Blue</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Green</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Purple</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Orange</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Brown</span> <span class="org-haskell-keyword">deriving</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Show</span>,<span class="org-haskell-constructor">Eq</span>,<span class="org-haskell-constructor">Enum</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+
+<p>
+<code>Color</code> has seven <i>tags</i> or <i>data constructors</i>, i.e., <code>Red</code>,
+<code>Yellow</code>, &#x2026; <code>Brown</code> are individual tag-constructors<label for="22" class="margin-toggle sidenote-number"></label><input type="checkbox" id="22" class="margin-toggle"/><span class="sidenote">
+Nomenclature: <i>Data constructors</i> (or <i>value constructors</i>)
+are on the right side of the equation of a type definition, while the
+<i>type constructor</i> is on the left side.
+</span>. So let&rsquo;s
+create a list of colors of type <code>Color</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">myColor1</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-constructor">Blue</span>,<span class="org-haskell-constructor">Orange</span>,<span class="org-haskell-constructor">Yellow</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="code"><code>myColor1
+</code></pre>
+
+<pre class="example">
+[Blue,Orange,Yellow]
+</pre>
+
+
+<p>
+Notice how our <code>Color</code> type definition almost looks like a set itself,
+a sort of container holding all seven of the possible colors
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">[</span>a <span class="org-haskell-operator">|</span> a <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-constructor">Red</span><span class="org-haskell-operator">::</span><span class="org-haskell-type">Color</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-haskell-operator">..</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[Red,Yellow,Blue,Green,Purple,Orange,Brown]
+</pre>
+
+
+<p>
+Technically speaking, a data constructor like <code>Red</code> or <code>Green</code> is also
+function; however, in this case they take no arguments but return a
+constant<label for="23" class="margin-toggle sidenote-number"></label><input type="checkbox" id="23" class="margin-toggle"/><span class="sidenote">
+In algebra we might compare with \(f(x) = c\;\), i.e., whatever
+we put in for \(x\;\), \(f\) returns just \(c\;\). We can also write \(f() =
+c\;\). Technically, a constant all by itself can be considered a
+function or operation of <i>arity</i> \(0\). The <i>arity</i> of a function or
+operation is the number of arguments it takes.
+</span> when invoked, namely a variable the same as the data
+constructor itself. This may sound formalistic-odd, so let&rsquo;s give an
+example where the type definition looks and acts more function-like
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">data</span> <span class="org-haskell-type">ColorInt</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">RedI</span> <span class="org-haskell-constructor">Int</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">YellowI</span> <span class="org-haskell-constructor">Int</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">BlueI</span> <span class="org-haskell-constructor">Int</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">GreenI</span> <span class="org-haskell-constructor">Int</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">PurpleI</span> <span class="org-haskell-constructor">Int</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">OrangeI</span> <span class="org-haskell-constructor">Int</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">BrownI</span> <span class="org-haskell-constructor">Int</span> <span class="org-haskell-keyword">deriving</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Show</span>,<span class="org-haskell-constructor">Eq</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">myCInt1</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-constructor">RedI</span> 5, <span class="org-haskell-constructor">GreenI</span> 2, <span class="org-haskell-constructor">PurpleI</span> 6, <span class="org-haskell-constructor">BrownI</span> 1<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="code"><code>myCInt1
+</code></pre>
+
+<pre class="example">
+[RedI 5,GreenI 2,PurpleI 6,BrownI 1]
+</pre>
+
+
+<p>
+So with <code>ColorInt</code> we&rsquo;ve upped the <i>arity</i> of our data constructors on
+the right of the equation by one and now they take one argument, an
+<code>Int</code> value &#x2014; perhaps to indicate the intensity of the color. Notice
+also we had to change the names of the <code>ColorInt</code> data constructors so
+as not to clash with our previous <code>Color</code>&rsquo;s data constructors. But
+again, data constructors behave like functions that return a value of
+the data type<label for="24" class="margin-toggle sidenote-number"></label><input type="checkbox" id="24" class="margin-toggle"/><span class="sidenote">
+Yes, they act like functions, but not in the regular sense of
+a normal function taking input and producing output. A type or data
+constructor is taking input and creating our data type environment.
+</span>. In the case of <code>RedI 5</code> no calculation upon
+evaluation was made, rather, the value <code>RedI 5</code> was returned.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3852a23" class="outline-4">
+<h4 id="org3852a23">The sum type</h4>
+<div class="outline-text-4" id="text-org3852a23">
+<p>
+Both <code>Color</code> and <code>ColorInt</code> are what are referred to in Haskell as
+<i>sum</i> types<label for="25" class="margin-toggle sidenote-number"></label><input type="checkbox" id="25" class="margin-toggle"/><span class="sidenote">
+A basic definition of a Haskell <i>sum type</i> is a data type that
+allows us to express alternative possibilities with just one data
+type.
+</span> &#x2026; as opposed to <i>product</i> types. This difference
+goes back to set theory and whether we are dealing with a union or an
+intersection of sets &#x2014; as we discussed above. But we also go back
+the fundamental issue of counting things and putting them
+together. For example, let&rsquo;s say we have four things in one group and
+two things in another group, and neither group shares things. This
+means the things in the two groups in no way overlap. They are
+<i>disjoint</i>, and putting them together will behave like putting two
+sets together that share nothing, no element overlap.
+</p>
+
+<p>
+Consider three streets with clothing shops. Grant Street has two
+clothing shops; Lincoln Street has one clothing shop; and Lee Street
+has two clothing shops. Of course no street &ldquo;shares&rdquo; any shop
+What does this look like in set theory or
+Venn diagrams when we put them together?
+</p>
+
+<p>
+If we take any two sets, e.g., \(A = \{1,2,3,4\}\;\;\) and \(B =
+\{3,4,5,6\}\;\;\), then the set <i>union</i> or <i>logical sum</i> \(A \cup B =
+\{1,2,3,4,5,6\}\;\;\;\), which is just what we expect since sets do not
+suffer duplicates. In other words, the overlap is not duplicated in
+the resolution.
+</p>
+
+<p>
+If we want a new Haskell list made up of the elements from \(A\) <i>or</i>
+\(B\;\), and we try a simple concatenation
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">++</span> <span class="org-rainbow-delimiters-depth-1">[</span>3,4,5,6<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1,2,3,4,3,4,5,6]
+</pre>
+
+
+<p>
+&#x2026;we have a problem. Again, lists have duplicates. Let&rsquo;s reexamine
+the definition of \(A \cup B\;\), a set <i>union</i>
+</p>
+
+\begin{align*}
+A \cup B = \{x \;|\; x \in A \;\lor\; x \in B\}
+\end{align*}
+
+<p>
+We can leverage this basic &ldquo;or-ness,&rdquo; but we have to include the
+removal of duplicates
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">myUnion</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Eq</span> a <span class="org-haskell-operator">=&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">myUnion</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span> ys <span class="org-haskell-operator">=</span> ys
+<span class="org-haskell-definition">myUnion</span> <span class="org-rainbow-delimiters-depth-2">(</span>x<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-2">)</span> ys <span class="org-haskell-operator">=</span> <span class="org-haskell-keyword">if</span> <span class="org-rainbow-delimiters-depth-2">(</span>elem x xs<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">||</span> <span class="org-rainbow-delimiters-depth-2">(</span>elem x ys<span class="org-rainbow-delimiters-depth-2">)</span>
+                    <span class="org-haskell-keyword">then</span> x <span class="org-haskell-constructor">:</span> myUnion <span class="org-rainbow-delimiters-depth-2">(</span>filter <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">/=</span>x<span class="org-rainbow-delimiters-depth-3">)</span> xs<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>filter <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">/=</span>x<span class="org-rainbow-delimiters-depth-3">)</span> ys<span class="org-rainbow-delimiters-depth-2">)</span>
+                    <span class="org-haskell-keyword">else</span> x <span class="org-haskell-constructor">:</span> myUnion xs ys
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<p>
+This seems to work
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">myUnion</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4,1<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>3,4,5,6<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1,2,3,4,5,6]
+</pre>
+
+
+<p>
+But what if there&rsquo;s a duplicate in the second list?
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">myUnion</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>2,3,5,5,6,7<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1,2,3,4,5,5,6,7]
+</pre>
+
+
+<p>
+We could kludge something
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">myUnion2</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Eq</span> a <span class="org-haskell-operator">=&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">myUnion2</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span> ys <span class="org-haskell-operator">=</span> nub ys
+<span class="org-haskell-definition">myUnion2</span> <span class="org-rainbow-delimiters-depth-2">(</span>x<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-2">)</span> ys <span class="org-haskell-operator">=</span> <span class="org-haskell-keyword">if</span> <span class="org-rainbow-delimiters-depth-2">(</span>elem x xs<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">||</span> <span class="org-rainbow-delimiters-depth-2">(</span>elem x ys<span class="org-rainbow-delimiters-depth-2">)</span>
+                    <span class="org-haskell-keyword">then</span> x <span class="org-haskell-constructor">:</span> myUnion2 <span class="org-rainbow-delimiters-depth-2">(</span>filter <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">/=</span> x<span class="org-rainbow-delimiters-depth-3">)</span> xs<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>filter <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">/=</span>x<span class="org-rainbow-delimiters-depth-3">)</span> ys<span class="org-rainbow-delimiters-depth-2">)</span>
+                    <span class="org-haskell-keyword">else</span> x <span class="org-haskell-constructor">:</span> myUnion2 xs ys
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">myUnion2</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,1,2,3,4<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>2,3,5,5,6,7<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1,2,3,4,5,6,7]
+</pre>
+
+
+<p>
+Effective, but not so elegant, that trick of sticking in <code>nub</code> to
+handle duplicates in the second list<label for="26" class="margin-toggle sidenote-number"></label><input type="checkbox" id="26" class="margin-toggle"/><span class="sidenote">
+Truth will out, the Haskell <code>Data.List.union</code> function doesn&rsquo;t
+properly handle duplicates in the first list. Bug or feature? Happy
+ending: <code>Data.Set.union</code> works properly.
+</span>.
+</p>
+
+<p>
+Moving on, let&rsquo;s create a list of <code>Color</code> variables. But immediately
+we will have a set-list paradigm clash if we create a list containing
+&ldquo;duplicates,&rdquo; e.g.,
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">myColors1</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-constructor">Red</span>,<span class="org-haskell-constructor">Orange</span>,<span class="org-haskell-constructor">Brown</span>,<span class="org-haskell-constructor">Red</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<p>
+<code>myColors1</code>, a bona fide Haskell list, is a <i>sequence</i> with a second
+<code>Red</code> at the end. If <code>myColors1</code> were a math set, the second <code>Red</code>
+would simply be redundant.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfffc688" class="outline-4">
+<h4 id="orgfffc688">Color comparisons</h4>
+<div class="outline-text-4" id="text-orgfffc688">
+<p>
+Let&rsquo;s repeat the definition here
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">data</span> <span class="org-haskell-type">Color</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Red</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Yellow</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Blue</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Green</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Purple</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Orange</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Brown</span> <span class="org-haskell-keyword">deriving</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Show</span>,<span class="org-haskell-constructor">Eq</span>,<span class="org-haskell-constructor">Enum</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+
+<p>
+The initial &ldquo;math&rdquo; we do on <code>Color</code> is contained in the
+definition. Notice the <code>deriving (Show,Eq)~</code>. These connect our
+<code>Color</code> type to the Haskell typeclasses <code>Show</code> and <code>Eq</code>, creating a
+default instances of <code>Show Color</code> and <code>Eq Color</code>. Now, what would we
+expect &ldquo;equal-ness&rdquo; to be in the case of <code>Color</code>? Let&rsquo;s assume it
+means <code>Red == Red</code>, <code>Yellow == Yellow</code>, etc. they evaluate to
+<code>True</code>. Let&rsquo;s test
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">Red</span> <span class="org-haskell-definition">==</span> <span class="org-haskell-constructor">Red</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">Purple</span> <span class="org-haskell-definition">==</span> <span class="org-haskell-constructor">Purple</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">Purple</span> <span class="org-haskell-definition">==</span> <span class="org-haskell-constructor">Red</span>
+</code></pre>
+
+<pre class="example">
+False
+</pre>
+
+
+<p>
+It seems what Haskell thinks are equal colors is right. Let&rsquo;s take a
+look under the hood
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Eq</span>
+</code></pre>
+
+<pre class="example" id="orgfe069f4">
+type Eq :: * -&gt; Constraint
+class Eq a where
+  (==) :: a -&gt; a -&gt; Bool
+  (/=) :: a -&gt; a -&gt; Bool
+  {-# MINIMAL (==) | (/=) #-}
+  	-- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance [safe] Eq Color -- Defined at hroad4.hs:7:83
+...
+</pre>
+
+<p>
+Yes, <code>Color</code> is now equipped with <code>Eq</code> typeclass methods <code>(==)</code> and
+<code>(/=)</code> for testing equality. <code>==</code> works. Let&rsquo;s try <code>/=</code>
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">Red</span> <span class="org-haskell-definition">/=</span> <span class="org-haskell-constructor">Orange</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+<p>
+Can we add two <code>Color</code>&rsquo;s together? In art class what happens when we
+&ldquo;add&rdquo; red and blue? We get purple. So yes, Haskell has a way to
+establish addition, but to do this we&rsquo;ll need to take a rabbit hole
+into higher math and establish just exactly what addition really
+is. But first, we should explore what exactly we have with the type
+<code>Color</code> and why we created it as we did.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7258c1a" class="outline-4">
+<h4 id="org7258c1a">Haskell sum and product types</h4>
+<div class="outline-text-4" id="text-org7258c1a">
+<p>
+Many programming languages have types, but very few have true,
+full-featured <i>algebraic data types</i> (ADT)<label for="27" class="margin-toggle sidenote-number"></label><input type="checkbox" id="27" class="margin-toggle"/><span class="sidenote">
+The main languages with true ADT are of the &ldquo;ML Family,&rdquo; i.e.,
+SML, Ocaml, F#, and Haskell.
+</span>. In order to be a
+proper ADT, we must be able to <i>compose</i> new types, primarily by
+combining other types.
+</p>
+
+<p>
+At the most basic level we are 
+Also, the two main sorts of counting, or
+&ldquo;enumerating sets,&rdquo; namely sums and products, 
+</p>
+
+
+
+
+<p>
+Sum and product versus union and intersection.
+</p>
+
+
+<p>
+This is possible and is provided for in Haskell with the typeclass
+<code>Eq</code>, which establishes for various types &ldquo;equal-ness.&rdquo;  Again,
+Haskell, in its mathematical soul, doesn&rsquo;t take this for granted or
+bury it in underlying code. One main reason is equality cannot simply
+be assumed, e.g., there can be no (easy) idea of comparing functions
+for equality<label for="28" class="margin-toggle sidenote-number"></label><input type="checkbox" id="28" class="margin-toggle"/><span class="sidenote">
+&#x2026; although the concept of &ldquo;do these two different looking
+functions give us the same results?&rdquo; is very big in the world of
+comp-sci.
+</span>, even though functions in Haskell can become
+arguments, as well as results of other functions.
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org1421717" class="outline-3">
+<h3 id="org1421717">Subsets</h3>
+<div class="outline-text-3" id="text-org1421717">
+<p>
+The set \(A\) is a <i>subset</i> of the set \(B\) if and only if
+</p>
+
+\begin{align}
+\forall x\; (x \in A \Rightarrow x \in B)
+\end{align}
+
+<p>
+in effect says if all \(x\)&rsquo;s in \(A\) are also in \(B\;\)<label for="29" class="margin-toggle sidenote-number"></label><input type="checkbox" id="29" class="margin-toggle"/><span class="sidenote">
+&#x2026; all <i>elements</i> of \(A\) are also <i>elements</i> of \(B\;\).
+</span>, then \(A\) is a
+<i>subset</i> of \(B\;\), i.e., \(A \subseteq B\;\). If simultaneously
+</p>
+
+\begin{align}
+\forall x\; (x \in B \Rightarrow x \in A)
+\end{align}
+
+<p>
+then \(B \subseteq A\;\), hence, \(A = B\;\). However, if (2) holds, but
+not also (3) then \(A \subset B\;\), i.e., \(A\) is a <i>proper</i> subset of
+\(B\;\), hence, \(B\) has elements not in \(A\;\).
+</p>
+
+<p>
+Haskell-wise, a quick built-in (<code>Data.List</code>) function to check if a
+list is a sublist of another list is <code>isPrefixOf</code><label for="30" class="margin-toggle sidenote-number"></label><input type="checkbox" id="30" class="margin-toggle"/><span class="sidenote">
+<code>isInfixOf</code> has cousins <code>isPrefixOf</code> and <code>isSuffixOf</code> which
+respectively check if a list starts or ends another list.
+</span>
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">`isPrefixOf`</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+<p>
+The properties of <i>reflexivity</i>, <i>antisymmetry</i>, and <i>transitivity</i>
+show up in set theory when we consider any <i>relations</i><label for="31" class="margin-toggle sidenote-number"></label><input type="checkbox" id="31" class="margin-toggle"/><span class="sidenote">
+We&rsquo;ll dive into <i>relations</i> soon. For now just use an intuitive
+idea.
+</span> the
+elements might have amongst themselves. One common relation is to
+simply pair elements together just like Cartesian coordinate pairs to
+form a relation set.
+</p>
+</div>
+
+<div id="outline-container-org32aaaed" class="outline-4">
+<h4 id="org32aaaed">Reflexivity</h4>
+<div class="outline-text-4" id="text-org32aaaed">
+<p>
+<i>Reflexivity</i> is the general idea that some entity is equal to
+itself. For a basic choose-two pairing relation, we might take a set
+\(A = \{1,2,3,4\}\;\;\) and create the pairing relation \(R_1 =
+\{(1,1),(2,2),(3,3),(4,4)\}\;\;\;\;\). Here we have established a
+<i>reflexive relation</i>, i.e., a relationship of each element with
+itself.
+</p>
+
+<p>
+This may seem trivial, but this idea of self-equaling can be
+approached from surprisingly many vantage points. We can see
+self-equaling reflexivity in
+</p>
+
+<ul class="org-ul">
+<li><i>is equal to</i>, i.e., the basic idea that all the elements of a set
+are equal to themselves.</li>
+<li><i>is a subset of</i>, i.e., a set is automatically a subset of itself.</li>
+<li><i>divides</i>, i.e., the elements of a set can divide themselves to some
+unit value, e.g., \(2/2 = 1\;\) since divisibility is \(x / y\;\) such
+that there exists \(z\) and \(x \cdot z = y\;\;\).</li>
+<li><i>is greater than or equal to</i>, i.e., technically we can say a set is
+greater than <b>or equal to</b> itself &#x2014; and just ignore the greater
+than part like a logical or does.</li>
+<li><i>is less than or equal to</i>, i.e., again, we rely on the &ldquo;or equal to.&rdquo;</li>
+</ul>
+
+<p>
+In the diagram below
+</p>
+
+
+<div id="org928d079" class="figure">
+<p><img src="images/GreaterThanOrEqualTo.png" alt="GreaterThanOrEqualTo.png" />
+</p>
+</div>
+
+<p>
+we have a set \(B = \{1,2,3,4,5,6,7,8\}\;\;\;\) and then we create a
+relation \(x \ge y\) amongst the elements; \(x\) is the first and \(y\) the
+second digit in the pair
+</p>
+
+\begin{align}
+R_{x \ge y} = \{(1,1),(2,1),(3,1),\ldots,(8,1),(2,1),(3,2),\ldots,(8,2),(3,3),\ldots\}
+\end{align}
+
+<p>
+We can reproduce this in Haskell with a quick list comprehension
+</p>
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">(</span>x,y<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">|</span> y <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span>1<span class="org-haskell-operator">..</span>8<span class="org-rainbow-delimiters-depth-2">]</span>, x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span>1<span class="org-haskell-operator">..</span>8<span class="org-rainbow-delimiters-depth-2">]</span>, x <span class="org-haskell-operator">&gt;=</span> y<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[(1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(2,2),(3,2),(4,2),(5,2),(6,2),(7,2),(8,2),(3,3),(4,3),(5,3),(6,3),(7,3),(8,3),(4,4),(5,4),(6,4),(7,4),(8,4),(5,5),(6,5),(7,5),(8,5),(6,6),(7,6),(8,6),(7,7),(8,7),(8,8)]
+</pre>
+
+
+<p>
+What then would an <i>irreflexive</i> relation on a set be? Basically any
+relation, pairing that doesn&rsquo;t include an element-to-element pairing
+</p>
+
+<ul class="org-ul">
+<li><i>is not equal to</i>, i.e., we consider all pairing <i>but</i> same-equals-same.</li>
+<li><i>is a proper subset of</i>, i.e., we create a set from another set that
+is not one-to-one equal element-wise.</li>
+<li><i>is greater than</i>, i.e., we have a relation set just like (4) above,
+but we&rsquo;ve left out \((1,1),(2,2)\ldots\;\;\) which makes it reflexive.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgec0b93e" class="outline-4">
+<h4 id="orgec0b93e">Symmetry and antisymmetry</h4>
+<div class="outline-text-4" id="text-orgec0b93e">
+<p>
+A <i>symmetry</i> relation \(R\) on a set \(A\) contains for every pair \((a,b)
+\in R\;\;\) necessarily \((b,a) \in R\;\;\). <i>Antisymmetry</i> means we have
+\((a,b) \in R\;\;\) but then \((b,a) \notin R\;\;\).
+</p>
+
+
+
+<p>
+<i>Antisymmetry</i> in the context of sets and subsets formally establishes
+the idea that
+</p>
+
+\begin{align}
+A \subseteq B \land B \subseteq A \Rightarrow A = B
+\end{align}
+
+<p>
+We should probably start by saying what a <i>symmetric</i> relation is. We
+will soon establish what <i>relations</i> are, but for now antisymmetry
+means that an element of a set cannot have some connection with
+another element, and that other element with the original element
+unless they are equal, the same element. So with (4) we are in effect
+lining up the elements of \(A\) and \(B\) and saying they are equal only
+if their individual elements are matched one-to-one, equal-to-equal.
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org6fc7efb" class="outline-3">
+<h3 id="org6fc7efb">Union, Intersection, and Difference</h3>
+<div class="outline-text-3" id="text-org6fc7efb">
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">a</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">[</span>1,2,3<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">a</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">[</span>1,2,3,4<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+
+
+
+
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</div>
+<!-- Footnotes --><!-- 
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+More on the <i>universal set</i> later.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Consider the man who obligated a wizard to tell him the secrets
+of the universe. But in that same instant as the man knew the secrets
+of the universe, the secrets changed and the secrets he knew were no
+longer <i>the</i> secrets of the universe, rather, common knowledge. The
+man was angry with the wizard for cheating him, but the wizard argued
+that they would not be the secrets of the universe if a mortal man
+could actually know them.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+We&rsquo;ll speak of how sets may be ordered later. But for now a
+basic set is unordered.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Contrast sets with <i>sequences</i> where order and repeating of
+elements <i>do</i> matter. Technically speaking, from the idea of a
+<i>vector</i>, a <i>sequence</i> is an <font color = "#650d1c">
+an ordered n-tuple \((a_1,\ldots,a_n) \in A^n\;\;\) of elements from \(A\) for
+some number \(n\;\). </font> and we&rsquo;ll get into what that
+means later.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Why <code>take</code> stops <code>[1,2..]</code> from running wild has to do with
+Haskell being a <i>lazy</i> language, i.e., evaluation can be JIT (just in
+time). Literally, when Haskell saw <code>take</code> it knew <i>not</i> to let
+<code>[1,2..]</code> run forever. Neat trick.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Contrast with (1) above where <b>:</b> served as &ldquo;such that&rdquo; and \(\varphi
+()\) in the classic function form was used.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+And yet another more intuitive way would be \(\{x \;|\; x = a/b
+\;\;\text{for some}\;\; a,b \in \mathbb{Z}, b \neq 0\}\;\;\).
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8" role="doc-backlink">8</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Once we have more Haskell prowess we will go into a detailed
+version of math sets in Haskell&#x2026;
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9" role="doc-backlink">9</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Remember, Haskell <i>never</i> alters a list; instead, it copies it,
+works on the copy, then returns that worked-on copy. However, just
+entering expressions at the ghci REPL, yes, you may create <code>a =
+[1,2,3]</code> then <i>redefine</i> <code>a = [1,2,3,4]</code> and the new value of <code>a</code> will
+be <code>[1,2,3,4]</code>. Likewise, you may redefine functions. However, this
+redefining is just a convenience to you when working directly with
+ghci command line. This will <i>not</i> work in code in a file submitted to
+ghc or ghci; instead, producing <code>Multiple declarations of ‘a’</code>
+error. In general, Haskell does not allow declaring a variable or
+function symbol, then allow your program to reassign the symbol
+somewhere else in the code.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10" role="doc-backlink">10</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+As many as \(O(n^2)\;\). More about <i>Big-O</i> later.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11" role="doc-backlink">11</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+&#x2026;tedious because numbers have <i>quantities</i> built-in, i.e., we
+can already see what&rsquo;s big, small, greater-than, equal, less-than.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.12" class="footnum" href="#fnr.12" role="doc-backlink">12</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+We&rsquo;ll explain Haskell&rsquo;s take on a set of colors in just a
+moment.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.13" class="footnum" href="#fnr.13" role="doc-backlink">13</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+From logic this the <i>inclusive or</i>, like &ldquo;I&rsquo;ll take strawberry
+<i>or</i> raspberry <i>or</i> both,&rdquo; not the <i>exclusive or</i> like &ldquo;I will go to
+his party <i>or</i> her party, <i>not</i> both&rdquo;.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.14" class="footnum" href="#fnr.14" role="doc-backlink">14</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+&#x2026;if it&rsquo;s true that it&rsquo;s in \(A\) and it&rsquo;s true that it&rsquo;s in
+\(B\), then it&rsquo;s in \(A \lor B\;\); if it&rsquo;s true that it&rsquo;s in \(A\) but not
+true that it&rsquo;s in \(B\) &#x2014; then it&rsquo;s still in \(A \lor B\;\)&#x2026;
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.15" class="footnum" href="#fnr.15" role="doc-backlink">15</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+&#x2026;if it&rsquo;s in \(A\) <b>and</b> it&rsquo;s in \(B\), then it&rsquo;s in \(A \land
+B\;\). Otherwise, if it&rsquo;s not in \(A\) or it&rsquo;s not in \(B\;\), or it&rsquo;s
+neither in \(A\) nor in \(B\;\), then it&rsquo;s not in \(A \land B\;\).
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.16" class="footnum" href="#fnr.16" role="doc-backlink">16</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Consider the <i>negate</i> operator \(\neg\;\;\). It is considered a
+unary operator, i.e., it works on just one thing at a time. We can
+also abstract <i>negate</i> to mean, in general, an operator that sends
+\(x\;\) to \(x'\;\) such that it can send it back, \(x'\;\) to \(x\;\),
+again. In this broader sense, <i>negate</i> flips a thing back and forth.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.17" class="footnum" href="#fnr.17" role="doc-backlink">17</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+When we say something is <i>axiomatic</i> we mean it is a system
+based on axioms or ground rules, from which theorems are built.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.18" class="footnum" href="#fnr.18" role="doc-backlink">18</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Remember, we cannot allow \(\mathbb{U}\) to include itself;
+otherwise, Russell&rsquo;s Paradox comes back.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.19" class="footnum" href="#fnr.19" role="doc-backlink">19</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Happily, \(x \leq x\) includes the possibility of \(x = y\;\).
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.20" class="footnum" href="#fnr.20" role="doc-backlink">20</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+The <i>minuend</i> (that which is subtracted from) and the
+<i>subtrahend</i> (that which is being subtracted away) are not
+interchangeable, rather, subtraction depends on which is first and
+second.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.21" class="footnum" href="#fnr.21" role="doc-backlink">21</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Just below we&rsquo;ll tackle when set operations and regular
+numerical calculations coincide and when they don&rsquo;t.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.22" class="footnum" href="#fnr.22" role="doc-backlink">22</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Nomenclature: <i>Data constructors</i> (or <i>value constructors</i>)
+are on the right side of the equation of a type definition, while the
+<i>type constructor</i> is on the left side.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.23" class="footnum" href="#fnr.23" role="doc-backlink">23</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+In algebra we might compare with \(f(x) = c\;\), i.e., whatever
+we put in for \(x\;\), \(f\) returns just \(c\;\). We can also write \(f() =
+c\;\). Technically, a constant all by itself can be considered a
+function or operation of <i>arity</i> \(0\). The <i>arity</i> of a function or
+operation is the number of arguments it takes.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.24" class="footnum" href="#fnr.24" role="doc-backlink">24</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Yes, they act like functions, but not in the regular sense of
+a normal function taking input and producing output. A type or data
+constructor is taking input and creating our data type environment.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.25" class="footnum" href="#fnr.25" role="doc-backlink">25</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+A basic definition of a Haskell <i>sum type</i> is a data type that
+allows us to express alternative possibilities with just one data
+type.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.26" class="footnum" href="#fnr.26" role="doc-backlink">26</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Truth will out, the Haskell <code>Data.List.union</code> function doesn&rsquo;t
+properly handle duplicates in the first list. Bug or feature? Happy
+ending: <code>Data.Set.union</code> works properly.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.27" class="footnum" href="#fnr.27" role="doc-backlink">27</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+The main languages with true ADT are of the &ldquo;ML Family,&rdquo; i.e.,
+SML, Ocaml, F#, and Haskell.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.28" class="footnum" href="#fnr.28" role="doc-backlink">28</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+&#x2026; although the concept of &ldquo;do these two different looking
+functions give us the same results?&rdquo; is very big in the world of
+comp-sci.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.29" class="footnum" href="#fnr.29" role="doc-backlink">29</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+&#x2026; all <i>elements</i> of \(A\) are also <i>elements</i> of \(B\;\).
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.30" class="footnum" href="#fnr.30" role="doc-backlink">30</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<code>isInfixOf</code> has cousins <code>isPrefixOf</code> and <code>isSuffixOf</code> which
+respectively check if a list starts or ends another list.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.31" class="footnum" href="#fnr.31" role="doc-backlink">31</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+We&rsquo;ll dive into <i>relations</i> soon. For now just use an intuitive
+idea.
+</p></div></div>
+
+ --></div>
+</body>
+</html>

@@ -1,0 +1,1432 @@
+# # -*- mode: org -*-
+# # -*- coding: utf-8 -*-
+#+TITLE:
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: sets.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+
+* Sets, types, and lists
+:RESOURCES:
+- [[cite:&doets2012haskell]]
+- [[cite:&o2006discrete]]
+:END:
+
+** Why sets?
+
+In the latter part of the nineteenth century, mathematicians wanted to
+create a ground floor for mathematics that would be fundamental,
+theoretical, formal, and /abstracted/ enough in order base all of
+mathematics. They developed *set theory* to be this base. German
+mathematicians Georg Cantor and Richard Dedekind are credited as the
+originators of they called /Mengenlehre/.
+
+For example, set theory allowed all manner of numbers to be formally
+defined and grouped. It also allowed the Cartesian coordinate system
+(CCS) to be formally based, as well as an exacting description of
+relations and functions.
+
+Cantor's contemporary, Gottlob Frege, came up with what was supposed
+to be the definitive starter definition of a set, which later became
+known as the /Schema of Comprehension/
+
+\begin{align}
+Y = \{x : \varphi\,(x)\}
+\end{align}
+
+(1) demonstrates the /set comprehension/ notation[fn:1], an abstraction tool
+which we'll have a closer look at below. It reads
+
+➝@@html:<font color = "#650d1c">@@ /$Y$ is/equals the set of all $x$'s
+such that they have the property $\varphi$/ @@html:</font>@@.
+
+This emphasizes the importance of /properties/ on sets. Properties,
+also known as /predicates/, act as a sort of filter, qualifier on
+possible set members. Good. But there's one problem with (1), *it can
+be proven false*. As it turned out, this particular wording allowed a
+circular argument known as /Russell's Paradox/ after Bertrand Russell
+that could not initially be resolved. He introduced the bizarre
+predicate $X \notin X\;$, which made (1) illogical impossible
+
+Russell said,
+
+#+begin_quote
+Consider the set $S$ whose elements are all those (and only those)
+sets that are not members of themselves: $S = \{X:X\notin X\}\;\;$. So does
+$S$ belong to $S\;$? If $S$ belongs to $S\;$ then $S$ is not a member
+of itself, and so $S \notin S\;$. On the other hand, if $S \notin S\;$, then $S$
+belongs to $S\;$.
+#+end_quote
+
+Got that? If not, it has been reworded into plain English
+versions. One is known as the "Town Barber." So a town has a barber
+who shaves all the men who do not shave themselves. Now, does the
+barber shave himself?  Similar is this paradox
+
+- the sentence below is false
+- the sentence above is true
+
+For a time, Russell's Paradox pulled the rug out from under the whole
+idea of using set theory as a basis for mathematics. It was not until
+mathematicians Ernst Zermelo and Abraham Fraenkel came up with a
+variation of the Schema of Comprehension, called the /Schema of
+Separation/, that set theory could go on being math's basis. What came
+to be known as Zermelo–Fraenkel set theory, with its solid /axioms/,
+corrected this paradox by simply not allowing the idea of a set of all
+sets. Obviously, allowing a /universal set/[fn:2] of all sets begs the
+question if this supposedly universal set contains itself, and if it
+does, is it truly the ultimate container[fn:3]?
+
+** Back down to earth
+
+Another more down-to-earth description of mathematical sets would be
+to say
+
+➝ @@html:<font color = "#650d1c">@@
+Sets are /unordered/ collections of /distinct objects/.
+@@html:</font>@@
+
+Here /unordered/ means no one element of a set is before or after
+another. So a set is like a bag. You may reach in and pull any element
+out at random[fn:4]. But then how do we make order out of unorder,
+since, e.g., numbers have the property of being ordered? We'll look
+into that at a formalistic set theoretical level.
+
+/Distinct objects/ sounds clear enough, but this also means any
+/repeated element/ in a set really only represent one truly distinct,
+single thing ... which means an element only appears once in a set,
+even though you may see it more than once ... which means duplicates
+don't add anything ... which means we can always remove duplicate
+elements and not change the set[fn:5]. For example
+
+\begin{align*}
+\{a,b,c\} = \{b,a,c\} = \{c,b,a\} = \{a,b,b,c,b\}
+\end{align*}
+
+are all the same set.
+
+Sets can be /finite/, i.e., limited to a given numbers of elements. Or
+sets can be /infinite/, i.e., an endless number of elements. For now
+we'll deal with finite lists, but occasionally allude to infinite
+sets. Representing an infinite set as a Haskell list, we utilize the
+/range/ operator, e.g., ~[1,2..]~, which would continue building a
+list of all positive integers endlessly. Be careful. Use only in
+conjunction with a limiting function, e.g.,
+
+#+name: b370432e-46b4-4bdf-b960-29d9905aa62a
+#+begin_src haskell :results verbatim :exports both
+take 10 [1,2..]
+#+end_src
+
+#+RESULTS: b370432e-46b4-4bdf-b960-29d9905aa62a
+: [1,2,3,4,5,6,7,8,9,10]
+
+otherwise ~[1,2..]~ just by itself will run forever and lock up your
+computer[fn:6].
+
+** Describing sets
+
+So far we've done some hand-waving at our formal set
+notation. [[https://en.wikipedia.org/wiki/Set-builder_notation][Set-builder notation]] can be as simple as just listing out
+the members of a set, e.g., $A = \{1,2,3,4\}\;\;$. This is known as
+the /roster method/. This works --- for shorter finite sets. And we
+can even throw in the intuitive idea of /ellipsis/, $\ldots\;\;$, when
+we want to "continue this pattern," i.e., good for representing
+infinite lists, e.g., $B = \{1,2,3,\ldots\}\;\;$.
+
+But a more abstract depiction of sets is the /set comprehension/,
+which we saw above. This is a mathematical description, a machine of
+sorts, of what elements should be included in a set for building a
+roster of set elements. In its simplest form we can say
+
+\begin{align}
+S = \{x\; |\; \varphi \; x\}
+\end{align}
+
+where the set $S$ is constructed from $x\;$, a representative
+/variable/ in the algebraic sense, and $\varphi\;$, the /predicate/, applied
+to $x\;$. Hence, the qualifying rule, $\varphi\;x\;$, creates a
+true-or-false, in-or-out qualification for potential set members. The
+pipe or vertical bar in between means "such that[fn:7]."  And so we
+read (2) as @@html:<font color = "#650d1c">@@ $S$ is the set of $x$'s
+such that $\varphi\; x$ holds@@html:</font>@@. In other words, the elements
+of $S$ are only those which pass the predicate $\varphi\;$'s test. But where
+are the possible candidates for this predicate test coming from?
+
+One variation of this basic set comprehension is to include on the
+left of the pipe the /domain/ of the variable. For example, the set
+$S_{\mathbb{R>0}}$ of all real numbers greater than $0$ could be
+
+\begin{align*}
+S_{\mathbb{R>0}} = \{x \in \mathbb{R} \; | \; x \gt 0\}
+\end{align*}
+
+where on the left side we "pre-provide" a source of potential set
+elements from $\mathbb{R}\;$, then "filter" them with our $x \gt 0\;$
+predicate. This gives the set of all strictly positive real numbers,
+which can also be written as $(0,\infty)\;$.
+
+Consider intervals expressed as set comprehensions
+
+\begin{align*}
+(a,b) &= \{x \in \mathbb{R} \;|\; a < x < b\} \\
+[\,a,b) &= \{x \in \mathbb{R} \;|\; a \leq x < b\} \\
+(a,b\,] &= \{x \in \mathbb{R} \;|\; a < x \leq b\} \\
+[\,a,b\,] &= \{x \in \mathbb{R} \;|\; a \leq x \leq b\}
+\end{align*}
+
+Again, we're assuming $\mathbb{R}\;$ to be the /set/ of all real
+numbers, i.e., set theory has crept into our language.
+
+Now, let's try a more complicated set comprehension
+
+\begin{align*}
+\mathbb{Q} = \{a \in \mathbb{R}\ \;|\; \exists\, p \in \mathbb{Z}, \exists\, q \in \mathbb{Z}\; [\,q \ne 0 \land aq = p\,]\}
+\end{align*}
+
+... or the set of rational numbers, i.e., real numbers expressible as
+a ratio of two integers. Another way of saying this would be of the
+general form $\{ f\; x \;|\; p\;x \}\;$
+
+\begin{align*}
+\mathbb{Q} = \{p/q \;|\; p, q \in \mathbb{Z},\; q \ne 0\}
+\end{align*}
+
+where we have the /function/ $f(p, q) = p/q\;\;$ left of the
+pipe[fn:8]. Another example of a function on the left is
+
+\begin{align*}
+\{\sqrt{x} \;|\; x \in \{1,2,3,4\}\}
+\end{align*}
+
+Or as a Haskell list comprehension
+
+#+name: 4d8eb251-6b7e-4479-922d-110d19bd2871
+#+begin_src haskell :results verbatim :exports both
+[sqrt x | x <- [1,2,3,4]]
+#+end_src
+
+#+RESULTS: 4d8eb251-6b7e-4479-922d-110d19bd2871
+: [1.0,1.4142135623730951,1.7320508075688772,2.0]
+
+Consider the following and try to understand why the left- and
+right-hand sides of the /equivalence/, $\equiv\;$, are the same
+
+\begin{align*}
+\{ \Psi(x) \;|\; \Phi(x)\} \equiv \{y \;|\; \exists(x),\; y=\Psi(x) \land \Phi(x)\}
+\end{align*}
+
+For another example consider a system of linear equations
+
+\begin{align*}
+2x - 4y &= 6 \\
+3x - 6x &= 9
+\end{align*}
+
+If we do row manipulations, we see these are actually the same
+equation. Now, let's express one of them as a comprehension
+
+\begin{align*}
+\{(x,y) \;|\; 2x - 4y = 6\}
+\end{align*}
+
+Let's try Haskell versions
+
+#+name: 220d74fd-eea3-4074-9e49-23e5e2c50f8e
+#+begin_src haskell :results verbatim :exports both
+[(x,y) | x <- [1..20], y <- [1..20], 2*x - 4*y == 6]
+#+end_src
+
+#+RESULTS: 220d74fd-eea3-4074-9e49-23e5e2c50f8e
+: [(5,1),(7,2),(9,3),(11,4),(13,5),(15,6),(17,7),(19,8)]
+
+#+name: 92d17829-6352-465f-ab41-ddf463d83909
+#+begin_src haskell :results verbatim :exports both
+[(x,y) | x <- [1..20], y <- [1..20], (2*x - 4*y == 6) || (3*x - 6*y == 9)]
+#+end_src
+
+#+RESULTS: 92d17829-6352-465f-ab41-ddf463d83909
+: [(5,1),(7,2),(9,3),(11,4),(13,5),(15,6),(17,7),(19,8)]
+
+These are the possible values of $x$ and $y$ between $1$ and $20\;$.
+
+
+** Doing sets in Haskell
+
+Haskell does have its own complete version of math sets which can be
+imported. However, for didactic purposes we will start out with an
+approximation of mathematical sets using Haskell's /list/ data
+structure[fn:9].
+
+At first glance a math set and a Haskell list look the same, e.g., $A
+= \{1,2,3,4\}\;$ on the math text page and
+
+#+name: 76e51bcf-6861-4a24-844a-767bf397dfc2
+#+begin_src haskell :eval never :exports code
+a = [1,2,3,4]
+#+end_src
+
+on the computer screen look similar. And once Haskell has evaluated
+the above expression, your computer knows about four elements
+considered together, which are then referred to by the symbol ~a~. But
+unlike a math set, a Haskell list /does/ care about order and /does/
+care about duplicates. This means
+
+\begin{align*}
+A &= \{1,2,3,4\} \\
+&= \{1,2,3,4,2,1\} \\
+&= \{3,4,2,1\}
+\end{align*}
+
+might all be the same set, but
+
+#+name: d2fb9599-0a53-4d2c-8411-9da0d7d795f8
+#+begin_src haskell :eval never :exports code
+a = [1,2,3,4] b = [1,2,3,4,2,1] c = [3,4,2,1]
+#+end_src
+
+are different lists. Again, think of a Haskell list as a /sequence/ of
+like-typed elements. These constraints, however, can be worked around
+if we want a Haskell list to represent a math set.
+
+** ⇲ Haskell aside: Duplicates
+
+
+So if our "list-as-set" shouldn't have duplicates, then we need a
+means of removing them. There is built-in (~Data.List~) ~delete~ which
+returns a new list[fn:10] with the first instance of the argument missing
+
+#+name: 3b5747f7-dd38-4fd5-af05-62db3d8477af
+#+begin_src haskell :eval never :exports code
+import Data.List
+#+end_src
+
+#+name: aa504dda-906b-4d27-a1ef-d40f7448a403
+#+begin_src haskell :results verbatim :exports both
+delete 1 [1,2,3]
+#+end_src
+
+#+RESULTS: aa504dda-906b-4d27-a1ef-d40f7448a403
+: [2,3]
+
+#+name: 82d298b5-414f-4ace-b38a-0123120adda6
+#+begin_src haskell :results verbatim :exports both
+delete 1 [1,2,3,1]
+#+end_src
+
+#+RESULTS: 82d298b5-414f-4ace-b38a-0123120adda6
+: [2,3,1]
+
+As we see above, ~delete~ is too primitive to consider duplicates. How
+could we fix this? Playing around, we could ~reverse~ the list  
+
+#+name: 2035aafc-c78f-41a1-8292-efeb5978b868
+#+begin_src haskell :results verbatim :exports both
+reverse [1,2,3,1]
+#+end_src
+
+#+RESULTS: 2035aafc-c78f-41a1-8292-efeb5978b868
+: [1,3,2,1]
+
+and at least take off that back ~1~, then reverse again to get it back
+to its normal list order. This leverages Haskell's higher-order
+function /composition/
+
+#+name: 23af6cde-752d-4b65-83c9-8dc9ead60219
+#+begin_src haskell :results silent :exports code
+delLast1 = reverse . delete 1 . reverse
+#+end_src
+
+#+name: 5cb1be90-acb3-496c-a6c9-113728943fbe
+#+begin_src haskell :results verbatim :exports both
+delLast1 [1,2,3,1]
+#+end_src
+
+#+RESULTS: 5cb1be90-acb3-496c-a6c9-113728943fbe
+: [1,2,3]
+
+For practice we create our own ~delete'~
+
+#+name: 81e6dc62-8170-4d87-91a3-e74ef23623e5
+#+begin_src haskell :results silent :exports code
+:{
+delete' :: Eq a => a -> [a] -> [a]
+delete' _ [] = []
+delete' y (x:xs) | x == y = delete' y xs
+                 | otherwise = x : delete' y xs
+:}
+#+end_src
+
+#+name: fac363a3-00f9-4994-8f0d-9d01927c1e01
+#+begin_src haskell :results verbatim :exports both
+delete' 1 [5,1,2,3,1,3,1]
+#+end_src
+
+#+Results: fac363a3-00f9-4994-8f0d-9d01927c1e01
+: [5,2,3,3]
+
+We could specify /which/ element is to be removed if there are
+duplicates
+
+#+name: c915b856-e035-4054-8dd9-125d47f5a169
+#+begin_src haskell :results silent :exports code
+:{
+-- delDup :: Eq a => a -> [a] -> [a]
+delDup _ _ [] = []
+delDup n y (x:xs) | ((x == y) && (n == 1)) = xs
+                  | (x /= y) = x : delDup n y xs
+                  | otherwise = x : delDup (n-1) y xs
+:}
+#+end_src
+
+Remove the first occurrence of ~6~
+
+#+name: 3f8f665f-afc1-4a23-ba92-9a3fb46bb421
+#+begin_src haskell :results verbatim :exports both
+delDup 1 6 [1,2,3,1,1,2,4,6,1]
+#+end_src
+
+#+RESULTS: 3f8f665f-afc1-4a23-ba92-9a3fb46bb421
+: [1,2,3,1,1,2,4,1]
+
+or the second occurrence of ~1~
+
+#+name: fff5e49c-5216-465a-9f28-01353d8c572a
+#+begin_src haskell :results verbatim :exports both
+delDup 2 1 [1,2,3,1,1,2,4,6,1]
+#+end_src
+
+#+RESULTS: fff5e49c-5216-465a-9f28-01353d8c572a
+: [1,2,3,1,2,4,6,1]
+
+But again, this isn't getting rid of all duplicates. We would need a
+function that took each element of the list and searched the rest of
+the list for duplicates, removing any found.
+
+:RESOURCES:
+- [[https://stackoverflow.com/questions/16108714/removing-duplicates-from-a-list-in-haskell-without-elem][Removing duplicates from a list in Haskell without elem]]
+:END:
+
+One quick-and-dirty way just like ~delete'~ above is to leverage
+~elem~
+
+#+name: 9f369f22-83e5-4769-a9fe-aeccf952c43c
+#+begin_src haskell :results silent :exports code
+:{
+rmDups :: Eq a => [a] -> [a]
+rmDups [] = []
+rmDups (x:xs)   | x `elem` xs = rmDups xs
+                | otherwise   = x : rmDups xs
+:}
+#+end_src
+
+#+name: 6f56effc-f50e-47ac-be6c-755db1eb720a
+#+begin_src haskell :results verbatim :exports both
+rmDups [1,2,3,1,1,2,4,6,1]
+#+end_src
+
+#+RESULTS: 6f56effc-f50e-47ac-be6c-755db1eb720a
+: [3,2,4,6,1]
+
+But this is complex in that it takes many steps[fn:11]. Another
+approach that is not so complex is to again /compose/ useful functions
+
+#+name: 31ccf723-bcae-4a48-a481-3d4e52237495
+#+begin_src haskell :results silent :exports code
+rmDups2 = map head . group . sort
+#+end_src
+
+#+name: ef49a993-c7ab-4199-8102-a91e9175a6e1
+#+begin_src haskell :results verbatim :exports both
+rmDups2 [1,2,3,1,1,2,4,6,1,5,5,5]
+#+end_src
+
+#+RESULTS: ef49a993-c7ab-4199-8102-a91e9175a6e1
+: [1,2,3,4,5,6]
+
+:RESOURCES:
+- [[https://nizamani.net/blog/2016/03/29/haskell-nub-function-and-complexity/][Haskell’s nub function and complexity]]
+:END:
+
+Let's end with Haskell's built-in function called ~nub~ (part of
+~Data.List~) for complete elimination of list duplicates. One simple
+implementation of ~nub~ that leverages ~filter~ would be
+
+:RESOURCES:
+- [[cite:&nizamani2016]]
+:END:
+
+#+name: 8d31ddf8-dbac-429b-9f53-b7cedf40cb5b
+#+begin_src haskell :eval never :exports code
+nub :: (Eq a) => [a] -> [a]
+nub [] = []
+nub (x:xs) = x : nub (filter (\y -> x /= y) xs)
+#+end_src
+
+#+name: e7cd4923-cb3e-4ceb-80eb-34a994dd8e9f
+#+begin_src haskell :results verbatim :exports both
+nub [1,2,1,3,4,1,1,4,2,2,3]
+#+end_src
+
+#+RESULTS: e7cd4923-cb3e-4ceb-80eb-34a994dd8e9f
+: [1,2,3,4]
+
+** Set abstraction
+
+Sets become considerably more abstract when we begin to formalize and
+abstract a set's interactions with itself and other sets. If, for
+example, we have the set $A = \{1,2,3,4\}\;$ and we want $A$ be a
+/totally ordered set/, we must be able to compare any two elements of
+$A$ for sameness, for greater- or less-ness. This may seem formalistic
+trivial tedious[fn:12], but consider a set of colors $C = \{Red, Green,
+Blue, Yellow\}\quad$. Yes, intuitively, any two elements of $C$ may be
+the same, equal or not, but how can we talk about one color being
+greater or less than another color[fn:13]?
+
+In this discussion we will speak of /relations/, i.e., operations on a
+set that establish rules for how set elements relate to one
+another. But initially we'll do this at an intuitive level, without
+going into exacting mathematical detail as to what a relation really
+is. That comes a bit later.
+
+One way we can express a relation on a set is to create a separate set
+made up of the given set's elements. So, for the set $A =
+\{1,2,3,4\}\;\;$ let us create a /less than/ set
+
+\begin{align*}
+R_{A\,:\,x \lt y} = \{(1,2),(1,3),(1,4),(2,3),(2,4),(3,4)\}
+\end{align*}
+
+Here we have created a set of pairs, as with Cartesian coordinate
+pairs, made up of all the elements of $A$ conforming to the $x \lt y\;$
+property. Hence, in this case the property or /predicate/ $\varphi$ is $x \lt
+y\;$.
+
+This is similar to, e.g., having a grocery list on one piece of paper,
+then on another piece of paper rearranging the grocery items into
+fresh, frozen/cooled, and dry/canned categories. Then on a third piece
+of paper listing the grocery items by cheapest to most expensive per
+unit weight. Now you have three grocery lists: the original and two
+lists that express useful relationships on the original grocery list.
+
+Let's create with a Haskell /list comprehension/ a /greater than or
+equal to/ relation among the elements of $A = \{1,2,3,4\}\;\;$
+
+#+name: f0e504b9-68dc-453f-acf1-f27ac5045f05
+#+begin_src haskell :results verbatim :exports both
+[(x,y) | y <- [1..4], x <- [1..4], x >= y]
+#+end_src
+
+#+RESULTS: f0e504b9-68dc-453f-acf1-f27ac5045f05
+: [(1,1),(2,1),(3,1),(4,1),(2,2),(3,2),(4,2),(3,3),(4,3),(4,4)]
+
+** 🟄Logical sum, logical product
+
+If $A$ and $B$ are two sets, then $A \cup B\;$ (or $A \lor B\;$) is the
+/union/ of $A$ and $B\;$. This is also called a /logical or/ since we
+are combining the elements of $A$ and $B$ in such a way that the
+result contains everything in /both/ $A$ /and/ $B\;$; hence, a union
+of two sets will contain elements from one set *or* the
+other[fn:14]. Yes, this is a tricky dance semantically between how we
+normally use /and/ and /or/. It's most formal name is /logical
+disjunction/.
+
+#+begin_export html
+<img src="./images/union.svg" width="300px" style="padding: 15px 0px 0px 0px" alt="Union" class="center">
+<span class="cap">Logical disjunction.</span>
+#+end_export
+
+The /truth table/ for logical disjunction would be[fn:15]
+
+| A     | B     | A \lor B |
+|-------+-------+-------|
+| True  | True  | True  |
+| True  | False | True  |
+| False | True  | True  |
+| False | False | False |
+
+
+An /intersection/ of $A$ and $B$, $A \cap B\;$ (or $A \land B\;$) --- also
+called a /logical product/, /logical and/ and most formally /logical
+conjunction/ --- is made up exclusively of the shared elements in
+/both/ $A$ and $B\;$.
+
+#+begin_export html
+<img src="./images/intersection.svg" width="300px" style="padding: 15px 0px 0px 0px" alt="Union" class="center">
+<span class="cap">Logical conjunction.</span>
+#+end_export
+
+and the truth table for logical conjunction is[fn:16]
+
+| A     | B     | A \land B |
+|-------+-------+-------|
+| True  | True  | True  |
+| True  | False | False |
+| False | True  | False |
+| False | False | False |
+
+⇲ *Mind-bender*: What about the statement[fn:17]
+
+\begin{align}
+\lnot\; (\lnot\; A \;\lor\; \lnot\; B)\;=\;A \land B
+\end{align}
+
+Is this true, i.e., can we create logical conjunction out of negation
+and logical disjunction? Just puzzling it out is hard. But if we look
+at the last line of the logical disjunction truth table ~False |
+False | False~, then we see that negating $A\;$, $B\;$ and $A \lor B\;$,
+as we see on the left side of (3), makes it the same as the logical
+conjunction's first line ~True | True | True~. Likewise, sticking in
+any of the other truth table values translates one to the other. So
+yes, they are equivalent. Keep this machine-like logic translation in
+mind. We'll see it later.
+
+*** Ordering real numbers
+
+Real numbers? Why real numbers? Isn't computer science more interested
+in whole numbers and discrete things? Yes, but in order to talk about
+the OFA (and then move forward with sets) we have to work with the
+reals. Why?  Because certain operations on whole numbers are not
+possible. For example, to properly define the OFA we will need to be
+able to solve $ax = 1\;$ for $x\;$ for any $a \in \mathbb{R}\;\;$. But
+since natural numbers $\mathbb{N}\;$ and integers $\mathbb{Z}\;\;$
+have no rationals (fractions), we cannot use them. Solving $ax =
+1\;\;$ for $x\;$ is just another way of saying we need any number
+$a\;$ to have an inverse $1/a\;\;$. Again, whole numbers integrals
+have no concept of inverse/reciprocal.
+
+In higher math, i.e., /abstract algebra/, they speak of /fields/,
+/groups/, and /rings/. These concepts lend a high degree of
+abstraction to the idea of numbers. And so
+
+@@html:<font color = "#650d1c">@@ The /field of real numbers/,
+$(\mathbb{R}, +, \times, \leq)\;$, is the set of real numbers under the two
+operations of addition and multiplication, with an ordering
+$\leq\;$. @@html:</font>@@
+
+
+
+
+
+
+*** Set properties
+
+It its purest form, axiomatic[fn:18] set theory only deals with sets
+as the most basic and fundamental entities --- not even considering
+their elements. Thus, an entire abstract world is built around just
+the sets themselves. Beginners, used to numbers, are often baffled by
+this new abstraction, having grown up in a world of the natural
+counting numbers, of whole number integers with the possibility of
+negative values, of numbers expressed as fractions, numbers expressed
+with unlimited decimal exactness, numbers that never have a decimal or
+fractional resolution, and then even so-called imaginary numbers built
+out of the impossible number $\sqrt{-1}\;\;$. Numbers are an
+infinitely large bag of precise, high-resolution objects with all
+manner of hands-on manipulations happening to them. Sets, on the other
+hand, are like opaque blocks meant to be moved around by seemingly
+arcane, often trivial-sounding rules.
+
+Even more problematic is how set theory doesn't always hold to its
+axiomatic sets-only philosophy. Yes, the other aspect of sets is how
+/relations/ are built among their elements. We'll start this dance
+between sets-only and set-with-elements by considering the idea of a
+/universal set/, $\mathbb{U}\;$, by which we mean some /hyper-set/
+above and including all /subsets/ of a certain type. For example, all
+the numbers on a number line, e.g., integers, reals, etc., could be a
+universal set relative to bunches of these numbers gathered into
+subsets of that universal set[fn:19]. Hence, a universal set will be
+in some context of its subsets.
+
+
+
+Recall the idea of a property $\varphi$ on a set. Here we're speaking of
+sets as holders of elements. One trivial property would be $S = \{x
+\;|\; \varphi\, (x) = x\}\;\;$, which is simply all the elements of the set
+$S\;\;$. The opposite in a restricted, non-paradoxical set world would
+be $\varnothing = \{x \;|\; \varphi\, (x) \neq x\}\;\;$, or the /empty
+set/. We're literally saying, "All $x\;$ with the property of not
+being $x\;$."  Yes, odd. But a set made up of elements that have the
+property of not being equal to themselves we must simply declare as
+impossible, /no such elements/, i.e., an empty set.
+
+*** Subsets
+
+A set $A$ is a /subset/ of set $B$ if there are no elements of $A$
+that are not in $B\;$. Hence, $A$ is contained in $B\;$. Symbol-wise
+we write $A \subseteq B\;\;$ and this actually indicates "contained by
+or equal to". Another sort of subset is the /proper subset/ $A \subset B\;$
+where $A$ is wholly contained in $B\;$ but they are not equal, i.e.,
+$A$ is contained by $B\;$ but at least one element smaller than $B\;$.
+
+But now let's go back into just-sets axiomatic set theory. As it so
+happens, there are parallels between a subset relation $A \subseteq
+B\;$ and the general order relation $x \leq y\;$ between numbers. Sort
+of.
+
+1. $A \subseteq A\;$.
+2. If $A \subseteq B\;$ and $B \subseteq A\;$, then $A = B\;$.
+3. If $A \subseteq B\;$ and $B \subseteq C\;$, then $A \subseteq C\;$.
+
+By these three rules $A \subseteq B\;$ parallels the order relation $a
+\leq b\;$; hence, $A \subseteq B\;$ can be considered an /order
+relation/. So let's simply substitute $\leq$ for $\subseteq\;$.
+
+- By 1. the numeric version would be $a \leq a\;$.[fn:20]
+- By 2. if $x \leq y\;$ and $y \leq x\;$, then $x = y\;$.
+- By 3. if $x \leq y\;$ and $y \leq z\;$, then $x \leq z\;$.
+
+But there is a slight hitch in the interchangeability of $\leq$ with
+$\subseteq\;$. With /any/ two numbers we will have either $x \leq y\;$ or
+$y \leq x\;$, i.e., one number is before, abreast with, or after another
+--- but we can't really say that about all sets. For example if $A =
+\{1,2,3\}\;$ and $B = \{2,3,4\}\;$ then we cannot have 2. or 3. since
+neither $A \subseteq B\;$ nor $B \subseteq A\;$. Therefore we have to
+fall back to saying $A \subseteq B\;$ is a /partial ordering among
+sets/, while $x \leq y\;$ defines a /complete ordering among
+numbers/. Yes, but why do we bother with this comparison? Because in
+Haskell --- and by association computer theory --- keys on such
+parallels. More to come on this front.
+
+Let's list some more rules
+
+4. [@4]$\varnothing \subseteq A\;\;$ for any set $A$.
+5. $A \subseteq \mathbb{U}\;$.
+
+The "proof" of 4. is simply that $\varnothing \subseteq A\;\;$ could
+only be false if $\varnothing$ as a set contained an element that was
+not an element of $A\;$, but since $\varnothing$ contains no such
+thing due to its emptiness, we never have this situation, no matter
+what $A$ has for elements. Right. Such are math proofs.
+
+Now, let's get back to logical sums and logical products. Let's again
+have $A = \{1,2,3\}\;\;$ and $B = \{2,3,4\}\;$. Then $A \lor B =
+\{1,2,3,4\}\;\;$ and $A \land B = \{2,3\}\;\;$. Rules for sums and
+products are
+
+6. [@6]$A \lor B = B \lor A\;\;$ ...or /commutativity/.
+7. $A \land B = B \land A\;\;$ ...again /commutativity/.
+8. $A \lor (B \lor C) = (A \lor B) \lor C\quad$ ...or /associativity/.
+9. $A \land (B \land C) = (A \land B) \land C\quad$ ...again /associativity/.
+10. $A \lor A = A\quad$ ...huh, what's this?!
+11. $A \land A = A\quad$ ...again, what's going on here?!
+12. $A \land (B \lor C) = (A \land B) \lor (A \land C) \quad$ ...the /distributive/ law.
+13. $A \lor (B \land C) = (A \lor B) \land (A \lor C) \quad$ ...do numbers do this?
+14. $A \lor \varnothing = A\quad$.
+15. $A \land \mathbb{U} = A\quad$ ...what would be the number analogy?
+16. $A \lor \mathbb{U} = \mathbb{U} \quad$ ...again, the parallel to numbers?
+17. $A \land \varnothing = \varnothing \quad$ ...yes, numbers do this.
+18. $A \subseteq B \equiv A \lor B = B \equiv A \land B = A \quad$ ...numbers do this?
+
+Again, if we compare *logical disjunction to addition* and *logical
+conjunction to multiplication*,
+
+
+
+
+Now, how do we bring this sort of abstraction into the computer?
+
+** Ordering: sets and regular algebraic math
+:RESOURCES:
+- [[cite:&courant1996mathematics]]
+:END:
+
+There are two big ideas about numbers --- beyond their main uses as
+indicators of quantity and enumerating things. They are /equivalence/
+and /order/. We'll talk about order here. But why bring in set theory?
+Set theory may seem a strange abstraction off in its own world, but
+there exists enlightening overlap between handling sets and handling
+numbers vis-à-vis order. If we think about ordinary addition and
+multiplication, the set version of these is /union/ or /logical sum/
+for addition, and /intersection/ or /logical product/ for
+multiplication. But before we go further, let's formalize an
+interesting corner of numbers by looking at the /complete ordered
+field axioms/ (OFA). It turns out the whole idea of /ordering/ things
+is a very important, fundamental concept in math.
+
+Let's take a stab at the idea of ordering. Intuitively, we can say
+that @@html:<font color = "#650d1c">@@ a collection of elements is
+ordered if choosing any given element, it is either /before/ another,
+/alongside/ another, or /ahead of/ another.  @@html:</font>@@ But we
+can't turn this definition into computer code very easily. It is too
+naive and intuitive. We delve into abstract mathematics in order to
+find mathematical forms that it can be translated into code
+expressions to run on a computer.
+
+** Colors
+
+*** Formalizing color mathematically
+
+Above, we mentioned a possible set where the elements were not
+numbers, rather, /colors/. But how can we do math with colors? With
+numbers we have many possible operations and relationships between
+sets of numbers, each of which represents a quantity. But how can we
+objectively talk about orderings such as "greater than" with a set of
+colors?
+
+In the world of abstract algebra and discrete mathematics the concept
+of sets is sufficiently formal and abstract to allow us to construct
+something mathematical out of a set of colors. As we saw above, we
+formalized, /codified/ the idea of "greater than" for the set $A =
+\{1,2,3,4\}\;\;$ by creating a separate set $R_{A\,:\,x \lt y}$ to hold all
+possible pairs of $A$ elements that expressed a greater-than
+relationship. That is to say, we took the greater than relationship on
+our set out of the ether, out of our intuitive mental representation
+and put it down in black-and-white.
+
+Addition and subtraction. In everyday life we take the arithmetic of
+addition and subtraction for granted. Again, we have an intuitive
+mental representation of these two operations without having to think
+about how addition is commutative and associative, while subtraction
+is neither nor[fn:21]. For example, we typically don't think about
+switching from the natural numbers $\mathbb{N}$ to the /integers/
+$\mathbb{Z}$ (whole numbers including negatives) when we evaluate
+something like $3 - 5\;$. So how would we add colors? But then how do
+we add sets[fn:22]? We'll first look at how Haskell creates a color
+type.
+
+*** Haskell ~Color~
+
+Haskell is not an object-oriented language, rather, a typed language,
+which in our case means we first need to define a /type/ for colors,
+not an object as you would with C++, Java, Ruby, or Python. We start
+by defining our ~Color~ type
+
+#+name: 2f2aea18-b10e-4821-999a-018db8b8308c
+#+begin_src haskell :eval never :exports code
+data Color = Red | Yellow | Blue | Green | Purple | Orange | Brown deriving (Show,Eq,Enum)
+#+end_src
+
+
+~Color~ has seven /tags/ or /data constructors/, i.e., ~Red~,
+~Yellow~, ... ~Brown~ are individual tag-constructors[fn:23]. So let's
+create a list of colors of type ~Color~
+
+#+name: 31a4b742-077b-419a-8cd1-b822f40c2cf7
+#+begin_src haskell :results silent :exports code
+myColor1 = [Blue,Orange,Yellow]
+#+end_src
+
+#+name: b97829e6-b2b6-454e-8dc8-e40c835de662
+#+begin_src haskell :results verbatim :exports both
+myColor1
+#+end_src
+
+#+RESULTS: b97829e6-b2b6-454e-8dc8-e40c835de662
+: [Blue,Orange,Yellow]
+
+Notice how our ~Color~ type definition almost looks like a set itself,
+a sort of container holding all seven of the possible colors
+
+#+name: 4f60fdc0-df8c-446f-b289-49ac38fa7e12
+#+begin_src haskell :results verbatim :exports both
+[a | a <- [(Red::Color)..]]
+#+end_src
+
+#+RESULTS: 4f60fdc0-df8c-446f-b289-49ac38fa7e12
+: [Red,Yellow,Blue,Green,Purple,Orange,Brown]
+
+Technically speaking, a data constructor like ~Red~ or ~Green~ is also
+function; however, in this case they take no arguments but return a
+constant[fn:24] when invoked, namely a variable the same as the data
+constructor itself. This may sound formalistic-odd, so let's give an
+example where the type definition looks and acts more function-like
+
+#+name: f4ab8cec-3485-49fc-92f5-7c6a0dbcddf4
+#+begin_src haskell :eval never :exports code
+data ColorInt = RedI Int | YellowI Int | BlueI Int | GreenI Int | PurpleI Int | OrangeI Int | BrownI Int deriving (Show,Eq)
+#+end_src
+
+#+name: 8c0dfb09-76f3-44da-8699-b9072d16274c
+#+begin_src haskell :results silent :exports code
+myCInt1 = [RedI 5, GreenI 2, PurpleI 6, BrownI 1]
+#+end_src
+
+#+name: 21cb9d5a-0183-4da7-9858-a91a17c6b43e
+#+begin_src haskell :results verbatim :exports both
+myCInt1
+#+end_src
+
+#+RESULTS: 21cb9d5a-0183-4da7-9858-a91a17c6b43e
+: [RedI 5,GreenI 2,PurpleI 6,BrownI 1]
+
+So with ~ColorInt~ we've upped the /arity/ of our data constructors on
+the right of the equation by one and now they take one argument, an
+~Int~ value --- perhaps to indicate the intensity of the color. Notice
+also we had to change the names of the ~ColorInt~ data constructors so
+as not to clash with our previous ~Color~'s data constructors. But
+again, data constructors behave like functions that return a value of
+the data type[fn:25]. In the case of ~RedI 5~ no calculation upon
+evaluation was made, rather, the value ~RedI 5~ was returned.
+
+*** The sum type
+
+Both ~Color~ and ~ColorInt~ are what are referred to in Haskell as
+/sum/ types[fn:26] ... as opposed to /product/ types. This difference
+goes back to set theory and whether we are dealing with a union or an
+intersection of sets --- as we discussed above. But we also go back
+the fundamental issue of counting things and putting them
+together. For example, let's say we have four things in one group and
+two things in another group, and neither group shares things. This
+means the things in the two groups in no way overlap. They are
+/disjoint/, and putting them together will behave like putting two
+sets together that share nothing, no element overlap.
+
+Consider three streets with clothing shops. Grant Street has two
+clothing shops; Lincoln Street has one clothing shop; and Lee Street
+has two clothing shops. Of course no street "shares" any shop
+What does this look like in set theory or
+Venn diagrams when we put them together?
+
+If we take any two sets, e.g., $A = \{1,2,3,4\}\;\;$ and $B =
+\{3,4,5,6\}\;\;$, then the set /union/ or /logical sum/ $A \cup B =
+\{1,2,3,4,5,6\}\;\;\;$, which is just what we expect since sets do not
+suffer duplicates. In other words, the overlap is not duplicated in
+the resolution.
+
+If we want a new Haskell list made up of the elements from $A$ /or/
+$B\;$, and we try a simple concatenation
+
+#+name: 29547818-ce1e-44ff-ad33-981237f82966
+#+begin_src haskell :results verbatim :exports both
+[1,2,3,4] ++ [3,4,5,6]
+#+end_src
+
+#+RESULTS: 29547818-ce1e-44ff-ad33-981237f82966
+: [1,2,3,4,3,4,5,6]
+
+...we have a problem. Again, lists have duplicates. Let's reexamine
+the definition of $A \cup B\;$, a set /union/
+
+\begin{align*}
+A \cup B = \{x \;|\; x \in A \;\lor\; x \in B\}
+\end{align*}
+
+We can leverage this basic "or-ness," but we have to include the
+removal of duplicates
+
+#+name: 673b1826-da41-4072-8ed8-06535215ca36
+#+begin_src haskell :results silent :exports code
+:{
+myUnion :: Eq a => [a] -> [a] -> [a]
+myUnion [] ys = ys
+myUnion (x:xs) ys = if (elem x xs) || (elem x ys)
+                    then x : myUnion (filter (/=x) xs) (filter (/=x) ys)
+                    else x : myUnion xs ys
+:}
+#+end_src
+
+This seems to work
+
+#+name: ddcf0f54-93cc-475d-a862-9634bb1e8561
+#+begin_src haskell :results verbatim :exports both
+myUnion [1,2,3,4,1] [3,4,5,6]
+#+end_src
+
+#+RESULTS: ddcf0f54-93cc-475d-a862-9634bb1e8561
+: [1,2,3,4,5,6]
+
+But what if there's a duplicate in the second list?
+
+#+name: dd01f6c5-47fc-43a2-aee2-222aee3cadb4
+#+begin_src haskell :results verbatim :exports both
+myUnion [1,2,3,4] [2,3,5,5,6,7]
+#+end_src
+
+#+RESULTS: dd01f6c5-47fc-43a2-aee2-222aee3cadb4
+: [1,2,3,4,5,5,6,7]
+
+We could kludge something
+
+#+name: 628d88ec-1da8-4f59-947e-f1a5f6de3a36
+#+begin_src haskell :results silent :exports code
+:{
+myUnion2 :: Eq a => [a] -> [a] -> [a]
+myUnion2 [] ys = nub ys
+myUnion2 (x:xs) ys = if (elem x xs) || (elem x ys)
+                    then x : myUnion2 (filter (/= x) xs) (filter (/=x) ys)
+                    else x : myUnion2 xs ys
+:}
+#+end_src
+
+#+name: cb464947-fb3e-46e0-8b0b-ba5fe5c94b62
+#+begin_src haskell :results verbatim :exports both
+myUnion2 [1,1,2,3,4] [2,3,5,5,6,7]
+#+end_src
+
+#+RESULTS: cb464947-fb3e-46e0-8b0b-ba5fe5c94b62
+: [1,2,3,4,5,6,7]
+
+Effective, but not so elegant, that trick of sticking in ~nub~ to
+handle duplicates in the second list[fn:27].
+
+Moving on, let's create a list of ~Color~ variables. But immediately
+we will have a set-list paradigm clash if we create a list containing
+"duplicates," e.g.,
+
+#+name: 3406c128-f51e-459b-8f21-057f454bfbf8
+#+begin_src haskell :eval never :exports code
+myColors1 = [Red,Orange,Brown,Red]
+#+end_src
+
+~myColors1~, a bona fide Haskell list, is a /sequence/ with a second
+~Red~ at the end. If ~myColors1~ were a math set, the second ~Red~
+would simply be redundant.
+
+*** Color comparisons
+
+Let's repeat the definition here
+
+#+name: 7e6eb6af-a15c-4adf-a222-698b65f81929
+#+begin_src haskell :eval never :exports code
+data Color = Red | Yellow | Blue | Green | Purple | Orange | Brown deriving (Show,Eq,Enum)
+#+end_src
+
+
+The initial "math" we do on ~Color~ is contained in the
+definition. Notice the ~deriving (Show,Eq)~~. These connect our
+~Color~ type to the Haskell typeclasses ~Show~ and ~Eq~, creating a
+default instances of ~Show Color~ and ~Eq Color~. Now, what would we
+expect "equal-ness" to be in the case of ~Color~? Let's assume it
+means ~Red == Red~, ~Yellow == Yellow~, etc. they evaluate to
+~True~. Let's test
+
+#+name: 75cfe732-4e2a-4cb3-b269-6c3df14f35ba
+#+begin_src haskell :results verbatim :exports both
+Red == Red
+#+end_src
+
+#+RESULTS: 75cfe732-4e2a-4cb3-b269-6c3df14f35ba
+: True
+
+#+name: eb4a6ed2-582e-42db-96c1-9a9bf69142af
+#+begin_src haskell :results verbatim :exports both
+Purple == Purple
+#+end_src
+
+#+RESULTS: eb4a6ed2-582e-42db-96c1-9a9bf69142af
+: True
+
+#+name: f19c13b4-9940-4199-8e8c-57e50bdd2731
+#+begin_src haskell :results verbatim :exports both
+Purple == Red
+#+end_src
+
+#+RESULTS: f19c13b4-9940-4199-8e8c-57e50bdd2731
+: False
+
+It seems what Haskell thinks are equal colors is right. Let's take a
+look under the hood
+
+#+name: 66abbeec-f7c1-4156-ab03-f3949657ed97
+#+begin_src haskell :results verbatim :exports both
+:i Eq
+#+end_src
+
+#+RESULTS: 66abbeec-f7c1-4156-ab03-f3949657ed97
+#+begin_example
+type Eq :: * -> Constraint
+class Eq a where
+  (==) :: a -> a -> Bool
+  (/=) :: a -> a -> Bool
+  {-# MINIMAL (==) | (/=) #-}
+  	-- Defined in ‘ghc-prim-0.7.0:GHC.Classes’
+instance [safe] Eq Color -- Defined at hroad4.hs:7:83
+...
+#+end_example
+
+Yes, ~Color~ is now equipped with ~Eq~ typeclass methods ~(==)~ and
+~(/=)~ for testing equality. ~==~ works. Let's try ~/=~
+
+#+name: 351657e1-fc11-4f90-9fa8-0200eac7c8bf
+#+begin_src haskell :results verbatim :exports both
+Red /= Orange
+#+end_src
+
+#+RESULTS: 351657e1-fc11-4f90-9fa8-0200eac7c8bf
+: True
+
+Can we add two ~Color~'s together? In art class what happens when we
+"add" red and blue? We get purple. So yes, Haskell has a way to
+establish addition, but to do this we'll need to take a rabbit hole
+into higher math and establish just exactly what addition really
+is. But first, we should explore what exactly we have with the type
+~Color~ and why we created it as we did.
+
+*** Haskell sum and product types
+
+Many programming languages have types, but very few have true,
+full-featured /algebraic data types/ (ADT)[fn:28]. In order to be a
+proper ADT, we must be able to /compose/ new types, primarily by
+combining other types.
+
+At the most basic level we are 
+Also, the two main sorts of counting, or
+"enumerating sets," namely sums and products, 
+
+
+
+
+Sum and product versus union and intersection.
+
+
+This is possible and is provided for in Haskell with the typeclass
+~Eq~, which establishes for various types "equal-ness."  Again,
+Haskell, in its mathematical soul, doesn't take this for granted or
+bury it in underlying code. One main reason is equality cannot simply
+be assumed, e.g., there can be no (easy) idea of comparing functions
+for equality[fn:29], even though functions in Haskell can become
+arguments, as well as results of other functions.
+
+
+
+
+** Subsets
+
+The set $A$ is a /subset/ of the set $B$ if and only if
+
+\begin{align}
+\forall x\; (x \in A \Rightarrow x \in B)
+\end{align}
+
+in effect says if all $x$'s in $A$ are also in $B\;$[fn:30], then $A$ is a
+/subset/ of $B\;$, i.e., $A \subseteq B\;$. If simultaneously
+
+\begin{align}
+\forall x\; (x \in B \Rightarrow x \in A)
+\end{align}
+
+then $B \subseteq A\;$, hence, $A = B\;$. However, if (2) holds, but
+not also (3) then $A \subset B\;$, i.e., $A$ is a /proper/ subset of
+$B\;$, hence, $B$ has elements not in $A\;$.
+
+Haskell-wise, a quick built-in (~Data.List~) function to check if a
+list is a sublist of another list is ~isPrefixOf~[fn:31]
+
+#+name: aa877bbb-b6b2-47f9-920e-cc9457644b09
+#+begin_src haskell :results verbatim :exports both
+[1,2,3] `isPrefixOf` [1,2,3,4]
+#+end_src
+
+#+RESULTS: aa877bbb-b6b2-47f9-920e-cc9457644b09
+: True
+
+The properties of /reflexivity/, /antisymmetry/, and /transitivity/
+show up in set theory when we consider any /relations/[fn:32] the
+elements might have amongst themselves. One common relation is to
+simply pair elements together just like Cartesian coordinate pairs to
+form a relation set.
+
+*** Reflexivity
+
+/Reflexivity/ is the general idea that some entity is equal to
+itself. For a basic choose-two pairing relation, we might take a set
+$A = \{1,2,3,4\}\;\;$ and create the pairing relation $R_1 =
+\{(1,1),(2,2),(3,3),(4,4)\}\;\;\;\;$. Here we have established a
+/reflexive relation/, i.e., a relationship of each element with
+itself.
+
+This may seem trivial, but this idea of self-equaling can be
+approached from surprisingly many vantage points. We can see
+self-equaling reflexivity in
+
+- /is equal to/, i.e., the basic idea that all the elements of a set
+  are equal to themselves.
+- /is a subset of/, i.e., a set is automatically a subset of itself.
+- /divides/, i.e., the elements of a set can divide themselves to some
+  unit value, e.g., $2/2 = 1\;$ since divisibility is $x / y\;$ such
+  that there exists $z$ and $x \cdot z = y\;\;$.
+- /is greater than or equal to/, i.e., technically we can say a set is
+  greater than *or equal to* itself --- and just ignore the greater
+  than part like a logical or does.
+- /is less than or equal to/, i.e., again, we rely on the "or equal to."
+
+In the diagram below
+
+:RESOURCES:
+- [[https://commons.wikimedia.org/wiki/File:GreaterThanOrEqualTo.png][GreaterThanOrEqualTo]]
+:END:
+
+[[file:images/GreaterThanOrEqualTo.png]]
+
+we have a set $B = \{1,2,3,4,5,6,7,8\}\;\;\;$ and then we create a
+relation $x \ge y$ amongst the elements; $x$ is the first and $y$ the
+second digit in the pair
+
+\begin{align}
+R_{x \ge y} = \{(1,1),(2,1),(3,1),\ldots,(8,1),(2,1),(3,2),\ldots,(8,2),(3,3),\ldots\}
+\end{align}
+
+We can reproduce this in Haskell with a quick list comprehension
+
+#+name: 23c12b09-79f9-4e75-9cb6-ac581449ea40
+#+begin_src haskell :results verbatim :exports both
+[(x,y) | y <- [1..8], x <- [1..8], x >= y]
+#+end_src
+
+#+RESULTS: 23c12b09-79f9-4e75-9cb6-ac581449ea40
+: [(1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(2,2),(3,2),(4,2),(5,2),(6,2),(7,2),(8,2),(3,3),(4,3),(5,3),(6,3),(7,3),(8,3),(4,4),(5,4),(6,4),(7,4),(8,4),(5,5),(6,5),(7,5),(8,5),(6,6),(7,6),(8,6),(7,7),(8,7),(8,8)]
+
+What then would an /irreflexive/ relation on a set be? Basically any
+relation, pairing that doesn't include an element-to-element pairing
+
+- /is not equal to/, i.e., we consider all pairing /but/ same-equals-same.
+- /is a proper subset of/, i.e., we create a set from another set that
+  is not one-to-one equal element-wise.
+- /is greater than/, i.e., we have a relation set just like (4) above,
+  but we've left out $(1,1),(2,2)\ldots\;\;$ which makes it reflexive.
+
+*** Symmetry and antisymmetry
+
+A /symmetry/ relation $R$ on a set $A$ contains for every pair $(a,b)
+\in R\;\;$ necessarily $(b,a) \in R\;\;$. /Antisymmetry/ means we have
+$(a,b) \in R\;\;$ but then $(b,a) \notin R\;\;$.
+
+
+
+/Antisymmetry/ in the context of sets and subsets formally establishes
+the idea that
+
+\begin{align}
+A \subseteq B \land B \subseteq A \Rightarrow A = B
+\end{align}
+
+We should probably start by saying what a /symmetric/ relation is. We
+will soon establish what /relations/ are, but for now antisymmetry
+means that an element of a set cannot have some connection with
+another element, and that other element with the original element
+unless they are equal, the same element. So with (4) we are in effect
+lining up the elements of $A$ and $B$ and saying they are equal only
+if their individual elements are matched one-to-one, equal-to-equal.
+
+
+
+** Union, Intersection, and Difference
+
+
+
+
+
+
+
+
+
+
+#+name: 66ac9589-05d1-474f-92fa-ee1d7f0ef389
+#+begin_src haskell :results silent :exports code
+:{
+a = [1,2,3]
+a = [1,2,3,4]
+:}
+#+end_src
+
+
+
+
+
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+
+
+
+* Bibliography :noexport:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- 
+:END:
+
+* Not exported :noexport:
+
+#+begin_src haskell :results silent :exports both
+1 + 1
+#+end_src
+
+#+name: 1e0d0649-30f1-4609-94b3-c7b6e47c70ce
+#+begin_src haskell :eval never :exports code
+import Data.Int
+#+end_src
+
+
+#+begin_src haskell :eval never :exports code :tangle omni1.3.hs :noweb yes
+module OMNI1_3 where
+
+-- first come import statements
+<<3b5747f7-dd38-4fd5-af05-62db3d8477af>>
+<<1e0d0649-30f1-4609-94b3-c7b6e47c70ce>>  
+
+--then everything else  
+<<d2fb9599-0a53-4d2c-8411-9da0d7d795f8>>
+<<2f2aea18-b10e-4821-999a-018db8b8308c>>
+<<f4ab8cec-3485-49fc-92f5-7c6a0dbcddf4>>  
+
+
+#+end_src
+
+* Footnotes
+
+[fn:1] ...or /set builder notation/.
+
+[fn:2] More on the /universal set/ later.
+
+[fn:3] Consider the man who obligated a wizard to tell him the secrets
+of the universe. But in that same instant as the man knew the secrets
+of the universe, the secrets changed and the secrets he knew were no
+longer /the/ secrets of the universe, rather, common knowledge. The
+man was angry with the wizard for cheating him, but the wizard argued
+that they would not be the secrets of the universe if a mortal man
+could actually know them.
+
+[fn:4] We'll speak of how sets may be ordered later. But for now a
+basic set is unordered.
+
+[fn:5] Contrast sets with /sequences/ where order and repeating of
+elements /do/ matter. Technically speaking, from the idea of a
+/vector/, a /sequence/ is an @@html:<font color = "#650d1c">@@
+an ordered n-tuple $(a_1,\ldots,a_n) \in A^n\;\;$ of elements from $A$ for
+some number $n\;$. @@html:</font>@@ and we'll get into what that
+means later.
+
+[fn:6] Why ~take~ stops ~[1,2..]~ from running wild has to do with
+Haskell being a /lazy/ language, i.e., evaluation can be JIT (just in
+time). Literally, when Haskell saw ~take~ it knew /not/ to let
+~[1,2..]~ run forever. Neat trick.
+
+[fn:7] Contrast with (1) above where *:* served as "such that" and $\varphi
+()$ in the classic function form was used.
+
+[fn:8] And yet another more intuitive way would be $\{x \;|\; x = a/b
+\;\;\text{for some}\;\; a,b \in \mathbb{Z}, b \neq 0\}\;\;$.
+
+[fn:9] Once we have more Haskell prowess we will go into a detailed
+version of math sets in Haskell...
+
+[fn:10] Remember, Haskell /never/ alters a list; instead, it copies it,
+works on the copy, then returns that worked-on copy. However, just
+entering expressions at the ghci REPL, yes, you may create ~a =
+[1,2,3]~ then /redefine/ ~a = [1,2,3,4]~ and the new value of ~a~ will
+be ~[1,2,3,4]~. Likewise, you may redefine functions. However, this
+redefining is just a convenience to you when working directly with
+ghci command line. This will /not/ work in code in a file submitted to
+ghc or ghci; instead, producing ~Multiple declarations of ‘a’~
+error. In general, Haskell does not allow declaring a variable or
+function symbol, then allow your program to reassign the symbol
+somewhere else in the code.
+
+[fn:11] As many as $O(n^2)\;$. More about /Big-O/ later.
+
+[fn:12] ...tedious because numbers have /quantities/ built-in, i.e., we
+can already see what's big, small, greater-than, equal, less-than.
+
+[fn:13] We'll explain Haskell's take on a set of colors in just a
+moment.
+
+[fn:14] From logic this the /inclusive or/, like "I'll take strawberry
+/or/ raspberry /or/ both," not the /exclusive or/ like "I will go to
+his party /or/ her party, /not/ both".
+
+[fn:15] ...if it's true that it's in $A$ and it's true that it's in
+$B$, then it's in $A \lor B\;$; if it's true that it's in $A$ but not
+true that it's in $B$ --- then it's still in $A \lor B\;$...
+
+[fn:16] ...if it's in $A$ *and* it's in $B$, then it's in $A \land
+B\;$. Otherwise, if it's not in $A$ or it's not in $B\;$, or it's
+neither in $A$ nor in $B\;$, then it's not in $A \land B\;$.
+
+[fn:17] Consider the /negate/ operator $\neg\;\;$. It is considered a
+unary operator, i.e., it works on just one thing at a time. We can
+also abstract /negate/ to mean, in general, an operator that sends
+$x\;$ to $x'\;$ such that it can send it back, $x'\;$ to $x\;$,
+again. In this broader sense, /negate/ flips a thing back and forth.
+
+[fn:18] When we say something is /axiomatic/ we mean it is a system
+based on axioms or ground rules, from which theorems are built.
+
+[fn:19] Remember, we cannot allow $\mathbb{U}$ to include itself;
+otherwise, Russell's Paradox comes back.
+
+[fn:20] Happily, $x \leq x$ includes the possibility of $x = y\;$.
+
+[fn:21] The /minuend/ (that which is subtracted from) and the
+/subtrahend/ (that which is being subtracted away) are not
+interchangeable, rather, subtraction depends on which is first and
+second.
+
+[fn:22] Just below we'll tackle when set operations and regular
+numerical calculations coincide and when they don't.
+
+[fn:23] Nomenclature: /Data constructors/ (or /value constructors/)
+are on the right side of the equation of a type definition, while the
+/type constructor/ is on the left side.
+
+[fn:24] In algebra we might compare with $f(x) = c\;$, i.e., whatever
+we put in for $x\;$, $f$ returns just $c\;$. We can also write $f() =
+c\;$. Technically, a constant all by itself can be considered a
+function or operation of /arity/ $0$. The /arity/ of a function or
+operation is the number of arguments it takes.
+
+[fn:25] Yes, they act like functions, but not in the regular sense of
+a normal function taking input and producing output. A type or data
+constructor is taking input and creating our data type environment.
+
+[fn:26] A basic definition of a Haskell /sum type/ is a data type that
+allows us to express alternative possibilities with just one data
+type.
+
+[fn:27] Truth will out, the Haskell ~Data.List.union~ function doesn't
+properly handle duplicates in the first list. Bug or feature? Happy
+ending: ~Data.Set.union~ works properly.
+
+[fn:28] The main languages with true ADT are of the "ML Family," i.e.,
+SML, Ocaml, F#, and Haskell.
+
+[fn:29] ... although the concept of "do these two different looking
+functions give us the same results?" is very big in the world of
+comp-sci.
+
+[fn:30] ... all /elements/ of $A$ are also /elements/ of $B\;$.
+
+[fn:31] ~isInfixOf~ has cousins ~isPrefixOf~ and ~isSuffixOf~ which
+respectively check if a list starts or ends another list.
+
+[fn:32] We'll dive into /relations/ soon. For now just use an intuitive
+idea.
+
+[fn:34] Combining numbers with addition makes sense, whereas division
+~(/)~ not really, especially since division can produce outcomes not
+~Integer~.
+
+[fn:33] ~mconcat~ uses a ~foldr~ since ~foldl~ breaks down with
+infinite lists since it forces evaluations at each step, which can get
+costly.

@@ -1,0 +1,1701 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-06-12 Sun 15:16 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<img src="./images/heading6.png"  style="padding: 0px 0px 22px 0px" alt="3-d graph" class="center">
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <a href="numbers.html" target="_blank"><li>Numbers</li></a>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+
+
+<div id="outline-container-org2f8bca0" class="outline-2">
+<h2 id="org2f8bca0">Haskell tutorial introduction</h2>
+<div class="outline-text-2" id="text-org2f8bca0">
+<p>
+<label for="mn-demo" class="margin-toggle"></label>
+<input type="checkbox" id="mn-demo" class="margin-toggle">
+<span class="marginnote"><span class="cap">
+<img src="images/CurrySign.png" alt="CurrySign.png" />
+Haskell Curry is the namesake of the programming language Haskell.
+</span></span>
+</p>
+
+<p>
+This will be a compliment to the actual online Haskell tutorials
+listed below, emphasizing and expanding various points as they come
+up. Specifically, <font color = "#650d1c">we&rsquo;ll <i>shadow</i>
+LYAHFGG</font>, the first and primary tutorial, pulling in
+extra examples and giving methods and concepts more depth.
+</p>
+
+<p>
+There are many paths taken when learning Haskell. Being a very
+advanced programming environment, it is rich in theoretical computer
+science lore. But more than any other language (besides its cousins
+Ocaml, SML, and F#) Haskell includes a surprising amount of higher
+math. For example, Haskell leverages the abstract algebra concepts of
+semigroups and monoids.
+</p>
+
+<p>
+We&rsquo;ll save the more mathematical things for the main CIMIC show and
+just concentrate on the Haskell programming nuts-and-bolts.
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-org8b89da3" class="outline-2">
+<h2 id="org8b89da3">Rabbit holes</h2>
+<div class="outline-text-2" id="text-org8b89da3">
+<p>
+Let&rsquo;s repeat (most of) the Haskell rabbit hole list. Note that the
+first one is the compulsory dive.
+</p>
+
+<p>
+<font color = "#375e79">
+⌜🐇 
+</p>
+<ol class="org-ol">
+<li><a href="http://learnyouahaskell.com/chapters">Learn You a Haskell for Great Good!</a> (LYAHFGG) is a widely-used,
+often-suggested beginners site for starting out with Haskell. We&rsquo;ll
+work through it in our CIIC tutorial. (<i>R<sub>C</sub>-hole</i>)</li>
+<li>A site haskell.org is suggesting is the UPenn course CIS194. We
+suggest the <a href="https://www.seas.upenn.edu/~cis194/spring15/">Spring 2015</a> version since it includes haskell source
+files. This is a college course, but for beginners. Click on the
+<i>Lectures &amp; Assignments</i> link at the top. (If you&rsquo;ve got <a href="https://github.com/borgauf/omnimath">our github
+repository</a> there&rsquo;s a directory containing all the Haskell files.)
+(<i>R<sub>O</sub>-hole</i>)</li>
+<li>An older but still go-to site recommended by many is the <i><a href="http://book.realworldhaskell.org/read/">Real
+World Haskell</a></i> site (also book). As the title suggests, it has a
+more real-applications slant, and yes, the material can get into
+heavy lifting, but one great advantage is it has prodigious
+<i>comments</i> attached to ever web page section. So if you didn&rsquo;t
+understand something, typically somebody has already explained it
+in depth.</li>
+<li>Book-wise, a nice, well-paced text would be <i><a href="https://www.manning.com/books/get-programming-with-haskell#:~:text=about%20the%20book,dive%20into%20custom%20Haskell%20modules.">Get Programming with
+Haskell</a></i> by Will Kurt. Will bridges a lot of chasms between
+beginner, intermediary, and advanced ideas. In other words, GPWH
+gives plain-English explanations of things other treatments might go
+deep into theory on. Really helpful, that. (<i>R<sub>O</sub>-hole</i>)</li>
+<li>Another big favorite for Haskell starters, but slightly more
+challenging is <i><a href="https://www.haskell.org/tutorial/haskell-98-tutorial.pdf">A Gentle Introduction to Haskell 98</a></i>. AGITH uses
+more math terminology, which is what we&rsquo;re doing, but from the
+shallow end first. (<i>R<sub>O</sub>-hole</i>)</li>
+<li>A while back the programming language Prolog created a list of
+ninety-nine sample problems that were solved using Prolog. Since
+then many languages have cooked up their own versions of answering
+the ninety-nine. Haskell&rsquo;s is <a href="https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems">here</a>. We&rsquo;ll refer to this a lot. When
+you peek at the solutions, don&rsquo;t get psyched out by some of the
+answers. Haskell Wiki is a volunteer site and very smart people
+like show off their skills resulting in some serious overkill. Just
+make sure you can handle the basic answers, and maybe just peruse
+the wilder versions. (<i>R<sub>O</sub>-hole</i>)</li>
+</ol>
+<p>
+</font>🐇⌟
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc739fa4" class="outline-2">
+<h2 id="orgc739fa4">Setting up Haskell</h2>
+<div class="outline-text-2" id="text-orgc739fa4">
+<p>
+We will use <a href="https://docs.haskellstack.org/en/stable/README/">The Haskell Tool Stack</a>, which is a project/package
+management system for Haskell. In a nutshell, we will install stack,
+and then use stack to set up a custom Haskell programming
+environment. Besides the executable <code>stack</code>, there will also be the
+Haskell compiler <code>ghc</code> and the Haskell interactive mode <code>ghci</code> which
+are called as stack arguments <br />
+<code>&gt; stack ghci</code> <br />
+<code>&gt; stack ghc</code> <br />
+More on using them later.
+</p>
+
+<p>
+This setup guide will go into detail only on the Linux Haskell
+install. For full details (also for other OS types) see <a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/">The Haskell
+Tool Stack</a>.
+</p>
+
+<ul class="org-ul">
+<li>The very first step might not be needed, but we&rsquo;ll do it just to
+make sure. Haskell requires (and recommends) a set of Linux system
+programs and libraries. Run this at the command line (all on one
+line)</li>
+<li><code>&gt; sudo apt-get install g++ gcc libc6-dev libffi-dev libgmp-dev make
+  xz-utils zlib1g-dev git gnupg netbase curl</code> <br />
+Typically all of these (with the exception of curl) are already on
+your system and won&rsquo;t be updated.</li>
+<li>To install stack run <br />
+<code>&gt; curl -sSL https://get.haskellstack.org/ | sh</code> <br />
+This will ask for your password; enter it to allow system-wide
+install.</li>
+<li>Now you should have Haskell stack on your system. For confirmation
+of success run <br />
+<code>&gt; which stack</code> <br />
+This should return <br />
+<code>/usr/local/bin/stack</code> <br />
+or wherever the <code>stack</code> executable was installed.</li>
+<li>Now, run <br />
+<code>&gt; echo 'PATH=$HOME/.local/bin:$PATH' &gt;&gt; ~/.bashrc</code> <br />
+This tells your shell environment<label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle"/><span class="sidenote">
+Another name for terminal or command line is <i>shell</i>. Each
+terminal you start with a command line interface is a <i>shell</i> with a
+<i>shell environment</i>. The <code>.bashrc</code> file is its configuration file that
+is read and set up each time you start another terminal command line
+instance.
+</span> about this new location
+where some of Haskell executables might be later on if we choose to
+install them. We&rsquo;re not now, but it&rsquo;s good to have this ahead of
+time. Kill your terminal, restart it, then check with <br />
+<code>&gt; echo $PATH</code> <br />
+You should see something like <br />
+<code>&gt; /home/myhomedir/.local/bin:/usr/local/sbin:/usr/local/bin:...</code> <br />
+&#x2026;and many others possibly. But we see our
+<code>/home/myhomedir/.local/bin</code>. Good.</li>
+</ul>
+
+<p>
+Again, stack is project-oriented. That means you have one programming
+&ldquo;project&rdquo; that you want to accomplish. But for the time being we only
+want to use the Haskell REPL<label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle"/><span class="sidenote">
+<b>REPL</b> stands for <i>read, evaluate, print, loop</i>, which is
+essentially what your terminal command line is doing. That is to say,
+the Haskell REPL, called <i>ghci</i> is an interactive world: Give it a
+task, e.g., <code>1 + 1</code>, and it returns a response, <code>2</code>, then it gives you
+back a prompt and waits for your next task. This is how LYAHFGG starts
+out executing Haskell code.
+</span> to load the practice code we saved
+into <code>*.hs</code> files, i.e., not a single project. Still, these <code>*.hs</code>
+will reside in a project directory, a project that we set up with
+stack &#x2014; even though we won&rsquo;t use the project files
+specifically. Eventually, we&rsquo;ll convert from using <code>hs</code> loaded into
+the REPL session to using Emacs&rsquo; powerful <i>org-mode literate
+programming</i> with the REPL. And then we might actually use the project
+way to program in Haskell, especially if we want to create a
+stand-alone executable.
+</p>
+
+<ul class="org-ul">
+<li>In your top home directory<label for="3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="3" class="margin-toggle"/><span class="sidenote">
+You can always get back home by typing <code>cd</code> and Enter. Then do
+<code>pwd</code> to confirm you&rsquo;ve gone to top home. And you can always test
+where you are with <code>&gt; pwd</code> (present working directory).
+</span> create an org<label for="4" class="margin-toggle sidenote-number"></label><input type="checkbox" id="4" class="margin-toggle"/><span class="sidenote">
+&#x2026;anticipating using org mode.
+</span> directory <br />
+<code>&gt; mkdir org</code> <br />
+and <code>cd</code> into it <br />
+<code>&gt; cd org</code></li>
+<li>Now we&rsquo;ll create a project, which will automatically create a new
+directory with the same name under <code>~/org/</code>. Type <br />
+<code>&gt; stack new haskellwork1</code> (or whatever you want to call it) <br />
+which will set up a project in a subdirectory of <code>org</code> called
+<code>haskellwork1</code>.</li>
+<li><code>cd</code> into <code>haskellwork1</code> and do <code>ls</code> to get a file listing. You&rsquo;ll
+see many newly created files and directories. But again, we will not
+use them at this point.</li>
+<li>Still in the <code>haskellwork1</code> directory type
+<code>&gt; stack setup</code> <br />
+which should give a short message about using a sandboxed GHC etc.</li>
+<li>Next, type <code>&gt; stack build</code> <br />
+which will run through an executable build procedure and return you
+the prompt. This actually builds the starter-dummy project we just
+created. All of this creates a Haskell programming environment we
+want.</li>
+<li>To test our starter-dummy project&rsquo;s new executable run <br />
+<code>&gt; stack exec haskellwork1-exe</code> <br />
+which will return <code>someFucn</code>, i.e., the output of the project&rsquo;s
+dummy starter code. Again, this is just testing that the Haskell
+environment is ready. We&rsquo;ll be creating our practice files in the
+<code>haskellwork1</code> directory completely independent of the
+<code>haskellwork1</code> project.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org57e19ea" class="outline-2">
+<h2 id="org57e19ea">Let&rsquo;s start</h2>
+<div class="outline-text-2" id="text-org57e19ea">
+<p>
+At this point we&rsquo;re ready to go over to Miran Lipovača&rsquo;s very popular
+<i>Learn You a Haskell For Great Good</i> site and start in<label for="5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="5" class="margin-toggle"/><span class="sidenote">
+Maybe check out the <a href="http://learnyouahaskell.com/faq">FAQ</a>.
+</span>. Our
+first stop will be his <a href="http://learnyouahaskell.com/introduction">Introduction</a>. But before you start on this
+tutorial, go ahead and read his introduction, then move into <a href="http://learnyouahaskell.com/starting-out">Starting
+Out</a>, then the next chapter <a href="http://learnyouahaskell.com/types-and-typeclasses">Types and Typeclasses</a>. Just read and try to
+understand at this point. We&rsquo;ll borrow a few very rudimentary things
+from these chapters right here just for demonstration purposes. As
+you&rsquo;ll see as we advance, we&rsquo;ll typically explain one thing while
+relying on future (lightly), past (heavily), or parallel
+(appropriately) materials. \(\mathfrak{Fazit}\;\): Get in the habit of
+reading ahead<label for="6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="6" class="margin-toggle"/><span class="sidenote">
+We&rsquo;re diving into the Introduction because it contains lots of
+ideas we really need to grok before we get going.
+</span>.
+</p>
+</div>
+
+<div id="outline-container-org2bd1757" class="outline-3">
+<h3 id="org2bd1757"><i>So what&rsquo;s Haskell?</i> State and referential transparency</h3>
+<div class="outline-text-3" id="text-org2bd1757">
+<p>
+In just his <i>So what&rsquo;s Haskell?</i> section Miran says a lot, so let&rsquo;s
+unpack it a bit<label for="7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="7" class="margin-toggle"/><span class="sidenote">
+Actually, this page will deal only with that first
+paragraph. The rest we&rsquo;ll incorporate in later pages.
+</span>.  First is the concept of <i>state</i>, which is a
+very big deal in computers, physics and engineering, as well as many
+other STEM and soft-science fields. When we say <i>the state of things</i>
+we mean the present conditions &#x2014; which implies that the state might
+change. And we might have heard of <i>phase</i>, e.g., the three phases of
+matter: solid, liquid, and gaseous<label for="8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="8" class="margin-toggle"/><span class="sidenote">
+In addition to the states solid, liquid, gas, there&rsquo;s also
+crystalline, colloid, glassy, amorphous, and plasma.
+</span>. You&rsquo;ll hear the terms phase
+of matter and the state of matter used interchangeably. In our
+treatment we will borrow from an explanation given by Susskind and
+Hrabovsky in their book <i>The Theoretical Minimum</i><label for="9" class="margin-toggle sidenote-number"></label><input type="checkbox" id="9" class="margin-toggle"/><span class="sidenote">
+See the video <a href="https://youtu.be/ApUFtLCrU90">here</a>. Just the first part is germane to our
+discussion here.
+</span>.
+</p>
+
+<p>
+Basically, a given situation we&rsquo;re examining, a given <i>system</i>, can
+have
+</p>
+
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/Degrees_of_freedom">degrees of freedom</a> (DOF)</li>
+<li>states</li>
+<li>rules or laws describing the system&rsquo;s progress or behavior</li>
+</ul>
+
+<p>
+In their book, Susskind and Hrabovsky begin with a system consisting
+of one coin glued down to a table with heads up. So we have <b>one coin</b>
+(corresponding to one parameter or DOF) and just one possible <b>state</b>
+of this single DOF<label for="10" class="margin-toggle sidenote-number"></label><input type="checkbox" id="10" class="margin-toggle"/><span class="sidenote">
+Degrees of freedom are not exactly the same as variables. A
+Cartesian coordinate system (CCS) with \(x\) and \(y\) axes can be thought
+of as a system with two DOF &#x2014; or just one DOF. The difference is the
+relationship \(x\) and \(y\) are in. DOFs must be truly independent of one
+another. So if we&rsquo;re just establishing a CCS as <i>all possible
+coordinate pairs</i>, both elements of a pair corresponding to all the
+real numbers running up and down each axis, then yes, the CCS has two
+DOFs. But if we&rsquo;re talking about a function \(f(x) = y\;\) depicted on a
+CCS then we mean only one DOF, \(x;\) since the \(y\) is now considered
+<i>dependent</i> on \(x\), i.e., not free. Knowing this, how many DOFs does
+an operating traffic light have, one, two, three?
+</span> coin, namely <b>heads</b>. If we try to describe
+this system, i.e., describe a <b>law</b> for the behavior of this system,
+we can intuitively see that it&rsquo;s extremely restricted and
+minimalistic. The law for this system would simply be <i>the state is
+always heads</i>, i.e., the state never changes. Not very interesting,
+not very information-rich<label for="11" class="margin-toggle sidenote-number"></label><input type="checkbox" id="11" class="margin-toggle"/><span class="sidenote">
+Contrast this with a <i>writing system</i> like English with
+twenty-six letters, which in comp-sci-speak is a &ldquo;nonempty finite set
+of symbols.&rdquo; There&rsquo;s an infinite number of possible states of our
+English writing system, especially considering all the millions of
+people using it!
+</span>.
+</p>
+
+<p>
+We know intuitively what <i>always</i> means: constant, eternal, never
+ending. Such words imply time passing, steps, iterations taken &#x2014; and
+a thing, a system remaining basically constant, the same. Words like
+<i>perpetual</i>, <i>continual</i>, <i>periodic</i>, <i>intermittent</i>, <i>random</i>,
+<i>cyclic</i>, <i>acyclic</i>, <i>terminating</i>, <i>non-terminating</i>, <i>dynamic</i>,
+<i>static</i> and many others all beg the notion of some process moving
+along, step-by-step perhaps, or assessed at intervals of time. Even
+words like <i>deterministic</i> and <i>chaotic</i> invoke the idea of something
+being repeatedly measured as to its state, then a <i>pattern</i>, a
+<i>sequence</i><label for="12" class="margin-toggle sidenote-number"></label><input type="checkbox" id="12" class="margin-toggle"/><span class="sidenote">
+When we use <i>sequence</i> we&rsquo;ll be leaning into the mathematical
+meaning. Basically, a sequence is a an <i>ordered</i> list of things,
+objects, numbers that may or may not exhibit a pattern. As we explore
+<i>set theory</i> we&rsquo;ll see math explained in terms of sets. For example, a
+sequence can be thought of as a function that maps the <i>set</i> of
+natural counting numbers (\(\mathbb{N} = 0,1,2,3,\ldots\;\;\;\)) to the
+<i>set</i> of objects that make up our ordered list. This may seem odd at
+first, but we just introduced the idea of <i>indexing</i> or <i>enumerating</i>
+the numerical position of the elements of our sequence.
+</span> of states is generalized to a descriptive adjective.
+</p>
+
+<p>
+A single coin system &#x2014; not glued down &#x2014; has one DOF with just two
+possible states, to be decided by flipping the coin. We may then
+perform a <i>sequence</i> of coin flips at our leisure to determine this
+sequence of flips&rsquo; pattern, i.e., the coin-flip system&rsquo;s
+law<label for="13" class="margin-toggle sidenote-number"></label><input type="checkbox" id="13" class="margin-toggle"/><span class="sidenote">
+Think about how a car moving <i>continuously</i> along a road. We
+could literally check its location down to the millisecond, giving us
+a very fine, very time-dependent snapshot of its location. However,
+coin flipping, which results in heads or tails, is <i>discrete</i>, i.e.,
+when the coin lands it is instantly one or the other; hence, the
+continuous passing of time isn&rsquo;t relevant in the discrete world. Lots
+more on <i>discrete</i> math coming.
+</span>. For example, if we flip our coin over and over and it
+magically alternates between heads or tails, never deviating, we may
+describe it, establish its law as following this formula<label for="14" class="margin-toggle sidenote-number"></label><input type="checkbox" id="14" class="margin-toggle"/><span class="sidenote">
+(1) is an example of a <i>recurrence relation</i>. You&rsquo;re probably
+more used to <i>closed</i> formulae. For example \(f(x) = x^{2}\;\) is a closed
+version of this recurrence relation <br />
+
+\begin{align*}
+f(0) &= 0 \\
+f(n) &= f(n-1) + 2n-1 \;\; for \; n \ge 1
+\end{align*}
+
+Lots more on recurrence relations and recursion in general later.
+</span>
+</p>
+
+\begin{align}
+\sigma(n+1) = -\sigma(n)
+\end{align}
+
+<p>
+In (1), \(\sigma\) (<i>sigma</i>) will stand for our single DOF. For the possible
+values of \(\sigma\) we say \(1\) means heads and \(-1\) means tails. \(n\) stands
+for the counting numbers (\(1,2,3,\ldots\;\)) that will serve to <i>index</i>
+each coin flip in a sequence of coin flips. For example, if on our
+first flip \(\sigma(1) = 1\;\), heads, then according to (1) our second flip
+\(\sigma(2)\;\) will be \(-1\;\) or tails since
+</p>
+
+\begin{align*}
+\sigma(1) &= 1\;\;\ldots\;\; \text{heads is our starting point} \\
+\sigma(2) &= -\sigma(1) \;\;\ldots\;\; \text{using (1)} \\
+\sigma(2) &= -(1)  \;\;\ldots\;\; \text{substituting} \\
+\sigma(2) &= -1 \quad \ldots\;\text{tails}
+\end{align*}
+
+<p>
+The third flip in our sequence is
+</p>
+
+\begin{align*}
+\sigma(2) &= -1\;\;\ldots\;\; \text{tails is our starting point} \\
+\sigma(3) &= -\sigma(2) \;\;\ldots\;\; \text{using (1)} \\
+\sigma(3) &= -(-1)  \;\;\ldots\;\; \text{substituting} \\
+\sigma(3) &= 1 \;\;\ldots\;\; \text{heads}
+\end{align*}
+
+<p>
+A table of the sequence of coin-flip states would be
+</p>
+
+<table id="org5c773e5" border="2" cellspacing="0" cellpadding="6" rules="all" frame="border">
+<caption class="t-above"><span class="table-number">Table 1:</span> Coin-flip table</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">n</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+<td class="org-right">7</td>
+<td class="org-right">8</td>
+</tr>
+
+<tr>
+<td class="org-left">σ</td>
+<td class="org-right">1</td>
+<td class="org-right">-1</td>
+<td class="org-right">1</td>
+<td class="org-right">-1</td>
+<td class="org-right">1</td>
+<td class="org-right">-1</td>
+<td class="org-right">1</td>
+<td class="org-right">-1</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+A Haskell version of (1) looks very similar<label for="15" class="margin-toggle sidenote-number"></label><input type="checkbox" id="15" class="margin-toggle"/><span class="sidenote">
+This Haskell code is meant to be just show-and-tell. If you&rsquo;ve
+read ahead you should be able to follow it. Quickly, we have a <i>base
+case</i>, i.e., the first line where we establish whether the first flip
+is heads or tails, then the recurrence relationship. <i>Lots</i> more about
+Haskell recursion soon. (BTW, <code>--</code> is a Haskell comment, not part of
+the program.)
+</span>
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">&#963;</span> 1 <span class="org-haskell-operator">=</span> 1          <span class="org-comment-delimiter">-- </span><span class="org-comment">we start with 1, heads</span>
+<span class="org-haskell-definition">&#963;</span> n <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">*</span> &#963; <span class="org-rainbow-delimiters-depth-2">(</span>n <span class="org-haskell-operator">-</span> 1<span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<p>
+The only real difference is we&rsquo;ve indicated in the base case (line 1)
+that flip 1 starts things off as heads. Also, we&rsquo;ve reduced the
+function argument \(n\) by \(1\) on both side, which doesn&rsquo;t affect
+it. Testing
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">&#963;</span> 7
+</code></pre>
+
+<pre class="example">
+1
+</pre>
+
+
+<p>
+and this value checks against Table 1<label for="16" class="margin-toggle sidenote-number"></label><input type="checkbox" id="16" class="margin-toggle"/><span class="sidenote">
+Again, this is show code. We&rsquo;ve used the unicode symbol σ for
+sigma because Haskell recognizes it and it&rsquo;s cool to look as
+mathematical as possible, but usually we&rsquo;ll just spell out function
+names.
+</span>. We can produce a Haskell
+version of a sequence of coin flip state changes with <code>map</code><label for="17" class="margin-toggle sidenote-number"></label><input type="checkbox" id="17" class="margin-toggle"/><span class="sidenote">
+<code>map</code> is a function that takes a function, in our case σ, and
+applies it to the individual elements of a <b>list</b>, then outputs the
+resulting new list. This is our first demonstration of a functional
+programming superpower, i.e., functions using not just regular data as
+input, but other functions as well. Lots to come on this subject.
+</span>,
+feeding it our <code>σ</code> function and a list generated from a Haskell
+enumeration range from \(1\) to \(15\) corresponding to fifteen coin flips
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">map</span> &#963; <span class="org-rainbow-delimiters-depth-1">[</span>1<span class="org-haskell-operator">..</span>15<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[1,-1,1,-1,1,-1,1,-1,1,-1,1,-1,1,-1,1]
+</pre>
+
+
+<p>
+Since Haskell is a typed language we could do better that faking heads
+with \(1\) and tails with \(-1\). We could create an actual custom-made
+<i>data type</i> for our state space
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">data</span> <span class="org-haskell-type">Coin</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Heads</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Tails</span>
+</code></pre>
+
+<p>
+We won&rsquo;t go into how this can be incorporated into our function <code>σ</code>
+yet, but notice that we have a &ldquo;means the same thing&rdquo; correspondence
+between \(1\) and \(-1\) and <code>Heads</code> and <code>Tails</code>. In Haskell (and the type
+theory math world) this correspondence is called an
+<i>isomorphism</i>. Which basically means we can set up a translation
+between these two representations of a flip outcome. Can you think of
+other &ldquo;either-or&rdquo; two-possibility types?  <i>True</i> and <i>False</i>, or <i>Top</i>
+and <i>Bottom</i>, <i>Left</i> and <i>Right</i>, or even <i>Sun</i> and <i>Moon</i> or <i>Mine</i>
+and <i>Not-mine</i>. For all of these versions of two-state either-or we
+can create a translation from one to the other<label for="18" class="margin-toggle sidenote-number"></label><input type="checkbox" id="18" class="margin-toggle"/><span class="sidenote">
+One way of &ldquo;jumping&rdquo; in a two-state system from one state to
+the other would be <i>negation</i>, e.g., \(Negate(1) = -1\;\;\). The Haskell
+operator <code>not</code> does this (the math logic symbol is \(\lnot\;\;\)), which
+works out of the box for some types, while for others the concept of
+negation must be defined. Right. What would it mean to <i>negate</i> <code>Moon</code>
+to <code>Sun</code> back to <code>Moon</code> again? More on this trick later.
+</span>. As we&rsquo;ll see in
+the not too distant future, Haskell likes to leverage isomorphisms&#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgccc997a" class="outline-3">
+<h3 id="orgccc997a">Modular arithmetic</h3>
+<div class="outline-text-3" id="text-orgccc997a">
+<p>
+Everyone is familiar with <i>clock modularity</i>. So what time is it \(3\)
+hours past \(2\;\) o&rsquo;clock? Obviously \(5\;\) o&rsquo;clock. But what about \(15\)
+hours past \(2\!:\!00\;\)? So \(2 + 15 = 17\;\). Yes, but we ran out of
+clock at \(12\!:\!00\;\); anything beyond begins to repeat on the clock
+face. Therefore, an analog clock is said to have a <i>modularity of
+\(12\;\)</i>. This means a single state change, i.e., adding \(1\) hour, or
+conducting a sequence<label for="19" class="margin-toggle sidenote-number"></label><input type="checkbox" id="19" class="margin-toggle"/><span class="sidenote">
+In math the elements of a sequence are strictly
+consecutive. Again, a sequence&rsquo;s elements <i>and</i> their order makes it
+unique.
+</span> of state changes, e.g., adding \(x\) hours,
+can only match with one of twelve possible hours. In math-speak, our
+system&rsquo;s law places us in a <i>modulo-12</i> world where every enumerated
+state change is <i>congruent</i> to one of the twelve numbers of the clock
+face. Right.
+</p>
+
+<table id="orgd31fee3" border="2" cellspacing="0" cellpadding="6" rules="all" frame="border">
+<caption class="t-above"><span class="table-number">Table 2:</span> Twelve-hour clock table</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">n</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+<td class="org-right">7</td>
+<td class="org-right">8</td>
+<td class="org-right">9</td>
+<td class="org-right">10</td>
+<td class="org-right">11</td>
+<td class="org-right">12</td>
+<td class="org-right">13</td>
+<td class="org-right">14</td>
+<td class="org-right">15</td>
+<td class="org-right">16</td>
+<td class="org-right">17</td>
+<td class="org-right">18</td>
+<td class="org-right">19</td>
+<td class="org-right">20</td>
+<td class="org-right">21</td>
+<td class="org-right">22</td>
+<td class="org-right">23</td>
+<td class="org-right">24</td>
+<td class="org-right">25</td>
+<td class="org-right">26</td>
+</tr>
+
+<tr>
+<td class="org-left">h</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+<td class="org-right">7</td>
+<td class="org-right">8</td>
+<td class="org-right">9</td>
+<td class="org-right">10</td>
+<td class="org-right">11</td>
+<td class="org-right">12</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+<td class="org-right">7</td>
+<td class="org-right">8</td>
+<td class="org-right">9</td>
+<td class="org-right">10</td>
+<td class="org-right">11</td>
+<td class="org-right">12/0</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Since we know timekeeping, we&rsquo;re familiar with this idea of \(x\) hours
+from now is \(y\) o&rsquo;clock. According to our table above, \(17\) or
+\(17\!:\!00\;\) matches with \(5\;\) o&rsquo;clock, again, this is just military
+time. Now, what time would it be \(237\) hours from \(2:00\;\)<label for="20" class="margin-toggle sidenote-number"></label><input type="checkbox" id="20" class="margin-toggle"/><span class="sidenote">
+Let&rsquo;s forget counting days for now.
+</span>?
+Or, at the \(2 + 237 = 239\;\;\) state change, what is the state of our
+system given our system law is \(12\) strictly increasing and repeating
+states?
+</p>
+
+<p>
+In modularity arithmetic we&rsquo;re asking what number(s) is(are)
+<i>congruent</i> with \(239\) <i>modulo</i> \(12\;\), written \(239 \equiv x (mod
+12)\;\;\)?  This means if we line up \(1\) through \(12\;\), strictly
+increasing, over and over, back to back, matching them to our counting
+number index, \(239\) must match with some possible hour between \(1\) and
+\(12\;\).
+</p>
+
+<p>
+Probably your first intuitive idea would be to just divide: \(239 \div 12
+=\; ?\;\) &#x2026; But we must be careful here, we&rsquo;re in the realm of
+discrete numbers. Just any old calculator will give you a decimal
+number if it doesn&rsquo;t divide it evenly, i.e., remainder zero. Let&rsquo;s
+take a look at what Haskell does with a simpler situation from our
+table above. Consider \(14\) hours after starting. Again, with military
+time we see it corresponds to \(2\;\) o&rsquo;clock, however,
+</p>
+
+<pre class="code"><code>14 <span class="org-haskell-operator">/</span> 12
+</code></pre>
+
+<pre class="example">
+1.1666666666666667
+</pre>
+
+
+<p>
+Unless we want to do some extra math (\(0.166667 \cdot 12 = 2.0\;\;\;\)), we
+should try something else. Here&rsquo;s a better way: Haskell&rsquo;s <code>quot</code> will
+give only the <i>quotient</i> part of a division
+</p>
+
+<pre class="code"><code>14 <span class="org-haskell-operator">`quot`</span> 12
+</code></pre>
+
+<pre class="example">
+1
+</pre>
+
+
+<p>
+So \(12\) &ldquo;goes into&rdquo; \(14\) one time, and the <i>remainder</i> of \(14 \div 12\;\)
+is
+</p>
+
+<pre class="code"><code>14 <span class="org-haskell-operator">`rem`</span> 12
+</code></pre>
+
+<pre class="example">
+2
+</pre>
+
+
+<p>
+or, even handier
+</p>
+
+<pre class="code"><code>14 <span class="org-haskell-operator">`quotRem`</span> 12
+</code></pre>
+
+<pre class="example">
+(1,2)
+</pre>
+
+
+<p>
+where the pair <code>(1,2)</code> indicates \(1\) for the quotient and \(2\) for the
+remainder. Let&rsquo;s try it on our bigger number
+</p>
+
+<pre class="code"><code>239 <span class="org-haskell-operator">`quotRem`</span> 12
+</code></pre>
+
+<pre class="example">
+(19,11)
+</pre>
+
+
+<p>
+Hmmm. Is one of these our answer, i.e., the first or second number in
+this <i>tuple</i>? Well, our table above only seems to match two
+twelve-hour clocks with a twenty-four-hour clock, then two more into
+the third twelve-hour clock. Perhaps the answer is saying we went \(19\)
+bunches of \(12\) forward, which amounted to \(228\;\), then we needed to
+go \(11\) additional hours to get to hour \(239\;\). Does that make sense?
+</p>
+
+<p>
+One calculator on the Internet says \(239\) hours is \(9\) days and \(23\)
+hours. But since a day is \(24\) hours, we should double \(9\) since there
+are two go-rounds of the clock per day. That means \(18\) twelve-hour
+half-days. Now \(23 - 12 = 11\;\;\). So adding in that last \(12\) hours
+to \(18\) to get \(19\), we have what our <code>quotRem</code> calculation gave us,
+\(19\) twelve-hour blocks, plus the additional \(11\) hours. In modular
+math, we would say \(239 \equiv 11 \;mod\; (12)\;\), that is, \(239\) is
+congruent to \(11\) modulo \(12\), which effectively means that as the
+hours or state changes continue, \(11\) and \(239\) are related by being
+multiples of \(12\) from each other, in fact, \(19\) multiples of \(12\)
+separate them.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4b80dd3" class="outline-3">
+<h3 id="org4b80dd3">Throwing dice</h3>
+<div class="outline-text-3" id="text-org4b80dd3">
+<p>
+Let&rsquo;s look at dice as a system. Actually, we&rsquo;ll just consider one
+single six-sided die, i.e., the six possible states in which the die
+system might be in after a throw. Using the Haskell <b>list</b> <i>data
+structure</i>, the <i>state space</i> can be expressed as elements of a list
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">dieState</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4,5,6<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<p>
+➝ Question: Does the <i>order</i> of our states list matter, i.e., we have
+  <i>enumeration</i> of the six states, but is there <i>ordinality</i>? <br />
+➝ Answer: Yes and no. Just considering a listing of the possible
+  states, i.e., a state space list, no. But if we talk about a
+  sequence of throws, then a list of the sequential progression of
+  state changes would of course depend on order.
+</p>
+
+<p>
+Again, the Haskell list data structure will be our best substitute for
+a mathematical set or sequence, and we&rsquo;ll work around its
+limitations. For example, the Haskell lists <code>[1,2,3,4,5,6]</code> and
+<code>[6,5,4,3,2,1]</code> are two different and unequal lists, even though as
+mathematical sets they are considered the same. Hence, Haskell lists
+aren&rsquo;t the best for math sets where order (and even repeating
+elements) don&rsquo;t matter. But lists are adequate in depicting a math
+sequence where the sequential order matters and a repeating element
+does in fact mean a state has been repeated at that point.
+</p>
+
+<p>
+Like in our coin example, we&rsquo;ll start with a loaded or trick die that
+produces a steady repeating pattern of
+\(1,2,3,4,5,6,1,2,3,4,5,6,\ldots\;\;\;\) for \(1,2,3,\ldots,n\;\)
+rolls. The system <i>cycles</i>, i.e., repeats a six-throw sequence
+pattern<label for="21" class="margin-toggle sidenote-number"></label><input type="checkbox" id="21" class="margin-toggle"/><span class="sidenote">
+Interestingly, a system that cycles in a <i>probabilistic</i> way,
+i.e., there&rsquo;s a given <i>chance</i> of a certain state change happening,
+would be the domain of <a href="https://www.fa17.eecs70.org/static/notes/n24.html">Markov chains</a>, which we&rsquo;ll look at later.
+</span>. Hence, it is <i>modular</i> like our clock example above
+where <font color = "#650d1c">every state of the sequence
+will be <i>congruent</i> to one of the elements of the state
+space</font>.
+</p>
+
+<table id="orgd6f0fff" border="2" cellspacing="0" cellpadding="6" rules="all" frame="border">
+<caption class="t-above"><span class="table-number">Table 3:</span> Trick die rolls</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">n</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+<td class="org-right">7</td>
+<td class="org-right">8</td>
+<td class="org-right">9</td>
+<td class="org-right">10</td>
+<td class="org-right">11</td>
+<td class="org-right">12</td>
+<td class="org-right">13</td>
+<td class="org-right">14</td>
+<td class="org-right">15</td>
+<td class="org-right">16</td>
+<td class="org-right">17</td>
+<td class="org-right">18</td>
+</tr>
+
+<tr>
+<td class="org-left">r</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+What about a six-throw sequence that repeats a pattern, but not
+necessarily strictly-increasing like in Table 3?
+</p>
+
+<img src="./images/cyclicdiestates2.svg" style="padding: 15px 0px 15px 0px" alt="Cycle 2" class="center">
+<span class="cap">A cyclic 1-2-5-3-4-6 Law</span>
+
+<table id="orgeac4b22" border="2" cellspacing="0" cellpadding="6" rules="all" frame="border">
+<caption class="t-above"><span class="table-number">Table 4:</span> 1-2-5-3-4-6</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">n</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+<td class="org-right">7</td>
+<td class="org-right">8</td>
+<td class="org-right">9</td>
+<td class="org-right">10</td>
+<td class="org-right">11</td>
+<td class="org-right">12</td>
+</tr>
+
+<tr>
+<td class="org-left">r</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">5</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">6</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">5</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">6</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Now let&rsquo;s consider <i>all</i> possible six-throw sequences. We have two
+situations
+</p>
+
+<ul class="org-ul">
+<li>What are the possible six-throw sequences <i>without</i> repeating any
+state?</li>
+<li>What are the possible six-throw sequences <i>with one or more states
+repeating</i>, e.g., <code>[1,1,2,3,4]</code> or <code>[1,3,6,3,5]</code> or <code>[2,4,4,4,1]</code>?</li>
+</ul>
+
+<p>
+This is a classic combinatorial<label for="22" class="margin-toggle sidenote-number"></label><input type="checkbox" id="22" class="margin-toggle"/><span class="sidenote">
+<i><a href="https://en.wikipedia.org/wiki/Combinatorics">Combinatorics</a></i> is a large field of mathematics dealing with
+the how things are counted and combined according to given
+constraints. We&rsquo;ll see more of this later.
+</span> question. But is this a
+<i>combinations</i> or a <i>permutations</i> issue?
+</p>
+
+<p>
+<font color = "#650d1c">
+</p>
+<ul class="org-ul">
+<li>A <b>combination</b> is a way to create or arrange a set or number of things.</li>
+<li>All possible <b>combinations</b> would be all possible <i>unique</i> (no two
+the same) orderings or arrangements of those things<label for="23" class="margin-toggle sidenote-number"></label><input type="checkbox" id="23" class="margin-toggle"/><span class="sidenote">
+This definition came out of a &ldquo;physics math&rdquo; book. But is this
+really what we mean? It depends on what we mean by <i>unique</i>. Read
+on&#x2026;
+</span>.</li>
+</ul>
+<p>
+</font>
+</p>
+
+<p>
+This maybe sounds like what we want. One common math symbol for
+<i>combinations</i> is \(_nC_{k}\;\), another is \(C_{n}^{k}\;\). Another look often
+seen with the binomial coefficient is \(\binom{n}{k} \;\). However,
+these indicate the <i>number</i> of possible combinations, not a listing of
+the combinations themselves. You might have seen \(\binom{n}{k} \;\) or
+\(_nC_{k}\;\) in calculating the <i>binomial coefficients</i> of the expansion
+of a <i>binomial</i> raised to a power: \((x + y)^n \;\). This is meant to
+calculate the coefficient. So no, these are not what we want. We want
+something that creates sequences, not just returns a count.
+</p>
+
+<p>
+Let&rsquo;s look at some Haskell code and its output<label for="24" class="margin-toggle sidenote-number"></label><input type="checkbox" id="24" class="margin-toggle"/><span class="sidenote">
+Again, YMMV on understanding this code. If you don&rsquo;t yet,
+don&rsquo;t worry.
+</span>
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">combinations</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Int</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-rainbow-delimiters-depth-3">[</span>a<span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">combinations</span> 0 <span class="org-haskell-keyword">_</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-3">[]</span></span><span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">combinations</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span>
+<span class="org-haskell-definition">combinations</span> n <span class="org-rainbow-delimiters-depth-2">(</span>x<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>map <span class="org-rainbow-delimiters-depth-3">(</span>x<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">(</span>combinations <span class="org-rainbow-delimiters-depth-4">(</span>n<span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-4">)</span> xs<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">++</span> <span class="org-rainbow-delimiters-depth-2">(</span>combinations n xs<span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">combinations</span> 2 <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[[1,2],[1,3],[2,3]]
+</pre>
+
+
+<p>
+This output is all possible combinations of <i>three states into groups
+of two states each</i>. Already we can see a problem. Yes, these are
+<i>unique</i> orderings of three into groups of two, like our definition
+above says. But what about <code>[2,1]</code> or <code>[3,1]</code> or <code>[3,2]</code>? Why were
+they not listed? Let&rsquo;s try the possible <i>unique</i> ordering of six
+states into groups of six.
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">combinations</span> 6 <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4,5,6<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[[1,2,3,4,5,6]]
+</pre>
+
+
+<p>
+Our code says only one possible &ldquo;unique&rdquo; grouping is returned. Now
+it&rsquo;s clear that combinations is not what we want. We need something
+with awareness of sequences, i.e., the <i>order</i> of the possible
+groupings matter.
+</p>
+
+<p>
+⇲<font color = "#650d1c"> What about a <i>combination</i> lock? If
+the &ldquo;combination&rdquo; of the lock is <code>[5,15,7]</code>, would <code>[15,5,7]</code> or
+<code>[15,7,5]</code> or <code>[7,5,15]</code> or <code>[7,15,5]</code> also open the lock? No &#x2014; at
+least they shouldn&rsquo;t. So if only one <i>sequence</i> of three numbers opens
+the lock, then we should call it a <i>permutation</i> lock.</font>
+</p>
+
+<p>
+Let&rsquo;s look at our die state space again as a Haskell list, at this
+point order just for convenience <code>a = [1,2,3,4,5,6]</code>. How could we
+build new six-element lists &#x2014; not repeating any of the numbers &#x2014;
+all with unique orders? Again, position in a sequence or a Haskell
+list matters. So when we choose <i>one</i> of the six numbers from <code>a</code> we
+have <i>eliminated</i> it from consideration for the rest of the
+positions. That means we have \(6-1\;\) or \(5\) choices for the next
+position. This patter continues until we only have the one choice for
+the last position in the sequence/list.
+</p>
+
+<p>
+If we want all the possible state change sequences we could use this
+code
+</p>
+
+<pre class="code"><code><span class="org-haskell-keyword">import</span> <span class="org-haskell-constructor">Data.List</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">permutate</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-type">Eq</span> a<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">=&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-rainbow-delimiters-depth-3">[</span>a<span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">permutate</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-2">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-3">[]</span></span><span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">permutate</span> l <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-haskell-constructor">:</span>x <span class="org-haskell-operator">|</span> a <span class="org-haskell-operator">&lt;-</span> l, x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-3">(</span>permutate <span class="org-haskell-operator">$</span> filter <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-haskell-operator">\</span>x <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">/=</span> a<span class="org-rainbow-delimiters-depth-4">)</span> l<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<p>
+Yes, this code will work &#x2014; and output some \(720\) different sequences
+for our six-throw die<label for="25" class="margin-toggle sidenote-number"></label><input type="checkbox" id="25" class="margin-toggle"/><span class="sidenote">
+We list out only a few&#x2026;
+</span>
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">permutate</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4,5,6<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+[[1,2,3,4,5,6],[1,2,3,4,6,5],[1,2,3,5,4,6],[1,2,3,5,6,4],[1,2,3,6,4,5],[1,2,3,6,5,4],[1,2,4,3,5,6],[1,2,4,3,6,5],[1,2,4,5,3,6],[1,2,4,5,6,3],[1,2,4,6,3,5],[1,2,4,6,5,3],[1,2,5,3,4,6],[1,2,5,3,6,4],[1,2,5,4,3,6],[1,2,5,4,6,3],[1,2,5,6,3,4],[1,2,5,6,4,3],[1,2,6,3,4,5],[1,2,6,3,5,4],[1,2,6,4,3,5],[1,2,6,4,5,3],[1,2,6,5,3,4],[1,2,6,5,4,3],[1,3,2,4,5,6],[1,3,2,4,6,5],[1,3,2,5,4,6],[1,3,2,5,6,4],[1,3,2,6,4,5],[1,3,2,6,5,4],[1,3,4,2,5,6],[1,3,4,2,6,5],[1,3,4,5,2,6],[1,3,4,5,6,2],[1,3,4,6,2,5],[1,3,4,6,5,2],[1,3,5,2,4,6],[1,3,5,2,6,4],[1,3,5,4,2,6],[1,3,5,4,6,2],[1,3,5,6,2,4],[1,3,5,6,4,2],[1,3,6,2,4,5],[1,3,6,2,5,4],[1,3,6,4,2,5],[1,3,6,4,5,2],[1,3,6,5,2,4],[1,3,6,5,4,2],[1,4,2,3,5,6],[1,4,2,3,6,5],[1,4,2,5,3,6],[1,4,2,5,6,3],[1,4,2,6,3,5],[1,4,2,6,5,3],[1,4,3,2,5,6],[1,4,3,2,6,5],[1,4,3,5,2,6],[1,4,3,5,6,2],[1,4,3,6,2,5],[1,4,3,6,5,2],[1,4,5,2,3,6],[1,4,5,2,6,3],[1,4,5,3,2,6],[1,4,5,3,6,2],[1,4,5,6,2,3],[1,4,5,6,3,2],[1,4,6,2,3,5],[1,4,6,2,5,3],[1,4,6,3,2,5],[1,4,6,3,5,2],[1,4,6,5,2,3],[1,4,6,5,3,2],[1,5,2,3,4,6],[1,5,2,3,6,4],[1,5,2,4,3,6],[1,5,2,4,6,3],[1,5,2,6,3,4],[1,5,2,6,4,3],[1,5,3,2,4,6],[1,5,3,2,6,4],[1,5,3,4,2,6],[1,5,3,4,6,2],[1,5,3,6,2,4],[1,5,3,6,4,2],[1,5,4,2,3,6],[1,5,4,2,6,3],[1,5,4,3,2,6],[1,5,4,3,6,2],[1,5,4,6,2,3],[1,5,4,6,3,2],[1,5,6,2,3,4],[1,5,6,2,4,3],[1,5,6,3,2,4],[1,5,6,3,4,2],[1,5,6,4,2,3],[1,5,6,4,3,2],[1,6,2,3,4,5],[1,6,2,3,5,4],[1,6,2,4,3,5],[1,6,2,4,5,3],[1,6,2,5,3,4],[1,6,2,5,4,3],[1,6,3,2,4,5],[1,6,3,2,5,4],[1,6,3,4,2,5],[1,6,3,4,5,2],[1,6,3,5,2,4],[1,6,3,5,4,2],[1,6,4,2,3,5],[1,6,4,2,5,3],[1,6,4,3,2,5],[1,6,4,3,5,2],[1,6,4,5,2,3],[1,6,4,5,3,2],[1,6,5,2,3,4],[1,6,5,2,4,3],[1,6,5,3,2,4],[1,6,5,3,4,2],[1,6,5,4,2,3],[1,6,5,4,3,2],[2,1,3,4,5,6],[2,1,3,4,6,5],[2,1,3,5,4,6],[2,1,3,5,6,4],[2,1,3,6,4,5],[2,1,3,6,5,4],[2,1,4,3,5,6],[2,1,4,3,6,5],[2,1,4,5,3,6],[2,1,4,5,6,3],[2,1,4,6,3,5],[2,1,4,6,5,3],[2,1,5,3,4,6],[2,1,5,3,6,4],[2,1,5,4,3,6],[2,1,5,4,6,3],[2,1,5,6,3,4],[2,1,5,6,4,3],[2,1,6,3,4,5],[2,1,6,3,5,4],[2,1,6,4,3,5],[2,1,6,4,5,3],[2,1,6,5,3,4],[2,1,6,5,4,3],[2,3,1,4,5,6],[2,3,1,4,6,5],[2,3,1,5,4,6],[2,3,1,5,6,4],[2,3,1,6,4,5],[2,3,1,6,5,4],[2,3,4,1,5,6],[2,3,4,1,6,5],[2,3,4,5,1,6],[2,3,4,5,6,1],[2,3,4,6,1,5],[2,3,4,6,5,1],[2,3,5,1,4,6],[2,3,5,1,6,4],[2,3,5,4,1,6],[2,3,5,4,6,1],[2,3,5,6,1,4],[2,3,5,6,4,1],[2,3,6,1,4,5],[2,3,6,1,5,4],[2,3,6,4,1,5],[2,3,6,4,5,1],[2,3,6,5,1,4],[2,3,6,5,4,1],[2,4,1,3,5,6],[2,4,1,3,6,5],[2,4,1,5,3,6],[2,4,1,5,6,3],[2,4,1,6,3,5],[2,4,1,6,5,3],[2,4,3,1,5,6],[2,4,3,1,6,5],[2,4,3,5,1,6],[2,4,3,5,6,1],[2,4,3,6,1,5],[2,4,3,6,5,1],[2,4,5,1,3,6],[2,4,5,1,6,3],[2,4,5,3,1,6],[2,4,5,3,6,1],[2,4,5,6,1,3],[2,4,5,6,3,1],[2,4,6,1,3,5],[2,4,6,1,5,3],[2,4,6,3,1,5],[2,4,6,3,5,1],[2,4,6,5,1,3],[2,4,6,5,3,1],[2,5,1,3,4,6],[2,5,1,3,6,4],[2,5,1,4,3,6],[2,5,1,4,6,3],[2,5,1,6,3,4],[2,5,1,6,4,3],[2,5,3,1,4,6],[2,5,3,1,6,4],[2,5,3,4,1,6],[2,5,3,4,6,1],[2,5,3,6,1,4],[2,5,3,6,4,1],[2,5,4,1,3,6],[2,5,4,1,6,3],[2,5,4,3,1,6],[2,5,4,3,6,1],[2,5,4,6,1,3],[2,5,4,6,3,1],[2,5,6,1,3,4],[2,5,6,1,4,3],[2,5,6,3,1,4],[2,5,6,3,4,1],[2,5,6,4,1,3],[2,5,6,4,3,1],[2,6,1,3,4,5],[2,6,1,3,5,4],[2,6,1,4,3,5],[2,6,1,4,5,3],[2,6,1,5,3,4],[2,6,1,5,4,3],[2,6,3,1,4,5],[2,6,3,1,5,4],[2,6,3,4,1,5],[2,6,3,4,5,1],[2,6,3,5,1,4],[2,6,3,5,4,1],[2,6,4,1,3,5],[2,6,4,1,5,3],[2,6,4,3,1,5],[2,6,4,3,5,1],[2,6,4,5,1,3],[2,6,4,5,3,1],[2,6,5,1,3,4],[2,6,5,1,4,3],[2,6,5,3,1,4],[2,6,5,3,4,1],[2,6,5,4,1,3],[2,6,5,4,3,1],[3,1,2,4,5,6],[3,1,2,4,6,5],[3,1,2,5,4,6],[3,1,2,5,6,4],[3,1,2,6,4,5],[3,1,2,6,5,4],[3,1,4,2,5,6],[3,1,4,2,6,5],[3,1,4,5,2,6],[3,1,4,5,6,2],[3,1,4,6,2,5],[3,1,4,6,5,2],[3,1,5,2,4,6],[3,1,5,2,6,4],[3,1,5,4,2,6],[3,1,5,4,6,2],[3,1,5,6,2,4],[3,1,5,6,4,2],[3,1,6,2,4,5],[3,1,6,2,5,4],[3,1,6,4,2,5],[3,1,6,4,5,2],[3,1,6,5,2,4],[3,1,6,5,4,2],[3,2,1,4,5,6],[3,2,1,4,6,5],[3,2,1,5,4,6],[3,2,1,5,6,4],[3,2,1,6,4,5],[3,2,1,6,5,4],[3,2,4,1,5,6],[3,2,4,1,6,5],[3,2,4,5,1,6],[3,2,4,5,6,1],[3,2,4,6,1,5],[3,2,4,6,5,1],[3,2,5,1,4,6],[3,2,5,1,6,4],[3,2,5,4,1,6],[3,2,5,4,6,1],[3,2,5,6,1,4],[3,2,5,6,4,1],[3,2,6,1,4,5],[3,2,6,1,5,4],[3,2,6,4,1,5],[3,2,6,4,5,1],[3,2,6,5,1,4],[3,2,6,5,4,1],[3,4,1,2,5,6],[3,4,1,2,6,5],[3,4,1,5,2,6],[3,4,1,5,6,2],[3,4,1,6,2,5],[3,4,1,6,5,2],[3,4,2,1,5,6],[3,4,2,1,6,5],[3,4,2,5,1,6],[3,4,2,5,6,1],[3,4,2,6,1,5],[3,4,2,6,5,1],[3,4,5,1,2,6],[3,4,5,1,6,2],[3,4,5,2,1,6],[3,4,5,2,6,1],[3,4,5,6,1,2],[3,4,5,6,2,1],[3,4,6,1,2,5],[3,4,6,1,5,2],[3,4,6,2,1,5],[3,4,6,2,5,1],[3,4,6,5,1,2],[3,4,6,5,2,1],[3,5,1,2,4,6],[3,5,1,2,6,4],[3,5,1,4,2,6],[3,5,1,4,6,2],[3,5,1,6,2,4],[3,5,1,6,4,2],[3,5,2,1,4,6],[3,5,2,1,6,4],[3,5,2,4,1,6],[3,5,2,4,6,1],[3,5,2,6,1,4],[3,5,2,6,4,1],[3,5,4,1,2,6],[3,5,4,1,6,2],[3,5,4,2,1,6],[3,5,4,2,6,1],[3,5,4,6,1,2],[3,5,4,6,2,1],[3,5,6,1,2,4],[3,5,6,1,4,2],[3,5,6,2,1,4],[3,5,6,2,4,1],[3,5,6,4,1,2],[3,5,6,4,2,1],[3,6,1,2,4,5],[3,6,1,2,5,4],[3,6,1,4,2,5],[3,6,1,4,5,2],[3,6,1,5,2,4],[3,6,1,5,4,2],[3,6,2,1,4,5],[3,6,2,1,5,4],[3,6,2,4,1,5],[3,6,2,4,5,1],[3,6,2,5,1,4],[3,6,2,5,4,1],[3,6,4,1,2,5],[3,6,4,1,5,2],[3,6,4,2,1,5],[3,6,4,2,5,1],[3,6,4,5,1,2],[3,6,4,5,2,1],[3,6,5,1,2,4],[3,6,5,1,4,2],[3,6,5,2,1,4],[3,6,5,2,4,1],[3,6,5,4,1,2],[3,6,5,4,2,1],[4,1,2,3,5,6],[4,1,2,3,6,5],[4,1,2,5,3,6],[4,1,2,5,6,3],[4,1,2,6,3,5],[4,1,2,6,5,3],[4,1,3,2,5,6],[4,1,3,2,6,5],[4,1,3,5,2,6],[4,1,3,5,6,2],[4,1,3,6,2,5],[4,1,3,6,5,2],[4,1,5,2,3,6],[4,1,5,2,6,3],[4,1,5,3,2,6],[4,1,5,3,6,2],[4,1,5,6,2,3],[4,1,5,6,3,2],[4,1,6,2,3,5],[4,1,6,2,5,3],[4,1,6,3,2,5],[4,1,6,3,5,2],[4,1,6,5,2,3],[4,1,6,5,3,2],[4,2,1,3,5,6],[4,2,1,3,6,5],[4,2,1,5,3,6],[4,2,1,5,6,3],[4,2,1,6,3,5],[4,2,1,6,5,3],[4,2,3,1,5,6],[4,2,3,1,6,5],[4,2,3,5,1,6],[4,2,3,5,6,1],[4,2,3,6,1,5],[4,2,3,6,5,1],[4,2,5,1,3,6],[4,2,5,1,6,3],[4,2,5,3,1,6],[4,2,5,3,6,1],[4,2,5,6,1,3],[4,2,5,6,3,1],[4,2,6,1,3,5],[4,2,6,1,5,3],[4,2,6,3,1,5],[4,2,6,3,5,1],[4,2,6,5,1,3],[4,2,6,5,3,1],[4,3,1,2,5,6],[4,3,1,2,6,5],[4,3,1,5,2,6],[4,3,1,5,6,2],[4,3,1,6,2,5],[4,3,1,6,5,2],[4,3,2,1,5,6],[4,3,2,1,6,5],[4,3,2,5,1,6],[4,3,2,5,6,1],[4,3,2,6,1,5],[4,3,2,6,5,1],[4,3,5,1,2,6],[4,3,5,1,6,2],[4,3,5,2,1,6],[4,3,5,2,6,1],[4,3,5,6,1,2],[4,3,5,6,2,1],[4,3,6,1,2,5],[4,3,6,1,5,2],[4,3,6,2,1,5],[4,3,6,2,5,1],[4,3,6,5,1,2],[4,3,6,5,2,1],[4,5,1,2,3,6],[4,5,1,2,6,3],[4,5,1,3,2,6],[4,5,1,3,6,2],[4,5,1,6,2,3],[4,5,1,6,3,2],[4,5,2,1,3,6],[4,5,2,1,6,3],[4,5,2,3,1,6],[4,5,2,3,6,1],[4,5,2,6,1,3],[4,5,2,6,3,1],[4,5,3,1,2,6],[4,5,3,1,6,2],[4,5,3,2,1,6],[4,5,3,2,6,1],[4,5,3,6,1,2],[4,5,3,6,2,1],[4,5,6,1,2,3],[4,5,6,1,3,2],[4,5,6,2,1,3],[4,5,6,2,3,1],[4,5,6,3,1,2],[4,5,6,3,2,1],[4,6,1,2,3,5],[4,6,1,2,5,3],[4,6,1,3,2,5],[4,6,1,3,5,2],[4,6,1,5,2,3],[4,6,1,5,3,2],[4,6,2,1,3,5],[4,6,2,1,5,3],[4,6,2,3,1,5],[4,6,2,3,5,1],[4,6,2,5,1,3],[4,6,2,5,3,1],[4,6,3,1,2,5],[4,6,3,1,5,2],[4,6,3,2,1,5],[4,6,3,2,5,1],[4,6,3,5,1,2],[4,6,3,5,2,1],[4,6,5,1,2,3],[4,6,5,1,3,2],[4,6,5,2,1,3],[4,6,5,2,3,1],[4,6,5,3,1,2],[4,6,5,3,2,1],[5,1,2,3,4,6],[5,1,2,3,6,4],[5,1,2,4,3,6],[5,1,2,4,6,3],[5,1,2,6,3,4],[5,1,2,6,4,3],[5,1,3,2,4,6],[5,1,3,2,6,4],[5,1,3,4,2,6],[5,1,3,4,6,2],[5,1,3,6,2,4],[5,1,3,6,4,2],[5,1,4,2,3,6],[5,1,4,2,6,3],[5,1,4,3,2,6],[5,1,4,3,6,2],[5,1,4,6,2,3],[5,1,4,6,3,2],[5,1,6,2,3,4],[5,1,6,2,4,3],[5,1,6,3,2,4],[5,1,6,3,4,2],[5,1,6,4,2,3],[5,1,6,4,3,2],[5,2,1,3,4,6],[5,2,1,3,6,4],[5,2,1,4,3,6],[5,2,1,4,6,3],[5,2,1,6,3,4],[5,2,1,6,4,3],[5,2,3,1,4,6],[5,2,3,1,6,4],[5,2,3,4,1,6],[5,2,3,4,6,1],[5,2,3,6,1,4],[5,2,3,6,4,1],[5,2,4,1,3,6],[5,2,4,1,6,3],[5,2,4,3,1,6],[5,2,4,3,6,1],[5,2,4,6,1,3],[5,2,4,6,3,1],[5,2,6,1,3,4],[5,2,6,1,4,3],[5,2,6,3,1,4],[5,2,6,3,4,1],[5,2,6,4,1,3],[5,2,6,4,3,1],[5,3,1,2,4,6],[5,3,1,2,6,4],[5,3,1,4,2,6],[5,3,1,4,6,2],[5,3,1,6,2,4],[5,3,1,6,4,2],[5,3,2,1,4,6],[5,3,2,1,6,4],[5,3,2,4,1,6],[5,3,2,4,6,1],[5,3,2,6,1,4],[5,3,2,6,4,1],[5,3,4,1,2,6],[5,3,4,1,6,2],[5,3,4,2,1,6],[5,3,4,2,6,1],[5,3,4,6,1,2],[5,3,4,6,2,1],[5,3,6,1,2,4],[5,3,6,1,4,2],[5,3,6,2,1,4],[5,3,6,2,4,1],[5,3,6,4,1,2],[5,3,6,4,2,1],[5,4,1,2,3,6],[5,4,1,2,6,3],[5,4,1,3,2,6],[5,4,1,3,6,2],[5,4,1,6,2,3],[5,4,1,6,3,2],[5,4,2,1,3,6],[5,4,2,1,6,3],[5,4,2,3,1,6],[5,4,2,3,6,1],[5,4,2,6,1,3],[5,4,2,6,3,1],[5,4,3,1,2,6],[5,4,3,1,6,2],[5,4,3,2,1,6],[5,4,3,2,6,1],[5,4,3,6,1,2],[5,4,3,6,2,1],[5,4,6,1,2,3],[5,4,6,1,3,2],[5,4,6,2,1,3],[5,4,6,2,3,1],[5,4,6,3,1,2],[5,4,6,3,2,1],[5,6,1,2,3,4],[5,6,1,2,4,3],[5,6,1,3,2,4],[5,6,1,3,4,2],[5,6,1,4,2,3],[5,6,1,4,3,2],[5,6,2,1,3,4],[5,6,2,1,4,3],[5,6,2,3,1,4],[5,6,2,3,4,1],[5,6,2,4,1,3],[5,6,2,4,3,1],[5,6,3,1,2,4],[5,6,3,1,4,2],[5,6,3,2,1,4],[5,6,3,2,4,1],[5,6,3,4,1,2],[5,6,3,4,2,1],[5,6,4,1,2,3],[5,6,4,1,3,2],[5,6,4,2,1,3],[5,6,4,2,3,1],[5,6,4,3,1,2],[5,6,4,3,2,1],[6,1,2,3,4,5],[6,1,2,3,5,4],[6,1,2,4,3,5],[6,1,2,4,5,3],[6,1,2,5,3,4],[6,1,2,5,4,3],[6,1,3,2,4,5],[6,1,3,2,5,4],[6,1,3,4,2,5],[6,1,3,4,5,2],[6,1,3,5,2,4],[6,1,3,5,4,2],[6,1,4,2,3,5],[6,1,4,2,5,3],[6,1,4,3,2,5],[6,1,4,3,5,2],[6,1,4,5,2,3],[6,1,4,5,3,2],[6,1,5,2,3,4],[6,1,5,2,4,3],[6,1,5,3,2,4],[6,1,5,3,4,2],[6,1,5,4,2,3],[6,1,5,4,3,2],[6,2,1,3,4,5],[6,2,1,3,5,4],[6,2,1,4,3,5],[6,2,1,4,5,3],[6,2,1,5,3,4],[6,2,1,5,4,3],[6,2,3,1,4,5],[6,2,3,1,5,4],[6,2,3,4,1,5],[6,2,3,4,5,1],[6,2,3,5,1,4],[6,2,3,5,4,1],[6,2,4,1,3,5],[6,2,4,1,5,3],[6,2,4,3,1,5],[6,2,4,3,5,1],[6,2,4,5,1,3],[6,2,4,5,3,1],[6,2,5,1,3,4],[6,2,5,1,4,3],[6,2,5,3,1,4],[6,2,5,3,4,1],[6,2,5,4,1,3],[6,2,5,4,3,1],[6,3,1,2,4,5],[6,3,1,2,5,4],[6,3,1,4,2,5],[6,3,1,4,5,2],[6,3,1,5,2,4],[6,3,1,5,4,2],[6,3,2,1,4,5],[6,3,2,1,5,4],[6,3,2,4,1,5],[6,3,2,4,5,1],[6,3,2,5,1,4],[6,3,2,5,4,1],[6,3,4,1,2,5],[6,3,4,1,5,2],[6,3,4,2,1,5],[6,3,4,2,5,1],[6,3,4,5,1,2],[6,3,4,5,2,1],[6,3,5,1,2,4],[6,3,5,1,4,2],[6,3,5,2,1,4],[6,3,5,2,4,1],[6,3,5,4,1,2],[6,3,5,4,2,1],[6,4,1,2,3,5],[6,4,1,2,5,3],[6,4,1,3,2,5],[6,4,1,3,5,2],[6,4,1,5,2,3],[6,4,1,5,3,2],[6,4,2,1,3,5],[6,4,2,1,5,3],[6,4,2,3,1,5],[6,4,2,3,5,1],[6,4,2,5,1,3],[6,4,2,5,3,1],[6,4,3,1,2,5],[6,4,3,1,5,2],[6,4,3,2,1,5],[6,4,3,2,5,1],[6,4,3,5,1,2],[6,4,3,5,2,1],[6,4,5,1,2,3],[6,4,5,1,3,2],[6,4,5,2,1,3],[6,4,5,2,3,1],[6,4,5,3,1,2],[6,4,5,3,2,1],[6,5,1,2,3,4],[6,5,1,2,4,3],[6,5,1,3,2,4],[6,5,1,3,4,2],[6,5,1,4,2,3],[6,5,1,4,3,2],[6,5,2,1,3,4],[6,5,2,1,4,3],[6,5,2,3,1,4],[6,5,2,3,4,1],[6,5,2,4,1,3],[6,5,2,4,3,1],[6,5,3,1,2,4],[6,5,3,1,4,2],[6,5,3,2,1,4],[6,5,3,2,4,1],[6,5,3,4,1,2],[6,5,3,4,2,1],[6,5,4,1,2,3],[6,5,4,1,3,2],[6,5,4,2,1,3],[6,5,4,2,3,1],[6,5,4,3,1,2],[6,5,4,3,2,1]]
+</pre>
+
+
+<p>
+<code>permutations</code> is a built-in Haskell function that is the same as
+<code>permutate</code> above<label for="26" class="margin-toggle sidenote-number"></label><input type="checkbox" id="26" class="margin-toggle"/><span class="sidenote">
+If you try this at home you must first do <code>import Data.List</code>
+or just <code>import Data.List (permutations)</code>.
+</span>.
+</p>
+
+
+<pre class="code"><code>length <span class="org-haskell-definition">$</span> permutations <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4,5,6<span class="org-rainbow-delimiters-depth-1">]</span>
+</code></pre>
+
+<pre class="example">
+720
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgfb0bf68" class="outline-3">
+<h3 id="orgfb0bf68">Computer and program state</h3>
+<div class="outline-text-3" id="text-orgfb0bf68">
+<p>
+Let&rsquo;s start with an example of what a program state scenario might
+look like. In programming we routinely need to repeat or iterate some
+task a given number of times. Imperative languages typically use
+<i>loops</i>, while functional languages use recursion. For a very basic
+example consider <i>factorial</i>, i.e., \(n!\;\), first in Python
+</p>
+
+<pre class="code"><code><span class="org-keyword">def</span> <span class="org-function-name">factorial</span><span class="org-rainbow-delimiters-depth-1">(</span>n<span class="org-rainbow-delimiters-depth-1">)</span>:
+    <span class="org-variable-name">num</span> = 1
+    <span class="org-keyword">while</span> n &gt;= 1:
+        <span class="org-variable-name">num</span> = num * n
+        <span class="org-variable-name">n</span> = n - 1
+    <span class="org-keyword">return</span> num
+</code></pre>
+
+<p>
+<code>factorial</code> takes <code>n</code> as its input parameter, then it establishes the
+variable <code>num</code> that will serve as a <i>counter</i> or <i>index</i>. Then begins
+what is knows as a <i>while loop</i>. The indentation tells us that the
+next two steps <code>num = num * n</code> and <code>n = n - 1</code> will be repeated
+<i>while</i> the condition <code>n &gt;= 1</code> is true<label for="27" class="margin-toggle sidenote-number"></label><input type="checkbox" id="27" class="margin-toggle"/><span class="sidenote">
+<code>n &gt;= 1</code> <i>n is greater than or equal to 1</i>.
+</span>, the <code>n = n - 1</code> line
+<i>decrementing</i> <code>n</code> each time through. For example, starting with <code>n</code>
+as <code>4</code>, the state of this code when it enters its while loop is
+</p>
+
+<table id="org9884ca2" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 5:</span> Python while loop</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">n = 4</td>
+<td class="org-left">n &gt;= 1 true</td>
+<td class="org-left">num = 1 * 4 = 4</td>
+</tr>
+
+<tr>
+<td class="org-left">n = 3</td>
+<td class="org-left">n &gt;= 1 true</td>
+<td class="org-left">num = 4 * 3 = 12</td>
+</tr>
+
+<tr>
+<td class="org-left">n = 2</td>
+<td class="org-left">n &gt;= 1 true</td>
+<td class="org-left">num = 12 * 2 = 24</td>
+</tr>
+
+<tr>
+<td class="org-left">n = 1</td>
+<td class="org-left">n &gt;= 1 true</td>
+<td class="org-left">num = 24 * 1 = 24</td>
+</tr>
+
+<tr>
+<td class="org-left">n = 0</td>
+<td class="org-left">n &gt;= 1 false</td>
+<td class="org-left">(while loop ends)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+and the returned value <code>num</code> in its latest and final state, is
+<code>24</code>. And so we see how an imperative-style programming language
+relies on updating variables, i.e., <i>changing the state of variables</i>.
+In our example <code>n</code> and <code>num</code> are both updated four times during the
+while loop.
+</p>
+
+<p>
+A purely functional language like Haskell, however, never declares a
+variable and then later changes its value, its state. A repeating task
+or calculation done with a loop are handled exclusively by
+recursion. We&rsquo;ll have a more detailed exploration of recursion later,
+but for now let&rsquo;s just look at factorial in simple Haskell code<label for="28" class="margin-toggle sidenote-number"></label><input type="checkbox" id="28" class="margin-toggle"/><span class="sidenote">
+We&rsquo;ll learn all of Haskell&rsquo;s conditional operators, e.g., <code>a
+== b</code> <i>is a equal to b?</i> later.
+</span>
+</p>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">factorial</span> n <span class="org-haskell-operator">|</span> n <span class="org-haskell-operator">==</span> 1 <span class="org-haskell-operator">=</span> 1
+            <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> n <span class="org-haskell-operator">*</span> factorial <span class="org-rainbow-delimiters-depth-2">(</span>n <span class="org-haskell-operator">-</span> 1<span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<p>
+Here we see functional programming&rsquo;s secret weapon, i.e., the ability
+of a function to call itself, to refer to itself, to go back into
+itself over and over. Recalling a previous recurrence relation
+example, we can write factorial as a recurrence relation<label for="29" class="margin-toggle sidenote-number"></label><input type="checkbox" id="29" class="margin-toggle"/><span class="sidenote">
+What would be the &ldquo;closed&rdquo; version of factorial? Convince
+yourself <br />
+
+\begin{align*}
+n! = \prod_{i=1}^{n }i
+\end{align*}
+
+the recursive and closed versions are identical. BTW, a Haskell
+version of this would be <code>factClosed n = product [1..n]</code>
+</span>
+</p>
+
+\begin{align*}
+f(0) &= 1  \quad\quad\quad\quad\quad for \;\;\; n = 0 \\
+f(n) &= n \cdot f(n-1) \;\; for \; n \ge 1
+\end{align*}
+
+<p>
+we see the same basic idea, i.e., we establish a starting value or
+<i>base case</i> for \(f\) when \(n\) is \(0\;\), then a recursive step for all
+\(n\) not \(0\) where \(f(n)\) is being defined in terms of a previous
+version of itself \(f(n-1)\;\). Let&rsquo;s evaluate it
+</p>
+
+<pre class="code"><code><span class="org-haskell-definition">factorial</span> 4
+</code></pre>
+
+<pre class="example">
+24
+</pre>
+
+
+<p>
+So what do you imagine is happening with this <code>factorial</code> code where
+it seems to be going back into itself &#x2014; over and over? Let&rsquo;s imagine
+a game you might play with a group of people who will help you with an
+adding game. We&rsquo;ll start with you and a group of people all sitting in
+a circle facing each other. You all roll your die and remember your
+numbers. You rolled \(4\;\) That means you&rsquo;ll stand up and go around the
+circle counter-clockwise to the fourth person and ask them their
+number. Sally is the fourth person and she rolled a \(2\). You write
+down \(2\;\). Moving back clockwise, Ralph is next and his number is
+\(6\). You write down \(+ \;6\) after the \(2\) just like adding
+horizontally. Next, is Harriet and her number is \(5\). Now you have
+\(2 + 6 + 5\;\) written down. The last person coming back clockwise is
+Kurt and his number is \(1\;\). Now you have \(2 + 6 + 5 + 1\;\) and
+you&rsquo;re back where you started. You then add up the four numbers to get
+\(14\;\).
+</p>
+
+<p>
+Obviously, you could play this game of adding random numbers chosen
+between \(1\) and \(6\) with just two other people. So you roll your die
+and get \(4\) again. So you tell Sally to remember \(4\;\), who this time
+will be your indexer/counter. Then Ralph, who will be the accumulator
+or <i>augend</i><label for="30" class="margin-toggle sidenote-number"></label><input type="checkbox" id="30" class="margin-toggle"/><span class="sidenote">
+<b>augend</b>: the number to which another is added, which can then
+server as an accumulator. Why is there an <i>augend</i> and an <i>addend</i>
+with addition? Because addition is a <i>binary operation</i>. Despite the
+illusion of adding a whole column of numbers at once, at the
+computational level, addition is happening between two and only two
+numbers at a time, i.e., both in the digital circuitry and abstract
+algebra. We&rsquo;ll discuss where this misunderstanding arises when we
+investigate the associativity nature of binary operations.
+</span> this time, rolls his die. Ralph rolls \(2\) and
+remembers. Then Sally subtracts \(1\) from \(4\) to get \(3\). Then Ralph
+rolls again and gets \(6\). He adds the previous \(2\) to \(6\) in his head
+to get \(8\) and makes sure to remember. Sally again <i>decrements</i> \(3\) to
+\(2\;\). Ralph again rolls and gets \(5\). He adds this to his previous
+\(8\) and now has \(13\). Sally decrements to \(2\). Ralph rolls and gets
+\(1\), then adds this to \(13\) to get \(14\;\). Sally decrements to \(1\),
+which will signal a halt to Ralph rolling and adding. Ralph reports
+his final amount as \(14\;\).
+</p>
+
+<p>
+The circle version of this might seem a tad long and drawn-out, the
+two-person version more &ldquo;compact,&rdquo; but what is the fundamental
+difference? The answer is important to understanding what separates
+imperative and declarative functional programming. One version is
+constantly changing the state of variables, the other is not. Think
+about it. With the circle version of adding random numbers, is
+anything we might consider a degree of freedom or variable being
+changed? No. We&rsquo;re simply manipulating, rewriting terms like when we
+work out a formula given an input and then we <i>show our work</i>. Why do
+this?  That&rsquo;s also a big deal. It holds the &ldquo;no side effects&rdquo; mandate
+of pure functional programming, &ldquo;side effects&rdquo; being the changing of
+variable states. It&rsquo;s also functions not always returning the same
+values given the same inputs. <i>But isn&rsquo;t this too restrictive?</i> you
+might ask, <i>after all, if you&rsquo;re careful all should be good.</i> Ha!
+These are &ldquo;famous last words&rdquo; in the computer world. Yes, tolerating
+side effects inside of functions where the <i>scope</i> of changing
+variables is limited to just that function would seem safe, but what
+about a so-called <i>global</i> variable, i.e., a variable accessible to
+different functions throughout the code? The classic bug is when one
+part of your code changes a variable that another part did not realize
+had been changed and then causes an error.
+</p>
+
+<p>
+But doesn&rsquo;t no side effects also mean we can&rsquo;t even ask simple things
+like <i>list all the files in directory X</i>? After all, the function
+<code>listfiles</code> would give different answers for different directories,
+thereby violating your <i>referential transparency</i> rule. Yes and
+no. Haskell has a trick called <i>monads</i> that is a work-around, i.e.,
+Haskell stays pure, but keeps a method handy to allow some side
+effect.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd752ea2" class="outline-3">
+<h3 id="orgd752ea2">What we&rsquo;ve learned from just one paragraph</h3>
+<div class="outline-text-3" id="text-orgd752ea2">
+<p>
+Was all this just about one paragraph? Yes, this has been a very
+long-winded unpacking of just that first <i>So what&rsquo;s Haskell</i>
+paragraph, but remember that we&rsquo;re on the hunt for the computer
+version of the &ldquo;mental representations&rdquo; of mathematics. This can get
+quite exacting and involved. But formalistic rigor is your friend in
+this realm. And again, we can&rsquo;t emphasize enough that comp-sci
+programs hit this stuff hard! So we&rsquo;re about building an on-ramp to
+this computer-based &ldquo;mental representation&rdquo;. After all comp-sci got
+most of its methods and concepts from higher math.
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</div>
+<!-- Footnotes --><!-- 
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Another name for terminal or command line is <i>shell</i>. Each
+terminal you start with a command line interface is a <i>shell</i> with a
+<i>shell environment</i>. The <code>.bashrc</code> file is its configuration file that
+is read and set up each time you start another terminal command line
+instance.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<b>REPL</b> stands for <i>read, evaluate, print, loop</i>, which is
+essentially what your terminal command line is doing. That is to say,
+the Haskell REPL, called <i>ghci</i> is an interactive world: Give it a
+task, e.g., <code>1 + 1</code>, and it returns a response, <code>2</code>, then it gives you
+back a prompt and waits for your next task. This is how LYAHFGG starts
+out executing Haskell code.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+You can always get back home by typing <code>cd</code> and Enter. Then do
+<code>pwd</code> to confirm you&rsquo;ve gone to top home. And you can always test
+where you are with <code>&gt; pwd</code> (present working directory).
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+&#x2026;anticipating using org mode.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Maybe check out the <a href="http://learnyouahaskell.com/faq">FAQ</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+We&rsquo;re diving into the Introduction because it contains lots of
+ideas we really need to grok before we get going.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Actually, this page will deal only with that first
+paragraph. The rest we&rsquo;ll incorporate in later pages.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8" role="doc-backlink">8</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+In addition to the states solid, liquid, gas, there&rsquo;s also
+crystalline, colloid, glassy, amorphous, and plasma.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9" role="doc-backlink">9</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+See the video <a href="https://youtu.be/ApUFtLCrU90">here</a>. Just the first part is germane to our
+discussion here.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10" role="doc-backlink">10</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Degrees of freedom are not exactly the same as variables. A
+Cartesian coordinate system (CCS) with \(x\) and \(y\) axes can be thought
+of as a system with two DOF &#x2014; or just one DOF. The difference is the
+relationship \(x\) and \(y\) are in. DOFs must be truly independent of one
+another. So if we&rsquo;re just establishing a CCS as <i>all possible
+coordinate pairs</i>, both elements of a pair corresponding to all the
+real numbers running up and down each axis, then yes, the CCS has two
+DOFs. But if we&rsquo;re talking about a function \(f(x) = y\;\) depicted on a
+CCS then we mean only one DOF, \(x;\) since the \(y\) is now considered
+<i>dependent</i> on \(x\), i.e., not free. Knowing this, how many DOFs does
+an operating traffic light have, one, two, three?
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11" role="doc-backlink">11</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Contrast this with a <i>writing system</i> like English with
+twenty-six letters, which in comp-sci-speak is a &ldquo;nonempty finite set
+of symbols.&rdquo; There&rsquo;s an infinite number of possible states of our
+English writing system, especially considering all the millions of
+people using it!
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.12" class="footnum" href="#fnr.12" role="doc-backlink">12</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+When we use <i>sequence</i> we&rsquo;ll be leaning into the mathematical
+meaning. Basically, a sequence is a an <i>ordered</i> list of things,
+objects, numbers that may or may not exhibit a pattern. As we explore
+<i>set theory</i> we&rsquo;ll see math explained in terms of sets. For example, a
+sequence can be thought of as a function that maps the <i>set</i> of
+natural counting numbers (\(\mathbb{N} = 0,1,2,3,\ldots\;\;\;\)) to the
+<i>set</i> of objects that make up our ordered list. This may seem odd at
+first, but we just introduced the idea of <i>indexing</i> or <i>enumerating</i>
+the numerical position of the elements of our sequence.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.13" class="footnum" href="#fnr.13" role="doc-backlink">13</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Think about how a car moving <i>continuously</i> along a road. We
+could literally check its location down to the millisecond, giving us
+a very fine, very time-dependent snapshot of its location. However,
+coin flipping, which results in heads or tails, is <i>discrete</i>, i.e.,
+when the coin lands it is instantly one or the other; hence, the
+continuous passing of time isn&rsquo;t relevant in the discrete world. Lots
+more on <i>discrete</i> math coming.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.14" class="footnum" href="#fnr.14" role="doc-backlink">14</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+(1) is an example of a <i>recurrence relation</i>. You&rsquo;re probably
+more used to <i>closed</i> formulae. For example \(f(x) = x^{2}\;\) is a closed
+version of this recurrence relation <br />
+</p>
+\begin{align*}
+f(0) &= 0 \\
+f(n) &= f(n-1) + 2n-1 \;\; for \; n \ge 1
+\end{align*}
+<p class="footpara">
+Lots more on recurrence relations and recursion in general later.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.15" class="footnum" href="#fnr.15" role="doc-backlink">15</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+This Haskell code is meant to be just show-and-tell. If you&rsquo;ve
+read ahead you should be able to follow it. Quickly, we have a <i>base
+case</i>, i.e., the first line where we establish whether the first flip
+is heads or tails, then the recurrence relationship. <i>Lots</i> more about
+Haskell recursion soon. (BTW, <code>--</code> is a Haskell comment, not part of
+the program.)
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.16" class="footnum" href="#fnr.16" role="doc-backlink">16</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Again, this is show code. We&rsquo;ve used the unicode symbol σ for
+sigma because Haskell recognizes it and it&rsquo;s cool to look as
+mathematical as possible, but usually we&rsquo;ll just spell out function
+names.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.17" class="footnum" href="#fnr.17" role="doc-backlink">17</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<code>map</code> is a function that takes a function, in our case σ, and
+applies it to the individual elements of a <b>list</b>, then outputs the
+resulting new list. This is our first demonstration of a functional
+programming superpower, i.e., functions using not just regular data as
+input, but other functions as well. Lots to come on this subject.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.18" class="footnum" href="#fnr.18" role="doc-backlink">18</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+One way of &ldquo;jumping&rdquo; in a two-state system from one state to
+the other would be <i>negation</i>, e.g., \(Negate(1) = -1\;\;\). The Haskell
+operator <code>not</code> does this (the math logic symbol is \(\lnot\;\;\)), which
+works out of the box for some types, while for others the concept of
+negation must be defined. Right. What would it mean to <i>negate</i> <code>Moon</code>
+to <code>Sun</code> back to <code>Moon</code> again? More on this trick later.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.19" class="footnum" href="#fnr.19" role="doc-backlink">19</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+In math the elements of a sequence are strictly
+consecutive. Again, a sequence&rsquo;s elements <i>and</i> their order makes it
+unique.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.20" class="footnum" href="#fnr.20" role="doc-backlink">20</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Let&rsquo;s forget counting days for now.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.21" class="footnum" href="#fnr.21" role="doc-backlink">21</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Interestingly, a system that cycles in a <i>probabilistic</i> way,
+i.e., there&rsquo;s a given <i>chance</i> of a certain state change happening,
+would be the domain of <a href="https://www.fa17.eecs70.org/static/notes/n24.html">Markov chains</a>, which we&rsquo;ll look at later.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.22" class="footnum" href="#fnr.22" role="doc-backlink">22</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<i><a href="https://en.wikipedia.org/wiki/Combinatorics">Combinatorics</a></i> is a large field of mathematics dealing with
+the how things are counted and combined according to given
+constraints. We&rsquo;ll see more of this later.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.23" class="footnum" href="#fnr.23" role="doc-backlink">23</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+This definition came out of a &ldquo;physics math&rdquo; book. But is this
+really what we mean? It depends on what we mean by <i>unique</i>. Read
+on&#x2026;
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.24" class="footnum" href="#fnr.24" role="doc-backlink">24</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Again, YMMV on understanding this code. If you don&rsquo;t yet,
+don&rsquo;t worry.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.25" class="footnum" href="#fnr.25" role="doc-backlink">25</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+We list out only a few&#x2026;
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.26" class="footnum" href="#fnr.26" role="doc-backlink">26</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+If you try this at home you must first do <code>import Data.List</code>
+or just <code>import Data.List (permutations)</code>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.27" class="footnum" href="#fnr.27" role="doc-backlink">27</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<code>n &gt;= 1</code> <i>n is greater than or equal to 1</i>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.28" class="footnum" href="#fnr.28" role="doc-backlink">28</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+We&rsquo;ll learn all of Haskell&rsquo;s conditional operators, e.g., <code>a
+== b</code> <i>is a equal to b?</i> later.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.29" class="footnum" href="#fnr.29" role="doc-backlink">29</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+What would be the &ldquo;closed&rdquo; version of factorial? Convince
+yourself <br />
+</p>
+\begin{align*}
+n! = \prod_{i=1}^{n }i
+\end{align*}
+<p class="footpara">
+the recursive and closed versions are identical. BTW, a Haskell
+version of this would be <code>factClosed n = product [1..n]</code>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.30" class="footnum" href="#fnr.30" role="doc-backlink">30</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<b>augend</b>: the number to which another is added, which can then
+server as an accumulator. Why is there an <i>augend</i> and an <i>addend</i>
+with addition? Because addition is a <i>binary operation</i>. Despite the
+illusion of adding a whole column of numbers at once, at the
+computational level, addition is happening between two and only two
+numbers at a time, i.e., both in the digital circuitry and abstract
+algebra. We&rsquo;ll discuss where this misunderstanding arises when we
+investigate the associativity nature of binary operations.
+</p></div></div>
+
+ --></div>
+</body>
+</html>

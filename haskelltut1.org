@@ -1,0 +1,228 @@
+# # -*- mode: org -*-
+# # -*- coding: utf-8 -*-
+#+TITLE:
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: haskelltut1.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+
+
+* Haskell tutorial 1
+
+@@html:<label for="mn-demo" class="margin-toggle"></label>
+<input type="checkbox" id="mn-demo" class="margin-toggle">
+<span class="marginnote">@@
+[[file:images/HaskellCurrySign.jpg]]
+@@html:</span>@@
+
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/omnimath"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+:END:
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle modname.hs :noweb yes
+module MODNAME where
+
+
+
+#+end_src
+
+This will be a compliment to the actual online Haskell tutorials
+listed below, emphasizing and expanding various points as they come
+up. Specifically, we'll /shadow/ LYAHFGG, the first and primary
+tutorial, pulling in extra examples and giving methods and concepts
+more depth.
+
+There are many paths taken when learning Haskell. Being a very
+advanced programming environment, it is rich in theoretical computer
+science lore. But more than any other language (besides its cousins
+Ocaml, SML, and F#) Haskell includes a surprising amount of higher
+math. For example, Haskell leverages the abstract algebra concepts of
+semigroups and monoids.
+
+We'll save the more mathematical things for the main CIMIC show and
+just concentrate on the Haskell programming nuts-and-bolts.
+
+* Rabbit holes
+
+Let's repeat (most of) the Haskell rabbit hole list
+
+@@html:<font color = "#375e79">@@
+⌜🐇 
+1. [[http://learnyouahaskell.com/chapters][Learn You a Haskell for Great Good!]] (LYAHFGG) is a widely-used,
+   often-suggested beginners site for starting out with Haskell. Work
+   through at least chapters 1 and 2 to understand a lot of what we'll
+   be doing with Haskell below. (/R_{C}-hole/)
+2. A site haskell.org is suggesting is the UPenn course CIS194. We
+   suggest the [[https://www.seas.upenn.edu/~cis194/spring15/][Spring 2015]] version since it includes haskell source
+   files. This is a college course, but for beginners. Click on the
+   /Lectures & Assignments/ link at the top. (If you've got [[https://github.com/borgauf/omnimath][our github
+   repository]] there's a directory containing all the Haskell files.)
+   (/R_{O}-hole/)
+3. An older but still go-to site recommended by many is the /[[http://book.realworldhaskell.org/read/][Real
+   World Haskell]]/ site (also book). As the title suggests, it has a
+   more real-applications slant, and yes, the material can get into
+   heavy lifting, but one great advantage is it has prodigious
+   /comments/ attached to ever web page section. So if you didn't
+   understand something, typically somebody has already explained it
+   in depth.
+4. Book-wise, a nice, well-paced text would be /[[https://www.manning.com/books/get-programming-with-haskell#:~:text=about%20the%20book,dive%20into%20custom%20Haskell%20modules.][Get Programming with
+   Haskell]]/ by Will Kurt. Will bridges a lot of chasms between
+   beginner, intermediary, and advanced ideas. In other words, GPWH
+   gives plain-English explanations of things other treatments might go
+   deep into theory on. Really helpful, that. (/R_{O}-hole/)
+5. Another big favorite for Haskell starters, but slightly more
+   challenging is /[[https://www.haskell.org/tutorial/haskell-98-tutorial.pdf][A Gentle Introduction to Haskell 98]]/. AGITH uses
+   more math terminology, which is what we're doing, but from the
+   shallow end first. (/R_{O}-hole/)
+6. A while back the programming language Prolog created a list of
+   ninety-nine sample problems that were solved using Prolog. Since
+   then many languages have cooked up their own versions of answering
+   the ninety-nine. Haskell's is [[https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems][here]]. We'll refer to this a
+   lot. When you peek at the solutions, don't get psyched out by some
+   of the answers. Haskell Wiki is a volunteer site and very smart
+   people like show off their skills resulting in some serious
+   overkill. Just make sure you can handle the basic answers, and
+   maybe peruse the wilder versions. (/R_{O}-hole/)
+@@html:</font>@@🐇⌟
+
+* Setting up Haskell
+
+We will use [[https://docs.haskellstack.org/en/stable/README/][The Haskell Tool Stack]], which is a project/package
+management system for Haskell. In a nutshell, we will install
+stack---and then use stack to set up custom Haskell programming
+environments on a project-by-project basis. Besides the executable
+~stack~, there will also be the Haskell compiler ~ghc~ and the Haskell
+interactive mode ~ghci~ which are called as stack arguments \\
+~> stack ghci~ \\
+~> stack ghc~ \\
+More on using them shortly.
+
+This guide will go into detail only on the Linux Haskell install. For
+full details (also for other OS types) see [[https://docs.haskellstack.org/en/stable/install_and_upgrade/][The Haskell Tool Stack]].
+
+- The very first step might not be needed, but we'll do it just to
+  make sure. Haskell requires (and recommends) a set of Linux system
+  programs and libraries. Run this at the command line (all on one
+  line)
+- ~> sudo apt-get install g++ gcc libc6-dev libffi-dev libgmp-dev make
+  xz-utils zlib1g-dev git gnupg netbase curl~ \\
+  Typically all of these (with the exception of curl) are already on
+  board and won't be updated.
+- To install stack run \\
+  ~> curl -sSL https://get.haskellstack.org/ | sh~ \\
+  This will ask for your password; enter it to allow system-wide
+  install.
+- Now you should have Haskell stack on your system. For confirmation
+  of success run \\
+  ~> which stack~ \\
+  This should return \\
+  ~/usr/local/bin/stack~ \\
+  or wherever the ~stack~ executable was installed.
+- Now, run \\
+  ~> echo 'PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc~ \\
+  This tells your shell environment[fn:1] about this new location
+  where some of Haskell executables might be later on if we choose to
+  install them. We're not now, but it's good to have this ahead of
+  time. Kill your terminal, restart it, then check with \\
+  ~> echo $PATH~ \\
+  You should see something like \\
+  => /home/myhomedir/.local/bin:/usr/local/sbin:/usr/local/bin:...= \\
+  ...and many others possibly. But we see our
+  ~/home/myhomedir/.local/bin~. Good.
+  
+Again, stack is project-oriented, but for the time being we only want
+to use the Haskell REPL[fn:2] to load the practice code we saved into ~*.hs~
+files. Still, this will all take place inside a project we set up with
+stack---even though we're not using the project environment and its
+files. Eventually, we'll convert from using ~hs~ files to using Emacs'
+powerful /org-mode literate programming/ with the REPL. And then we
+might actually use the project way to do Haskell, especially if we
+want to create a stand-alone executable.
+
+- In your top home directory[fn:3] create an org directory \\
+  ~> mkdir org~ \\
+  and ~cd~ into it \\
+  ~> cd org~
+- Now we will create a project, which will create a new directory
+  under =~/org/=. Type \\
+  ~> stack new haskellwork1~ \\
+  which will set up a project in a subdirectory of ~org~ called
+  ~haskellwork1~.
+- ~cd~ into ~haskellwork1~ and do ~ls~ to get a file listing. You'll
+  see new files and directories newly created.
+- Still in the ~haskellwork1~ directory type
+  ~> stack setup~ \\
+  which should give a short message about using a sandboxed GHC etc.
+- Next, type
+  ~> stack build~ \\
+  which will run through a build procedure and return you the prompt.
+- To test
+  ~> stack exec haskellwork1-exe~ \\
+  which will return ~someFucn~, i.e., the output of the dummy starter
+  code the project created.
+
+
+
+
+
+
+
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] Another name for terminal or command line is /shell/. Each
+terminal you start with a command line interface is a /shell/ with a
+/shell environment/. The ~.bashrc~ file is its configuration file that
+is read and set up each time you start another terminal command line
+instance. In our situation we have to let the environment know where
+the new Haskell stuff has been installed.
+
+[fn:2] *REPL* stands for /read, evaluate, print, loop/, which is
+essentially what your terminal command line is doing. That is to say,
+it's an interactive world: Give it a task, and it returns a response,
+then waits for your next task. This is how LYAHFGG starts out.
+
+[fn:3] You can always get back home by typing ~cd~ and Enter. Then do
+~pwd~ to confirm you've gone to top home. And you can always test
+where you are with => pwd= (present working directory).

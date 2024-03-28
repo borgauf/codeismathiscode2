@@ -1,0 +1,380 @@
+# # -*- mode: org -*-
+# # -*- coding: utf-8 -*-
+# Place title here
+#+TITLE:
+# Place author here
+#+AUTHOR:
+# Place email here
+#+EMAIL: 
+# Call borgauf/insert-dateutc.1 here
+#+DATE: 
+# #+Filetags: :SAGA
+# #+TAGS: experiment_nata(e) idea_nata(i) chem_nata(c) logs_nata(l) y_stem(y)
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline path:http://orgmode.org/org-info.js
+# #+HTML_HEAD: <link rel="stylesheet" href="../data/stylesheet.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+OPTIONS: H:15 num:15 toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+# #+OPTIONS: prop:t
+# This makes MathJax not work
+# #+OPTIONS: tex:imagemagick
+# this makes MathJax work
+#+OPTIONS: tex:t
+# This also replaces MathJax with images, i.e., don’t use.
+# #+OPTIONS: tex:dvipng
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+HTML_MATHJAX: align: left indent: 5em tagside: left font: Neo-Euler
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer
+# This makes pictures appear in buffer
+# #+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+# #+BIBLIOGRAPHY: ref plain
+
+#+begin_export html
+<div class="header">
+<img src="./images/heading6.png"  style="padding: 0px 0px 22px 0px" alt="3-d graph" class="center">
+
+  <p>My supercool header</p>
+</div>
+#+end_export
+
+* Rational numbers
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/omnimath"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&brezov2018introduction]]
+- [[cite:&weissman2020illustrated]]
+- [[cite:&levesque2012thinking]]
+:END:
+
+
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle omni1.2.hs :noweb yes
+module OMNI1_2 where
+
+<<c7b27de7-bd6e-49fb-bf65-8453e6242ab7>>
+<<ae254645-7732-4de7-8559-d4e825b836df>>
+<<350e6179-fdff-47a4-9bf3-80413b7316bb>>
+<<6e231094-1d98-4e5c-99f9-541f140e390a>>
+<<35167592-7de1-424b-aac2-8918ffa2d3a0>>
+<<2191f911-a28c-4081-9803-e6873933991c>>  
+#+end_src
+
+
+
+** Rabbit holes
+@@html:<font color = "#375e79">@@
+⌜🐇 *Rabbit holes* to get started with CIMMIC are:
+
+@@html:</font>@@🐇⌟
+
+* Introduction to rational numbers
+
+Rational numbers come out of asking how to divide[fn:1]. So what happens
+when we divide a number by another? Two possibilities:
+
+- One number divides the other "evenly," i.e., with no "remainder."
+- One number cannot divide the other without producing a "residual," a
+  "leftover" number you know as a /remainder/. For example, $8$
+  divided by $3$ cannot happen as a binary.
+
+
+So what do we do? When our ancestors were confronted with this dual
+nature of division, they envisioned a new sort of number they called a
+/rational number/[fn:2].
+
+** Where do rational numbers fit in?
+
+So if rational numbers are a step up in abstraction from naturals and
+integers, are they a step down from anything, i.e., are they
+sandwiched in between $\mathbb{N}$ and $\mathbb{Z}\;$
+
+
+* Rational numbers
+
+In Haskell rational numbers are handled by ~Data.Ratio~
+
+#+begin_src haskell :results silent :exports code
+import Data.Ratio
+#+end_src
+
+The basic "give back the simplest form" function is ~%~
+
+#+begin_src haskell :results verbatim :exports both
+50 % 10
+#+end_src
+
+#+RESULTS:
+: 5 % 1
+
+#+begin_src haskell :results verbatim :exports both
+numerator (60 % 20)
+#+end_src
+
+#+RESULTS:
+: 3
+
+#+begin_src haskell :results silent :exports code
+:{
+-- combRatio :: Ratio
+combRatio r = show (numerator (r)) ++ "/" ++ show (denominator (r))
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+combRatio (60 % 20)
+#+end_src
+
+#+RESULTS:
+: 3/1
+
+⇲ Tip: Put an infix operator in parentheses to use as prefix
+
+#+begin_src haskell :results silent :exports code
+r1 = (%) 50 10
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+:t r1
+#+end_src
+
+#+RESULTS:
+: r1 :: Integral a => Ratio a
+
+#+begin_src haskell :results verbatim :exports both
+60 % 20 :: (Integral a) => Ratio a
+#+end_src
+
+#+RESULTS:
+: 3 % 1
+
+#+begin_src haskell :results verbatim :exports both
+60 % 20 :: Rational
+#+end_src
+
+#+RESULTS:
+: 3 % 1
+
+First, the data type
+
+#+begin_src haskell :eval never :exports code
+data  (Integral a) => Ratio a = !a :% !a  deriving (Eq)
+#+end_src
+
+The ~:%~ is a data constructor (the ~:~ insures it's a /constructor/
+and not just an operator function) that is placed between the two
+~Integral~ parameters. But in the source ~%~ calls ~reduce~[fn:3]
+
+#+begin_src haskell :eval never :exports code
+reduce ::  (Integral a) => a -> a -> Ratio a
+{-# SPECIALISE reduce :: Integer -> Integer -> Rational #-}
+reduce _ 0              =  ratioZeroDenominatorError
+reduce x y              =  (x `quot` d) :% (y `quot` d)
+                           where d = gcd x y
+(%) :: (Integral a) => a -> a -> Ratio a
+x % y =  reduce (x * signum y) (abs y)
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+quot 6 3 -- returns the quotient, discards the remainder, if any
+#+end_src
+
+#+RESULTS:
+: 2
+
+*** GCD and the Euclidean algorithm
+:RESOURCES:
+- [[https://en.wikipedia.org/wiki/Euclidean_algorithm][Wikipedia Euclidean algorithm]]
+:END:
+
+The built-in Haskell ~gcd~ was used to reduce the rational number,
+e.g., fraction, to its lowest terms.
+
+𝖟𝕭. Find the lowest terms of $42/56$
+
+#+begin_src haskell :results verbatim :exports both
+gcd 42 56
+#+end_src
+
+#+RESULTS:
+: 14
+
+i.e., $14$ is the greatest common divisor of both $42$ and $56$
+
+# begin math
+\[
+\frac{42}{56}
+\]
+# end math
+
+
+/Euclid's algorithm/, is an efficient method for computing the
+greatest common divisor (GCD) of two integers (numbers), the largest
+number that divides them both without a remainder.
+
+#+begin_src haskell :results silent :exports code
+:{
+eGCD :: Integral i => i -> i -> i
+eGCD 0 b = b
+eGCD a b = eGCD (b `mod` a) a
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+eGCD 60 25
+#+end_src
+
+#+RESULTS:
+: 5
+
+
+*** Perfect numbers
+
+This code give the first four /perfect numbers/[fn:4]
+
+#+begin_src haskell :results silent :exports code
+:{
+main = do
+  let n = 4
+  mapM_ print $
+    take n [candidate | candidate <- [2 .. 2 ^ 19], getSum candidate == 1 ]
+    where
+      getSum candidate =
+        1 % candidate + sum [1 % factor + 1 % (candidate `div` factor)
+                            | factor <- [2 .. floor (sqrt (fromIntegral candidate))]
+                            , candidate `mod` factor == 0 ]
+:}
+#+end_src
+
+#+begin_src haskell :results verbatim :exports both
+main
+#+end_src
+
+#+RESULTS:
+: 6
+: 28
+: 496
+: 8128
+
+** Power series
+
+Something[fn:5] else[fn:6]
+
+* Footnotes
+
+[fn:1] Division is another sort of binary operator.
+
+[fn:2] Ironically, /rational/ doesn't mean mentally rational, sane,
+level-headed; rather, it is an adjective derived from /ratio/, as in a
+/ratio/ of two numbers. Likewise, in math, /irrational/ simply means a
+number that cannot be represented as a rational number.
+
+[fn:3] ~quot~ returns the quotient, discards the remainder; ~gcd~ is
+the built-in /greatest common divisor/; ~signum~ gives back ~1~ if
+argument is greater than zero, ~-1~ if less than zero, zero if zero.
+
+[fn:4] In number theory, a /perfect number/ is a positive integer that
+is equal to the sum of its positive divisors, excluding the number
+itself. For instance, $6$ has divisors $1$, $2$ and $3$ (excluding
+itself), and $1 + 2 + 3 = 6\;$, so $6$ is a perfect number.
+
+[fn:5] This is the crummier, brute-force version \\
+#+NAME: ratetable
+| 0 min | 10 min | 20 min | 30 min | 40 min | 50 min |
+|  20.0 |    10. |     5. |    2.5 |   1.25 |  0.625 |
+#+TBLFM: @2$2=@2$1/2::@2$3=@2$2/2::@2$4=@2$3/2::@2$5=@2$4/2::@2$6=@2$5/2
+
+[fn:6] Another attempt \\
+| 0 min | 10 min | 20 min | 30 min | 40 min | 50 min |
+|  20.0 |    10. |     5. |    2.5 |   1.25 |  0.625 |
+#+TBLFM: @2$2=@2$1/2::@2$3=@2$2/2::@2$4=@2$3/2::@2$5=@2$4/2::@2$6=@2$5/2
+
+[fn:21] See the rig rundown to get Haskell installed and running.
+
+[fn:20] Grokking /Haskell Wiki/ articles can be like trying to drink
+from a full-blast fire hose, but good can be gained from them by the
+brave and virtuous.
+
+[fn:19] Mathematics as experienced in Wikipedia's articles can also be
+a firehose experience, but again good can be gleaned.
+
+[fn:18] Peruse [[http://www.rosettacode.org/wiki/Proof][this article]] and then the Haskell code [[http://www.rosettacode.org/wiki/Proof#Haskell][here]] ... realize,
+however, this is graduate-level Comp-Sci stuff. Notice, perhaps, the
+list of 19 languages. These are the biggest of the big in the realm of
+doing math with computers, and learning one of them (such as Haskell)
+would be on the curriculum of a good CS program.
+
+[fn:17] How would you order a box of crayons? One way would be
+by their colors. But is brown ahead or behind green? Crayon colors
+don't seem to have an ahead or behind, maybe just a "beside" or "along
+with" perhaps?
+
+[fn:16] Eventually you'll be a pro with Haskell error messages, but
+for now we'll just have to puzzle them out.
+
+[fn:15] We could also represent our $1$'s as a string, i.e., like text
+between double-quotes, but any string in Haskell is just a list of the
+text's individual characters, e.g., ~"1111"~ is really just
+~['1','1','1','1']~.
+
+[fn:14] Make sure you've got past Chapter 6, /Higher Order Functions/
+in LYAHFGG.
+
+[fn:13] More on the /binary/ number system later.
+
+[fn:12] Unfortunately, /unary/ here has two meanings. It means we're
+only using one numeral to do our counting, /and/ it indicates a unary
+function, i.e., a function that takes only one value and returns only
+something from its domain---which is a very abstract version of the
+idea of a /unary operator/ where only one thing is operated on. For
+example, addition is a /binary operation/ since it takes /two/ numbers
+and adds them. But making a number a negative number by placing the
+negative sign in front of the number is an example of a unary
+operation.
+
+[fn:11] Peano actually had nine axioms; however, four of these deal
+with the equality of his natural numbers, which we'll deal with later
+when we explore /relations/, a more general concept above functions.
+
+[fn:10] My mechanical pocket watch has a face with Roman numerals
+evenly positioned around a circle, twelve main numbers for the hours
+with five little marks between each number for the minutes and
+seconds. But internally, the mechanics only know about ticking; they
+know nothing of the numbers and their positions on the watch face. So
+the steady ticking is /mapped/ to the watch face dumbly. Is ticking,
+therefore, the most fundamental sort of counting? When combined with a
+number display, perhaps.
+
+[fn:9] See [[https://en.wikipedia.org/wiki/Positional_notation][Positional notation]].
+
+[fn:8] The order of a group of things is its /ordinality/, while the
+number of a group of things is its /cardinality/.
+
+[fn:7] At this point, we assume an intuitive idea of what a set is,
+not an official set theory definition.

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2024-03-28 Thu 15:57 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Beginnings 1</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href="./ox-tufte.css" type="text/css">
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-dejavu',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<header>
+<h1 class="title">Beginnings 1</h1>
+</header><div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<img src="./images/square_partitioned_into_6_similar_rectangles_henderson_small.png"  style="padding: 0px 0px 0px 0px" alt="3-d graph" class="center">
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+
+<section id="outline-container-orga55bdd4" class="outline-2">
+<h2 id="orga55bdd4">Getting started part 1</h2>
+</section>
+
+
+<section id="outline-container-org0b22235" class="outline-2">
+<h2 id="org0b22235">Abstractions</h2>
+<div class="outline-text-2" id="text-org0b22235">
+</div>
+<div id="outline-container-orgff52af2" class="outline-3">
+<h3 id="orgff52af2">Objects alone or together, formalizing things</h3>
+<div class="outline-text-3" id="text-orgff52af2">
+<p>
+Objects by themselves or objects together. No doubt many life forms
+have an instinctual, intuitive, working grasp of these two basic
+contrasting situations. We humans have language, and this brings logic
+and symbolism to intuition. Consider the statement
+</p>
+
+<p>
+<font color = "#0d3db3">
+together \(\implies\) not alone, not separate
+</font>
+</p>
+
+<p>
+The \(\implies\) arrow is from mathematical logic and means <i>implies</i>,
+or, roughly, &ldquo;<i>if</i> you say this, <i>then</i> you are also saying this.&rdquo;
+Reading the statement backwards
+</p>
+
+<p>
+<font color = "#0d3db3">
+not alone, not separate \(\implies\) together
+</font>
+</p>
+
+<p>
+we notice a simple &ldquo;if <i>not</i> this then that&rdquo; situation, i.e.,
+<i>negation</i>, i.e., <i>not</i> alone, as well as <i>not</i> separate would be
+together. A negation of yes is no and a negation of positive is
+negative.<label id='fnr.1' for='fnr-in.1.8101394' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.8101394' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+You have no doubt heard of <i>double negatives</i> where &ldquo;It&rsquo;s not
+that I don&rsquo;t like you&rdquo; (I do like you) or &ldquo;There is no way you are not going to clean
+your room&rdquo; (you <i>are</i> going to clean your room).
+</span>
+</p>
+
+<p>
+Math logic has a toolkit of exacting methods and a whole zoo of
+symbols to establish truth. Consider this
+</p>
+
+\begin{align*}
+
+\end{align*}
+
+
+
+<p>
+<i>Logical entailment</i> or <i>logical consequence</i> is the notion that one
+statement can follow from another. A formal definition of entailment
+would be
+</p>
+
+\begin{align*}
+\alpha \vDash \beta \iff M(\alpha) \subseteq M(\beta)
+\end{align*}
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-orgf718da5" class="outline-3">
+<h3 id="orgf718da5">If together, how many?</h3>
+<div class="outline-text-3" id="text-orgf718da5">
+<p>
+Abstraction and symbolism have taken humanity into a modern science
+and technology landscape that, as far as we know, is unique in the
+known universe.
+</p>
+
+
+<p>
+things that were <i>together</i>, not just
+singular by themselves? We would see more than one thing&#x2014;perhaps
+similar, perhaps close to one another&#x2014;and the notion of relatedness,
+togetherness, <i>clumpiness</i> would come to us. Human language Some vague idea,
+if not language, dealing with <i>amount</i> rose from <i>how big</i> the clump
+of things we mentally clumped together seemed.
+</p>
+
+<p>
+The general phenomenon of singular and plural, one or more, seemed to
+beg the question <i>if more, then how many more?</i> And so the <i>size</i> or
+<i>degree</i> of a clump of things means something and should be
+considered.
+</p>
+
+<p>
+Along with clumpiness, groupings, stuff together, we probably also
+were aware of the passing, the demarcation of
+time, such as the seasons cycling. And <i>shapes</i> could be categorized
+as well.<label id='fnr.2' for='fnr-in.2.8196407' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.8196407' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+Geometry.
+</span> But let&rsquo;s stick with clumpiness for a while.
+</p>
+
+<p>
+Communication, semantics of these clump details evolved. A couple, a
+pair, a herd, a school, a few, many, lots, lots and lots, lots and
+lots and lots. And today terms like <i>cardinality</i> or <i>degrees of
+multiplicity</i> offer a high level of <i>abstraction</i> of one or many.
+</p>
+
+<p>
+All of this points to a very unique thing about humans, namely, our
+high levels of cognizance, awareness, our ability to note our
+intuitive awareness and build on it. Of course other critters are able
+to distinguish between one and many. But do they put these notions,
+these impulses into words&#x2014;and then build these ideas into higher and
+more exacting and more abstract ideas? Of course humans experience
+life at an intuitive level, but unlike animals, we take the intuitive
+and give it logical structure, we codify these notions, ideas,
+intuitive hunches. We, far more than any other species take basic
+phenomena and create abstract representative mental structures.
+</p>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

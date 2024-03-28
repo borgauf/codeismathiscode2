@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-07-26 Tue 15:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<img src="./images/heading6.png"  style="padding: 0px 0px 22px 0px" alt="3-d graph" class="center">
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <a href="numbers.html" target="_blank"><li>Numbers</li></a>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+
+<div id="outline-container-org88d86a2" class="outline-2">
+<h2 id="org88d86a2">Linear Algebra: Systems of Linear Equations</h2>
+<div class="outline-text-2" id="text-org88d86a2">
+</div>
+
+<div id="outline-container-org1d525cc" class="outline-3">
+<h3 id="org1d525cc">Systems of linear equations</h3>
+<div class="outline-text-3" id="text-org1d525cc">
+<p>
+<font color = "#650d1c"> ➝ An equation in the unknowns \(x\;\),
+\(y\;\), \(z\;\), &#x2026;, is called <i>linear</i> if both sides of the equation
+are a <i>sum</i> of (constant) multiples of \(x\;\), \(y\;\), \(z\;\), &#x2026;, plus
+an optional constant<label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle"/><span class="sidenote">
+We will usually move the unknowns to the left side of the
+equation, and move the constants to the right.
+</span>.  </font>
+</p>
+
+<ul class="org-ul">
+<li>A <i>solution</i> of a system of equations is a list of numbers \(x\;\),
+\(y\;\), \(z\;\), &#x2026; that make all of the equations true
+simultaneously.</li>
+<li>The <i>solution set</i> of a system of equations is the collection of all
+solutions.</li>
+<li><i>Solving</i> the system means finding all solutions with formulas
+involving some number of parameters.</li>
+</ul>
+
+<p>
+<font color = "#650d1c">
+➝ A system of equations is called <i>inconsistent</i> if it has no solutions. It
+is called <i>consistent</i> otherwise.
+</font>
+</p>
+
+<p>
+<font color = "#650d1c"> ➝ Let \(n\;\) be a positive whole
+number. We define \(\mathbb{R^n}\;\) = all ordered n-tuples of real
+numbers \((x_1, x_2, x_3,\ldots, x_n )\;\;\;\).  </font>
+</p>
+
+<p>
+Hence, an <i>n</i>-tuple of real numbers is called a <i>point</i> of
+\(\mathbb{R^n}\;\;\)
+</p>
+
+<p>
+𝖟𝕭: The real number line is when \(n\;= 1\;\) of \(\mathbb{R^n}\;\).
+</p>
+
+<p>
+𝖟𝕭: Consider the linear equation \(x + y + z = 1\;\;\). This is the
+implicit equation for a plane in space that is hinged on the three
+coordinates totaling \(1\;\;\).
+</p>
+
+<img src="./images/planein3Dspace.png" width="300px" style="padding: 15px 0px 0px 0px" alt="3DPlane" class="center">
+<span class="cap">The plane defined by x + y + z = 1</span>
+
+<img src="./images/xplusypluszequals1.png" width="400px" style="padding: 15px 0px 0px 0px" alt="3DPlane" class="center">
+<span class="cap">Another view of the plane defined by x + y + z = 1</span>
+
+
+
+<pre class="code"><code>
+</code></pre>
+</div>
+</div>
+
+<div id="outline-container-org7fa81a8" class="outline-3">
+<h3 id="org7fa81a8">Examples</h3>
+<div class="outline-text-3" id="text-org7fa81a8">
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">a</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>4<span class="org-haskell-operator">&gt;&lt;</span>3<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">[</span> 1, 2, 3
+  , 4, 0, 5
+  , 7, 7, 2
+  , 3, 3, 1<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Matrix</span> <span class="org-haskell-type">R</span>
+<span class="org-haskell-type">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">b</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>3<span class="org-haskell-operator">&gt;&lt;</span>1<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">[</span> 2
+  , 2
+  , 2<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Matrix</span> <span class="org-haskell-type">R</span>
+<span class="org-haskell-type">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">a</span> <span class="org-haskell-operator">Numeric.LinearAlgebra.&lt;&gt;</span> b
+</code></pre>
+
+<pre class="example">
+(4&gt;&lt;1)
+ [ 12.0
+ , 18.0
+ , 32.0
+ , 14.0 ]
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">c</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>2<span class="org-haskell-operator">&gt;&lt;</span>3<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">[</span> 4,5,6
+  , 7,8,9<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Matrix</span> <span class="org-haskell-type">R</span>
+<span class="org-haskell-type">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">d</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>3<span class="org-haskell-operator">&gt;&lt;</span>1<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">[</span> 1
+  , 1
+  , 1<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Matrix</span> <span class="org-haskell-type">R</span>
+<span class="org-haskell-type">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">e</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>3<span class="org-haskell-operator">&gt;&lt;</span>2<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">[</span>1<span class="org-haskell-operator">..</span><span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Matrix</span> <span class="org-haskell-type">R</span>
+<span class="org-haskell-type">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-definition">c</span> <span class="org-haskell-operator">Numeric.LinearAlgebra.&lt;&gt;</span> d
+</code></pre>
+
+<pre class="example">
+(2&gt;&lt;1)
+ [ 15.0
+ , 24.0 ]
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-definition">a</span> <span class="org-haskell-operator">Numeric.LinearAlgebra.&lt;&gt;</span> e
+</code></pre>
+
+<pre class="example">
+(4&gt;&lt;2)
+ [ 22.0, 28.0
+ , 29.0, 38.0
+ , 38.0, 54.0
+ , 17.0, 24.0 ]
+</pre>
+
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">f</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>3<span class="org-haskell-operator">&gt;&lt;</span>2<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">[</span>1<span class="org-haskell-operator">..</span><span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Matrix</span> <span class="org-haskell-type">R</span>
+<span class="org-haskell-type">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">g</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">(</span>3<span class="org-haskell-operator">&gt;&lt;</span>2<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">[</span>6,5<span class="org-haskell-operator">..</span><span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Matrix</span> <span class="org-haskell-type">R</span>
+<span class="org-haskell-type">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</code></pre>
+
+<pre class="code"><code>f <span class="org-haskell-definition">+</span> g
+</code></pre>
+
+<pre class="example">
+(3&gt;&lt;2)
+ [ 7.0, 7.0
+ , 7.0, 7.0
+ , 7.0, 7.0 ]
+</pre>
+
+
+
+\begin{align*}
+A(u + v) = Au + Av
+\end{align*}
+
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span>a <span class="org-haskell-operator">Numeric.LinearAlgebra.&lt;&gt;</span> <span class="org-rainbow-delimiters-depth-2">(</span>f <span class="org-haskell-operator">+</span> g<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">==</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>a <span class="org-haskell-operator">Numeric.LinearAlgebra.&lt;&gt;</span> f<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">+</span> <span class="org-rainbow-delimiters-depth-2">(</span>a <span class="org-haskell-operator">Numeric.LinearAlgebra.&lt;&gt;</span> g<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+\begin{align*}
+A(cu) = cAu
+\end{align*}
+
+<pre class="code"><code><span class="org-haskell-definition">a</span> <span class="org-haskell-operator">Numeric.LinearAlgebra.&lt;&gt;</span> <span class="org-rainbow-delimiters-depth-1">(</span>5 <span class="org-haskell-operator">*</span> f<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+(4&gt;&lt;2)
+ [ 110.0, 140.0
+ , 145.0, 190.0
+ , 190.0, 270.0
+ ,  85.0, 120.0 ]
+</pre>
+
+
+<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span>a <span class="org-haskell-operator">Numeric.LinearAlgebra.&lt;&gt;</span> <span class="org-rainbow-delimiters-depth-2">(</span>5 <span class="org-haskell-operator">*</span> f<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">==</span> 5 <span class="org-haskell-operator">*</span> <span class="org-rainbow-delimiters-depth-1">(</span>a <span class="org-haskell-operator">Numeric.LinearAlgebra.&lt;&gt;</span> f<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
+
+<pre class="example">
+True
+</pre>
+
+
+
+
+
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</div>
+<!-- Footnotes --><!-- 
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+We will usually move the unknowns to the left side of the
+equation, and move the constants to the right.
+</p></div></div>
+
+ --></div>
+</body>
+</html>

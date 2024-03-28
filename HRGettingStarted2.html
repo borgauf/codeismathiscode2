@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2024-03-13 Wed 10:55 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Haskell Road; Getting Started Part 2</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-dejavu',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<header>
+<h1 class="title">Haskell Road; Getting Started Part 2</h1>
+</header><div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<img src="./images/square_partitioned_into_6_similar_rectangles_henderson_small.png"  style="padding: 0px 0px 0px 0px" alt="3-d graph" class="center">
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+
+<section id="outline-container-orga4e71a5" class="outline-2">
+<h2 id="orga4e71a5">Getting started part 2</h2>
+</section>
+
+
+<section id="outline-container-orga0417ad" class="outline-2">
+<h2 id="orga0417ad">Monday at the library part 2</h2>
+<div class="outline-text-2" id="text-orga0417ad">
+</div>
+<div id="outline-container-orgde2a058" class="outline-3">
+<h3 id="orgde2a058">Breaktime</h3>
+<div class="outline-text-3" id="text-orgde2a058">
+<p>
+The von der Surwitzes pop over to the student center cafe for a break.
+They grab a large mineral water, a brand they knew in Germany, and Ute
+has packed some <i>Vollkornbrot</i> sandwiches of hummus and cucumber. They
+sit at a table and pour the water and pass around out the sandwiches.
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> All right, so I
+emailed the professor about a couple of questions from that first
+chapter of <i>The Haskell Road</i>, and she replied saying, first, she&rsquo;s
+happy we&rsquo;re tackling the material early. And she mentioned some
+resources &#x2014; a collection of texts she has on reserve at the
+library. <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> Sort of like, I&rsquo;m
+not going to give you the answers. I&rsquo;m going to point you in the right
+direction.  <br>
+[murmurs of acknowledgement] <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> What books are
+they? <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> Math. Upper level
+college texts. Abstract algebra and number theory, mainly. <br>
+[silence] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> I getting the
+general impression that computer science has all these higher math
+concepts, but then you don&rsquo;t go as far as a math major does. <br>
+[silence, eating and drinking] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> [continuing] I
+guess you&rsquo;re just supposed to learn as much as you can. But like she
+said at the open house, computer science is a lot of <i>applied</i>
+mathematics. <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> And the math is
+the hardest part for incoming CS students, those first four
+semesters. And that&rsquo;s why we&rsquo;re emphasizing the math in this
+course. <br>
+[nods of agreement then silence as they eat and drink] <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+Not so much hand-waving. And she doesn&rsquo;t have set in stone what she
+wants us to get through. The course is open-ended. Wow, I just find
+that amazing. <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> But I&rsquo;m sure we&rsquo;ll
+need to keep moving and not be laggards about it. We&rsquo;re high
+schoolers, true, but this is like a super-AP course that&rsquo;s exclusively
+college-level material.<br>
+<span class="fraktur">𝔘𝔱𝔢:</span> And that&rsquo;s because
+so much of the first year or so of a college comp-sci curriculum
+really could and should be taught at the high school level. That&rsquo;s her
+theory &#x2014; and we&rsquo;re her <i>Versuchskaninchen</i><label id='fnr.1' for='fnr-in.1.8715371' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.8715371' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+<i>Versuchskaninchen</i>: test rabbit \(\simeq\) guinea pig.
+</span>?<br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> A <i>whole</i> year,
+the <i>whole</i> school year. Her sabbatical ends next summer, but I&rsquo;m
+pretty sure I&rsquo;ll want to continue. I don&rsquo;t know if I want to be a
+computer scientist or software engineer, but learning this can&rsquo;t
+hurt. <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> I guess you could
+say Novalis is sort of an open <i>Gynmasium</i>. <br>
+[soft laughter] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> And what happens
+afterward? They definitely want you to just keep going at the U. Which
+I wouldn&rsquo;t mind at all. <br>
+[looks about the table] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> Yes, and lots of
+people just drift into a half-and-half situation where there taking
+courses over at the U. <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Well, Father
+has tenure now. But I don&rsquo;t know if Mutti can go on working from
+here. [shrugging and sighing] Anyway, I guess you two will cross that
+bridge before I will. <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> [laughing] Hardly!
+You&rsquo;re right there with us in everything we&rsquo;re doing this coming year.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgee5aa4c" class="outline-3">
+<h3 id="orgee5aa4c">Divided by</h3>
+<div class="outline-text-3" id="text-orgee5aa4c">
+<p>
+Back at the library study room they&rsquo;ve checked out the reserved books
+and are looking through sections of those that deal with the basic
+theory of division.
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [reading from the
+Divisibility section of <i>Proofs, A Long-Form Mathematical
+Textbook</i><label id='fnr.2' for='fnr-in.2.1282162' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.1282162' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+<i><a href="https://longformmath.com/proofs-home">Proofs; A Long-Form Mathematics Textbook</a></i> by Jay Cummings
+</span>] All right, so Professor Chandra wants us to
+understand divisibility before we go to <i>greatest common divisor</i>, and
+before we talk about primes. She said, You have to know all of the
+implications of &ldquo;divided by&rdquo; before you can advance. And like it&rsquo;s
+saying in here, [reading] you could just say, \(a\) divides \(b\) if
+\(\frac{a}{b}\) produces an integer. <br>
+[Ursula and Uwe read the section from a second copy] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] But
+we don&rsquo;t want that definition, we want <i>this</i> definition [writing on
+the board]
+</p>
+
+\begin{align}
+\exists \: k \in \mathbb{Z},\; a \neq 0, \;\;a \mid b \;\; \text{if} \;\; b = a \cdot k  
+\end{align}
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] The
+symbol \(a \mid b\:\) means \(a\) divides \(b\) for some \(k\) where \(b = a \cdot
+k\;\) and \(a\) is not equal to zero. [pausing] Right, all that makes
+sense. So basically, this turns the whole question of divisibility
+into finding a proper integer value for \(k\:\) to <i>multiply</i> with. Now
+we have a mathy formalist way of seeing divisibility. <br>
+[murmurs of approval] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> I like how he says
+good definitions don&rsquo;t just fall out of the sky. <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Then the
+examples, like \(2 \mid 14\) is true because \(14 = 2 \cdot 7\:\), in other
+words we&rsquo;ve found a whole number integer, \(k = 7\), and we&rsquo;re happy. <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> Again, we&rsquo;ve
+turned division into an issue of true-false logic and
+multiplication. [writing on the board] So \(7 \mid 23\) doesn&rsquo;t work
+because we have no solution for \(7 \cdot k = 23\). <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> And look at that
+last one where it&rsquo;s \(a \mid 0\;\). That&rsquo;s true, for a non-zero \(a\)
+since we can say \(0 = a \cdot 0\) is always true for any \(a\) as long as \(k
+= 0\;\). <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So for [writing
+on the board] \(a \mid b\), we can say \(a\) is a <i>divisor</i> of \(b\), and
+\(b\) is a <i>multiple</i> of \(a\), and \(b\) is <i>divisible</i> by \(a\). <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> So they want us to
+understand that we&rsquo;re not supposed to see \(2 \mid 14\) and just say it
+<i>equals</i> \(7\). It&rsquo;s not supposed to be seen as a calculation, it&rsquo;s a
+logic <i>expression</i> that&rsquo;s true or false &#x2014; for some value \(k\:\). <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> Right. We&rsquo;re in
+the world of logic now, not grade school arithmetic. So everything has
+to be reexplained and reworked. <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> All right, so in
+this book<label id='fnr.3' for='fnr-in.3.8833533' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.8833533' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+She holds up <i>A Computational Introduction To Number Theory and
+Algebra</i> by Victor Shoup; <a href="&amp;shoup2009computational">&amp;shoup2009computational</a>.  }
+</span> they have a theorem about divisibility. [writing on
+the board]
+</p>
+
+<ol class="org-ol">
+<li>\(a \mid a\), \(1 \mid a\), and \(a \mid 0\);</li>
+<li>\(0 \mid a \iff a = 0\);</li>
+<li>\(a \mid b \iff -a \mid b \iff a \mid -b\);</li>
+<li>\(a \mid b \land a \mid c \implies a \mid (b + c)\);</li>
+<li>\(a \mid b \land b \mid c \implies a \mid c\)</li>
+</ol>
+
+<p>
+[silence as they study the theorem]   <br>
+&lt;
+</p>
+
+
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> Good, now he&rsquo;s
+talking about the <i>transitive</i> property of divisibility. It is a
+<i>proposition</i>, which is a type of theorem, and that means it comes
+with a proof. [writing on the board] Here it is in the compact math
+logic form
+</p>
+
+\begin{align*}
+a, b, c \in \mathbb{Z},\;\; a \mid b \;\land\; b \mid c \implies a \mid c
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] And
+then he goes on to prove it by saying assume the <i>if</i> part, the \(a
+\mid b \;\land\; b \mid c\:\) part is true, that means the <i>then</i> part, the
+\(a \mid c\) part is true. So [writing]
+</p>
+
+\begin{align*}
+b &= a \cdot s \\[.4em]
+c &= b \cdot t
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] for
+some integers \(s\) and \(t\;\). And now [writing]
+</p>
+
+\begin{align*}
+c &= b \cdot t \\[.4em]
+&= (a \cdot s) \cdot t   \\[.4em]
+&= a \cdot (s \cdot t) \quad\quad \ldots \; \text{associativity}
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] So
+since we have the form \(c = a \cdot (s \cdot t)\) where we assumed \(s\) and \(t\)
+are integers, and that&rsquo;s the basic form of divisibility, so yes, \(a
+\mid c\) since we&rsquo;ve shown \(c = a \cdot k\) where \(k = (s \cdot t)\:\). <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Good. Let&rsquo;s
+switch over to this other book [she picks up a Springer Verlag
+book<label id='fnr.4' for='fnr-in.4.2371640' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.2371640' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+<i><a href="https://www.google.com/books/edition/The_Whole_Truth_About_Whole_Numbers/ahUGswEACAAJ?hl=en">The Whole Truth About Whole Numbers</a></i> by Sylvia Forman and
+Agnes M. Rash;
+</span> and pages through it] Ah, in this book there&rsquo;s a section
+called <i>Divisors and the Greatest Common Divisor</i>. [paging to section,
+reading] Oh, here&rsquo;s one, <i>Determine whether true or false</i> [writing on
+the board]
+</p>
+
+\begin{align*}
+2 \mid (6n + 4)
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Interesting. So
+writing it in the divisibility way [gets up and writes on the board]
+</p>
+
+\begin{align*}
+(6n + 4) = 2k
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> So before we freak
+out and get lost, let&rsquo;s just notice that [writing]
+</p>
+
+\begin{align}
+2(3n + 4) &= 2k \\[.4em]
+3n + 4 &= k
+\end{align}
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> [continuing] I&rsquo;d
+say we don&rsquo;t need to go any further with this. \(2 \mid (6n + 4)\) is
+true &#x2014; which means it&rsquo;s got solutions &#x2014; because \(2\) will go into
+\((6n + 4)\) for whatever \(n\) wants to be. <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> And this whole
+formal divisibility thing helps because if you just saw this one day
+[writing on the board]
+</p>
+
+\begin{align}
+\frac{(6n + 4)}{2} = 3n + 2 
+\end{align}
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing]
+you&rsquo;ve now got a second way to see the idea that the equation is true
+for any \(n\), that it&rsquo;s dependent on \(n\;\). <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [looking
+ironically] Thanks, Uwe, Ute, for keeping it real. <br>
+[laughter] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> [reading text] All
+right, we have this example [writing on board]
+</p>
+
+\begin{align*}
+0 \mid 11
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] which
+is false because there can&rsquo;t be any \(k\) where \(k \cdot 0\) equals
+\(11\;\). Agreed? <br>
+[nods of agreement] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] All
+right, how about this?
+</p>
+
+<blockquote>
+<p>
+Prove that if \(\,a \mid b\) then \(-\, a \mid b\)
+</p>
+</blockquote>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Let&rsquo;s just
+logic it out [getting up and writing on the board]
+</p>
+
+\begin{align*}
+b & = a \cdot k \\[.4em]
+b &= (-a) \cdot (-k) \\[.4em]
+b &= - (a) \cdot (k) \\[.4em]
+b &= - a \cdot k 
+\end{align*}
+
+<p>
+then
+</p>
+
+\begin{align*}
+- a \mid b  \quad \text{for some}\; k \in \mathbb{Z}
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing] So
+\(k\) by virtue of being an integer, which can be either positive or
+negative, we&rsquo;ve derived \(-\, a \mid b\) from \(a \mid b\;\). <br>
+[silence while the others study the board] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> Hold it. I&rsquo;m not
+sure we&rsquo;ve got the spirit of this, quite. <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> How so? <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> [going to the
+board] We need to make sure we understand this as [writing] \((-a) \mid
+b\;\) and not as \(-(a \mid b)\:\), right? <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> So that means
+we&rsquo;ve got [writing] \(b = (-a)(-k)\) as the only possible solution to
+keep that \(b\) positive. And I don&rsquo;t think you meant to factor out
+\(-1\:\) like you did. So \(k\) must be negative to go with the \(-a\:\),
+which then gives positive \(b\;\). That&rsquo;s what is meant, I think. Yes,
+\(k\) being an integer allows this. But again, we&rsquo;re dealing with a
+multiplicative relationship, we&rsquo;re not doing division. And I&rsquo;m sure
+we&rsquo;ll find out why this is so important in a while. <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Oh, I think
+that was in here. [pulling a large-format book from her messenger
+bag<label id='fnr.5' for='fnr-in.5.6780972' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.6780972' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+<i><a href="http://illustratedtheoryofnumbers.com/">An Illustrated Theory of Numbers</a></i> by Martin H. Weissman.
+</span> and pages to tabbed page]. Right, and he shows that \(0 \mid
+0\:\), that zero divides zero, is true &#x2014; because [writing on board]
+\(0 = 0 \cdot k\:\), meaning \(k\) can be anything and the expression remains
+true. [reading further] And he&rsquo;s calling \(k\) the <i>accessory
+number</i>. [reading further] So his wording is the integers \(x\) that
+satisfy \(7 \mid x\) are \(x = 7 \cdot k\) &#x2014; and that will be the arithmetic
+progression of the multiples of \(7\:\). They&rsquo;re evenly
+spaced. Good. And there&rsquo;s this [going to the board and writing] <br>
+</p>
+
+<blockquote>
+<p>
+Plot the integers \(x\) which satisfy \(5 \mid (x - 2)\)
+</p>
+</blockquote>
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [going to the
+board and writing] So if that&rsquo;s to be true then we&rsquo;ve got \(x - 2 =
+5k\:\), and that means for the multiples of \(5\:\), the <i>set</i> of
+integers \(x\) must keep \(x - 2\) multiples of \(5\) also. So for example
+</p>
+
+\begin{align*}
+-3 - 2 &= 5 \cdot -1 \\[.4em]
+2 - 2 &= 5 \cdot 0 \\[.4em]
+7 - 2 &= 5 \cdot 1 \\[.4em]
+12 - 2 &= 5 \cdot 2 \\[.4em]
+\ldots
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] And
+the so-called <i>geometric</i> view of this set of \(x\)&rsquo;s would be a number
+line with points [drawing on the board]
+</p>
+
+<img src="./images/divisibilityline1.svg" width="725px" style="padding: 15px 0px 0px 0px" alt="Number Line 1" class="center">
+<span class="cap">Divisibility number line where x-2 must be a multiple of 5 </span>
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] Which
+is to say, \(x\) is two more than a multiple of \(5\:\). <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Okay, next one
+[writing on the board]
+</p>
+
+<blockquote>
+<p>
+Plot the integers \(x\) which satisfy \(x \mid 12\:\).
+</p>
+</blockquote>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing
+writing] So that means \(12 = x \cdot k\) where \(k\) will just be the
+integers. <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> Again, I would say
+we shouldn&rsquo;t read too much into this. The basic fact is [going to the
+board and writing] we have the set of integers that divide \(12\)
+</p>
+
+\begin{align}
+[-1,-2,-3,-4,6,-12,1,2,3,4,6,12]
+\end{align}
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> And however that
+works out with \(x \cdot k\) is incidental, since whatever \(x\) and \(k\) need
+to be, their product has to be in this [point at (5)] set.<br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> I&rsquo;ll draw that
+quickly [drawing number line]
+</p>
+
+<img src="./images/divisibilityline2.svg" width="725px" style="padding: 15px 0px 0px 0px" alt="Number Line 2" class="center">
+<span class="cap">Divisors of 12 on an integer line</span>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> All right,
+Weissman deals with <i>transitive</i> again. But before that he talks about
+<i>reflexive</i> and <i>antisymmetric</i> in relation to divisibility. [writing
+on the board]
+</p>
+
+<blockquote>
+<p>
+For every integer \(x\), \(x \mid x\)
+</p>
+</blockquote>
+
+<p>
+[smiles of ironic mute astonishment] <br>
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing] So
+this is showing us the <i>reflexivity of divisibility</i> \(\mid\:\). Then he
+says in the margin, <i>Every integer is a multiple of itself</i>. And then
+he has [writing on board] \(x = x \cdot 1\) <br>
+[silence] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> [reading from her
+laptop] According to Wikipedia, a <i>reflexive relation</i> is a binary
+relation &#x2014; or let&rsquo;s say a <i>binary operator</i> &#x2014; on a set \(X\) that
+&ldquo;relates&rdquo; an element of \(X\) to itself. <br>
+[silence] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> [reading his
+laptop] I&rsquo;m on the <i>Encyclopedia of Mathematics</i> site<label id='fnr.6' for='fnr-in.6.35450' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.35450' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+See <a href="https://encyclopediaofmath.org/wiki/Main_Page">The Encyclopedia of Mathematics</a>.
+</span> for
+reflexivity<label id='fnr.7' for='fnr-in.7.2858700' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.2858700' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+<a href="https://encyclopediaofmath.org/index.php?title=Reflexivity">Reflexivity; Encyclopedia of Mathematics.</a>
+</span> and it talks about it in terms of relations as
+well. But we don&rsquo;t want to really unpack the whole Cartesian product,
+relations, functions thing yet do we, no. <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> It says a relation
+is reflexive if it contains the <i>diagonal</i> or <i>identity</i> relation
+[writing on the board] \(\{(a,a) : a \in A\}\) for set \(A\:\). <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So if that
+\((a,a)\) is seen as just a coordinate pair on a regular Cartesian
+coordinate plane, [drawing a graph on the board] then yes, it&rsquo;s just
+points on the diagonal
+</p>
+
+<img src="./images/reflexivecartesian1.svg" width="425px" style="padding: 15px 0px 0px 0px" alt="reflexivity" class="center">
+<span class="cap">Approximation of Ursula's Cartesian plane reflexive relation drawing.</span>
+
+<p>
+[silence] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> So without getting
+too lost in the details, reflexive means things are related somehow to
+themselves. So equality would work, even <i>greater than or equal</i>, and
+<i>less than or equal</i> since the equal part is true. So for example, all
+integers are greater than <i>or</i> equal to themselves. [gives ironic
+look] Well, it&rsquo;s true. <br>
+[laughter] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> Antisymmetric is next? <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Right. And I&rsquo;d
+like to understand what <i>symmetric</i> means first &#x2014; just to get <i>very</i>
+confused. <br>
+[laughter, then all searching on their laptops] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> Again, we&rsquo;re
+looking for <i>symmetric relation</i>. <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> Okay, Wikipedia
+says a <i>symmetric relation</i> is basically, as I paraphrase it, a
+situation where if \(a = b\) is true, then \(b = a\) is also true [writing
+on the board]
+</p>
+
+\begin{align*}
+\forall a,b \in X, \;\; aRb \iff bRa
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] And
+the \(aRb\) means \(a\) and \(b\) are in a relationship. And then examples
+might be we&rsquo;re in symmetric relationships with each other because
+we&rsquo;re all blood siblings to each other. So you Ursula are my sibling,
+and I am your sibling. <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Right, but
+blood sibling is <i>not</i> reflexive, it&rsquo;s <i>irreflexive</i> because you can&rsquo;t
+be called a sibling of yourself. But then a number can be a multiple
+of itself &#x2014; \(1\) times itself &#x2014; and we established that as
+reflexive; but I&rsquo;m not my own sibling. <br>
+[murmurs of agreement]. <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> So in a round
+robin binary way, we share the same parents. That&rsquo;s symmetric, but
+it&rsquo;s not reflexive, is it? You can&rsquo;t share a parent with yourself, can
+you? <br>
+[silence] <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> If it were
+worded <i>my mother is my mother</i> or <i>my father is my father</i>, it&rsquo;s the
+same as saying <i>\(a\) is equal to \(a\)</i>, isn&rsquo;t it? So the wording &ldquo;parent
+in common with myself&rdquo; is misleading, because we&rsquo;re not relating me
+and my parent directly, we&rsquo;re relating the parent to that same parent
+by means of me as the joiner. Does that make sense? It&rsquo;s in the basic
+spirit of a binary relation that relates an element to itself. <br>
+[half-hearted murmurs of agreement and ironic smirking] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> And then we&rsquo;ve
+said the equals relation is reflexive <i>and</i> symmetric, right? Do we
+want to say this, really? <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Sure, why not?
+You know, so often I learn the &ldquo;official&rdquo; way, the accepted answer &#x2014;
+and then I talk myself into believing it. <br>
+[laughter] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> Are we ready to
+tackle <i>antisymmetry</i>? <br>
+[eager murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> Okay, I&rsquo;ve
+searched on <i>antisymmetry</i> and gone to a Wolfram MathWorld page<label id='fnr.8' for='fnr-in.8.1192471' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.1192471' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+<a href="https://mathworld.wolfram.com/AntisymmetricRelation.html">Antisymmetric Relation</a>.
+</span>
+that says [reading]
+</p>
+
+<blockquote>
+<p>
+A relation \(R\) on a set \(S\) is antisymmetric provided that distinct
+elements are never both related to one another. In other words \(xRy\)
+and \(yRx\) together imply that \(x = y\:\).
+</p>
+</blockquote>
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] And
+then from the Wikipedia article [going to the board and writing]
+</p>
+
+<blockquote>
+<p>
+If \(aRb\) with \(a \ne b\) then \(bRa\) must not hold.
+</p>
+</blockquote>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Good. So now
+Weissman says [writing on the board]
+</p>
+
+<blockquote>
+<p>
+For integers \(x\), \(y\), if \(x \mid y\) and \(y \mid x\), then \(x = \pm y\:\).
+</p>
+</blockquote>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+And then he shows it by saying [writing on the board]
+</p>
+
+\begin{align*}
+\text{if}\;\;y &= mx \quad \text{and} \\[.5em]
+x &= ny \quad \text {for some integers}\;\; x, y
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+And then we can say [writing]
+</p>
+
+\begin{align}
+x = ny = n(mx) = (nm)x
+\end{align}
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+And now if we say \(x \ne 0\) we can divide this [pointing to (6)] by
+\(x\:\) [writing on board]
+</p>
+
+\begin{align*}
+\frac{x}{x} &= \frac{ny}{x} = \frac{n(mx)}{x} = \frac{(nm)x}{x} \\[.5em]
+1 &= \frac{ny}{x} = nm = nm
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing] So
+multiplying by a number is the same as dividing by its reciprocal &#x2014;
+and vice versa. And now we have a reciprocal relationship between \(n\)
+and \(m\) since two numbers multiplied equaling \(1\) means they must be
+reciprocals of each other [writing on the board]
+</p>
+
+\begin{align*}
+1 &= nm \\[.5em]
+\frac{1}{m} &= n \\[.5em]
+\frac{1}{n} &= m
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing,
+writing on the board] But as he&rsquo;s saying, \(\frac{1}{m}\) and
+\(\frac{1}{n}\) cannot be anything but \(1\) and still be integers, so
+it&rsquo;s proven that \(n = m = \pm1\:\) So subbing into [points to (6)]
+</p>
+
+\begin{align*}
+x &= ny \\[.5em]
+x &= (\pm1)y
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Which is, again,
+showing us that division is not ever going to be symmetric unless
+we&rsquo;re just talking about an integer dividing itself, basically &#x2014;
+that is, plus or minus itself. <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [looking at the
+Weissman text] So then he does <i>transitivity</i> with divisibility, and
+it&rsquo;s the same as we did before. Then he does [writing on the board]
+</p>
+
+\begin{align*}
+d,x,y \in \mathbb{Z}\; \land\; d \mid x \implies d \mid xy 
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> There&rsquo;s his
+proof, that is [writing on the board]
+</p>
+
+\begin{align*}
+x &= md \\[.5em]
+xy &= (md)y \quad \text{(multiply both sides by $y$)} \\[.5em]
+xy &= (my)d
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So \(xy\) is a
+multiple of \(d\), that multiple being \((my)\). Okay? <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Next, is this
+one [writing on the board]
+</p>
+
+<blockquote>
+<p>
+If \(d \mid x\) and \(d \mid y\), then \(d \mid (x + y)\) and  \(d \mid (x - y)\).
+</p>
+</blockquote>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+And the proof is we can say [writing on board] for \(x = md\) and \(y =
+nd\) for integers \(m\) and \(n\)
+</p>
+
+\begin{align*}
+x \pm y = (md) \pm (nd) = (m \pm n)d
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
+And this shows that \(x \pm y\) is a multiple of \(d\). [reading further in
+the Weissman text] Then he gives a variation on this idea, which he
+calls the <i>two out of three principle for divisibility</i>. [writing on
+the board]
+</p>
+
+<blockquote>
+<p>
+Let \(a\),\(b\),\(c\) be integers satisfying the equation \(a + b = c\). Let
+\(d\) bye an integer. If two of the set \(\{a,b,c\}\) are multiples of
+\(d\), then the third number must also be a multiple of \(d\).
+</p>
+</blockquote>
+
+<p>
+[silence] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> This is just the
+previous one reworded, right? The basic situation [writing on the
+board] \(a + b = c\) can be rearranged into \(a = c - b\) or \(b = c -
+a\). So whichever two you have as multiples of \(d\), we add or subtract
+them to get the third, and that&rsquo;s covered by \(d \mid (x \pm y)\). <br>
+[soft murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> This
+demonstrates two-out-of-three [reading from
+the text and copying on the board]
+</p>
+
+<blockquote>
+<p>
+Demonstrate that \(2\,999\,997\) is a multiple of \(3\).
+</p>
+</blockquote>
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Okay, my
+turn. [going to the board and writing] Since \(3\,000\,000 - 3 =
+2\,999\,997\), we know because of the two-out-of-three principle<label id='fnr.9' for='fnr-in.9.2199200' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.2199200' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+Uwe uses the \(\therefore\) which is the symbol for <i>therefore</i>.
+</span>
+</p>
+
+\begin{align*}
+3 &\mid 3\,000\,000 \quad &\text{(first known)}\\[.5em]
+3 &\mid 3 \quad &\text{(second known)} \\[.5em]
+\therefore \;\; 3 &\mid (3\,000\,000 - 3)
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> Exactly. We knew
+two were divisible by \(d\), so those two added or subtracted from one
+another we could know as well. Good. <br>
+[murmurs of satisfaction] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> Hey, we&rsquo;re really
+going down this rabbit hole. <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [perusing
+Weissman] It&rsquo;s only one, no, two more exercises, then it goes on to
+something else. Let&rsquo;s do this next one and go back to Cummings. <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> No matter what,
+I&rsquo;ll never see division the same again. <br>
+[laughter] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> Hey, I just
+searched on <code>haskell divisibility</code> and a stackoverflow came
+up<label id='fnr.10' for='fnr-in.10.1379181' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.1379181' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
+See <a href="https://stackoverflow.com/questions/3990095/testing-divisibility-of-ints-by-11">Testing divisibility of Ints by 11</a>.
+</span>. It basically asks whether an integer is divisible by
+\(11\). And then it has some trick about adding and subtracting the
+digits of the number, right. But then somebody gives the answer
+[writing on the board]
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org1ebea65"><span class="org-haskell-definition">divisibleBy11</span> x <span class="org-haskell-operator">=</span> x <span class="org-haskell-operator">`rem`</span> 11 <span class="org-haskell-operator">==</span> 0
+</pre>
+</div>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> I&rsquo;ll try it
+[typing into her monitor-connected laptop and running]
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org2d28206"><span class="org-haskell-definition">divisibleBy11</span> 33
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:32:1-13: error:
+    Variable not in scope: divisibleBy11 :: t0 -&gt; t
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> I assume that
+<code>rem</code> means remainder, as in, Give me the remainder of a division. And
+then that&rsquo;s checked if equal to \(0\). <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> Again, we&rsquo;re
+getting the true-false nature of divisibility. It&rsquo;s not just dividing
+a number by another. It&rsquo;s asking yes or no whether a number properly
+divides another. <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Okay, here&rsquo;s
+the next problem
+</p>
+
+<blockquote>
+<p>
+Find all integers \(x\) which satisfy \(x \mid (x + 6)\).
+</p>
+</blockquote>
+
+<p>
+[silence] <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [reading on]
+Then he&rsquo;s solving it with his two out of three principle. So if we can
+find two parts of this that are divisible, then the sum or difference
+of these is then divisible as well. <br>
+[silence] <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> A hint is that
+we&rsquo;re supposed to <i>assume</i> the \(x \mid (x + 6)\) is one of the
+givens. Then we need another given. Then we add or subtract these two
+givens to get the final formula. <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> Formula? <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> In the last one we
+had \(3\) divides one thing, and then \(3\) divides another thing,
+therefore those two things \(3\) divides, when added or subtracted, also
+are divisible by \(3\). So we could say the thing dividing is an unknown
+variable \(x\). It divides, supposedly, \((x + 6)\), but then we need
+another thing that \(x\) divides. <br>
+[silence] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> [writing on the
+board] So, just pulling something out of thin air, if we assume the
+second give is \(x \mid 7\), then we&rsquo;ve got something&#x2026;
+</p>
+
+\begin{align*}
+x \mid (x + 6) - 7 = x \mid x - 1
+\end{align*}
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> &#x2026;that doesn&rsquo;t
+help us much. It&rsquo;s just a new &ldquo;what can \(x\) be&rdquo; question. That is,
+we&rsquo;re going in circles. <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> Something tells me
+we want to get rid of stuff on the right hand side of the
+\(\mid\). Either get rid of the \(x\) or the \(6\). <br>
+[murmurs of agreement] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> [continuing] So
+why don&rsquo;t we assume &#x2014; oh, I know! Let&rsquo;s say \(x \mid x\) is the other
+given since that&rsquo;s always true. <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> Good. [writing on
+board]
+</p>
+
+\begin{align*}
+x &\mid x \quad \text{...second given after $x \mid (x + 6)$}\\[.5em]
+x &\mid (x + 6) - x = 6 \quad \text{...subtracting one given from another}\\[.5em]
+x &\mid 6
+\end{align*}
+
+<p>
+[silence] <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> What that&rsquo;s saying
+&#x2014; as far as I can tell [writing on the board] \(x \mid (x + 6) \iff x
+\mid 6\). Right? So whatever \(x\)&rsquo;s divide \(6\) will be our desired set
+for \(x \mid (x + 6)\) as well. <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Let me test it
+with something Haskell. [starts a new source block]
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgf2edb0d"><span class="org-rainbow-delimiters-depth-1">[</span>x <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-haskell-operator">-</span>20,<span class="org-haskell-operator">-</span>19<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>, <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>x <span class="org-haskell-operator">`rem`</span> 6<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+[-18,-12,-6,0,6,12,18]
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> No, wrong, I&rsquo;ve
+got the <code>6</code> trying to go into the <code>x</code>. Need to reverse them.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org9d5e422"><span class="org-rainbow-delimiters-depth-1">[</span>x <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-haskell-operator">-</span>20,<span class="org-haskell-operator">-</span>19<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>, <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>6 <span class="org-haskell-operator">`rem`</span> x<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+[-6,-3,-2,-1*** Exception: divide by zero
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> And obviously
+we can&rsquo;t divide by zero. We need to filter out the zero. <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> Right. [searching
+on her laptop] Okay, there&rsquo;s a <code>filter</code> function. All you need to do
+is say [writing on the board] <code>filter (\=0) [-20,-19..20]</code> and with
+that <i>not equals zero</i> in the middle, <code>0</code> should get filtered out. <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Got
+it. [typing]
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org3a98b0d"><span class="org-rainbow-delimiters-depth-1">[</span>x <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> filter <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-operator">/=</span>0<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-haskell-operator">-</span>20,<span class="org-haskell-operator">-</span>19<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>, <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>6 <span class="org-haskell-operator">`rem`</span> x<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+[-6,-3,-2,-1,1,2,3,6]
+</pre>
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Or I could do
+it this way [typing]
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgb74af2f"><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">xDivides6</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">[</span>x <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> sampleList, <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>6 <span class="org-haskell-operator">`rem`</span> x<span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">]</span>
+  <span class="org-haskell-keyword">where</span> sampleList <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-haskell-operator">-</span>20,<span class="org-haskell-operator">-</span>19<span class="org-haskell-operator">..</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">++</span> <span class="org-rainbow-delimiters-depth-2">[</span>1<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgef9a17f">xDivides6
+</pre>
+</div>
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span>
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Good. gold
+standard for figuring out lowest common denominator. <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> I&rsquo;d say so, but
+now we need to see how Haskell does it internally, and how <i>The
+Haskell Road&#x2026;</i> does it and stop being amateurs. <br>
+[laughter] <br>
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> I feel like you
+and the professor are like very strong bakers kneading and kneading
+and kneading my brain [demonstrates with imaginary brain-dough] <br>
+[laughter] <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> No, this had
+really worked out, you, Ursula, racing ahead with the Haskell. And I
+going ahead with the set theory, and you, Ute, going on ahead with the
+math logic. I mean, we&rsquo;re definitely making progress. It&rsquo;s just that
+we have so much to learn! <br>
+[affirmations]
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔴𝔢:</span> Our parents are
+both firmly in the empirical world. <br>
+[murmurs of agreement] <br>
+</p>
+
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

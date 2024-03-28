@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-08-14 Mon 21:52 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Haskell Road; Getting Started Part 3</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Haskell Road; Getting Started Part 3</h1>
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<img src="./images/square_partitioned_into_6_similar_rectangles_henderson_small.png"  style="padding: 0px 0px 0px 0px" alt="3-d graph" class="center">
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+
+<div id="outline-container-orgb5c250e" class="outline-2">
+<h2 id="orgb5c250e">Getting started part 3</h2>
+</div>
+
+
+<div id="outline-container-org27c3084" class="outline-2">
+<h2 id="org27c3084">Monday at the library part 3</h2>
+<div class="outline-text-2" id="text-org27c3084">
+</div>
+<div id="outline-container-org5201348" class="outline-3">
+<h3 id="org5201348">Breaktime</h3>
+<div class="outline-text-3" id="text-org5201348">
+<p>
+The von der Surwitzes are back at the student center cafe for a break.
+This time just a pastry and a tea.
+</p>
+
+<p>
+<span class="fraktur">𝔘𝔱𝔢:</span> I have to say, I&rsquo;m
+very glad I&rsquo;m approaching the whole post-calculus math world from this
+perspective. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Are we in fact
+post-calc?  [silence, mulling over question] <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Yes. We&rsquo;ve
+taken all our calc, Linear Algebra, Differential
+Equations. We&rsquo;re where a German <i>Gymnasiast</i> would be entering
+a university. <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Do you remember
+what Professor Chandra said about that MIT professor who would turn
+whatever math he wanted to remember into code<label id='fnr.1' for='fnr-in.1.4216479' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.4216479' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+Gerald Sussman.
+</span>? <br />
+[eating and drinking pause] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> We&rsquo;ve got to be
+careful not to &#x2014; <i>in Beschlag nehmen</i>? <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> You could say
+<i>hog</i>. <br />
+[embarrassed laughter] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Right. We can&rsquo;t
+<i>hog</i> the professor. <br />
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> I don&rsquo;t think
+there&rsquo;s any risk of that. There&rsquo;s not that many of us. <br />
+[murmurs of agreement] <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> And we can&rsquo;t get
+too wild and far afield. We always need to follow her lead. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> I don&rsquo;t think
+there&rsquo;s any risk of that. The woman knows what she wants this to
+be. <br />
+[eating and drinking and looking around the cafe] <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> No, this had
+really worked out, you, Ursula, racing ahead with the Haskell. And I
+going ahead with the set theory, and you, Ute, going on ahead with the
+math logic. I mean, we&rsquo;re definitely making progress. It&rsquo;s just that
+we have so much to learn! <br />
+[affirmations]
+<span class="fraktur">𝔘𝔱𝔢:</span> Mama and Papa will
+be less help. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> You mean because
+they&rsquo;re in the empirical world. <br />
+[murmurs of agreement] <br />
+</p>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-orgd85132e" class="outline-3">
+<h3 id="orgd85132e">Primes</h3>
+<div class="outline-text-3" id="text-orgd85132e">
+<p>
+Back at the library study room they&rsquo;ve checked out the reserved books
+and are looking through sections of those that deal with the basic
+theory of division.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org606b938"><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">isPrime</span> n <span class="org-haskell-operator">=</span> filter <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-operator">\</span>x <span class="org-haskell-operator">-&gt;</span> n <span class="org-haskell-operator">`mod`</span> x <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">[</span>2<span class="org-haskell-operator">..</span>n<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">==</span> <span class="org-rainbow-delimiters-depth-2">[</span>n<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-definition">primes</span> n <span class="org-haskell-operator">=</span> filter isPrime <span class="org-rainbow-delimiters-depth-2">[</span>1<span class="org-haskell-operator">..</span>n<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgd53b8f5"><span class="org-haskell-definition">primes</span> 100
+</pre>
+</div>
+
+<pre class="example">
+[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
+</pre>
+
+
+
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</div>
+<!-- Footnotes --><!-- 
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Gerald Sussman.
+</p></div></div>
+
+ --></div>
+</body>
+</html>
