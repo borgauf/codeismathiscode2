@@ -1,11 +1,12 @@
 # # -*- mode: org -*- coding: utf-8 -*-
-#+TITLE: Numbers
+# #+TITLE: Numbers
 #+AUTHOR:
 #+EMAIL: 
 #+DATE: 
 #+LANGUAGE:  en
 # #+INFOJS_OPT: view:showall ltoc:t mouse:underline
 #+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="./ox-tufte.css" type="text/css">
 #+INCLUDE: "./header.org" :minlevel 1
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
@@ -360,7 +361,7 @@ data structures known as /trees/, we'll do proper set theory with
 Haskell's set theory module, [[https://hackage.haskell.org/package/containers-0.6.6/docs/Data-Set.html][Data.Set]][fn:20].  For the immediate
 future we'll consider a list to be a beginner's substitute for a
 set. And so a simple "how many" function on a list standing in for a
-set is /length/
+set is /length/. The code
 
 #+name: 6734a0b3-2348-42f4-af3c-7f08b88197ba
 #+begin_src haskell :results verbatim :exports both

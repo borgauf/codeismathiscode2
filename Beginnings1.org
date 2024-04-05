@@ -89,31 +89,43 @@ y = 1 + x
 
 * Abstractions
 
-** ...in which we attempt to formalize things
+** Formalizing with mathematical logic
 
-Objects by themselves or objects together. No doubt many creatures
-other than just us humans possess an instinctual, /intuitive/, working
-grasp of these two seemingly contrasting situations. We humans have
-language, and this brings logic and symbolism to intuition. Consider
-the statement
+#+name: e452d47a-e811-4df1-8892-e64cc856521b
+#+begin_src haskell :results verbatim :exports both
+1 + 1 :: Int
+#+end_src
+
+#+RESULTS: e452d47a-e811-4df1-8892-e64cc856521b
+: 2
+
+The perception of objects: separate or together, one or many, close or
+far away. Higher life on this planet would seem to have an innate,
+/intuitive/ grasp of such contrasting conditions. We humans have
+language, and this brings logic and symbolism to formalize
+intuition. Consider the /statement/ 
+
+call_marginnote("The ⟹ arrow is the
+mathematical logic symbol for /implies/, as when one thing /implies/
+another thing. Or, roughly, \"/if/ you say this, /then/ you are also
+saying this.\" We'll describe all the math logic symbols as we go.")
 
 ⇲ @@html:<font color = "#0d3db3">&nbsp;&nbsp;@@
 together $\implies$ not alone, not separate
 @@html:</font>@@
 
-A statement is also called a /proposition/ and must be either true or
-false, as in "Let us /propose/ this to be true." The $\implies$ arrow
-is from mathematical logic and means /implies/, i.e., one thing
-/implies/ another thing.[fn:1] Or, roughly, "/if/ you say this, /then/
-you are also saying this."  Reading the statement backwards
+A statement is also called a /proposition/. The first thing to know
+about propositions is they are either /true/ or /false/. As in, We
+/propose/ this to be true, but it might be false.   Reading the statement
+backwards 
 
 ⇲ @@html:<font color = "#0d3db3">&nbsp;&nbsp;@@
-not alone, not separate $\implies$ together
+not alone, not separate $\implies$ together,
 @@html:</font>@@
 
-we notice a simple "if /not/ this then that" situation. Both are
-statements, or /proposition we can decide whether they are true or not. In math logic
-this is called a /proposition/. For example
+we see a simple "if /not/ this, then that" situation. Both version are
+statements, or propositions we can decide to be true or not. But not
+every utterance is a statement. For example
 
 @@html:<font color = "#0d3db3">@@
 1. I like you. 
@@ -121,31 +133,104 @@ this is called a /proposition/. For example
 3. How has your day been?
 @@html:</font>@@
    
-Out of these three sentences only #1 is a true proposition, or, a real
-statement that can be resolved to *true* or *false*. #2 is a command,
-and #3 is a question. Of course #2 and #3 can be answered with yes or
-no, but not true or false.[fn:2]
+Out of these three sentences only #1 is a proposition, a statement
+that can be resolved to true or false. #2 is a command, and #3 is a
+question. Of course #2 and #3 can be answered with yes or no, or good
+or bad, but not with true or false.[fn:1]
 
-And so @@html:<font color = "#0d3db3">@@together $\implies$ not alone,
-not separate@@html:</font>@@ is a statement that is either true or
-false. We may simply believe it to be true, but it may not be. Lurking
-somewhere might be a situation where /together/ does not really imply
-or mean /not alone/ and /not separate/. What about riding on a city
-transit bus? Yes, you can technically be together with all the other
-passengers, but still be quite alone and separate from all the people
-you do not know.
+Our @@html:<font color = "#0d3db3">@@together $\implies$ not alone,
+not separate@@html:</font>@@ makes sense, seems true. But could there
+be lurking somewhere a situation where /together/ does not really
+imply or mean /not alone/ and /not separate/. What about riding on a
+city transit bus? Yes, you can technically be together with all the
+other passengers, but still be quite alone and separate from all the
+people you do not know. The takeaway is we have a two-part process:
+First, the statement, then whether it is true or false.
 
-/Aristotelian logic/ as put forth by Plato's student Aristotle in the
-third century BC begins with three rules
+** Law of thought
+
+Aristotle, who lived in third century BC and was Plato's best-known
+student, based his logic on three rules
 
 1. /Identity/: A thing is itself, or, $A \; \text{is} \; A$
 2. /Excluded middle/: A proposition is either true or false, or, $A \lor
-   \not A$
+  \neg \,A$
 3. /Contradiction/: A proposition cannot be both true /and/ false at
    the same time.
 
+These seem rather---obvious, to the point of being silly. However,
+logicians and mathematicians must be formal and thorough about
+it. Let's analyze each in turn.
+
+➝ $A \; \text{is} \; A$ \\
+is probably the most pedantic and even tedious seeming. But in the
+quest to force nebulous intuitive phenomena to conform to logical
+thought and speech, we must at least use symbols consistently. Again,
+it seems obvious that a dog is a dog, but we cannot have dogs randomly
+be cats. If Shakespeare's Juliet declares
+
+#+begin_quote
+What's in a name? That which we call a rose, by any other word would smell as sweet.
+#+end_quote
+
+we still need whatever the rose is now called to stay that name and
+not have different names coming in and out of usage at random. This
+speaks to a need for consistency.
+
+Aristotle said
+
+#+begin_quote
+If ... one were to say that [a] word has an infinite number of
+meanings, obviously reasoning would be impossible; for not to have one
+meaning is to have no meaning, and if words have no meaning our
+reasoning with one another, and indeed with ourselves, has been
+annihilated; for it is impossible to think of anything if we do not
+think of one thing...
+#+end_quote
+
+Again, language is forcing us to exactness. Aristotle also employs
+symbols such as /X/ and /A/ to generalize his argument
+
+#+begin_quote
+if "man" means X, then if A is a man X will be what "being a man" means.
+#+end_quote
 
 
+Again we see implication[fn:2] where if we have a meaning X given for
+what a man is, then if an individual A is considered as man, then we
+must stay with the meaning X of what a man is. Man means X. A is a
+man. Hence, A means X.
+
+The British mathematician [[https://en.wikipedia.org/wiki/George_Boole][George Boole]] emphasized the fact that with
+language we use words, names, symbols, and these are in truth made-up,
+markings on paper or blackboards, sounds, pronunciations, /but/ they
+must have set shapes, sounds, and meanings agreed upon by all users.
+
+[What does Boole mean with Nothing "0" and Universe "1": He observes
+that the only two numbers that satisfy xx = x are 0 and 1. He then
+observes that 0 represents "Nothing" while "1" represents the
+"Universe" (of discourse). Is this some forcing logic? After all neg
+times neg is forced by (50 - 2)(50 - 2) = 48 x 48, i.e., we follow one
+trail taught in grade school to "figure out" 48 x 48, but is (50 -
+2)(50 - 2) a forcing logic?]
+
+
+➝ $A \lor \neg\, A$ (A /or/ not A)\\
+is quite prevalent in everyday life, even if we don't realize
+it. Whenever we hear a statement such as @@html:<font color =
+"#4715b3">@@If you don't clean your room, you'll be grounded for the
+rest of the week!@@html:</font>@@ Here the parent has created an excluded
+middle: Clean your room, /or/ be grounded---excluding any other
+possibilities. Harsh, but common in everyday life. Of course the usual
+rebuttal is neither-nor or---both. We see both when someone is offered
+two appealing choices---and doesn't want to be restricted to one or
+the other, no both, please.
+
+There cannot be a world where we 
+
+*** Negation
+
+Negative would be the opposite of positive. 
 
 , i.e.,
 /negation/, i.e., /not/ alone, as well as /not/ separate would be
@@ -169,8 +254,13 @@ would be
 \alpha \vDash \beta \iff M(\alpha) \subseteq M(\beta)
 \end{align*}
 
+[Humans enter a great palace when they attempt to move from intuition
+to logic.]
 
+[Algebra really started with A's syllogisms turning words to letters.]
 
+[Boole: We can say anything. But we have to agree on ground rules of
+what the symbols mean.]
 
 
 ** If together, how many?
@@ -215,14 +305,19 @@ phenomena and create abstract representative mental structures.
 
 * Footnotes
 
-[fn:1] We'll describe all the math logic symbols shortly...
+[fn:1] There is a story of the famous physicist Paul Dirac who,
+finishing a guest lecture, asked the student audience if there were
+any questions. A student said, "I don't understand how you got..." But
+Dirac seemingly ignored him. A professor then asked Dirac if he would
+answer the question. Dirac replied, Was there a question? I only heard
+a statement.
 
-[fn:2] There is a story of the famous physicist Paul Dirac who,
-finishing a lecture, asked the students if there were any questions. A
-student said, "I don't understand how you got..." But Dirac seemingly
-ignored the student. A professor then asked Dirac if he would answer
-the question. Dirac replied, Was there a question? I only heard a
-statement.
+[fn:2] ...and more generally, an implication consists of a pair of
+sentences separated by the $\implies$ operator. Symbolically, $p$
+implies $q$ or $(p \implies q)$. The sentence to the left of the
+$\implies$ operator is called the /antecedent/, and the sentence to
+the right is called the /consequent/.
+
 
 [fn:3] You have no doubt heard of /double negatives/ where "It's not
 that I don't like you" (I do like you) or "There is no way you are not going to clean

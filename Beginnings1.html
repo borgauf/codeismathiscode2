@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2024-03-29 Fri 11:35 -->
+<!-- 2024-04-04 Thu 22:45 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Beginnings 1</title>
@@ -31,7 +31,7 @@
       displayIndent: '0em'
     },
     output: {
-      font: 'mathjax-dejavu',
+      font: 'mathjax-euler',
       displayOverflow: 'overflow'
     }
   };
@@ -95,24 +95,38 @@
 </div>
 </p>
 
-<section id="outline-container-org0043671" class="outline-2">
-<h2 id="org0043671">Getting started part 1</h2>
+<section id="outline-container-orgde0f8b8" class="outline-2">
+<h2 id="orgde0f8b8">Getting started part 1</h2>
 </section>
 
 
-<section id="outline-container-org0b22235" class="outline-2">
-<h2 id="org0b22235">Abstractions</h2>
-<div class="outline-text-2" id="text-org0b22235">
+<section id="outline-container-org819e6b8" class="outline-2">
+<h2 id="org819e6b8">Abstractions</h2>
+<div class="outline-text-2" id="text-org819e6b8">
 </div>
-<div id="outline-container-orgff52af2" class="outline-3">
-<h3 id="orgff52af2">&#x2026;in which we attempt to formalize things</h3>
-<div class="outline-text-3" id="text-orgff52af2">
+<div id="outline-container-orga55bdd4" class="outline-3">
+<h3 id="orga55bdd4">Formalizing with mathematical logic</h3>
+<div class="outline-text-3" id="text-orga55bdd4">
+<div class="org-src-container">
+<pre class="src src-haskell" id="org194cf40">1 <span class="org-haskell-operator">+</span> 1 <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Int</span>
+</pre>
+</div>
+
+<pre class="example">
+2
+</pre>
+
+
 <p>
-Objects by themselves or objects together. No doubt many creatures
-other than just us humans possess an instinctual, <i>intuitive</i>, working
-grasp of these two seemingly contrasting situations. We humans have
-language, and this brings logic and symbolism to intuition. Consider
-the statement
+The perception of objects: separate or together, one or many, close or
+far away. Higher life on this planet would seem to have an innate,
+<i>intuitive</i> grasp of such contrasting conditions. We humans have
+language, and this brings logic and symbolism to formalize
+intuition. Consider the <i>statement</i> 
+</p>
+
+<p>
+<label for='mn-auto.9790334' class='margin-toggle'>&#8853;</label><input type='checkbox' id='mn-auto.9790334' class='margin-toggle'><span class='marginnote'> The ⟹ arrow is the mathematical logic symbol for <i>implies</i>, as when one thing <i>implies</i> another thing. Or, roughly, &ldquo;<i>if</i> you say this, <i>then</i> you are also saying this.&rdquo; We&rsquo;ll describe all the math logic symbols as we go. </span>
 </p>
 
 <p>
@@ -122,25 +136,22 @@ together \(\implies\) not alone, not separate
 </p>
 
 <p>
-A statement is also called a <i>proposition</i> and must be either true or
-false, as in &ldquo;Let us <i>propose</i> this to be true.&rdquo; The \(\implies\) arrow
-is from mathematical logic and means <i>implies</i>, i.e., one thing
-<i>implies</i> another thing.<label id='fnr.1' for='fnr-in.1.1471703' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.1471703' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
-We&rsquo;ll describe all the math logic symbols shortly&#x2026;
-</span> Or, roughly, &ldquo;<i>if</i> you say this, <i>then</i>
-you are also saying this.&rdquo;  Reading the statement backwards
+A statement is also called a <i>proposition</i>. The first thing to know
+about propositions is they are either <i>true</i> or <i>false</i>. As in, We
+<i>propose</i> this to be true, but it might be false.   Reading the statement
+backwards 
 </p>
 
 <p>
 ⇲ <font color = "#0d3db3">&nbsp;&nbsp;
-not alone, not separate \(\implies\) together
+not alone, not separate \(\implies\) together,
 </font>
 </p>
 
 <p>
-we notice a simple &ldquo;if <i>not</i> this then that&rdquo; situation. Both are
-statements, or <i>proposition we can decide whether they are true or not. In math logic
-this is called a /proposition</i>. For example
+we see a simple &ldquo;if <i>not</i> this, then that&rdquo; situation. Both version are
+statements, or propositions we can decide to be true or not. But not
+every utterance is a statement. For example
 </p>
 
 <p>
@@ -156,51 +167,163 @@ this is called a /proposition</i>. For example
 </p>
 
 <p>
-Out of these three sentences only #1 is a true proposition, or, a real
-statement that can be resolved to <b>true</b> or <b>false</b>. #2 is a command,
-and #3 is a question. Of course #2 and #3 can be answered with yes or
-no, but not true or false.<label id='fnr.2' for='fnr-in.2.9670868' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.9670868' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+Out of these three sentences only #1 is a proposition, a statement
+that can be resolved to true or false. #2 is a command, and #3 is a
+question. Of course #2 and #3 can be answered with yes or no, or good
+or bad, but not with true or false.<label id='fnr.1' for='fnr-in.1.1471703' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.1471703' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
 There is a story of the famous physicist Paul Dirac who,
-finishing a lecture, asked the students if there were any questions. A
-student said, &ldquo;I don&rsquo;t understand how you got&#x2026;&rdquo; But Dirac seemingly
-ignored the student. A professor then asked Dirac if he would answer
-the question. Dirac replied, Was there a question? I only heard a
-statement.
+finishing a guest lecture, asked the student audience if there were
+any questions. A student said, &ldquo;I don&rsquo;t understand how you got&#x2026;&rdquo; But
+Dirac seemingly ignored him. A professor then asked Dirac if he would
+answer the question. Dirac replied, Was there a question? I only heard
+a statement.
 </span>
 </p>
 
 <p>
-And so <font color = "#0d3db3">together \(\implies\) not alone,
-not separate</font> is a statement that is either true or
-false. We may simply believe it to be true, but it may not be. Lurking
-somewhere might be a situation where <i>together</i> does not really imply
-or mean <i>not alone</i> and <i>not separate</i>. What about riding on a city
-transit bus? Yes, you can technically be together with all the other
-passengers, but still be quite alone and separate from all the people
-you do not know.
+Our <font color = "#0d3db3">together \(\implies\) not alone,
+not separate</font> makes sense, seems true. But could there
+be lurking somewhere a situation where <i>together</i> does not really
+imply or mean <i>not alone</i> and <i>not separate</i>. What about riding on a
+city transit bus? Yes, you can technically be together with all the
+other passengers, but still be quite alone and separate from all the
+people you do not know. The takeaway is we have a two-part process:
+First, the statement, then whether it is true or false.
 </p>
+</div>
+</div>
 
+<div id="outline-container-org8a1512e" class="outline-3">
+<h3 id="org8a1512e">Law of thought</h3>
+<div class="outline-text-3" id="text-org8a1512e">
 <p>
-<i>Aristotelian logic</i> as put forth by Plato&rsquo;s student Aristotle in the
-third century BC begins with three rules
+Aristotle, who lived in third century BC and was Plato&rsquo;s best-known
+student, based his logic on three rules
 </p>
 
 <ol class="org-ol">
 <li><i>Identity</i>: A thing is itself, or, \(A \; \text{is} \; A\)</li>
 <li><i>Excluded middle</i>: A proposition is either true or false, or, \(A \lor
-   \not A\)</li>
+  \neg \,A\)</li>
 <li><i>Contradiction</i>: A proposition cannot be both true <i>and</i> false at
 the same time.</li>
 </ol>
 
+<p>
+These seem rather&#x2014;obvious, to the point of being silly. However,
+logicians and mathematicians must be formal and thorough about
+it. Let&rsquo;s analyze each in turn.
+</p>
+
+<p>
+➝ \(A \; \text{is} \; A\) <br>
+is probably the most pedantic and even tedious seeming. But in the
+quest to force nebulous intuitive phenomena to conform to logical
+thought and speech, we must at least use symbols consistently. Again,
+it seems obvious that a dog is a dog, but we cannot have dogs randomly
+be cats. If Shakespeare&rsquo;s Juliet declares
+</p>
+
+<blockquote>
+<p>
+What&rsquo;s in a name? That which we call a rose, by any other word would smell as sweet.
+</p>
+</blockquote>
+
+<p>
+we still need whatever the rose is now called to stay that name and
+not have different names coming in and out of usage at random. This
+speaks to a need for consistency.
+</p>
+
+<p>
+Aristotle said
+</p>
+
+<blockquote>
+<p>
+If &#x2026; one were to say that [a] word has an infinite number of
+meanings, obviously reasoning would be impossible; for not to have one
+meaning is to have no meaning, and if words have no meaning our
+reasoning with one another, and indeed with ourselves, has been
+annihilated; for it is impossible to think of anything if we do not
+think of one thing&#x2026;
+</p>
+</blockquote>
+
+<p>
+Again, language is forcing us to exactness. Aristotle also employs
+symbols such as <i>X</i> and <i>A</i> to generalize his argument
+</p>
+
+<blockquote>
+<p>
+if &ldquo;man&rdquo; means X, then if A is a man X will be what &ldquo;being a man&rdquo; means.
+</p>
+</blockquote>
 
 
+<p>
+Again we see implication<label id='fnr.2' for='fnr-in.2.711221' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.711221' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+&#x2026;and more generally, an implication consists of a pair of
+sentences separated by the \(\implies\) operator. Symbolically, \(p\)
+implies \(q\) or \((p \implies q)\). The sentence to the left of the
+\(\implies\) operator is called the <i>antecedent</i>, and the sentence to
+the right is called the <i>consequent</i>.
+</span> where if we have a meaning X given for
+what a man is, then if an individual A is considered as man, then we
+must stay with the meaning X of what a man is. Man means X. A is a
+man. Hence, A means X.
+</p>
+
+<p>
+The British mathematician <a href="https://en.wikipedia.org/wiki/George_Boole">George Boole</a> emphasized the fact that with
+language we use words, names, symbols, and these are in truth made-up,
+markings on paper or blackboards, sounds, pronunciations, <i>but</i> they
+must have set shapes, sounds, and meanings agreed upon by all users.
+</p>
+
+<p>
+[What does Boole mean with Nothing &ldquo;0&rdquo; and Universe &ldquo;1&rdquo;: He observes
+that the only two numbers that satisfy xx = x are 0 and 1. He then
+observes that 0 represents &ldquo;Nothing&rdquo; while &ldquo;1&rdquo; represents the
+&ldquo;Universe&rdquo; (of discourse). Is this some forcing logic? After all neg
+times neg is forced by (50 - 2)(50 - 2) = 48 x 48, i.e., we follow one
+trail taught in grade school to &ldquo;figure out&rdquo; 48 x 48, but is (50 -
+2)(50 - 2) a forcing logic?]
+</p>
+
+
+<p>
+➝ \(A \lor \neg\, A\) (A <i>or</i> not A)<br>
+is quite prevalent in everyday life, even if we don&rsquo;t realize
+it. Whenever we hear a statement such as <font color =
+"#4715b3">If you don&rsquo;t clean your room, you&rsquo;ll be grounded for the
+rest of the week!</font> Here the parent has created an excluded
+middle: Clean your room, <i>or</i> be grounded&#x2014;excluding any other
+possibilities. Harsh, but common in everyday life. Of course the usual
+rebuttal is neither-nor or&#x2014;both. We see both when someone is offered
+two appealing choices&#x2014;and doesn&rsquo;t want to be restricted to one or
+the other, no both, please.
+</p>
+
+<p>
+There cannot be a world where we 
+</p>
+</div>
+
+<div id="outline-container-orgaf542ca" class="outline-4">
+<h4 id="orgaf542ca">Negation</h4>
+<div class="outline-text-4" id="text-orgaf542ca">
+<p>
+Negative would be the opposite of positive. 
+</p>
 
 <p>
 , i.e.,
 <i>negation</i>, i.e., <i>not</i> alone, as well as <i>not</i> separate would be
 together. A negation of yes is no and a negation of positive is
-negative.<label id='fnr.3' for='fnr-in.3.8101394' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.8101394' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+negative.<label id='fnr.3' for='fnr-in.3.9115149' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.9115149' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
 You have no doubt heard of <i>double negatives</i> where &ldquo;It&rsquo;s not
 that I don&rsquo;t like you&rdquo; (I do like you) or &ldquo;There is no way you are not going to clean
 your room&rdquo; (you <i>are</i> going to clean your room).
@@ -227,16 +350,28 @@ would be
 \begin{align*}
 \alpha \vDash \beta \iff M(\alpha) \subseteq M(\beta)
 \end{align*}
+
+<p>
+[Humans enter a great palace when they attempt to move from intuition
+to logic.]
+</p>
+
+<p>
+[Algebra really started with A&rsquo;s syllogisms turning words to letters.]
+</p>
+
+<p>
+[Boole: We can say anything. But we have to agree on ground rules of
+what the symbols mean.]
+</p>
 </div>
 </div>
+</div>
 
 
-
-
-
-<div id="outline-container-orgf718da5" class="outline-3">
-<h3 id="orgf718da5">If together, how many?</h3>
-<div class="outline-text-3" id="text-orgf718da5">
+<div id="outline-container-orge63ca02" class="outline-3">
+<h3 id="orge63ca02">If together, how many?</h3>
+<div class="outline-text-3" id="text-orge63ca02">
 <p>
 Abstraction and symbolism have taken humanity into a modern science
 and technology landscape that, as far as we know, is unique in the
@@ -264,7 +399,7 @@ considered.
 Along with clumpiness, groupings, stuff together, we probably also
 were aware of the passing, the demarcation of
 time, such as the seasons cycling. And <i>shapes</i> could be categorized
-as well.<label id='fnr.4' for='fnr-in.4.8196407' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.8196407' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+as well.<label id='fnr.4' for='fnr-in.4.1650310' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.1650310' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
 Geometry.
 </span> But let&rsquo;s stick with clumpiness for a while.
 </p>

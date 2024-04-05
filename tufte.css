@@ -159,13 +159,17 @@ body {
 
 .MathJax {
     /* font-size: 1.3em !important; */
-    font-size: 93% !important;
+    font-size: 100% !important; 
 }
+
+/* .TEX-I { */
+/*     font-family: MJXTEX-I, MJXZERO !important; */
+/* } */
 
 /* borrowed */
 .MathJax_Display {
     /* text-align: left !important; */
-    font-size: 1.0em;
+    /* font-size: 1.0em; */
     /*line-height: 4.5em; */
     /* margin-left: -6em !important; */
     /* padding-left: 10px; */
@@ -203,6 +207,29 @@ span.nowrap {
     font-size: 1.8rem;
     
 }
+
+pre.example {
+
+    max-width: 100% !important;
+    overflow-x: auto;
+    color: #1e3da7 !important;
+}
+
+.src-haskell {
+    max-width: 65% !important;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+   
+    /* width: 50% !important; */
+    /* font-size: 50% !important; */
+    color: #0a6060 !important;
+    /* color: green !important; */
+    overflow-x: auto;
+    display: block;
+    float: left !important;
+    
+}
+
 
 /* added */
 span.cap {
@@ -297,7 +324,8 @@ h2 {
 
 /* borrowed */
 h3, h4 {
-    font-size: 150%;
+    font-size: 130% !important;
+    font-style: normal !important;
     line-height: 1.5em;
 }
 
@@ -350,7 +378,7 @@ dl,
 ol,
 ul {
     font-size: 1.3rem;
-    line-height: 2.0rem;
+    line-height: 1.9rem;
     letter-spacing: 0.035em;
 }
 
