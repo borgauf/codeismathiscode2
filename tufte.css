@@ -210,23 +210,16 @@ span.nowrap {
 
 pre.example {
 
-    max-width: 100% !important;
+    max-width: 100%;
     overflow-x: auto;
-    color: #1e3da7 !important;
+    color: #1e3da7;
 }
 
 .src-haskell {
     max-width: 65% !important;
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-   
-    /* width: 50% !important; */
-    /* font-size: 50% !important; */
-    color: #0a6060 !important;
-    /* color: green !important; */
+    color: #0a6060;
     overflow-x: auto;
-    display: block;
-    float: left !important;
+    float: left;
     
 }
 

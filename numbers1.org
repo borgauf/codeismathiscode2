@@ -369,7 +369,22 @@ length [1,2,3,4,5]
 #+end_src
 
 #+RESULTS: 6734a0b3-2348-42f4-af3c-7f08b88197ba
-: 5
+#+begin_example
+<interactive>:318:9: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraint
+        Num a0 arising from the literal ‘1’
+    • In the expression: 1
+      In the first argument of ‘length’, namely ‘[1, 2, 3, 4, ....]’
+      In the expression: length [1, 2, 3, 4, ....]
+
+<interactive>:318:9: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraint
+        Num a0 arising from the literal ‘1’
+    • In the expression: 1
+      In the first argument of ‘length’, namely ‘[1, 2, 3, 4, ....]’
+      In the expression: length [1, 2, 3, 4, ....]
+5
+#+end_example
 
 Again, more to come. Watch this space[fn:21]. \\
 ...⌟
