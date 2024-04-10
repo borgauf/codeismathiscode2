@@ -31,7 +31,8 @@
 #+STARTUP: indent
 # This makes MathJax/LaTeX appear in buffer (UTF-8)
 #+STARTUP: entitiespretty
-# #+STARTUP: logdrawer # This makes pictures appear in buffer
+# #+STARTUP: logdrawer
+# This makes pictures appear in buffer
 #+STARTUP: inlineimages
 #+STARTUP: fnadjust
 #+html_head_extra: <style> .title { display: none; } </style>
@@ -1275,6 +1276,8 @@ around and through higher math with little or no warning --- a bit
 like physics routinely takes off into high math-land as well.
 
 #+INCLUDE: "./footer.org" :minlevel 1
+
+***** Some header
 
 * Footnotes
 
