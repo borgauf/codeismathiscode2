@@ -1,42 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<!-- 2022-11-25 Fri 11:03 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<!-- 2024-04-24 Wed 23:19 -->
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="./tufte.css" type="text/css">
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<link rel="stylesheet" href="../codeismathiscode2//ox-tufte.css" type="text/css">
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
-<div id="content" class="content">
+<article id="content" class="content">
 <div class="header">
 <link rel="stylesheet" href="hamb.css">
 <link rel="stylesheet" href="tufte.css">
-<img src="./images/heading6.png"  style="padding: 0px 0px 22px 0px" alt="3-d graph" class="center">
+<link rel="stylesheet" href="ox-tufte.css">
+<img src="./images/square_partitioned_into_6_similar_rectangles_henderson_small.png"  style="padding: 0px 0px 0px 0px" alt="3-d graph" class="center">
 
 <p>
 
@@ -69,6 +80,8 @@
       <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
       <li>Numbers</li>
       <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
          <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
          <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
       </ul>
@@ -79,9 +92,9 @@
 </p>
 
 
-<div id="outline-container-org32b7443" class="outline-2">
-<h2 id="org32b7443">Numbers 2 Auxiliary 1: Sequences, recursion, and induction</h2>
-<div class="outline-text-2" id="text-org32b7443">
+<section id="outline-container-org8b8830a" class="outline-2">
+<h2 id="org8b8830a">Numbers 2 Auxiliary 1: Sequences, recursion, and induction</h2>
+<div class="outline-text-2" id="text-org8b8830a">
 <p>
 In this Auxiliary we&rsquo;ll wend our way into <i>induction</i> by way of
 looking at sequences and recursion. Induction is a very important
@@ -92,11 +105,11 @@ just continue doing this until&#x2026;&rdquo; Right. So we&rsquo;ll take apart a
 why it actually works.
 </p>
 </div>
-</div>
+</section>
 
-<div id="outline-container-org625aed0" class="outline-2">
-<h2 id="org625aed0">Tuesday at the library</h2>
-<div class="outline-text-2" id="text-org625aed0">
+<section id="outline-container-org50a2617" class="outline-2">
+<h2 id="org50a2617">Tuesday at the library</h2>
+<div class="outline-text-2" id="text-org50a2617">
 <p>
 It&rsquo;s Tuesday afternoon and the siblings meet in their usual study room
 at the library to go over their honors computer science course
@@ -118,19 +131,18 @@ discuss it&#x2026;
 </p>
 </div>
 
-<div id="outline-container-org4e0f087" class="outline-3">
-<h3 id="org4e0f087">Modus ponens<label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle"/><span class="sidenote">
+<div id="outline-container-org651f861" class="outline-3">
+<h3 id="org651f861">Modus ponens<label id='fnr.1' for='fnr-in.1.7474389' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.7474389' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
 Professor Chandra assumes the students have worked up to if not
 beyond Kwong&rsquo;s <a href="https://math.libretexts.org/Courses/Monroe_Community_College/MTH_220_Discrete_Math/2%3A_Logic/2.6_Arguments_and_Rules_of_Inference">Arguments and Rules of Inference</a>.
 </span></h3>
-<div class="outline-text-3" id="text-org4e0f087">
-<div class="epigraph"><blockquote>
+<div class="outline-text-3" id="text-org651f861">
+<blockquote>
 <p>
 <font color = "#0d3db3">Modus ponendo ponens &#x2026; the way that
  affirms by affirming, mode that affirms, Latin</font>
 </p>
-
-</blockquote></div>
+</blockquote>
 
 <p>
 or the <i>law of detachment</i> that says
@@ -138,7 +150,7 @@ or the <i>law of detachment</i> that says
 
 <ul class="org-ul">
 <li>we start with a <i>conditional premise</i>, e.g., <i>if \(R\), then \(B\)</i>, or,
-<i>\(R\) implies \(B\)</i>, (\(R \supset B\;\))<label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle"/><span class="sidenote">
+<i>\(R\) implies \(B\)</i>, (\(R \supset B\;\))<label id='fnr.2' for='fnr-in.2.6439167' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.6439167' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
 also written as \(R \implies B\;\). Both \(\supset\) and \(\implies\) are
 used to mean <i>implies</i>.
 </span> and we consider it to be true,
@@ -156,7 +168,7 @@ e.g.,
 <ul class="org-ul">
 <li><i>If</i> you are \(R\!\) eading this, <i>then</i> you must be \(B\!\) right (\(R \supset B\;\;\))</li>
 <li>Yes, you are \(R\!\) eading this, (\(R\)).</li>
-<li>Therefore<label for="3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="3" class="margin-toggle"/><span class="sidenote">
+<li>Therefore<label id='fnr.3' for='fnr-in.3.7675764' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.7675764' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
 \(\therefore\;\) is the LaTeX symbol for <i>therefore</i>.
 </span>, you must be \(B\!\) right (\(\therefore B\;\)).</li>
 </ul>
@@ -166,18 +178,17 @@ This can also be written as \(((R \implies B) \land R) \implies
 B\;\;\;\). Spoken,
 </p>
 
-<div class="epigraph"><blockquote>
+<blockquote>
 <p>
 R <b>implies</b> B, <b>and</b> R is true, <b>implies</b> (therefore) B is true.
 </p>
-
-</blockquote></div>
+</blockquote>
 
 <p>
 Modus ponens is called the law of detachment because after asserting
 that both the conditional premise and its <i>antecedent</i> are true we
 then <i>detach</i> the <i>consequent</i> from the conditional premise as a
-stand-alone truth in and of itself<label for="4" class="margin-toggle sidenote-number"></label><input type="checkbox" id="4" class="margin-toggle"/><span class="sidenote">
+stand-alone truth in and of itself<label id='fnr.4' for='fnr-in.4.8811130' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.8811130' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
 A good study technique is to read the theoretical explanation,
 then some examples, then go back to the theoretical explanation to see
 how it is the perfect generalization of all the examples.
@@ -192,14 +203,17 @@ can assert the truth of the conclusion \(B\;\).
 </div>
 </div>
 
-<div id="outline-container-org77d877d" class="outline-3">
-<h3 id="org77d877d">Sequences prelims</h3>
-<div class="outline-text-3" id="text-org77d877d">
+<div id="outline-container-org8948797" class="outline-3">
+<h3 id="org8948797">Sequences prelims</h3>
+<div class="outline-text-3" id="text-org8948797">
+<ul class="org-ul">
+<li><a href="&amp;bender2010lists">&amp;bender2010lists</a></li>
+</ul>
 </div>
 
-<div id="outline-container-org2c71ced" class="outline-4">
-<h4 id="org2c71ced">Friday&rsquo;s lecture</h4>
-<div class="outline-text-4" id="text-org2c71ced">
+<div id="outline-container-orgbec9ad4" class="outline-4">
+<h4 id="orgbec9ad4">Friday&rsquo;s lecture</h4>
+<div class="outline-text-4" id="text-orgbec9ad4">
 <p>
 <font color = "#650d1c">⇲ This was right at the end of
 Dr. Chandra&rsquo;s intriguing lecture in class on Friday&#x2026;
@@ -248,9 +262,9 @@ sequences and recurrence. ⌟
 </div>
 </div>
 
-<div id="outline-container-orgf861f8d" class="outline-4">
-<h4 id="orgf861f8d">Lead-up to recursion and induction</h4>
-<div class="outline-text-4" id="text-orgf861f8d">
+<div id="outline-container-orgf2b533c" class="outline-4">
+<h4 id="orgf2b533c">Lead-up to recursion and induction</h4>
+<div class="outline-text-4" id="text-orgf2b533c">
 <p>
 At first glance, the first homework problem seems trivial to the von
 der Surwitzes
@@ -268,22 +282,22 @@ answer in feet.</font>
 
 <p>
 <span class="fraktur">𝔘𝔱𝔢:</span> The steps are all the same so their order doesn&rsquo;t really
-matter. That&rsquo;s obvious. <br />
+matter. That&rsquo;s obvious. <br>
 <font color = "#111" size = 5%>𝔘𝔴𝔢:</font> Right, and we just enumerate them with the natural
 numbers. Gosh, I don&rsquo;t think I&rsquo;ll ever get &ldquo;enumerate with natural
-numbers&rdquo; out of my head again.<br />
-[Laughter] <br />
+numbers&rdquo; out of my head again.<br>
+[Laughter] <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So we don&rsquo;t need to take the \(127\) and do anything with
 it. Did you see that next problem? It&rsquo;s just an algebra problem, but
-still&#x2026;<br />
-[Rueful murmurs of agreement.] <br />
+still&#x2026;<br>
+[Rueful murmurs of agreement.] <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> [Gestures with hands.] So without overthinking this, it&rsquo;s just
 saying that you need to multiply \(127\:\), or whatever steps you give
 it, by \(8\) inches. That&rsquo;s not very hard. And then you convert it to
 feet and then add that to the altitude. I guess this is mainly to get
-us to use Haskell&rsquo;s <code>let</code><label for="5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="5" class="margin-toggle"/><span class="sidenote">
+us to use Haskell&rsquo;s <code>let</code><label id='fnr.5' for='fnr-in.5.3691904' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.3691904' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
 See <a href="http://learnyouahaskell.com/syntax-in-functions#let-it-be">this</a> LYAGFGG treatment of <code>let</code>.
-</span>.<br />
+</span>.<br>
 <b>Uwe, Ursula</b>: Yeah.
 </p>
 
@@ -292,18 +306,23 @@ Ursula had plugged her laptop into the big monitor on the wall. She
 pulled up her homework
 </p>
 
-<pre class="code"><code><span class="org-haskell-definition">stepsAltCalc</span> steps <span class="org-haskell-operator">=</span>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org7e0b801"><span class="org-haskell-definition">stepsAltCalc</span> steps <span class="org-haskell-operator">=</span>
   <span class="org-haskell-keyword">let</span> stepinches <span class="org-haskell-operator">=</span> 8 <span class="org-comment-delimiter">-- </span><span class="org-comment">8 inch step height basealt</span>
       basealt <span class="org-haskell-operator">=</span> 800 <span class="org-comment-delimiter">-- </span><span class="org-comment">800 feet base altitude</span>
   <span class="org-haskell-keyword">in</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>stepinches <span class="org-haskell-operator">*</span> steps<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">/</span> 12<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">+</span> basealt <span class="org-comment-delimiter">-- </span><span class="org-comment">divide by 12 for feet</span>
   
-</code></pre>
+</pre>
+</div>
 
-<pre class="code"><code><span class="org-haskell-definition">stepsAltCalc</span> 127
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="orga4ab287"><span class="org-haskell-definition">stepsAltCalc</span> 127
+</pre>
+</div>
 
 <pre class="example">
-884.6666666666666
+&lt;interactive&gt;:24:1-12: error:
+    Variable not in scope: stepsAltCalc :: t0 -&gt; t
 </pre>
 
 
@@ -311,7 +330,7 @@ pulled up her homework
 <span class="fraktur">𝔘𝔱𝔢:</span> So like the professor said, the take-away here is that when we
 declare variables like <code>stepinches</code> and <code>basealt</code> inside the <code>let</code> and
 <code>in</code>, they&rsquo;re visible only inside that <code>let...in</code> structure and never
-outside them. <br />
+outside them. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> And then she asks if we can rewrite it with <i>another</i>
 <code>let...in</code> inside the first one, right? And the stuff inside the
 nested <code>let...in</code> can&rsquo;t be seen by the outside, but the outside
@@ -322,20 +341,25 @@ nested <code>let...in</code> can&rsquo;t be seen by the outside, but the outside
 And so they did another version of <code>stepsAltCalc</code>
 </p>
 
-<pre class="code"><code><span class="org-haskell-definition">stepsAltCalc2</span> steps <span class="org-haskell-operator">=</span>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org39af42c"><span class="org-haskell-definition">stepsAltCalc2</span> steps <span class="org-haskell-operator">=</span>
   <span class="org-haskell-keyword">let</span> basealt <span class="org-haskell-operator">=</span> 800
       stepasfeet <span class="org-haskell-operator">=</span> 8<span class="org-haskell-operator">/</span>12
   <span class="org-haskell-keyword">in</span>
     <span class="org-haskell-keyword">let</span> feethigh <span class="org-haskell-operator">=</span>  stepasfeet <span class="org-haskell-operator">*</span> steps
     <span class="org-haskell-keyword">in</span> feethigh <span class="org-haskell-operator">+</span> basealt
 
-</code></pre>
+</pre>
+</div>
 
-<pre class="code"><code><span class="org-haskell-definition">stepsAltCalc2</span> 127
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgb7d0ae3"><span class="org-haskell-definition">stepsAltCalc2</span> 127
+</pre>
+</div>
 
 <pre class="example">
-884.6666666666666
+&lt;interactive&gt;:26:1-13: error:
+    Variable not in scope: stepsAltCalc2 :: t0 -&gt; t
 </pre>
 
 
@@ -352,15 +376,15 @@ while, then traded glances.
 
 <p>
 <span class="fraktur">𝔘𝔴𝔢:</span> Sometimes I can&rsquo;t tell if Professor Chandra is, yeah,
-<i>was heißt zerstreut, geistesabwesend</i>? <br />
-<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Absent-minded? <br />
-<span class="fraktur">𝔘𝔴𝔢:</span> Right. Absent-minded. <br />
-<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Why? <br />
+<i>was heißt zerstreut, geistesabwesend</i>? <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Absent-minded? <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> Right. Absent-minded. <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Why? <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> Well, do you remember she&rsquo;s talking about rounding, but then
 she&rsquo;s off on this tangent about how [writing on the board] \(2/2\)
 should also be seen as \(2\) times the inverse of \(2\:\)? And then she&rsquo;s
 talking about how &ldquo;literal&rdquo; numbers, like <code>51</code>, is actually
-<code>fromIntegral 51</code> to the system. <br />
+<code>fromIntegral 51</code> to the system. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> And [paging through her written notes] right, <code>3.14</code> is
 actually, ahh, here it is: <code>fromRational 3.14</code> internally.
 </p>
@@ -369,8 +393,10 @@ actually, ahh, here it is: <code>fromRational 3.14</code> internally.
 Ursula then typed this in at the REPL
 </p>
 
-<pre class="code"><code><span class="org-haskell-definition">fromRational</span> 3.14
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org288531e"><span class="org-haskell-definition">fromRational</span> 3.14
+</pre>
+</div>
 
 <pre class="example">
 3.14
@@ -385,8 +411,10 @@ Ursula then typed this in at the REPL
 Ursula then typed in
 </p>
 
-<pre class="code"><code><span class="org-haskell-constructor">:</span>t fromRational 3.14
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org3cb68a9"><span class="org-haskell-constructor">:</span>t fromRational 3.14
+</pre>
+</div>
 
 <pre class="example">
 fromRational 3.14 :: Fractional a =&gt; a
@@ -394,12 +422,14 @@ fromRational 3.14 :: Fractional a =&gt; a
 
 
 <p>
-<span class="fraktur">𝔘𝔴𝔢:</span> And get the type for an integer, non-decimal number, can you? <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> And get the type for an integer, non-decimal number, can you? <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [complies] Got it.
 </p>
 
-<pre class="code"><code><span class="org-haskell-constructor">:</span>t fromIntegral 1
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="orge449b50"><span class="org-haskell-constructor">:</span>t fromIntegral 1
+</pre>
+</div>
 
 <pre class="example">
 fromIntegral 1 :: Num b =&gt; b
@@ -408,33 +438,39 @@ fromIntegral 1 :: Num b =&gt; b
 
 <p>
 <span class="fraktur">𝔘𝔴𝔢:</span> [slapping his thighs and exhaling loudly] Okay bright sisters,
-what does all this mean? <br />
+what does all this mean? <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [reading her notes] Well, for one it means you&rsquo;re not really
 ever dealing with just the naked numbers, because they&rsquo;re always
 packaged with either <code>fromIntegral</code> for a non-decimal number and
-<code>fromRational</code> with a decimal number. <br />
+<code>fromRational</code> with a decimal number. <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> So the naked literal numbers are part of the type class system,
 it&rsquo;s got the class methods <code>fromIntegral</code> and <code>fromRational</code>
-involved. <br />
+involved. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Okay, let&rsquo;s get back to the example code. Here, look
 [pulling up the stackoverflow example on the monitor]
 </p>
 
-<pre class="code"><code><span class="org-haskell-definition">round'</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Double</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Double</span>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org0037182"><span class="org-haskell-definition">round'</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Double</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Double</span>
 <span class="org-haskell-definition">round'</span> num sg <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>fromIntegral <span class="org-haskell-operator">.</span> round <span class="org-haskell-operator">$</span> num <span class="org-haskell-operator">*</span> f<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">/</span> f
     <span class="org-haskell-keyword">where</span> f <span class="org-haskell-operator">=</span> 10<span class="org-haskell-operator">^</span>sg
 
-</code></pre>
+</pre>
+</div>
 
 <p>
 She evaluated it, then ran a test case
 </p>
 
-<pre class="code"><code><span class="org-haskell-definition">round'</span> 884.6666666666666 2
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org049cd7c"><span class="org-haskell-definition">round'</span> 884.6666666666666 2
+</pre>
+</div>
 
 <pre class="example">
-884.67
+&lt;interactive&gt;:34:1-6: error:
+    Variable not in scope: round' :: t0 -&gt; t1 -&gt; t
+    Suggested fix: Perhaps use ‘round’ (imported from Prelude)
 </pre>
 
 
@@ -443,14 +479,16 @@ She evaluated it, then ran a test case
 it, you always start at the inner-most operation. That would the
 <code>num * f</code>. So we know <code>num</code> is a <code>Double</code>. Right? I mean it&rsquo;s declared
 as one in the type declaration. And <code>(*)</code> is a binary operation of
-type <code>Num a =&gt; a -&gt; a -&gt; a</code>. <br />
+type <code>Num a =&gt; a -&gt; a -&gt; a</code>. <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> So we can assume that <code>f</code> becomes a <code>Double</code> because they have
-to be of the same type <code>a</code>. <br />
+to be of the same type <code>a</code>. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> And then we look at the division [typing into the REPL]
 </p>
 
-<pre class="code"><code><span class="org-haskell-constructor">:</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">/</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org5dc7041"><span class="org-haskell-constructor">:</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">/</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 
 <pre class="example">
 (/) :: Fractional a =&gt; a -&gt; a -&gt; a
@@ -463,10 +501,12 @@ to be of the same type <code>a</code>. <br />
 <code>Fractional Double</code> [typing into the REPL]
 </p>
 
-<pre class="code"><code><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Fractional</span>
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org9f6b9d4"><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Fractional</span>
+</pre>
+</div>
 
-<pre class="example" id="orgf6e9eee">
+<pre class="example">
 type Fractional :: * -&gt; Constraint
 class Num a =&gt; Fractional a where
   (/) :: a -&gt; a -&gt; a
@@ -474,19 +514,20 @@ class Num a =&gt; Fractional a where
   fromRational :: Rational -&gt; a
   {-# MINIMAL fromRational, (recip | (/)) #-}
   	-- Defined in ‘GHC.Real’
-instance Integral a =&gt; Fractional (Ratio a)
-  -- Defined in ‘GHC.Real’
-instance Fractional Float -- Defined in ‘GHC.Float’
 instance Fractional Double -- Defined in ‘GHC.Float’
+instance Fractional Float -- Defined in ‘GHC.Float’
 </pre>
+
 
 <p>
 <span class="fraktur">𝔘𝔴𝔢:</span> But now we need to put the numerator through <code>round</code> [Ursulu
 types into the REPL]
 </p>
 
-<pre class="code"><code><span class="org-haskell-constructor">:</span>t round
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org4a63c07"><span class="org-haskell-constructor">:</span>t round
+</pre>
+</div>
 
 <pre class="example">
 round :: (RealFrac a, Integral b) =&gt; a -&gt; b
@@ -495,16 +536,18 @@ round :: (RealFrac a, Integral b) =&gt; a -&gt; b
 
 <p>
 <span class="fraktur">𝔘𝔴𝔢:</span> [continuing] Right, so the output of <code>round</code> will have an
-instance of <code>Integral</code>. But we&rsquo;re trying to divide&#x2026; <br />
+instance of <code>Integral</code>. But we&rsquo;re trying to divide&#x2026; <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> [writing on the board] <code>(/)</code> demands that the result of <code>round</code>
-has to have the same as the denominator <code>f :: Double</code>. <br />
+has to have the same as the denominator <code>f :: Double</code>. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [typing into the REPL]
 </p>
 
-<pre class="code"><code><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Integral</span>
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org43f758c"><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Integral</span>
+</pre>
+</div>
 
-<pre class="example" id="orgd37d921">
+<pre class="example" id="org1def633">
 type Integral :: * -&gt; Constraint
 class (Real a, Enum a) =&gt; Integral a where
   quot :: a -&gt; a -&gt; a
@@ -516,21 +559,23 @@ class (Real a, Enum a) =&gt; Integral a where
   toInteger :: a -&gt; Integer
   {-# MINIMAL quotRem, toInteger #-}
   	-- Defined in ‘GHC.Real’
-instance Integral Word -- Defined in ‘GHC.Real’
-instance Integral Integer -- Defined in ‘GHC.Real’
 instance Integral Int -- Defined in ‘GHC.Real’
+instance Integral Integer -- Defined in ‘GHC.Real’
+instance Integral Word -- Defined in ‘GHC.Real’
 </pre>
 
 <p>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing] And since there is no instance of <code>Double</code> in
 <code>Integral</code>. We can&rsquo;t go into the <code>Integral b =&gt; b</code> and pull out a
-<code>Double</code>. <br />
-<span class="fraktur">𝔘𝔴𝔢:</span> So the numerator part won&rsquo;t work as is. <br />
+<code>Double</code>. <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> So the numerator part won&rsquo;t work as is. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [typing into the REPL] It shouldn&rsquo;t.
 </p>
 
-<pre class="code"><code><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span>round <span class="org-rainbow-delimiters-depth-2">(</span>844.666 <span class="org-haskell-operator">*</span> 100.0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">/</span> 100.0
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org06d8357"><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span>round <span class="org-rainbow-delimiters-depth-2">(</span>844.666 <span class="org-haskell-operator">*</span> 100.0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">/</span> 100.0
+</pre>
+</div>
 
 <pre class="example">
 (round (844.666 * 100.0)) / 100.0
@@ -543,37 +588,40 @@ The siblings study this for a while.
 </p>
 
 <p>
-<span class="fraktur">𝔘𝔴𝔢:</span> Try an example. <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Try an example. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [types into the REPL] Got it. But this should blow up.
 </p>
 
-<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span>round <span class="org-rainbow-delimiters-depth-2">(</span>844.666 <span class="org-haskell-operator">*</span> 100.0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">/</span> 100.0
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org908c1c6"><span class="org-rainbow-delimiters-depth-1">(</span>round <span class="org-rainbow-delimiters-depth-2">(</span>844.666 <span class="org-haskell-operator">*</span> 100.0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">/</span> 100.0
+</pre>
+</div>
 
-<pre class="example" id="orgc2333d3">
-&lt;interactive&gt;:208:1-33: error:
+<pre class="example" id="orgac43560">
+&lt;interactive&gt;:46:1-33: error:
     • Ambiguous type variable ‘a0’ arising from a use of ‘print’
       prevents the constraint ‘(Show a0)’ from being solved.
       Probable fix: use a type annotation to specify what ‘a0’ should be.
-      These potential instances exist:
+      Potentially matching instances:
         instance (Show a, Show b) =&gt; Show (Either a b)
           -- Defined in ‘Data.Either’
-        instance Show a =&gt; Show (Ratio a) -- Defined in ‘GHC.Real’
         instance Show Ordering -- Defined in ‘GHC.Show’
-        ...plus 25 others
-        ...plus 82 instances involving out-of-scope types
+        ...plus 26 others
+        ...plus 77 instances involving out-of-scope types
         (use -fprint-potential-instances to see them all)
     • In a stmt of an interactive GHCi command: print it
 </pre>
 
 <p>
 <span class="fraktur">𝔘𝔴𝔢:</span> Now put in the <code>fromIntegral</code> in front of <code>round</code> in the
-numerator. Use some actual numbers. <br />
+numerator. Use some actual numbers. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [typing] Exactly.
 </p>
 
-<pre class="code"><code><span class="org-rainbow-delimiters-depth-1">(</span>fromIntegral <span class="org-rainbow-delimiters-depth-2">(</span>round <span class="org-rainbow-delimiters-depth-3">(</span>844.666 <span class="org-haskell-operator">*</span> 100.0<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">/</span> 100.0
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgf77f551"><span class="org-rainbow-delimiters-depth-1">(</span>fromIntegral <span class="org-rainbow-delimiters-depth-2">(</span>round <span class="org-rainbow-delimiters-depth-3">(</span>844.666 <span class="org-haskell-operator">*</span> 100.0<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">/</span> 100.0
+</pre>
+</div>
 
 <pre class="example">
 844.67
@@ -581,12 +629,14 @@ numerator. Use some actual numbers. <br />
 
 
 <p>
-<span class="fraktur">𝔘𝔱𝔢:</span> Of course. It works now. <br />
-<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [typing] Let me do a type on this. <br />
+<span class="fraktur">𝔘𝔱𝔢:</span> Of course. It works now. <br>
+<span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [typing] Let me do a type on this. <br>
 </p>
 
-<pre class="code"><code><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span>fromIntegral <span class="org-rainbow-delimiters-depth-2">(</span>round <span class="org-rainbow-delimiters-depth-3">(</span>844.666 <span class="org-haskell-operator">*</span> 100.0<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org8258019"><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span>fromIntegral <span class="org-rainbow-delimiters-depth-2">(</span>round <span class="org-rainbow-delimiters-depth-3">(</span>844.666 <span class="org-haskell-operator">*</span> 100.0<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 
 <pre class="example">
 (fromIntegral (round (844.666 * 100.0))) :: Num b =&gt; b
@@ -594,24 +644,23 @@ numerator. Use some actual numbers. <br />
 
 
 <p>
-<span class="fraktur">𝔘𝔴𝔢:</span> Yes! <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Yes! <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> We get something that has an instance in <code>Num</code> and will do
-division. <br />
-<span class="fraktur">𝔘𝔴𝔢:</span> That&rsquo;s because <code>fromIntegral</code> is magical, right? <br />
+division. <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> That&rsquo;s because <code>fromIntegral</code> is magical, right? <br>
 [Laughter.]
 <span class="fraktur">𝔘𝔱𝔢:</span> No it&rsquo;s because [searching her notes] because [reading]
 </p>
 
-<div class="epigraph"><blockquote>
+<blockquote>
 <p>
 <code>fromIntegral</code> converts from any <code>Integral</code> type into a <code>Num</code> type.
 </p>
-
-</blockquote></div>
+</blockquote>
 
 <p>
 <span class="fraktur">𝔘𝔴𝔢:</span> [pointing at the code] Which does include <code>Double</code> like we need
-to be in the numerator of <code>Double</code> dividing <code>Double</code>. <br />
+to be in the numerator of <code>Double</code> dividing <code>Double</code>. <br>
 </p>
 
 <p>
@@ -621,14 +670,14 @@ blank face.
 
 <p>
 <span class="fraktur">𝔘𝔴𝔢:</span> And why was all this in and out of types and classes necessary?
-<br />
+<br>
 <span class="fraktur">𝔘𝔱𝔢:</span> Well, like she said, it&rsquo;s because having types controlling how
 they play together is a <i>logical entailment</i> of working with numbers
-on a computer. <br />
+on a computer. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> She said other languages tend to <i>coerce</i> things to work
 without understanding all the consequences. That&rsquo;s all we can say at
-this point, I suppose. <br />
-<span class="fraktur">𝔘𝔱𝔢:</span> I suppose we&rsquo;ll understand it more as we go along. <br />
+this point, I suppose. <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> I suppose we&rsquo;ll understand it more as we go along. <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> Time for a break.
 </p>
 
@@ -646,18 +695,18 @@ being completely new.
 <p>
 <span class="fraktur">𝔘𝔱𝔢:</span> She also said a lot of new students come into comp-sci with
 completely wrong ideas about what computer science studies are
-about. <br />
+about. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Yeah, they&rsquo;re expecting to learn a bunch of programming
 hacks for phone apps or video games, and instead they&rsquo;re hit with
-applied math. <br />
+applied math. <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> She floored me when she said you can go a whole semester and
-not even touch a computer. It&rsquo;s all just applied math theory. <br />
-[Rueful murmurs of acknowledgement.] <br />
+not even touch a computer. It&rsquo;s all just applied math theory. <br>
+[Rueful murmurs of acknowledgement.] <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> Well, I think we&rsquo;re all grateful to be getting some of it here
-before college. <br />
+before college. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> It&rsquo;s not like regular math where you get at least ten years,
-but it&rsquo;s better than nothing. <br />
-<span class="fraktur">𝔘𝔴𝔢:</span> Reduces that shock. <br />
+but it&rsquo;s better than nothing. <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> Reduces that shock. <br>
 [Murmurs of agreement.]
 Upon returning Ursula scrolled to the next problem
 </p>
@@ -670,7 +719,7 @@ of \(1.5\%\:\) per year, find the doubling period.</font>
 <p>
 <span
 class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So again we&rsquo;ll
-probably use <code>let</code> or <code>where</code>. <br />
+probably use <code>let</code> or <code>where</code>. <br>
 <span
 class="fraktur">𝔘𝔱𝔢:</span> This is one of those
 &ldquo;compound interest rate&rdquo; calculator things.  <font color =
@@ -689,9 +738,9 @@ rate &= 1.5\% \;\: \text{per year} \\[.5em]
 class="fraktur">𝔘𝔴𝔢:</span> [continuing] Or the
 factor of \(1.015\:\). So now we set up a formula for population
 \(P(t)\:\), which is a function of time, based on an initial population
-\(P_{0}\:\) times the rate per year <br />
+\(P_{0}\:\) times the rate per year <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> And this
-time we don&rsquo;t really care about what \(P_{0}\) is. <br />
+time we don&rsquo;t really care about what \(P_{0}\) is. <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> [writing]
 No, just how long in years until there&rsquo;s a doubling.
 </p>
@@ -726,22 +775,26 @@ with the \(\text{t}\) exponent
 us. [going out on the Internet to look up how Haskell does base-10
 logarithms] Okay, it&rsquo;s <code>logBase</code> and then two parameters, the first is
 the base you want, the second the number you want done &#x2014; and I&rsquo;ll
-run it through the decimal-tamer <br />
+run it through the decimal-tamer <br>
 </p>
 
-<pre class="code"><code><span class="org-haskell-definition">round'</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>logBase 10 2<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">/</span> <span class="org-rainbow-delimiters-depth-2">(</span>logBase 10 1.015<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> 2
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org5b32323"><span class="org-haskell-definition">round'</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>logBase 10 2<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">/</span> <span class="org-rainbow-delimiters-depth-2">(</span>logBase 10 1.015<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> 2
+</pre>
+</div>
 
 <pre class="example">
-46.56
+&lt;interactive&gt;:52:1-6: error:
+    Variable not in scope: round' :: t0 -&gt; t1 -&gt; t
+    Suggested fix: Perhaps use ‘round’ (imported from Prelude)
 </pre>
 
 
 <p>
-<span class="fraktur">𝔘𝔴𝔢:</span> Do we need to code this? <br />
+<span class="fraktur">𝔘𝔴𝔢:</span> Do we need to code this? <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> Nah. I think she just wanted to jar our memory with the basic
  \(N = N_{0} (1 + 4)^{t}\;\;\) situation and exponential functions. All right,
-next one.<br />
+next one.<br>
 </p>
 
 <p>
@@ -763,7 +816,7 @@ be left after \(50\) minutes?</font>
 org-mode table she gave us. [scrolling down]
 </p>
 
-<pre class="example" id="orgf8791c7">
+<pre class="example" id="org60e9411">
 #+NAME: ratetable
 | 0 min | 10 min | 20 min | 30 min | 40 min | 50 min |
 |  20.0 |    10. |     5. |    2.5 |   1.25 |  0.625 |
@@ -772,35 +825,35 @@ org-mode table she gave us. [scrolling down]
 
 <p>
 <span class="fraktur">𝔘𝔴𝔢:</span> She doesn&rsquo;t expect
-us to learn that sort of Emacs spreadsheet stuff, does she? <br />
+us to learn that sort of Emacs spreadsheet stuff, does she? <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> No, I think she
 just wants to show us &#x2014; once again &#x2014; how getting the math out of
 books and paper and your brain and onto the computer is what this is
-all about. <br />
+all about. <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> You&rsquo;re not done
-until the math&rsquo;s been turned into code. <br />
-[murmurs of agreement] <br />
+until the math&rsquo;s been turned into code. <br>
+[murmurs of agreement] <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> [continuing] But
 still it&rsquo;s cool to know this stuff. Remember early on she showed us
 all the org-mode stuff about being able to chain things together. So
-you can take this table and plug it in other places. It&rsquo;s modular. <br />
+you can take this table and plug it in other places. It&rsquo;s modular. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Yeah, sort of
-like when she showed us how to <i>pipe</i> things at the command line. <br />
+like when she showed us how to <i>pipe</i> things at the command line. <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> Right. But I think
 Haskell will take up all of our time for the immediate future. Linux
-and Emacs will have to wait. <br />
-[murmurs of agreement] <br />
+and Emacs will have to wait. <br>
+[murmurs of agreement] <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> So once again,
 we&rsquo;re supposed to recall what we know about <i>geometric
-progression</i>. <br />
+progression</i>. <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> So following <a href="https://en.wikipedia.org/wiki/Geometric_progression">the
 link to the Wikipedia page</a>, she wants us to understand that this is a
-form of recursion. <br />
+form of recursion. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Yes, we&rsquo;re
-slowly easing into, being funneled into the idea of recursion. <br />
-[murmurs of agreement] <br />
+slowly easing into, being funneled into the idea of recursion. <br>
+[murmurs of agreement] <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> So does everybody
-have a basic understanding of recursion? <br />
+have a basic understanding of recursion? <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> Yeah, it&rsquo;s just
 the idea that you
 </p>
@@ -820,49 +873,51 @@ the idea that you
 
 <p>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> But remember
-that talk she gave about proofs?<br />
-[murmurs of acknowledgement] <br />
+that talk she gave about proofs?<br>
+[murmurs of acknowledgement] <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> All right, let&rsquo;s
 tackle the Bird book. [pulling Richard Bird&rsquo;s <i>Thinking Functionally
 with Haskell</i> and opening it to a bookmarked page] So we&rsquo;re supposed
 to read these sections and try out the code. It&rsquo;s supposed to get us
-prepared from induction. <br />
+prepared from induction. <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> That&rsquo;s on reserve,
-right? <br />
-[Ute nods.] <br />
+right? <br>
+[Ute nods.] <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> Did you read it
-yet? <br />
+yet? <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> Yes, and it&rsquo;s
-fairly straightforward. <br />
+fairly straightforward. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> I read her
-notes on this and &#x2026; <i>ja, verstehe nur Bahnhof</i>.<label for="6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="6" class="margin-toggle"/><span class="sidenote">
+notes on this and &#x2026; <i>ja, verstehe nur Bahnhof</i>.<label id='fnr.6' for='fnr-in.6.2709316' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.2709316' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
 German phrase meaning &ldquo;It&rsquo;s Greek to me.&rdquo;
 </span>
 </p>
 
 <p>
 <span class="fraktur">𝔘𝔱𝔢:</span> We covered that
-chapter in <i>Learn You&#x2026;</i> on recursion<label for="7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="7" class="margin-toggle"/><span class="sidenote">
+chapter in <i>Learn You&#x2026;</i> on recursion<label id='fnr.7' for='fnr-in.7.9128117' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.9128117' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
 Check it out <a href="http://learnyouahaskell.com/recursion">here</a>.
 </span>. [murmurs of agreement]
 All right, so this first part goes over how to set up an alternative
 version of the natural numbers. You might want to pull up file,
 Ursula, and code this in [writing on the board] <code>data Nat = Zero |
-Succ Nat</code> <br />
+Succ Nat</code> <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [typing] Got
 it. Evaluating.
 </p>
 
-<pre class="code"><code><span class="org-haskell-keyword">data</span> <span class="org-haskell-type">Nat</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Zero</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Succ</span> <span class="org-haskell-constructor">Nat</span>
-</code></pre>
+<div class="org-src-container">
+<pre class="src src-haskell" id="org05f9cc3"><span class="org-haskell-keyword">data</span> <span class="org-haskell-type">Nat</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Zero</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Succ</span> <span class="org-haskell-constructor">Nat</span>
+</pre>
+</div>
 
 <p>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing] So
 reading the text I&rsquo;m getting that this is a data declaration where you
 get a choice of either a <code>Zero</code> or a <code>Succ Nat</code>. That much is
-clear. <br />
+clear. <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> She didn&rsquo;t go over
-this in class, right? <br />
+this in class, right? <br>
 </p>
 
 
@@ -884,31 +939,31 @@ Then they went on in the lecture notes
 <span class="fraktur">𝔘𝔱𝔢:</span> Okay, next. Here&rsquo;s the pictures of the strange broccoli and the
 sunflower head she showed us in class. There&rsquo;s supposed to be a
 pattern and she wanted us to think about it. Without looking ahead in
-the notes. <br />
+the notes. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> I had no idea where to go on that one. Anyone have any luck?
-<br />
+<br>
 <span class="fraktur">𝔘𝔴𝔢:</span> Maybe. I looked it up and it&rsquo;s got something to do with what
-they call the <i>Fibonacci sequence</i>. <br />
-<span class="fraktur">𝔘𝔱𝔢:</span> Yeah, I&rsquo;ve heard of it, but that&rsquo;s about all. <br />
+they call the <i>Fibonacci sequence</i>. <br>
+<span class="fraktur">𝔘𝔱𝔢:</span> Yeah, I&rsquo;ve heard of it, but that&rsquo;s about all. <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> I just quickly looked at it, but basically it&rsquo;s a sequence of
 numbers that you can build according to a rule, a formula. [He got up
 and went to the whiteboard and started to write.] So you start the
 sequence with \(\{0,1\}\;\), then to get a new sequence element, you
 just add the last two numbers of the sequence you already have. So if
 you started with \(\{0,1\}\;\) then \(0\) plus \(1\) is \(1\;\). Now you&rsquo;ve
-got \(\{0,1,1\}\;\). <br />
+got \(\{0,1,1\}\;\). <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> So then to get then next number you add the last two numbers
 \(1\) and \(1\), you get \(2\;\) and now the sequence is
 \(\{0,1,1,2\}\;\). Then do it again and get \(\{0,1,1,2,3\}\;\). Again,
 the last two to get \(\{0,1,1,2,3,5\}\;\). You can do this and make the
-sequence as long as you like. <br />
+sequence as long as you like. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Right. So instead of the sixty-first step being, er, step
 \(127\;\), the the sixty-first Fibonacci number will have to be figured
-out by a formula that does some sort of calculation.  <br />
-<span class="fraktur">𝔘𝔴𝔢:</span> Maybe. I&rsquo;m not totally sure about that. <br />
+out by a formula that does some sort of calculation.  <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> Maybe. I&rsquo;m not totally sure about that. <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> Anyway, a number in the sequence depends on the numbers before
-it. That&rsquo;s the bottom line. <br />
-<span class="fraktur">𝔘𝔴𝔢:</span> Well, I did look at the Wikipedia page&#x2026; <br />
+it. That&rsquo;s the bottom line. <br>
+<span class="fraktur">𝔘𝔴𝔢:</span> Well, I did look at the Wikipedia page&#x2026; <br>
 </p>
 
 <p>
@@ -917,7 +972,7 @@ They then took a look on the monitor at the Wikipedia article called
 stuck
 </p>
 
-<div class="epigraph"><blockquote>
+<blockquote>
 <p>
 The Fibonacci numbers may be defined by the recurrence relation
 </p>
@@ -926,8 +981,7 @@ The Fibonacci numbers may be defined by the recurrence relation
 F_{n} &= 0, F_{1} = 1 \\[.5em]
 F_{n} &= F_{n-1}  + F_{n-2} \quad \text{for} \;\; n > 1
 \end{align*}
-
-</blockquote></div>
+</blockquote>
 
 <p>
 They decided that this was some new sort of <a href="https://en.wikipedia.org/wiki/Piecewise">piecewise function</a>,
@@ -956,24 +1010,24 @@ x,  & \text{if $x \ge 0$} \\[.5em]
 \end{align*}
 
 <p>
-This is two-part just like factorial is is all I&rsquo;m saying. <br />
-<b>Uwe, Ursula</b>: [murmurs of agreement] <br />
+This is two-part just like factorial is is all I&rsquo;m saying. <br>
+<b>Uwe, Ursula</b>: [murmurs of agreement] <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> So the \(0! = 1\) is
 just your &ldquo;starter&rdquo; case, your <i>base case</i>, you get that one for
 free. But after that &#x2014; and that&rsquo;s where it gets into defining
-something based on itself. A bit confusing. <br />
+something based on itself. A bit confusing. <br>
 [murmurs of agreement then silence as the buddies digested the
-formula] <br />
+formula] <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Well, when in
-doubt, <i>plug something in</i>. <br />
-[laughter] <br />
+doubt, <i>plug something in</i>. <br>
+[laughter] <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> [writing on the
 board] So let&rsquo;s start with \(1\), and that&rsquo;s \(1!  = 1(1-1)!\:\), which is
-just \(1(0)!\:\) [pausing] <br />
+just \(1(0)!\:\) [pausing] <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> [jumping in] That
 has to be \(1\) <i>times</i> \(0\) factorial, not \(1\) times \(0\) first, <i>then</i>
-factorial that. Otherwise we would never get anywhere. <br />
-[laughter] <br />
+factorial that. Otherwise we would never get anywhere. <br>
+[laughter] <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> Sure, so the \(0\)
 factorial we know to be \(1\) and \(1\) times \(1\) is \(1\). So \(1!\) is
 \(1\). So let&rsquo;s try it for \(2\). [writing]
@@ -1008,12 +1062,12 @@ create a formula to compute <i>any</i> element in the sequence.
 </div>
 </div>
 
-<div id="outline-container-orga18a9df" class="outline-3">
-<h3 id="orga18a9df">Cousin recursion</h3>
-<div class="outline-text-3" id="text-orga18a9df">
+<div id="outline-container-orge57af97" class="outline-3">
+<h3 id="orge57af97">Cousin recursion</h3>
+<div class="outline-text-3" id="text-orge57af97">
 <p>
 Consider the <i><a href="https://en.wikipedia.org/wiki/Factorial">factorial</a></i> of a number, \(n!\;\). In Haskell we may
-express factorial as a recursion<label for="8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="8" class="margin-toggle"/><span class="sidenote">
+express factorial as a recursion<label id='fnr.8' for='fnr-in.8.9319795' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.9319795' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
 Another version of factorial would be simply <code>fac n = product
 [1..n]</code>. See <code>product</code> <a href="http://zvon.org/other/haskell/Outputprelude/product_f.html">here</a>. Try it out. And if you&rsquo;re feeling really
 brave, look under the hood <a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/src/GHC.List.html#product">here</a>. What you&rsquo;re seeing is a special
@@ -1023,10 +1077,12 @@ fold. More later.
 </span>
 </p>
 
-<pre class="code"><code><span class="org-haskell-definition">fac</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a
+<div class="org-src-container">
+<pre class="src src-haskell" id="orge0e0487"><span class="org-haskell-definition">fac</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a
 <span class="org-haskell-definition">fac</span> 0 <span class="org-haskell-operator">=</span> 1
 <span class="org-haskell-definition">fac</span> n <span class="org-haskell-operator">=</span> n <span class="org-haskell-operator">*</span> fac <span class="org-rainbow-delimiters-depth-1">(</span>n <span class="org-haskell-operator">-</span> 1<span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+</pre>
+</div>
 
 <p>
 If you&rsquo;ve covered Chapter 5 <i><a href="http://learnyouahaskell.com/recursion">Recursion</a></i> of LYAHFGG, you&rsquo;re familiar
@@ -1038,7 +1094,7 @@ the rabbit hole, multiplying the previous result to the next. So for
 <code>3!</code> we&rsquo;re creating
 </p>
 
-<pre class="example" id="org96c0f3b">
+<pre class="example" id="org79d85d1">
 fac (3)
 3 * fac (2)
 3 * 2 * fac (1)
@@ -1048,7 +1104,7 @@ fac (3)
 
 <p>
 i.e., each line, starting at the top, resolves to the next as it goes
-into the recursive process of a function calling itself<label for="9" class="margin-toggle sidenote-number"></label><input type="checkbox" id="9" class="margin-toggle"/><span class="sidenote">
+into the recursive process of a function calling itself<label id='fnr.9' for='fnr-in.9.3522630' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.3522630' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
 By the way, why is the result of <code>fac</code> with input <code>0</code> set to
 <code>1</code>? In math, a product of no factors is considered to be the
 <i>multiplicative identity</i>, i.e., that number when multiplied by any
@@ -1063,65 +1119,15 @@ place in a sequence?
 </div>
 </div>
 
-<div id="outline-container-orgf5ff2fe" class="outline-3">
-<h3 id="orgf5ff2fe">Gauss the child prodigy</h3>
-<div class="outline-text-3" id="text-orgf5ff2fe">
+<div id="outline-container-orgc8c7c33" class="outline-3">
+<h3 id="orgc8c7c33">Gauss the child prodigy</h3>
+<div class="outline-text-3" id="text-orgc8c7c33">
 <p>
 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
 </p>
 </div>
 </div>
-</div>
-<!-- Footnotes --><!-- 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-Professor Chandra assumes the students have worked up to if not
-beyond Kwong&rsquo;s <a href="https://math.libretexts.org/Courses/Monroe_Community_College/MTH_220_Discrete_Math/2%3A_Logic/2.6_Arguments_and_Rules_of_Inference">Arguments and Rules of Inference</a>.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-also written as \(R \implies B\;\). Both \(\supset\) and \(\implies\) are
-used to mean <i>implies</i>.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-\(\therefore\;\) is the LaTeX symbol for <i>therefore</i>.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-A good study technique is to read the theoretical explanation,
-then some examples, then go back to the theoretical explanation to see
-how it is the perfect generalization of all the examples.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-See <a href="http://learnyouahaskell.com/syntax-in-functions#let-it-be">this</a> LYAGFGG treatment of <code>let</code>.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-German phrase meaning &ldquo;It&rsquo;s Greek to me.&rdquo;
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-Check it out <a href="http://learnyouahaskell.com/recursion">here</a>.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8" role="doc-backlink">8</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-Another version of factorial would be simply <code>fac n = product
-[1..n]</code>. See <code>product</code> <a href="http://zvon.org/other/haskell/Outputprelude/product_f.html">here</a>. Try it out. And if you&rsquo;re feeling really
-brave, look under the hood <a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/src/GHC.List.html#product">here</a>. What you&rsquo;re seeing is a special
-<i>fold</i> function that &#x2014; and only if you&rsquo;re really brave &#x2014; is talked
-about <a href="https://wiki.haskell.org/Foldr_Foldl_Foldl'">here</a>. So <code>product</code> is based on a more basic concept of a
-fold. More later.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9" role="doc-backlink">9</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-By the way, why is the result of <code>fac</code> with input <code>0</code> set to
-<code>1</code>? In math, a product of no factors is considered to be the
-<i>multiplicative identity</i>, i.e., that number when multiplied by any
-number gives that number back. <code>1</code> times something is just that
-something again.
-</p></div></div>
-
- --></div>
+</section>
+</article>
 </body>
 </html>

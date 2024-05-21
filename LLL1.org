@@ -1,0 +1,131 @@
+#+BRAIN_PARENTS: Math202404
+
+* A glimpse into the structure of Lisp
+
+#+name: 1ec8423c-193a-4c75-9af8-74aff2ba27fc
+#+begin_src emacs-lisp
+(if nil 4 (1+ 4))
+#+end_src
+
+#+RESULTS: 1ec8423c-193a-4c75-9af8-74aff2ba27fc
+: 5
+
+With ~nil~ as the /condition/ the /then/ branch ~4~ is skipped and
+~(1+ 4)~ is chosen.
+
+#+name: ff45bdfd-e90d-46df-b1e9-5330192196a0
+#+begin_src emacs-lisp
+(if nil (print 'true) 'very-false)
+#+end_src
+
+#+RESULTS: ff45bdfd-e90d-46df-b1e9-5330192196a0
+: very-false
+
+#+name: a3b091c8-1ef5-4407-9f97-7176091db00a
+#+begin_src emacs-lisp :results raw
+(append '(1 2 3) (list 4 5 6 7 8 9))
+#+end_src
+
+#+RESULTS: a3b091c8-1ef5-4407-9f97-7176091db00a
+(1 2 3 4 5 6 7 8 9)
+
+#+name: frog1
+#+begin_src emacs-lisp :results raw
+(append '(1 2 3) (list 4 5 6 7 8 9))
+#+end_src
+
+#+RESULTS: frog1
+(1 2 3 4 5 6 7 8 9)
+
+#+name: 0b4953f1-df6e-4f2b-8411-d6eb976c349b
+#+begin_src emacs-lisp :results raw
+(cons 1 '())
+#+end_src
+
+#+RESULTS: 0b4953f1-df6e-4f2b-8411-d6eb976c349b
+(1)
+
+#+name: d3634ec6-9f64-4c71-b279-c656da261af0
+#+begin_src emacs-lisp :results raw
+(expt 2.0 0.145)
+#+end_src
+
+#+RESULTS: d3634ec6-9f64-4c71-b279-c656da261af0
+1.1057306533202689
+
+#+name: 2c9fb107-7dff-48c2-bf5d-90b5363acb4c
+#+begin_src emacs-lisp :results raw
+(list (expt 2 3))
+#+end_src
+
+#+RESULTS: 2c9fb107-7dff-48c2-bf5d-90b5363acb4c
+(8)
+
+
+
+
+
+
+* Not exported  :noexport:
+
+#+begin_src emacs_lisp :eval never :exports code :tangle lll1.el :noweb yes
+
+#+end_src
+
+
+* 
+
+#+TITLE: Lisp Lore Logic
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2024-04-07T11:40:14
+#+LANGUAGE:  en
+#+HTML_HEAD: <link rel="stylesheet" href="../codeismathiscode2/tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="../codeismathiscode2//ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+HTML_HEAD: <style>.monoblock {font-family:"DejaVu Sans Mono"; font-size:0.25em !important; color: green;}</style>
+#+STARTUP: showall 
+#+STARTUP: align 
+#+STARTUP: indent 
+#+STARTUP: shrink
+#+EXPORT_FILE_NAME: LLL1.html
+#+EXPORT_SELECT_TAGS: export 
+#+EXPORT_EXCLUDE_TAGS: noexport 
+#+STARTUP: showall 
+#+STARTUP: align 
+#+STARTUP: indent 
+#+STARTUP: shrink 
+#+STARTUP: inlineimages 
+#+STARTUP: fnadjust
+
+* Footnotes
+
+[fn:1] Mathematical /expressions/ resolve to /values/.
+
+[fn:2] ~| h > c = c:merge a second~ causes a /Pattern match(es) are
+non-exhaustive/ because ~h <= c~ and ~h > c~ cover all possible
+scenarios, but this depends on whether ~Ord~ is lawfully
+implemented.
+
+[fn:3] The ~t a~ instead of ~[a]~ in the declaration below indicates the form of a must be a
+/traversable/ collection, or specifically, /foldable/.
+
+[fn:4] Note how a finite set can be /enumerated/ by successively
+labeling each element with the least natural number that has not been
+previously used. A natural number (more soon) can be used for two
+purposes: to describe the size of a set, or to describe the position
+of an element in a sequence. (From [[https://en.wikipedia.org/wiki/Ordinal_number][Ordinal number]].)

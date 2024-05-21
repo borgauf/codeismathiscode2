@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2024-05-20 Mon 23:17 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Equational reasoning</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="../codeismathiscode2/tufte.css" type="text/css">
+<link rel="stylesheet" href="../codeismathiscode2/ox-tufte.css" type="text/css">
+<style>.monoblock {font-family:"DejaVu Sans Mono"; font-size:0.25em !important; color: green;}</style>
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<header>
+<h1 class="title">Equational reasoning</h1>
+</header>
+<section id="outline-container-org99c01cb" class="outline-2">
+<h2 id="org99c01cb">Equations and substitutions</h2>
+<div class="outline-text-2" id="text-org99c01cb">
+<p>
+An equation \(x = y\) says that \(x\) and \(y\) have the same <i>value</i><label id='fnr.1' for='fnr-in.1.7953239' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.7953239' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+Mathematical <i>expressions</i> resolve to <i>values</i>.
+</span>; any
+time you see one you can replace it with the other. This is also known
+as <i>substitution</i>.
+</p>
+</div>
+</section>
+
+<section id="outline-container-orgf77f551" class="outline-2">
+<h2 id="orgf77f551">Recursion</h2>
+<div class="outline-text-2" id="text-orgf77f551">
+<div class="org-src-container">
+<pre class="src src-haskell" id="org7925b9e"><span class="org-haskell-definition">myfact</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span>
+<span class="org-haskell-definition">myfact</span> 0 <span class="org-haskell-operator">=</span> 1
+<span class="org-haskell-definition">myfact</span> n <span class="org-haskell-operator">=</span> n <span class="org-haskell-operator">*</span> myfact <span class="org-rainbow-delimiters-depth-1">(</span>n<span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 1: </span>&#x2026;finding type of <code>sum</code> <a href="some-source-code">some-source-code</a></label><pre class="src src-haskell" id="org0ce0959"><span class="org-haskell-constructor">:</span>t sum
+</pre>
+</div>
+
+<pre class="example">
+sum :: (Foldable t, Num a) =&gt; t a -&gt; a
+</pre>
+
+
+<p>
+The <i>type context</i>  <code>Num a</code> means <code>a</code> can be any type for which
+numeric operations are defined. The type context <code>Foldable t</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org7f6f53b"><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Foldable</span>
+</pre>
+</div>
+
+<pre class="example" id="orgb948b55">
+type Foldable :: (* -&gt; *) -&gt; Constraint
+class Foldable t where
+  Data.Foldable.fold :: Monoid m =&gt; t m -&gt; m
+  foldMap :: Monoid m =&gt; (a -&gt; m) -&gt; t a -&gt; m
+  Data.Foldable.foldMap' :: Monoid m =&gt; (a -&gt; m) -&gt; t a -&gt; m
+  foldr :: (a -&gt; b -&gt; b) -&gt; b -&gt; t a -&gt; b
+  Data.Foldable.foldr' :: (a -&gt; b -&gt; b) -&gt; b -&gt; t a -&gt; b
+  foldl :: (b -&gt; a -&gt; b) -&gt; b -&gt; t a -&gt; b
+  Data.Foldable.foldl' :: (b -&gt; a -&gt; b) -&gt; b -&gt; t a -&gt; b
+  foldr1 :: (a -&gt; a -&gt; a) -&gt; t a -&gt; a
+  foldl1 :: (a -&gt; a -&gt; a) -&gt; t a -&gt; a
+  Data.Foldable.toList :: t a -&gt; [a]
+  null :: t a -&gt; Bool
+  length :: t a -&gt; Int
+  elem :: Eq a =&gt; a -&gt; t a -&gt; Bool
+  maximum :: Ord a =&gt; t a -&gt; a
+  minimum :: Ord a =&gt; t a -&gt; a
+  sum :: Num a =&gt; t a -&gt; a
+  product :: Num a =&gt; t a -&gt; a
+  {-# MINIMAL foldMap | foldr #-}
+  	-- Defined in ‘Data.Foldable’
+instance Foldable ((,) a) -- Defined in ‘Data.Foldable’
+instance Foldable (Either a) -- Defined in ‘Data.Foldable’
+instance Foldable Maybe -- Defined in ‘Data.Foldable’
+instance Foldable Solo -- Defined in ‘Data.Foldable’
+instance Foldable [] -- Defined in ‘Data.Foldable’
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org2dc1f56"><span class="org-haskell-definition">bin2dec</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">String</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Int</span>
+<span class="org-haskell-definition">bin2dec</span> <span class="org-haskell-operator">=</span> foldl <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>x y <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-keyword">if</span> y<span class="org-haskell-operator">==</span><span class="org-string">'1'</span> <span class="org-haskell-keyword">then</span> x<span class="org-haskell-operator">*</span>2 <span class="org-haskell-operator">+</span> 1 <span class="org-haskell-keyword">else</span> x<span class="org-haskell-operator">*</span>2<span class="org-rainbow-delimiters-depth-1">)</span> 0
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgfa898cb"><span class="org-haskell-definition">bin2dec</span> <span class="org-string">"111"</span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:112:1-7: error:
+    Variable not in scope: bin2dec :: String -&gt; t
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org194cf40"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-definition">+++</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">+++</span> ys <span class="org-haskell-operator">=</span> ys
+<span class="org-rainbow-delimiters-depth-1">(</span>x<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">+++</span> ys <span class="org-haskell-operator">=</span> x <span class="org-haskell-constructor">:</span> <span class="org-rainbow-delimiters-depth-1">(</span>xs <span class="org-haskell-operator">+++</span> ys<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org0c8fbd7"><span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">+++</span> <span class="org-rainbow-delimiters-depth-1">[</span>4,5,6<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:114:9-11: error:
+    Variable not in scope: (+++) :: [a0] -&gt; [a1] -&gt; t
+    Suggested fix: Perhaps use ‘++’ (imported from Prelude)
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org1520f12"><span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">+++</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:116:9-11: error:
+    Variable not in scope: (+++) :: [a0] -&gt; [a1] -&gt; t
+    Suggested fix: Perhaps use ‘++’ (imported from Prelude)
+</pre>
+
+
+<p>
+➝ <b>Exercise 1</b> Write a recursive function <code>copy :: [a] -&gt; [a]</code> that copies its list
+argument. For example, <code>copy [2] =&gt; [2]</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org79c4fb7"><span class="org-haskell-definition">mycopy</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-haskell-definition">mycopy</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span>
+<span class="org-haskell-definition">mycopy</span> <span class="org-rainbow-delimiters-depth-1">(</span>x<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=</span> x <span class="org-haskell-constructor">:</span> mycopy xs
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org0b22235"><span class="org-haskell-definition">mycopy</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4,6<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:118:1-6: error:
+    Variable not in scope: mycopy :: [a0] -&gt; t
+</pre>
+
+
+<p>
+➝ <b>Exercise 2</b> Write a function inverse that takes a list of pairs and
+swaps the pair elements. For example,
+</p>
+
+<pre class="example" id="org0c2fec5">
+λ&gt; myinverse [(1,2),(3,4)]
+[(2,1),(4,3)]
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgf42ba8d"><span class="org-comment-delimiter">-- </span><span class="org-comment">myinverse :: [a] -&gt; [a]</span>
+<span class="org-haskell-definition">myinverse</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">(</span>b1, b2<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">(</span>b2, b1<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-haskell-definition">myinverse</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span>
+<span class="org-haskell-definition">myinverse</span> <span class="org-rainbow-delimiters-depth-1">(</span>x<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span>snd x, fst x<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-constructor">:</span> myinverse xs
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org5c0e423"><span class="org-haskell-definition">myinverse</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">(</span>1,2<span class="org-rainbow-delimiters-depth-2">)</span>,<span class="org-rainbow-delimiters-depth-2">(</span>3,4<span class="org-rainbow-delimiters-depth-2">)</span>,<span class="org-rainbow-delimiters-depth-2">(</span>5,6<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:120:1-9: error:
+    Variable not in scope: myinverse :: [(a0, b0)] -&gt; t
+</pre>
+
+
+<p>
+➝ <b>Exercise 3</b> Write a function <code>merge :: Ord a =&gt; [a] -&gt; [a] -&gt; [a]</code>
+which takes two sorted lists and returns a sorted list containing the
+elements of each<label id='fnr.2' for='fnr-in.2.2535754' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.2535754' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+<code>| h &gt; c = c:merge a second</code> causes a <i>Pattern match(es) are
+non-exhaustive</i> because <code>h &lt;= c</code> and <code>h &gt; c</code> cover all possible
+scenarios, but this depends on whether <code>Ord</code> is lawfully
+implemented.
+</span>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orge63ca02"><span class="org-haskell-definition">mymerge</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Ord</span> a <span class="org-haskell-operator">=&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-haskell-definition">mymerge</span> xs <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">=</span> xs
+<span class="org-haskell-definition">mymerge</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> xs <span class="org-haskell-operator">=</span> xs
+<span class="org-haskell-definition">mymerge</span> a<span class="org-haskell-operator">@</span><span class="org-rainbow-delimiters-depth-1">(</span>h<span class="org-haskell-constructor">:</span>first<span class="org-rainbow-delimiters-depth-1">)</span> b<span class="org-haskell-operator">@</span><span class="org-rainbow-delimiters-depth-1">(</span>c<span class="org-haskell-constructor">:</span>second<span class="org-rainbow-delimiters-depth-1">)</span>
+  <span class="org-haskell-operator">|</span> h <span class="org-haskell-operator">&lt;=</span> c <span class="org-haskell-operator">=</span> h <span class="org-haskell-constructor">:</span> mymerge first b
+  <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> c <span class="org-haskell-constructor">:</span> mymerge a second
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org496e461"><span class="org-haskell-definition">mymerge</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,3,5<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>2,4,6<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:122:1-7: error:
+    Variable not in scope: mymerge :: [a0] -&gt; [a1] -&gt; t
+</pre>
+
+
+<p>
+➝ <b>Exercise 4</b> Write <code>(!!)</code>, a function that takes a natural number <code>n</code>
+and a list and selects the nth element of the list. List elements are
+indexed from 0, not 1, and since the type of the incoming number does
+not prevent it from being out of range, the result should be a <code>Maybe</code>
+type. For example,
+</p>
+
+<pre class="example" id="orgd9cd98a">
+[1,2,3] !! 0 ==&gt; Just 1
+[1,2,3] !! 2 ==&gt; Just 3
+[1,2,3] !! 5 ==&gt; Nothing
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org0c96d26"><span class="org-haskell-definition">safeIndx</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Eq</span> t <span class="org-haskell-operator">=&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>t<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> t <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Maybe</span> t
+<span class="org-haskell-definition">safeIndx</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Nothing</span>
+<span class="org-haskell-definition">safeIndx</span> <span class="org-rainbow-delimiters-depth-1">(</span>x<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-1">)</span> n
+  <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">==</span> n <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Just</span> x
+  <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> safeIndx xs n
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org50a2617"><span class="org-haskell-definition">safeIndx</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span> 3
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:124:1-8: error:
+    Variable not in scope: safeIndx :: [a0] -&gt; t0 -&gt; t
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org648c2f4"><span class="org-haskell-definition">safeIndx</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span> 4
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:126:1-8: error:
+    Variable not in scope: safeIndx :: [a0] -&gt; t0 -&gt; t
+</pre>
+
+
+<p>
+➝ <b>Exercise 5</b> Write a function lookup that takes a value and a list
+of pairs, and returns the second element of the pair that has the
+value as its ﬁrst element. Use a <code>Maybe</code> type to indicate whether the
+lookup succeeded.  For example,
+</p>
+
+<pre class="example" id="org530237a">
+lookup 5 [(1,2),(5,3)] ==&gt; Just 3
+lookup 6 [(1,2),(5,3)] ==&gt; Nothing
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org6ee8555"><span class="org-haskell-definition">mylookup</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Eq</span> t <span class="org-haskell-operator">=&gt;</span> t <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">(</span>t, a<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Maybe</span> a
+<span class="org-haskell-definition">mylookup</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Nothing</span>
+<span class="org-haskell-definition">mylookup</span> n <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>a,b<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-1">)</span>
+  <span class="org-haskell-operator">|</span> a <span class="org-haskell-operator">==</span> n <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Just</span> b
+  <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> mylookup n xs
+</pre>
+</div>
+
+<p>
+Version with <code>if...then...else</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgbec9ad4"><span class="org-haskell-definition">mylookup2</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Eq</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">(</span>a,b<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Maybe</span> b
+<span class="org-haskell-definition">mylookup2</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Nothing</span>
+<span class="org-haskell-definition">mylookup2</span> x <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>a,b<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=</span>
+  <span class="org-haskell-keyword">if</span> x <span class="org-haskell-operator">==</span> a <span class="org-haskell-keyword">then</span> <span class="org-haskell-constructor">Just</span> b <span class="org-haskell-keyword">else</span> mylookup2 x xs
+</pre>
+</div>
+
+<p>
+➝ <b>Exercise 6</b> Write a function that counts the number of times an
+element appears in a list.
+</p>
+
+<p>
+This employs <i>partial application</i> because it 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org38570f5"><span class="org-haskell-definition">count1</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Eq</span> a <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Int</span>
+<span class="org-haskell-definition">count1</span> x <span class="org-haskell-operator">=</span> length <span class="org-haskell-operator">.</span> filter <span class="org-rainbow-delimiters-depth-1">(</span>x<span class="org-haskell-operator">==</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+while this uses <code>foldl</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org37a066c"><span class="org-haskell-definition">count2</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Foldable</span> t, <span class="org-haskell-type">Eq</span> a, <span class="org-haskell-type">Num</span> b<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> t a <span class="org-haskell-operator">-&gt;</span> b
+<span class="org-haskell-definition">count2</span> needle haystack <span class="org-haskell-operator">=</span>
+  foldl <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>acc lelem <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-keyword">if</span> lelem <span class="org-haskell-operator">==</span> needle
+                       <span class="org-haskell-keyword">then</span> acc<span class="org-haskell-operator">+</span>1
+                       <span class="org-haskell-keyword">else</span> acc<span class="org-rainbow-delimiters-depth-1">)</span> 0 haystack
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgc36236b"><span class="org-haskell-definition">count2</span> 4 <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4,4,4,6<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:128:1-6: error:
+    Variable not in scope: count2 :: t0 -&gt; [a0] -&gt; t
+</pre>
+
+
+<p>
+Again, <i>partial application</i>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org9c54a6f"><span class="org-haskell-definition">count3</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Foldable</span> t, <span class="org-haskell-type">Eq</span> a, <span class="org-haskell-type">Num</span> b<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> t a <span class="org-haskell-operator">-&gt;</span> b
+<span class="org-haskell-definition">count3</span> needle <span class="org-haskell-operator">=</span>
+  foldl <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>acc lelem <span class="org-haskell-operator">-&gt;</span>
+           <span class="org-haskell-keyword">if</span> lelem <span class="org-haskell-operator">==</span> needle
+           <span class="org-haskell-keyword">then</span> acc<span class="org-haskell-operator">+</span>1
+           <span class="org-haskell-keyword">else</span> acc<span class="org-rainbow-delimiters-depth-1">)</span> 0
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgf4316c4"><span class="org-haskell-definition">count3</span> 4 <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4,4,4,6,4<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:130:1-6: error:
+    Variable not in scope: count3 :: t0 -&gt; [a0] -&gt; t
+</pre>
+
+
+<p>
+➝ <b>Exercise 7</b> Write a function that takes a value <code>e</code> and a list of
+values <code>xs</code> and removes all occurrences of <code>e</code> from <code>xs</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgca4550f"><span class="org-haskell-definition">myremove</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Eq</span> a <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-haskell-definition">myremove</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span>
+<span class="org-haskell-definition">myremove</span> e <span class="org-rainbow-delimiters-depth-1">(</span>x<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-1">)</span>
+  <span class="org-haskell-operator">|</span> e <span class="org-haskell-operator">==</span> x <span class="org-haskell-operator">=</span> myremove e xs
+  <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> x <span class="org-haskell-constructor">:</span> myremove e xs
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org97f457e"><span class="org-haskell-definition">myremove</span> 3 <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,3,4,3<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:132:1-8: error:
+    Variable not in scope: myremove :: t0 -&gt; [a0] -&gt; t
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgdf201f6"><span class="org-haskell-definition">myremove</span> 3 <span class="org-rainbow-delimiters-depth-1">[</span>3,3<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:134:1-8: error:
+    Variable not in scope: myremove :: t0 -&gt; [a0] -&gt; t
+</pre>
+
+
+<p>
+➝ <b>Exercise 8</b> Write a function <code>f :: [a] -&gt; [a]</code> that removes
+alternating elements of its list argument, starting with the first
+one. For examples, <code>f [1,2,3,4,5,6,7]</code> returns <code>[2,4,6]</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org0fa2dbb"><span class="org-haskell-definition">remAlt</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-haskell-definition">remAlt</span> <span class="org-rainbow-delimiters-depth-1">(</span>x<span class="org-haskell-constructor">:</span>y<span class="org-haskell-constructor">:</span>zs<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=</span> y <span class="org-haskell-constructor">:</span> remAlt zs
+<span class="org-haskell-definition">remAlt</span> x <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org9c1da07"><span class="org-haskell-definition">remAlt</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3,4,5,6,7,8,9,10<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:136:1-6: error:
+    Variable not in scope: remAlt :: [a0] -&gt; t
+</pre>
+
+
+<p>
+The previous code relies on <code>(x:y:zs)</code> covering all cases up to and
+including a list with just two elements, i.e., <code>[1,2]</code> is broken down
+to <code>1:2:[]</code> with the <code>zs</code> being the empty list <code>[]</code>. Here&rsquo;s a more
+basic example
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgd15c569"><span class="org-haskell-definition">fake</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-haskell-definition">fake</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span>
+<span class="org-haskell-definition">fake</span> <span class="org-rainbow-delimiters-depth-1">(</span>x<span class="org-haskell-constructor">:</span>y<span class="org-haskell-constructor">:</span>zs<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=</span> zs
+<span class="org-haskell-definition">fake</span> <span class="org-rainbow-delimiters-depth-1">[</span>x<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span>x<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org4d96662"><span class="org-haskell-definition">fake</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:138:1-4: error:
+    Variable not in scope: fake :: [a0] -&gt; t
+    Suggested fix: Perhaps use ‘take’ (imported from Prelude)
+</pre>
+
+
+<p>
+➝ <b>Exercise 9</b> Write a function <code>extract :: [Maybe a] -&gt; [a]</code> that
+takes a list of <code>Maybe</code> values and returns the elements they
+contain. For example, <code>extract [Just 3, Nothing, Just 7] = [3, 7]</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgd49c6e7"><span class="org-haskell-definition">myExtract</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-type">Maybe</span> a<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-haskell-definition">myExtract</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span>
+<span class="org-haskell-definition">myExtract</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-constructor">Just</span> a<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=</span>  a <span class="org-haskell-constructor">:</span> myExtract xs
+<span class="org-haskell-definition">myExtract</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Nothing:</span>xs<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=</span> myExtract xs
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org1def633"><span class="org-haskell-definition">myExtract</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-constructor">Just</span> 3, <span class="org-haskell-constructor">Nothing</span>, <span class="org-haskell-constructor">Just</span> 7<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:140:1-9: error:
+    Variable not in scope: myExtract :: [Maybe a0] -&gt; t
+</pre>
+
+
+<p>
+➝ <b>Exercise 10</b> Write a function <code>f :: String -&gt; String -&gt; Maybe Int</code>
+that takes two strings. If the second string appears within the first,
+it returns the index identifying where it starts. Indexes start
+from 0. For example, <br>
+<code>f "abcde" "bc" ==&gt; Just 1</code> <br>
+<code>f "abcde" "fg" ==&gt; Nothing</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org06d8357"><span class="org-haskell-definition">findInString</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">String</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">String</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Maybe</span> <span class="org-haskell-type">Int</span>
+<span class="org-haskell-definition">findInString</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Just</span> 1
+<span class="org-haskell-definition">findInString</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Nothing</span>
+<span class="org-haskell-definition">findInString</span> <span class="org-rainbow-delimiters-depth-1">(</span>s1<span class="org-haskell-constructor">:</span>sx1<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">(</span>s2<span class="org-haskell-constructor">:</span>sx2<span class="org-rainbow-delimiters-depth-1">)</span>
+  <span class="org-haskell-operator">|</span> s1 <span class="org-haskell-operator">==</span> s2 <span class="org-haskell-operator">=</span> findInString sx1 sx2
+  <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> findInString <span class="org-rainbow-delimiters-depth-1">(</span>s1<span class="org-haskell-constructor">:</span>sx1<span class="org-rainbow-delimiters-depth-1">)</span> sx2
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org908c1c6"><span class="org-haskell-definition">findInString2</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">String</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">String</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Maybe</span> <span class="org-haskell-type">Int</span>
+<span class="org-haskell-definition">findInString2</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Just</span> 1
+<span class="org-haskell-definition">findInString2</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Nothing</span>
+<span class="org-haskell-definition">findInString2</span> <span class="org-rainbow-delimiters-depth-1">(</span>s1<span class="org-haskell-constructor">:</span>sx1<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">(</span>s2<span class="org-haskell-constructor">:</span>sx2<span class="org-rainbow-delimiters-depth-1">)</span>
+  <span class="org-haskell-operator">|</span> s1 <span class="org-haskell-operator">/=</span> s2 <span class="org-haskell-operator">=</span> findInString2 <span class="org-rainbow-delimiters-depth-1">(</span>s1<span class="org-haskell-constructor">:</span>sx1<span class="org-rainbow-delimiters-depth-1">)</span> sx2
+  <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> findInString2 sx1 sx2
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org4fa171c"><span class="org-haskell-definition">findInString2</span> <span class="org-string">"ae"</span> <span class="org-string">"abcde"</span>
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:142:1-13: error:
+    Variable not in scope: findInString2 :: String -&gt; String -&gt; t
+</pre>
+</div>
+</section>
+
+<section id="outline-container-org1d483d0" class="outline-2">
+<h2 id="org1d483d0">Higher Order Recursive Functions</h2>
+<div class="outline-text-2" id="text-org1d483d0">
+<p>
+If we supply a function with another function to apply to its
+input list to produce an altered output list, this is a <i>higher order
+function</i>, i.e., a function that takes a function as an argument. For
+example, a <i>map</i> function. These are also called <i>combinators</i>.
+</p>
+
+<p>
+Map is a general-purpose higher order function that takes a function
+of the form <code>(a -&gt; b)</code> and applies it to all elements of an input
+list.
+</p>
+
+<pre class="example" id="org13b1d79">
+map :: (a-&gt;b) -&gt; [a] -&gt; [b]
+map f [] = []
+map f (x:xs) = f x : map f xs
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org491c8cd"><span class="org-haskell-definition">map</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">*</span>5<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+[5,10,15]
+</pre>
+
+
+<p>
+<code>zipWith</code> puts two lists together with a function that will take two
+arguments, one from each list
+</p>
+
+<pre class="example" id="org5b32323">
+zipWith :: (a-&gt;b-&gt;c) -&gt; [a] -&gt; [b] -&gt; [c]
+zipWith f [] ys = []
+zipWith f xs [] = []
+zipWith f (x:xs) (y:ys) = f x y : zipWith f xs ys
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgac01944"><span class="org-haskell-definition">zipWith</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">+</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>3,2,1<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+[4,4,4]
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org53652d1"><span class="org-haskell-definition">zipWith</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">**</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">(</span>replicate 10 5<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1<span class="org-haskell-operator">..</span>10<span class="org-rainbow-delimiters-depth-1">]</span>  <span class="org-comment-delimiter">-- </span><span class="org-comment">replicate: create 10 5's</span>
+</pre>
+</div>
+
+<pre class="example">
+[5.0,25.0,125.0,625.0,3125.0,15625.0,78125.0,390625.0,1953125.0,9765625.0]
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgf2b533c"><span class="org-haskell-definition">zipWith</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>x y <span class="org-haskell-operator">-&gt;</span> 2 <span class="org-haskell-operator">*</span> x <span class="org-haskell-operator">+</span> y<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1<span class="org-haskell-operator">..</span>4<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>5<span class="org-haskell-operator">..</span>8<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+[7,10,13,16]
+</pre>
+
+
+<p>
+Some HOF take a list and a function and return a singleton, e.g.,
+<code>foldr</code><label id='fnr.3' for='fnr-in.3.9319795' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.9319795' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+The <code>t a</code> instead of <code>[a]</code> in the declaration below indicates the form of a must be a
+<i>traversable</i> collection, or specifically, <i>foldable</i>.
+</span>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orge0e0487"><span class="org-haskell-definition">foldr</span> <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span>a<span class="org-haskell-operator">-&gt;</span>b<span class="org-haskell-operator">-&gt;</span>b<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">-&gt;</span> b <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> b
+<span class="org-comment-delimiter">-- </span><span class="org-comment">alternate declaration:</span>
+<span class="org-comment-delimiter">-- </span><span class="org-comment">foldr :: (a -&gt; b -&gt; b) -&gt; b -&gt; t a -&gt; b</span>
+<span class="org-haskell-definition">foldr</span> f z <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">=</span> z
+<span class="org-haskell-definition">foldr</span> f z <span class="org-rainbow-delimiters-depth-1">(</span>x<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=</span> f x <span class="org-rainbow-delimiters-depth-1">(</span>foldr f z xs<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+In this example we see the &ldquo;fold from the right&rdquo; nature of <code>foldr</code>
+</p>
+
+<pre class="example" id="org79d85d1">
+foldr (+) 0 [1,2,3]
+= 1 + foldr (+) 0 [2,3]
+= 1 + (2 + foldr (+) 0 [3])
+= 1 + (2 + (3 + foldr (+) 0 []))
+= 1 + (2 + (3 + 0))
+= 6
+</pre>
+
+<p>
+This we might use as a version of <code>sum</code>
+</p>
+
+<pre class="example" id="org86c1bc6">
+sum xs = foldr (+) 0 xs
+</pre>
+
+<p>
+Now we can see that the versions above and below
+</p>
+
+<pre class="example" id="orge57af97">
+sum [] = 0
+sum (x:xs) = x + sum xs
+</pre>
+
+<p>
+produce the same results. We see that every list is either in the form
+<code>[]</code> or <code>(x:xs)</code>, which corresponds to mathematical induction&rsquo;s <i>base case</i>
+and <i>induction step</i>. 
+</p>
+
+<p>
+➝ <b>Exercis 11</b> Write <code>foldrWith</code>, a function that behaves like <code>foldr</code>
+except that it takes a function of three arguments and two lists.
+</p>
+
+<p>
+<code>foldr f init [a,b,c]</code> is changing <code>a:b:c:[]</code> into <br>
+<code>(a f (b f (c f init)))</code> <br>
+or <br>
+<code>foldr f z [a,b,c,...,n] = f a (f b (f c (...(f n z)...)))</code> <br>
+</p>
+
+<p>
+However, this is confusing, i.e., we can&rsquo;t really do a zipping
+together with a function working on the two lists&rsquo; elements to combine
+to one list <i>then</i> a folding down without a second function for the
+<code>foldr</code>. Instead, let&rsquo;s look at
+</p>
+
+<pre class="example" id="orgc8c7c33">
+<span class="linenr"> 1: </span>foldr (zipWith (:)) (repeat []) [[1,2,3],[4,5,6],[7,8,9,10]]
+<span class="linenr"> 2: </span>=
+<span class="linenr"> 3: </span>zipWith (:) [1,2,3] 
+<span class="linenr"> 4: </span>  ( foldr (zipWith (:)) (repeat []) [[4,5,6],[7,8,9,10]] )
+<span class="linenr"> 5: </span>=
+<span class="linenr"> 6: </span>...
+<span class="linenr"> 7: </span>=
+<span class="linenr"> 8: </span>zipWith (:) [1,2,3] 
+<span class="linenr"> 9: </span>  ( zipWith (:) [4,5,6]
+<span class="linenr">10: </span>      ( zipWith (:) [7,8,9,10] 
+<span class="linenr">11: </span>          ( foldr (zipWith (:)) (repeat []) [] )))
+<span class="linenr">12: </span>=
+<span class="linenr">13: </span>zipWith (:) [1,2,3] 
+<span class="linenr">14: </span>  ( zipWith (:) [4,5,6]
+<span class="linenr">15: </span>      ( zipWith (:) [7,8,9,10] 
+<span class="linenr">16: </span>          ( repeat [] )))
+<span class="linenr">17: </span>=
+<span class="linenr">18: </span>zipWith (:) [1,2,3] 
+<span class="linenr">19: </span>  ( zipWith (:) [4,5,6]
+<span class="linenr">20: </span>      ( zipWith (:) [ 7, 8, 9,10] 
+<span class="linenr">21: </span>                    [[],[],[],[],[],[],....] ))
+<span class="linenr">22: </span>=
+<span class="linenr">23: </span>zipWith (:) [1,2,3] 
+<span class="linenr">24: </span>  ( zipWith (:) [ 4,  5,  6 ]
+<span class="linenr">25: </span>                [[7],[8],[9],[10]] )
+<span class="linenr">26: </span>=
+<span class="linenr">27: </span>zipWith (:) [ 1   , 2   , 3   ] 
+<span class="linenr">28: </span>            [[4,7],[5,8],[6,9]] 
+</pre>
+
+<p>
+This follows the <code>foldr</code> definition very tightly. Notice how lines
+10-11 correspond to the last case where <code>xs</code> is <code>[]</code>. Then according
+to the definition <code>foldr f z [] = z</code> this yields line 15 just <code>(repeat
+[]</code>). Now the infinite <code>repeat []</code> is zipped with <code>[7,8,9,10]</code> with
+the cons constructor <code>(:)</code>. Then lines 24-24 zips this with
+<code>[4,5,6]</code>. Finally lines 27-28.
+</p>
+
+<p>
+➝ <b>Exercise 12</b> Using <code>foldr</code>, write a function <code>mappend</code> such that
+<code>mappend f xs = concat (map f xs)</code>.
+</p>
+</div>
+</section>
+
+<section id="outline-container-org72340b8" class="outline-2">
+<h2 id="org72340b8">Peano arithmetic and induction</h2>
+<div class="outline-text-2" id="text-org72340b8">
+<p>
+The spirit of <i>induction</i> is based in the assumption that we may
+justify our opinion of something not yet observed as fact. That is to
+say, inductive reasoning tries to establish a pattern or habit of a
+process according to past patterns or habit. But then we must <i>prove</i>
+that a behavior holds for all cases and situations.
+</p>
+
+<p>
+<i>Mathematical induction</i> has two steps
+</p>
+
+<ul class="org-ul">
+<li>Base step</li>
+<li>Induction step</li>
+</ul>
+
+<p>
+In other words, we establish a true first step (usually trivial), then
+we show we can get from any later step to the next step. The &ldquo;any&rdquo;
+step is the <i>inductive hypothesis</i>.
+</p>
+
+<p>
+⌜<br>
+⇲
+<font color = "#4715b3"> <b>Principle of mathematical
+induction</b> <br>
+<br>
+For some fixed integer \(b\), and for each integer \(n \ge b\), let
+\(S(n)\) be a statement involving \(n\). If <br>
+</p>
+<ol class="org-ol">
+<li>\(S(b)\) is true, and</li>
+<li>for any integer \(k \ge b\), \(S(k) \implies S(k + 1)\), then for all
+\(n \ge b\), the statement \(S(n)\) is true.</li>
+</ol>
+<p>
+</font>⌟
+</p>
+
+<p>
+In this definition we need to realize the \(n\) and \(b\) and \(k\) are
+serving as indexes of \(S\), i.e., they are <i>ordinal</i> enumerations of
+the set of \(S\) statements<label id='fnr.4' for='fnr-in.4.4047004' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.4047004' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+Note how a finite set can be <i>enumerated</i> by successively
+labeling each element with the least natural number that has not been
+previously used. A natural number (more soon) can be used for two
+purposes: to describe the size of a set, or to describe the position
+of an element in a sequence. (From <a href="https://en.wikipedia.org/wiki/Ordinal_number">Ordinal number</a>.)
+</span>. Nothing necessarily is being done
+with or to them.
+</p>
+
+<p>
+Before anything further about induction, let&rsquo;s look again at a
+recursion situation with Haskell, namely, <i>Peano&rsquo;s axioms</i>, which
+attempts to formally define the <i>natural numbers</i>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org8bbe013"><span class="org-haskell-definition">myfibs</span> <span class="org-haskell-operator">=</span> 0 <span class="org-haskell-constructor">:</span> 1 <span class="org-haskell-constructor">:</span> zipWith <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">+</span><span class="org-rainbow-delimiters-depth-1">)</span> myfibs <span class="org-rainbow-delimiters-depth-1">(</span>tail myfibs<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<blockquote>
+<p>
+there&rsquo;s no magic, no special effects, no superheroes with super-human
+powers, no hip grade-schooler who hacks Pentagon computers in three
+seconds; instead, just a bunch of ordinary-looking people from
+disparate backgrounds putting their heads together to solve a critical
+problem.
+</p>
+</blockquote>
+</div>
+</section>
+
+
+<section id="outline-container-org31501e3" class="outline-2">
+<h2 id="org31501e3"></h2>
+<div class="outline-text-2" id="text-org31501e3">
+</div>
+</section>
+</article>
+<footer id="postamble" class="status">
+<p class="date">Date: 2024-04-07T11:40:14</p>
+<p class="date">Created: 2024-05-20 Mon 23:17</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</footer>
+</body>
+</html>

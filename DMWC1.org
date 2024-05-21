@@ -1,0 +1,711 @@
+#+BRAIN_PARENTS: Math202404
+
+* Equations and substitutions
+
+An equation $x = y$ says that $x$ and $y$ have the same /value/[fn:1]; any
+time you see one you can replace it with the other. This is also known
+as /substitution/.
+
+* Recursion
+
+#+name: 163c8a82-d389-431d-9b02-607d0d7e55bb
+#+begin_src haskell :eval never :exports code
+myfact :: Integer -> Integer
+myfact 0 = 1
+myfact n = n * myfact (n-1)
+#+end_src
+
+
+#+name: 0cef43cb-b8e4-4ed3-858e-530c7c2cefc6
+#+caption: ...finding type of ~sum~ label:some-source-code
+#+begin_src haskell :results verbatim :exports both
+:t sum
+#+end_src
+
+#+RESULTS: 0cef43cb-b8e4-4ed3-858e-530c7c2cefc6
+: sum :: (Foldable t, Num a) => t a -> a
+
+The /type context/  ~Num a~ means ~a~ can be any type for which
+numeric operations are defined. The type context ~Foldable t~
+
+#+name: 01ba420a-7fdc-4c37-ab52-45006358a4a2
+#+begin_src haskell :results verbatim :exports both
+:i Foldable
+#+end_src
+
+#+RESULTS: 01ba420a-7fdc-4c37-ab52-45006358a4a2
+#+begin_example
+type Foldable :: (* -> *) -> Constraint
+class Foldable t where
+  Data.Foldable.fold :: Monoid m => t m -> m
+  foldMap :: Monoid m => (a -> m) -> t a -> m
+  Data.Foldable.foldMap' :: Monoid m => (a -> m) -> t a -> m
+  foldr :: (a -> b -> b) -> b -> t a -> b
+  Data.Foldable.foldr' :: (a -> b -> b) -> b -> t a -> b
+  foldl :: (b -> a -> b) -> b -> t a -> b
+  Data.Foldable.foldl' :: (b -> a -> b) -> b -> t a -> b
+  foldr1 :: (a -> a -> a) -> t a -> a
+  foldl1 :: (a -> a -> a) -> t a -> a
+  Data.Foldable.toList :: t a -> [a]
+  null :: t a -> Bool
+  length :: t a -> Int
+  elem :: Eq a => a -> t a -> Bool
+  maximum :: Ord a => t a -> a
+  minimum :: Ord a => t a -> a
+  sum :: Num a => t a -> a
+  product :: Num a => t a -> a
+  {-# MINIMAL foldMap | foldr #-}
+  	-- Defined in ‘Data.Foldable’
+instance Foldable ((,) a) -- Defined in ‘Data.Foldable’
+instance Foldable (Either a) -- Defined in ‘Data.Foldable’
+instance Foldable Maybe -- Defined in ‘Data.Foldable’
+instance Foldable Solo -- Defined in ‘Data.Foldable’
+instance Foldable [] -- Defined in ‘Data.Foldable’
+#+end_example
+
+#+name: 7ef0b7a9-a649-4990-9b06-c1b6327787d2
+#+begin_src haskell :eval never :exports code
+bin2dec :: String -> Int
+bin2dec = foldl (\x y -> if y=='1' then x*2 + 1 else x*2) 0
+#+end_src
+
+#+name: f8d6213a-9b36-4f16-b324-6a0f56c9170a
+#+begin_src haskell :results verbatim :exports both
+bin2dec "111"
+#+end_src
+
+#+RESULTS: f8d6213a-9b36-4f16-b324-6a0f56c9170a
+: 7
+
+#+name: 1a836561-a842-4e79-8f9b-3621bc93d982
+#+begin_src haskell :eval never :exports code
+(+++) :: [a] -> [a] -> [a]
+[] +++ ys = ys
+(x:xs) +++ ys = x : (xs +++ ys)
+#+end_src
+
+#+name: 7da49f18-5a44-490e-acd1-08fb8acc1817
+#+begin_src haskell :results verbatim :exports both
+[1,2,3] +++ [4,5,6]
+#+end_src
+
+#+RESULTS: 7da49f18-5a44-490e-acd1-08fb8acc1817
+: [1,2,3,4,5,6]
+
+#+name: 27244c9d-d394-43e1-8dce-10242faa9fb3
+#+begin_src haskell :results verbatim :exports both
+[1,2,3] +++ []
+#+end_src
+
+#+RESULTS: 27244c9d-d394-43e1-8dce-10242faa9fb3
+: [1,2,3]
+
+➝ *Exercise 1* Write a recursive function ~copy :: [a] -> [a]~ that copies its list
+argument. For example, ~copy [2] => [2]~.
+
+#+name: d9044b48-9e64-45f1-84ab-e0c833656058
+#+begin_src haskell :eval never :exports code
+mycopy :: [a] -> [a]
+mycopy [] = []
+mycopy (x:xs) = x : mycopy xs
+#+end_src
+
+#+name: c6ccecd1-a62d-4461-8e08-20ab47eb03cf
+#+begin_src haskell :results verbatim :exports both
+mycopy [1,2,3,4,6]
+#+end_src
+
+#+RESULTS: c6ccecd1-a62d-4461-8e08-20ab47eb03cf
+: [1,2,3,4,6]
+
+➝ *Exercise 2* Write a function inverse that takes a list of pairs and
+swaps the pair elements. For example,
+
+#+begin_example
+λ> myinverse [(1,2),(3,4)]
+[(2,1),(4,3)]
+#+end_example
+
+#+name: 0ec6f6e8-968f-4b76-b299-6765b03d6692
+#+begin_src haskell :eval never :exports code
+-- myinverse :: [a] -> [a]
+myinverse :: [(b1, b2)] -> [(b2, b1)]
+myinverse [] = []
+myinverse (x:xs) = (snd x, fst x) : myinverse xs
+#+end_src
+
+#+name: f5077eba-10e2-45d0-9c17-35787810a634
+#+begin_src haskell :results verbatim :exports both
+myinverse [(1,2),(3,4),(5,6)]
+#+end_src
+
+#+RESULTS: f5077eba-10e2-45d0-9c17-35787810a634
+: [(2,1),(4,3),(6,5)]
+
+➝ *Exercise 3* Write a function ~merge :: Ord a => [a] -> [a] -> [a]~
+which takes two sorted lists and returns a sorted list containing the
+elements of each[fn:2].
+
+#+name: e7c54694-7aa1-43ff-afe9-da080f869b9a
+#+begin_src haskell :eval never :exports code
+mymerge :: Ord a => [a] -> [a] -> [a]
+mymerge xs [] = xs
+mymerge [] xs = xs
+mymerge a@(h:first) b@(c:second)
+  | h <= c = h : mymerge first b
+  | otherwise = c : mymerge a second
+#+end_src
+
+#+name: 11c66d42-8113-4ca3-bf81-f2f5f7b567b6
+#+begin_src haskell :results verbatim :exports both
+mymerge [1,3,5] [2,4,6]
+#+end_src
+
+#+RESULTS: 11c66d42-8113-4ca3-bf81-f2f5f7b567b6
+: [1,2,3,4,5,6]
+
+➝ *Exercise 4* Write ~(!!)~, a function that takes a natural number ~n~
+and a list and selects the nth element of the list. List elements are
+indexed from 0, not 1, and since the type of the incoming number does
+not prevent it from being out of range, the result should be a ~Maybe~
+type. For example,
+
+#+begin_example
+[1,2,3] !! 0 ==> Just 1
+[1,2,3] !! 2 ==> Just 3
+[1,2,3] !! 5 ==> Nothing
+#+end_example
+
+#+name: 5a903f9b-21d9-4a71-a2e5-219d60d459ea
+#+begin_src haskell :eval never :exports code
+safeIndx :: Eq t => [t] -> t -> Maybe t
+safeIndx [] _ = Nothing
+safeIndx (x:xs) n
+  | x == n = Just x
+  | otherwise = safeIndx xs n
+#+end_src
+
+#+name: c457d126-c0da-4daa-9cca-d58d24c47141
+#+begin_src haskell :results verbatim :exports both
+safeIndx [1,2,3] 3
+#+end_src
+
+#+RESULTS: c457d126-c0da-4daa-9cca-d58d24c47141
+: Just 3
+
+#+name: a2f1b18d-8f00-4363-a622-529cb8e6e336
+#+begin_src haskell :results verbatim :exports both
+safeIndx [1,2,3] 4
+#+end_src
+
+#+RESULTS: a2f1b18d-8f00-4363-a622-529cb8e6e336
+: Nothing
+
+➝ *Exercise 5* Write a function lookup that takes a value and a list
+of pairs, and returns the second element of the pair that has the
+value as its ﬁrst element. Use a ~Maybe~ type to indicate whether the
+lookup succeeded.  For example,
+
+#+begin_example
+lookup 5 [(1,2),(5,3)] ==> Just 3
+lookup 6 [(1,2),(5,3)] ==> Nothing
+#+end_example
+
+#+name: d11024d4-3500-416f-a4a9-b354865431f1
+#+begin_src haskell :eval never :exports code
+mylookup :: Eq t => t -> [(t, a)] -> Maybe a
+mylookup _ [] = Nothing
+mylookup n ((a,b):xs)
+  | a == n = Just b
+  | otherwise = mylookup n xs
+#+end_src
+
+Version with ~if...then...else~
+
+#+name: 435267a4-7cdf-4363-8131-94f0e2a6aa12
+#+begin_src haskell :eval never :exports code
+mylookup2 :: (Eq a) => a -> [(a,b)] -> Maybe b
+mylookup2 _ [] = Nothing
+mylookup2 x ((a,b):xs) =
+  if x == a then Just b else mylookup2 x xs
+#+end_src
+
+➝ *Exercise 6* Write a function that counts the number of times an
+element appears in a list.
+
+This employs /partial application/ because it 
+
+#+name: e20a1ef8-77de-4a14-ba8b-654b28c135b1
+#+begin_src haskell :eval never :exports code
+count1 :: Eq a => a -> [a] -> Int
+count1 x = length . filter (x==)
+#+end_src
+
+while this uses ~foldl~
+
+#+name: d6772976-14b0-43b4-a47c-da55d2bcbc98
+#+begin_src haskell :eval never :exports code
+count2 :: (Foldable t, Eq a, Num b) => a -> t a -> b
+count2 needle haystack =
+  foldl (\acc lelem -> if lelem == needle
+                       then acc+1
+                       else acc) 0 haystack
+#+end_src
+
+#+name: 7bbe2155-19e0-4de3-9bc7-c3b717894524
+#+begin_src haskell :results verbatim :exports both
+count2 4 [1,2,3,4,4,4,6]
+#+end_src
+
+#+RESULTS: 7bbe2155-19e0-4de3-9bc7-c3b717894524
+: 3
+
+Again, /partial application/
+
+#+name: 1580a104-3fe5-4f2c-9294-2d206099d212
+#+begin_src haskell :eval never :exports code
+count3 :: (Foldable t, Eq a, Num b) => a -> t a -> b
+count3 needle =
+  foldl (\acc lelem ->
+           if lelem == needle
+           then acc+1
+           else acc) 0
+#+end_src
+
+#+name: f1dbf587-f43e-431a-8e88-cad575c51619
+#+begin_src haskell :results verbatim :exports both
+count3 4 [1,2,3,4,4,4,6,4]
+#+end_src
+
+#+RESULTS: f1dbf587-f43e-431a-8e88-cad575c51619
+: 4
+
+➝ *Exercise 7* Write a function that takes a value ~e~ and a list of
+values ~xs~ and removes all occurrences of ~e~ from ~xs~.
+
+#+name: 3c8e0a27-1aa9-4293-81fb-f25ab13c80f6
+#+begin_src haskell :eval never :exports code
+myremove :: Eq a => a -> [a] -> [a]
+myremove _ [] = []
+myremove e (x:xs)
+  | e == x = myremove e xs
+  | otherwise = x : myremove e xs
+#+end_src
+
+#+name: 58376933-2324-4b0c-aafa-c59cc0471eb5
+#+begin_src haskell :results verbatim :exports both
+myremove 3 [1,2,3,3,4,3]
+#+end_src
+
+#+RESULTS: 58376933-2324-4b0c-aafa-c59cc0471eb5
+: [1,2,4]
+
+#+name: b6bc2066-fa64-4873-b50e-207a3dbdeb58
+#+begin_src haskell :results verbatim :exports both
+myremove 3 [3,3]
+#+end_src
+
+#+RESULTS: b6bc2066-fa64-4873-b50e-207a3dbdeb58
+: []
+
+➝ *Exercise 8* Write a function ~f :: [a] -> [a]~ that removes
+alternating elements of its list argument, starting with the first
+one. For examples, ~f [1,2,3,4,5,6,7]~ returns ~[2,4,6]~.
+
+#+name: 2c79b7b3-b8c4-4b41-8d98-7b2280f939fb
+#+begin_src haskell :eval never :exports code
+remAlt :: [a] -> [a]
+remAlt (x:y:zs) = y : remAlt zs
+remAlt x = []
+#+end_src
+
+#+name: c45e3024-d9bf-4c45-bdfc-2613b71a7969
+#+begin_src haskell :results verbatim :exports both
+remAlt [1,2,3,4,5,6,7,8,9,10]
+#+end_src
+
+#+RESULTS: c45e3024-d9bf-4c45-bdfc-2613b71a7969
+: [2,4,6,8,10]
+
+The previous code relies on ~(x:y:zs)~ covering all cases up to and
+including a list with just two elements, i.e., ~[1,2]~ is broken down
+to ~1:2:[]~ with the ~zs~ being the empty list ~[]~. Here's a more
+basic example
+
+#+name: 313fd1d6-77f1-4930-8057-1aaeaa730508
+#+begin_src haskell :eval never :exports code
+fake :: [a] -> [a]
+fake [] = []
+fake (x:y:zs) = zs
+fake [x] = [x]
+#+end_src
+
+#+name: c3264a6d-600d-4eab-aba1-16de37c76f9e
+#+begin_src haskell :results verbatim :exports both
+fake [1,2]
+#+end_src
+
+#+RESULTS: c3264a6d-600d-4eab-aba1-16de37c76f9e
+: []
+
+➝ *Exercise 9* Write a function ~extract :: [Maybe a] -> [a]~ that
+takes a list of ~Maybe~ values and returns the elements they
+contain. For example, ~extract [Just 3, Nothing, Just 7] = [3, 7]~.
+
+#+name: 4afcd968-67e5-43ef-9299-bd46ad1e3cd0
+#+begin_src haskell :eval never :exports code
+myExtract :: [Maybe a] -> [a]
+myExtract [] = []
+myExtract ((Just a):xs) =  a : myExtract xs
+myExtract (Nothing:xs) = myExtract xs
+#+end_src
+
+
+#+name: ee9fb195-3a7f-4441-9d6d-42ba8a7cdd60
+#+begin_src haskell :results verbatim :exports both
+myExtract [Just 3, Nothing, Just 7]
+#+end_src
+
+#+RESULTS: ee9fb195-3a7f-4441-9d6d-42ba8a7cdd60
+: [3,7]
+
+➝ *Exercise 10* Write a function ~f :: String -> String -> Maybe Int~
+that takes two strings. If the second string appears within the first,
+it returns the index identifying where it starts. Indexes start
+from 0. For example, \\
+~f "abcde" "bc" ==> Just 1~ \\
+~f "abcde" "fg" ==> Nothing~
+
+#+name: f3ab1580-704d-454d-b5b3-c517f73538e3
+#+begin_src haskell :eval never :exports code
+findInString :: String -> String -> Maybe Int
+findInString [] _ = Just 1
+findInString _ [] = Nothing
+findInString (s1:sx1) (s2:sx2)
+  | s1 == s2 = findInString sx1 sx2
+  | otherwise = findInString (s1:sx1) sx2
+#+end_src
+
+#+name: 56b80a02-f8f0-4978-92b6-1ad7cc00908a
+#+begin_src haskell :eval never :exports code
+findInString2 :: String -> String -> Maybe Int
+findInString2 [] _ = Just 1
+findInString2 _ [] = Nothing
+findInString2 (s1:sx1) (s2:sx2)
+  | s1 /= s2 = findInString2 (s1:sx1) sx2
+  | otherwise = findInString2 sx1 sx2
+#+end_src
+
+#+name: 3c45b922-8cd6-4311-b879-41e0e44df7ec
+#+begin_src haskell :results verbatim :exports both
+findInString2 "ae" "abcde"
+#+end_src
+
+#+RESULTS: 3c45b922-8cd6-4311-b879-41e0e44df7ec
+: Just 1
+
+* Higher Order Recursive Functions
+
+If we supply a function with another function to apply to its
+input list to produce an altered output list, this is a /higher order
+function/, i.e., a function that takes a function as an argument. For
+example, a /map/ function. These are also called /combinators/.
+
+Map is a general-purpose higher order function that takes a function
+of the form ~(a -> b)~ and applies it to all elements of an input
+list.
+
+#+begin_example
+map :: (a->b) -> [a] -> [b]
+map f [] = []
+map f (x:xs) = f x : map f xs
+#+end_example
+
+#+name: 6d997a25-4c4c-4250-9017-ba2a933af3a2
+#+begin_src haskell :results verbatim :exports both
+map (*5) [1,2,3]
+#+end_src
+
+#+RESULTS: 6d997a25-4c4c-4250-9017-ba2a933af3a2
+: [5,10,15]
+
+~zipWith~ puts two lists together with a function that will take two
+arguments, one from each list
+
+#+begin_example
+zipWith :: (a->b->c) -> [a] -> [b] -> [c]
+zipWith f [] ys = []
+zipWith f xs [] = []
+zipWith f (x:xs) (y:ys) = f x y : zipWith f xs ys
+#+end_example
+
+#+name: 779adf6c-6b1d-4ba5-a7be-67532cadd02f
+#+begin_src haskell :results verbatim :exports both
+zipWith (+) [1,2,3] [3,2,1]
+#+end_src
+
+#+RESULTS: 779adf6c-6b1d-4ba5-a7be-67532cadd02f
+: [4,4,4]
+
+#+name: 5badf87f-79b7-4a63-8ee0-e85acb5b8bf9
+#+begin_src haskell :results verbatim :exports both
+zipWith (**) (replicate 10 5) [1..10]  -- replicate: create 10 5's
+#+end_src
+
+#+RESULTS: 5badf87f-79b7-4a63-8ee0-e85acb5b8bf9
+: [5.0,25.0,125.0,625.0,3125.0,15625.0,78125.0,390625.0,1953125.0,9765625.0]
+
+#+name: be31a651-2bcd-4cf1-93bc-739ad06e7a51
+#+begin_src haskell :results verbatim :exports both
+zipWith (\x y -> 2 * x + y) [1..4] [5..8]
+#+end_src
+
+#+RESULTS: be31a651-2bcd-4cf1-93bc-739ad06e7a51
+: [7,10,13,16]
+
+Some HOF take a list and a function and return a singleton, e.g.,
+~foldr~[fn:3]
+
+#+name: 10acbe7b-bd5b-4bf6-8a63-a3f2843285c2
+#+begin_src haskell :eval never :exports code
+foldr :: (a->b->b) -> b -> [a] -> b
+-- alternate declaration:
+-- foldr :: (a -> b -> b) -> b -> t a -> b
+foldr f z [] = z
+foldr f z (x:xs) = f x (foldr f z xs)
+#+end_src
+
+In this example we see the "fold from the right" nature of ~foldr~
+
+#+begin_example
+foldr (+) 0 [1,2,3]
+= 1 + foldr (+) 0 [2,3]
+= 1 + (2 + foldr (+) 0 [3])
+= 1 + (2 + (3 + foldr (+) 0 []))
+= 1 + (2 + (3 + 0))
+= 6
+#+end_example
+
+This we might use as a version of ~sum~
+
+#+begin_example
+sum xs = foldr (+) 0 xs
+#+end_example
+
+Now we can see that the versions above and below
+
+#+begin_example
+sum [] = 0
+sum (x:xs) = x + sum xs
+#+end_example
+
+produce the same results. We see that every list is either in the form
+~[]~ or ~(x:xs)~, which corresponds to mathematical induction's /base case/
+and /induction step/. 
+
+➝ *Exercis 11* Write ~foldrWith~, a function that behaves like ~foldr~
+except that it takes a function of three arguments and two lists.
+
+~foldr f init [a,b,c]~ is changing ~a:b:c:[]~ into \\
+~(a f (b f (c f init)))~ \\
+or \\
+~foldr f z [a,b,c,...,n] = f a (f b (f c (...(f n z)...)))~ \\
+
+However, this is confusing, i.e., we can't really do a zipping
+together with a function working on the two lists' elements to combine
+to one list /then/ a folding down without a second function for the
+~foldr~. Instead, let's look at
+
+#+begin_example -n
+foldr (zipWith (:)) (repeat []) [[1,2,3],[4,5,6],[7,8,9,10]]
+=
+zipWith (:) [1,2,3] 
+  ( foldr (zipWith (:)) (repeat []) [[4,5,6],[7,8,9,10]] )
+=
+...
+=
+zipWith (:) [1,2,3] 
+  ( zipWith (:) [4,5,6]
+      ( zipWith (:) [7,8,9,10] 
+          ( foldr (zipWith (:)) (repeat []) [] )))
+=
+zipWith (:) [1,2,3] 
+  ( zipWith (:) [4,5,6]
+      ( zipWith (:) [7,8,9,10] 
+          ( repeat [] )))
+=
+zipWith (:) [1,2,3] 
+  ( zipWith (:) [4,5,6]
+      ( zipWith (:) [ 7, 8, 9,10] 
+                    [[],[],[],[],[],[],....] ))
+=
+zipWith (:) [1,2,3] 
+  ( zipWith (:) [ 4,  5,  6 ]
+                [[7],[8],[9],[10]] )
+=
+zipWith (:) [ 1   , 2   , 3   ] 
+            [[4,7],[5,8],[6,9]] 
+#+end_example
+
+This follows the ~foldr~ definition very tightly. Notice how lines
+10-11 correspond to the last case where ~xs~ is ~[]~. Then according
+to the definition ~foldr f z [] = z~ this yields line 15 just ~(repeat
+[]~). Now the infinite ~repeat []~ is zipped with ~[7,8,9,10]~ with
+the cons constructor ~(:)~. Then lines 24-24 zips this with
+~[4,5,6]~. Finally lines 27-28.
+
+➝ *Exercise 12* Using ~foldr~, write a function ~mappend~ such that
+~mappend f xs = concat (map f xs)~.
+
+* Peano arithmetic and induction
+
+The spirit of /induction/ is based in the assumption that we may
+justify our opinion of something not yet observed as fact. That is to
+say, inductive reasoning tries to establish a pattern or habit of a
+process according to past patterns or habit. But then we must /prove/
+that a behavior holds for all cases and situations.
+
+/Mathematical induction/ has two steps
+
+- Base step
+- Induction step
+
+In other words, we establish a true first step (usually trivial), then
+we show we can get from any later step to the next step. The "any"
+step is the /inductive hypothesis/.
+
+⌜\\
+⇲
+@@html:<font color = "#4715b3">@@ *Principle of mathematical
+induction* \\
+\\
+For some fixed integer $b$, and for each integer $n \ge b$, let
+$S(n)$ be a statement involving $n$. If \\
+a. $S(b)$ is true, and
+b. for any integer $k \ge b$, $S(k) \implies S(k + 1)$, then for all
+   $n \ge b$, the statement $S(n)$ is true.
+@@html:</font>@@⌟
+
+In this definition we need to realize the $n$ and $b$ and $k$ are
+serving as indexes of $S$, i.e., they are /ordinal/ enumerations of
+the set of $S$ statements[fn:4]. Nothing necessarily is being done
+with or to them.
+
+Before anything further about induction, let's look again at a
+recursion situation with Haskell, namely, /Peano's axioms/, which
+attempts to formally define the /natural numbers/.
+
+#+name: e340c685-973c-48c5-8ea6-9a12ec0856c6
+#+begin_src haskell :eval never :exports code
+myfibs = 0 : 1 : zipWith (+) myfibs (tail myfibs)
+#+end_src
+
+#+begin_quote
+there's no magic, no special effects, no superheroes with super-human
+powers, no hip grade-schooler who hacks Pentagon computers in three
+seconds; instead, just a bunch of ordinary-looking people from
+disparate backgrounds putting their heads together to solve a critical
+problem.
+#+end_quote
+
+
+* Not exported  :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle dmwc1.hs :noweb yes
+
+module DMWC1 where
+
+
+<<163c8a82-d389-431d-9b02-607d0d7e55bb>>
+<<7ef0b7a9-a649-4990-9b06-c1b6327787d2>>
+<<1a836561-a842-4e79-8f9b-3621bc93d982>>
+<<d9044b48-9e64-45f1-84ab-e0c833656058>>
+<<0ec6f6e8-968f-4b76-b299-6765b03d6692>>
+<<e7c54694-7aa1-43ff-afe9-da080f869b9a>>
+<<5a903f9b-21d9-4a71-a2e5-219d60d459ea>>
+<<d11024d4-3500-416f-a4a9-b354865431f1>>
+<<435267a4-7cdf-4363-8131-94f0e2a6aa12>>
+<<e20a1ef8-77de-4a14-ba8b-654b28c135b1>>
+<<d6772976-14b0-43b4-a47c-da55d2bcbc98>>
+<<1580a104-3fe5-4f2c-9294-2d206099d212>>
+<<3c8e0a27-1aa9-4293-81fb-f25ab13c80f6>>
+<<2c79b7b3-b8c4-4b41-8d98-7b2280f939fb>>
+<<313fd1d6-77f1-4930-8057-1aaeaa730508>>
+<<4afcd968-67e5-43ef-9299-bd46ad1e3cd0>>
+<<f3ab1580-704d-454d-b5b3-c517f73538e3>>
+<<56b80a02-f8f0-4978-92b6-1ad7cc00908a>>
+#+end_src
+
+#+name: 4381ddbc-8800-4d76-bc0b-01f7429acf5d
+#+begin_src haskell :results verbatim :exports both
+:set -Wno-type-defaults
+#+end_src
+
+#+RESULTS: 4381ddbc-8800-4d76-bc0b-01f7429acf5d
+
+
+
+#+name: 85564417-6095-4c04-a223-22eb0c0b6146
+#+begin_src haskell :results verbatim :exports both
+1 + 1
+#+end_src
+
+#+RESULTS: 85564417-6095-4c04-a223-22eb0c0b6146
+: 2
+
+* 
+
+#+TITLE: Equational reasoning
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2024-04-07T11:40:14
+#+LANGUAGE:  en
+#+HTML_HEAD: <link rel="stylesheet" href="../codeismathiscode2/tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="../codeismathiscode2/ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+HTML_HEAD: <style>.monoblock {font-family:"DejaVu Sans Mono"; font-size:0.25em !important; color: green;}</style>
+#+STARTUP: showall 
+#+STARTUP: align 
+#+STARTUP: indent 
+#+STARTUP: shrink
+#+EXPORT_FILE_NAME: DMWC1.html
+#+EXPORT_SELECT_TAGS: export 
+#+EXPORT_EXCLUDE_TAGS: noexport 
+#+STARTUP: showall 
+#+STARTUP: align 
+#+STARTUP: indent 
+#+STARTUP: shrink 
+#+STARTUP: inlineimages 
+#+STARTUP: fnadjust
+
+* Footnotes
+
+[fn:1] Mathematical /expressions/ resolve to /values/.
+
+[fn:2] ~| h > c = c:merge a second~ causes a /Pattern match(es) are
+non-exhaustive/ because ~h <= c~ and ~h > c~ cover all possible
+scenarios, but this depends on whether ~Ord~ is lawfully
+implemented.
+
+[fn:3] The ~t a~ instead of ~[a]~ in the declaration below indicates the form of a must be a
+/traversable/ collection, or specifically, /foldable/.
+
+[fn:4] Note how a finite set can be /enumerated/ by successively
+labeling each element with the least natural number that has not been
+previously used. A natural number (more soon) can be used for two
+purposes: to describe the size of a set, or to describe the position
+of an element in a sequence. (From [[https://en.wikipedia.org/wiki/Ordinal_number][Ordinal number]].)

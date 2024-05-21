@@ -213,10 +213,11 @@ pre.example {
     max-width: 100%;
     overflow-x: auto;
     color: #1e3da7;
+    margin-left: 0px !important;
 }
 
 .src-haskell {
-    max-width: 65% !important;
+    /* max-width: 65% !important; */
     color: #0a6060;
     overflow-x: auto;
     float: left;
@@ -300,7 +301,7 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11, h12, h13, h14, h15 {
     line-height: 1.2em;
     /* letter-spacing: 0.175em; */
     margin-bottom: .1em;
-    margin-top: 1.3em;
+    margin-top: -0.3em;
 }
 
 
@@ -746,3 +747,4 @@ label.margin-toggle:not(.sidenote-number) {
         width: 100%;
     }
 }
+

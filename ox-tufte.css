@@ -397,6 +397,7 @@ section pre.example {
     display: inline-block;
     max-width: 100%;
     overflow-x: auto;
+    font-size: 80%;
 }
 /* END: fix horizontal */
 
@@ -465,5 +466,18 @@ article code {
     overflow-x: auto;
     max-width: 100%;
     display: inline-block;
+    color: green;
 }
 /* END: prevent side-scroll when result of inline call is long */
+
+/* article > div.org-src-container { */
+/*     width: var(--ox-tufte-content-width); */
+/*     max-width: var(--ox-tufte-content-width); */
+/*     clear: none; */
+/* } */
+
+/* article > section .org-src-container { */
+/*     width: var(--ox-tufte-src-code-width); */
+/*     max-width: var(--ox-tufte-src-code-width); */
+/*     clear: none; */
+/* } */

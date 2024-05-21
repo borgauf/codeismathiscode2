@@ -7,6 +7,7 @@
 #+LANGUAGE:  en
 # #+INFOJS_OPT: view:showall ltoc:t mouse:underline
 #+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="../codeismathiscode2//ox-tufte.css" type="text/css">
 #+INCLUDE: "./header.org" :minlevel 1
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
@@ -88,12 +89,20 @@ module NUMBERS2AUX1 where
 
 #+end_src
 
+#+name: 6b23173a-d11b-4e6f-83b9-16be8f9d7fa4
+#+begin_src haskell :results verbatim :exports both
+:set -Wno-type-defaults
+#+end_src
+
+#+RESULTS: 6b23173a-d11b-4e6f-83b9-16be8f9d7fa4
+
+
 #+begin_src haskell :results verbatim :exports both
 1 + 1 -- here to start the ghci REPL if needed
 #+end_src
 
 #+RESULTS:
-: λ> 2
+: 2
 
 ** Modus ponens[fn:3]
 

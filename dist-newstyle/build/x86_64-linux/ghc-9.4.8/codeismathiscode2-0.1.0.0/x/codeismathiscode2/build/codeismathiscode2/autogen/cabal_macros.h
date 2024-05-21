@@ -70,6 +70,16 @@
   (major1) == 1 && (major2) <  4 || \
   (major1) == 1 && (major2) == 4 && (minor) <= 1)
 #endif /* MIN_VERSION_diagrams */
+/* package extra-1.7.14 */
+#ifndef VERSION_extra
+#define VERSION_extra "1.7.14"
+#endif /* VERSION_extra */
+#ifndef MIN_VERSION_extra
+#define MIN_VERSION_extra(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  7 || \
+  (major1) == 1 && (major2) == 7 && (minor) <= 14)
+#endif /* MIN_VERSION_extra */
 /* package hmatrix-0.20.2 */
 #ifndef VERSION_hmatrix
 #define VERSION_hmatrix "0.20.2"
