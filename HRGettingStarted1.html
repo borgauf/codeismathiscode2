@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2024-05-20 Mon 23:17 -->
+<!-- 2024-12-17 Tue 15:38 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Haskell Road; Getting Started Part 1</title>
@@ -108,18 +108,16 @@ pre.example {clear: none; }
 </nav>
 </div>
 </p>
-
 <section id="outline-container-orgc025086" class="outline-2">
 <h2 id="orgc025086">Getting started part 1</h2>
 </section>
-
-<section id="outline-container-orgd2ce4f6" class="outline-2">
-<h2 id="orgd2ce4f6">Monday at the library part 1</h2>
-<div class="outline-text-2" id="text-orgd2ce4f6">
+<section id="outline-container-org3592cc8" class="outline-2">
+<h2 id="org3592cc8">Monday at the library part 1</h2>
+<div class="outline-text-2" id="text-org3592cc8">
 </div>
-<div id="outline-container-org52569d6" class="outline-3">
-<h3 id="org52569d6">Fractions</h3>
-<div class="outline-text-3" id="text-org52569d6">
+<div id="outline-container-orgbbba6e1" class="outline-3">
+<h3 id="orgbbba6e1">Fractions</h3>
+<div class="outline-text-3" id="text-orgbbba6e1">
 <p>
 It&rsquo;s a Monday morning in late July and the von der Surwitz siblings
 meet in a reserved study room at the main university library to go
@@ -130,8 +128,8 @@ Chandra, had discussed with them at the Novalis Tech Open House.
 <p>
 Checking Professor Chandra&rsquo;s course syllabus on her website before,
 they had already made online purchases of the main text for the
-course, <i>The Haskell Road to Logic, Maths and Programming</i> by Kees
-Doets and Jan van Eijck. During the open house at the convention wing
+course, <a href="https://www.collegepublications.co.uk/computing/?00004">The Haskell Road to Logic, Maths and Programming</a> by <a href="https://www.illc.uva.nl/NewsandEvents/News/Obituaries/Kees-Doets/">Kees
+Doets</a> and <a href="https://staff.fnwi.uva.nl/d.j.n.vaneijck2/">Jan van Eijck</a>. During the open house at the convention wing
 of the student center on the previous Saturday, they had sat down
 together at a table with the professor as she paged through the text
 and talked extemporaneously about what parts she would like to handle
@@ -141,8 +139,8 @@ them to email her with any questions.
 
 <p>
 The professor encouraged them to dive into to the logic and sets
-prereqs, alongside of the first few chapters of <i>The Haskell Road&#x2026;</i>,
-as well as to get through as much <i>Learn You a Haskell&#x2026;</i> as
+prerequires, alongside of the first few chapters of <i>The Haskell Road&#x2026;</i>,
+as well as to get through as much <i><a href="https://learnyouahaskell.github.io/chapters.html">Learn You a Haskell for Great Good</a></i> as
 possible.
 </p>
 
@@ -177,8 +175,7 @@ German for <i>dad</i>, <i>papa</i>.
 </span> said, his math degree really smoothed the way for his
 chemical engineering studies. <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> Get as much math
-as you can as early as you can. That seems to be the plan everywhere
-these days. <br>
+as you can as early as you can. <br>
 [murmurs of agreement] <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> So I&rsquo;m psyched. <br>
 [She looks around and receives nods] <br>
@@ -193,7 +190,7 @@ us, her daughter &#x2014; and maybe three others who weren&rsquo;t there and
 might not take it after all. Wow.<br>
 <span class="fraktur">𝔘𝔱𝔢:</span> Bottom line: We&rsquo;ve
 got a once-in-a-lifetime chance to really learn a ton about
-comp-sci. Yeah, psyched! <br>
+comp-sci. Yeah, this is amazing. <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> Now all we have to do
 is hang on for dear life! <br>
 [laughter] <br>
@@ -369,7 +366,7 @@ to her org-mode buffer] Here, let me write a little Haskell function
 for that, a proverbial one-liner doing &#x2014; <i>Dreisatz</i>? What&rsquo;s
 <i>Dreisatz?</i> <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> Ah, literally
-<i>rule of three.</i> <br>
+<i><a href="https://en.wikipedia.org/wiki/Cross-multiplication#Rule_of_three">rule of three</a>.</i> <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [Ursula looks
 it up on Wikipedia] Or just <i>cross-multiplication</i>. [typing into a
 org-mode Babel source block] <br>
@@ -381,7 +378,7 @@ org-mode Babel source block] <br>
 </div>
 
 <p>
-[running it with parameters] <br>
+[plugging in some parameters] <br>
 </p>
 
 <div class="org-src-container">
@@ -390,15 +387,14 @@ org-mode Babel source block] <br>
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:158:1-9: error:
-    Variable not in scope: crossMult :: t0 -&gt; t1 -&gt; t2 -&gt; t
+17.0
 </pre>
 
 
 <p>
-<span class="fraktur">𝔘𝔴𝔢:</span> So you&rsquo;re doing an
-anonymous function<label id='fnr.3' for='fnr-in.3.8791831' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.8791831' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
-Check out anonymous or <i>lambda</i> functions <a href="http://learnyouahaskell.com/higher-order-functions#lambdas">here</a>.
+<span class="fraktur">𝔘𝔴𝔢:</span> So your
+<code>crossMult</code> is an anonymous function<label id='fnr.3' for='fnr-in.3.8791831' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.8791831' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+Check out anonymous or <i>lambda</i> functions <a href="https://learnyouahaskell.github.io/higher-order-functions.html#lambdas">here</a>. 
 </span>, right? <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Right. Yeah,
 pretty neat, huh? <br>
@@ -415,7 +411,7 @@ with <code>:t</code> [typing at the REPL]
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:1:1-9: error: Variable not in scope: crossMult
+crossMult :: Double -&gt; Double -&gt; Double -&gt; Double
 </pre>
 
 
@@ -447,8 +443,9 @@ Actually, I could have done it this way [typing in new source block]
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:162:1-10: error:
+&lt;interactive&gt;:502:1-10: error:
     Variable not in scope: crossMult2 :: t0 -&gt; t1 -&gt; t2 -&gt; t
+    Suggested fix: Perhaps use ‘crossMult’ (line 4)
 </pre>
 
 
@@ -523,10 +520,7 @@ this and wonders why the error
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:170:16: error:
-    • No instance for (Fractional Integer) arising from a use of ‘/’
-    • In the expression: (4 :: Integer) / 2
-      In an equation for ‘it’: it = (4 :: Integer) / 2
+In an equation for ‘it’: it = (4 :: Integer) / 2
 </pre>
 
 
@@ -574,6 +568,11 @@ the ghci REPL] Here, see?
 </div>
 
 <pre class="example">
+&lt;interactive&gt;:512:1-5: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Double’ in the following constraints
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:512:1-5
+        (Fractional a0) arising from a use of ‘it’ at &lt;interactive&gt;:512:1-5
+    • In a stmt of an interactive GHCi command: print it
 2.0
 </pre>
 
@@ -615,6 +614,11 @@ into REPL]
 </div>
 
 <pre class="example">
+&lt;interactive&gt;:516:1-11: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:516:1-11
+        (Integral a0) arising from a use of ‘it’ at &lt;interactive&gt;:516:1-11
+    • In a stmt of an interactive GHCi command: print it
 2
 </pre>
 
@@ -631,6 +635,11 @@ whole numbers [typing into REPL]
 </div>
 
 <pre class="example">
+&lt;interactive&gt;:518:1-5: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Double’ in the following constraints
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:518:1-5
+        (Fractional a0) arising from a use of ‘it’ at &lt;interactive&gt;:518:1-5
+    • In a stmt of an interactive GHCi command: print it
 2.5
 </pre>
 
@@ -675,8 +684,7 @@ got
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:184:1-9: error:
-    Variable not in scope: crossMult :: t0 -&gt; t1 -&gt; t2 -&gt; t
+3.0
 </pre>
 
 
@@ -820,8 +828,7 @@ the numerators [typing]
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:186:1-9: error:
-    Variable not in scope: crossMult :: t0 -&gt; t1 -&gt; t2 -&gt; t
+35.0
 </pre>
 
 
@@ -831,8 +838,7 @@ the numerators [typing]
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:188:1-9: error:
-    Variable not in scope: crossMult :: t0 -&gt; t1 -&gt; t2 -&gt; t
+55.0
 </pre>
 
 
@@ -882,7 +888,7 @@ Now for denominators \(15\) and \(85\) like before
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:190:1-5: error:
+&lt;interactive&gt;:530:1-5: error:
     Variable not in scope: myLCM :: t0 -&gt; t1 -&gt; t
 </pre>
 
@@ -911,10 +917,22 @@ dnom1</code>. Here&rsquo;s an example [typing into the ghci REPL]
 </pre>
 </div>
 
-<pre class="example">
+<pre class="example" id="org53652d1">
+&lt;interactive&gt;:532:7-8: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Eq a0) arising from a use of ‘==’ at &lt;interactive&gt;:532:7-8
+        (Num a0) arising from a use of ‘*’ at &lt;interactive&gt;:532:2
+    • In the expression: (* 2) 5 == (2 *) 5
+      In an equation for ‘it’: it = (* 2) 5 == (2 *) 5
+
+&lt;interactive&gt;:532:7-8: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Eq a0) arising from a use of ‘==’ at &lt;interactive&gt;:532:7-8
+        (Num a0) arising from a use of ‘*’ at &lt;interactive&gt;:532:2
+    • In the expression: (* 2) 5 == (2 *) 5
+      In an equation for ‘it’: it = (* 2) 5 == (2 *) 5
 True
 </pre>
-
 
 <p>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing]
@@ -924,24 +942,62 @@ example [typing]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org05f9cc3"><span class="org-rainbow-delimiters-depth-1">(</span>2<span class="org-haskell-operator">^</span><span class="org-rainbow-delimiters-depth-1">)</span>3
+<pre class="src src-haskell" id="orgf2b533c"><span class="org-rainbow-delimiters-depth-1">(</span>2<span class="org-haskell-operator">^</span><span class="org-rainbow-delimiters-depth-1">)</span>3
 </pre>
 </div>
 
-<pre class="example">
+<pre class="example" id="orgf4d1ff3">
+&lt;interactive&gt;:534:1-5: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:534:1-5
+        (Num a0) arising from a use of ‘it’ at &lt;interactive&gt;:534:1-5
+    • In a stmt of an interactive GHCi command: print it
+
+&lt;interactive&gt;:534:3: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Integral a0) arising from a use of ‘^’ at &lt;interactive&gt;:534:3
+        (Num a0) arising from the literal ‘3’ at &lt;interactive&gt;:534:5
+    • In the expression: (2 ^) 3
+      In an equation for ‘it’: it = (2 ^) 3
+
+&lt;interactive&gt;:534:3: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Integral a0) arising from a use of ‘^’ at &lt;interactive&gt;:534:3
+        (Num a0) arising from the literal ‘3’ at &lt;interactive&gt;:534:5
+    • In the expression: (2 ^) 3
+      In an equation for ‘it’: it = (2 ^) 3
 8
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgf4d1ff3"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">^</span>2<span class="org-rainbow-delimiters-depth-1">)</span>3
+<pre class="src src-haskell" id="orge0e0487"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">^</span>2<span class="org-rainbow-delimiters-depth-1">)</span>3
 </pre>
 </div>
 
-<pre class="example">
+<pre class="example" id="org79d85d1">
+&lt;interactive&gt;:536:1-5: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:536:1-5
+        (Num a0) arising from a use of ‘it’ at &lt;interactive&gt;:536:1-5
+    • In a stmt of an interactive GHCi command: print it
+
+&lt;interactive&gt;:536:2: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Integral a0) arising from a use of ‘^’ at &lt;interactive&gt;:536:2
+        (Num a0) arising from the literal ‘2’ at &lt;interactive&gt;:536:3
+    • In the expression: (^)
+      In the expression: (^ 2) 3
+      In an equation for ‘it’: it = (^ 2) 3
+
+&lt;interactive&gt;:536:2: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Integral a0) arising from a use of ‘^’ at &lt;interactive&gt;:536:2
+        (Num a0) arising from the literal ‘2’ at &lt;interactive&gt;:536:3
+    • In the expression: (^)
+      In the expression: (^ 2) 3
+      In an equation for ‘it’: it = (^ 2) 3
 9
 </pre>
-
 
 <p>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> [continuing] So
@@ -950,16 +1006,28 @@ down this rabbit hole, I could write something like this [typing]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orge0e0487"><span class="org-haskell-definition">myTimesTwo</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">*</span>2<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<div class="org-src-container">
-<pre class="src src-haskell" id="org86c1bc6"><span class="org-haskell-definition">myTimesTwo</span> 5
+<pre class="src src-haskell" id="orge57af97"><span class="org-haskell-definition">myTimesTwo</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">*</span>2<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <pre class="example">
+&lt;interactive&gt;:538:1-10: warning: [-Wname-shadowing]
+    This binding for ‘myTimesTwo’ shadows the existing binding
+      defined at &lt;interactive&gt;:484:1
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org1d483d0"><span class="org-haskell-definition">myTimesTwo</span> 5
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:540:1-12: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:540:1-12
+        (Num a0) arising from a use of ‘it’ at &lt;interactive&gt;:540:1-12
+    • In a stmt of an interactive GHCi command: print it
 10
 </pre>
 
@@ -973,9 +1041,16 @@ does [typing into a source block]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgc8c7c33"><span class="org-haskell-definition">myListOfAddFuncs</span> <span class="org-haskell-operator">=</span> map <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">+</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+<pre class="src src-haskell" id="org17cae38"><span class="org-haskell-definition">myListOfAddFuncs</span> <span class="org-haskell-operator">=</span> map <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">+</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
 </pre>
 </div>
+
+<pre class="example">
+&lt;interactive&gt;:542:1-16: warning: [-Wname-shadowing]
+    This binding for ‘myListOfAddFuncs’ shadows the existing binding
+      defined at &lt;interactive&gt;:488:1
+</pre>
+
 
 <p>
 <span class="fraktur">𝔘𝔱𝔢:</span> Aaah, not
@@ -985,7 +1060,7 @@ according to <i>The Gentle Introduction&#x2026;</i> we&rsquo;ve got [writing on 
 board]
 </p>
 
-<pre class="example" id="org1d483d0">
+<pre class="example" id="org8bbe013">
 (+) = \x y -&gt; x + y
 </pre>
 
@@ -997,7 +1072,7 @@ parentheses, right? <br>
 packaging up a common operator like plus or times, and maybe a
 variable, to work as a function. <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> <i>Luft von anderem
-Planeten</i><label id='fnr.10' for='fnr-in.10.4047004' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.4047004' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
+Planeten</i><label id='fnr.10' for='fnr-in.10.2682680' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.2682680' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
 A famous line from a Stefan Georg poem: <i>Ich fühle Luft von
 anderem Planeten</i> or <i>I feel (the) air of (the other) another planet.</i>
 </span> <br>
@@ -1009,16 +1084,23 @@ function [writes on the board]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org8bbe013"><span class="org-haskell-definition">myLOAF</span> <span class="org-haskell-operator">=</span> map <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>x y <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">+</span> y<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+<pre class="src src-haskell" id="org976864b"><span class="org-haskell-definition">myLOAF</span> <span class="org-haskell-operator">=</span> map <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>x y <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">+</span> y<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
 </pre>
 </div>
+
+<pre class="example">
+&lt;interactive&gt;:544:1-6: warning: [-Wname-shadowing]
+    This binding for ‘myLOAF’ shadows the existing binding
+      defined at &lt;interactive&gt;:490:1
+</pre>
+
 
 <p>
 <span class="fraktur">𝔘𝔴𝔢:</span> [continuing] And
 I&rsquo;m guessing that this creates a <i>list of functions</i> like [writing]
 </p>
 
-<pre class="example" id="org72340b8">
+<pre class="example" id="org0a55420">
 [(1+),(2+),(3+)]
 </pre>
 
@@ -1028,11 +1110,16 @@ test it [typing]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org976864b"><span class="org-haskell-definition">map</span> <span class="org-rainbow-delimiters-depth-1">(</span>myListOfAddFuncs <span class="org-haskell-operator">!!</span> 2<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+<pre class="src src-haskell" id="org5bfa658"><span class="org-haskell-definition">map</span> <span class="org-rainbow-delimiters-depth-1">(</span>myListOfAddFuncs <span class="org-haskell-operator">!!</span> 2<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
 </pre>
 </div>
 
 <pre class="example">
+&lt;interactive&gt;:546:1-35: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘b0’ to type ‘Integer’ in the following constraints
+        (Show b0) arising from a use of ‘print’ at &lt;interactive&gt;:546:1-35
+        (Num b0) arising from a use of ‘it’ at &lt;interactive&gt;:546:1-35
+    • In a stmt of an interactive GHCi command: print it
 [4,5,6]
 </pre>
 
@@ -1059,7 +1146,7 @@ list comprehension? Is that what it&rsquo;s called? <br>
 [scrolling back]
 </p>
 
-<pre class="example" id="org0a55420">
+<pre class="example" id="orgd237ecc">
 myLCM dnom1 dnom2
   = take 1  [((*dnom1)x) | x &lt;- [1..200],
              y &lt;- [1..200],
@@ -1067,29 +1154,29 @@ myLCM dnom1 dnom2
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org5bfa658"><span class="org-haskell-definition">myLCM</span> 15 85
+<pre class="src src-haskell" id="org4c5d452"><span class="org-haskell-definition">myLCM</span> 15 85
 </pre>
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:208:1-5: error:
+&lt;interactive&gt;:548:1-5: error:
     Variable not in scope: myLCM :: t0 -&gt; t1 -&gt; t
 </pre>
 
 
 <p>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So this is a
-<i>list comprehension</i><label id='fnr.11' for='fnr-in.11.9614924' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.9614924' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
+<i>list comprehension</i><label id='fnr.11' for='fnr-in.11.2210364' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.2210364' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
 See <a href="http://learnyouahaskell.com/starting-out#im-a-list-comprehension">this</a> from LYAHFGG.
 </span>, and a list comprehension is just the
 Haskell version of a set comprehension or <i>set-builder
-notation</i><label id='fnr.12' for='fnr-in.12.7120933' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.7120933' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
+notation</i><label id='fnr.12' for='fnr-in.12.7235665' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.7235665' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
 See Wikipedia&rsquo;s <a href="https://en.wikipedia.org/wiki/Set-builder_notation">Set-builder notation</a>
 </span> from set theory. And it&rsquo;s going through the multiples
 of \(15\) and \(85\), one after the other like this [writing on the board]
 </p>
 
-<pre class="example" id="org4c5d452">
+<pre class="example" id="org81c074c">
 15 30 45 60 75 90 105 120 ... 240 255
 85 170 225
 </pre>
@@ -1108,16 +1195,16 @@ intervals in all possible combinations &#x2014; this time only the first
 \(15\) multiples of \(15\) and \(85\:\) so it doesn&rsquo;t get too big
 </p>
 
-<pre class="example" id="org964b83c">
+<pre class="example" id="org52569d6">
 myLCM2 dnom1 dnom2 = [((*dnom1)x,(*dnom2)y) |
                          x &lt;- [1..15], y &lt;- [1..15] ]
 </pre>
 
-<pre class="example" id="org70a3ad1">
+<pre class="example" id="orgd2ce4f6">
 myLCM2 15 85
 </pre>
 
-<pre class="example" id="org81c074c">
+<pre class="example" id="orgb7be17e">
 [(15,85),(15,170),(15,255),(15,340),(15,425),(15,510),(15,595),(15,680),
 (15,765),(15,850),(15,935),(15,1020),(15,1105),(15,1190),(15,1275),
 (30,85),(30,170),(30,255),(30,340),(30,425),(30,510),(30,595),(30,680),

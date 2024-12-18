@@ -66,15 +66,20 @@
 
 ** Not exported :noexport:
 
-#+begin_src haskell :eval never :exports code :tangle numbers1.hs :noweb yes
+#+begin_src haskell :eval never :exports code :tangle ./src/numbers1.hs :noweb yes
 module NUMBERS1 where
 <<ea3e8a0b-ffe6-4f2a-9a43-bf8a2d4f45b5>>
+  
 <<86154687-d71b-4cb0-92ac-2e3bae56c652>>
 
 <<754b208f-cd5e-4c08-b844-6bb7eaa7cfd6>>
+  
 <<589c20e0-2d24-4e7e-b360-83cd98556379>>
-<<5d492aee-6cdc-41a7-a524-3c4d275d5b1a>>    
+  
+<<5d492aee-6cdc-41a7-a524-3c4d275d5b1a>>
+  
 <<788971a7-f080-4823-8779-161d0eb9d072>>
+  
 <<73697dca-5548-4332-b672-1e8efafb0865>>
 #+end_src
 

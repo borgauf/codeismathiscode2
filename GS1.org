@@ -6,6 +6,21 @@
 #+LANGUAGE:  en
 # #+INFOJS_OPT: view:showall ltoc:t mouse:underline
 #+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
 #+INCLUDE: "./header.org" :minlevel 1
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
@@ -56,6 +71,8 @@ module GS1 where
 
 
 <<23dd7da9-8620-471f-8642-f854785656ea>>
+  
+<<6a525824-c590-49c5-823b-e324005d9008>>
 #+end_src
 
 #+name: 6b14996d-7528-4c2a-a081-ccd244799b49
@@ -84,8 +101,8 @@ Chandra, had discussed with them at the Novalis Tech Open House.
 
 Checking Professor Chandra's course syllabus on her website before,
 they had already made online purchases of the main text for the
-course, /The Haskell Road to Logic, Maths and Programming/ by Kees
-Doets and Jan van Eijck. During the open house at the convention wing
+course, [[https://www.collegepublications.co.uk/computing/?00004][The Haskell Road to Logic, Maths and Programming]] by [[https://www.illc.uva.nl/NewsandEvents/News/Obituaries/Kees-Doets/][Kees
+Doets]] and [[https://staff.fnwi.uva.nl/d.j.n.vaneijck2/][Jan van Eijck]]. During the open house at the convention wing
 of the student center on the previous Saturday, they had sat down
 together at a table with the professor as she paged through the text
 and talked extemporaneously about what parts she would like to handle
@@ -93,8 +110,8 @@ and how. She also showed them some code on her laptop. She invited
 them to email her with any questions.
 
 The professor encouraged them to dive into to the logic and sets
-prereqs, alongside of the first few chapters of /The Haskell Road.../,
-as well as to get through as much /Learn You a Haskell.../ as
+prerequires, alongside of the first few chapters of /The Haskell Road.../,
+as well as to get through as much /[[https://learnyouahaskell.github.io/chapters.html][Learn You a Haskell for Great Good]]/ as
 possible.
 
 Ursula von der Surwitz has plugged in her laptop to the room's big 4K
@@ -123,8 +140,7 @@ functions. \\
 Vati[fn:1] said, his math degree really smoothed the way for his
 chemical engineering studies. \\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Get as much math
-as you can as early as you can. That seems to be the plan everywhere
-these days. \\
+as you can as early as you can. \\
 [murmurs of agreement] \\
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So I'm psyched. \\
 [She looks around and receives nods] \\
@@ -139,7 +155,7 @@ us, her daughter --- and maybe three others who weren't there and
 might not take it after all. Wow.\\
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Bottom line: We've
 got a once-in-a-lifetime chance to really learn a ton about
-comp-sci. Yeah, psyched! \\
+comp-sci. Yeah, this is amazing. \\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Now all we have to do
 is hang on for dear life! \\
 [laughter] \\
@@ -210,14 +226,14 @@ we've got the primes. I'll make a table of them
 #+CAPTION: 15 factored into its primes
 #+ATTR_HTML: :border 2 :rules all :frame border
 | $\quad$ 15 $\quad$ | $\quad$ 2 $\quad$ | $\quad$ 3 $\quad$ | $\quad$ 5 $\quad$ |
-|---+---+---+---|
-|   |   | 1 | 1 |
+|--------------------+-------------------+-------------------+-------------------|
+|                    |                   |                 1 |                 1 |
 
 #+CAPTION: 85 factored into its primes
 #+ATTR_HTML: :border 2 :rules all :frame border
 | $\quad$ 85 $\quad$ | $\;$ 2 $\;$ | $\;$ 3 $\;$ | $\;$ 5 $\;$ | $\;$ 7 $\;$ | $\;$ 11 $\;$ | $\;$ 13 $\;$ | $\;$ 17 $\;$ |
-|---+---+---+---+---+---+---+---|
-|   |   |   | 1 |   |   |   | 1 |
+|--------------------+-------------+-------------+-------------+-------------+--------------+--------------+--------------|
+|                    |             |             |           1 |             |              |              |            1 |
 
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] So we
 take the unique primes in common between the two denominators --- that
@@ -239,7 +255,7 @@ to her org-mode buffer] Here, let me write a little Haskell function
 for that, a proverbial one-liner doing --- /Dreisatz/? What's
 /Dreisatz?/ \\
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Ah, literally
-/rule of three./ \\
+/[[https://en.wikipedia.org/wiki/Cross-multiplication#Rule_of_three][rule of three]]./ \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [Ursula looks
 it up on Wikipedia] Or just /cross-multiplication/. [typing into a
 org-mode Babel source block] \\
@@ -249,7 +265,7 @@ org-mode Babel source block] \\
 crossMult = \a b d -> ((a * d) / b) -- a/b = x/d ... solve for unknown
 #+end_src
 
-[running it with parameters] \\
+[plugging in some parameters] \\
 
 #+name: 1dda17f3-87d8-4230-b330-08ff82c41fac
 #+begin_src haskell :results verbatim :exports both
@@ -259,8 +275,8 @@ crossMult 1 15 255
 #+RESULTS: 1dda17f3-87d8-4230-b330-08ff82c41fac
 : 17.0
 
-@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So you're doing an
-anonymous function[fn:3], right? \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So your
+~crossMult~ is an anonymous function[fn:3], right? \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Right. Yeah,
 pretty neat, huh? \\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ And you're not
@@ -281,11 +297,9 @@ with ~:t~ [typing at the REPL]
 Actually, I could have done it this way [typing in new source block]
 
 #+name: 6a525824-c590-49c5-823b-e324005d9008
-#+begin_src haskell :results silent :exports code
-:{
+#+begin_src haskell :eval never :exports code
 crossMult2 :: Integer -> Integer -> Integer -> Integer  
 crossMult2 = \a b d -> ((a * d) `div` b)
-:}
 #+end_src
 
 #+begin_src haskell
@@ -923,7 +937,7 @@ how rationals could be directly added, e.g., \\
 and get back \\
 ~117969/3774880~
 
-[fn:3] Check out anonymous or /lambda/ functions [[http://learnyouahaskell.com/higher-order-functions#lambdas][here]].
+[fn:3] Check out anonymous or /lambda/ functions [[https://learnyouahaskell.github.io/higher-order-functions.html#lambdas][here]]. 
 
 [fn:4] See [[https://stackoverflow.com/questions/35950600/why-it-is-impossible-to-divide-integer-number-in-haskell][Why it is impossible to divide Integer number in Haskell?]]
 

@@ -10,15 +10,15 @@
   (major1) == 0 && (major2) <  1 || \
   (major1) == 0 && (major2) == 1 && (minor) <= 0)
 #endif /* MIN_VERSION_codeismathiscode2 */
-/* package QuickCheck-2.14.3 */
+/* package QuickCheck-2.15.0.1 */
 #ifndef VERSION_QuickCheck
-#define VERSION_QuickCheck "2.14.3"
+#define VERSION_QuickCheck "2.15.0.1"
 #endif /* VERSION_QuickCheck */
 #ifndef MIN_VERSION_QuickCheck
 #define MIN_VERSION_QuickCheck(major1,major2,minor) (\
   (major1) <  2 || \
-  (major1) == 2 && (major2) <  14 || \
-  (major1) == 2 && (major2) == 14 && (minor) <= 3)
+  (major1) == 2 && (major2) <  15 || \
+  (major1) == 2 && (major2) == 15 && (minor) <= 0)
 #endif /* MIN_VERSION_QuickCheck */
 /* package algebra-4.3.1 */
 #ifndef VERSION_algebra
@@ -60,6 +60,16 @@
   (major1) == 0 && (major2) <  1 || \
   (major1) == 0 && (major2) == 1 && (minor) <= 0)
 #endif /* MIN_VERSION_codeismathiscode2 */
+/* package containers-0.6.7 */
+#ifndef VERSION_containers
+#define VERSION_containers "0.6.7"
+#endif /* VERSION_containers */
+#ifndef MIN_VERSION_containers
+#define MIN_VERSION_containers(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  6 || \
+  (major1) == 0 && (major2) == 6 && (minor) <= 7)
+#endif /* MIN_VERSION_containers */
 /* package diagrams-1.4.1 */
 #ifndef VERSION_diagrams
 #define VERSION_diagrams "1.4.1"
@@ -70,15 +80,15 @@
   (major1) == 1 && (major2) <  4 || \
   (major1) == 1 && (major2) == 4 && (minor) <= 1)
 #endif /* MIN_VERSION_diagrams */
-/* package extra-1.7.14 */
+/* package extra-1.8 */
 #ifndef VERSION_extra
-#define VERSION_extra "1.7.14"
+#define VERSION_extra "1.8"
 #endif /* VERSION_extra */
 #ifndef MIN_VERSION_extra
 #define MIN_VERSION_extra(major1,major2,minor) (\
   (major1) <  1 || \
-  (major1) == 1 && (major2) <  7 || \
-  (major1) == 1 && (major2) == 7 && (minor) <= 14)
+  (major1) == 1 && (major2) <  8 || \
+  (major1) == 1 && (major2) == 8 && (minor) <= 0)
 #endif /* MIN_VERSION_extra */
 /* package hmatrix-0.20.2 */
 #ifndef VERSION_hmatrix
