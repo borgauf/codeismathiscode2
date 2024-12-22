@@ -1,5 +1,5 @@
 # # -*- mode: org -*- coding: utf-8 -*-
-#+TITLE: Haskell Road; Getting Started Part 1
+#+TITLE: 
 #+AUTHOR:
 #+EMAIL: 
 #+DATE: 
@@ -302,14 +302,6 @@ crossMult2 :: Integer -> Integer -> Integer -> Integer
 crossMult2 = \a b d -> ((a * d) `div` b)
 #+end_src
 
-#+begin_src haskell
-:{
-crossMult2 :: Integer -> Integer -> Integer -> Integer  
-crossMult2 = \a b d -> ((a * d) `div` b)
-:}
-#+end_src
-
-
 #+name: d07dffef-6aa4-4c45-9251-6ed12573b706
 #+begin_src haskell :results verbatim :exports both
 crossMult2 1 85 255
@@ -317,6 +309,8 @@ crossMult2 1 85 255
 
 #+RESULTS: d07dffef-6aa4-4c45-9251-6ed12573b706
 : 3
+
+
 
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So you
 specifically declared the type signature for your ~crossMult2~. And it

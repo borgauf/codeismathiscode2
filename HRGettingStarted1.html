@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2024-12-17 Tue 15:38 -->
+<!-- 2024-12-20 Fri 22:29 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Haskell Road; Getting Started Part 1</title>
+<title>&lrm;</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="./tufte.css" type="text/css">
 <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
@@ -59,9 +59,7 @@ pre.example {clear: none; }
 </head>
 <body>
 <article id="content" class="content">
-<header>
-<h1 class="title">Haskell Road; Getting Started Part 1</h1>
-</header><div class="header">
+<div class="header">
 <link rel="stylesheet" href="hamb.css">
 <link rel="stylesheet" href="tufte.css">
 <link rel="stylesheet" href="ox-tufte.css">
@@ -108,16 +106,16 @@ pre.example {clear: none; }
 </nav>
 </div>
 </p>
-<section id="outline-container-orgc025086" class="outline-2">
-<h2 id="orgc025086">Getting started part 1</h2>
+<section id="outline-container-org5572505" class="outline-2">
+<h2 id="org5572505">Getting started part 1</h2>
 </section>
-<section id="outline-container-org3592cc8" class="outline-2">
-<h2 id="org3592cc8">Monday at the library part 1</h2>
-<div class="outline-text-2" id="text-org3592cc8">
+<section id="outline-container-orgba92c8c" class="outline-2">
+<h2 id="orgba92c8c">Monday at the library part 1</h2>
+<div class="outline-text-2" id="text-orgba92c8c">
 </div>
-<div id="outline-container-orgbbba6e1" class="outline-3">
-<h3 id="orgbbba6e1">Fractions</h3>
-<div class="outline-text-3" id="text-orgbbba6e1">
+<div id="outline-container-org8bc34ba" class="outline-3">
+<h3 id="org8bc34ba">Fractions</h3>
+<div class="outline-text-3" id="text-org8bc34ba">
 <p>
 It&rsquo;s a Monday morning in late July and the von der Surwitz siblings
 meet in a reserved study room at the main university library to go
@@ -170,7 +168,7 @@ she gave, you need set theory to properly define relations and
 functions. <br>
 [more agreement murmurs] <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Well, like
-Vati<label id='fnr.1' for='fnr-in.1.1165058' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.1165058' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+Vati<label id='fnr.1' for='fnr-in.1.6552547' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.6552547' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
 German for <i>dad</i>, <i>papa</i>.
 </span> said, his math degree really smoothed the way for his
 chemical engineering studies. <br>
@@ -238,7 +236,7 @@ opposite direction. <br>
 [laughter] <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> Wasn&rsquo;t it amazing
 how Professor Chandra just put two fractions with huge unlike
-denominators into the Racket command line<label id='fnr.2' for='fnr-in.2.7036216' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.7036216' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+denominators into the Racket command line<label id='fnr.2' for='fnr-in.2.989847' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.989847' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
 Professor Chandra has demonstrated at the Racket command line
 how rationals could be directly added, e.g., <br>
 <code>&gt; (+ 1/32 1/943720)</code> <br>
@@ -251,7 +249,7 @@ me install it? <br>
 Racket in a terminal] Here, I&rsquo;ll just try something. [typing] <br>
 </p>
 
-<pre class="example" id="org496e461">
+<pre class="example" id="org91dc848">
 &gt; (+ 1/15 1/85)
 4/51
 </pre>
@@ -373,7 +371,7 @@ org-mode Babel source block] <br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgb22ef7e"><span class="org-haskell-definition">crossMult</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-operator">\</span>a b d <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>a <span class="org-haskell-operator">*</span> d<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">/</span> b<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">-- </span><span class="org-comment">a/b = x/d ... solve for unknown</span>
+<pre class="src src-haskell" id="org293f620"><span class="org-haskell-definition">crossMult</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-operator">\</span>a b d <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>a <span class="org-haskell-operator">*</span> d<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">/</span> b<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">-- </span><span class="org-comment">a/b = x/d ... solve for unknown</span>
 </pre>
 </div>
 
@@ -382,7 +380,7 @@ org-mode Babel source block] <br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org8b8830a"><span class="org-haskell-definition">crossMult</span> 1 15 255
+<pre class="src src-haskell" id="org7a906a6"><span class="org-haskell-definition">crossMult</span> 1 15 255
 </pre>
 </div>
 
@@ -393,7 +391,7 @@ org-mode Babel source block] <br>
 
 <p>
 <span class="fraktur">𝔘𝔴𝔢:</span> So your
-<code>crossMult</code> is an anonymous function<label id='fnr.3' for='fnr-in.3.8791831' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.8791831' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+<code>crossMult</code> is an anonymous function<label id='fnr.3' for='fnr-in.3.4968673' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.4968673' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
 Check out anonymous or <i>lambda</i> functions <a href="https://learnyouahaskell.github.io/higher-order-functions.html#lambdas">here</a>. 
 </span>, right? <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Right. Yeah,
@@ -406,7 +404,7 @@ with <code>:t</code> [typing at the REPL]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org648c2f4"><span class="org-haskell-constructor">:</span>t crossMult
+<pre class="src src-haskell" id="org061fabc"><span class="org-haskell-constructor">:</span>t crossMult
 </pre>
 </div>
 
@@ -421,32 +419,21 @@ Actually, I could have done it this way [typing in new source block]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org651f861"><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
-<span class="org-haskell-definition">crossMult2</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span>  
-<span class="org-haskell-definition">crossMult2</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-operator">\</span>a b d <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>a <span class="org-haskell-operator">*</span> d<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">`div`</span> b<span class="org-rainbow-delimiters-depth-2">)</span>
-<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
+<pre class="src src-haskell" id="org3064c8a"><span class="org-haskell-definition">crossMult2</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span>  
+<span class="org-haskell-definition">crossMult2</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-operator">\</span>a b d <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>a <span class="org-haskell-operator">*</span> d<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">`div`</span> b<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-haskell"><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
-<span class="org-haskell-definition">crossMult2</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Integer</span>  
-<span class="org-haskell-definition">crossMult2</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-operator">\</span>a b d <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>a <span class="org-haskell-operator">*</span> d<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">`div`</span> b<span class="org-rainbow-delimiters-depth-2">)</span>
-<span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
-</pre>
-</div>
-
-
-<div class="org-src-container">
-<pre class="src src-haskell" id="orgbec9ad4"><span class="org-haskell-definition">crossMult2</span> 1 85 255
+<pre class="src src-haskell" id="orgb750b96"><span class="org-haskell-definition">crossMult2</span> 1 85 255
 </pre>
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:502:1-10: error:
-    Variable not in scope: crossMult2 :: t0 -&gt; t1 -&gt; t2 -&gt; t
-    Suggested fix: Perhaps use ‘crossMult’ (line 4)
+3
 </pre>
+
+
 
 
 <p>
@@ -460,7 +447,7 @@ this. [typing into REPL] I&rsquo;ll get some information on regular division
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org38570f5"><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">/</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-haskell" id="org5445f5b"><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">/</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -470,7 +457,7 @@ this. [typing into REPL] I&rsquo;ll get some information on regular division
 
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org37a066c"><span class="org-haskell-constructor">:</span>i <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">/</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-haskell" id="org60da5b2"><span class="org-haskell-constructor">:</span>i <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">/</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -485,7 +472,7 @@ infixl 7 /
 
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgc36236b"><span class="org-haskell-constructor">:</span>t div
+<pre class="src src-haskell" id="orgd31bf4f"><span class="org-haskell-constructor">:</span>t div
 </pre>
 </div>
 
@@ -507,7 +494,7 @@ class adds a property or trait to types. It&rsquo;s starting to get clearer
 &#x2014; maybe. <br>
 [murmurs of agreement] <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Let me go to a
-link on <a href="https://stackoverflow.com/questions/35950600/why-it-is-impossible-to-divide-integer-number-in-haskell">stackoverflow</a> that talks about this<label id='fnr.4' for='fnr-in.4.2765996' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.2765996' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+link on <a href="https://stackoverflow.com/questions/35950600/why-it-is-impossible-to-divide-integer-number-in-haskell">stackoverflow</a> that talks about this<label id='fnr.4' for='fnr-in.4.3255871' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.3255871' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
 See <a href="https://stackoverflow.com/questions/35950600/why-it-is-impossible-to-divide-integer-number-in-haskell">Why it is impossible to divide Integer number in Haskell?</a>
 </span>. Getting
 there&#x2026; [displays post on monitor] Right. So the original post has
@@ -515,7 +502,7 @@ this and wonders why the error
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgb7d0ae3"><span class="org-rainbow-delimiters-depth-1">(</span>4 <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integer</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">/</span> 2
+<pre class="src src-haskell" id="orgb671d45"><span class="org-rainbow-delimiters-depth-1">(</span>4 <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integer</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">/</span> 2
 </pre>
 </div>
 
@@ -524,7 +511,7 @@ In an equation for ‘it’: it = (4 :: Integer) / 2
 </pre>
 
 
-<pre class="example" id="orgf4316c4">
+<pre class="example" id="orgb04f825">
 &lt;interactive&gt;:36:16: error:
     • No instance for (Fractional Integer) arising from a use of ‘/’
     • In the expression: (4 :: Integer) / 2
@@ -544,7 +531,7 @@ it ineligible for doing regular <i>fractional</i> division. <br>
 the type and class system behind all this doesn&rsquo;t allow it. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Yes, as far as
 I can tell. Did you get through the <i>Learn You&#x2026;</i> part on type
-classes<label id='fnr.5' for='fnr-in.5.8478366' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.8478366' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+classes<label id='fnr.5' for='fnr-in.5.2391946' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.2391946' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
 See <a href="http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101">Typeclasses 101</a> in <i>Learn You a Haskell&#x2026;</i>.
 </span>? <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> Yes, but&#x2026; <br>
@@ -563,15 +550,15 @@ the ghci REPL] Here, see?
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org3cb68a9">4 <span class="org-haskell-operator">/</span> 2
+<pre class="src src-haskell" id="org66bed1d">4 <span class="org-haskell-operator">/</span> 2
 </pre>
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:512:1-5: warning: [-Wtype-defaults]
+&lt;interactive&gt;:189:1-5: warning: [-Wtype-defaults]
     • Defaulting the type variable ‘a0’ to type ‘Double’ in the following constraints
-        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:512:1-5
-        (Fractional a0) arising from a use of ‘it’ at &lt;interactive&gt;:512:1-5
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:189:1-5
+        (Fractional a0) arising from a use of ‘it’ at &lt;interactive&gt;:189:1-5
     • In a stmt of an interactive GHCi command: print it
 2.0
 </pre>
@@ -589,7 +576,7 @@ the professor said we shouldn&rsquo;t think of literal numbers like
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orge449b50"><span class="org-haskell-constructor">:</span>t 1
+<pre class="src src-haskell" id="orgd43fc94"><span class="org-haskell-constructor">:</span>t 1
 </pre>
 </div>
 
@@ -609,15 +596,15 @@ into REPL]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org0037182"><span class="org-rainbow-delimiters-depth-1">(</span>5 <span class="org-haskell-operator">`div`</span> 2<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-haskell" id="org6655ac7"><span class="org-rainbow-delimiters-depth-1">(</span>5 <span class="org-haskell-operator">`div`</span> 2<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:516:1-11: warning: [-Wtype-defaults]
+&lt;interactive&gt;:193:1-11: warning: [-Wtype-defaults]
     • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
-        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:516:1-11
-        (Integral a0) arising from a use of ‘it’ at &lt;interactive&gt;:516:1-11
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:193:1-11
+        (Integral a0) arising from a use of ‘it’ at &lt;interactive&gt;:193:1-11
     • In a stmt of an interactive GHCi command: print it
 2
 </pre>
@@ -630,22 +617,22 @@ whole numbers [typing into REPL]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org049cd7c">5 <span class="org-haskell-operator">/</span> 2
+<pre class="src src-haskell" id="org5ab56b1">5 <span class="org-haskell-operator">/</span> 2
 </pre>
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:518:1-5: warning: [-Wtype-defaults]
+&lt;interactive&gt;:195:1-5: warning: [-Wtype-defaults]
     • Defaulting the type variable ‘a0’ to type ‘Double’ in the following constraints
-        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:518:1-5
-        (Fractional a0) arising from a use of ‘it’ at &lt;interactive&gt;:518:1-5
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:195:1-5
+        (Fractional a0) arising from a use of ‘it’ at &lt;interactive&gt;:195:1-5
     • In a stmt of an interactive GHCi command: print it
 2.5
 </pre>
 
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org5dc7041"><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span>5 <span class="org-haskell-operator">/</span> 2<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-haskell" id="org7a582ff"><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span>5 <span class="org-haskell-operator">/</span> 2<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -655,7 +642,7 @@ whole numbers [typing into REPL]
 
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org9f6b9d4"><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span>5 <span class="org-haskell-operator">`div`</span> 2<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-haskell" id="org36242ad"><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span>5 <span class="org-haskell-operator">`div`</span> 2<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -679,7 +666,7 @@ got
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org4a63c07"><span class="org-haskell-definition">crossMult</span> 1 85 255
+<pre class="src src-haskell" id="orgcc567fb"><span class="org-haskell-definition">crossMult</span> 1 85 255
 </pre>
 </div>
 
@@ -734,7 +721,7 @@ Racket&rsquo;s REPL] So first, here&rsquo;s a contrived example where I know bot
 have \(2^{2}\)
 </p>
 
-<pre class="example" id="orgd49c6e7">
+<pre class="example" id="orgff53ab8">
 &gt; (+ 1/20 1/28)
 3/35
 </pre>
@@ -752,7 +739,7 @@ in one denominator and the same prime <i>to a higher power</i> in the other
 command line]
 </p>
 
-<pre class="example" id="org43f758c">
+<pre class="example" id="org7702441">
 &gt; (+ 1/88 1/80)
 21/880
 </pre>
@@ -775,16 +762,16 @@ check all this?  <br>
 not yet. And I say that because <i>The Haskell Road&#x2026;</i> has a way we
 should learn. I looked at it. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Well, I asked
-Mutti<label id='fnr.6' for='fnr-in.6.4298291' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.4298291' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+Mutti<label id='fnr.6' for='fnr-in.6.8898497' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.8898497' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
 German for <i>mom</i>, <i>mama</i>.
 </span> about this &#x2014; and she said we should look into the <i>least
 common multiple</i>, because that&rsquo;s what this lowest common denominator
 issue is all about. And yes, I knew that but had forgotten. So here&rsquo;s
-the Wikipedia article on it<label id='fnr.7' for='fnr-in.7.1722809' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.1722809' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+the Wikipedia article on it<label id='fnr.7' for='fnr-in.7.1637764' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.1637764' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
 See the article <a href="https://en.wikipedia.org/wiki/Least_common_multiple">here</a>.
 </span>. [displays page on monitor] <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> [mumbling the
-first sentence<label id='fnr.8' for='fnr-in.8.6341975' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.6341975' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+first sentence<label id='fnr.8' for='fnr-in.8.3002047' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.3002047' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
 <font color = "#0d3db3">&#x2026;In arithmetic and number
 theory, the <i>least common multiple</i>, <i>lowest common multiple</i>, or
 <i>smallest common multiple</i> of two integers \(a\) and \(b\:\), usually
@@ -802,7 +789,7 @@ thought \(35\) was the common denominator for all situations. But watch,
 I&rsquo;ll put in some different numerators
 </p>
 
-<pre class="example" id="orgef04619">
+<pre class="example" id="org631bfca">
 &gt; (+ 5/20 11/28)
 9/14
 &gt; (+ 1/20 11/28)
@@ -823,7 +810,7 @@ the numerators [typing]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgac43560"><span class="org-haskell-definition">crossMult</span> 5 20 140
+<pre class="src src-haskell" id="org0b91ca2"><span class="org-haskell-definition">crossMult</span> 5 20 140
 </pre>
 </div>
 
@@ -833,7 +820,7 @@ the numerators [typing]
 
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgf77f551"><span class="org-haskell-definition">crossMult</span> 11 28 140
+<pre class="src src-haskell" id="orgdcdebe5"><span class="org-haskell-definition">crossMult</span> 11 28 140
 </pre>
 </div>
 
@@ -868,7 +855,7 @@ of the denominators at each step. So let me do this [typing]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org8258019"><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<pre class="src src-haskell" id="org1f49030"><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
 <span class="org-haskell-definition">myLCM</span> dnom1 dnom2
   <span class="org-haskell-operator">=</span> take 1  <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-haskell-operator">*</span>dnom1<span class="org-rainbow-delimiters-depth-4">)</span>x<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-3">[</span>1<span class="org-haskell-operator">..</span>200<span class="org-rainbow-delimiters-depth-3">]</span>,
              y <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-3">[</span>1<span class="org-haskell-operator">..</span>200<span class="org-rainbow-delimiters-depth-3">]</span>,
@@ -883,12 +870,12 @@ Now for denominators \(15\) and \(85\) like before
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org5b32323"><span class="org-haskell-definition">myLCM</span> 15 85
+<pre class="src src-haskell" id="orgf1e86c7"><span class="org-haskell-definition">myLCM</span> 15 85
 </pre>
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:530:1-5: error:
+&lt;interactive&gt;:207:1-5: error:
     Variable not in scope: myLCM :: t0 -&gt; t1 -&gt; t
 </pre>
 
@@ -903,7 +890,7 @@ you lost me on the <code>(*dnom1)</code> and <code>(*dnom2)</code>. What&rsquo;s
 <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> That&rsquo;s what
 they call a <i>section</i>. I got that the other day from <i>A Gentle
-Introduction to Haskell</i><label id='fnr.9' for='fnr-in.9.5307921' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.5307921' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+Introduction to Haskell</i><label id='fnr.9' for='fnr-in.9.1772045' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.1772045' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
 Available <a href="https://www.haskell.org/tutorial/">here</a>. The page dealing with <i>sections</i> is <a href="https://www.haskell.org/tutorial/functions.html">here</a> in
 3.2.1. Also The <a href="https://wiki.haskell.org/Section_of_an_infix_operator">wiki.haskell.org</a> has a page on sections as well.
 </span>. Basically, <code>*dnom1</code> is made into a
@@ -913,22 +900,22 @@ dnom1</code>. Here&rsquo;s an example [typing into the ghci REPL]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org9e9c835"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">*</span>2<span class="org-rainbow-delimiters-depth-1">)</span>5 <span class="org-haskell-operator">==</span> <span class="org-rainbow-delimiters-depth-1">(</span>2<span class="org-haskell-operator">*</span><span class="org-rainbow-delimiters-depth-1">)</span>5 
+<pre class="src src-haskell" id="org4a5aef7"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">*</span>2<span class="org-rainbow-delimiters-depth-1">)</span>5 <span class="org-haskell-operator">==</span> <span class="org-rainbow-delimiters-depth-1">(</span>2<span class="org-haskell-operator">*</span><span class="org-rainbow-delimiters-depth-1">)</span>5 
 </pre>
 </div>
 
-<pre class="example" id="org53652d1">
-&lt;interactive&gt;:532:7-8: warning: [-Wtype-defaults]
+<pre class="example" id="org37c0cf1">
+&lt;interactive&gt;:209:7-8: warning: [-Wtype-defaults]
     • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
-        (Eq a0) arising from a use of ‘==’ at &lt;interactive&gt;:532:7-8
-        (Num a0) arising from a use of ‘*’ at &lt;interactive&gt;:532:2
+        (Eq a0) arising from a use of ‘==’ at &lt;interactive&gt;:209:7-8
+        (Num a0) arising from a use of ‘*’ at &lt;interactive&gt;:209:2
     • In the expression: (* 2) 5 == (2 *) 5
       In an equation for ‘it’: it = (* 2) 5 == (2 *) 5
 
-&lt;interactive&gt;:532:7-8: warning: [-Wtype-defaults]
+&lt;interactive&gt;:209:7-8: warning: [-Wtype-defaults]
     • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
-        (Eq a0) arising from a use of ‘==’ at &lt;interactive&gt;:532:7-8
-        (Num a0) arising from a use of ‘*’ at &lt;interactive&gt;:532:2
+        (Eq a0) arising from a use of ‘==’ at &lt;interactive&gt;:209:7-8
+        (Num a0) arising from a use of ‘*’ at &lt;interactive&gt;:209:2
     • In the expression: (* 2) 5 == (2 *) 5
       In an equation for ‘it’: it = (* 2) 5 == (2 *) 5
 True
@@ -942,57 +929,57 @@ example [typing]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgf2b533c"><span class="org-rainbow-delimiters-depth-1">(</span>2<span class="org-haskell-operator">^</span><span class="org-rainbow-delimiters-depth-1">)</span>3
+<pre class="src src-haskell" id="org00e6e4b"><span class="org-rainbow-delimiters-depth-1">(</span>2<span class="org-haskell-operator">^</span><span class="org-rainbow-delimiters-depth-1">)</span>3
 </pre>
 </div>
 
-<pre class="example" id="orgf4d1ff3">
-&lt;interactive&gt;:534:1-5: warning: [-Wtype-defaults]
+<pre class="example" id="org7a794ef">
+&lt;interactive&gt;:211:1-5: warning: [-Wtype-defaults]
     • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
-        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:534:1-5
-        (Num a0) arising from a use of ‘it’ at &lt;interactive&gt;:534:1-5
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:211:1-5
+        (Num a0) arising from a use of ‘it’ at &lt;interactive&gt;:211:1-5
     • In a stmt of an interactive GHCi command: print it
 
-&lt;interactive&gt;:534:3: warning: [-Wtype-defaults]
+&lt;interactive&gt;:211:3: warning: [-Wtype-defaults]
     • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
-        (Integral a0) arising from a use of ‘^’ at &lt;interactive&gt;:534:3
-        (Num a0) arising from the literal ‘3’ at &lt;interactive&gt;:534:5
+        (Integral a0) arising from a use of ‘^’ at &lt;interactive&gt;:211:3
+        (Num a0) arising from the literal ‘3’ at &lt;interactive&gt;:211:5
     • In the expression: (2 ^) 3
       In an equation for ‘it’: it = (2 ^) 3
 
-&lt;interactive&gt;:534:3: warning: [-Wtype-defaults]
+&lt;interactive&gt;:211:3: warning: [-Wtype-defaults]
     • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
-        (Integral a0) arising from a use of ‘^’ at &lt;interactive&gt;:534:3
-        (Num a0) arising from the literal ‘3’ at &lt;interactive&gt;:534:5
+        (Integral a0) arising from a use of ‘^’ at &lt;interactive&gt;:211:3
+        (Num a0) arising from the literal ‘3’ at &lt;interactive&gt;:211:5
     • In the expression: (2 ^) 3
       In an equation for ‘it’: it = (2 ^) 3
 8
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orge0e0487"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">^</span>2<span class="org-rainbow-delimiters-depth-1">)</span>3
+<pre class="src src-haskell" id="orga7d7645"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">^</span>2<span class="org-rainbow-delimiters-depth-1">)</span>3
 </pre>
 </div>
 
-<pre class="example" id="org79d85d1">
-&lt;interactive&gt;:536:1-5: warning: [-Wtype-defaults]
+<pre class="example" id="orge7f0269">
+&lt;interactive&gt;:213:1-5: warning: [-Wtype-defaults]
     • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
-        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:536:1-5
-        (Num a0) arising from a use of ‘it’ at &lt;interactive&gt;:536:1-5
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:213:1-5
+        (Num a0) arising from a use of ‘it’ at &lt;interactive&gt;:213:1-5
     • In a stmt of an interactive GHCi command: print it
 
-&lt;interactive&gt;:536:2: warning: [-Wtype-defaults]
+&lt;interactive&gt;:213:2: warning: [-Wtype-defaults]
     • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
-        (Integral a0) arising from a use of ‘^’ at &lt;interactive&gt;:536:2
-        (Num a0) arising from the literal ‘2’ at &lt;interactive&gt;:536:3
+        (Integral a0) arising from a use of ‘^’ at &lt;interactive&gt;:213:2
+        (Num a0) arising from the literal ‘2’ at &lt;interactive&gt;:213:3
     • In the expression: (^)
       In the expression: (^ 2) 3
       In an equation for ‘it’: it = (^ 2) 3
 
-&lt;interactive&gt;:536:2: warning: [-Wtype-defaults]
+&lt;interactive&gt;:213:2: warning: [-Wtype-defaults]
     • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
-        (Integral a0) arising from a use of ‘^’ at &lt;interactive&gt;:536:2
-        (Num a0) arising from the literal ‘2’ at &lt;interactive&gt;:536:3
+        (Integral a0) arising from a use of ‘^’ at &lt;interactive&gt;:213:2
+        (Num a0) arising from the literal ‘2’ at &lt;interactive&gt;:213:3
     • In the expression: (^)
       In the expression: (^ 2) 3
       In an equation for ‘it’: it = (^ 2) 3
@@ -1006,27 +993,27 @@ down this rabbit hole, I could write something like this [typing]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orge57af97"><span class="org-haskell-definition">myTimesTwo</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">*</span>2<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-haskell" id="org9110a7b"><span class="org-haskell-definition">myTimesTwo</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">*</span>2<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:538:1-10: warning: [-Wname-shadowing]
+&lt;interactive&gt;:215:1-10: warning: [-Wname-shadowing]
     This binding for ‘myTimesTwo’ shadows the existing binding
-      defined at &lt;interactive&gt;:484:1
+      defined at &lt;interactive&gt;:159:1
 </pre>
 
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org1d483d0"><span class="org-haskell-definition">myTimesTwo</span> 5
+<pre class="src src-haskell" id="org452d03f"><span class="org-haskell-definition">myTimesTwo</span> 5
 </pre>
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:540:1-12: warning: [-Wtype-defaults]
+&lt;interactive&gt;:217:1-12: warning: [-Wtype-defaults]
     • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
-        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:540:1-12
-        (Num a0) arising from a use of ‘it’ at &lt;interactive&gt;:540:1-12
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:217:1-12
+        (Num a0) arising from a use of ‘it’ at &lt;interactive&gt;:217:1-12
     • In a stmt of an interactive GHCi command: print it
 10
 </pre>
@@ -1041,14 +1028,14 @@ does [typing into a source block]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org17cae38"><span class="org-haskell-definition">myListOfAddFuncs</span> <span class="org-haskell-operator">=</span> map <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">+</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+<pre class="src src-haskell" id="org2398fee"><span class="org-haskell-definition">myListOfAddFuncs</span> <span class="org-haskell-operator">=</span> map <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">+</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
 </pre>
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:542:1-16: warning: [-Wname-shadowing]
+&lt;interactive&gt;:219:1-16: warning: [-Wname-shadowing]
     This binding for ‘myListOfAddFuncs’ shadows the existing binding
-      defined at &lt;interactive&gt;:488:1
+      defined at &lt;interactive&gt;:163:1
 </pre>
 
 
@@ -1060,7 +1047,7 @@ according to <i>The Gentle Introduction&#x2026;</i> we&rsquo;ve got [writing on 
 board]
 </p>
 
-<pre class="example" id="org8bbe013">
+<pre class="example" id="org95a22c0">
 (+) = \x y -&gt; x + y
 </pre>
 
@@ -1072,7 +1059,7 @@ parentheses, right? <br>
 packaging up a common operator like plus or times, and maybe a
 variable, to work as a function. <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> <i>Luft von anderem
-Planeten</i><label id='fnr.10' for='fnr-in.10.2682680' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.2682680' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
+Planeten</i><label id='fnr.10' for='fnr-in.10.6112489' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.6112489' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
 A famous line from a Stefan Georg poem: <i>Ich fühle Luft von
 anderem Planeten</i> or <i>I feel (the) air of (the other) another planet.</i>
 </span> <br>
@@ -1084,14 +1071,14 @@ function [writes on the board]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org976864b"><span class="org-haskell-definition">myLOAF</span> <span class="org-haskell-operator">=</span> map <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>x y <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">+</span> y<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+<pre class="src src-haskell" id="org679ebfa"><span class="org-haskell-definition">myLOAF</span> <span class="org-haskell-operator">=</span> map <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">\</span>x y <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">+</span> y<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
 </pre>
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:544:1-6: warning: [-Wname-shadowing]
+&lt;interactive&gt;:221:1-6: warning: [-Wname-shadowing]
     This binding for ‘myLOAF’ shadows the existing binding
-      defined at &lt;interactive&gt;:490:1
+      defined at &lt;interactive&gt;:165:1
 </pre>
 
 
@@ -1100,7 +1087,7 @@ function [writes on the board]
 I&rsquo;m guessing that this creates a <i>list of functions</i> like [writing]
 </p>
 
-<pre class="example" id="org0a55420">
+<pre class="example" id="orgce24d19">
 [(1+),(2+),(3+)]
 </pre>
 
@@ -1110,15 +1097,15 @@ test it [typing]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org5bfa658"><span class="org-haskell-definition">map</span> <span class="org-rainbow-delimiters-depth-1">(</span>myListOfAddFuncs <span class="org-haskell-operator">!!</span> 2<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
+<pre class="src src-haskell" id="orgbb2be05"><span class="org-haskell-definition">map</span> <span class="org-rainbow-delimiters-depth-1">(</span>myListOfAddFuncs <span class="org-haskell-operator">!!</span> 2<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">[</span>1,2,3<span class="org-rainbow-delimiters-depth-1">]</span>
 </pre>
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:546:1-35: warning: [-Wtype-defaults]
+&lt;interactive&gt;:223:1-35: warning: [-Wtype-defaults]
     • Defaulting the type variable ‘b0’ to type ‘Integer’ in the following constraints
-        (Show b0) arising from a use of ‘print’ at &lt;interactive&gt;:546:1-35
-        (Num b0) arising from a use of ‘it’ at &lt;interactive&gt;:546:1-35
+        (Show b0) arising from a use of ‘print’ at &lt;interactive&gt;:223:1-35
+        (Num b0) arising from a use of ‘it’ at &lt;interactive&gt;:223:1-35
     • In a stmt of an interactive GHCi command: print it
 [4,5,6]
 </pre>
@@ -1146,7 +1133,7 @@ list comprehension? Is that what it&rsquo;s called? <br>
 [scrolling back]
 </p>
 
-<pre class="example" id="orgd237ecc">
+<pre class="example" id="org73dfc09">
 myLCM dnom1 dnom2
   = take 1  [((*dnom1)x) | x &lt;- [1..200],
              y &lt;- [1..200],
@@ -1154,29 +1141,29 @@ myLCM dnom1 dnom2
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org4c5d452"><span class="org-haskell-definition">myLCM</span> 15 85
+<pre class="src src-haskell" id="orgcffaa4e"><span class="org-haskell-definition">myLCM</span> 15 85
 </pre>
 </div>
 
 <pre class="example">
-&lt;interactive&gt;:548:1-5: error:
+&lt;interactive&gt;:225:1-5: error:
     Variable not in scope: myLCM :: t0 -&gt; t1 -&gt; t
 </pre>
 
 
 <p>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> So this is a
-<i>list comprehension</i><label id='fnr.11' for='fnr-in.11.2210364' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.2210364' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
+<i>list comprehension</i><label id='fnr.11' for='fnr-in.11.8964756' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.8964756' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
 See <a href="http://learnyouahaskell.com/starting-out#im-a-list-comprehension">this</a> from LYAHFGG.
 </span>, and a list comprehension is just the
 Haskell version of a set comprehension or <i>set-builder
-notation</i><label id='fnr.12' for='fnr-in.12.7235665' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.7235665' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
+notation</i><label id='fnr.12' for='fnr-in.12.1239975' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.1239975' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
 See Wikipedia&rsquo;s <a href="https://en.wikipedia.org/wiki/Set-builder_notation">Set-builder notation</a>
 </span> from set theory. And it&rsquo;s going through the multiples
 of \(15\) and \(85\), one after the other like this [writing on the board]
 </p>
 
-<pre class="example" id="org81c074c">
+<pre class="example" id="org674ae05">
 15 30 45 60 75 90 105 120 ... 240 255
 85 170 225
 </pre>
@@ -1195,16 +1182,16 @@ intervals in all possible combinations &#x2014; this time only the first
 \(15\) multiples of \(15\) and \(85\:\) so it doesn&rsquo;t get too big
 </p>
 
-<pre class="example" id="org52569d6">
+<pre class="example" id="orga4f7f59">
 myLCM2 dnom1 dnom2 = [((*dnom1)x,(*dnom2)y) |
                          x &lt;- [1..15], y &lt;- [1..15] ]
 </pre>
 
-<pre class="example" id="orgd2ce4f6">
+<pre class="example" id="org9b42efa">
 myLCM2 15 85
 </pre>
 
-<pre class="example" id="orgb7be17e">
+<pre class="example" id="orgd1f7e75">
 [(15,85),(15,170),(15,255),(15,340),(15,425),(15,510),(15,595),(15,680),
 (15,765),(15,850),(15,935),(15,1020),(15,1105),(15,1190),(15,1275),
 (30,85),(30,170),(30,255),(30,340),(30,425),(30,510),(30,595),(30,680),

@@ -1,5 +1,4 @@
-module DMWC1 where
-
+module DMUAC1 where
 
 myfact :: Integer -> Integer
 myfact 0 = 1

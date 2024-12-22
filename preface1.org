@@ -1,0 +1,279 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE:
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="./ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: preface.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+
+#+OPTIONS: html-style:nil
+
+* Preface
+
+#+begin_export html
+<img src="./images/meitner.jpg" width="725px" style="padding: 15px 0px 0px 0px" alt="Lise Meitner" class="center">
+<span class="cap">Lise Meitner</span>
+#+end_export
+
+#+begin_quote
+Das Leben muß nicht leicht sein wenn es nur inhaltsreich ist.\\
+Life doesn't have to be easy if it's rich in content.\\
+                                       ---Lise Meitner
+#+end_quote
+
+
+** Getting math onto a computer
+
+@@html:<label for="mn-demo" class="margin-toggle"></label>
+<input type="checkbox" id="mn-demo" class="margin-toggle">
+<span class="marginnote">@@
+[[file:images/EulersMethodHiddenFigures.png]]
+\\
+@@html:</span>@@
+
+The 2016 Hollywood film /[[https://youtu.be/v-pbGAts_Fg][Hidden Figures]]/ is a story depicting the
+early-1960s space race. It centers on NASA's scientific team of
+mathematicians, physicists, and engineers as they figure out how to
+get a space capsule in orbit around the Earth back on the ground. They
+need to come up with the right math to transition the vehicle from an
+elliptical orbit into a parabolic-shaped descent path[fn:1]. This is a
+rare moment in a popular Hollywood film where they actually get the
+science right. That is to say, there's no magic, no special effects,
+no superheroes with super-human powers, no hip grade-schooler who
+hacks Pentagon computers in three seconds; instead, just a bunch of
+ordinary-looking people from disparate backgrounds putting their heads
+together to solve a critical problem.
+
+Why is this so special?  Because during the process of finding the
+answer we see the math coming out of books, out of heads, and being
+put to work on a real-world, life-or-death problem. The icing on the
+cake is the depiction of the team getting their just-delivered IBM
+mainframe computer (that no one knows how to run) to help them.
+
+#+begin_quote
+@@html:<font color = "#650d1c">@@The bottom-line takeaway:
+In the world of STEM you're never far from the front lines, the
+cutting edge, the "no one has done this before."@@html:</font>@@
+#+end_quote
+
+Fast-forward to today where /tens of billions/ of computing devices
+--- nearly all capable of running rings around that first NASA
+computer --- are doing computations big and small in every corner of
+the world. Yes, most of these calculations are relatively simple, but
+many are quite complex. This is the sort of math that, pre-Computer
+Age, would have been found only in dense books and dry collections of
+tables, on classroom and office blackboards, embodied in mechanical
+contraptions or analog electrical circuits, and, most mysteriously, as
+"mental representations" in the brains of that small cadre of people
+called /mathematicians/, /physicists/ and /engineers/.
+
+#+begin_quote
+@@html:<font color = "#650d1c">@@And so today we should not
+underestimate the significance, the breadth and scope, the sheer
+amazing-ness of this transfer of math from paper, chalk, and thought
+into running code on very fast machines in our modern
+world.@@html:</font>@@
+#+end_quote
+
+Learning the skills necessary for turning math and science into code
+will only increase in importance as we advance into the future. Our
+mission: see the math, /grok/[fn:2] the math, then get the math going
+on the computer.
+
+** Code is math is code is math...
+
+As computer scientist David Schmidt said
+
+#+begin_quote
+@@html:<font color = "#650d1c">@@Any notation for giving instructions is a programming language.@@html:</font>@@
+#+end_quote
+
+
+* Footnotes
+
+[fn:1] Technically speaking, a spacecraft orbiting the Earth is in an
+/elliptic/, not circular orbit. And the path back to Earth after
+breaking this orbit will resemble half of a parabola turned on its
+side, hence, the adjective parabolic.
+
+[fn:2] To *grok* something is to understand it at its deepest level,
+to /get it/ so thoroughly that you merge with it and it with you,
+coined by the sci-fi writer Robert Heinlein in his classic novel
+/Stranger in a Strange Land/.
+
+[fn:3] There are two general categories of "giving instructions":
+/imperative/ with statements and /declarative/ with expressions. Read
+on.
+
+[fn:4] Most "learn to code" initiatives are rushed oversimplifications
+primarily geared towards only a narrow part of the huge and diverse IT
+world. User-interface (UI) coding is emphasized, while the other
+branches, e.g., data management, systems programming, and especially
+computational-numerical programming aren't covered or are given
+short-shrift.
+
+[fn:5] One huge inspiration for CIMIC is the book /[[https://en.wikipedia.org/wiki/Structure_and_Interpretation_of_Classical_Mechanics][Structure and
+Interpretation of Classical Mechanics]]/ by Gerald Jay Sussman, Jack
+Wisdom, and Meinhard E. Mayer. And this was based in part on Donald
+Knuth's /[[https://en.wikipedia.org/wiki/Literate_programming][literate programming]]/ initiative, also championed by Timothy
+Daly.
+
+[fn:6] We'll dive into what a /typed/ and /purely/ functional language
+is later...
+
+[fn:7] Often enough, you can open a higher-level math text, e.g.,
+abstract algebra, pick a topic, then Google /Haskell obscure abstract
+algebra topic/ and, chances are, somebody has explored a
+code-is-math-is-code treatment of it, written libraries for it.
+
+[fn:8] /Literally/ line-for-line programming would be [[https://en.wikipedia.org/wiki/Assembly_language][Assembly]]. But
+many languages (e.g. C/C++) will have you explicitly, manually
+managing your program's memory. That is to say, /memory management/ is
+done by the programmer and not automatically handled behind the scenes
+as it now is in most modern languages. This is a hold-over from the
+early days of the so-called [[https://en.wikipedia.org/wiki/Von_Neumann_architecture][von Neumann machine]]-based digital
+computers of the 1950s.
+
+[fn:9] See [[https://en.wikipedia.org/wiki/Declarative_programming][this article]] on declarative programming.
+
+[fn:10] We'll go into the details of /state/ soon.
+
+[fn:11] We'll discuss /referential transparency/, the technical term
+for this idea, later, but in the
+meantime you might want to take a crack at the Wikipedia article [[https://en.wikipedia.org/wiki/Referential_transparency][here]].
+
+[fn:12] It might be hard to get all of what Charles Scalfani is saying
+in his [[https://spectrum.ieee.org/functional-programming][IEEE Spectrum]] article [[https://spectrum.ieee.org/functional-programming][Why Functional Programming Should Be the
+Future of Software Development]], but one easy take-away is that
+non-functional languages don't scale well due to lack of referential
+transparency and too much state juggling. A typical blub-written
+project without referential transparency must rely in extensive
+testing and debugging --- which can't always find all the worst-case
+scenarios.
+
+[fn:13] When did you first hear about this? You probably don't
+remember, but a hint would be, A vertical line is "undefined." In a
+future section we'll discuss middle-school math notions about
+functions plotted on a Cartesian coordinate system versus
+higher-math's more thorough treatment.
+
+[fn:14] CAS is short for /computer algebra system/. Wikipedia has a good
+article [[https://en.wikipedia.org/wiki/Computer_algebra_system][here]].
+
+[fn:15] ...except for its very worthy siblings in the typed functional
+sphere SML, Ocaml, Purescript, and F#.
+
+[fn:16] See [[https://youtu.be/9vpqilhW9uI][James Flynn]]'s TED talk, and read the first chapter of James
+Gleick's /[[https://en.wikipedia.org/wiki/The_Information:_A_History,_a_Theory,_a_Flood][The Information: A History, a Theory, a Flood]]/.
+
+[fn:17] The classic line, "What is this for? Why are we doing this?"
+is the elephant in the middle of the math classroom.
+
+[fn:18] To /hand-wave/ in science is to dismiss or downplay
+complexity, to skip over or sweep something difficult under the
+rug. We will avoid hand-waving at all costs.
+
+[fn:19] Watch Sabine Hossenfelder's video on the [[https://youtu.be/A0da8TEeaeE][Principle of Least
+Action]]. It's a bit beyond our level, but you get the "unpack, trace it
+back" idea.
+
+[fn:20] We'll learn plenty about discrete math as we go. But for a
+quick introduction, consider a light switch that goes on or
+off. That's two /discrete/ states. The opposite of discrete would be
+/continuous/. So think of a volume control knob on your radio,
+/continuous/ in that it /continually/ changes, i.e., the change is so
+small and incremental that they seem to blend together into one
+/continuous/ sweep from soft to loud.
+
+[fn:21] Imagine wanting to study math in college after having seen
+absolutely /no/ math K-12. The [[https://en.wikipedia.org/wiki/Common_Core_State_Standards_Initiative][Common Core State Standards Initiative]]
+has taken steps to narrow this gap. Much of their math curriculum
+attempts to expose kids to a discrete math, if not a computer algorithm
+way of seeing math. But in our humble opinion it's far too little.
+
+[fn:22] ...as I refer to them the /big boys and girls/ who can do the
+"heavy lifting"...
+
+[fn:23] You've no doubt heard of /algorithms/. Very simply put, an
+algorithm is a set of instructions, perhaps like a baking recipe, that
+produces a mathematical cake. In computational math, we're basically
+redoing, reimagining math formulae as algorithms which then can run on
+computers. Lots and lots more about algorithms as we move along.
+
+[fn:24] "Down the rabbit hole" is a concept borrowed from /Alice in
+Wonderland/ to mean going into a strange, new world of excitement and
+challenge.
+
+[fn:25] But of course we run the risk of "getting lost in the weeds."
+Beware of the endlessly bifurcating rabbit hole. From the Wikipedia
+article: /...In contrast, (plain) depth-first search, which explores the node/
+/branch as far as possible before backtracking and expanding other/
+/nodes, may get lost in an infinite branch and never make it to the/
+/solution node./
+
+[fn:26] /Woodshedding/ is a jazz music term meaning to learn and
+practice.
+
+[fn:27] One motivational speaker said there are two kinds of
+people. Those who self-motivate and self-educate; and those who wait
+around for events, circumstances, more powerful people to tell them
+what to do.
+
+[fn:28] See /Rig Rundown/ for hardware options.
+
+[fn:29] See also [[https://www.gnu.org/software/emacs/][the home site]] and this [[https://planet.emacslife.com/][user site]].
+
+[fn:30] Here's an example of LE. If we said $\lnot\; a = \lnot\; a\;$
+and that $\lnot\; \lnot\;a = a\;$ what can we infer that $\lnot$ is
+doing to $a\;$?
+
+[fn:31] If anyone is bothered about why we're not being more woke/PC,
+hey, we're just being realistic. After all, who in the U.S. would be
+teaching and taking such computer science prep material other than
+Asian and European transplants in such an especially pro-academic,
+learning safe zone environment? But maybe we can turn this sorry state
+of affairs around, eh? There are plenty of empty chairs around the
+STEM table begging for new participants from all walks of life.
