@@ -11,7 +11,7 @@ instance Eq Color where
   Yellow == Yellow = True
   Blue == Blue = True
   Green == Green = True
-  _ == _ = False         -- anything getting to this point must be false
+  _ == _ = False         -- at this point must be false
   
 instance Ord Color where
   compare Red Red = EQ

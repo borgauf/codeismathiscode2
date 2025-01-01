@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2024-03-13 Wed 10:55 -->
+<!-- 2024-12-24 Tue 14:54 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Haskell Road; Getting Started Part 2</title>
+<title>&lrm;</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
 <style> .title { display: none; } </style>
 <style> caption.t-bottom { caption-side: bottom; } </style>
 <script>
@@ -30,7 +45,7 @@
       displayIndent: '0em'
     },
     output: {
-      font: 'mathjax-dejavu',
+      font: 'mathjax-euler',
       displayOverflow: 'overflow'
     }
   };
@@ -44,11 +59,10 @@
 </head>
 <body>
 <article id="content" class="content">
-<header>
-<h1 class="title">Haskell Road; Getting Started Part 2</h1>
-</header><div class="header">
+<div class="header">
 <link rel="stylesheet" href="hamb.css">
 <link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
 <img src="./images/square_partitioned_into_6_similar_rectangles_henderson_small.png"  style="padding: 0px 0px 0px 0px" alt="3-d graph" class="center">
 
 <p>
@@ -92,19 +106,16 @@
 </nav>
 </div>
 </p>
-
-<section id="outline-container-orga4e71a5" class="outline-2">
-<h2 id="orga4e71a5">Getting started part 2</h2>
+<section id="outline-container-orgd9cd98a" class="outline-2">
+<h2 id="orgd9cd98a">Getting started part 2</h2>
 </section>
-
-
-<section id="outline-container-orga0417ad" class="outline-2">
-<h2 id="orga0417ad">Monday at the library part 2</h2>
-<div class="outline-text-2" id="text-orga0417ad">
+<section id="outline-container-org0037182" class="outline-2">
+<h2 id="org0037182">Monday at the library part 2</h2>
+<div class="outline-text-2" id="text-org0037182">
 </div>
-<div id="outline-container-orgde2a058" class="outline-3">
-<h3 id="orgde2a058">Breaktime</h3>
-<div class="outline-text-3" id="text-orgde2a058">
+<div id="outline-container-org0c96d26" class="outline-3">
+<h3 id="org0c96d26">Breaktime</h3>
+<div class="outline-text-3" id="text-org0c96d26">
 <p>
 The von der Surwitzes pop over to the student center cafe for a break.
 They grab a large mineral water, a brand they knew in Germany, and Ute
@@ -154,7 +165,7 @@ college-level material.<br>
 <span class="fraktur">𝔘𝔱𝔢:</span> And that&rsquo;s because
 so much of the first year or so of a college comp-sci curriculum
 really could and should be taught at the high school level. That&rsquo;s her
-theory &#x2014; and we&rsquo;re her <i>Versuchskaninchen</i><label id='fnr.1' for='fnr-in.1.8715371' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.8715371' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+theory &#x2014; and we&rsquo;re her <i>Versuchskaninchen</i><label id='fnr.1' for='fnr-in.1.8263294' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.8263294' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
 <i>Versuchskaninchen</i>: test rabbit \(\simeq\) guinea pig.
 </span>?<br>
 [murmurs of agreement] <br>
@@ -182,10 +193,9 @@ You&rsquo;re right there with us in everything we&rsquo;re doing this coming yea
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgee5aa4c" class="outline-3">
-<h3 id="orgee5aa4c">Divided by</h3>
-<div class="outline-text-3" id="text-orgee5aa4c">
+<div id="outline-container-orgdf201f6" class="outline-3">
+<h3 id="orgdf201f6">Divided by</h3>
+<div class="outline-text-3" id="text-orgdf201f6">
 <p>
 Back at the library study room they&rsquo;ve checked out the reserved books
 and are looking through sections of those that deal with the basic
@@ -195,7 +205,7 @@ theory of division.
 <p>
 <span class="fraktur">𝔘𝔱𝔢:</span> [reading from the
 Divisibility section of <i>Proofs, A Long-Form Mathematical
-Textbook</i><label id='fnr.2' for='fnr-in.2.1282162' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.1282162' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+Textbook</i><label id='fnr.2' for='fnr-in.2.4849930' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.4849930' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
 <i><a href="https://longformmath.com/proofs-home">Proofs; A Long-Form Mathematics Textbook</a></i> by Jay Cummings
 </span>] All right, so Professor Chandra wants us to
 understand divisibility before we go to <i>greatest common divisor</i>, and
@@ -249,9 +259,9 @@ the world of logic now, not grade school arithmetic. So everything has
 to be reexplained and reworked. <br>
 [murmurs of agreement] <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> All right, so in
-this book<label id='fnr.3' for='fnr-in.3.8833533' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.8833533' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+this book<label id='fnr.3' for='fnr-in.3.8791831' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.8791831' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
 She holds up <i>A Computational Introduction To Number Theory and
-Algebra</i> by Victor Shoup; <a href="&amp;shoup2009computational">&amp;shoup2009computational</a>.  }
+Algebra</i> by Victor Shoup.  }
 </span> they have a theorem about divisibility. [writing on
 the board]
 </p>
@@ -266,10 +276,7 @@ the board]
 
 <p>
 [silence as they study the theorem]   <br>
-&lt;
 </p>
-
-
 
 <p>
 <span class="fraktur">𝔘𝔱𝔢:</span> Good, now he&rsquo;s
@@ -313,7 +320,7 @@ are integers, and that&rsquo;s the basic form of divisibility, so yes, \(a
 \mid c\) since we&rsquo;ve shown \(c = a \cdot k\) where \(k = (s \cdot t)\:\). <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Good. Let&rsquo;s
 switch over to this other book [she picks up a Springer Verlag
-book<label id='fnr.4' for='fnr-in.4.2371640' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.2371640' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+book<label id='fnr.4' for='fnr-in.4.6439167' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.6439167' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
 <i><a href="https://www.google.com/books/edition/The_Whole_Truth_About_Whole_Numbers/ahUGswEACAAJ?hl=en">The Whole Truth About Whole Numbers</a></i> by Sylvia Forman and
 Agnes M. Rash;
 </span> and pages through it] Ah, in this book there&rsquo;s a section
@@ -431,7 +438,7 @@ multiplicative relationship, we&rsquo;re not doing division. And I&rsquo;m sure
 we&rsquo;ll find out why this is so important in a while. <br>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> Oh, I think
 that was in here. [pulling a large-format book from her messenger
-bag<label id='fnr.5' for='fnr-in.5.6780972' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.6780972' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+bag<label id='fnr.5' for='fnr-in.5.7675764' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.7675764' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
 <i><a href="http://illustratedtheoryofnumbers.com/">An Illustrated Theory of Numbers</a></i> by Martin H. Weissman.
 </span> and pages to tabbed page]. Right, and he shows that \(0 \mid
 0\:\), that zero divides zero, is true &#x2014; because [writing on board]
@@ -540,10 +547,10 @@ relation &#x2014; or let&rsquo;s say a <i>binary operator</i> &#x2014; on a set 
 &ldquo;relates&rdquo; an element of \(X\) to itself. <br>
 [silence] <br>
 <span class="fraktur">𝔘𝔴𝔢:</span> [reading his
-laptop] I&rsquo;m on the <i>Encyclopedia of Mathematics</i> site<label id='fnr.6' for='fnr-in.6.35450' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.35450' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+laptop] I&rsquo;m on the <i>Encyclopedia of Mathematics</i> site<label id='fnr.6' for='fnr-in.6.8811130' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.8811130' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
 See <a href="https://encyclopediaofmath.org/wiki/Main_Page">The Encyclopedia of Mathematics</a>.
 </span> for
-reflexivity<label id='fnr.7' for='fnr-in.7.2858700' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.2858700' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+reflexivity<label id='fnr.7' for='fnr-in.7.3919073' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.3919073' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
 <a href="https://encyclopediaofmath.org/index.php?title=Reflexivity">Reflexivity; Encyclopedia of Mathematics.</a>
 </span> and it talks about it in terms of relations as
 well. But we don&rsquo;t want to really unpack the whole Cartesian product,
@@ -624,7 +631,7 @@ and then I talk myself into believing it. <br>
 tackle <i>antisymmetry</i>? <br>
 [eager murmurs of agreement] <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> Okay, I&rsquo;ve
-searched on <i>antisymmetry</i> and gone to a Wolfram MathWorld page<label id='fnr.8' for='fnr-in.8.1192471' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.1192471' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+searched on <i>antisymmetry</i> and gone to a Wolfram MathWorld page<label id='fnr.8' for='fnr-in.8.7474389' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.7474389' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
 <a href="https://mathworld.wolfram.com/AntisymmetricRelation.html">Antisymmetric Relation</a>.
 </span>
 that says [reading]
@@ -804,7 +811,7 @@ Demonstrate that \(2\,999\,997\) is a multiple of \(3\).
 <p>
 <span class="fraktur">𝔘𝔴𝔢:</span> Okay, my
 turn. [going to the board and writing] Since \(3\,000\,000 - 3 =
-2\,999\,997\), we know because of the two-out-of-three principle<label id='fnr.9' for='fnr-in.9.2199200' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.2199200' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+2\,999\,997\), we know because of the two-out-of-three principle<label id='fnr.9' for='fnr-in.9.8006679' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.8006679' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
 Uwe uses the \(\therefore\) which is the symbol for <i>therefore</i>.
 </span>
 </p>
@@ -831,7 +838,7 @@ I&rsquo;ll never see division the same again. <br>
 [laughter] <br>
 <span class="fraktur">𝔘𝔱𝔢:</span> Hey, I just
 searched on <code>haskell divisibility</code> and a stackoverflow came
-up<label id='fnr.10' for='fnr-in.10.1379181' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.1379181' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
+up<label id='fnr.10' for='fnr-in.10.2219476' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.2219476' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
 See <a href="https://stackoverflow.com/questions/3990095/testing-divisibility-of-ints-by-11">Testing divisibility of Ints by 11</a>.
 </span>. It basically asks whether an integer is divisible by
 \(11\). And then it has some trick about adding and subtracting the
@@ -840,7 +847,7 @@ digits of the number, right. But then somebody gives the answer
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org1ebea65"><span class="org-haskell-definition">divisibleBy11</span> x <span class="org-haskell-operator">=</span> x <span class="org-haskell-operator">`rem`</span> 11 <span class="org-haskell-operator">==</span> 0
+<pre class="src src-haskell" id="org38570f5"><span class="org-haskell-definition">divisibleBy11</span> x <span class="org-haskell-operator">=</span> x <span class="org-haskell-operator">`rem`</span> 11 <span class="org-haskell-operator">==</span> 0
 </pre>
 </div>
 
@@ -850,15 +857,22 @@ digits of the number, right. But then somebody gives the answer
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org2d28206"><span class="org-haskell-definition">divisibleBy11</span> 33
+<pre class="src src-haskell" id="org37a066c"><span class="org-haskell-definition">divisibleBy11</span> 33
 </pre>
 </div>
 
-<pre class="example">
-&lt;interactive&gt;:32:1-13: error:
-    Variable not in scope: divisibleBy11 :: t0 -&gt; t
-</pre>
+<pre class="example" id="orga4ab287">
+In an equation for ‘it’: it = divisibleBy11 33
 
+&lt;interactive&gt;:209:1-13: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Integral a0)
+          arising from a use of ‘divisibleBy11’ at &lt;interactive&gt;:209:1-13
+        (Num a0) arising from the literal ‘33’ at &lt;interactive&gt;:209:15-16
+    • In the expression: divisibleBy11 33
+      In an equation for ‘it’: it = divisibleBy11 33
+True
+</pre>
 
 <p>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span> I assume that
@@ -939,11 +953,16 @@ with something Haskell. [starts a new source block]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgf2edb0d"><span class="org-rainbow-delimiters-depth-1">[</span>x <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-haskell-operator">-</span>20,<span class="org-haskell-operator">-</span>19<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>, <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>x <span class="org-haskell-operator">`rem`</span> 6<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<pre class="src src-haskell" id="org39af42c"><span class="org-rainbow-delimiters-depth-1">[</span>x <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-haskell-operator">-</span>20,<span class="org-haskell-operator">-</span>19<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>, <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>x <span class="org-haskell-operator">`rem`</span> 6<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
 </pre>
 </div>
 
 <pre class="example">
+&lt;interactive&gt;:211:1-44: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:211:1-44
+        (Integral a0) arising from a use of ‘it’ at &lt;interactive&gt;:211:1-44
+    • In a stmt of an interactive GHCi command: print it
 [-18,-12,-6,0,6,12,18]
 </pre>
 
@@ -954,11 +973,16 @@ got the <code>6</code> trying to go into the <code>x</code>. Need to reverse the
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org9d5e422"><span class="org-rainbow-delimiters-depth-1">[</span>x <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-haskell-operator">-</span>20,<span class="org-haskell-operator">-</span>19<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>, <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>6 <span class="org-haskell-operator">`rem`</span> x<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<pre class="src src-haskell" id="orgb7d0ae3"><span class="org-rainbow-delimiters-depth-1">[</span>x <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-haskell-operator">-</span>20,<span class="org-haskell-operator">-</span>19<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>, <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>6 <span class="org-haskell-operator">`rem`</span> x<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
 </pre>
 </div>
 
 <pre class="example">
+&lt;interactive&gt;:213:1-44: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:213:1-44
+        (Integral a0) arising from a use of ‘it’ at &lt;interactive&gt;:213:1-44
+    • In a stmt of an interactive GHCi command: print it
 [-6,-3,-2,-1*** Exception: divide by zero
 </pre>
 
@@ -975,11 +999,16 @@ it. [typing]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org3a98b0d"><span class="org-rainbow-delimiters-depth-1">[</span>x <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> filter <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-operator">/=</span>0<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-haskell-operator">-</span>20,<span class="org-haskell-operator">-</span>19<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>, <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>6 <span class="org-haskell-operator">`rem`</span> x<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<pre class="src src-haskell" id="org288531e"><span class="org-rainbow-delimiters-depth-1">[</span>x <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> filter <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-operator">/=</span>0<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-haskell-operator">-</span>20,<span class="org-haskell-operator">-</span>19<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>, <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>6 <span class="org-haskell-operator">`rem`</span> x<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
 </pre>
 </div>
 
 <pre class="example">
+&lt;interactive&gt;:215:1-57: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:215:1-57
+        (Integral a0) arising from a use of ‘it’ at &lt;interactive&gt;:215:1-57
+    • In a stmt of an interactive GHCi command: print it
 [-6,-3,-2,-1,1,2,3,6]
 </pre>
 
@@ -990,7 +1019,8 @@ it this way [typing]
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgb74af2f"><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<pre class="src src-haskell" id="org3cb68a9"><span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-haskell-definition">xDivides6</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integral</span> a <span class="org-haskell-operator">=&gt;</span> <span class="org-rainbow-delimiters-depth-2">[</span>a<span class="org-rainbow-delimiters-depth-2">]</span>  
 <span class="org-haskell-definition">xDivides6</span> <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">[</span>x <span class="org-haskell-operator">|</span> x <span class="org-haskell-operator">&lt;-</span> sampleList, <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>6 <span class="org-haskell-operator">`rem`</span> x<span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">]</span>
   <span class="org-haskell-keyword">where</span> sampleList <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-haskell-operator">-</span>20,<span class="org-haskell-operator">-</span>19<span class="org-haskell-operator">..</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-haskell-operator">-</span>1<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-haskell-operator">++</span> <span class="org-rainbow-delimiters-depth-2">[</span>1<span class="org-haskell-operator">..</span>20<span class="org-rainbow-delimiters-depth-2">]</span>
 <span class="org-haskell-constructor">:</span><span class="org-rainbow-delimiters-depth-1">}</span>
@@ -998,9 +1028,20 @@ it this way [typing]
 </div>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgef9a17f">xDivides6
+<pre class="src src-haskell" id="orge449b50">xDivides6
 </pre>
 </div>
+
+<pre class="example">
+&lt;interactive&gt;:223:1-9: warning: [-Wtype-defaults]
+    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+        (Show a0) arising from a use of ‘print’ at &lt;interactive&gt;:223:1-9
+        (Integral a0) arising from a use of ‘it’ at &lt;interactive&gt;:223:1-9
+    • In a stmt of an interactive GHCi command: print it
+[-6,-3,-2,-1,1,2,3,6]
+</pre>
+
+
 
 <p>
 <span class="fraktur">𝔘𝔯𝔰𝔲𝔩𝔞:</span>

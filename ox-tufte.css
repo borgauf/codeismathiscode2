@@ -481,3 +481,11 @@ article code {
 /*     max-width: var(--ox-tufte-src-code-width); */
 /*     clear: none; */
 /* } */
+
+.src-haskell {
+    max-width: 60% !important;
+    color: #0a6060;
+    overflow-x: auto;
+    float: left;
+    
+}

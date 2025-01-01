@@ -91,120 +91,280 @@ xDivides6 = [x | x <- sampleList, ((6 `rem` x) == 0)]
 #+end_src
 
 * Monday at the library part 1
-
+\\
 ** Fractions
 
-It's a Monday morning in late July and the von der Surwitz siblings
-meet in a reserved study room at the main university library to go
-over what their /Introduction to Computer Science/ teacher, Professor
-Chandra, had discussed with them at the Novalis Tech Open House.
+It's a Monday morning in late July and the von der Surwitz
+siblings---the twins Ute and Uwe and big sister Ursula---meet in a
+reserved study room at the main university library to go over what
+their /Introduction to Computer Science/ teacher, Professor Chandra,
+had discussed with them at the Novalis Tech Open House the previous
+Saturday.
 
-Checking Professor Chandra's course syllabus on her website before,
-they had already made online purchases of the main text for the
+Having checked Professor Chandra's course syllabus on her website,
+they already had made online purchases of the main text for the
 course, [[https://www.collegepublications.co.uk/computing/?00004][The Haskell Road to Logic, Maths and Programming]] by [[https://www.illc.uva.nl/NewsandEvents/News/Obituaries/Kees-Doets/][Kees
-Doets]] and [[https://staff.fnwi.uva.nl/d.j.n.vaneijck2/][Jan van Eijck]]. During the open house at the convention wing
-of the student center on the previous Saturday, they had sat down
-together at a table with the professor as she paged through the text
-and talked extemporaneously about what parts she would like to handle
-and how. She also showed them some code on her laptop. She invited
-them to email her with any questions.
+Doets]][fn:1] and [[https://staff.fnwi.uva.nl/d.j.n.vaneijck2/][Jan van Eijck]]. During the open house at the convention
+wing of the student center last Saturday, they had sat down together
+at a table with the professor as she paged through the text and talked
+extemporaneously about what parts she would like to handle and
+how. She also demonstrated some code on her laptop. Before they
+parted, she invited them to email her with any and all questions.
 
 The professor encouraged them to dive into to the logic and sets
-prerequires, alongside of the first few chapters of /The Haskell Road.../,
+prerequires, along with the first few chapters of /The Haskell Road.../,
 as well as to get through as much /[[https://learnyouahaskell.github.io/chapters.html][Learn You a Haskell for Great Good]]/ as
 possible.
 
 Ursula von der Surwitz has plugged in her laptop to the room's big 4K
 monitor and is scrolling through some of her personal notes.
 
-
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ So like
 Professor Chandra said on Saturday, we're going to rely heavily on
 logic and set theory. \\
 [murmurs of agreement and then silence] \\
-@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing] It
-seems a bit ominous. \\
+[continuing] It seems a bit ominous. \\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Out with the old
 math, in with the new. \\
 [nods and agreement] \\
 @@html:<span class="fraktur">@@𝔘𝔱𝔢::@@html:</span>@@ But like she was
-saying, comp-sci math is sort of a grab-bag of higher math, it's bits
-and pieces of what you'd be learning as a math major after all the
-calculus and differential equations and linear algebra. \\
+saying, comp-sci math is sort of a grab-bag of higher math topics. She
+said it's bits and pieces of what you'd be learning as a math major
+after all the calculus and differential equations and linear
+algebra. \\
 [murmurs of agreement] \\
-@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Like the examples
-she gave, you need set theory to properly define relations and
-functions. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Like she was
+showing us, you need to understand the underlying set theory to
+properly define relations and functions. \\
 [more agreement murmurs] \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Well, like
-Vati[fn:1] said, his math degree really smoothed the way for his
+Vati[fn:2] said, his math degree really smoothed the way for his
 chemical engineering studies. \\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Get as much math
 as you can as early as you can. \\
 [murmurs of agreement] \\
-@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So I'm psyched. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Well, I'm
+psyched. \\
 [She looks around and receives nods] \\
-@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [continuing] I'm
-psyched because --- as she said --- this course is totally
-experimental and open-ended. She's basically going to give us what
-she'd be giving her college freshman and sophomores in the CS
-department. And because she's on sabbatical, she's giving us her total
+[continuing] I'm psyched because --- as the professor said --- this
+course is totally experimental and open-ended. She's basically going
+to give us what she'd be giving her college freshman and sophomores in
+the CS department. And she's on sabbatical, so we get her total,
 undivided attention.\\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Amazing. It's only
 us, her daughter --- and maybe three others who weren't there and
 might not take it after all. Wow.\\
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Bottom line: We've
 got a once-in-a-lifetime chance to really learn a ton about
-comp-sci. Yeah, this is amazing. \\
-@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Now all we have to do
-is hang on for dear life! \\
+comp-sci. Yeah, this is totally amazing. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Now all we have to
+do is hang on for dear life! \\
 [laughter] \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [paging through
 /Haskell Road.../ ] Did anyone look at the first chapter? \\
 [affirmative nods] \\
-@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing]
-Wasn't too bad --- once I caught on to what he was saying. But I have
-to say, the /Learn You a Haskell.../ helped. \\
+[continuing] Wasn't too bad --- once I caught on to what he was
+saying. But definitely, /Learn You a Haskell.../ helped. And
+the other pre-reqs as well. \\
 [murmurs of agreement] \\
-@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ I think it's cool
-how the whole prime number test, the greatest common divisor all
-blended together. \\
-@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ But I'm glad I'd
-seen the prime factorization way of figuring out unlike-denominator
-math back in Kiel. /If/ I can remember it. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [pointing to a
+page in /Haskell Road/ first chapter] Right, creating a /test/ for prime
+numbers with Haskell code. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ I was looking
+around on the internet and I kept running into the [[https://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic][Fundamental Theorem
+of Arithmetic]]. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Right, that all
+the /counting/ natural numbers---one, two, three, to infinity---are
+either prime themselves or just multiples of primes. \\
+[pause to consider] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So integers are
+either a prime or a multiple of primes. Right. I guess they'd have to
+be. \\
+[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So do you remember
+back in school in Kiel we first learned to add and subtract fractions
+with unlike denominators? \\
+[murmurs of acknowledgement] \\
+[continuing] First we just learned to cross-multiply to get the
+numerators, then multiply the denominators together, add or subtract
+the numerators, then reduce the answer. But /then/ we learned the
+prime factorization way. I can hear the teacher actually saying that
+all whole numbers are either primes or multiples of primes. /And/ we
+were supposed to notice how fractions always start out as a whole
+number over a whole number. \\
 [affirmative murmurs] \\
-@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Oh, by the way,
-does anyone remember why the Greeks said, for example, $7$ /measures/
-$35\;$?  \\
-@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Wasn't that
-because a rod or measuring tape that's $7$ units long can then measure
-out a length of $35$ perfectly? \\
-[murmurs of agreement] \\
-@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Well, I
-remember prime factorization was based on the [[https://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic][Fundamental Theorem of
-Arithmetic]] from dear old Euclid. [bringing up the Wikipedia article
-in both English and German, reading from the English page] /If a prime
-$p$ divides the product $a \cdot b$, then $p$ divides either $a$ or $b$ or
-both/. And that really means [reading on] /Every positive integer $n >
-1$ can be represented in exactly one way as a product of prime
-powers/. Got that? [pulling an ironic face] Do you see how the first
-and second statements are equivalent? \\
-@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [also ironically]
-Oh sure, of course. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ That business
+of fractions being in their /rational/ form---rational meaning in a
+ratio---and also in their /decimal/ form. And then all the odd things
+about what a ratio, or in German /Verhältnis/, really meant. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ When I had that
+class we also talked about why the Greeks said, for example, $7$
+/measures/ $35\;$? Yeah, so $7$ /divides/ $35$ evenly, no
+remainder. And then there was /commensurable/ and /incommensurable/,
+which is about rational and irrational. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Oh yeah, I
+remember! The teacher said that a rational number falls somewhere on
+the number line that can be /measured/ by some unit on the number
+line. But I'm a bit hazy on just what that really means now. Oh well,
+skip it!\\
 [laughter] \\
-@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ And here's the
-proof. [half-mumbling the German page's proof] It's a contradiction
+[continuing] No, no, I remember now. So say you have
+$\frac{3}{16}$. That's $3$ /measures/ of the /unit/ $16ths$ ---or the
+number line divided into $16ths$ ---out to where $\frac{3}{16}$ is on
+the number line. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So /irrational/
+numbers are /incommensurable/ because you can't divide the number line
+into any units---no matter how fine---that can then be measured out to
+an exact spot. \\
+[murmurs of agreement from girl siblings] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ I like the idea
+our math teacher gave us about irrationals, that you can have a
+/rational/ number slightly less than and a /rational/ number slightly
+greater than your irrational number. But then no matter how close you
+make the less-than and greater-than numbers to the irrational, you
+never get to the irrational number. She said it's like looking down
+into a bottomless abyss on the number line. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ You know what
+we're doing? We're relearning math as humans---and not just as circus
+animals learning tricks. \\
+[laughter] \\
+[continuing] No, really! So much of math before in school was just
+repeating stuff without really knowing at any deep level what was
+going on. \\
+[murmurs of agreement, albeit grimly] \\
+[silence, interrupted by Ursulua] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [brings up the
+Wikipedia article on the Fundamental Theorem of Arithmetic in both
+English and German, then reading from the English page] \\
+@@html:<font color = "#4715b3">@@ /Every positive integer $n > 1$ can
+be represented in exactly one way as a product of prime powers/.
+@@html:</font>@@ \\
+Right. So down further in the proof it uses [[https://en.wikipedia.org/wiki/Euclid%27s_lemma][Euclid's lemma]], which says
+\\
+@@html:<font color = "#4715b3">@@ /If a prime $p$ divides the product
+$ab$, then $p$ divides either $a$ or $b$ or both/.  @@html:</font>@@
+\\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Fun stuff, that
+second one. So what does it mean? [pulling an ironic face] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [also ironically]
+I'll have to think about it a bit... \\
+[laughter] \\
+[continuing] No, it must work towards explaining exactly
+/mathematically/. how all numbers must be multiples of just primes and
+not other /composite/ numbers. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Well, for your
+information I did look into this. And for part of the
+proof. [half-mumbling the German page's proof] it uses a contradiction
 proof. Our favorite. \\
 [laughter] \\
-@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Oh, right. That's
-where you take off at top speed at a brick wall, smash into brick
-wall, die ... and that proves you should have gone exactly the
-opposite direction. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Oh, right, good
+old contradiction. That's where you take off at top speed at a brick
+wall, smash into brick wall, /die/ ... and then you know you should
+have gone exactly the opposite direction. \\
 [laughter] \\
-@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Wasn't it amazing
-how Professor Chandra just put two fractions with huge unlike
-denominators into the Racket command line[fn:2]. Did anybody besides
-me install it? \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So yeah, once
+you've done all the factoring all numbers are products of primes. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Just accept it and
+use it. Don't try to prove it. Time to think like a physicist. \\
+[laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ I guess
+technically we can factor a prime. Any prime is just itself times
+$1$. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ I looked into this
+and somewhere they called that business of a number just times $1$ a
+/singleton/ factoring. \\
+[girl siblings stare blankly at Uwe. Then laughter.] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing]
+But seriously, we have to get used to the exact terminology. For
+example, non-prime numbers that are multiples of smaller numbers are
+called /composite/ numbers. \\
+[silence] \\
+[continuing] So, do we just trust that all numbers are multiples of
+primes? Or do we go further down the rabbit hole? \\
+[siblings look at one another] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Remember how that
+one book---can't remember which---began the whole discussion of primes
+with the [[https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes][Sieve of Eratosthenes]]?[fn:3] \\
+[murmurs of agreement] \\
+[continuing on the board] It shows how just by starting at the
+beginning of the set of primes, $2$, $3$, $5$, $7$, et cetera, you can
+go through the increasing positive integers, $1$, $2$, $3$, $4$, $5$,
+$6$, and so on, /eliminating everything that's not a prime/, that is,
+the /composite/ numbers, by eliminating all /multiples/ of the primes,
+like all the multiples of $2$, then the all multiples of $3$, then all
+multiples of $5$ --- \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Yes, and if you
+keep doing that you wind up with only primes left. Which is sort of a
+brute-force way of showing that any composite, non-prime number is the
+product of primes. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ So by
+eliminating all multiples of primes---because their composites
+obviously---we're showing, at least intuitively, that all numbers not
+prime themselves are /multiples/ of primes. \\
+[murmurs of agreement, albeit hesitant] \\
+[silence] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ And that's good
+enough for now? \\
+[laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Not so fast. \\
+[laughter] \\
+We need to come back to Euclid's lemma: [reading] \\
+/If a prime $p$ divides the product $a \cdot b$, then $p$ divides either
+$a$ or $b$ or both/. And this is used to prove everything's a multiple
+of primes. \\
+[twins' blank faces] \\
+[continuing] Right, so, ramping up the abstraction, if a number $n$ is
+divisible by, say, $a$, that means there has to be some other number
+$b$ where $a \cdot b = n$.  And since $a$ divides $n$ and doesn't just
+give $1$, that means essentially $a \leq b < n$. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ But when I glanced
+over this they were jumping to both $a$ and $b$ being themselves the
+products of primes, weren't they? \\
+[going to the board] \\
+$a = p_1,p_2 \ldots p_r$, $b = q_1,q_2 \ldots q_k$ $\implies$ $n =
+p_1,p_2 \ldots p_r \cdot q_1,q_2 \ldots q_k$ \\
+and yeah, it's all primes all the way down. \\
+[silence as the siblings study the board] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ So the
+take-away is, if a number is a multiple of two other numbers, then at
+least one of these other numbers, $a$ or $b$, has to be either prime
+itself or again a multiple of two number---then again one of those---
+\\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [writing on board]
+Right, so if $n = a \cdot b$ and $n = 16$, then let's say $a = 2$ and $b =
+8$. Then $a$ is already prime, and $b$ is not. So you would apply the
+rule again to $b$ and get $b = c \cdot d$ where $c = 2$ and $d = 4$ ---and
+so on. \\
+[silence and they study the board] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ But really, some
+sort of recursion, some sort of drilling down is going on here. How is
+that provided for? I don't see any sort of drilling down until the
+factors are all primes, do you? \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ No, but in
+Cummings' /Proofs/ I think he's saying, yes, this is done with
+/strong/ induction. You simply assume as the starting hypothesis that
+smaller things than $n$ like $a$ and $b$ have already been proved as
+built by prime factorization. So for example, if you start with $2$,
+which is the base case, then keep going up, you've got your
+"drill-down". I mean, I guess. \\
+[silence] \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@Well, okay, all
+right then---I guess...\\
+[laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So $a$ and $b$ may
+also be composite, but we can attack them individually until we have
+their factors finally down to a primes as well. That's whats really
+happening with strong induction. But no, I don't really get yet. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ /Haskell
+Road.../ keeps the actual discussion about the Fundamental Theorem of
+Arithmetic for a much later chapter. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ In other words,
+we're jumping the gun a little. We shouldn't worry about it. We're
+just trying to create a prime test. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ By the way, were
+you blown away when Professor Chandra just put two fractions with huge
+unlike denominators into the [[https://en.wikipedia.org/wiki/Racket_(programming_language)][Racket]] command line[fn:4]. Did anybody
+besides me install it? \\
 [affirmative murmurs] \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [bringing up
 Racket in a terminal] Here, I'll just try something. [typing] \\
@@ -229,6 +389,7 @@ we've got the primes. I'll make a table of them
 |--------------------+-------------------+-------------------+-------------------|
 |                    |                   |                 1 |                 1 |
 
+\\
 #+CAPTION: 85 factored into its primes
 #+ATTR_HTML: :border 2 :rules all :frame border
 | $\quad$ 85 $\quad$ | $\;$ 2 $\;$ | $\;$ 3 $\;$ | $\;$ 5 $\;$ | $\;$ 7 $\;$ | $\;$ 11 $\;$ | $\;$ 13 $\;$ | $\;$ 17 $\;$ |
@@ -240,10 +401,10 @@ take the unique primes in common between the two denominators --- that
 would be $3\;$, $5\;$, and $17\:$ and multiply them together to
 get... \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [typing into
-Racket] That gives us $255\;$. \\
+Racket] ~(* 3 5 17)~ ...that gives us $255\;$. \\
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So now $255$ will
 be the common denominator. But we have to calculate the ratios
-[writing] \\
+[writing on board] \\
 
 \begin{align*}
 \frac{1}{15} &= \frac{x}{255} \\[.5em]
@@ -252,20 +413,20 @@ be the common denominator. But we have to calculate the ratios
 
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [tabbing over
 to her org-mode buffer] Here, let me write a little Haskell function
-for that, a proverbial one-liner doing --- /Dreisatz/? What's
-/Dreisatz?/ \\
+for that, a proverbial one-liner to do --- /Dreisatz/? What's
+/Dreisatz/ in English? \\
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Ah, literally
 /[[https://en.wikipedia.org/wiki/Cross-multiplication#Rule_of_three][rule of three]]./ \\
-@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [Ursula looks
-it up on Wikipedia] Or just /cross-multiplication/. [typing into a
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [looking it up
+on Wikipedia] ...or just /cross-multiplication/. [typing into a
 org-mode Babel source block] \\
 
 #+name: 23dd7da9-8620-471f-8642-f854785656ea
 #+begin_src haskell :eval never :exports code
-crossMult = \a b d -> ((a * d) / b) -- a/b = x/d ... solve for unknown
+crossMult = \a b d -> ((a * d) / b) -- a/b = x/d solve for x
 #+end_src
 
-[plugging in some parameters] \\
+[plugging in the parameters] \\
 
 #+name: 1dda17f3-87d8-4230-b330-08ff82c41fac
 #+begin_src haskell :results verbatim :exports both
@@ -275,14 +436,20 @@ crossMult 1 15 255
 #+RESULTS: 1dda17f3-87d8-4230-b330-08ff82c41fac
 : 17.0
 
+[continuing] So the first fraction is...
+
+\begin{align*}
+\frac{17}{255}
+\end{align*}
+
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So your
-~crossMult~ is an anonymous function[fn:3], right? \\
+~crossMult~ is an anonymous function[fn:5], right? \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Right. Yeah,
 pretty neat, huh? \\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ And you're not
 worrying about doing a type declaration. \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Not really. I
-could. But I'm just letting Haskell figure it out. I'll get the /type/
+could. But I'm just letting Haskell figure it out. I can get the /type/
 with ~:t~ [typing at the REPL]
 
 #+name: d2c4f05e-69bf-4675-b8ac-39641446523b
@@ -293,8 +460,8 @@ with ~:t~ [typing at the REPL]
 #+RESULTS: d2c4f05e-69bf-4675-b8ac-39641446523b
 : crossMult :: Double -> Double -> Double -> Double
 
-@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing]
-Actually, I could have done it this way [typing in new source block]
+[continuing] Actually, I could have done it this way [typing in new
+source block]
 
 #+name: 6a525824-c590-49c5-823b-e324005d9008
 #+begin_src haskell :eval never :exports code
@@ -310,10 +477,8 @@ crossMult2 1 85 255
 #+RESULTS: d07dffef-6aa4-4c45-9251-6ed12573b706
 : 3
 
-
-
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So you
-specifically declared the type signature for your ~crossMult2~. And it
+specifically declared the type signature for your ~crossMult2~. And
 you specifically made it just ~Integer~ parameters producing an
 ~Integer~ answer. But then you're using ~div~? Why then? \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Watch
@@ -337,6 +502,8 @@ this. [typing into REPL] I'll get some information on regular division
 : type Fractional :: * -> Constraint
 : class Num a => Fractional a where
 :   (/) :: a -> a -> a
+:   recip :: a -> a
+:   fromRational :: Rational -> a 
 :   ...
 :   	-- Defined in ‘GHC.Real’
 : infixl 7 /
@@ -350,20 +517,22 @@ this. [typing into REPL] I'll get some information on regular division
 : div :: Integral a => a -> a -> a
 
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Wow. Still getting
-used to reading that stuff. \\
+used to reading that stuff. As in I don't really understand any of it
+hardly. \\
 [laughter] \\
-@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ All right, so I'm
-assuming they're calling the one type class [writing on the board]
-~Fractional~ because that means literally something that's numerical
-and not a whole number. And then the other [writing] ~Integral~ is
-something related to an integer whole number. So basically, a type
-class adds a property or trait to types. It's starting to get clearer
---- maybe. \\
-[murmurs of agreement] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ There's stuff
+about [[https://learnyouahaskell.github.io/types-and-typeclasses.html#typeclasses-101][typeclasses]] in /Learn You.../. All right, so [writing on the
+board] ~Fractional~ is about /rational numbers/. You see the ~(/) :: a
+-> a -> a~ method which means a number that can be divided by the
+regular division symbol ~/~. [more writing] And then the other is
+~Integral~ is a catch-all for integer whole numbers. So as I
+understand it, a typeclass adds a property or trait or behavior to
+types. It's starting to get clearer --- maybe. \\
+[murmurs of grim agreement] \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Let me go to a
-link on [[https://stackoverflow.com/questions/35950600/why-it-is-impossible-to-divide-integer-number-in-haskell][stackoverflow]] that talks about this[fn:4]. Getting
-there... [displays post on monitor] Right. So the original post has
-this and wonders why the error
+link on [[https://stackoverflow.com/questions/35950600/why-it-is-impossible-to-divide-integer-number-in-haskell][stackoverflow]] that talks about this[fn:6]. Just a second,
+getting there... [displays post on monitor] Right. So the original
+post has this and wonders why the error
 
 #+name: 6bce68f1-3fd7-48a8-a806-0037c32c40b5
 #+begin_src haskell :results verbatim :exports both
@@ -378,29 +547,129 @@ this and wonders why the error
 #+end_example
 
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ I'm guessing it's
-saying you can't do a regular /fractional/ divide because you've
-specifically said this is an integer, right?  \\
+saying you can't do a regular /fractional/ divide with ~(/)~ because
+you've specifically said this is an integer, right?  \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [getting up and
-pointing on the monitor] Basically, yes. There's a type class called
-~Fractional~ and it's saying that when we specifically make ~4~ an
-~Integer~ this way [writing on the board] ~(4 :: Integer)~, that makes
-it ineligible for doing regular /fractional/ division. \\
+pointing on the monitor] Basically, yes. ~Fractional~ says when we
+specifically make ~4~ an ~Integer~ this way [writing on the board] ~(4
+:: Integer)~, that makes it ineligible for doing regular /fractional/
+division with ~(/)~. \\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ And that's because
-the type and class system behind all this doesn't allow it. \\
+the type and typeclass system behind all this doesn't allow it. \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Yes, as far as
-I can tell. Did you get through the /Learn You.../ part on type
-classes[fn:5]? \\
-@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Yes, but... \\
+I can tell. So did anybody get through the /Learn You.../ part on
+typeclasses? \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Yes, but I'm far
+from knowing what I'm doing. \\
 [laughter] \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ I emailed the
-professor about this and she said she'd soon go over it in detail. \\
-[murmurs of acknowledgement] \\
+professor about this and she said she'll soon go over it in detail. \\
+[murmurs of acknowledgement, if not relief] \\
+[continuing] ...but she did send this example [displaying email on
+monitor] \\
+
+#+name: f9531dc0-6914-4e81-85a5-fc9bacbaab15
+#+begin_src haskell :eval never :exports code
+maximum' :: (Ord a) => [a] -> a
+maximum' [] = error "empty list"
+maximum' [x] = x
+maximum' (x:xs)
+  | x > maxTail = x
+  | otherwise = maxTail
+  where maxTail = maximum' xs
+#+end_src
+
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Ouch. \\
+[laughter] \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing]
+She says not to worry about the code. It's recursively going through a
+list [writing on board] such as ~[1, 3, 5, 2, 4]~ and finding the
+largest number. But she says the type declaration has the ~(Ord a)~
+typeclass qualifier where ~Ord~ is a typeclass that deals with
+/ordering things/ [back to the computer, typing in the ghci]
+
+#+name: df9f726c-3faf-416f-9a5a-9f9f853a0067
+#+begin_src haskell :results verbatim :exports both
+:i Ord
+#+end_src
+
+#+RESULTS: df9f726c-3faf-416f-9a5a-9f9f853a0067
+#+begin_example
+type Ord :: * -> Constraint
+class Eq a => Ord a where
+  compare :: a -> a -> Ordering
+  (<) :: a -> a -> Bool
+  (<=) :: a -> a -> Bool
+  (>) :: a -> a -> Bool
+  (>=) :: a -> a -> Bool
+  max :: a -> a -> a
+  min :: a -> a -> a
+  {-# MINIMAL compare | (<=) #-}
+  	-- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Ord Integer -- Defined in ‘GHC.Num.Integer’
+,,,
+#+end_example
+
+[continuing] ...what this is saying is that ~Ord~ allows us to add
+ordering behavior to a type. The methods define less than, less than
+or equal, greater than, and so on, that is, putting stuff in order. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Oh, okay. So this
+~maximum'~ function can take a list of ~a~ things only if they can be
+put in order, have order defined on them. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Exactly, like
+numbers are in, yeah, /numerical/ order. So the [writing on board]
+
+#+name: 6831fc10-5dd4-4753-ab01-dde2c350203d
+#+begin_src haskell :eval never :exports code
+maximum' :: (Ord ) => [a] -> a
+#+end_src
+
+[continuing] ...so this type declaration is saying the function
+~minimum'~ will take a /list/ of things ---that's the ~a~ variable in
+the square brackets---but only if the list elements can be
+ordered. Then the answer ~maximum'~ gives is the one greatest thing
+~a~. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Which means the
+inputted list either naturally has order, like numbers, or some sort
+of ordering has been provided. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ What do you mean,
+ordering has been provided? \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Well, if you have
+a list of numbers, then, like we know, they already have numerical
+order. But what if you want to find the maximum color of the list
+[writing on board]
+
+#+name: 0bfc8b57-3f20-4d68-999c-1fe6166adf3a
+#+begin_src haskell :eval never :exports code
+[Green, Yellow, Black, Orange]
+#+end_src
+
+[continuing] As I understand it, if you're making a type, say, ~Color~
+that has different color possibilities, you then have to tell Haskell
+what the order is. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@Yes, and that's
+done by making an ~Ord~ /instance/ that tells Hsskell what ordering
+means for your colors. So then you can do things like [types in a
+source code block] \\
+
+#+name: 045c061e-1841-4ede-a6b5-a259fd73f9c6
+#+begin_src haskell :eval never :exports code
+Orange > Yellow
+#+end_src
+
+[continuing] and Haskell will know what to do and give back ~True~ or
+~False~. \\
+[murmurs] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ That's what they
+mean by Haskell is a typed language. \\
+[murmurs of agreement] \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing]
 The bottom line --- as someone is saying in the comments --- is that
-/integer/ division not the same as /fractional/ division. \\
+/integer/ division not the same as /fractional/ division in the
+Haskell world. \\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ This type and
-class stuff is why [pointing at the monitor] ~4 / 2~ works and this
-~(4 :: Integer) / 2~ thing doesn't. \\
+typeclass stuff is why [pointing at the monitor] ~4 / 2~ works and
+this ~(4 :: Integer) / 2~ thing doesn't. \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [typing into
 the ghci REPL] Here, see?
 
@@ -412,9 +681,9 @@ the ghci REPL] Here, see?
 #+RESULTS: 3f47cd5f-c4a4-4df4-8dce-3504a5178c43
 : 2.0
 
-@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ It knows how to
-pretend it's not integer division. It goes ahead and gives you back a
-decimal number. \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ It knows, it
+/infers/ not to do integer division. It goes ahead and gives you back
+a decimal number. \\
 [group studies the examples] \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ In her email
 the professor said we shouldn't think of literal numbers like
@@ -432,6 +701,10 @@ the professor said we shouldn't think of literal numbers like
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ What this is
 saying is that ~1~ is /any/ number --- until you commit to using it in
 a certain way. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Right, right, so
+if you divide $4$ by $2$ using the regular division sign, Haskell
+makes it---I'm guessing---a /real/ number and not a whole number
+integer. \\
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So we need to use
 ~div~ if we specifically want integer division. \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Exactly [typing
@@ -571,12 +844,12 @@ check all this?  \\
 not yet. And I say that because /The Haskell Road.../ has a way we
 should learn. I looked at it. \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Well, I asked
-Mutti[fn:6] about this --- and she said we should look into the /least
+Mutti[fn:7] about this --- and she said we should look into the /least
 common multiple/, because that's what this lowest common denominator
 issue is all about. And yes, I knew that but had forgotten. So here's
-the Wikipedia article on it[fn:7]. [displays page on monitor] \\
+the Wikipedia article on it[fn:8]. [displays page on monitor] \\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [mumbling the
-first sentence[fn:8]] You're right. I knew this but had lost track of
+first sentence[fn:9]] You're right. I knew this but had lost track of
 it. \\
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Which means we
 /don't/ want to kick out /any/ primes with the same exponent just
@@ -672,7 +945,7 @@ you lost me on the ~(*dnom1)~ and ~(*dnom2)~. What's going on there?
 \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ That's what
 they call a /section/. I got that the other day from /A Gentle
-Introduction to Haskell/[fn:9]. Basically, ~*dnom1~ is made into a
+Introduction to Haskell/[fn:10]. Basically, ~*dnom1~ is made into a
 function that takes whatever ~dnom1~ is and applies it just as if it
 were a function to the ~x~. So ~(*dnom1)x~ is the same as just ~x *
 dnom1~. Here's an example [typing into the ghci REPL]
@@ -751,7 +1024,7 @@ parentheses, right? \\
 packaging up a common operator like plus or times, and maybe a
 variable, to work as a function. \\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ /Luft von anderem
-Planeten/[fn:10] \\
+Planeten/[fn:11] \\
 [laughter] \\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ [continuing] No,
 really, I barely understand that anonymous stuff, but I hear you
@@ -817,9 +1090,9 @@ myLCM 15 85
 : [255]
 
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ So this is a
-/list comprehension/[fn:11], and a list comprehension is just the
+/list comprehension/[fn:12], and a list comprehension is just the
 Haskell version of a set comprehension or /set-builder
-notation/[fn:12] from set theory. And it's going through the multiples
+notation/[fn:13] from set theory. And it's going through the multiples
 of $15$ and $85$, one after the other like this [writing on the board]
 
 #+begin_example
@@ -923,36 +1196,39 @@ easy getting there. \\
 
 * Footnotes
 
-[fn:1] German for /dad/, /papa/.
+[fn:1] † November 5th, 2024.
 
-[fn:2] Professor Chandra has demonstrated at the Racket command line
+[fn:2] German for /dad/, /papa/.
+
+[fn:3] Animated Sieve of Eratosthenes \\
+[[file:images/Animation_Sieve_of_Eratosth.gif]] \\
+
+[fn:4] Professor Chandra has demonstrated at the Racket command line
 how rationals could be directly added, e.g., \\
 ~> (+ 1/32 1/943720)~ \\
 and get back \\
 ~117969/3774880~
 
-[fn:3] Check out anonymous or /lambda/ functions [[https://learnyouahaskell.github.io/higher-order-functions.html#lambdas][here]]. 
+[fn:5] Check out anonymous or /lambda/ functions [[https://learnyouahaskell.github.io/higher-order-functions.html#lambdas][here]].
 
-[fn:4] See [[https://stackoverflow.com/questions/35950600/why-it-is-impossible-to-divide-integer-number-in-haskell][Why it is impossible to divide Integer number in Haskell?]]
+[fn:6] See [[https://stackoverflow.com/questions/35950600/why-it-is-impossible-to-divide-integer-number-in-haskell][Why it is impossible to divide Integer number in Haskell?]]
 
-[fn:5] See [[http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101][Typeclasses 101]] in /Learn You a Haskell.../.
+[fn:7] German for /mom/, /mama/.
 
-[fn:6] German for /mom/, /mama/.
+[fn:8] See the article [[https://en.wikipedia.org/wiki/Least_common_multiple][here]].
 
-[fn:7] See the article [[https://en.wikipedia.org/wiki/Least_common_multiple][here]].
-
-[fn:8] @@html:<font color = "#0d3db3">@@...In arithmetic and number
+[fn:9] @@html:<font color = "#0d3db3">@@...In arithmetic and number
 theory, the /least common multiple/, /lowest common multiple/, or
 /smallest common multiple/ of two integers $a$ and $b\:$, usually
 denoted by $lcm(a, b)\:$, is the smallest positive integer that is
 divisible by both $a$ and $b\;$...@@html:</font>@@
 
-[fn:9] Available [[https://www.haskell.org/tutorial/][here]]. The page dealing with /sections/ is [[https://www.haskell.org/tutorial/functions.html][here]] in
+[fn:10] Available [[https://www.haskell.org/tutorial/][here]]. The page dealing with /sections/ is [[https://www.haskell.org/tutorial/functions.html][here]] in
 3.2.1. Also The [[https://wiki.haskell.org/Section_of_an_infix_operator][wiki.haskell.org]] has a page on sections as well.
 
-[fn:10] A famous line from a Stefan Georg poem: /Ich fühle Luft von
+[fn:11] A famous line from a Stefan Georg poem: /Ich fühle Luft von
 anderem Planeten/ or /I feel (the) air of (the other) another planet./
 
-[fn:11] See [[http://learnyouahaskell.com/starting-out#im-a-list-comprehension][this]] from LYAHFGG.
+[fn:12] See [[http://learnyouahaskell.com/starting-out#im-a-list-comprehension][this]] from LYAHFGG.
 
-[fn:12] See Wikipedia's [[https://en.wikipedia.org/wiki/Set-builder_notation][Set-builder notation]]
+[fn:13] See Wikipedia's [[https://en.wikipedia.org/wiki/Set-builder_notation][Set-builder notation]]

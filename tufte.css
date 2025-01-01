@@ -208,6 +208,10 @@ span.nowrap {
     
 }
 
+span.org-comment {
+    color: darksalmon;
+}
+
 pre.example {
 
     max-width: 100%;
@@ -217,7 +221,7 @@ pre.example {
 }
 
 .src-haskell {
-    /* max-width: 65% !important; */
+    max-width: 60% !important;
     color: #0a6060;
     overflow-x: auto;
     float: left;

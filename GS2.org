@@ -1,11 +1,26 @@
 # # -*- mode: org -*- coding: utf-8 -*-
-#+TITLE: Getting Started Part 2
+#+TITLE: 
 #+AUTHOR:
 #+EMAIL: 
 #+DATE: 
 #+LANGUAGE:  en
 # #+INFOJS_OPT: view:showall ltoc:t mouse:underline
 #+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
 #+INCLUDE: "./header.org" :minlevel 1
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
@@ -15,8 +30,8 @@
 #+OPTIONS: html-postamble:nil
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [american]
-# Setup tikz package for both LaTeX and HTML export (doesn't really work?):
-#+LATEX_HEADER: \usepackage{tikz}
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
 #+LATEX_HEADER: \usepackage{commath}
 #+LaTeX_HEADER: \usepackage{pgfplots}
 #+LaTeX_HEADER: \usepackage{sansmath}
@@ -67,7 +82,7 @@ module GS2 where
 : λ> 2
 
 
-* Monday at the library part 2
+* Monday at the library part 2  
 
 ** Breaktime
 
@@ -141,11 +156,7 @@ bridge before I will. \\
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [laughing] Hardly!
 You're right there with us in everything we're doing this coming year.
 
-** Divided by
-:RESOURCES:
-- [[cite:&cummings2021proofs]]
-- [[cite:&forman2015whole]]
-:END:
+** Divided by 
 
 Back at the library study room they've checked out the reserved books
 and are looking through sections of those that deal with the basic
@@ -213,9 +224,6 @@ d. $a \mid b \land a \mid c \implies a \mid (b + c)$;
 e. $a \mid b \land b \mid c \implies a \mid c$
 
 [silence as they study the theorem]   \\
-<
-
-
 
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Good, now he's
 talking about the /transitive/ property of divisibility. It is a
@@ -805,13 +813,16 @@ it. [typing]
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Or I could do
 it this way [typing]
 
-#+name: 4b223182-a375-45a3-85af-88005b62a495
-#+begin_src haskell :results silent :exports code
+#+name: bb9d9079-206c-4d09-ae0a-aef93214012b
+#+begin_src haskell :results verbatim :exports both
 :{
+xDivides6 :: Integral a => [a]  
 xDivides6 = [x | x <- sampleList, ((6 `rem` x) == 0)]
   where sampleList = [-20,-19..(-1)] ++ [1..20]
 :}
 #+end_src
+
+#+RESULTS: bb9d9079-206c-4d09-ae0a-aef93214012b
 
 #+name: 8d622eb7-1e00-4d75-91f5-16105c5a106c
 #+begin_src haskell :results verbatim :exports both
@@ -819,6 +830,11 @@ xDivides6
 #+end_src
 
 #+RESULTS: 8d622eb7-1e00-4d75-91f5-16105c5a106c
+: <interactive>:43:1-9: warning: [-Wtype-defaults]
+:     • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraints
+:         (Show a0) arising from a use of ‘print’ at <interactive>:43:1-9
+:         (Integral a0) arising from a use of ‘it’ at <interactive>:43:1-9
+:     • In a stmt of an interactive GHCi command: print it
 : [-6,-3,-2,-1,1,2,3,6]
 
 
@@ -884,7 +900,7 @@ both firmly in the empirical world. \\
 [fn:2] /[[https://longformmath.com/proofs-home][Proofs; A Long-Form Mathematics Textbook]]/ by Jay Cummings
 
 [fn:3] She holds up /A Computational Introduction To Number Theory and
-Algebra/ by Victor Shoup; [[cite:&shoup2009computational]].  }
+Algebra/ by Victor Shoup.  }
 
 [fn:4] /[[https://www.google.com/books/edition/The_Whole_Truth_About_Whole_Numbers/ahUGswEACAAJ?hl=en][The Whole Truth About Whole Numbers]]/ by Sylvia Forman and
 Agnes M. Rash;

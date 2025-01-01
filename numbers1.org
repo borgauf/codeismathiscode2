@@ -85,11 +85,16 @@ module NUMBERS1 where
 
 #+name: 6b14996d-7528-4c2a-a081-ccd244799b49
 #+begin_src haskell :results verbatim :exports both
-1 + 1 :: Int
+1 + 1
 #+end_src
 
 #+RESULTS: 6b14996d-7528-4c2a-a081-ccd244799b49
 : 2
+
+#+name: 2c14a088-3b39-4c8d-a931-8c8f56df247d
+#+begin_src haskell :eval never :exports code
+{-# LANGUAGE NoTypeDefaults #-}
+#+end_src
 
 * Thursday at the library
 
@@ -379,36 +384,8 @@ data structures known as /trees/, we'll do proper set theory with
 Haskell's set theory module, [[https://hackage.haskell.org/package/containers-0.6.6/docs/Data-Set.html][Data.Set]][fn:20].  For the immediate
 future we'll consider a list to be a beginner's substitute for a
 set. And so a simple "how many" function on a list standing in for a
-set is /length/. The code
-
-#+name: 6734a0b3-2348-42f4-af3c-7f08b88197ba
-#+begin_src haskell :results verbatim :exports both
-length [1,2,3,4,5]
-#+end_src
-
-#+RESULTS: 6734a0b3-2348-42f4-af3c-7f08b88197ba
-#+begin_example
-<interactive>:318:9: warning: [-Wtype-defaults]
-    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraint
-        Num a0 arising from the literal ‘1’
-    • In the expression: 1
-      In the first argument of ‘length’, namely ‘[1, 2, 3, 4, ....]’
-      In the expression: length [1, 2, 3, 4, ....]
-
-<interactive>:318:9: warning: [-Wtype-defaults]
-    • Defaulting the type variable ‘a0’ to type ‘Integer’ in the following constraint
-        Num a0 arising from the literal ‘1’
-    • In the expression: 1
-      In the first argument of ‘length’, namely ‘[1, 2, 3, 4, ....]’
-      In the expression: length [1, 2, 3, 4, ....]
-5
-#+end_example
-
-Again, more to come. Watch this space[fn:21]. \\
-...⌟
-
-
-
+set is /length/. The code ~length [1,2,3,4,5]~ $\implies$ ~5~. Again,
+more to come. Watch this space[fn:21].  ...⌟ \\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So, bottom line,
 we're not going to have real sets with Haskell right away, just a sort
 of /Ersatz/ sets with lists. Are we all sort of familiar with Haskell
@@ -421,6 +398,8 @@ different order?  [looks back and forth] \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Well, here's
 mine [scrolling to her personal annotation of the professors notes and
 reading aloud]
+
+
 
 ⌜... \\
 A "set" of students in a class pass around a sign-in sheet each day on
@@ -598,7 +577,7 @@ Set.empty
 
 #+name: 73674369-ec11-4287-a778-ff7233503709
 #+begin_src haskell :results verbatim :exports both
-Set.union (fromList [1,2,3]) (Set.empty)
+Set.union (Set.fromList [1,2,3]) (Set.empty)
 #+end_src
 
 #+RESULTS: 73674369-ec11-4287-a778-ff7233503709
@@ -606,7 +585,7 @@ Set.union (fromList [1,2,3]) (Set.empty)
 
 #+name: 518bf080-1ff3-4a71-a40c-06b5e61f75ab
 #+begin_src haskell :results verbatim :exports both
-Set.intersection  (fromList [1,2,3]) (Set.empty)
+Set.intersection  (Set.fromList [1,2,3]) (Set.empty)
 #+end_src
 
 #+RESULTS: 518bf080-1ff3-4a71-a40c-06b5e61f75ab
@@ -788,7 +767,7 @@ instance Eq Color where
   Yellow == Yellow = True
   Blue == Blue = True
   Green == Green = True
-  _ == _ = False         -- anything getting to this point must be false
+  _ == _ = False         -- at this point must be false
 #+end_src
 
 And so we've hand-coded our own equal-ness for ~Color~ by spelling out
@@ -796,18 +775,28 @@ how ~(==)~ works for ~Color~. This literally tells Haskell what
 ~Color~ equal-ness should be by customizing how the function ~(==)~
 should work. Let's have another look at the type signature for ~(==)~
 
-#+begin_src haskell :eval never :exports code
+#+name: 75348a9c-f697-4f0a-8c04-60114b1b297f
+#+begin_src haskell :results verbatim :exports both
 :t (==)
 #+end_src
 
-#+RESULTS: 02cab397-30df-497e-9972-b743c08f71d4
+#+RESULTS: 75348a9c-f697-4f0a-8c04-60114b1b297f
 : (==) :: Eq a => a -> a -> Bool
 
 As LYAHFGG notes, the ~Eq a~ part is known as a /class
-constraint/. This means whatever ~a~ might be[fn:34], it must have an
+constraint/. This means whatever ~a~ might be, it must have an
 equal-ness instance already registered for it --- which we do ---
 otherwise, Haskell won't know how to compare two things of ~a~ for
-equal-ness[fn:35].
+equal-ness[fn:34]. ...and this is an example of /parametric
+polymorphism/ where the /parameter/ (aka /type variable/) ~a~ can be
+any data type. In Haskell, smaller-case letters such as ~a~, ~b~, ~c~,
+etc., are generic parameter names and can indicate any data type. In
+~(==) :: Eq a => a -> a -> Bool~ we see that two inputs of the same
+type ~a~ are fed to ~(==)~, which produces a ~Bool~ output. Another
+example would be ~myFunc :: a -> b -> a~. Here the type signature says
+the inputs don't have to be of the same type (although they could be),
+but no matter what type the parameter ~b~ is, the output will be of
+type ~a~. Testing our colors
 
 #+begin_src haskell :results verbatim :exports both
 (Red == Red) && (Red /= Green)
@@ -857,10 +846,10 @@ instance registered. Hence, ~Eq~ is a sort of super-class, and yes,
 type classes can build hierarchies of themselves.
 
 Again, we see ~Ord~ has a minimum requirement for order-ness, namely,
-that we define the method[fn:36] (function) ~compare~ ... and then we
+that we define the method (function) ~compare~ ... and then we
 get all the other order-ness methods, ~(<)~ ... ~min~ for free, as in
 Haskell is smart enough to figure them out just based on what you gave
-for ~compare~. Neat[fn:37].
+for ~compare~. Neat[fn:35].
 
 #+name: 2aed084d-1010-4157-ab01-19568c0c3ed0
 #+begin_src haskell :results verbatim :exports both
@@ -905,7 +894,7 @@ data Ordering = LT | EQ | GT
 
 While the type ~Bool~ had two /data constructors/ ~True~ and ~False~,
 ~Ordering~ has three --- ~LT~, ~EQ~, and ~GT~. Now, let's write code
-to register an instance of ~Ord~ for ~Color~[fn:38]
+to register an instance of ~Ord~ for ~Color~[fn:36]
 
 #+name: 5d492aee-6cdc-41a7-a524-3c4d275d5b1a
 #+begin_src haskell :eval never :exports code
@@ -924,7 +913,7 @@ instance Ord Color where
 
 Again, the ~Ord~ type class required us to create our own ~compare~
 method, which painstakingly we did. Now we can compare two values
-of ~Color~ for order-ness with our basic ~Ord~ comparison operators[fn:39],
+of ~Color~ for order-ness with our basic ~Ord~ comparison operators[fn:37],
 ~>~, ~<~, and ~==~,
 
 #+name: 83d91b48-8ad6-4a74-99df-cab48cb30619
@@ -1032,7 +1021,7 @@ it apart...
 since it takes just the one parameter, $x$. For $f(x,y) = x^2y^{1/3\;\;}$
 arity is two --- and we usually say /binary/ since it takes two
 parameters, $x$ and $y\;$. But $f() = 5\;$ is a function that takes no
-parameters and always returns $5\;$. It's arity is null[fn:40].
+parameters and always returns $5\;$. It's arity is null[fn:38].
 
 In the second line, the data type declaration line, we see the left
 side of the ~=~ is ~Color~, which is the /type constructor/, and on
@@ -1041,7 +1030,7 @@ which are ~Red | Yellow | Blue | Green~, which are also referred to as
 just the /values/ of ~Color~. Again, the type of ~Red~ is ~Color~, and
 the type of ~Color~ is ~*~, which is Haskell's way of noting ~Color~
 has an arity of null. Which is just like $f() = 5\;$ only that it has
-values[fn:41] ~Red~, ~Yellow~, ~Blue~, *or* ~Green~ as possible values
+values[fn:39] ~Red~, ~Yellow~, ~Blue~, *or* ~Green~ as possible values
 instead of just $5$. And like $5$, we can consider them as
 constants. Yes, it might be odd to consider a data type as a sort of
 function taking parameters, but under Haskell's hood they do. So we
@@ -1075,7 +1064,7 @@ polymorphism, meaning ~a~ can be any data type. This in turn makes
 ~StreetShops~ polymorphic, i.e., its values ~Grant~, ~Lee~, and
 ~Lincoln~ are able to take input of different data types. For example,
 if we want our ~StreetShops~ value ~Grant~ to represent a list of all
-the shops we visit on Grant Street[fn:42]
+the shops we visit on Grant Street[fn:40]
 
 #+name: 2837bab8-8318-4e59-8833-96ac4fb4438d
 #+begin_src haskell :results silent :exports code
@@ -1100,7 +1089,7 @@ shopsOnGrant
 
 So each of the data constructors can take a parameter ~a~, which can
 be anything. If we want a ~StreetShops~ value to hold the average
-number of visitors per day[fn:43]
+number of visitors per day[fn:41]
 
 #+name: 4b652b3d-f3bc-4d2f-858e-39007723ced9
 #+begin_src haskell :results silent :exports code
@@ -1132,9 +1121,9 @@ ways of managing data about streets. But we'll certainly use lots of
 data types with higher arity, especially when we start going deeper
 into some of the more math-derived features in Haskell. And so that's
 why we wanted to introduce what may seem pretty abstract at this
-point[fn:44].
+point[fn:42].
 
-**** The ~Num~ super class
+**** The Num super class
 
 Did you notice that ~Num a =>~ class constraint in the type details of
 ~visitorsOnGrant~? When we created the variable ~visitorsOnGrant~ we
@@ -1190,7 +1179,7 @@ instance Num Double -- Defined in ‘GHC.Float’
 Here we see number-ness defined through its methods. Whatever type
 might want to be considered a number will need to have these
 operations of addition, subtraction, multiplication, negation, etc.,
-i.e., register an instance with the ~Num~ class[fn:45].
+i.e., register an instance with the ~Num~ class[fn:43].
 
 Actually, ~Num~ is a great place to start really seeing how
 mathematical Haskell is. ~:i Num~ gives us good look, but, as we
@@ -1209,7 +1198,7 @@ multiplication must behave in order to have an instance of
 ~Num~. Let's continue...
 
 So if multiplication is just a glorified sort of addition, and
-division is glorified subtraction[fn:46], then that makes addition and
+division is glorified subtraction[fn:44], then that makes addition and
 subtraction the basis of arithmetic, /but/ they have a very
 fundamentally different behavior when used in the wild that we must,
 in turn, account for. Yes, addition puts things together and
@@ -1221,7 +1210,7 @@ subtracted or divided by which, but not with addition and
 multiplication.
 
 We mentioned /binary/ operators before, which means whenever we add or
-subtract we're really taking just two numbers at a time[fn:47], i.e.,
+subtract we're really taking just two numbers at a time[fn:45], i.e.,
 the arity of the ~(+)~ operator is two, or ~(+)~ is a /binary/
 operation. But again, why are we concerned with this?
 
@@ -1235,23 +1224,23 @@ customarily expected to define a ring and ...
 The Haskell Report is a reference manual for how Haskell is put
 together, often just showing us how certain pieces of the language are
 coded under the hood. Typically, you see a Backus-Naur
-description[fn:48], then some description/talk, maybe also examples
-and "translations[fn:49]."  GHC.Num says there is no particular
+description[fn:46], then some description/talk, maybe also examples
+and "translations[fn:47]."  GHC.Num says there is no particular
 mention in the HR of these arithmetical laws, but ~(+)~ and ~(*)~
 should /define a ring/. So here the lore is getting deep. What is
-meant by a /ring/[fn:50]? Well, a ring is something from abstract
+meant by a /ring/[fn:48]? Well, a ring is something from abstract
 algebra, which you'll see in a mathematics curriculum once you're
 beyond Frosh college math including calculus, differential equations,
 and linear algebra. The basic idea is that a ring is a /set/
 containing a /set/ of numbers, along with key arithmetical operators
 behaving in certain ways. In other words, a ring is a sort of like a
 package which includes numbers and the operations that work on those
-numbers[fn:51]. Then neatly bundled like this, we can do and say things about
+numbers[fn:49]. Then neatly bundled like this, we can do and say things about
 them as a whole. But let's leave it at that for now. We'll soon
 explore other similar "packagings" (semigroups, monoids, etc.) from
 abstract algebra that are brought over for use in Haskell.
 
-Continuing, if the so-called /fundamental laws of arithmetic/[fn:52] say
+Continuing, if the so-called /fundamental laws of arithmetic/[fn:50] say
 
 1. $a + b = b + a\quad$ (additive commutativity, AC)
 2. $ab = bc\quad$ (multiplicative commutativity, MC)
@@ -1450,34 +1439,15 @@ opposed to a /product/ type. Sum types are patterned after the
 $\;|\;$ between the colors can be understood as logical /or/---as in
 we must choose one /or/ the other of the colors.
 
-[fn:34] ...and this is an example of /parametric polymorphism/ where
-the /parameter/ (aka /type variable/) ~a~ can be any data type. In
-Haskell, smaller-case letters such as ~a~, ~b~, ~c~, etc., are generic
-parameter names and can indicate any data type. In ~(==) :: Eq a => a
--> a -> Bool~ we see that two inputs of the same type ~a~ are fed to
-~(==)~, which produces a ~Bool~ output. Another example would be
-~myFunc :: a -> b -> a~. Here the type signature says the inputs don't
-have to be of the same type (although they could be), but no matter
-what type the parameter ~b~ is, the output will be of type ~a~.
-
-[fn:35] For our ~Color~ we've created our own equal-ness, although in
+[fn:34] For our ~Color~ we've created our own equal-ness, although in
 this example we could have let Haskell figure it out, i.e., ~...|
 Green deriving (Eq)~ would have done the same thing. This was an easy
 one. Haskell can't always figure out the less obvious cases.
 
-[fn:36] The habit of calling a set of functions associated with a
-Haskell type class /methods/ might be a hold/spill-over from the world
-of object-oriented programming where an OOP class will have method
-functions attached to it. This is called /encapsulation/, i.e., a
-system for keeping things that belong together together. However, an
-OOP class and a Haskell type class are entirely different beasts. So
-let's keep our head stuck in the Haskell particle accelerator for
-now...
-
-[fn:37] In general, anytime your programming language starts writing
+[fn:35] In general, anytime your programming language starts writing
 code for you, it's cool...
 
-[fn:38] We make heavy use of the /wildcard/ ~_~ by which we mean /any/
+[fn:36] We make heavy use of the /wildcard/ ~_~ by which we mean /any/
 variable can be in the ~_~ position. For example ~compare Red _ = GT~
 means when we compare ~Red~ to anything else, ~Red~ will always be
 greater than it. We also leveraged the order of these declarations,
@@ -1485,33 +1455,33 @@ i.e., by having ~compare Red _ = GT~ at the very start, ~Red~ versus
 anything will be sorted out first. This is a /conditional/ situation
 implicitly, which we'll use lots more.
 
-[fn:39] Remember, math operators in Haskell are just a sort of
+[fn:37] Remember, math operators in Haskell are just a sort of
 function. Which means ~(==) Red Red~ is identical to ~Red ==
 Red~. Haskell requires operators in the function (/prefix/) position
 to be in parentheses, whereas in the /infix/ (between) position they
 can be naked operators. Notice ~min Red Yellow~ that ~min~ is in the
 prefix position. Just put back-ticks around it to use it infix: ~Red `min` Yellow~.
 
-[fn:40] This may be slightly confusing since in Algebra you probably
+[fn:38] This may be slightly confusing since in Algebra you probably
 learned about constant functions expressed as, e.g., $f(x) = 5\;$,
 which is just a horizontal line $y = 5$ for any $x\;$ you plug in.
 
-[fn:41] If a data constructor (also called /value/ constructor) has a
+[fn:39] If a data constructor (also called /value/ constructor) has a
 nullary type constructor, as does ~Color~, then just like with $f() =
 5$ the $5$ is a /constant/, and so are the values ~Red~, ~Yellow~, ~Blue~,
 ~Green~ considered constants.
 
-[fn:42] We'll give data constructor ~Grant~ a list of elements of type
+[fn:40] We'll give data constructor ~Grant~ a list of elements of type
 ~String~, a Haskell ~String~ being, in reality, a /[[http://learnyouahaskell.com/making-our-own-types-and-typeclasses#type-synonyms][type synonym]]/ for
 list of type ~Char~, which are individual Unicode characters. \\
 ~λ> "Tre Chic" == ['T','r','e',' ','C','h','i','c']~ \\
 ~True~
 
-[fn:43] Haskell has great powers of inferring, i.e., when we ask it
+[fn:41] Haskell has great powers of inferring, i.e., when we ask it
 what type ~visitorsOnGrant~ is, it deduces this from how we created
 ~visitorsOnGrant~, namely: ~visitorsOnGrant :: Num a => StreetShops a~.
 
-[fn:44] As another example of introducing an abstract subject out of
+[fn:42] As another example of introducing an abstract subject out of
 the blue and way early, do you remember middle school math trying to
 show you commutativity, distributivity, and associativity? Well, they
 become important in higher math, especially in abstract
@@ -1519,19 +1489,19 @@ algebra. Haskell has lots of higher algebra baked in, and yes, you'll
 finally see a real-world application of commutativity, distributivity,
 and associativity soon!
 
-[fn:45] Actually, our example ~:t 1~ relies on the method
+[fn:43] Actually, our example ~:t 1~ relies on the method
 ~fromInteger~, but we'll unpack that later. Even more actually, a
 whole lot of complex magic is going on behind the scenes when dealing
 with naked (literal) numbers like this. So yes, this is an example of
 LE for doing numbers on computers with programming languages.
 
-[fn:46] Multiplication is often phrased, e.g., "five fives," i.e.,
+[fn:44] Multiplication is often phrased, e.g., "five fives," i.e.,
 five sets of five are to be considered (read added)
 together. Likewise, division "divide $8$ by $2$ is just /subtract/ $2$
 from $8$ over and over and keep track of how many times you can do
 this until there's either nothing left or a number less than $2\;$.
 
-[fn:47] Think about it, even when you've got a whole list (vertical or
+[fn:45] Think about it, even when you've got a whole list (vertical or
 horizontal) of numbers to add, you're really doing them two at a
 time. One number becomes the /addend/ and the other becomes the
 /augend/, which is sort of a carrying-over holder to which the next
@@ -1539,11 +1509,11 @@ addend is added. So if we're adding $1 + 2 + 5\;$ we might add $1 + 2\;$
 and then remember the augend is $3\;$, then take addend $5$ and add it
 to augend $3$ to get $8\;$.
 
-[fn:48] More on Backus–Naur Form later. It's used extensively to
+[fn:46] More on Backus–Naur Form later. It's used extensively to
 create a [[https://en.wikipedia.org/wiki/Metasyntax][metasyntax]] for programming languages. Maybe rabbit-hole [[https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form][this
 Wikipedia treatment]].
 
-[fn:49] Try Haskell's [[https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-420003.11][list comprehension]]. Don't expect to understand
+[fn:47] Try Haskell's [[https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-420003.11][list comprehension]]. Don't expect to understand
 what they're saying just yet, but appreciate the magic and all the
 devilish details. And while you're at it you might further appreciate
 just what a list comprehension is by looking at [[https://rosettacode.org/wiki/List_comprehensions][this Rosetta Code
@@ -1554,14 +1524,14 @@ maybe a bit too advanced, but check out [[https://rosettacode.org/wiki/List_comp
 Pythagorean triplets. Experiment with the code. A big part of learning
 to program is to read and experiment with code.
 
-[fn:50] Have a look at [[https://math.libretexts.org/Bookshelves/Combinatorics_and_Discrete_Mathematics/Applied_Discrete_Structures_(Doerr_and_Levasseur)/16%3A_An_Introduction_to_Rings_and_Fields/16.01%3A_Rings_Basic_Definitions_and_Concepts][this LibreText explanation]] but don't try it
+[fn:48] Have a look at [[https://math.libretexts.org/Bookshelves/Combinatorics_and_Discrete_Mathematics/Applied_Discrete_Structures_(Doerr_and_Levasseur)/16%3A_An_Introduction_to_Rings_and_Fields/16.01%3A_Rings_Basic_Definitions_and_Concepts][this LibreText explanation]] but don't try it
 without first getting through the basic set theory stuff in the
 assigned rabbit-hole.
 
-[fn:51] Algebra in higher math is redefined to be a system that always
+[fn:49] Algebra in higher math is redefined to be a system that always
 "packages" a set of numbers with a set of useful operators/operations
 on those numbers. It's good to start thinking this way in order to
 understand what Haskell and lots of computer science is doing and
 saying.
 
-[fn:52] ...taken from Richard Courant's seminal /What is Mathematics?/
+[fn:50] ...taken from Richard Courant's seminal /What is Mathematics?/
