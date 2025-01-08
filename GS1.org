@@ -164,54 +164,139 @@ do is hang on for dear life! \\
 /Haskell Road.../ ] Did anyone look at the first chapter? \\
 [affirmative nods] \\
 [continuing] Wasn't too bad --- once I caught on to what he was
-saying. But definitely, /Learn You a Haskell.../ helped. And
-the other pre-reqs as well. \\
+saying. But definitely, /Learn You a Haskell.../ helped. And the other
+pre-reqs as well. \\
 [murmurs of agreement] \\
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ [pointing to a
-page in /Haskell Road/ first chapter] Right, creating a /test/ for prime
-numbers with Haskell code. \\
+page in /Haskell Road/ first chapter] Right, creating a /test/ for
+prime numbers with Haskell code. \\
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ I was looking
 around on the internet and I kept running into the [[https://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic][Fundamental Theorem
-of Arithmetic]]. \\
-@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Right, that all
-the /counting/ natural numbers---one, two, three, to infinity---are
-either prime themselves or just multiples of primes. \\
-[pause to consider] \\
-@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So integers are
-either a prime or a multiple of primes. Right. I guess they'd have to
-be. \\
+of Arithmetic]]. Know what I'm talking about? \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Right, it's where
+all the /counting/ natural numbers---one, two, three, four---off to
+infinity---are either prime themselves or just multiples of primes. \\
+[group pause to consider] \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So all integers
+are either a prime number themselves or /composed/ of a multiple of
+primes. Yeah, they call non-prime numbers /composite/ numbers. \\
+[pause to think] \\
+[writing on the whiteboard] It makes sense. So looking at $12$. You
+can say it's $3 \cdot 4$. But that contains composite number $4$, which
+you can break down into $2 \cdot 2$. So $12 = 3 \cdot 2 \cdot 2$, which is, of
+course, all primes. And as I remember, the order of the primes doesn't
+matter. \\
 [murmurs of agreement] \\
-@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So do you remember
-back in school in Kiel we first learned to add and subtract fractions
-with unlike denominators? \\
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Lots of lore
+around primes. \\
+[more murmurs of agreement] @@html:<span
+class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ So do you remember back in
+school in Kiel we first learned to add and subtract fractions with
+unlike denominators? \\
 [murmurs of acknowledgement] \\
 [continuing] First we just learned to cross-multiply to get the
-numerators, then multiply the denominators together, add or subtract
-the numerators, then reduce the answer. But /then/ we learned the
-prime factorization way. I can hear the teacher actually saying that
-all whole numbers are either primes or multiples of primes. /And/ we
-were supposed to notice how fractions always start out as a whole
-number over a whole number. \\
+numerators, then multiply the denominators together to get the new
+denominator, then add or subtract the numerators, then reduce the
+answer. \\
+[murmurs of acknowledgement] \\
+[continuing] But /then/ we learned the prime factorization way. I can
+hear the teacher actually saying that all whole numbers are either
+primes or multiples of primes. /And/ we were supposed to notice how
+fractions always start out as a whole number over a whole number. \\
 [affirmative murmurs] \\
-@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ That business
-of fractions being in their /rational/ form---rational meaning in a
-ratio---and also in their /decimal/ form. And then all the odd things
-about what a ratio, or in German /Verhältnis/, really meant. \\
-@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ When I had that
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ Yes, right,
+that business of fractions being in their /rational/ form---rational
+meaning in a /ratio/. But then fractions could also be in their
+/decimal/ form. Right. I remember all the odd things about what a
+ratio, or in German /Verhältnis/, really meant. \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ When we had that
 class we also talked about why the Greeks said, for example, $7$
-/measures/ $35\;$? Yeah, so $7$ /divides/ $35$ evenly, no
-remainder. And then there was /commensurable/ and /incommensurable/,
+/measures/ $35\;$. Yeah, so that means $7$ /divides/ $35$ evenly, no
+remainder. And then there was /[[https://en.wikipedia.org/wiki/Commensurability_(mathematics)][commensurable]]/ and /incommensurable/,
 which is about rational and irrational. \\
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ Oh yeah, I
-remember! The teacher said that a rational number falls somewhere on
-the number line that can be /measured/ by some unit on the number
-line. But I'm a bit hazy on just what that really means now. Oh well,
-skip it!\\
+remember! The teacher said that a rational number, a fraction, falls
+somewhere on the number line that can be /measured/ by some unit on
+the number line. But I'm a bit hazy on just what that really means
+now. Oh well, skip it!\\
 [laughter] \\
-[continuing] No, no, I remember now. So say you have
+[continuing] No, no, I remember now! So say you have
 $\frac{3}{16}$. That's $3$ /measures/ of the /unit/ $16ths$ ---or the
-number line divided into $16ths$ ---out to where $\frac{3}{16}$ is on
-the number line. \\
+number line divided into $16ths$ ---then you go out three ticks on
+this line divided into $16ths$ to where $\frac{3}{16}$ is on
+the number line. So technically $3$ and $16$ are /commensurate/. \\
+[silence' confused faces of female siblings]
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [calling up
+Wikipedia article] No, no, not quite, dear brother. [then finding
+another article on commensurability, studying it, then going to the
+board] No, here [drawing]:
+
+[[file:images/two_line_segments1.png]]\\
+Take these two line segments. If there exists another smaller line
+segment
+
+[[file:images/single_line_segment.png]]\\
+
+such that the small line can be used to evenly /measure/ the two
+larger line segments \\
+
+[[file:images/two_line_segments2.png]]\\
+then the two larger line segments are /commensurate/, exactly because
+the smaller segment is their /common measure/. In other words, the two
+larger segments are whole number multiples of the third, smaller
+length. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ But then doesn't
+unit $1$ always wind up being the common measure? \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Because two line
+segment lengths---or just numbers, like $\frac{3}{16}$ ---can be shown
+to be commensurate, with common measure /unit/ $1$, then we can say
+it's a rational number with a place on the number line. \\
+[confused looks]
+@@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ So the
+Wikipedia articles says this [writing on the board]
+
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ Let's bring it
+back to Earth, shall we? [laughter] The bottom line is rational
+numbers are numbers where a ratio of integers can represent a real
+place on the number line. If this is true, then the numerator and
+denominator are commensurate. But if you can't represent a number as a
+ratio of two integers, then it is /irrational/. \\
+@@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ But what about
+decimal numbers? Like, say, $1.5$? \\
+@@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ No problem. We
+still can express this as a rational number [writing on the board]
+
+\begin{align*}
+\frac{1.5}{1}
+\end{align*}
+
+Now, we multiply top and bottom by $2$ and get
+
+\begin{align*}
+\frac{3.0}{2} = \frac{3}{2}
+\end{align*}
+
+and there's the trick to turn any decimal into a rational of just
+integers. For example for $.756$, we just imagine it as
+
+\begin{align*}
+\frac{.756}{1}
+\end{align*}
+
+then there are three decimal places, so multiplying top and bottom by
+$1,000$ gets it out of decimal and into integers in a ratio like we
+want, then we reduce
+
+\begin{align*}
+\frac{756}{1000} = \frac{378}{500}
+\end{align*}
+
+
+
+
+
+
+
 @@html:<span class="fraktur">@@𝔘𝔱𝔢:@@html:</span>@@ So /irrational/
 numbers are /incommensurable/ because you can't divide the number line
 into any units---no matter how fine---that can then be measured out to
