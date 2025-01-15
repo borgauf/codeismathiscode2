@@ -1,0 +1,409 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: LittleSchemer1.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* Little Schemer 1
+
+#+begin_figure
+#+CAPTION: The Little Schemer putting together a combinator.
+[[file:images/LittleSchemerElephant1.png]]
+#+end_figure
+
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/codeismathiscode2"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&friedman1995little]]
+:END:
+
+
+* 
+
+** Why /The Little Schemer/?
+
+/[[https://mitpress.mit.edu/9780262560993/the-little-schemer/][The Little Schemer]]/ (TLS) written by computer science professors
+Daniel P. Friedman and Daniel P. Friedman was a revolutionary book
+when it came out in its first edition as /The Little Lisper/ based on
+the programming language Lisp in 1987. Subsequent editions switched to
+Lisp's younger sister language Scheme. It was so unique because it
+followed a "[[https://en.wikipedia.org/wiki/Socratic_method][Socratic]]" dialog style of question or challenge and answer
+in left and right columns throughout the book. Below is from the very
+first page [fn:1]
+
+#+HTML_HEAD: <style type="text/css">
+#+HTML_HEAD: .styledtab col:nth-of-type(1) { width:  45%; }
+#+HTML_HEAD: .styledtab col:nth-of-type(2) { width: 55%; }
+#+HTML_HEAD: </style>
+
+#+NAME: LSTable2
+#+ATTR_HTML: :class fullwidth
+#+ATTR_HTML: :class styledtab
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Βιγ Σξηεμερ                        | Λιττλε Σξηεμερ                                                                                                                              |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? | Yes, because ~atom1~ is a string of characters beginning with the letter ~a~.                                                               |
+| ~atom1~                            |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? | Yes, because ~turkey~ is a string of characters beginning with a letter.                                                                    |
+| ~turkey~                           |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? | Yes, because ~1492~ is a string of digits.                                                                                                  |
+| ~1492~                             |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? | Yes, because ~*abc$~ is a string of characters beginning with a letter or special character other than a left ~(~ or right ~)~ parenthesis. |
+| ~*abc$~                            |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is a /list/?  | Yes, because ~(atom)~ is an atom enclosed by parentheses.                                                                                   |
+| ~(atom)~                           |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is a list?    | Yes, because it is a collection of atoms [separated by spaces and] enclosed by parentheses.                                                 |
+| ~(atom turkey or)~                 |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+...or as we'll present it
+
+@@html:<span class="schemer">@@Βιγ Σξηεμερ:@@html:</span>@@ Is it true
+that ~atom1~ is an /atom/? \\
+@@html:<span class="schemer">@@Λιττλε Σξηεμερ:@@html:</span>@@ Yes,
+because ~atom1~ is a string of characters beginning with the letter
+~a~. \\
+
+This Socratic dialog explores in its chatty conversation style a sort
+of loose /mathematical formalism/[fn:2] where you the reader will
+experience a growing mental structure of theory and syntax as the
+conversation continues and the pages turn. Instead of making direct
+statements about programming language syntax rules, we experience a
+stream of questions that will have us gradually form the facts in our
+own minds. We're if effect /backing into/ Scheme programming and its
+underlying philosophy---and underlying is quite a bit.
+
+Some things, however, are directly stated. Even before the first
+chapter entitled /1. Toys/, there are listed (jokingly named?) /The
+Ten Commandments/, followed by /The Five Rules/. Again, this is a nod
+to, a play on the mathematical formalism of an /[[https://en.wikipedia.org/wiki/Axiomatic_system][axiomatic system]]/
+... which is a great departure from most "learn to code" books where
+syntax rules are stated, examples given---then you start writing code
+that does stuff. How exactly is TLS different? Right from the start
+the vast underlying theory of computing is hinted at, gradually,
+carefully brought into focus. "Learn to code," on the other hand,
+hardly ever worries about the theory behind it all, concentrating
+instead on "getting stuff done." TLS isn't in the least concerned with
+"getting stuff done."  To be sure, we have chosen TLS because it lends
+itself so well to jumping off into the important underlying concepts
+of computer science.
+
+The first axiomatic system is generally accepted as being the
+multi-volume set collectively called [[https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms][Euclid's Elements]] (EE) from
+ca. 300 BC. EE was once a staple of Junior year high school math
+... though highly dreaded, as it was the student's first exposure to
+/proving/ instead of just doing math. Proving something in math
+requires a deep grasp of a topic, which is completely different from
+the typical style of stimulus-response /conditioning/, e.g., "when you
+see this, do this" training. Starting with [[https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms][Euclidean Geometry]], the
+student is asked to see a geometric situation[fn:3] and understand why
+something about it is /necessarily/ (proven to be) true. A proof of,
+e.g., the /pons asinorum/ is a step-by-step establishing of facts
+based on Euclid's /Postulates/ and /Notions/. This was, as many would
+say, the beginning of modern mathematics where a set of axioms could
+be called on to build /theorems/, i.e., additional true
+assumptions. [[https://en.wikipedia.org/wiki/Axiomatic_system][Axioms]] go by many names, e.g., basic truths, givens,
+primitives. Here are Euclid's five postulates
+
+
+- P1 :: A straight line may be drawn between any two points.
+- P2 :: Any terminated straight line may be extended indefinitely.
+- P3 :: A circle may be drawn with any given point as center and any
+  given radius.
+- P4 :: All right angles are equal.
+- P5 :: Through a given point $P$ not on a line $L$, there is one and
+  only one line in the plane of $P$ and $L$ which does not meet $L$.
+
+The last postulate is a more modern rewording of the original meaning
+/truly parallel lines may exist that never cross/. To these first
+five, Euclid added another five basic truths, his /Common Notions/
+
+- N1 :: Things which are equal to the same thing are also equal to
+  each other.
+- N2 :: If equals are added to equals, the wholes are equal.
+- N3 :: If equals are subtracted from equals, the remainders are equal.
+- N4 :: Things which coincide with one another are equal to one another.
+- N5 :: The whole is greater than the part.
+
+With these ten axiomatic statements begins much geometry, logic,
+number and set theory. That is to say, great amounts of /implication/,
+"if this then that" can be derived from these ten accepted
+givens.[fn:4] For example, N5 would seem to say something almost
+silly trivial. But as [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this treatment]] explains N5 is introducing in
+odd wording the basic concept of one thing being larger than another,
+i.e., $A>B$. Here's David E. Joyce's, professor of mathematics at Clark
+University, explanation
+
+#+begin_quote
+To say one magnitude $B$ is a part of another $A$ could be taken as
+saying that $A$ is the sum of $B$ and $C$ for some third magnitude
+$C$, the remainder. Symbolically, $A > B$ means that there is some $C$
+such that $A = B + C$.
+#+end_quote
+
+Again, to the novice this may look like nit-picking, but real math
+comes from having these basic foundational givens---upon which new,
+useful math is solidly, logically built. Higher math[fn:5] is the
+realm of axiomatic math where proofs of /theorems/ are the
+staple. Higher math is where the student becomes a real mathematician
+who looks under the hood and learns what makes things tick.
+
+Let's look at a more serious-seeming set of axioms, again from course
+material by Professor Joyce, then a proof of a theorem based, relying
+on these axioms
+
+1. Vector addition is /commutative/: $v + w = w + v$.
+2. Vector addition is /associative/: $(u + v) + w = u + (v + w)$.
+3. There is a vector, denoted $0$ such that $v + 0 = v = 0 + v$.
+4. For each $v$, there is another vector $−v$ such that $v + (−v) =
+   0$.
+5. Scalar multiplication /distributes/ over vector addition: $c(v + w) =
+   cv + cw$.
+6. Scalar multiplication /distributes/ over real addition: $(c + d)v = cv + dv$
+7. Multiplication and scalar multiplication /associate/: $c(dv) =
+   (cd)v$.
+8. The number $1$ acts as /identity/ for scalar multiplication: $1v
+   = v$.
+
+These axioms are taken from Linear Algebra. And now we'll prove a very
+basic theorem relying on these axiom truths
+
+@@html:<font color = "#650d1c">@@
+Theorem: $0v = 0$
+@@html:</font>@@
+
+...or zero times a vector $v$ is zero.
+
+@@html:<font color = "#650d1c">@@Proof: @@html:</font>@@ Since $0 +
+0 = 0$, therefore $(0 + 0)v = 0v$. By axiom *6*, that implies $0v + 0v
+= 0v$. If we could subtract $0v$ from each side, we’d be done, but
+subtraction isn’t yet defined. Still, we can add the negation of $0v$
+to each side which should accomplish about the same thing. Thus,
+
+\begin{align*}
+(0v + 0v) + (−0v) = 0v + (−0v).
+\end{align*}
+
+Next, we can associate the paretheses differently by axiom *2* to get
+
+\begin{align*}
+0v + (0v + (−0v)) = 0v + (−0v).
+\end{align*}
+
+That equation simplifies by axiom *4* to $0v + 0 = 0$, and by axiom
+*3*, that further simplifies to $0v = 0$ which is what was to be
+proved. *Q.E.D.*[fn:6]
+
+Got it? No worries (yet) if you didn't. The point is to understand
+that this so-call higher math thing wants to be built solidly on
+logical, provable facts. But yes, it's a strange world for the
+beginner who is so used to the usual "get stuff calculated" math. In
+algebra we never needed to show that an entity times zero is zero. So
+yes, here we have a thorough proof of something that we normally would
+have taken for granted. But again, so is the high math world.[fn:7]
+
+** Axiomatic Scheme
+
+And now we will list out the TLS's version of axiomatic givens
+starting with /The Ten Commandments/
+
+- *First Commandment*: When recurring on a list of atoms, ~lat~, ask two
+  questions about it ~(null? lat)~ and ~else~; when recurring on a
+  number, ~n~, ask two questions about it: ~(zero? n)~ and ~else~;
+  when recurring on a list of S-expressions, ~l~, ask three question
+  about it: ~(null?  l)~, ~(atom? ( car l))~, and ~else~.
+- *Second Commandment*: Use ~cons~ to build lists.
+- *Third Commandment*: When building a list, describe the first typical
+  element, and then ~cons~ it onto the natural recursion.
+- *Fourth Commandment*: Always change at least one argument while
+  recurring. When recurring on a list of atoms, ~lat~, use ~(cdr
+  lat)~. When recurring on a number, ~n~, use ~(sub1 n)~. And when
+  recurring on a list of S-expressions, ~l~, use ~(car l)~ and ~(cdr
+  l)~ if neither ~(null? l)~ nor ~(atom? (car l))~ are true. [One
+  argument] must be changed to be closer to termination. The changing
+  argument must be tested in the termination condition: When using
+  ~cdr~, test termination with ~null?~ and when using ~sub1~, test
+  termination with ~zero?~.
+- *Fifth Commandment*: When building a value with $+$, always use $0$
+  for the value of the terminating line, for adding $0$ does not
+  change the value of an addition.
+- *Sixth Commandment*: Simplify only after the function is correct.
+- *Seventh Commandment*: Recur on the /subparts/ that are of the same
+  nature: on the sublists of a list; on the subexpressions of an
+  arithmetic expression.
+- *Eighth Commandment*: Use help functions to abstract from
+  representations.
+- *Ninth Commandment*: Abstract common patterns with a new function.
+- *Tenth Commandment*: Build functions to collect more than one value at
+  a time.
+
+But wait there's more. Next are the /The Five Rules/
+
+- *The Law of ~car~*: The primitive ~car~ is defined only for nonempty
+  lists.
+- *The Law of ~cdr~*: The primitive ~cdr~ is defined only for nonempty
+  lists. The ~cdr~ of any nonempty list is always another list.
+- *The Law of ~cons~*: The primitive ~cons~ takes two arguments. The
+  second argument to ~cons~ must be a list. The result is a list.
+- *The Law of ~null?~*: The primitive ~null?~ is defined only for lists.
+- *The Law of ~eq?~*: The primitive ~eq?~ takes two arguments. Each must
+  be a non-numeric atom.
+
+Not many among us can take these fifteen axioms and know exactly how
+to write a Scheme program.[fn:8] But then if you've read and
+understood a textbook such as /[[https://cseweb.ucsd.edu/~gill/BWLectSite/Resources/LDGbookCOV.pdf][Lists, Decisions and Graphs...]]/ by
+Edward Bender and S. Gill Williamson, you should be able to catch on
+that these axioms are attempting is to create some sort of
+omnibus[fn:9] /list processing/ machinery. In fact Scheme's
+predecessor, Lisp, is an acronym for "list processing," because this
+is essentially what Lisp and Scheme do, i.e., they do computing tasks
+with lists. Really?! How then? Read on.
+
+So what is a list? Well, we all know in the everyday sense what a list
+is. A grocery list is a good example
+
+- eggs
+- milk
+- flour
+- potatoes
+- butter
+
+But we have a problem---at least in the math world. That's because
+there are also /sets/. So what is the difference between a list and a
+set? To the layman they might seem interchangeable. So many /Set
+Theory/ books begin with the statement, @@html:<font color =
+"#0d3db3">@@ A set is collections of things. @@html:</font>@@ Which is
+kind of what a list is too.  But to CS and math people they are
+different. Our grocery /list/ is not technically a list because, in
+the CS/math world at least, a list is defined as having a specific
+order. Think of a /string/ of letters like you're reading right
+now. In real life a string of alphabet characters is definitely a list
+because /the order of the individual letters (and spaces in between)
+---is everything/. We call strings of letters and spaces sentences
+... where all the sentences in English are made up of differing
+combinations of the twenty-six letters (times two if we consider
+upper- and lower-case), ten numerals, punctuation, and the space
+character. So again, that "grocery list" is really a set...
+
+...but then we might not call it a set either because sets allow
+duplicates. Really? Yes and no. ...although the /[[https://en.wikipedia.org/wiki/Cardinality][cardinality]]/
+of a set, i.e., its count of elements, only counts the unique
+elements, not duplicates. For example, the set $A = \{1,1,1,2,2\}$ is
+identical to $B = \{1, 2\}$. This can be explained in a few ways. The
+easiest is to realize that sets can built from /unions/ and this is
+because
+
+
+Sure, we can change the order of the "grocery list,"
+
+Let's start using Scheme syntax to denote lists. So the grocery list
+above would look like this in Scheme:
+
+#+name: 3e53dc3c-7afe-44d8-9c63-f858512eaa27
+#+begin_src scheme :eval never :exports code
+
+#+end_src
+
+ 
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] Βιγ Σξηεμερ: Big Schemer; Λιττλε Σξηεμερ: Little Schemer in
+Greek letters.
+
+[fn:2] Go [[https://en.wikipedia.org/wiki/Formalism_(philosophy_of_mathematics)][here]] to see the Wikipedia discussion about mathematic
+formalism---although it's a bit formal...
+
+[fn:3] For example the (in)famous /[[https://en.wikipedia.org/wiki/Pons_asinorum][pons asinorum]]/ in /Euclid's
+Elements/ \\
+[[file:images/Byrne_pons_asinorum.jpg]] \\
+where it is /proven/ that indeed the angles opposite the equal sides
+of an isosceles triangle are themselves equal.
+
+[fn:4] In mathematical logic the idea of /implication/ is very
+fundamental. Something /implies/ something else; because $A$, that
+means $B$ as well. Implication goes by many names: /[[https://en.wikipedia.org/wiki/Material_conditional][material
+conditional]]/, [[https://en.wikipedia.org/wiki/Modus_ponens][modus ponens]], [[https://en.wikipedia.org/wiki/Logical_consequence][logical consequence]]. We first see
+implication in programming with the basic /if-then-else/ conditional.
+
+[fn:5] /Higher math/ in the U.S. typically means those math topics
+pursued in the junior and senior year of a Bachelors math degree,
+i.e., those courses /after/ Calculus, Differential Equations, and
+Linear Algebra.
+
+[fn:6] ... /quod erat demonstrandum/, meaning "that which was to be
+demonstrated".
+
+[fn:7] Go ahead and take a "math holiday" by touring [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this page]] by
+Professor Joyce. He speaks from a quasi-set theory standpoint, but
+remember, Euclid was talking strictly about geometric shapes. Set
+theory had not been invented yet...
+
+[fn:8] Precisely none of us since key things are still missing.
+
+[fn:9] ...containing or including many items. 

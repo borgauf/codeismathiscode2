@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-01-14 Tue 21:36 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style type="text/css">
+.styledtab col:nth-of-type(1) { width:  45%; }
+.styledtab col:nth-of-type(2) { width: 55%; }
+</style>
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<img src="./images/square_partitioned_into_6_similar_rectangles_henderson_small.png"  style="padding: 0px 0px 0px 0px" alt="3-d graph" class="center">
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-org819e6b8" class="outline-2">
+<h2 id="org819e6b8">Little Schemer 1</h2>
+<div class="outline-text-2" id="text-org819e6b8">
+<figure id="orge63ca02">
+
+<figure id="orgc025086">
+<img src="images/LittleSchemerElephant1.png" alt="LittleSchemerElephant1.png">
+
+<figcaption><span class="figure-number">Figure 1: </span>The Little Schemer putting together a combinator.</figcaption>
+</figure>
+</figure>
+</div>
+</section>
+<section id="outline-container-org38570f5" class="outline-2">
+<h2 id="org38570f5"></h2>
+<div class="outline-text-2" id="text-org38570f5">
+</div>
+<div id="outline-container-org530237a" class="outline-3">
+<h3 id="org530237a">Why <i>The Little Schemer</i>?</h3>
+<div class="outline-text-3" id="text-org530237a">
+<p>
+<i><a href="https://mitpress.mit.edu/9780262560993/the-little-schemer/">The Little Schemer</a></i> (TLS) written by computer science professors
+Daniel P. Friedman and Daniel P. Friedman was a revolutionary book
+when it came out in its first edition as <i>The Little Lisper</i> based on
+the programming language Lisp in 1987. Subsequent editions switched to
+Lisp&rsquo;s younger sister language Scheme. It was so unique because it
+followed a &ldquo;<a href="https://en.wikipedia.org/wiki/Socratic_method">Socratic</a>&rdquo; dialog style of question or challenge and answer
+in left and right columns throughout the book. Below is from the very
+first page <label id='fnr.1' for='fnr-in.1.3344225' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.3344225' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+Βιγ Σξηεμερ: Big Schemer; Λιττλε Σξηεμερ: Little Schemer in
+Greek letters.
+</span>
+</p>
+
+<table id="orgd9cd98a" class="styledtab">
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Βιγ Σξηεμερ</th>
+<th scope="col" class="org-left">Λιττλε Σξηεμερ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Is it true that this is an <i>atom</i>?</td>
+<td class="org-left">Yes, because <code>atom1</code> is a string of characters beginning with the letter <code>a</code>.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>atom1</code></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Is it true that this is an <i>atom</i>?</td>
+<td class="org-left">Yes, because <code>turkey</code> is a string of characters beginning with a letter.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>turkey</code></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Is it true that this is an <i>atom</i>?</td>
+<td class="org-left">Yes, because <code>1492</code> is a string of digits.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>1492</code></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Is it true that this is an <i>atom</i>?</td>
+<td class="org-left">Yes, because <code>*abc$</code> is a string of characters beginning with a letter or special character other than a left <code>(</code> or right <code>)</code> parenthesis.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>*abc$</code></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Is it true that this is a <i>list</i>?</td>
+<td class="org-left">Yes, because <code>(atom)</code> is an atom enclosed by parentheses.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>(atom)</code></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Is it true that this is a list?</td>
+<td class="org-left">Yes, because it is a collection of atoms [separated by spaces and] enclosed by parentheses.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>(atom turkey or)</code></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+<p>
+&#x2026;or as we&rsquo;ll present it
+</p>
+
+<p>
+<span class="schemer">Βιγ Σξηεμερ:</span> Is it true
+that <code>atom1</code> is an <i>atom</i>? <br>
+<span class="schemer">Λιττλε Σξηεμερ:</span> Yes,
+because <code>atom1</code> is a string of characters beginning with the letter
+<code>a</code>. <br>
+</p>
+
+<p>
+This Socratic dialog explores in its chatty conversation style a sort
+of loose <i>mathematical formalism</i><label id='fnr.2' for='fnr-in.2.8263294' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.8263294' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+Go <a href="https://en.wikipedia.org/wiki/Formalism_(philosophy_of_mathematics)">here</a> to see the Wikipedia discussion about mathematic
+formalism&#x2014;although it&rsquo;s a bit formal&#x2026;
+</span> where you the reader will
+experience a growing mental structure of theory and syntax as the
+conversation continues and the pages turn. Instead of making direct
+statements about programming language syntax rules, we experience a
+stream of questions that will have us gradually form the facts in our
+own minds. We&rsquo;re if effect <i>backing into</i> Scheme programming and its
+underlying philosophy&#x2014;and underlying is quite a bit.
+</p>
+
+<p>
+Some things, however, are directly stated. Even before the first
+chapter entitled <i>1. Toys</i>, there are listed (jokingly named?) <i>The
+Ten Commandments</i>, followed by <i>The Five Rules</i>. Again, this is a nod
+to, a play on the mathematical formalism of an <i><a href="https://en.wikipedia.org/wiki/Axiomatic_system">axiomatic system</a></i>
+&#x2026; which is a great departure from most &ldquo;learn to code&rdquo; books where
+syntax rules are stated, examples given&#x2014;then you start writing code
+that does stuff. How exactly is TLS different? Right from the start
+the vast underlying theory of computing is hinted at, gradually,
+carefully brought into focus. &ldquo;Learn to code,&rdquo; on the other hand,
+hardly ever worries about the theory behind it all, concentrating
+instead on &ldquo;getting stuff done.&rdquo; TLS isn&rsquo;t in the least concerned with
+&ldquo;getting stuff done.&rdquo;  To be sure, we have chosen TLS because it lends
+itself so well to jumping off into the important underlying concepts
+of computer science.
+</p>
+
+<p>
+The first axiomatic system is generally accepted as being the
+multi-volume set collectively called <a href="https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms">Euclid&rsquo;s Elements</a> (EE) from
+ca. 300 BC. EE was once a staple of Junior year high school math
+&#x2026; though highly dreaded, as it was the student&rsquo;s first exposure to
+<i>proving</i> instead of just doing math. Proving something in math
+requires a deep grasp of a topic, which is completely different from
+the typical style of stimulus-response <i>conditioning</i>, e.g., &ldquo;when you
+see this, do this&rdquo; training. Starting with <a href="https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms">Euclidean Geometry</a>, the
+student is asked to see a geometric situation<label id='fnr.3' for='fnr-in.3.4017446' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.4017446' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+For example the (in)famous <i><a href="https://en.wikipedia.org/wiki/Pons_asinorum">pons asinorum</a></i> in <i>Euclid&rsquo;s
+Elements</i> <br>
+<img src="images/Byrne_pons_asinorum.jpg" alt="Byrne_pons_asinorum.jpg"> <br>
+where it is <i>proven</i> that indeed the angles opposite the equal sides
+of an isosceles triangle are themselves equal.
+</span> and understand why
+something about it is <i>necessarily</i> (proven to be) true. A proof of,
+e.g., the <i>pons asinorum</i> is a step-by-step establishing of facts
+based on Euclid&rsquo;s <i>Postulates</i> and <i>Notions</i>. This was, as many would
+say, the beginning of modern mathematics where a set of axioms could
+be called on to build <i>theorems</i>, i.e., additional true
+assumptions. <a href="https://en.wikipedia.org/wiki/Axiomatic_system">Axioms</a> go by many names, e.g., basic truths, givens,
+primitives. Here are Euclid&rsquo;s five postulates
+</p>
+
+
+<dl class="org-dl">
+<dt>P1</dt><dd>A straight line may be drawn between any two points.</dd>
+<dt>P2</dt><dd>Any terminated straight line may be extended indefinitely.</dd>
+<dt>P3</dt><dd>A circle may be drawn with any given point as center and any
+given radius.</dd>
+<dt>P4</dt><dd>All right angles are equal.</dd>
+<dt>P5</dt><dd>Through a given point \(P\) not on a line \(L\), there is one and
+only one line in the plane of \(P\) and \(L\) which does not meet \(L\).</dd>
+</dl>
+
+<p>
+The last postulate is a more modern rewording of the original meaning
+<i>truly parallel lines may exist that never cross</i>. To these first
+five, Euclid added another five basic truths, his <i>Common Notions</i>
+</p>
+
+<dl class="org-dl">
+<dt>N1</dt><dd>Things which are equal to the same thing are also equal to
+each other.</dd>
+<dt>N2</dt><dd>If equals are added to equals, the wholes are equal.</dd>
+<dt>N3</dt><dd>If equals are subtracted from equals, the remainders are equal.</dd>
+<dt>N4</dt><dd>Things which coincide with one another are equal to one another.</dd>
+<dt>N5</dt><dd>The whole is greater than the part.</dd>
+</dl>
+
+<p>
+With these ten axiomatic statements begins much geometry, logic,
+number and set theory. That is to say, great amounts of <i>implication</i>,
+&ldquo;if this then that&rdquo; can be derived from these ten accepted
+givens.<label id='fnr.4' for='fnr-in.4.4849930' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.4849930' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+In mathematical logic the idea of <i>implication</i> is very
+fundamental. Something <i>implies</i> something else; because \(A\), that
+means \(B\) as well. Implication goes by many names: <i><a href="https://en.wikipedia.org/wiki/Material_conditional">material
+conditional</a></i>, <a href="https://en.wikipedia.org/wiki/Modus_ponens">modus ponens</a>, <a href="https://en.wikipedia.org/wiki/Logical_consequence">logical consequence</a>. We first see
+implication in programming with the basic <i>if-then-else</i> conditional.
+</span> For example, N5 would seem to say something almost
+silly trivial. But as <a href="http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html">this treatment</a> explains N5 is introducing in
+odd wording the basic concept of one thing being larger than another,
+i.e., \(A>B\). Here&rsquo;s David E. Joyce&rsquo;s, professor of mathematics at Clark
+University, explanation
+</p>
+
+<blockquote>
+<p>
+To say one magnitude \(B\) is a part of another \(A\) could be taken as
+saying that \(A\) is the sum of \(B\) and \(C\) for some third magnitude
+\(C\), the remainder. Symbolically, \(A > B\) means that there is some \(C\)
+such that \(A = B + C\).
+</p>
+</blockquote>
+
+<p>
+Again, to the novice this may look like nit-picking, but real math
+comes from having these basic foundational givens&#x2014;upon which new,
+useful math is solidly, logically built. Higher math<label id='fnr.5' for='fnr-in.5.8791831' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.8791831' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+<i>Higher math</i> in the U.S. typically means those math topics
+pursued in the junior and senior year of a Bachelors math degree,
+i.e., those courses <i>after</i> Calculus, Differential Equations, and
+Linear Algebra.
+</span> is the
+realm of axiomatic math where proofs of <i>theorems</i> are the
+staple. Higher math is where the student becomes a real mathematician
+who looks under the hood and learns what makes things tick.
+</p>
+
+<p>
+Let&rsquo;s look at a more serious-seeming set of axioms, again from course
+material by Professor Joyce, then a proof of a theorem based, relying
+on these axioms
+</p>
+
+<ol class="org-ol">
+<li>Vector addition is <i>commutative</i>: \(v + w = w + v\).</li>
+<li>Vector addition is <i>associative</i>: \((u + v) + w = u + (v + w)\).</li>
+<li>There is a vector, denoted \(0\) such that \(v + 0 = v = 0 + v\).</li>
+<li>For each \(v\), there is another vector \(−v\) such that \(v + (−v) =
+   0\).</li>
+<li>Scalar multiplication <i>distributes</i> over vector addition: \(c(v + w) =
+   cv + cw\).</li>
+<li>Scalar multiplication <i>distributes</i> over real addition: \((c + d)v = cv + dv\)</li>
+<li>Multiplication and scalar multiplication <i>associate</i>: \(c(dv) =
+   (cd)v\).</li>
+<li>The number \(1\) acts as <i>identity</i> for scalar multiplication: \(1v
+   = v\).</li>
+</ol>
+
+<p>
+These axioms are taken from Linear Algebra. And now we&rsquo;ll prove a very
+basic theorem relying on these axiom truths
+</p>
+
+<p>
+<font color = "#650d1c">
+Theorem: \(0v = 0\)
+</font>
+</p>
+
+<p>
+&#x2026;or zero times a vector \(v\) is zero.
+</p>
+
+<p>
+<font color = "#650d1c">Proof: </font> Since \(0 +
+0 = 0\), therefore \((0 + 0)v = 0v\). By axiom <b>6</b>, that implies \(0v + 0v
+= 0v\). If we could subtract \(0v\) from each side, we’d be done, but
+subtraction isn’t yet defined. Still, we can add the negation of \(0v\)
+to each side which should accomplish about the same thing. Thus,
+</p>
+
+\begin{align*}
+(0v + 0v) + (−0v) = 0v + (−0v).
+\end{align*}
+
+<p>
+Next, we can associate the paretheses differently by axiom <b>2</b> to get
+</p>
+
+\begin{align*}
+0v + (0v + (−0v)) = 0v + (−0v).
+\end{align*}
+
+<p>
+That equation simplifies by axiom <b>4</b> to \(0v + 0 = 0\), and by axiom
+<b>3</b>, that further simplifies to \(0v = 0\) which is what was to be
+proved. <b>Q.E.D.</b><label id='fnr.6' for='fnr-in.6.6439167' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.6439167' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+&#x2026; <i>quod erat demonstrandum</i>, meaning &ldquo;that which was to be
+demonstrated&rdquo;.
+</span>
+</p>
+
+<p>
+Got it? No worries (yet) if you didn&rsquo;t. The point is to understand
+that this so-call higher math thing wants to be built solidly on
+logical, provable facts. But yes, it&rsquo;s a strange world for the
+beginner who is so used to the usual &ldquo;get stuff calculated&rdquo; math. In
+algebra we never needed to show that an entity times zero is zero. So
+yes, here we have a thorough proof of something that we normally would
+have taken for granted. But again, so is the high math world.<label id='fnr.7' for='fnr-in.7.7675764' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.7675764' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+Go ahead and take a &ldquo;math holiday&rdquo; by touring <a href="http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html">this page</a> by
+Professor Joyce. He speaks from a quasi-set theory standpoint, but
+remember, Euclid was talking strictly about geometric shapes. Set
+theory had not been invented yet&#x2026;
+</span>
+</p>
+</div>
+</div>
+<div id="outline-container-org94dc380" class="outline-3">
+<h3 id="org94dc380">Axiomatic Scheme</h3>
+<div class="outline-text-3" id="text-org94dc380">
+<p>
+And now we will list out the TLS&rsquo;s version of axiomatic givens
+starting with <i>The Ten Commandments</i>
+</p>
+
+<ul class="org-ul">
+<li><b>First Commandment</b>: When recurring on a list of atoms, <code>lat</code>, ask two
+questions about it <code>(null? lat)</code> and <code>else</code>; when recurring on a
+number, <code>n</code>, ask two questions about it: <code>(zero? n)</code> and <code>else</code>;
+when recurring on a list of S-expressions, <code>l</code>, ask three question
+about it: <code>(null?  l)</code>, <code>(atom? ( car l))</code>, and <code>else</code>.</li>
+<li><b>Second Commandment</b>: Use <code>cons</code> to build lists.</li>
+<li><b>Third Commandment</b>: When building a list, describe the first typical
+element, and then <code>cons</code> it onto the natural recursion.</li>
+<li><b>Fourth Commandment</b>: Always change at least one argument while
+recurring. When recurring on a list of atoms, <code>lat</code>, use <code>(cdr
+  lat)</code>. When recurring on a number, <code>n</code>, use <code>(sub1 n)</code>. And when
+recurring on a list of S-expressions, <code>l</code>, use <code>(car l)</code> and <code>(cdr
+  l)</code> if neither <code>(null? l)</code> nor <code>(atom? (car l))</code> are true. [One
+argument] must be changed to be closer to termination. The changing
+argument must be tested in the termination condition: When using
+<code>cdr</code>, test termination with <code>null?</code> and when using <code>sub1</code>, test
+termination with <code>zero?</code>.</li>
+<li><b>Fifth Commandment</b>: When building a value with \(+\), always use \(0\)
+for the value of the terminating line, for adding \(0\) does not
+change the value of an addition.</li>
+<li><b>Sixth Commandment</b>: Simplify only after the function is correct.</li>
+<li><b>Seventh Commandment</b>: Recur on the <i>subparts</i> that are of the same
+nature: on the sublists of a list; on the subexpressions of an
+arithmetic expression.</li>
+<li><b>Eighth Commandment</b>: Use help functions to abstract from
+representations.</li>
+<li><b>Ninth Commandment</b>: Abstract common patterns with a new function.</li>
+<li><b>Tenth Commandment</b>: Build functions to collect more than one value at
+a time.</li>
+</ul>
+
+<p>
+But wait there&rsquo;s more. Next are the <i>The Five Rules</i>
+</p>
+
+<ul class="org-ul">
+<li><b>The Law of <code>car</code></b>: The primitive <code>car</code> is defined only for nonempty
+lists.</li>
+<li><b>The Law of <code>cdr</code></b>: The primitive <code>cdr</code> is defined only for nonempty
+lists. The <code>cdr</code> of any nonempty list is always another list.</li>
+<li><b>The Law of <code>cons</code></b>: The primitive <code>cons</code> takes two arguments. The
+second argument to <code>cons</code> must be a list. The result is a list.</li>
+<li><b>The Law of <code>null?</code></b>: The primitive <code>null?</code> is defined only for lists.</li>
+<li><b>The Law of <code>eq?</code></b>: The primitive <code>eq?</code> takes two arguments. Each must
+be a non-numeric atom.</li>
+</ul>
+
+<p>
+Not many among us can take these fifteen axioms and know exactly how
+to write a Scheme program.<label id='fnr.8' for='fnr-in.8.3919073' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.3919073' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+Precisely none of us since key things are still missing.
+</span> But then if you&rsquo;ve read and
+understood a textbook such as <i><a href="https://cseweb.ucsd.edu/~gill/BWLectSite/Resources/LDGbookCOV.pdf">Lists, Decisions and Graphs&#x2026;</a></i> by
+Edward Bender and S. Gill Williamson, you should be able to catch on
+that these axioms are attempting is to create some sort of
+omnibus<label id='fnr.9' for='fnr-in.9.7474389' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.7474389' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+&#x2026;containing or including many items. 
+</span> <i>list processing</i> machinery. In fact Scheme&rsquo;s
+predecessor, Lisp, is an acronym for &ldquo;list processing,&rdquo; because this
+is essentially what Lisp and Scheme do, i.e., they do computing tasks
+with lists. Really?! How then? Read on.
+</p>
+
+<p>
+So what is a list? Well, we all know in the everyday sense what a list
+is. A grocery list is a good example
+</p>
+
+<ul class="org-ul">
+<li>eggs</li>
+<li>milk</li>
+<li>flour</li>
+<li>potatoes</li>
+<li>butter</li>
+</ul>
+
+<p>
+But we have a problem&#x2014;at least in the math world. That&rsquo;s because
+there are also <i>sets</i>. So what is the difference between a list and a
+set? To the layman they might seem interchangeable. So many <i>Set
+Theory</i> books begin with the statement, <font color =
+"#0d3db3"> A set is collections of things. </font> Which is
+kind of what a list is too.  But to CS and math people they are
+different. Our grocery <i>list</i> is not technically a list because, in
+the CS/math world at least, a list is defined as having a specific
+order. Think of a <i>string</i> of letters like you&rsquo;re reading right
+now. In real life a string of alphabet characters is definitely a list
+because <i>the order of the individual letters (and spaces in between)
+&#x2014;is everything</i>. We call strings of letters and spaces sentences
+&#x2026; where all the sentences in English are made up of differing
+combinations of the twenty-six letters (times two if we consider
+upper- and lower-case), ten numerals, punctuation, and the space
+character. So again, that &ldquo;grocery list&rdquo; is really a set&#x2026;
+</p>
+
+<p>
+&#x2026;but then we might not call it a set either because sets allow
+duplicates. Really? Yes and no. &#x2026;although the <i><a href="https://en.wikipedia.org/wiki/Cardinality">cardinality</a></i>
+of a set, i.e., its count of elements, only counts the unique
+elements, not duplicates. For example, the set \(A = \{1,1,1,2,2\}\) is
+identical to \(B = \{1, 2\}\). This can be explained in a few ways. The
+easiest is to realize that sets can built from <i>unions</i> and this is
+because
+</p>
+
+
+<p>
+Sure, we can change the order of the &ldquo;grocery list,&rdquo;
+</p>
+
+<p>
+Let&rsquo;s start using Scheme syntax to denote lists. So the grocery list
+above would look like this in Scheme:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="orgbec9ad4">
+</pre>
+</div>
+
+
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

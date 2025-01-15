@@ -143,8 +143,9 @@ body {
     /* background-color: #ffffff; */
     background-color:#f9f6ef;
     letter-spacing: .04rem;
-    color: #2e2e2e;
-    /* color: #000000; */
+    /* color: #2e2e2e; */
+    /* color: #1e1e1e; */
+    color: #000000;
 
     max-width: 1400px;
     /* begin old */
@@ -272,6 +273,14 @@ span.fraktur {
     font-size: 1.7rem;
 }
 
+.org-left {
+    padding-right: 15px;
+}
+
+span.schemer {
+    font-size: 1.4rem;
+}
+
 
 span.star {
     content: "\1F7C4";
@@ -299,7 +308,7 @@ caption.t-above {
 h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11, h12, h13, h14, h15 {
     font-weight: normal;
     /* color:#7d7d7d; */
-    color: #333;
+    color: #222;
     /* color:#365896; */
     font-family: cmu_sans_serifmedium, 'Computer Modern Serif', mulishregular, georgia;
     line-height: 1.2em;
@@ -445,6 +454,21 @@ section > ul {
 dt:not(:first-child),
 li:not(:first-child) {
     margin-top: 0.25rem;
+}
+
+dt {
+    float: left;
+    clear: left;
+}
+
+dt::after { 
+    content: ":";
+}
+
+dd { 
+    /* margin: 0 0 0 80px;  */
+    /* padding: 0 0 0.5em 0;  */
+    /* left-padding: -5px; */
 }
 
 figure {

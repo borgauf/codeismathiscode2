@@ -1,0 +1,216 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: LittleSchemer1.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* Little Schemer 1
+
+#+begin_figure
+#+CAPTION: The Little Schemer putting together a combinator.
+[[file:images/LittleSchemerElephant1.png]]
+#+end_figure
+
+#+begin_export html
+<img src="./images/LittleSchemerElephant1.png" width="750px" style="padding: 15px 0px 0px 0px" alt="Little Schemer" class="center">
+<span class="cap">The Little Schemer baby elephant</span>
+#+end_export
+
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/codeismathiscode2"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&friedman1995little]]
+:END:
+
+
+* 
+
+** Why /The Little Schemer/?
+
+/[[https://mitpress.mit.edu/9780262560993/the-little-schemer/][The Little Schemer]]/ by computer science professors Daniel P. Friedman
+and Daniel P. Friedman was a revolutionary book when it came out in
+its first edition as /The Little Lisper/ based on the programming
+language Lisp in 1987. Subsequent editions switched to the sister
+language Scheme. It was so unique because it followed a "Socratic"
+dialog style of question/challenge and answer in left and right
+columns[fn:1]
+
+#+HTML_HEAD: <style type="text/css">
+#+HTML_HEAD: .styledtab col:nth-of-type(1) { width:  45%; }
+#+HTML_HEAD: .styledtab col:nth-of-type(2) { width: 55%; }
+#+HTML_HEAD: </style>
+
+
+#+NAME: LSTable1
+#+ATTR_HTML: :border 0
+#+ATTR_HTML: :class fullwidth
+#+ATTR_HTML: :class styledtab
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Βιγ Σξηεμερ                        | Λιττλε Σξηεμερ                                                                                                                              |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? | Yes, because ~atom~ is a string of characters beginning with the letter ~a~.                                                                |
+| ~atom1~                            |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? | Yes, because ~turkey~ is a string of characters beginning with a letter.                                                                    |
+| ~turkey~                           |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? | Yes, because ~1492~ is a string of digits.                                                                                                  |
+| ~1492~                             |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? | Yes, because ~*abc$~ is a string of characters beginning with a letter or special character other than a left ~(~ or right ~)~ parenthesis. |
+| ~*abc$~                            |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is a /list/?  | Yes, because ~(atom)~ is an atom enclosed by parentheses.                                                                                   |
+| ~(atom)~                           |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is a list?    | Yes, because it is a collection of atoms [separated by spaces and] enclosed by parentheses.                                                 |
+| ~(atom turkey or)~                 |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+
+or...
+
+@@html:<span class="schemer">@@Βιγ Σξηεμερ:@@html:</span>@@ Is it true
+that ~atom1~ is an /atom/? \\
+@@html:<span class="schemer">@@Λιττλε Σξηεμερ:@@html:</span>@@ Yes,
+because ~atom1~ is a string of characters beginning with the letter
+~a~. \\
+
+# #+HTML_HEAD: <style type="text/css">
+# #+HTML_HEAD: .styledtable col:nth-of-type(1) { width:  2%; background: orange; }
+# #+HTML_HEAD: .styledtable col:nth-of-type(2) { width: 80%; background: dodgerblue; }
+# #+HTML_HEAD: .styledtable col:nth-of-type(3) { width: 18%; background: hotpink; }
+# #+HTML_HEAD: </style>
+
+# #+ATTR_HTML: :class styledtable
+# #+attr_html: :border 1 :rules all :frame border :width 100%
+# |----+-------------------------------------+-----------------|
+# | ID | BUG                                 | Result          |
+# |----+-------------------------------------+-----------------|
+# |  1 | jdkkskdjskdsdjsdljskdjfskfjksdjfksf | ok              |
+# |  2 | 823jjsljfdkjsdskkkkkuuffggg         | not bug         |
+# |  3 | aaaaahhaaaaa                        | can't reproduce |
+# |----+-------------------------------------+-----------------|
+
+
+#+ATTR_HTML: :style border-collapse: separate; border-spacing: 30px;
+| Column 1 | Column 2 |
+|----------+----------|
+| Data 1   | Data 2   |
+
+#+NAME: LSTable2
+#+ATTR_HTML: :class fullwidth
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Βιγ Σξηεμερ                        | Λιττλε Σξηεμερ                                                                                                                              |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? | Yes, because ~atom~ is a string of characters beginning with the letter ~a~.                                                                |
+| ~atom1~                            |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? | Yes, because ~turkey~ is a string of characters beginning with a letter.                                                                    |
+| ~turkey~                           |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? | Yes, because ~1492~ is a string of digits.                                                                                                  |
+| ~1492~                             |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? | Yes, because ~*abc$~ is a string of characters beginning with a letter or special character other than a left ~(~ or right ~)~ parenthesis. |
+| ~*abc$~                            |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is a /list/?  | Yes, because ~(atom)~ is an atom enclosed by parentheses.                                                                                   |
+| ~(atom)~                           |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is a list?    | Yes, because it is a collection of atoms [separated by spaces and] enclosed by parentheses.                                                 |
+| ~(atom turkey or)~                 |                                                                                                                                             |
+|                                    |                                                                                                                                             |
+
+
+#+ATTR_HTML: :class fullwidth
+#+begin_figure
+#+CAPTION: Edward Tufte’s English translation of the Napoleon’s March data visualization. From Beautiful Evidence, page 122-124.
+[[https://edwardtufte.github.io/tufte-css/img/napoleons-march.png]]
+#+end_figure
+
+#+HTML_HEAD: <style type="text/css">
+#+HTML_HEAD: .styledtable col:nth-of-type(1) { width:  2%; background: orange; }
+#+HTML_HEAD: .styledtable col:nth-of-type(2) { width: 80%; background: dodgerblue; }
+#+HTML_HEAD: .styledtable col:nth-of-type(3) { width: 18%; background: hotpink; }
+#+HTML_HEAD: </style>
+
+#+ATTR_HTML: :class styledtable
+#+attr_html: :border 1 :rules all :frame border :width 100%
+|----+-------------------------------------+-----------------|
+| ID | BUG                                 | Result          |
+|----+-------------------------------------+-----------------|
+|  1 | jdkkskdjskdsdjsdljskdjfskfjksdjfksf | ok              |
+|  2 | 823jjsljfdkjsdskkkkkuuffggg         | not bug         |
+|  3 | aaaaahhaaaaa                        | can't reproduct |
+|----+-------------------------------------+-----------------|
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] Βιγ Σξηεμερ: Big Schemer; Λιττλε Σξηεμερ: Little Schemer in
+Greek letters.

@@ -329,7 +329,7 @@ article ol ul ol .sidenote, article ol ul ol .marginnote { /* 11/8 = 11/10 X(10/
 }
 /* fix padding issues first and make them percentages */
 article dl > dd {
-    margin-left: calc(100% / 10);
+    margin-left: calc(100% / 13); /* changed from 10 to 13 20250113 */
 }
 /* fix sidenote width and margin-right */
 article dl dt .sidenote, article dl dt .marginnote {
