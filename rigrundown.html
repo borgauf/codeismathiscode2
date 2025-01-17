@@ -1,21 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<!-- 2022-05-30 Mon 17:53 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<!-- 2025-01-15 Wed 15:02 -->
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
 </head>
 <body>
-<div id="content" class="content">
+<article id="content" class="content">
 <div class="header">
 <link rel="stylesheet" href="hamb.css">
 <link rel="stylesheet" href="tufte.css">
-<img src="./images/heading6.png"  style="padding: 0px 0px 22px 0px" alt="3-d graph" class="center">
+<link rel="stylesheet" href="ox-tufte.css">
+<img src="./images/square_partitioned_into_6_similar_rectangles_henderson_small.png"  style="padding: 0px 0px 0px 0px" alt="3-d graph" class="center">
 
 <p>
 
@@ -43,31 +59,36 @@
     -->
     <ul id="menu">
       <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
       <a href="preface.html" target="_blank"><li>Preface</li></a>
       <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
-      <a href="numbers.html" target="_blank"><li>Numbers</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
     </ul>
   </div>
 </nav>
 </div>
 </p>
-
-<div id="outline-container-orgef5554f" class="outline-2">
-<h2 id="orgef5554f"><span class="section-number-2">1.</span> Rig rundown</h2>
-<div class="outline-text-2" id="text-1">
+<section id="outline-container-org0043671" class="outline-2">
+<h2 id="org0043671">Rig rundown</h2>
+<div class="outline-text-2" id="text-org0043671">
 <p>
 Here we will discuss in some detail how to get set up for <i>CIMIC</i>.
 </p>
 </div>
-</div>
-
-<div id="outline-container-org457f41b" class="outline-2">
-<h2 id="org457f41b"><span class="section-number-2">2.</span> The Box</h2>
-<div class="outline-text-2" id="text-2">
+</section>
+<section id="outline-container-org0c8fbd7" class="outline-2">
+<h2 id="org0c8fbd7">Your &ldquo;box&rdquo;</h2>
+<div class="outline-text-2" id="text-org0c8fbd7">
 <p>
 Your &ldquo;box&rdquo; should be a desktop or laptop computer with a monitor
 capable of displaying at least 1920x1080. Don&rsquo;t try anything
-less. Why? For one, the <i>CIMIC</i> webpages are utilizing the Edward
+less. Why? For one, the <i>CIMMIC</i> webpages are utilizing the Edward
 Tufte CSS, which will require at least 1920x1080 screen resolution to
 fit without scrolling and slider bar weirdness. Another consideration
 is screen real estate, i.e., you&rsquo;ll want as much as you can get when
@@ -90,52 +111,48 @@ keyboard, mouse.
 </p>
 
 <ul class="org-ul">
-<li>Q: What about a Raspberry Pi&#x2014;or one of its similar competitors?</li>
+<li>Q: What about a Raspberry Pi?</li>
 <li>A: Sure, but get the very latest, i.e., nothing less than 8 GB
-memory. The latest RPi (as of now) is the Raspberry Pi 4 available with
+memory. The latest (as of now) is the Raspberry Pi 4 available with
 8 GB. It has two micro-HDMI ports supporting up to 2 4k-resolution
 monitors.</li>
 </ul>
 </div>
-
-<div id="outline-container-org3def897" class="outline-4">
-<h4 id="org3def897"><span class="section-number-4">2.0.1.</span> OS</h4>
-<div class="outline-text-4" id="text-2-0-1">
+<div id="outline-container-orga55bdd4" class="outline-4">
+<h4 id="orga55bdd4">OS</h4>
+<div class="outline-text-4" id="text-orga55bdd4">
 <p>
-The preferred operating system for CIMIC is Linux and this chapter
-will assume a Linux Ubuntu install. But Macs are fine, too, and
-Windows can be made to work with everything we&rsquo;ll be doing. Still, the
-professional and academic STEM world has lots of Linux and Mac. Linux
-is free for the downloading, by the way. I use the latest desktop
-Ubuntu version 22.04, which is easy to install. If you&rsquo;re using an
-older machine with not as much speed, power, and memory (e.g., a
-Thinkpad T430), then you might consider <a href="https://lubuntu.me/">lubuntu</a>, which is a
+The preferred operating system for CIMMIC is Linux, but Macs are fine,
+too. Windows can be made to work with everything we&rsquo;ll be doing, but
+the professional STEM world is predominantly Linux and, increasingly,
+Mac. Linux is free for the downloading, by the way. I use the latest
+desktop Ubuntu version 22.04, which is easy to install. If you&rsquo;re
+using an older machine with not as much speed, power, and memory
+(e.g., a Thinkpad T430), then you might consider <a href="https://lubuntu.me/">lubuntu</a>, which is a
 lightweight version of regular desktop Ubuntu. Make sure to go with a
 64-bit version, though. 32-bit versions cannot use more than 4 GB of
 RAM memory, and much software these days depends on a 64-bit OS.
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-orga3bce7c" class="outline-3">
-<h3 id="orga3bce7c"><span class="section-number-3">2.1.</span> A typical OS install on older equipment</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-orgf42ba8d" class="outline-3">
+<h3 id="orgf42ba8d">A typical OS install on older equipment</h3>
+<div class="outline-text-3" id="text-orgf42ba8d">
 <p>
 If you have a machine that is three years old or less, go ahead and
 install a modern version of Linux. I use the latest Ubuntu 22.04 on my
 Thinkpad T14, but for this tutorial I pulled out an old Lenovo T430s
 and will install <a href="https://lubuntu.me/">lubuntu</a> on it. From the Download page, it makes
-lighter demands on the hardware<label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle"/><span class="sidenote">
-If you have only 4 GB of RAM you don&rsquo;t want the UI windowing
-system taking up 2 GB of that.
+lighter demands on the hardware<label id='fnr.1' for='fnr-in.1.8101394' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.8101394' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+If you have on 4 GB of RAM, then you don&rsquo;t want the user
+interface windowing system taking up 2 GB of that.
 </span>.
 </p>
 
 <ul class="org-ul">
 <li>Download lubuntu from their site; choose the latest Desktop 64-bit
 version.</li>
-<li>Once downloaded, make a bootable USB drive<label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle"/><span class="sidenote">
+<li>Once downloaded, make a bootable USB drive<label id='fnr.2' for='fnr-in.2.2061938' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.2061938' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
 The USB drive must have 4 GB storage or greater.
 </span> . If you only have access to a Windows
 machine, follow <a href="https://itsfoss.com/create-live-usb-of-ubuntu-in-windows/">these</a> instructions. If you only have a Mac follow
@@ -150,7 +167,7 @@ simply
 <li>Once prepared, the bootable drive should be ready for your
 destination machine. Simply plug it into the machine while off,
 start the machine, and it should boot to a live trial/install
-version of lubuntu<label for="3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="3" class="margin-toggle"/><span class="sidenote">
+version of lubuntu<label id='fnr.3' for='fnr-in.3.8196407' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.8196407' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
 On my particular machine I had to interrupt the startup and
 change a BIOS setting to get it to boot from the USB drive. YMMV (your
 mileage may vary).
@@ -178,17 +195,17 @@ its install procedure, which can take a few minutes.</li>
 <li>The system will not reboot, this you do yourself. Once rebooting
 make sure the USB has been removed.</li>
 <li>Once back in, press Control-Alt-t to get a command line
-terminal<label for="4" class="margin-toggle sidenote-number"></label><input type="checkbox" id="4" class="margin-toggle"/><span class="sidenote">
+terminal<label id='fnr.4' for='fnr-in.4.7200933' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.7200933' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
 You might want to take <a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">this tutorial</a> to learn your way around a
 Linux command line terminal.
-</span>. Here you will type in commands and hit Enter<label for="5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="5" class="margin-toggle"/><span class="sidenote">
+</span>. Here you will type in commands and hit Enter<label id='fnr.5' for='fnr-in.5.711221' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.711221' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
 Dont type <code>&gt;</code>. That&rsquo;s just meant to be the command line prompt.
 </span></li>
 </ul>
-<pre class="example" id="orgfd12dcf">
+<pre class="example" id="org0c2fec5">
   &gt; sudo apt update
 </pre>
-<pre class="example" id="org9a92f55">
+<pre class="example" id="org8a1512e">
   &gt; sudo apt upgrade
 </pre>
 <ul class="org-ul">
@@ -201,12 +218,9 @@ installing and might require another restart. Do so.</li>
 </ul>
 </div>
 </div>
-</div>
-
-
-<div id="outline-container-orgff2a2be" class="outline-2">
-<h2 id="orgff2a2be"><span class="section-number-2">3.</span> Installing software</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org72a3840" class="outline-3">
+<h3 id="org72a3840">Installing software</h3>
+<div class="outline-text-3" id="text-org72a3840">
 <ul class="org-ul">
 <li>Again, open a terminal with Ctr-Alt-t. With the up-arrow, your
 terminal should have remembered your previous commands. Redo the
@@ -220,11 +234,9 @@ update and upgrade commands just to be safe.</li>
 </ul></li>
 </ul>
 </div>
-
-
-<div id="outline-container-orga3209e6" class="outline-3">
-<h3 id="orga3209e6"><span class="section-number-3">3.1.</span> Synaptic package manager</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-orgc025086" class="outline-4">
+<h4 id="orgc025086">Synaptic package manager</h4>
+<div class="outline-text-4" id="text-orgc025086">
 <p>
 Synaptic Package Manager is a slightly easier way to get most of the
 software we&rsquo;ll need. We&rsquo;ll go back and forth between the command line
@@ -234,7 +246,7 @@ and Synaptic to get new software
 <ul class="org-ul">
 <li>In the terminal type</li>
 </ul>
-<pre class="example" id="org0d73e20">
+<pre class="example" id="org5c0e423">
 &gt; sudo apt install synaptic
 </pre>
 <ul class="org-ul">
@@ -247,21 +259,20 @@ password.</li>
 <li>check the box for gnuplot; it should be green when selected</li>
 <li>agree to the additional packages</li>
 <li>click Apply</li>
-<li>kill Synaptic<label for="6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="6" class="margin-toggle"/><span class="sidenote">
+<li>kill Synaptic<label id='fnr.6' for='fnr-in.6.2535754' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.2535754' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
 FYI, if Synaptic is left open, you cannot install software from
-the command line. So it&rsquo;s Synaptic <b>or</b> the command line, not both.
+the command line. So it&rsquo;s Synaptic or the command line, not both.
 </span></li>
 </ul></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgbfb977d" class="outline-3">
-<h3 id="orgbfb977d"><span class="section-number-3">3.2.</span> Chrome browser</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-orgd9cd98a" class="outline-4">
+<h4 id="orgd9cd98a">Chrome browser</h4>
+<div class="outline-text-4" id="text-orgd9cd98a">
 <p>
 I use the Google Chrome browser. YMMV. We&rsquo;ll install it manually from
-a raw <code>.deb</code> package for practice<label for="7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="7" class="margin-toggle"/><span class="sidenote">
+a raw <code>.deb</code> package for practice<label id='fnr.7' for='fnr-in.7.1165058' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.1165058' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
 FYI, there are two other software install methods on Ubuntu,
 <i>snaps</i> and <i>flatpak</i>. More later.
 </span>.
@@ -278,7 +289,7 @@ the Downloads directory.</li>
 command line and run. This will download the Chrome <code>.deb</code> file into
 Downloads.</li>
 </ul>
-<pre class="example" id="org474837e">
+<pre class="example" id="org819e6b8">
 &gt; wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 </pre>
 <ul class="org-ul">
@@ -286,16 +297,14 @@ Downloads.</li>
 as adding Chrome to your Software Sources, Other Software section
 for updates.</li>
 </ul>
-<pre class="example" id="orgbbb2729">
+<pre class="example" id="org496e461">
 &gt; sudo dpkg -i google-chrome-stable_current_amd64.deb
 </pre>
 </div>
 </div>
-
-
-<div id="outline-container-org00b35ea" class="outline-3">
-<h3 id="org00b35ea"><span class="section-number-3">3.3.</span> Emacs</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-orgc36236b" class="outline-4">
+<h4 id="orgc36236b">Emacs</h4>
+<div class="outline-text-4" id="text-orgc36236b">
 <p>
 You are free to use any text editor you please, but the &ldquo;official&rdquo;
 text editor of CIMMIC will be Gnu Emacs. The main reason is that Emacs
@@ -313,23 +322,23 @@ To install it on our lubuntu
 <ul class="org-ul">
 <li>Download the latest from <a href="http://mirror.team-cymru.com/gnu/emacs/">here</a> into your Downloads directory. You
 want the latest, so scroll to the bottom. Right now that will be
-<code>emacs-28.1.tar.gz</code> at 71 MB.</li>
+<code>emacs-29.4.tar.gz</code> at ca. 78 MB.</li>
 <li>Before we unzip and install it, we need to install some supporting
 software. At the command line enter</li>
 </ul>
-<pre class="example" id="org438a6dd">
+<pre class="example" id="orgb22ef7e">
 &gt; sudo apt install build-essential
 </pre>
 <ul class="org-ul">
 <li>We&rsquo;ll refresh again <i>and</i> get more Emacs dependencies with a
-one-liner (here two commands are joined with <code>&amp;&amp;</code>)<label for="8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="8" class="margin-toggle"/><span class="sidenote">
+one-liner (here two commands are joined with <code>&amp;&amp;</code>)<label id='fnr.8' for='fnr-in.8.4017446' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.4017446' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
 If you get a screen asking about mail configuration, just
 choose <code>No configuration</code>, hit Tab to <code>&lt;Ok&gt;</code> and hit Enter. Repeat if
 another screen appears. Software will continue to download and
 install.
 </span></li>
 </ul>
-<pre class="example" id="orgbc44691">
+<pre class="example" id="org8b8830a">
 &gt; sudo apt update &amp;&amp; sudo apt build-dep emacs
 </pre>
 <ul class="org-ul">
@@ -337,19 +346,19 @@ install.
 on the file drawer icon.
 <ul class="org-ul">
 <li>Go to Downloads</li>
-<li>Right-click on <code>emacs-28.1.tar.gz</code></li>
+<li>Right-click on <code>emacs-29.4.tar.gz</code></li>
 <li>From dialog box choose Extract here.</li>
 </ul></li>
 <li>In your terminal <code>cd</code> into the <code>emacs-...</code> directory and enter this
 command</li>
 </ul>
-<pre class="example" id="org87c7936">
+<pre class="example" id="org50a2617">
 ./autogen.sh
 </pre>
 <ul class="org-ul">
 <li>in the terminal, type</li>
 </ul>
-<pre class="example" id="org3d64bfe">
+<pre class="example" id="org3f63f7f">
 &gt; gcc --version
 </pre>
 <ul class="org-ul">
@@ -364,37 +373,38 @@ command</li>
 directory by typing <code>pwd</code></li>
 <li>Type this command</li>
 </ul>
-<pre class="example" id="org70dd037">
-&gt; ./configure --with-cairo --with-native-compilation
+<pre class="example" id="org648c2f4">
+&gt; ./configure --without-compress-install --with-native-compilation --with-json --with-mailutils --with-tree-sitter CC=gcc-12
+</pre>
+<ul class="org-ul">
+<li>Once this completes, enter this command which will use all cores on
+your computer to save time</li>
+</ul>
+<pre class="example" id="org530237a">
+&gt; make -j$(nproc)
 </pre>
 <ul class="org-ul">
 <li>Once this completes, enter this command</li>
 </ul>
-<pre class="example" id="orgc887704">
-&gt; make
-</pre>
-<ul class="org-ul">
-<li>Once this completes, enter this command</li>
-</ul>
-<pre class="example" id="org1613e66">
+<pre class="example" id="org651f861">
 &gt; sudo make install
 </pre>
 <ul class="org-ul">
 <li>Lastly</li>
 </ul>
-<pre class="example" id="org6244155">
+<pre class="example" id="org6ee8555">
 sudo make clean
 </pre>
 <ul class="org-ul">
 <li>Now a plain-vanilla, bare-bones Emacs is installed, enter this to
-start it up<label for="9" class="margin-toggle sidenote-number"></label><input type="checkbox" id="9" class="margin-toggle"/><span class="sidenote">
+start it up<label id='fnr.9' for='fnr-in.9.8006679' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.8006679' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
 The <code>&amp;</code> after the executable <code>emacs</code> has Emacs start, but gives
 you back your command line. Otherwise, that command line would be tied
 up until you ended Emacs. In any case, Ctr-Shift-t will start a new
 command line tab inside the terminal.
 </span></li>
 </ul>
-<pre class="example" id="org156e84d">
+<pre class="example" id="orgbec9ad4">
 &gt; emacs &amp;
 </pre>
 
@@ -409,16 +419,16 @@ installing the very popular programmer&rsquo;s font Julia Mono.
 <li>Start by checking at the command line whether the version control
 system <code>git</code> is installed</li>
 </ul>
-<pre class="example" id="org5baf45e">
+<pre class="example" id="org94dc380">
 &gt; which git
 </pre>
 <ul class="org-ul">
-<li>If it is not, enter this<label for="10" class="margin-toggle sidenote-number"></label><input type="checkbox" id="10" class="margin-toggle"/><span class="sidenote">
+<li>If it is not, enter this<label id='fnr.10' for='fnr-in.10.4693493' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.4693493' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
 Don&rsquo;t worry if you initiate an install for something already
 installed. lubuntu will just tell you it&rsquo;s already installed.
 </span></li>
 </ul>
-<pre class="example" id="org6f69185">
+<pre class="example" id="org7e0b801">
 &gt; sudo apt install git
 </pre>
 <ul class="org-ul">
@@ -428,12 +438,12 @@ installed. lubuntu will just tell you it&rsquo;s already installed.
 <li>On the Github page click the Code drop-down and copy the whole
 <code>https...</code> line</li>
 <li>Back at the command line type <code>git clone</code> then paste in the
-<code>http...</code> string<label for="11" class="margin-toggle sidenote-number"></label><input type="checkbox" id="11" class="margin-toggle"/><span class="sidenote">
+<code>http...</code> string<label id='fnr.11' for='fnr-in.11.6487660' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.6487660' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
 This might take a while to download&#x2026;
 </span></li>
 </ul></li>
 </ul>
-<pre class="example" id="orga5ff677">
+<pre class="example" id="orga4ab287">
 &gt; git clone https://github.com/cormullion/juliamono.git
 </pre>
 <ul class="org-ul">
@@ -441,128 +451,8 @@ This might take a while to download&#x2026;
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org8822351" class="outline-3">
-<h3 id="org8822351"><span class="section-number-3">3.4.</span> Installing LaTeX</h3>
-<div class="outline-text-3" id="text-3-4">
-<p>
-You&rsquo;ll want to install <b><a href="https://www.tug.org/texlive/">TeX Live</a></b> from the <i>TeX Users Group</i>, on your
-system, even though we won&rsquo;t be using it right away. In fact, we&rsquo;ll
-rely on Emacs Org Mode to do mainly just web page generation at
-first. Still, these days LaTeX is in demand by many professors who
-want, e.g., assignments submitted as LaTeX documents. Learn now before
-the rush is our whole idea here at CIMIC.
-</p>
-
-<ul class="org-ul">
-<li>In the terminal type&#x2026;</li>
-</ul>
-<pre class="example" id="org7ec7aa4">
-&gt; sudo apt install texlive-full
-</pre>
-<ul class="org-ul">
-<li>&#x2026;which will take a while since it&rsquo;s quite large.</li>
-<li>test whether it&rsquo;s there with</li>
-</ul>
-<pre class="example" id="org82017d4">
-&gt; tex --version
-</pre>
 </div>
-</div>
-
-
-<div id="outline-container-org757e1e3" class="outline-3">
-<h3 id="org757e1e3"><span class="section-number-3">3.5.</span> Installing Gnuplot</h3>
-<div class="outline-text-3" id="text-3-5">
-<p>
-<a href="http://www.gnuplot.info/">Gnuplot</a> has been around for a while and is quite bread-and-butter for
-STEM diagrams, graphs, and charts. We&rsquo;ll provide a separate tutorial
-on getting some rudimentary things going on it. Actually, we installed
-it above as a practice run for the Synaptic Package Manager, but it
-won&rsquo;t hurt to make sure with a command-line install
-</p>
-
-<ul class="org-ul">
-<li>In a terminal type&#x2026;</li>
-</ul>
-<pre class="example" id="org6e0c4fb">
-&gt; sudo apt install gnuplot gnuplot-data gnuplot-qt
-</pre>
-<ul class="org-ul">
-<li>&#x2026;you should get back message saying <code>gnuplot is already the newest
-  version...</code>. Good.</li>
-</ul>
-
-
-
-
-
-
-<p>
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense" class="center"></a>
-</p>
-</div>
-</div>
-</div>
-<!-- Footnotes --><!-- 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-If you have only 4 GB of RAM you don&rsquo;t want the UI windowing
-system taking up 2 GB of that.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-The USB drive must have 4 GB storage or greater.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-On my particular machine I had to interrupt the startup and
-change a BIOS setting to get it to boot from the USB drive. YMMV (your
-mileage may vary).
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-You might want to take <a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">this tutorial</a> to learn your way around a
-Linux command line terminal.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-Dont type <code>&gt;</code>. That&rsquo;s just meant to be the command line prompt.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-FYI, if Synaptic is left open, you cannot install software from
-the command line. So it&rsquo;s Synaptic <b>or</b> the command line, not both.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-FYI, there are two other software install methods on Ubuntu,
-<i>snaps</i> and <i>flatpak</i>. More later.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8" role="doc-backlink">8</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-If you get a screen asking about mail configuration, just
-choose <code>No configuration</code>, hit Tab to <code>&lt;Ok&gt;</code> and hit Enter. Repeat if
-another screen appears. Software will continue to download and
-install.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9" role="doc-backlink">9</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-The <code>&amp;</code> after the executable <code>emacs</code> has Emacs start, but gives
-you back your command line. Otherwise, that command line would be tied
-up until you ended Emacs. In any case, Ctr-Shift-t will start a new
-command line tab inside the terminal.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10" role="doc-backlink">10</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-Don&rsquo;t worry if you initiate an install for something already
-installed. lubuntu will just tell you it&rsquo;s already installed.
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11" role="doc-backlink">11</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-This might take a while to download&#x2026;
-</p></div></div>
-
- --></div>
+</section>
+</article>
 </body>
 </html>
