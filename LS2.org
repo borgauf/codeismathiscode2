@@ -1,0 +1,210 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: LittleSchemer2.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* Little Schemer 2
+
+#+begin_figure
+#+CAPTION: The Little Schemer putting together a combinator.
+[[file:images/LittleSchemerElephant1.png]]
+#+end_figure
+
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/codeismathiscode2"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&friedman1995little]]
+:END:
+
+
+* 
+
+** What are expressions?
+
+As mentioned previously /functional/ as opposed to /procedural/ or
+/imperative/ programming emphasizes functions which are utilized in a
+mathematical way. In math and CS literature we see the concept of a
+[[https://en.wikipedia.org/wiki/Expression_(mathematics)][mathematical expressions]] used over and over again. Here's what
+Wikipedia says first-paragraph \\
+\\
+⇲ @@html:<font color = "#0d3db3">@@ In mathematics, an *expression* is
+a written arrangement of symbols following the context-dependent,
+syntactic conventions of mathematical notation. Symbols can denote
+numbers, variables, operations, and functions. Other symbols include
+punctuation marks and brackets, used for grouping where there is not a
+well-defined order of operations.  @@html:</font>@@ \\
+\\
+which is a bit dense. But then it gives an example of $7x - 5 = 2$
+where the whole thing is considered an /equation/ while the left- and
+right-hand sides by themselves are called /expressions/. And then the
+example of the inequality $8x - 5 \ge 3$ is a formula, while the $8x -
+5$ part is an expression. But apparently /equations can be expressions
+too/...
+
+One important trait of expressions is they might be evaluated or
+simplified to find equivalent values. The expression $8 \cdot 5 - 2$
+simplifies to $16 - 5$ and evaluates to $11$. And sometimes an
+expression comes from transcribing a statement, e.g., "One number is
+six more than half of another number."  So if the other number is
+represented as $a$ then a mathematical expression of this statement
+could be
+
+\begin{align*}
+\frac{a}{2} + 6
+\end{align*}
+
+But again, an equation can be an expression after all.[fn:1] If an
+expression is, as restated from above, @@html:<font color =
+"#0d3db3">@@any way of combining numbers and symbols in a way that
+is syntactically correct@@html:</font>@@, then
+
++ $1 + 2$
++ $3x - 5$
++ y = x
+
+are all expressions, while $5+ = 7$ means nothing because its syntax
+is false. And so an equation is an expression that has /equality/
+in it. As we saw above, $2x + 1 = 7$ is an equation, but the $2x +
+1$ part is just an expression.
+
+/But then is a function an expression?/ For the time being, we'll give
+an ad hoc definition of a function and then later really take it apart
+and analyze it in depth \\
+
+@@html:<font color = "#0d3db3">@@ A *function* is a /relation/[fn:2]
+between a /set/[fn:3] of inputs and a set of permissible outputs with the
+property that each input is related to exactly one output. A function
+can be expressed as a relationship between variables where one
+variable (the dependent variable) is uniquely determined by the other
+variable(s) (the independent variable).@@html:</font>@@ \\
+\\
+The /expression/ $y = f(x)$ tells us for the function $f$ that $x$ is
+the independent variable and $y$ then depends on which $x$ is being
+evaluated.
+
+𝖟𝕭: $y = e^x$ is an expression because it is syntactically valid; it
+is an equation because of the equals sign. But is it a function? Just
+in this form we haven't decided which is the dependent or the
+independent value. We could plug in values for $y$ or values for $x$
+as it is now written. To be specific we could write it as
+
+\begin{align*}
+y = f(x) = e^x
+\end{align*}
+
+and now we have established which is independent ($x$) and which is
+dependent ($y$). So we will indeed say @@html:<font color =
+"#0d3db3">@@all functions are expressions.@@html:</font>@@
+
+
+
+Next, we will discuss the idea of a *symbolic expression* as Lisp and
+Scheme means it.
+
+
+
+
+
+
+
+
+
+
+#+name: e45cfb6d-4110-49ba-bf7f-241682559d2d
+#+begin_src scheme :session *littleschemer* :results verbatim
+(cons 1 2)
+#+end_src
+
+#+RESULTS: e45cfb6d-4110-49ba-bf7f-241682559d2d
+: (1 . 2)
+
+#+name: 9b2d2b89-3eae-46c7-8cfa-0cc8b0a8ef01
+#+begin_src scheme :session *littleschemer* :results verbatim
+(cons 1 '())
+#+end_src
+
+#+RESULTS: 9b2d2b89-3eae-46c7-8cfa-0cc8b0a8ef01
+: (1)
+
+#+name: 1850bca2-9e37-4ce1-8641-bcef322e4e84
+#+begin_src scheme :session *littleschemer* :results verbatim
+(cons 1 (cons 2 (cons 3 '())))
+#+end_src
+
+#+RESULTS: 1850bca2-9e37-4ce1-8641-bcef322e4e84
+: (1 2 3)
+
+#+name: 4232bfa8-5cd3-417a-a6d0-5b62aace9e11
+#+begin_src scheme :session *littleschemer* :results verbatim
+(list 1 2 3)
+#+end_src
+
+#+RESULTS: 4232bfa8-5cd3-417a-a6d0-5b62aace9e11
+: (1 2 3)
+
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] The following is taken from [[https://www.reddit.com/r/mathematics/comments/wseco9/is_function_an_expression/][this]] reddit discussion.
+
+[fn:2] ...more about /relations/ later as well.
+
+[fn:3] ... /set/ as in set theory sets. Some texts call a set a
+/class/.

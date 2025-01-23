@@ -132,9 +132,9 @@ experience a growing mental picture of theory and syntax as the
 conversation continues and the pages turn. Instead of making direct
 statements about programming language syntax rules, we get a stream of
 questions and replies that will gradually form the desired world in
-our own minds. We're if effect /backing into/ Scheme programming and
-its underlying philosophy---and underlying is quite a bit of computer
-science.
+our own minds. We are if effect /backing into/ Scheme programming and
+its underlying philosophy---and underlying is quite a bit of important
+computer science.
 
 Some things, however, are directly stated. Before the first chapter
 entitled /1. Toys/, even before the title page, there are listed
@@ -145,21 +145,21 @@ and why are they important?
 
 The multi-volume set [[https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms][Euclid's Elements]] (EE) from ca. 300 BC Greece is
 generally accepted as being the first example of mathematics built on
-axioms and proofs. EE has been in the Western world's math curricula
-ever since. It was once a staple of high school math ... /though often
-dreaded/, as it was the student's first exposure to the strange idea
-of /proving/ math instead of just doing math. Proving something in
-math requires a deep grasp of a topic, which is completely different
-from the typical style of "when you see this, do this"
-conditioning. Starting with [[https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms][Euclidean Geometry]], the student is asked
-to see a geometric situation[fn:3] and understand why something about
-it is /necessarily/ (proven to be) true. The proof of, e.g., the /pons
-asinorum/ is a step-by-step establishing of facts based on Euclid's
-/Postulates/ and /Notions/. Again, this was the beginning of modern
-mathematics where a set of axioms could be called on to build
-/theorems/, i.e., additional true assumptions. [[https://en.wikipedia.org/wiki/Axiomatic_system][Axioms]] go by many
-names, e.g., basic truths, givens, primitives. Here are Euclid's five
-postulates
+axioms and pursued through proofs based on those axioms ... and EE has
+been in the Western world's math curricula ever since. It was once a
+staple of high school math, /though often dreaded/, as it was the
+student's first exposure to the strange idea of /proving/ math instead
+of just doing math. Proving something in math requires a deep grasp of
+a topic, which is completely different from the typical style of "when
+you see this, do this" conditioning. Starting with [[https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms][Euclidean Geometry]],
+the student is asked to see a geometric situation[fn:3] and understand
+why something about it is /necessarily/ (proven to be) true. The proof
+of, e.g., the /pons asinorum/ is a step-by-step establishing of
+undeniable facts based on Euclid's axioms called /Postulates/ and
+/Notions/. Again, this was the beginning of modern mathematics where a
+set of axioms could be called on to build /theorems/, i.e., additional
+true assumptions. [[https://en.wikipedia.org/wiki/Axiomatic_system][Axioms]] can go by many names, e.g., basic truths,
+givens, primitives. Here are Euclid's five postulates
 
 
 - P1 :: A straight line may be drawn between any two points.
@@ -170,13 +170,13 @@ postulates
 - P5 :: Through a given point $P$ not on a line $L$, there is one and
   only one line in the plane of $P$ and $L$ which does not meet $L$.
 
-The last postulate is a more modern rewording of the original meaning
+The last postulate is a more modern rewording of the original, meaning
 /truly parallel lines may exist that never cross/. To these first
 five, Euclid added another five basic truths, his /Common Notions/
 
 - N1 :: Things which are equal to the same thing are also equal to
   each other.
-- N2 :: If equals are added to equals, the wholes are equal.
+- N2 :: If equals are added to equals, the wholes (results) are equal.
 - N3 :: If equals are subtracted from equals, the remainders are equal.
 - N4 :: Things which coincide with one another are equal to one another.
 - N5 :: The whole is greater than the part.
@@ -184,9 +184,9 @@ five, Euclid added another five basic truths, his /Common Notions/
 With these ten axiomatic statements begins much geometry, logic,
 number and set theory. That is to say, great amounts of /implication/,
 "if this then that" can be derived from these ten accepted
-givens.[fn:4] For example, the last notion, N5, seems to say
-something almost silly and trivial. But as [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this treatment]] explains, N5
-is introducing in odd wording the basic concept of one thing being
+givens.[fn:4] For example, the last notion, N5, seems to say something
+almost silly and trivial. But as [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this treatment]] explains, N5 is
+introducing with its odd wording the basic concept of one thing being
 /larger/ than another, i.e., $A>B$. Here's David E. Joyce's, professor
 of mathematics at Clark University, explanation
 
@@ -202,68 +202,70 @@ comes from having these basic foundational givens---upon which new,
 useful math is solidly, logically built. Higher math[fn:5] is the
 realm of axiomatic math where proofs of /theorems/ are the
 staple. Higher math is where the student becomes a real mathematician
-who looks under the hood and learns what makes things tick.
+who looks under the hood and learns what makes things really tick.
 
 Let's consider a more serious-looking set of axioms, again, taken from
 course material by Professor Joyce, then a proof of a theorem based,
-relying on these axioms[fn:6]
+i.e., relying on these axioms[fn:6]
 
-1. Vector addition is /commutative/: $v + w = w + v$.
-2. Vector addition is /associative/: $(u + v) + w = u + (v + w)$.
-3. There is a vector, denoted $0$ such that $v + 0 = v = 0 + v$.
-4. For each $v$, there is another vector $−v$ such that $v + (−v) =
+1. Vector addition is /commutative/: $\mathbf{v} + \mathbf{w} = \mathbf{w} + \mathbf{v}$.
+2. Vector addition is /associative/: $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$.
+3. There is a vector, denoted $\mathbf{0}$ such that $\mathbf{v} + \mathbf{0} = \mathbf{v} = \mathbf{0} + \mathbf{v}$.
+4. For each $\mathbf{v}$, there is another vector $\mathbf{−v}$ such that $\mathbf{v} + (\mathbf{−v}) =
    0$.
-5. Scalar multiplication /distributes/ over vector addition: $c(v + w) =
-   cv + cw$.
-6. Scalar multiplication /distributes/ over real addition: $(c + d)v = cv + dv$
-7. Multiplication and scalar multiplication /associate/: $c(dv) =
-   (cd)v$.
-8. The number $1$ acts as /identity/ for scalar multiplication: $1v
-   = v$.
+5. Scalar multiplication /distributes/ over vector addition: $c(\mathbf{v} + \mathbf{w}) =
+   c\mathbf{v} + c\mathbf{w}$.
+6. Scalar multiplication /distributes/ over real addition: $(c + d)\mathbf{v} = c\mathbf{v} + d\mathbf{v}$
+7. Multiplication and scalar multiplication /associate/: $c(d\mathbf{v}) =
+   (cd)\mathbf{v}$.
+8. The number $1$ acts as /identity/ for scalar multiplication: $1\mathbf{v}
+   = \mathbf{v}$.
 
 And now we'll prove a very basic theorem relying on these axiom truths
 
 @@html:<font color = "#650d1c">@@
-Theorem: $0v = 0$
+Theorem: $0\mathbf{v} = 0$
 @@html:</font>@@
 
-...or zero times a vector $v$ is zero.
+...or zero times a vector $\mathbf{v}$ is zero.
 
 ⌜\\
 @@html:<font color = "#650d1c">@@Proof: @@html:</font>@@ Since $0 + 0
-= 0$, therefore we can say $(0 + 0)v = 0v$. By axiom *6*, that implies
-$0v + 0v = 0v$. If we could subtract $0v$ from each side, we’d be
+= 0$, therefore we can say $(0 + 0)\mathbf{v} = 0\mathbf{v}$. By axiom *6*, that implies
+$0\mathbf{v} + 0\mathbf{v} = 0\mathbf{v}$. If we could subtract $0\mathbf{v}$ from each side, we’d be
 done, but subtraction isn’t yet defined. Still, we can add the
 negation of $0v$ to each side which should accomplish about the same
 thing. Thus,
 
 \begin{align*}
-(0v + 0v) + (−0v) = 0v + (−0v).
+(0\mathbf{v} + 0\mathbf{v}) + (−0\mathbf{v}) = 0\mathbf{v} + (−0\mathbf{v}).
 \end{align*}
 
 Next, we can associate the parentheses differently by axiom *2* to get
 
 \begin{align*}
-0v + (0v + (−0v)) = 0v + (−0v).
+0\mathbf{v} + (0\mathbf{v} + (−0\mathbf{v})) = 0\mathbf{v} + (−0\mathbf{v}).
 \end{align*}
 
-That equation simplifies by axiom *4* to $0v + 0 = 0$, and by axiom
-*3*, that further simplifies to $0v = 0$ which is what was to be
-proved. *Q.E.D.*[fn:7] \\
+That equation simplifies by axiom *4* to $0\mathbf{v} + 0 = 0$, and by
+axiom *3*, that further simplifies to $0\mathbf{v} = 0$ which is what
+was to be proved. *Q.E.D.*[fn:7] \\
 ⌟
 
 Got it? No worries (yet) if you didn't. The point is to understand
 that this so-call higher math thing wants to be built exclusively on
 axioms. But yes, this is a strange world for the beginner so used to
-the usual "get stuff calculated" math. In algebra we never needed to
-show that an entity times zero is zero. So yes, here we have a
-thorough proof of something that we normally would have taken for
-granted. But again, this is the world of higher math.[fn:8]
+the usual "get stuff calculated" math. For example, in beginner
+algebra we never needed to /show/ with a proof that an entity times
+zero is zero. So yes, here we have a thorough /proof/ of something
+that we normally would have taken for granted. But again, this is the
+world of higher math where math becomes more of a philosophy than just
+a set of tools.[fn:8]
 
 ** Axiomatic Scheme
 
-And now we will list out the TLS's version of axiomatic givens
-starting with /The Ten Commandments/
+And now with no further ado we will list out TLS's version of
+"axiomatic givens" starting with /The Ten Commandments/
 
 - *First Commandment*: When recurring on a list of atoms, ~lat~, ask two
   questions about it ~(null? lat)~ and ~else~; when recurring on a
@@ -307,19 +309,23 @@ But wait there's more. Next are the /The Five Rules/
 - *The Law of ~eq?~*: The primitive ~eq?~ takes two arguments. Each must
   be a non-numeric atom.
 
-Not many beginners can take these fifteen axioms and know exactly how
-to write a Scheme program.[fn:9] But then if you've read and
-understood a textbook such as /[[https://cseweb.ucsd.edu/~gill/BWLectSite/Resources/LDGbookCOV.pdf][Lists, Decisions and Graphs...]]/ by
+Not many beginners can take these fifteen would-be axioms and know
+exactly how to write a Scheme program.[fn:9] But then if you've read
+and understood a textbook such as /[[https://cseweb.ucsd.edu/~gill/BWLectSite/Resources/LDGbookCOV.pdf][Lists, Decisions and Graphs...]]/ by
 Edward Bender and S. Gill Williamson, you might catch on that these
-axioms are attempting is to create some sort of omnibus[fn:10] /list
-processing/ machinery. In fact Scheme's predecessor, *Lisp*, is an
-acronym for "list processing," because this is essentially what Lisp
-and Scheme do, i.e., they do computing tasks with lists. Really?! A
-whole working programming language is just a bunch of lists? How can
-that be? Read on.
+"fake" axioms are attempting is to establish some sort of
+omnibus[fn:10] /list processing/ machinery. In fact Scheme's
+predecessor, *Lisp*, is an acronym for "list processing," because this
+is essentially what Lisp and Scheme do, i.e., they do computing tasks
+with, on lists. Really?! So in Lisp and Scheme we have a complete
+working programming language as just a bunch of lists stored in a
+computer file that some sort of evaluator processes and gives results?
+How does that work? Read on.
 
-What then is a list? We all know in the everyday sense what a list
-is. A grocery list is a good example
+At this point we should really know, understand what a list is, seeing
+as how a list can be seen as the most primitive, basic, introductory
+data structure in programming. But then we all know in the everyday
+sense what a list is, right? A grocery list is a good example
 
 - eggs
 - milk
@@ -327,55 +333,64 @@ is. A grocery list is a good example
 - potatoes
 - butter
 
-But we have a problem---at least in the math world. That's because in
-mathematics (again, higher math) there are also /sets/. So what is the
+Not so fast. We have a problem---at least with the math world. That's
+because in higher math there are also /sets/. So what is the
 difference between a list and a set? To the layman they might seem
-interchangeable. /Set theory/ is the fundamental starting point of
-higher math, and so many set theory books begin with the statement 
+interchangeable. /[[https://en.wikipedia.org/wiki/Set_theory][Set theory]]/ is the fundamental starting point of
+higher math, as well as CS's Discrete Math.[fn:11] And so many books
+on set theory and discrete math start out with the deceptively simple
+and informal statement
 
 #+begin_quote
-@@html:<font color = "#0d3db3"> <i>@@ A set is collections of
-things. @@html:</font> </i>@@
+@@html:<font color = "#0d3db3"> <i>@@ A *set* is collections of
+things ... objects ... stuff. @@html:</font> </i>@@
 #+end_quote
 
-Which is kind of what a list is too.  But to CS and math people they
-are two different entities. Our grocery /list/ is not technically a
-list because, in the CS/math world at least, /a list is defined as
-having a specific order/. But then our grocery list could be in any
-order, doesn't really matter.
+...which is kind of what a list is too. But to CS and higher math they
+are two different entities. What's the difference? First, our grocery
+/list/ is not technically a list because, again, in the CS/higher math
+world, /the *elements* (members) of a list have a specific order/. But
+then our grocery list above could be in any order, doesn't really
+matter as long as you come home with the those groceries...
 
-Order matters. Let's think of a /string/ of letters like you're
-reading right now. In real life a string of alphanumeric characters is
-definitely like a list because /the order of the individual
-alphanumeric characters (and spaces in between) ---is everything. You
-can't mix them up/. We call strings of letters and spaces /sentences/
-... where all the sentences in English are made up of differing
-combinations of the twenty-six letters (times two if we consider
-upper- and lower-case), the ten numerals, punctuation, and the space
-character. So again, that "grocery list" is really a /set/ of
-groceries...
+Plainly put, lists are defined as a collection of things in a specific
+order. Think of a /string/ of letters like you're reading right now. A
+string of alphanumeric characters can be considered a list because
+/the order of the individual alphanumeric characters (and spaces in
+between) is everything/. We typically call strings of letters and
+spaces /sentences/ ... where all the sentences in English are made up
+of differing combinations of the twenty-six letters (times two if we
+have both upper- and lower-case), the ten numerals, punctuation, and
+the space character. You can't be placing individual characters in any
+order and still have sensible sentences. So is our "grocery list"
+really a /set/ of groceries?
 
-...but then we might not call it a set either because sets allow
-duplicates. Really? Yes and no. ...although the /[[https://en.wikipedia.org/wiki/Cardinality][cardinality]]/ of a
-set, i.e., the number of actual, [[file:LS1.org][true]] member elements, only counts the
-unique elements, not duplicates.[fn:11]
+Actually no. We should not call a grocery list a set either because
+even though order doesn't matter, sets allow duplicates. Really? In
+set theory there is the idea of the /[[https://en.wikipedia.org/wiki/Cardinality][cardinality]]/ of a set, i.e., what
+is the count of the /unique/ elements of the set, /not/ counting
+duplicates.[fn:12]
 
 ⌜\\
-𝖟𝕭: The set $A = \{1,1,1,2,2\}$ is identical to $B = \{1,
-2\}$, i.e., they have the same cardinality, or $|\,A\,| = |\,B\,| =
-2$.[fn:12] \\
+𝖟𝕭: The set $A = \{1,1,1,2,2\}$ is /identical/ to set $B = \{1, 2\}$
+because they have the same cardinality, or $|\,A\,| = |\,B\,| =
+2$.[fn:13] \\
 ⌟
 
 This can be explained in a few ways. The simplest is to say the
-members, the /elements/ of a set /belong/ to that set. So for example,
+members, the elements of a set /belong/ to that set. So for example,
 if I /belong/ to a club, it doesn't make sense to have me
-belong-belong or belong twice to the club. But then set theory is a
-very fundamental thing in higher math and is thus very precisely
-defined based on axioms. For example, set theory has the /[[https://en.wikipedia.org/wiki/Axiom_of_extensionality][Axiom of
-Extensionality]]/ which says two sets are equal if they both have the
-same members. In our example $A$ and $B$ do indeed have the same
-members, namely, $1$ and $2$ ---and it doesn't matter that $A$ repeats
-these members.
+/belong-belong/ or belong twice to the club.[fn:14] In the example
+above, $1$ /belongs/ to $A$, so it doesn't need to belong again.
+
+Splitting hairs? Yes, well, set theory is a very fundamental thing in
+higher math and is, thus, very precisely defined based on axioms. For
+example, set theory has the /[[https://en.wikipedia.org/wiki/Axiom_of_extensionality][Axiom of Extensionality]]/ which simply and
+directly states @@html:<font color = "#0d3db3">@@ two sets are equal
+if they both have the same members@@html:</font>@@. In our example $A$
+and $B$ do indeed have the same members, namely, $1$ and $2$ ---and it
+doesn't matter, it doesn't count that $A$ repeats these members. Let's
+look at another example
 
 ⌜\\
 𝖟𝕭: Given the *set* $A = \{\text{good, so-so, bad}\}$ and a *list* (as
@@ -385,31 +400,53 @@ a named Scheme list): \\
 \\
 the set $A$ signifies the possible moods a person might be in; while
 ~week3~ is the name we've defined for a list containing this daily
-mood data we collected each day of week 3.[fn:13] \\
+mood data we're collecting each day of week 3.[fn:15] \\
 ⌟
 
-So the order of set $A$ doesn't matter, but the order of the list
-defined as ~week3~ is important because we don't want to mix up how we
-felt on what day, Sunday, Monday, etc., good, bad, or so-so. Also, it
-makes perfect sense for a list to have "repeats" since we're
-evaluating many days in succession, and each day can be one of three
-choices. But then notice one more thing about a set: When we built the
-list ~week3~ we had to choose for each day (each successive position
-in the list representing each day of the week) good /or/ bad /or/
-so-so. Remember Venn diagrams? For example, an /or-relationship/ was a
-/[[https://en.wikipedia.org/wiki/Union_(set_theory)][union]]/ of the circles.[fn:14]
+So the order of set $A$ doesn't matter (and we'd ignore, say, a second
+$good$), but the order of the list defined as ~week3~ is important
+because we don't want to mix up how we felt on what day, Sunday,
+Monday, etc., good, bad, or so-so. Also, it makes perfect sense for a
+list to have "repeats" since we're evaluating many days in succession,
+and each day can be one of the three choices. But then notice one more
+thing about a set: When we built the list ~week3~ we had to choose for
+each day (each successive position in the list representing each day
+of the week) good /or/ bad /or/ so-so. Remember Venn diagrams from
+pre-school/Kindergarten? For example, this sort of /or/ situation
+can be shown with a /[[https://en.wikipedia.org/wiki/Union_(set_theory)][union]]/ of circles.[fn:16]
 
 Now, let's go beyond the colored Venn diagram circles and take a more
 formal look at what a union is. Let's make a formal definition of a
-union:
+union:[fn:17]
 
 @@html:<font color = "#0d3db3">@@ The union of two sets $A$ and $B$
 (denoted by $A \cup B$) is the set of elements which are in $A$, in $B$,
-/or/ in both $A$ and $B$.  @@html:</font>@@[fn:15]
+*or* in both $A$ and $B$.  @@html:</font>@@[fn:18]
 
-This definition can be expanded to include more than just two
-sets. For example, three common alphabets, the Greek, Latin, and
-Cyrillic
+Now, for our set $A = \{\text{good, so-so, bad}\}$, we are using each
+element just once per the day slot of ~week3~. We can imagine $A$ as
+made up of the individual sets
+
+\begin{align*}
+A_G &= \{\text{good}\} \\
+A_{S} &= \{\text{so-so}\} \\
+A_B &= \{\text{bad}\}
+\end{align*}
+
+Now, a union $\{A_G \cup A_{S} \cup A_B \}$ will get us back to our original $A
+= \{\text{good, so-so, bad}\}$. Why are we looking at our set of mood
+choices like this? Because our eventual software code will need some
+sort of decision based on *or*, i.e., we need just /one/ of the three
+possibilities.
+
+When we look at $A_G$, $A_{S}$, and $A_B$ together we may call them
+/[[https://en.wikipedia.org/wiki/Disjoint_sets][disjoint sets]]/ since they have no elements in common when we
+union-ize them. And so if we made a Venn diagram, there would
+be no overlap between any of them. Lots more about data
+representations of disjoint sets in the future.
+
+For another example of three set union-izing let's take three common
+alphabets as sets---the Greek, Latin, and Cyrillic
 
 \begin{align*}
 G &= \{Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, Τ, Υ, Φ, Χ, Ψ, Ω\} \\
@@ -418,8 +455,8 @@ C &= \{A, Б, В, Г, Д, E, Ё, Ж, З, И, Й, K, Л, М, Н, О, П, Р, С, 
 &  Ы, Ь, Э, Ю, Я\}
 \end{align*}
 
-Now, let's make a on big set $A$ out of the individual sets $G$, $L$,
-and $C$
+Now, let's make a on big union-ed together set $A$ out of the
+individual sets $G$, $L$, and $C$
 
 \begin{align*}
 A &= \{ Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, Τ, Υ, \\
@@ -428,36 +465,35 @@ A &= \{ Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, 
 & О, П, Р, С, Т, У, Ф, Х, Ц, Ч, Ш, Ъ, Ы, Ь, Э, Ю, Я\}
 \end{align*}
 
-
-Below we see a Venn diagram for $A$, i.e., circles in which /three/
-sets, alphabets, are contained. We can see how the circle edge lines
-show the /intersection/, i.e., what any two alphabets share, and in
-the very center what they all share
+Below we see a Venn diagram for $A$, i.e., circles in which the
+/three/ sets of alphabetic characters are contained. We can also see
+how the intersecting circle edge lines also show the what /any two/
+alphabets share, and then in the very center what they /all/ share
 
 #+begin_figure
 #+CAPTION: Three alphabets, their /union/ and /intersections/ (Wikipedia [[https://en.wikipedia.org/wiki/Venn_diagram][Venn diagram]])
 [[file:images/Venn_diagram_gr_la_ru.png]]
 #+end_figure
 
-Of course for space purposes not /all/ the letters could be fit into
-the diagram above, but we can see how the Venn diagram with its
-overlapping circles trick is beating duplicates. Yes, visually this is
-happening, but is there a formal explanation?
+Of course for visual purposes not /all/ the letters could be crowded
+into the diagram above, but we can see how the Venn diagram with its
+overlapping circles trick is beating duplicates. Visually we can see
+this happening, but is there a formal explanation? Short answer: yes.
 
-First, let's look at a formal definition of union in so-called
-/set-builder notation/
+Now let's look at a formal definition of union in so-called
+/set-builder notation/[fn:19]
 
 \begin{align}
 A \cup B = \{x : x \in A \lor x \in B  \}
 \end{align}
 
 This expression says the *union* of $A$ and $B$ equals the set of
-$x$'s such that an $x$ is an element coming from[fn:16] $A$ */or/* $x$
-is an element of $B$.[fn:17] But wait, *or* doesn't quite sound right
-in English if we mean to union-ize two or more things, does it? To
-bring two or more sets together as one---their unique and shared
-element alike---don't we mean to say, e.g., @@html:<font color =
-"#0d3db3">@@ /the union of $A$ and $B$ takes all the elements from
+elements denoted by $x$ such that an $x$ can be an element from[fn:20]
+$A$ *or* an element from $B$.[fn:21] But wait, *or* doesn't quite
+sound right in English if we mean to union-ize two or more things,
+does it?  To bring two or more sets together as one---their unique and
+shared element alike---don't we mean to say, e.g., @@html:<font color
+= "#0d3db3">@@ /the union of $A$ and $B$ takes all the elements from
 both $A$ *and* $B$/?@@html:</font>@@ Yes, but set theory prefers to
 look at, e.g., the Venn diagram of the alphabets (Figure 2 above) and
 say, @@html:<font color = "#0d3db3">@@A letter /belongs/ to the union
@@ -467,11 +503,11 @@ and /belonging/ to sets.
 
 Now, look at that bulging middle triangle region of Figure 2
 containing the letters all three alphabets have in common. This is the
-/intersection/ of alphabet sets $G$, $L$, and $C$. In this case we
-would say @@html:<font color = "#0d3db3">@@A letter /belongs/ to the
-center triangle (the intersection) if it belongs to $G$ /and/ it
-belongs to $L$ /and/ it belongs to $C$@@html:</font>@@. That is to say
-the letter has to be found in all three alphabets. This is more
+/[[https://en.wikipedia.org/wiki/Intersection_(set_theory)][intersection]]/ of alphabet sets $G$, $L$, and $C$. In this case we
+would say: @@html:<font color = "#0d3db3">@@A letter /belongs/ to the
+center triangle (the intersection) if it belongs to $G$ *and* it
+belongs to $L$ *and* it belongs to $C$@@html:</font>@@. In other
+words, the letter has to belong to all three alphabets. This is more
 precise, something upon which higher math always insists.
 
 @@html:<label for="mn-demo" class="margin-toggle"></label>
@@ -481,56 +517,140 @@ precise, something upon which higher math always insists.
 \\
 @@html:</span>@@
 
-And now with one final piece of the puzzle we can put to rest this
-whole duplicates with sets issue. Let's explore another logic concept
-that we actually encounter every day. In the modern world we're
-constantly turning things on and off, e.g., a light switch, a single
-on-off button that "toggle" back and forth to on or off with each push
-or flip. But occasionally we see, e.g., /two/ buttons---/one/ for on,
-/one/ for off. In the image to the right we have /two/ buttons doing
-on and off instead of one. In such a case pushing the green /on/
-button just one initial time turns the device on /and any additional
-pushing is disregarded/. This is the same for the red /off/
-button. Push once for off---and any further pushes mean nothing. This
-is basically the formal logical version of "you don't have to repeat,
-I heard you the first time." This logic phenomenon has an official
-name: /[[https://en.wikipedia.org/wiki/Idempotence][idempotence]]/, and crops up in many situations. For our
-situation simply imagine making a Venn diagram of sets $S_1 = \{5\}$
-and $S_2 = \{5\}$, i.e., two different sets containing the same single
-element. Would it not just be one single circle containing the element
-$5$? And if we added another set $S_3 = \{5\}$, we would have
+And with one final piece of the puzzle we can put to rest this whole
+duplicates within sets issue. Let's explore another logic concept that
+we actually encounter every day. In the modern world we're constantly
+turning things on and off, e.g., a light switch with its on-off
+toggle. But occasionally we see /two/ buttons---/one/ for on, /one/
+for off. In the image to the right we have /two/ buttons doing on and
+off instead of one. In such a case pushing the green /on/ button just
+one initial time turns the device on /and any additional pushing is
+disregarded/. This is the same for the red /off/ button. Push once for
+off---and any further pushes mean nothing. Basically, "I heard you the
+first time, you don't have to repeat yourself." This phenomenon has an
+official name: /[[https://en.wikipedia.org/wiki/Idempotence][idempotence]]/, and it crops up in many real-life
+places. For our set theory discussion imagine making a Venn diagram of
+the union of sets $S_1 = \{5\}$ and $S_2 = \{5\}$, i.e., two different
+sets containing the same single element. Wouldn't this union be just
+one single circle containing the element $5$? Indeed it would. And if
+we added another set $S_3 = \{5\}$ to the union, we would still have
 
 \begin{align*}
 S_1 \cup S_2 \cup S_3 = \{5\}
 \end{align*}
 
-Now for a bit of abstraction. Consider a /[[https://en.wikipedia.org/wiki/Binary_operation][binary operator]]/, i.e.,
-anything that takes two objects and does something with them to
-produce something new. For example, $1 + 1$ makes $1$ or $3 \cdot 5$ for
-$3$ times $5$ makes $15$. Let's then use the abstract symbol $\oplus$ or
-any binary operator. Now we can establish a formal definition of
-idempotence \\
+i.e., just one circle representing $5$. In fact, we could union
+together an infinite amount of /singleton/[fn:22] sets of the form $S_n =
+\{5\}$ and they would produce the singleton set $\{5\}$. Now for a bit
+of abstraction. Consider a /[[https://en.wikipedia.org/wiki/Binary_operation][binary operator]]/, i.e., anything that
+takes two objects and does an operation on them to produce something
+new. For example, addition is a binary operation, $1 + 1$ is $2$, as
+is multiplication, $3 \cdot 5$ is $15$. Let's then use the abstract symbol
+$\oplus$ to indicate any sort of binary operator. Now we can establish a
+formal definition of idempotence \\
 
 @@html:<font color = "#0d3db3">@@
-The /binary operation/ $\oplus$ is said to be *idempotent* if
-
-\begin{align*}
-x \oplus x = x \,\,\text{for all}\,\, x \in S
-\end{align*}
-
+- A /binary operation/ $\oplus$ is said to be *idempotent* on a set $S$ if
+  $x \oplus x = x \,\,\text{for all}\,\, x \in S$
+- An element $x$ of a set $S$ is said to be *idempotent* under a
+  binary operator $\oplus$ if $x \oplus x = x$
 @@html:</font>@@
 
+If multiplication is the binary operator on the set of all counting
+numbers $\mathbb{N}$ then what numbers of $\mathbb{N}$[fn:23] can we
+call idempotent according to the definition? Well, only $0$ and $1$
+are idempotent:
 
+\begin{align*}
+0 \cdot 0 &= 0 \\
+1 \cdot 1 &= 1
+\end{align*}
 
+All other numbers ($x \gt 1$) give increasingly larger squares of
+themselves, hence, $0$ and $1$ are idempotent, but the binary
+operation of multiplication is not.[fn:24]
 
+Now, let's consider something that came up in a [[https://math.stackexchange.com/][StackExchange
+Mathematics]] discussion [[https://math.stackexchange.com/questions/155475/1-1-1-origin-of-this-convention][here]], which is tackling our issue of duplicates
+in a set by asking, why is $\{1,1\} = \{1\}$? Below we have a slight
+re-wording of the preferred, green-checked answer
 
+@@html:<font color = "#0d3db3">@@
+An unordered tuple $\{a_1,a_2,a_3,a_4\dots\}$ is defined as \\
+\begin{align*}
+\{x:x=a_1 \lor x=a_2 \lor x=a_3 \lor x=a_4 \lor\dots\}.
+\end{align*}
+By this convention,
+\begin{align}
+\{1,1\} = \{x:x=1 \lor x=1 \}
+\end{align}
+So by the /idempotency/ of $\lor$ we have (2) the same as $\{ x : x = 1
+\}$, hence,
+\begin{align*}
+\{1,1\} = \{1\}
+\end{align*}
+@@html:</font>@@
 
+Notice we are relying on the /logical-or/ binary operator being
+idempotent for all $x$ in the set. Generally, an *unordered n-tuple*
+is a set of the form $\{a_1,a_2,\ldots, a_n\dots\}$, although a /tuple/ is
+usually meant to be /ordered/.[fn:25] Again, idempotency of two
+identical sets is obvious when seen as Venn diagrams, but now we've
+seen in exact language how they are idempotent.
 
+By the way, /union/ and /logical or/ are complimentary ideas. Consider
+this expression
 
+\begin{align}
+a \in X \cup Y \iff a \in X \lor a \in Y
+\end{align}
 
+What does that double-arrow in the middle mean? /If and only
+if/. We'll go into $\iff$ in more exact detail later, but for now it
+means @@html:<font color = "#0d3db3">@@the truth of one side of the
+$\iff$ requires the other side to be true also.@@html:</font>@@ So if
+$a$ is an element of the union of $X$ and $Y$ then $a$ must be an
+element of $X$ *or* it is an element of $Y$ *or* it is an element of
+/both/ $X$ and $Y$ ---and the other way around as well.
 
+** ⥤ Summing up; data and data structures
 
+We didn't even get off the first page of TLS, but we have laid some of
+the groundwork we'll need to proceed. And we can't emphasize this
+enough: Computer science is a branch of applied mathematics, and we
+need to get the math going alongside, parallel to the computer
+stuff. So expect more math-stumbling-block clearing.
 
+Next, lists. This lesson began our introduction to /lists/. We'll
+learn more about how they are a very simple but important data
+structure in computer /data management/ ... but then we're using the
+term /data management/ differently then the greater lay world does. So
+a quick word about the whole concept of /data/ and /data structures/
+before we really dive in ahead. Today the term /data/ is mainly
+understood to be gobs and gobs of stuff held in databases or other
+storage schemes. That's not what we mean by data. For us "data" can
+simply be a number returned from an algorithm. That is to say, data is
+what the programming logic, the "code" is producing. Yes, of course,
+this production of data can pool and amass into great piles in vast
+electronic storage bins, but, for instance, this is data
+
+#+name: 6ce99fb1-93d3-4a72-9e01-5d9b96f3c682
+#+begin_src scheme :eval never :exports code
+'(good bad bad so-so so-so so-so good)
+#+end_src
+
+i.e., a simple list surrounded in parentheses and prefaced by a
+quotation mark ("'") at the beginning as is the custom in Scheme (and
+Lisp). That quote at the opening parenthesis indicates this is not
+code, rather, data. What we saw above
+
+#+name: e4667fd4-1f04-4d95-ac36-ee0ee01b44ca
+#+begin_src scheme :eval never :exports code
+(define week3 '(good bad bad so-so so-so so-so good))
+#+end_src
+
+is a mixture of both code and data. In the next lesson we'll get into
+the weeds on just how this mixture of code and data can work together.
 
 #+INCLUDE: "./footer.org" :minlevel 1
 
@@ -565,32 +685,65 @@ and Linear Algebra.
 demonstrated".
 
 [fn:8] Go ahead and take a "math holiday" by touring [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this page]] by
-Professor Joyce. He speaks from a quasi-set theory standpoint, but
-remember, Euclid was talking strictly about geometric shapes. Set
-theory had not been invented yet...
+Professor Joyce. He is speaking from a quasi-[[https://en.wikipedia.org/wiki/Set_theory][set theory]] standpoint,
+i.e., the basis of modern high math. But remember, Euclid was talking
+strictly about geometric shapes. Set theory had not been invented
+yet...
 
-[fn:9] Precisely none of us since key things are still missing.
+[fn:9] ...if we could, would each program we write technically be a
+new *theorem*? More on that later. Specifically, we'll look into
+Douglas Hofstadter's [[https://en.wikipedia.org/wiki/MU_puzzle][MU puzzle]] from his ground-breaking book [[https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach][Gödel,
+Escher, Bach]] (1979).
 
 [fn:10] ...containing or including many items.
 
-[fn:11] In set theory we indicate the cardinality of a set $A$ by
+[fn:11] ...although it may be veiled or only partially explored.
+
+[fn:12] We indicate the cardinality of a set $A$ by
 surrounding it with vertical pipes: $|\,A\,|$ This is similar to the idea
 of a number's /absolute value/ which uses the same symbol.
 
-[fn:12] 𝖟𝕭 is German for /zum Beispiel/ or /for example/.
+[fn:13] 𝖟𝕭 is German for /zum Beispiel/ or /for example/.
 
-[fn:13] Notice how we've made a list containing our list in order to
-define our list. More on how everything in Scheme is a list soon...
+[fn:14] ...paying double membership fees?
 
-[fn:14] A Venn diagram \\
+[fn:15] With our first introduction to Scheme syntax we've made a list
+containing our list in order to define our list. Notice the nested
+parentheses. More on how everything in Scheme is a list soon...
+
+[fn:16] A Venn diagram of two sets /or/-ed, /union/-ed together. \\
 [[file:images/VennUnion.png]] \\
-of two sets /or/-ed, /union/-ed together. The lens-shaped center
-represents the "overlap," i.e., what the two circles have in common.
+The lens-shaped center area represents the "overlap," i.e., what the
+two sets represented as circles have in common.
 
-[fn:15] Could we have said, ...in $A$ *and* in $B$ *and* in both $A$
+[fn:17] $\cup$ is the symbol for union.
+
+[fn:18] Could we have said, ...in $A$ *and* in $B$ *and* in both $A$
 and $B$? Better not. More on why later.
 
-[fn:16] The symbol $\in$ means "in" or "member of."
+[fn:19] (1) can be expanded for the union of more sets than just
+two.
 
-[fn:17] $\lor$ is the symbol for /[[https://en.wikipedia.org/wiki/Logical_disjunction][logical or]]/, aka /logical
+[fn:20] The symbol $\in$ means "in" or "member of."
+
+[fn:21] $\lor$ is the symbol for /[[https://en.wikipedia.org/wiki/Logical_disjunction][logical or]]/, aka /logical
 disjunction/. Take a crack at the Wikipedia article.
+
+[fn:22] A *singleton* (also known as a *unit set* or *one-point set*)
+is a set with exactly one element.
+
+[fn:23] $\mathbb{N}$ is the symbol for the /natural/ numbers, i.e., the
+positive integers $1$, $2$, $3\ldots$ we use to count things.
+
+[fn:24] In her 2023 layman's book /The Joy of Abstraction/
+mathematician Eugenia Cheng notes how the operation of mixing paint
+colors is basically idempotent. Why? If we add one paint to one other
+paint we always get just one new paint color. That is, there is never
+an additive or multiplicative increasing or intensifying, just a new
+color.
+
+[fn:25] ...such as, e.g., a pair of /Cartesian coordinates/ $(a,b)$
+where $a$ is some real number on the /x-axis/ and $b$ is a real number
+on the /y-axis/. Obviously, with a Cartesian coordinate system $(a,b)
+\neq (b,a)$, since they'd be entirely different points on the plane. The
+only exception would be if $a = b$.

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-01-23 Thu 09:10 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left">
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-org97f457e" class="outline-2">
+<h2 id="org97f457e">Little Schemer 2</h2>
+<div class="outline-text-2" id="text-org97f457e">
+<figure id="org3cb68a9">
+
+<figure id="orgca4550f">
+<img src="images/LittleSchemerElephant1.png" alt="LittleSchemerElephant1.png">
+
+<figcaption><span class="figure-number">Figure 1: </span>The Little Schemer putting together a combinator.</figcaption>
+</figure>
+</figure>
+</div>
+</section>
+<section id="outline-container-org13b1d79" class="outline-2">
+<h2 id="org13b1d79"></h2>
+<div class="outline-text-2" id="text-org13b1d79">
+</div>
+<div id="outline-container-orgf77f551" class="outline-3">
+<h3 id="orgf77f551">What are expressions?</h3>
+<div class="outline-text-3" id="text-orgf77f551">
+<p>
+As mentioned previously <i>functional</i> as opposed to <i>procedural</i> or
+<i>imperative</i> programming emphasizes functions which are utilized in a
+mathematical way. In math and CS literature we see the concept of a
+<a href="https://en.wikipedia.org/wiki/Expression_(mathematics)">mathematical expressions</a> used over and over again. Here&rsquo;s what
+Wikipedia says first-paragraph <br>
+<br>
+⇲ <font color = "#0d3db3"> In mathematics, an <b>expression</b> is
+a written arrangement of symbols following the context-dependent,
+syntactic conventions of mathematical notation. Symbols can denote
+numbers, variables, operations, and functions. Other symbols include
+punctuation marks and brackets, used for grouping where there is not a
+well-defined order of operations.  </font> <br>
+<br>
+which is a bit dense. But then it gives an example of \(7x - 5 = 2\)
+where the whole thing is considered an <i>equation</i> while the left- and
+right-hand sides by themselves are called <i>expressions</i>. And then the
+example of the inequality \(8x - 5 \ge 3\) is a formula, while the \(8x -
+5\) part is an expression. But apparently <i>equations can be expressions
+too</i>&#x2026;
+</p>
+
+<p>
+One important trait of expressions is they might be evaluated or
+simplified to find equivalent values. The expression \(8 \cdot 5 - 2\)
+simplifies to \(16 - 5\) and evaluates to \(11\). And sometimes an
+expression comes from transcribing a statement, e.g., &ldquo;One number is
+six more than half of another number.&rdquo;  So if the other number is
+represented as \(a\) then a mathematical expression of this statement
+could be
+</p>
+
+\begin{align*}
+\frac{a}{2} + 6
+\end{align*}
+
+<p>
+But again, an equation can be an expression after all.<label id='fnr.1' for='fnr-in.1.4030850' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.4030850' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+The following is taken from <a href="https://www.reddit.com/r/mathematics/comments/wseco9/is_function_an_expression/">this</a> reddit discussion.
+</span> If an
+expression is, as restated from above, <font color =
+"#0d3db3">any way of combining numbers and symbols in a way that
+is syntactically correct</font>, then
+</p>
+
+<ul class="org-ul">
+<li>\(1 + 2\)</li>
+<li>\(3x - 5\)</li>
+<li>y = x</li>
+</ul>
+
+<p>
+are all expressions, while \(5+ = 7\) means nothing because its syntax
+is false. And so an equation is an expression that has <i>equality</i>
+in it. As we saw above, \(2x + 1 = 7\) is an equation, but the \(2x +
+1\) part is just an expression.
+</p>
+
+<p>
+<i>But then is a function an expression?</i> For the time being, we&rsquo;ll give
+an ad hoc definition of a function and then later really take it apart
+and analyze it in depth <br>
+</p>
+
+<p>
+<font color = "#0d3db3"> A <b>function</b> is a <i>relation</i><label id='fnr.2' for='fnr-in.2.5888636' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.5888636' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+&#x2026;more about <i>relations</i> later as well.
+</span>
+between a <i>set</i><label id='fnr.3' for='fnr-in.3.893959' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.893959' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+&#x2026; <i>set</i> as in set theory sets. Some texts call a set a
+<i>class</i>.
+</span> of inputs and a set of permissible outputs with the
+property that each input is related to exactly one output. A function
+can be expressed as a relationship between variables where one
+variable (the dependent variable) is uniquely determined by the other
+variable(s) (the independent variable).</font> <br>
+<br>
+The <i>expression</i> \(y = f(x)\) tells us for the function \(f\) that \(x\) is
+the independent variable and \(y\) then depends on which \(x\) is being
+evaluated.
+</p>
+
+<p>
+𝖟𝕭: \(y = e^x\) is an expression because it is syntactically valid; it
+is an equation because of the equals sign. But is it a function? Just
+in this form we haven&rsquo;t decided which is the dependent or the
+independent value. We could plug in values for \(y\) or values for \(x\)
+as it is now written. To be specific we could write it as
+</p>
+
+\begin{align*}
+y = f(x) = e^x
+\end{align*}
+
+<p>
+and now we have established which is independent (\(x\)) and which is
+dependent (\(y\)). So we will indeed say <font color =
+"#0d3db3">all functions are expressions.</font>
+</p>
+
+
+
+<p>
+Next, we will discuss the idea of a <b>symbolic expression</b> as Lisp and
+Scheme means it.
+</p>
+
+
+
+
+
+
+
+
+
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org4d96662"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 2<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org43f758c"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 '<span class="org-rainbow-delimiters-depth-2">()</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org06d8357"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 '<span class="org-rainbow-delimiters-depth-4">()</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="orgac43560"><span class="org-rainbow-delimiters-depth-1">(</span>list 1 2 3<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>
