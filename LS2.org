@@ -75,11 +75,49 @@
 
 ** What are expressions?
 
-As mentioned previously /functional/ as opposed to /procedural/ or
-/imperative/ programming emphasizes functions which are utilized in a
-mathematical way. In math and CS literature we see the concept of a
-[[https://en.wikipedia.org/wiki/Expression_(mathematics)][mathematical expressions]] used over and over again. Here's what
-Wikipedia says first-paragraph \\
+As mentioned previously, /functional/ programming, as opposed to
+/procedural/ or /imperative/ programming, emphasizes /functions/ as
+the computational building blocks. Key is how functions in functional
+programming languages behave as if they were true mathematical
+functions. This is a great advantage---for reasons we will explore in
+detail as we progress.
+
+Computer programming has advanced from the early days of literally
+having to give /commands/ imperatively, one after the other, to the
+electronic organs of the CPU[fn:1] (and the memory attached to it) in
+order to, e.g., perform simple addition or subtraction. For an
+analogy, imagine having to tell your body exactly how to breathe. That
+would be very restricting, taking up so much of your attention and
+concentration. And so your brain simply handles breathing
+semi-automatically at a lower, unconscious level. Similarly, in order
+to be more productive, programming languages have striven over the
+years to /abstract/ the gnarly details of getting data and
+calculations handled away from having to literally tell the CPU or the
+"bare metal" each and every low-level step of a calculation.
+
+For the time being, let's consider a quick, ad hoc definition of a
+function and then later really take the idea of a function apart and
+analyze it in a higher math way \\
+
+⇲@@html:<font color = "#0d3db3">@@ A *function* is a /relation/ [fn:2]
+between a /set/ [fn:3] whose elements are inputs (the /domain/) and a
+set whose elements make up outputs (the range) with the key property
+that /each input is related to exactly one output/.[fn:4]
+@@html:</font>@@ \\
+\\
+Let's also look at a function in terms of /variables/. Recalling the
+usual pre-algebra way of denoting a function, i.e., $y = f(x)$, the
+symbol $x$ stands for input and is called an *independent variable*,
+while the symbol that stands for output, $y$, is called a *dependent
+variable*. And so the dependent variable of the range /depends/ on the
+independent variable of the domain.[fn:5]
+
+At this point in our journey we need to be clear about what is meant
+in the math and CS literature by an *[[https://en.wikipedia.org/wiki/Expression_(mathematics)][expression]]*---a /mathematical/
+expression, an /algebraic/ expression, et cetera. Then we will launch
+into the next topic in TLS, namely *s-expressions* or /symbolic/
+expressions, which are the building blocks of Scheme programs. Here's
+Wikipedia's first-paragraph definition of a mathematical expression \\
 \\
 ⇲ @@html:<font color = "#0d3db3">@@ In mathematics, an *expression* is
 a written arrangement of symbols following the context-dependent,
@@ -88,72 +126,223 @@ numbers, variables, operations, and functions. Other symbols include
 punctuation marks and brackets, used for grouping where there is not a
 well-defined order of operations.  @@html:</font>@@ \\
 \\
-which is a bit dense. But then it gives an example of $7x - 5 = 2$
-where the whole thing is considered an /equation/ while the left- and
-right-hand sides by themselves are called /expressions/. And then the
-example of the inequality $8x - 5 \ge 3$ is a formula, while the $8x -
-5$ part is an expression. But apparently /equations can be expressions
-too/...
+...which is admittedly a bit dense and too general. But then the
+article gives the example $7x - 5 = 2$ where the whole thing as one is
+considered an /equation/, while the left- and right-hand sides by
+themselves are called /expressions/. And then the example of the
+inequality $8x - 5 \ge 3$ is referred to as a /formula/, and again, the
+$8x - 5$ part and the $3$ part are expressions. But can equations can
+be expressions too? After all the basics of an expression, i.e., the
+"symbols" and "syntactic conventions," are maintained.
 
-One important trait of expressions is they might be evaluated or
+One important trait of expressions (which is very important in
+functional programming) is that expressions may be evaluated or
 simplified to find equivalent values. The expression $8 \cdot 5 - 2$
-simplifies to $16 - 5$ and evaluates to $11$. And sometimes an
-expression comes from transcribing a statement, e.g., "One number is
-six more than half of another number."  So if the other number is
-represented as $a$ then a mathematical expression of this statement
-could be
+simplifies to $16 - 5$ and then evaluates to $11$. And sometimes a
+mathematical expression comes from transcribing a statement, e.g.,
+"One number is six more than half of another number." So if we
+represent the "other number" as $a$ then a mathematical expression of
+this statement could be
 
 \begin{align*}
 \frac{a}{2} + 6
 \end{align*}
 
-But again, an equation can be an expression after all.[fn:1] If an
-expression is, as restated from above, @@html:<font color =
-"#0d3db3">@@any way of combining numbers and symbols in a way that
-is syntactically correct@@html:</font>@@, then
+Let's give a simplified, more direct definition of an expression \\
+\\
+⇲@@html:<font color = "#0d3db3">@@ An *expression* is a mathematical
+phrase that can contain ordinary numbers, variables such as $x$ or $y$
+and operators such as the symbols for add, subtract, multiply, divide,
+and equals.  @@html:</font>@@ \\
+\\
+And so an equation (built around an equals sign) can be an expression
+after all.[fn:6] If an expression is, as restated from above,
+@@html:<font color = "#0d3db3">@@any way of combining numbers and
+symbols in a way that is syntactically correct@@html:</font>@@, then
 
 + $1 + 2$
 + $3x - 5$
 + y = x
 
-are all expressions, while $5+ = 7$ means nothing because its syntax
-is false. And so an equation is an expression that has /equality/
-in it. As we saw above, $2x + 1 = 7$ is an equation, but the $2x +
-1$ part is just an expression.
+are all expressions---while $5+ = 7$ means nothing because its syntax
+is garbled. And so an equation is an expression that expresses
+/equality/.
 
-/But then is a function an expression?/ For the time being, we'll give
-an ad hoc definition of a function and then later really take it apart
-and analyze it in depth \\
+/But then is a function an expression?/
+The /expression/ $y = f(x)$ tells us that for the function $f$ we have
+$x$ as the independent variable and $y$ then /depends/ on which $x$ is
+being evaluated.
 
-@@html:<font color = "#0d3db3">@@ A *function* is a /relation/[fn:2]
-between a /set/[fn:3] of inputs and a set of permissible outputs with the
-property that each input is related to exactly one output. A function
-can be expressed as a relationship between variables where one
-variable (the dependent variable) is uniquely determined by the other
-variable(s) (the independent variable).@@html:</font>@@ \\
-\\
-The /expression/ $y = f(x)$ tells us for the function $f$ that $x$ is
-the independent variable and $y$ then depends on which $x$ is being
-evaluated.
-
-𝖟𝕭: $y = e^x$ is an expression because it is syntactically valid; it
-is an equation because of the equals sign. But is it a function? Just
-in this form we haven't decided which is the dependent or the
-independent value. We could plug in values for $y$ or values for $x$
-as it is now written. To be specific we could write it as
+𝖟𝕭: $y = e^x$ is an expression because, first and foremost, it is
+syntactically valid; /and/ it is an equation because of the equals
+sign. But is it a function? Just in this form we haven't decided which
+is the dependent or the independent value. We could plug in (a)
+value(s) for $y$ and get an $x$ /or/ plug in (a) value(s) for $x$ and
+get a $y$ as it is now written. To be specific we could write it as
 
 \begin{align*}
 y = f(x) = e^x
 \end{align*}
 
 and now we have established which is independent ($x$) and which is
-dependent ($y$). So we will indeed say @@html:<font color =
-"#0d3db3">@@all functions are expressions.@@html:</font>@@
+dependent ($y$).
+
+𝖟𝕭: $7a + 2b + 3c$ is clearly an /algebraic/ expression but it does
+not have to be a function, since the symbols $a$, $b$, and $c$ don't
+necessarily have to be variable inputs, rather, constants previously
+assigned numerical values. But if $a$ is indeed a dependent variable
+we would have the function
+
+\begin{align}
+f(a)=7a+2b+3c
+\end{align}
+
+⥤ Food for thought: $a$ is a dependent variable in (1) and the symbols
+$b$ and $c$ must then be constants. But could more than just $a$ be a
+variable? If so, how could we express this? How about as a function of
+multiple variables?
+
+\begin{align}
+f(a,b,c)=7a+2b+3c
+\end{align}
+
+(2) tells us all three letter symbols stand for variables. Later when
+we define what a Cartesian coordinate system really is, we'll also
+touch on the world of /[[https://en.wikipedia.org/wiki/Combinatorics][combinatorics]]/, or the science of counting or
+sampling combinations of different sets, which is really what's going
+on with this function-expression thingy.
+
+Bottom line: We will indeed say @@html:<font color = "#0d3db3">@@all
+functions are expressions.@@html:</font>@@
+
+** S-expressions TLS-style
+
+Now we will discuss the idea of a *symbolic expression* or
+*s-expression* as Lisp and Scheme mean it. On page 4 of TLS we're
+suddenly confronted with, no explanation or warning, the term
+/S-expression/
+
+@@html:<span class="schemer">@@Βιγ Σξηεμερ:@@html:</span>@@ Is it true
+that this is a list? \\
+~(atom turkey) or~ \\
+@@html:<span class="schemer">@@Λιττλε Σξηεμερ:@@html:</span>@@ No,
+because these are actually two *S-expressions*[fn:7] not enclosed by
+parentheses. The first one is a list containing two atoms, and the
+second one is an atom.
+
+Again, the discussion progresses by /backing into/ constructing the
+definition of sexp's by first giving key examples. This method is the
+reverse of what higher math usually does. How? Because higher math
+will typically state a rule, a proposition fundamental to the topic at
+hand, and then proceed with discussion and examples of what the
+fundamental law /implies/, i.e., what facts and uses unfold, are
+necessitated by that law. For example, a higher math text might state
+\\
+\\
+@@html:<font color = "#0d3db3">@@ The set of counting numbers, the
+/natural/ numbers, $\mathbb{N}$, is *closed* under binary operators
+addition and multiplication.  @@html:</font>@@ \\
+\\
+Then a discussion would ensue as to why $\mathbb{N}$ is not
+closed[fn:8] under, say, subtraction and division by asking
+if@@html:<font color = "#0d3db3">@@ the operation $5 - 6$ result in an
+element of $\mathbb{N}$?@@html:</font>@@ No, because evaluating the
+expression $5 - 6$ results in $-1$ and $-1 \notin \mathbb{N}$, rather, $-1
+\in \mathbb{Z}$ which is the set of all *integers*, i.e., positive and
+negative whole numbers along with $0$.
+
+Rather than copy the Big/Little Schemer chat verbatim, we'll just
+compile the examples directly
+
+𝖟𝕭: ~((atom turkey) or)~ is a list because the two sexp's are grouped
+completely inside parentheses. \\
+𝖟𝕭: ~xyz~ is an sexp because all atoms are sexp's. \\
+𝖟𝕭: ~(x y z)~ is an sexp because it is a list. \\
+𝖟𝕭: ~((x y) z)~ is an sexp because all lists are sexp's. \\
+𝖟𝕭: ~(how are you doing so far)~ is an sexp because it is a collection
+of sexp's enlosed by parentheses. \\
+𝖟𝕭: ~(((how) are) ((you) (doing so)) far)~ is a list because it
+is a collection of sexp's enclosed by parentheses. \\
+𝖟𝕭: The list ~(((how) are) ((you) (doing so)) far)~ has /three/ sexp's which
+are ~((how) are)~, ~((you) (doing so))~, and ~far~.[fn:9]
+
+So it's obvious that Scheme is organized into sexp's. But why, how?
+
+** S-expression theory
+
+The first part of the term s-expression is /symbolic/, but what is
+meant by symbolic? Obviously, symbolic is an adjective that means
+whatever it is referring to has /symbol-like/
+characteristics. Wikipedia starts its article on mathematical symbols
+with this simple and probably too general definition \\
+\\
+@@html:<font color = "#0d3db3">@@A *mathematical symbol* is a figure
+or a combination of figures that is used to represent a mathematical
+object, an action on mathematical objects, a relation between
+mathematical objects, or for structuring the other symbols that occur
+in a formula. As formulas are entirely constituted with symbols of
+various types, many symbols are needed for expressing all
+mathematics.@@html:</font>@@ \\
+\\
+Before we start going around in circles, what is meant by "figures" is,
+e.g.,
+
++ *decimal digits*, i.e., $0$, $2$, $3$, ...
++ *Latin*, *Greek*, *Hebrew* alphabet characters, i.e., $a$, $b$,
+  $\mathbb{C}$, $\beta$, $\rho$, $\Gamma$, $\beth$, $\aleph$, et cetera, which can have
+  different weights and typefaces for different uses.
++ Various operation and binder symbols, i.e., $+$, $-$, $\sum$ for summation,
+  $\int$ for integration, et cetera.
+
+Without getting too philosophical, we may stop and marvel at how
+humans have come to use and manipulate symbols, starting with the use
+of language. With human language we use *words* which /symbolize/ real
+things or concepts. A word can be considered a /placeholder/ for an
+object or idea. Some experts say humanity has only possessed real
+words-as-placeholder-symbols for forty thousand years. Others say
+sixty to one-hundred thousand years. And yet we surely have been
+anatomically /Homo sapiens/ longer than we've had language. What did
+we, with our big brains, do before we had language? Obviously, we had
+only intuitions, i.e., we would see two piles of nuts and only have
+vague intuitive notions that there were two piles and they might
+differ in size... But just analyzing that last sentence demonstrates
+how powerful formal symbolic language can be. Whole logic systems
+spring to life when we resort to setting symbols to things and
+ideas. And so computing has been called /the manipulation of symbols/.
+
+Here's a quote from math logician Raymond M. Smullyan's book /The Tao
+Is Silent/[fn:10]
+
+#+begin_quote
+The knowledge of the ancients was perfect. How perfect? I will tell
+you. At first they did not yet know that there were things. This is
+the most perfect knowledge; nothing can be added. Next they knew
+things but did not yet make distinctions between them. Next they made
+distinctions between them but did not yet pass judgements upon
+them. When judgement was passed, Tao was destroyed. With the
+destruction of Tao, individual preferences come into being.
+#+end_quote
+
+Yes, the rabbit hole of language and symbolism goes deep. But let's
+come back to what is meant by a symbol in the computer world.
 
 
 
-Next, we will discuss the idea of a *symbolic expression* as Lisp and
-Scheme means it.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -165,7 +354,7 @@ Scheme means it.
 
 
 #+name: e45cfb6d-4110-49ba-bf7f-241682559d2d
-#+begin_src scheme :session *littleschemer* :results verbatim
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
 (cons 1 2)
 #+end_src
 
@@ -202,9 +391,36 @@ Scheme means it.
 
 * Footnotes
 
-[fn:1] The following is taken from [[https://www.reddit.com/r/mathematics/comments/wseco9/is_function_an_expression/][this]] reddit discussion.
+[fn:1] *CPU*: central processing unit, the calculation "brains" of a
+computer.
 
-[fn:2] ...more about /relations/ later as well.
+[fn:2] ...more about /relations/ in a higher math way later.
 
-[fn:3] ... /set/ as in set theory sets. Some texts call a set a
-/class/.
+[fn:3] ... /set/ as in set theory sets. Some very formal texts call a
+set a /class/, by the way.
+
+[fn:4] This important quality of a function was touched on in the
+preface.
+
+[fn:5] In pre-algebra a function is typically graphed with the
+horizontal axis representing the /independent variable/ and the
+vertical axis representing the /dependent variable/. \\
+[[file:images/Polynomialdeg2.png]] \\
+In this idea of the function, y is the /dependent variable/ and x is
+the /independent variable/.
+
+[fn:6] What follows was taken from [[https://www.reddit.com/r/mathematics/comments/wseco9/is_function_an_expression/][this]] reddit discussion.
+
+[fn:7] We will use *sexp* the abbreviation for S-expression.
+
+[fn:8] A set of elements is *closed* under a binary operation if by
+applying the operation to any two elements of the set the result is
+also an element of the set. For example, $2 + 2$ is $4$, which is also
+an element of the natural numbers $\mathbb{N}$.
+
+[fn:9] At this point you might be getting lost in all the
+parentheses. Don't worry, Emacs and other editors for Lisp and Scheme
+have parentheses-matching highlighting so you always know which
+enclosing set of parentheses you are in.
+
+[fn:10] Now, is Professor Smullyan saying ignorance is bliss?

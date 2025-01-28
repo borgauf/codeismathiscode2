@@ -75,14 +75,14 @@
 
 ** Why /The Little Schemer/?
 
-/[[https://mitpress.mit.edu/9780262560993/the-little-schemer/][The Little Schemer]]/ (TLS) written by computer science professors
-Daniel P. Friedman and Daniel P. Friedman was a revolutionary book
+/[[https://mitpress.mit.edu/9780262560993/the-little-schemer/][The Little Schemer]]/ (TLS), written by computer science professors
+Daniel P. Friedman and Daniel P. Friedman, was a revolutionary book
 when it came out in its first edition as /The Little Lisper/ based on
 the programming language Lisp in 1987. Subsequent editions switched to
 Lisp's younger sister language Scheme. It was so unique because it
 followed a "[[https://en.wikipedia.org/wiki/Socratic_method][Socratic]]" dialog style of question and answer in left and
 right columns throughout the book. Below is from the very first
-page of the first chapter [fn:1]
+page of the first chapter entitled /1. Toys/![fn:1]
 
 #+HTML_HEAD: <style type="text/css">
 #+HTML_HEAD: .styledtab col:nth-of-type(1) { width:  45%; }
@@ -118,23 +118,17 @@ page of the first chapter [fn:1]
 | Is it true that this is a list?    | Yes, because it is a collection of atoms [separated by spaces and] enclosed by parentheses.                                                 |
 | ~(atom turkey or)~                 |                                                                                                                                             |
 |                                    |                                                                                                                                             |
-...or as we'll present it
-
-@@html:<span class="schemer">@@Βιγ Σξηεμερ:@@html:</span>@@ Is it true
-that ~atom1~ is an /atom/? \\
-@@html:<span class="schemer">@@Λιττλε Σξηεμερ:@@html:</span>@@ Yes,
-because ~atom1~ is a string of characters beginning with the letter
-~a~. \\
-
-This Socratic dialog explores in its chatty conversation style a sort
-of loose /mathematical formalism/ [fn:2] where you the reader will
-experience a growing mental picture of theory and syntax as the
-conversation continues and the pages turn. Instead of making direct
-statements about programming language syntax rules, we get a stream of
-questions and replies that will gradually form the desired world in
-our own minds. We are if effect /backing into/ Scheme programming and
-its underlying philosophy---and underlying is quite a bit of important
-computer science.
+This Socratic dialog in its chatty conversation style is teasing out
+the requisite /mathematical formalism/ [fn:2] where you the reader
+will experience a growing mental picture of theory and syntax as the
+conversation continues and the pages turn. The idea is the formalisms
+were always there, and we will gradually /coax/ them out with
+carefully constructed prodding. Instead of making direct statements
+about programming language theory or syntax rules, we get a stream of
+questions and replies that will form the desired world in our own
+minds. We are if effect /backing into/ Scheme programming and its
+underlying philosophy---and underlying is quite a bit of important
+computer science.[fn:3]
 
 Some things, however, are directly stated. Before the first chapter
 entitled /1. Toys/, even before the title page, there are listed
@@ -152,7 +146,7 @@ student's first exposure to the strange idea of /proving/ math instead
 of just doing math. Proving something in math requires a deep grasp of
 a topic, which is completely different from the typical style of "when
 you see this, do this" conditioning. Starting with [[https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms][Euclidean Geometry]],
-the student is asked to see a geometric situation[fn:3] and understand
+the student is asked to see a geometric situation[fn:4] and understand
 why something about it is /necessarily/ (proven to be) true. The proof
 of, e.g., the /pons asinorum/ is a step-by-step establishing of
 undeniable facts based on Euclid's axioms called /Postulates/ and
@@ -184,7 +178,7 @@ five, Euclid added another five basic truths, his /Common Notions/
 With these ten axiomatic statements begins much geometry, logic,
 number and set theory. That is to say, great amounts of /implication/,
 "if this then that" can be derived from these ten accepted
-givens.[fn:4] For example, the last notion, N5, seems to say something
+givens.[fn:5] For example, the last notion, N5, seems to say something
 almost silly and trivial. But as [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this treatment]] explains, N5 is
 introducing with its odd wording the basic concept of one thing being
 /larger/ than another, i.e., $A>B$. Here's David E. Joyce's, professor
@@ -199,14 +193,14 @@ such that $A = B + C$.
 
 Again, to the novice this may look like nit-picking, but real math
 comes from having these basic foundational givens---upon which new,
-useful math is solidly, logically built. Higher math[fn:5] is the
+useful math is solidly, logically built. Higher math[fn:6] is the
 realm of axiomatic math where proofs of /theorems/ are the
 staple. Higher math is where the student becomes a real mathematician
 who looks under the hood and learns what makes things really tick.
 
 Let's consider a more serious-looking set of axioms, again, taken from
 course material by Professor Joyce, then a proof of a theorem based,
-i.e., relying on these axioms[fn:6]
+i.e., relying on these axioms[fn:7]
 
 1. Vector addition is /commutative/: $\mathbf{v} + \mathbf{w} = \mathbf{w} + \mathbf{v}$.
 2. Vector addition is /associative/: $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$.
@@ -249,7 +243,7 @@ Next, we can associate the parentheses differently by axiom *2* to get
 
 That equation simplifies by axiom *4* to $0\mathbf{v} + 0 = 0$, and by
 axiom *3*, that further simplifies to $0\mathbf{v} = 0$ which is what
-was to be proved. *Q.E.D.*[fn:7] \\
+was to be proved. *Q.E.D.*[fn:8] \\
 ⌟
 
 Got it? No worries (yet) if you didn't. The point is to understand
@@ -260,7 +254,7 @@ algebra we never needed to /show/ with a proof that an entity times
 zero is zero. So yes, here we have a thorough /proof/ of something
 that we normally would have taken for granted. But again, this is the
 world of higher math where math becomes more of a philosophy than just
-a set of tools.[fn:8]
+a set of tools.[fn:9]
 
 ** Axiomatic Scheme
 
@@ -310,11 +304,11 @@ But wait there's more. Next are the /The Five Rules/
   be a non-numeric atom.
 
 Not many beginners can take these fifteen would-be axioms and know
-exactly how to write a Scheme program.[fn:9] But then if you've read
+exactly how to write a Scheme program.[fn:10] But then if you've read
 and understood a textbook such as /[[https://cseweb.ucsd.edu/~gill/BWLectSite/Resources/LDGbookCOV.pdf][Lists, Decisions and Graphs...]]/ by
 Edward Bender and S. Gill Williamson, you might catch on that these
 "fake" axioms are attempting is to establish some sort of
-omnibus[fn:10] /list processing/ machinery. In fact Scheme's
+omnibus[fn:11] /list processing/ machinery. In fact Scheme's
 predecessor, *Lisp*, is an acronym for "list processing," because this
 is essentially what Lisp and Scheme do, i.e., they do computing tasks
 with, on lists. Really?! So in Lisp and Scheme we have a complete
@@ -337,7 +331,7 @@ Not so fast. We have a problem---at least with the math world. That's
 because in higher math there are also /sets/. So what is the
 difference between a list and a set? To the layman they might seem
 interchangeable. /[[https://en.wikipedia.org/wiki/Set_theory][Set theory]]/ is the fundamental starting point of
-higher math, as well as CS's Discrete Math.[fn:11] And so many books
+higher math, as well as CS's Discrete Math.[fn:12] And so many books
 on set theory and discrete math start out with the deceptively simple
 and informal statement
 
@@ -369,18 +363,18 @@ Actually no. We should not call a grocery list a set either because
 even though order doesn't matter, sets allow duplicates. Really? In
 set theory there is the idea of the /[[https://en.wikipedia.org/wiki/Cardinality][cardinality]]/ of a set, i.e., what
 is the count of the /unique/ elements of the set, /not/ counting
-duplicates.[fn:12]
+duplicates.[fn:13]
 
 ⌜\\
 𝖟𝕭: The set $A = \{1,1,1,2,2\}$ is /identical/ to set $B = \{1, 2\}$
 because they have the same cardinality, or $|\,A\,| = |\,B\,| =
-2$.[fn:13] \\
+2$.[fn:14] \\
 ⌟
 
 This can be explained in a few ways. The simplest is to say the
 members, the elements of a set /belong/ to that set. So for example,
 if I /belong/ to a club, it doesn't make sense to have me
-/belong-belong/ or belong twice to the club.[fn:14] In the example
+/belong-belong/ or belong twice to the club.[fn:15] In the example
 above, $1$ /belongs/ to $A$, so it doesn't need to belong again.
 
 Splitting hairs? Yes, well, set theory is a very fundamental thing in
@@ -400,7 +394,7 @@ a named Scheme list): \\
 \\
 the set $A$ signifies the possible moods a person might be in; while
 ~week3~ is the name we've defined for a list containing this daily
-mood data we're collecting each day of week 3.[fn:15] \\
+mood data we're collecting each day of week 3.[fn:16] \\
 ⌟
 
 So the order of set $A$ doesn't matter (and we'd ignore, say, a second
@@ -413,15 +407,15 @@ thing about a set: When we built the list ~week3~ we had to choose for
 each day (each successive position in the list representing each day
 of the week) good /or/ bad /or/ so-so. Remember Venn diagrams from
 pre-school/Kindergarten? For example, this sort of /or/ situation
-can be shown with a /[[https://en.wikipedia.org/wiki/Union_(set_theory)][union]]/ of circles.[fn:16]
+can be shown with a /[[https://en.wikipedia.org/wiki/Union_(set_theory)][union]]/ of circles.[fn:17]
 
 Now, let's go beyond the colored Venn diagram circles and take a more
 formal look at what a union is. Let's make a formal definition of a
-union:[fn:17]
+union:[fn:18]
 
 @@html:<font color = "#0d3db3">@@ The union of two sets $A$ and $B$
 (denoted by $A \cup B$) is the set of elements which are in $A$, in $B$,
-*or* in both $A$ and $B$.  @@html:</font>@@[fn:18]
+*or* in both $A$ and $B$.  @@html:</font>@@[fn:19]
 
 Now, for our set $A = \{\text{good, so-so, bad}\}$, we are using each
 element just once per the day slot of ~week3~. We can imagine $A$ as
@@ -481,15 +475,15 @@ overlapping circles trick is beating duplicates. Visually we can see
 this happening, but is there a formal explanation? Short answer: yes.
 
 Now let's look at a formal definition of union in so-called
-/set-builder notation/[fn:19]
+/set-builder notation/[fn:20]
 
 \begin{align}
 A \cup B = \{x : x \in A \lor x \in B  \}
 \end{align}
 
 This expression says the *union* of $A$ and $B$ equals the set of
-elements denoted by $x$ such that an $x$ can be an element from[fn:20]
-$A$ *or* an element from $B$.[fn:21] But wait, *or* doesn't quite
+elements denoted by $x$ such that an $x$ can be an element from[fn:21]
+$A$ *or* an element from $B$.[fn:22] But wait, *or* doesn't quite
 sound right in English if we mean to union-ize two or more things,
 does it?  To bring two or more sets together as one---their unique and
 shared element alike---don't we mean to say, e.g., @@html:<font color
@@ -540,7 +534,7 @@ S_1 \cup S_2 \cup S_3 = \{5\}
 \end{align*}
 
 i.e., just one circle representing $5$. In fact, we could union
-together an infinite amount of /singleton/[fn:22] sets of the form $S_n =
+together an infinite amount of /singleton/[fn:23] sets of the form $S_n =
 \{5\}$ and they would produce the singleton set $\{5\}$. Now for a bit
 of abstraction. Consider a /[[https://en.wikipedia.org/wiki/Binary_operation][binary operator]]/, i.e., anything that
 takes two objects and does an operation on them to produce something
@@ -557,7 +551,7 @@ formal definition of idempotence \\
 @@html:</font>@@
 
 If multiplication is the binary operator on the set of all counting
-numbers $\mathbb{N}$ then what numbers of $\mathbb{N}$[fn:23] can we
+numbers $\mathbb{N}$ then what numbers of $\mathbb{N}$[fn:24] can we
 call idempotent according to the definition? Well, only $0$ and $1$
 are idempotent:
 
@@ -568,7 +562,7 @@ are idempotent:
 
 All other numbers ($x \gt 1$) give increasingly larger squares of
 themselves, hence, $0$ and $1$ are idempotent, but the binary
-operation of multiplication is not.[fn:24]
+operation of multiplication is not.[fn:25]
 
 Now, let's consider something that came up in a [[https://math.stackexchange.com/][StackExchange
 Mathematics]] discussion [[https://math.stackexchange.com/questions/155475/1-1-1-origin-of-this-convention][here]], which is tackling our issue of duplicates
@@ -594,7 +588,7 @@ So by the /idempotency/ of $\lor$ we have (2) the same as $\{ x : x = 1
 Notice we are relying on the /logical-or/ binary operator being
 idempotent for all $x$ in the set. Generally, an *unordered n-tuple*
 is a set of the form $\{a_1,a_2,\ldots, a_n\dots\}$, although a /tuple/ is
-usually meant to be /ordered/.[fn:25] Again, idempotency of two
+usually meant to be /ordered/.[fn:26] Again, idempotency of two
 identical sets is obvious when seen as Venn diagrams, but now we've
 seen in exact language how they are idempotent.
 
@@ -662,87 +656,91 @@ Greek letters.
 [fn:2] Go [[https://en.wikipedia.org/wiki/Formalism_(philosophy_of_mathematics)][here]] to see the Wikipedia discussion about mathematic
 formalism---although it's a bit formal...
 
-[fn:3] For example the (in)famous /[[https://en.wikipedia.org/wiki/Pons_asinorum][pons asinorum]]/ in /Euclid's
+[fn:3] Despite containing actual Scheme programs, actual code, TLS was
+written so that a layperson could follow along with no knowledge of
+computers, e.g., someone from the eighteenth century!
+
+[fn:4] For example the (in)famous /[[https://en.wikipedia.org/wiki/Pons_asinorum][pons asinorum]]/ in /Euclid's
 Elements/ \\
 [[file:images/Byrne_pons_asinorum.jpg]] \\
 where it is /proven/ that indeed the angles opposite the equal sides
 of an isosceles triangle are themselves equal.
 
-[fn:4] In mathematical logic the idea of /implication/ is very
+[fn:5] In mathematical logic the idea of /implication/ is very
 fundamental. Something /implies/ something else; because $A$, that
 means $B$ as well. Implication goes by many names: /[[https://en.wikipedia.org/wiki/Material_conditional][material
 conditional]]/, [[https://en.wikipedia.org/wiki/Modus_ponens][modus ponens]], [[https://en.wikipedia.org/wiki/Logical_consequence][logical consequence]]. We first see
 implication in programming with the basic /if-then-else/ conditional.
 
-[fn:5] /Higher math/ in the U.S. typically means those college math
+[fn:6] /Higher math/ in the U.S. typically means those college math
 courses pursued in the junior and senior year of a Bachelors math
 degree, i.e., those courses /after/ Calculus, Differential Equations,
 and Linear Algebra.
 
-[fn:6] These axioms are taken from Linear Algebra.
+[fn:7] These axioms are taken from Linear Algebra.
 
-[fn:7] ... /quod erat demonstrandum/, meaning "that which was to be
+[fn:8] ... /quod erat demonstrandum/, meaning "that which was to be
 demonstrated".
 
-[fn:8] Go ahead and take a "math holiday" by touring [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this page]] by
+[fn:9] Go ahead and take a "math holiday" by touring [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this page]] by
 Professor Joyce. He is speaking from a quasi-[[https://en.wikipedia.org/wiki/Set_theory][set theory]] standpoint,
 i.e., the basis of modern high math. But remember, Euclid was talking
 strictly about geometric shapes. Set theory had not been invented
 yet...
 
-[fn:9] ...if we could, would each program we write technically be a
+[fn:10] ...if we could, would each program we write technically be a
 new *theorem*? More on that later. Specifically, we'll look into
 Douglas Hofstadter's [[https://en.wikipedia.org/wiki/MU_puzzle][MU puzzle]] from his ground-breaking book [[https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach][Gödel,
 Escher, Bach]] (1979).
 
-[fn:10] ...containing or including many items.
+[fn:11] ...containing or including many items.
 
-[fn:11] ...although it may be veiled or only partially explored.
+[fn:12] ...although it may be veiled or only partially explored.
 
-[fn:12] We indicate the cardinality of a set $A$ by
+[fn:13] We indicate the cardinality of a set $A$ by
 surrounding it with vertical pipes: $|\,A\,|$ This is similar to the idea
 of a number's /absolute value/ which uses the same symbol.
 
-[fn:13] 𝖟𝕭 is German for /zum Beispiel/ or /for example/.
+[fn:14] 𝖟𝕭 is German for /zum Beispiel/ or /for example/.
 
-[fn:14] ...paying double membership fees?
+[fn:15] ...paying double membership fees?
 
-[fn:15] With our first introduction to Scheme syntax we've made a list
+[fn:16] With our first introduction to Scheme syntax we've made a list
 containing our list in order to define our list. Notice the nested
 parentheses. More on how everything in Scheme is a list soon...
 
-[fn:16] A Venn diagram of two sets /or/-ed, /union/-ed together. \\
+[fn:17] A Venn diagram of two sets /or/-ed, /union/-ed together. \\
 [[file:images/VennUnion.png]] \\
 The lens-shaped center area represents the "overlap," i.e., what the
 two sets represented as circles have in common.
 
-[fn:17] $\cup$ is the symbol for union.
+[fn:18] $\cup$ is the symbol for union.
 
-[fn:18] Could we have said, ...in $A$ *and* in $B$ *and* in both $A$
+[fn:19] Could we have said, ...in $A$ *and* in $B$ *and* in both $A$
 and $B$? Better not. More on why later.
 
-[fn:19] (1) can be expanded for the union of more sets than just
+[fn:20] (1) can be expanded for the union of more sets than just
 two.
 
-[fn:20] The symbol $\in$ means "in" or "member of."
+[fn:21] The symbol $\in$ means "in" or "member of."
 
-[fn:21] $\lor$ is the symbol for /[[https://en.wikipedia.org/wiki/Logical_disjunction][logical or]]/, aka /logical
+[fn:22] $\lor$ is the symbol for /[[https://en.wikipedia.org/wiki/Logical_disjunction][logical or]]/, aka /logical
 disjunction/. Take a crack at the Wikipedia article.
 
-[fn:22] A *singleton* (also known as a *unit set* or *one-point set*)
+[fn:23] A *singleton* (also known as a *unit set* or *one-point set*)
 is a set with exactly one element.
 
-[fn:23] $\mathbb{N}$ is the symbol for the /natural/ numbers, i.e., the
+[fn:24] $\mathbb{N}$ is the symbol for the /natural/ numbers, i.e., the
 positive integers $1$, $2$, $3\ldots$ we use to count things.
 
-[fn:24] In her 2023 layman's book /The Joy of Abstraction/
+[fn:25] In her 2023 layman's book /The Joy of Abstraction/
 mathematician Eugenia Cheng notes how the operation of mixing paint
 colors is basically idempotent. Why? If we add one paint to one other
 paint we always get just one new paint color. That is, there is never
 an additive or multiplicative increasing or intensifying, just a new
 color.
 
-[fn:25] ...such as, e.g., a pair of /Cartesian coordinates/ $(a,b)$
+[fn:26] ...such as, e.g., a pair of /Cartesian coordinates/ $(a,b)$
 where $a$ is some real number on the /x-axis/ and $b$ is a real number
 on the /y-axis/. Obviously, with a Cartesian coordinate system $(a,b)
 \neq (b,a)$, since they'd be entirely different points on the plane. The

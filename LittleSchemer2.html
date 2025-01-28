@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-01-23 Thu 09:10 -->
+<!-- 2025-01-28 Tue 09:58 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -107,12 +107,12 @@ pre.example {clear: none; }
 </nav>
 </div>
 </p>
-<section id="outline-container-org97f457e" class="outline-2">
-<h2 id="org97f457e">Little Schemer 2</h2>
-<div class="outline-text-2" id="text-org97f457e">
-<figure id="org3cb68a9">
+<section id="outline-container-org819e6b8" class="outline-2">
+<h2 id="org819e6b8">Little Schemer 2</h2>
+<div class="outline-text-2" id="text-org819e6b8">
+<figure id="orge63ca02">
 
-<figure id="orgca4550f">
+<figure id="orgc025086">
 <img src="images/LittleSchemerElephant1.png" alt="LittleSchemerElephant1.png">
 
 <figcaption><span class="figure-number">Figure 1: </span>The Little Schemer putting together a combinator.</figcaption>
@@ -120,19 +120,83 @@ pre.example {clear: none; }
 </figure>
 </div>
 </section>
-<section id="outline-container-org13b1d79" class="outline-2">
-<h2 id="org13b1d79"></h2>
-<div class="outline-text-2" id="text-org13b1d79">
+<section id="outline-container-orgb7d0ae3" class="outline-2">
+<h2 id="orgb7d0ae3"></h2>
+<div class="outline-text-2" id="text-orgb7d0ae3">
 </div>
-<div id="outline-container-orgf77f551" class="outline-3">
-<h3 id="orgf77f551">What are expressions?</h3>
-<div class="outline-text-3" id="text-orgf77f551">
+<div id="outline-container-org3f63f7f" class="outline-3">
+<h3 id="org3f63f7f">What are expressions?</h3>
+<div class="outline-text-3" id="text-org3f63f7f">
 <p>
-As mentioned previously <i>functional</i> as opposed to <i>procedural</i> or
-<i>imperative</i> programming emphasizes functions which are utilized in a
-mathematical way. In math and CS literature we see the concept of a
-<a href="https://en.wikipedia.org/wiki/Expression_(mathematics)">mathematical expressions</a> used over and over again. Here&rsquo;s what
-Wikipedia says first-paragraph <br>
+As mentioned previously, <i>functional</i> programming, as opposed to
+<i>procedural</i> or <i>imperative</i> programming, emphasizes <i>functions</i> as
+the computational building blocks. Key is how functions in functional
+programming languages behave as if they were true mathematical
+functions. This is a great advantage&#x2014;for reasons we will explore in
+detail as we progress.
+</p>
+
+<p>
+Computer programming has advanced from the early days of literally
+having to give <i>commands</i> imperatively, one after the other, to the
+electronic organs of the CPU<label id='fnr.1' for='fnr-in.1.3344225' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.3344225' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+<b>CPU</b>: central processing unit, the calculation &ldquo;brains&rdquo; of a
+computer.
+</span> (and the memory attached to it) in
+order to, e.g., perform simple addition or subtraction. For an
+analogy, imagine having to tell your body exactly how to breathe. That
+would be very restricting, taking up so much of your attention and
+concentration. And so your brain simply handles breathing
+semi-automatically at a lower, unconscious level. Similarly, in order
+to be more productive, programming languages have striven over the
+years to <i>abstract</i> the gnarly details of getting data and
+calculations handled away from having to literally tell the CPU or the
+&ldquo;bare metal&rdquo; each and every low-level step of a calculation.
+</p>
+
+<p>
+For the time being, let&rsquo;s consider a quick, ad hoc definition of a
+function and then later really take the idea of a function apart and
+analyze it in a higher math way <br>
+</p>
+
+<p>
+⇲<font color = "#0d3db3"> A <b>function</b> is a <i>relation</i> <label id='fnr.2' for='fnr-in.2.5913226' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.5913226' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+&#x2026;more about <i>relations</i> in a higher math way later.
+</span>
+between a <i>set</i> <label id='fnr.3' for='fnr-in.3.8263294' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.8263294' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+&#x2026; <i>set</i> as in set theory sets. Some very formal texts call a
+set a <i>class</i>, by the way.
+</span> whose elements are inputs (the <i>domain</i>) and a
+set whose elements make up outputs (the range) with the key property
+that <i>each input is related to exactly one output</i>.<label id='fnr.4' for='fnr-in.4.4017446' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.4017446' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+This important quality of a function was touched on in the
+preface.
+</span>
+</font> <br>
+<br>
+Let&rsquo;s also look at a function in terms of <i>variables</i>. Recalling the
+usual pre-algebra way of denoting a function, i.e., \(y = f(x)\), the
+symbol \(x\) stands for input and is called an <b>independent variable</b>,
+while the symbol that stands for output, \(y\), is called a <b>dependent
+variable</b>. And so the dependent variable of the range <i>depends</i> on the
+independent variable of the domain.<label id='fnr.5' for='fnr-in.5.4849930' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.4849930' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+In pre-algebra a function is typically graphed with the
+horizontal axis representing the <i>independent variable</i> and the
+vertical axis representing the <i>dependent variable</i>. <br>
+<img src="images/Polynomialdeg2.png" alt="Polynomialdeg2.png"> <br>
+In this idea of the function, y is the <i>dependent variable</i> and x is
+the <i>independent variable</i>.
+</span>
+</p>
+
+<p>
+At this point in our journey we need to be clear about what is meant
+in the math and CS literature by an <b><a href="https://en.wikipedia.org/wiki/Expression_(mathematics)">expression</a></b>&#x2014;a <i>mathematical</i>
+expression, an <i>algebraic</i> expression, et cetera. Then we will launch
+into the next topic in TLS, namely <b>s-expressions</b> or <i>symbolic</i>
+expressions, which are the building blocks of Scheme programs. Here&rsquo;s
+Wikipedia&rsquo;s first-paragraph definition of a mathematical expression <br>
 <br>
 ⇲ <font color = "#0d3db3"> In mathematics, an <b>expression</b> is
 a written arrangement of symbols following the context-dependent,
@@ -141,22 +205,25 @@ numbers, variables, operations, and functions. Other symbols include
 punctuation marks and brackets, used for grouping where there is not a
 well-defined order of operations.  </font> <br>
 <br>
-which is a bit dense. But then it gives an example of \(7x - 5 = 2\)
-where the whole thing is considered an <i>equation</i> while the left- and
-right-hand sides by themselves are called <i>expressions</i>. And then the
-example of the inequality \(8x - 5 \ge 3\) is a formula, while the \(8x -
-5\) part is an expression. But apparently <i>equations can be expressions
-too</i>&#x2026;
+&#x2026;which is admittedly a bit dense and too general. But then the
+article gives the example \(7x - 5 = 2\) where the whole thing as one is
+considered an <i>equation</i>, while the left- and right-hand sides by
+themselves are called <i>expressions</i>. And then the example of the
+inequality \(8x - 5 \ge 3\) is referred to as a <i>formula</i>, and again, the
+\(8x - 5\) part and the \(3\) part are expressions. But can equations can
+be expressions too? After all the basics of an expression, i.e., the
+&ldquo;symbols&rdquo; and &ldquo;syntactic conventions,&rdquo; are maintained.
 </p>
 
 <p>
-One important trait of expressions is they might be evaluated or
+One important trait of expressions (which is very important in
+functional programming) is that expressions may be evaluated or
 simplified to find equivalent values. The expression \(8 \cdot 5 - 2\)
-simplifies to \(16 - 5\) and evaluates to \(11\). And sometimes an
-expression comes from transcribing a statement, e.g., &ldquo;One number is
-six more than half of another number.&rdquo;  So if the other number is
-represented as \(a\) then a mathematical expression of this statement
-could be
+simplifies to \(16 - 5\) and then evaluates to \(11\). And sometimes a
+mathematical expression comes from transcribing a statement, e.g.,
+&ldquo;One number is six more than half of another number.&rdquo; So if we
+represent the &ldquo;other number&rdquo; as \(a\) then a mathematical expression of
+this statement could be
 </p>
 
 \begin{align*}
@@ -164,12 +231,19 @@ could be
 \end{align*}
 
 <p>
-But again, an equation can be an expression after all.<label id='fnr.1' for='fnr-in.1.4030850' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.4030850' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
-The following is taken from <a href="https://www.reddit.com/r/mathematics/comments/wseco9/is_function_an_expression/">this</a> reddit discussion.
-</span> If an
-expression is, as restated from above, <font color =
-"#0d3db3">any way of combining numbers and symbols in a way that
-is syntactically correct</font>, then
+Let&rsquo;s give a simplified, more direct definition of an expression <br>
+<br>
+⇲<font color = "#0d3db3"> An <b>expression</b> is a mathematical
+phrase that can contain ordinary numbers, variables such as \(x\) or \(y\)
+and operators such as the symbols for add, subtract, multiply, divide,
+and equals.  </font> <br>
+<br>
+And so an equation (built around an equals sign) can be an expression
+after all.<label id='fnr.6' for='fnr-in.6.8791831' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.8791831' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+What follows was taken from <a href="https://www.reddit.com/r/mathematics/comments/wseco9/is_function_an_expression/">this</a> reddit discussion.
+</span> If an expression is, as restated from above,
+<font color = "#0d3db3">any way of combining numbers and
+symbols in a way that is syntactically correct</font>, then
 </p>
 
 <ul class="org-ul">
@@ -179,42 +253,25 @@ is syntactically correct</font>, then
 </ul>
 
 <p>
-are all expressions, while \(5+ = 7\) means nothing because its syntax
-is false. And so an equation is an expression that has <i>equality</i>
-in it. As we saw above, \(2x + 1 = 7\) is an equation, but the \(2x +
-1\) part is just an expression.
+are all expressions&#x2014;while \(5+ = 7\) means nothing because its syntax
+is garbled. And so an equation is an expression that expresses
+<i>equality</i>.
 </p>
 
 <p>
-<i>But then is a function an expression?</i> For the time being, we&rsquo;ll give
-an ad hoc definition of a function and then later really take it apart
-and analyze it in depth <br>
+<i>But then is a function an expression?</i>
+The <i>expression</i> \(y = f(x)\) tells us that for the function \(f\) we have
+\(x\) as the independent variable and \(y\) then <i>depends</i> on which \(x\) is
+being evaluated.
 </p>
 
 <p>
-<font color = "#0d3db3"> A <b>function</b> is a <i>relation</i><label id='fnr.2' for='fnr-in.2.5888636' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.5888636' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
-&#x2026;more about <i>relations</i> later as well.
-</span>
-between a <i>set</i><label id='fnr.3' for='fnr-in.3.893959' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.893959' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
-&#x2026; <i>set</i> as in set theory sets. Some texts call a set a
-<i>class</i>.
-</span> of inputs and a set of permissible outputs with the
-property that each input is related to exactly one output. A function
-can be expressed as a relationship between variables where one
-variable (the dependent variable) is uniquely determined by the other
-variable(s) (the independent variable).</font> <br>
-<br>
-The <i>expression</i> \(y = f(x)\) tells us for the function \(f\) that \(x\) is
-the independent variable and \(y\) then depends on which \(x\) is being
-evaluated.
-</p>
-
-<p>
-𝖟𝕭: \(y = e^x\) is an expression because it is syntactically valid; it
-is an equation because of the equals sign. But is it a function? Just
-in this form we haven&rsquo;t decided which is the dependent or the
-independent value. We could plug in values for \(y\) or values for \(x\)
-as it is now written. To be specific we could write it as
+𝖟𝕭: \(y = e^x\) is an expression because, first and foremost, it is
+syntactically valid; <i>and</i> it is an equation because of the equals
+sign. But is it a function? Just in this form we haven&rsquo;t decided which
+is the dependent or the independent value. We could plug in (a)
+value(s) for \(y\) and get an \(x\) <i>or</i> plug in (a) value(s) for \(x\) and
+get a \(y\) as it is now written. To be specific we could write it as
 </p>
 
 \begin{align*}
@@ -223,15 +280,196 @@ y = f(x) = e^x
 
 <p>
 and now we have established which is independent (\(x\)) and which is
-dependent (\(y\)). So we will indeed say <font color =
-"#0d3db3">all functions are expressions.</font>
+dependent (\(y\)).
 </p>
-
-
 
 <p>
-Next, we will discuss the idea of a <b>symbolic expression</b> as Lisp and
-Scheme means it.
+𝖟𝕭: \(7a + 2b + 3c\) is clearly an <i>algebraic</i> expression but it does
+not have to be a function, since the symbols \(a\), \(b\), and \(c\) don&rsquo;t
+necessarily have to be variable inputs, rather, constants previously
+assigned numerical values. But if \(a\) is indeed a dependent variable
+we would have the function
+</p>
+
+\begin{align}
+f(a)=7a+2b+3c
+\end{align}
+
+<p>
+⥤ Food for thought: \(a\) is a dependent variable in (1) and the symbols
+\(b\) and \(c\) must then be constants. But could more than just \(a\) be a
+variable? If so, how could we express this? How about as a function of
+multiple variables?
+</p>
+
+\begin{align}
+f(a,b,c)=7a+2b+3c
+\end{align}
+
+<p>
+(2) tells us all three letter symbols stand for variables. Later when
+we define what a Cartesian coordinate system really is, we&rsquo;ll also
+touch on the world of <i><a href="https://en.wikipedia.org/wiki/Combinatorics">combinatorics</a></i>, or the science of counting or
+sampling combinations of different sets, which is really what&rsquo;s going
+on with this function-expression thingy.
+</p>
+
+<p>
+Bottom line: We will indeed say <font color = "#0d3db3">all
+functions are expressions.</font>
+</p>
+</div>
+</div>
+<div id="outline-container-org6ee8555" class="outline-3">
+<h3 id="org6ee8555">S-expressions TLS-style</h3>
+<div class="outline-text-3" id="text-org6ee8555">
+<p>
+Now we will discuss the idea of a <b>symbolic expression</b> or
+<b>s-expression</b> as Lisp and Scheme mean it. On page 4 of TLS we&rsquo;re
+suddenly confronted with, no explanation or warning, the term
+<i>S-expression</i>
+</p>
+
+<p>
+<span class="schemer">Βιγ Σξηεμερ:</span> Is it true
+that this is a list? <br>
+<code>(atom turkey) or</code> <br>
+<span class="schemer">Λιττλε Σξηεμερ:</span> No,
+because these are actually two <b>S-expressions</b><label id='fnr.7' for='fnr-in.7.7675764' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.7675764' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+We will use <b>sexp</b> the abbreviation for S-expression.
+</span> not enclosed by
+parentheses. The first one is a list containing two atoms, and the
+second one is an atom.
+</p>
+
+<p>
+Again, the discussion progresses by <i>backing into</i> constructing the
+definition of sexp&rsquo;s by first giving key examples. This method is the
+reverse of what higher math usually does. How? Because higher math
+will typically state a rule, a proposition fundamental to the topic at
+hand, and then proceed with discussion and examples of what the
+fundamental law <i>implies</i>, i.e., what facts and uses unfold, are
+necessitated by that law. For example, a higher math text might state
+<br>
+<br>
+<font color = "#0d3db3"> The set of counting numbers, the
+<i>natural</i> numbers, \(\mathbb{N}\), is <b>closed</b> under binary operators
+addition and multiplication.  </font> <br>
+<br>
+Then a discussion would ensue as to why \(\mathbb{N}\) is not
+closed<label id='fnr.8' for='fnr-in.8.8811130' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.8811130' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+A set of elements is <b>closed</b> under a binary operation if by
+applying the operation to any two elements of the set the result is
+also an element of the set. For example, \(2 + 2\) is \(4\), which is also
+an element of the natural numbers \(\mathbb{N}\).
+</span> under, say, subtraction and division by asking
+if<font color = "#0d3db3"> the operation \(5 - 6\) result in an
+element of \(\mathbb{N}\)?</font> No, because evaluating the
+expression \(5 - 6\) results in \(-1\) and \(-1 \notin \mathbb{N}\), rather, \(-1
+\in \mathbb{Z}\) which is the set of all <b>integers</b>, i.e., positive and
+negative whole numbers along with \(0\).
+</p>
+
+<p>
+Rather than copy the Big/Little Schemer chat verbatim, we&rsquo;ll just
+compile the examples directly
+</p>
+
+<p>
+𝖟𝕭: <code>((atom turkey) or)</code> is a list because the two sexp&rsquo;s are grouped
+completely inside parentheses. <br>
+𝖟𝕭: <code>xyz</code> is an sexp because all atoms are sexp&rsquo;s. <br>
+𝖟𝕭: <code>(x y z)</code> is an sexp because it is a list. <br>
+𝖟𝕭: <code>((x y) z)</code> is an sexp because all lists are sexp&rsquo;s. <br>
+𝖟𝕭: <code>(how are you doing so far)</code> is an sexp because it is a collection
+of sexp&rsquo;s enlosed by parentheses. <br>
+𝖟𝕭: <code>(((how) are) ((you) (doing so)) far)</code> is a list because it
+is a collection of sexp&rsquo;s enclosed by parentheses. <br>
+𝖟𝕭: The list <code>(((how) are) ((you) (doing so)) far)</code> has <i>three</i> sexp&rsquo;s which
+are <code>((how) are)</code>, <code>((you) (doing so))</code>, and <code>far</code>.<label id='fnr.9' for='fnr-in.9.3919073' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.3919073' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+At this point you might be getting lost in all the
+parentheses. Don&rsquo;t worry, Emacs and other editors for Lisp and Scheme
+have parentheses-matching highlighting so you always know which
+enclosing set of parentheses you are in.
+</span>
+</p>
+
+<p>
+So it&rsquo;s obvious that Scheme is organized into sexp&rsquo;s. But why, how?
+</p>
+</div>
+</div>
+<div id="outline-container-org9c54a6f" class="outline-3">
+<h3 id="org9c54a6f">S-expression theory</h3>
+<div class="outline-text-3" id="text-org9c54a6f">
+<p>
+The first part of the term s-expression is <i>symbolic</i>, but what is
+meant by symbolic? Obviously, symbolic is an adjective that means
+whatever it is referring to has <i>symbol-like</i>
+characteristics. Wikipedia starts its article on mathematical symbols
+with this simple and probably too general definition <br>
+<br>
+<font color = "#0d3db3">A <b>mathematical symbol</b> is a figure
+or a combination of figures that is used to represent a mathematical
+object, an action on mathematical objects, a relation between
+mathematical objects, or for structuring the other symbols that occur
+in a formula. As formulas are entirely constituted with symbols of
+various types, many symbols are needed for expressing all
+mathematics.</font> <br>
+<br>
+Before we start going around in circles, what is meant by &ldquo;figures&rdquo; is,
+e.g.,
+</p>
+
+<ul class="org-ul">
+<li><b>decimal digits</b>, i.e., \(0\), \(2\), \(3\), &#x2026;</li>
+<li><b>Latin</b>, <b>Greek</b>, <b>Hebrew</b> alphabet characters, i.e., \(a\), \(b\),
+\(\mathbb{C}\), \(\beta\), \(\rho\), \(\Gamma\), \(\beth\), \(\aleph\), et cetera, which can have
+different weights and typefaces for different uses.</li>
+<li>Various operation and binder symbols, i.e., \(+\), \(-\), \(\sum\) for summation,
+\(\int\) for integration, et cetera.</li>
+</ul>
+
+<p>
+Without getting too philosophical, we may stop and marvel at how
+humans have come to use and manipulate symbols, starting with the use
+of language. With human language we use <b>words</b> which <i>symbolize</i> real
+things or concepts. A word can be considered a <i>placeholder</i> for an
+object or idea. Some experts say humanity has only possessed real
+words-as-placeholder-symbols for forty thousand years. Others say
+sixty to one-hundred thousand years. And yet we surely have been
+anatomically <i>Homo sapiens</i> longer than we&rsquo;ve had language. What did
+we, with our big brains, do before we had language? Obviously, we had
+only intuitions, i.e., we would see two piles of nuts and only have
+vague intuitive notions that there were two piles and they might
+differ in size&#x2026; But just analyzing that last sentence demonstrates
+how powerful formal symbolic language can be. Whole logic systems
+spring to life when we resort to setting symbols to things and
+ideas. And so computing has been called <i>the manipulation of symbols</i>.
+</p>
+
+<p>
+Here&rsquo;s a quote from math logician Raymond M. Smullyan&rsquo;s book <i>The Tao
+Is Silent</i><label id='fnr.10' for='fnr-in.10.8006679' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.8006679' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
+Now, is Professor Smullyan saying ignorance is bliss?
+</span>
+</p>
+
+<blockquote>
+<p>
+The knowledge of the ancients was perfect. How perfect? I will tell
+you. At first they did not yet know that there were things. This is
+the most perfect knowledge; nothing can be added. Next they knew
+things but did not yet make distinctions between them. Next they made
+distinctions between them but did not yet pass judgements upon
+them. When judgement was passed, Tao was destroyed. With the
+destruction of Tao, individual preferences come into being.
+</p>
+</blockquote>
+
+<p>
+Yes, the rabbit hole of language and symbolism goes deep. But let&rsquo;s
+come back to what is meant by a symbol in the computer world.
 </p>
 
 
@@ -243,23 +481,46 @@ Scheme means it.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="org-src-container">
-<pre class="src src-scheme" id="org4d96662"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 2<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org94dc380"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 2<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(1 . 2)
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org7e0b801"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 '<span class="org-rainbow-delimiters-depth-2">()</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org43f758c"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 '<span class="org-rainbow-delimiters-depth-2">()</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orga4ab287"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 '<span class="org-rainbow-delimiters-depth-4">()</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org06d8357"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 '<span class="org-rainbow-delimiters-depth-4">()</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<div class="org-src-container">
-<pre class="src src-scheme" id="orgac43560"><span class="org-rainbow-delimiters-depth-1">(</span>list 1 2 3<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org39af42c"><span class="org-rainbow-delimiters-depth-1">(</span>list 1 2 3<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
