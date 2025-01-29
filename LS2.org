@@ -291,10 +291,10 @@ e.g.,
 + *Latin*, *Greek*, *Hebrew* alphabet characters, i.e., $a$, $b$,
   $\mathbb{C}$, $\beta$, $\rho$, $\Gamma$, $\beth$, $\aleph$, et cetera, which can have
   different weights and typefaces for different uses.
-+ Various operation and binder symbols, i.e., $+$, $-$, $\sum$ for summation,
-  $\int$ for integration, et cetera.
++ Various *operation* and *binder symbols*, i.e., $+$, $-$, $\div$, $\sum$
+  for summation, $\int$ for integration, et cetera.
 
-Without getting too philosophical, we may stop and marvel at how
+Touching for a moment on the philosophical, we may stop and marvel at how
 humans have come to use and manipulate symbols, starting with the use
 of language. With human language we use *words* which /symbolize/ real
 things or concepts. A word can be considered a /placeholder/ for an
@@ -324,36 +324,75 @@ destruction of Tao, individual preferences come into being.
 #+end_quote
 
 Yes, the rabbit hole of language and symbolism goes deep. But let's
-come back to what is meant by a symbol in the computer
+come back to what is meant by a /symbol/ in the computer
 world. Basically, a symbol in a computer language represents a place
-in the computer's live memory.
+in the computer's live memory. As we've mentioned before, /[[https://en.wikipedia.org/wiki/Assembly_language][Assembly
+language]]/ was the first attempt to represent the various computer
+commands and locations in a symbolic way with labels for particular
+actions and places in memory. Down through the years /symbolic
+computing/ has kept advancing by abstracting more and more of the
+low-level computing through symbolic representations.
+
+The version of Scheme we will primarily use is [[https://www.gnu.org/software/guile/][Guile]], which is the
+official extension language of the [[https://gnu.org/][GNU project]]. A Guile program can be
+compiled to run stand-alone like any piece of software; but we will
+almost exclusively interact with the "virtual machine" *[[https://en.wikipedia.org/wiki/Interpreter_(computing)][interpreter]]*
+through the *REPL* or the /read-evaluate-print loop/ user
+interface. Below we see a screenshot of a live Guile REPL session.
+
+#+begin_figure
+#+CAPTION: REPL interface in Emacs buffer.
+[[file:images/GuileREPL.png]]
+#+end_figure
+
+...which is similar to Linux command line interface. The big
+difference is that a Scheme REPL is the visible human input/output
+interface to a Guile Scheme virtual machine. When we start a REPL we
+are starting a live "session." How do we run code with a REPL?
+
++ By typing it directly into the REPL as in the picture above,
++ by loading a file containing Scheme code into the
+  REPL session, e.g., ~load myfile.scm~,
++ by evaluating org-mode Babel code blocks in an org-mode buffer as
+  seen directly below[fn:11]
+
+#+begin_example
+#+begin_src scheme :session *littleschemer*
+(define pi 3.141592654)
+(format #t "pi: ~a" pi)
+#+end_src
+#+end_example
+
+In the code block example above we see Scheme code that will assign a
+value to the /symbol/ ~pi~. To evaluate this code we enter ~C-c C-c~,
+which produces
+
+#+begin_example
+#+RESULTS:
+: pi: 3.141592654
+#+end_example
+
+
+and the results of evaluating that code after the block. In fact, from
+now on we will begin using Babel code blocks to demonstrate Scheme
+code. However, you will only see the code and the results, but not the
+code block wrapper (~#+begin_src scheme~ ... ~#+end_src~), nor the
+results header (~#+RESULTS:~ ... ).
 
 
 
+Let's try a code block. The above code ~(define pi 3.141592654)~ shows
+how we assign a value to a symbol. The symbol was ~pi~ and the value
+was ~3.141592654~. However, we may simply present 
 
 
+#+name: fb69ff03-5e77-44a2-9642-91324da63a2c
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+testpi
+#+end_src
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#+RESULTS: fb69ff03-5e77-44a2-9642-91324da63a2c
+: 3.141592654
 
 #+name: e45cfb6d-4110-49ba-bf7f-241682559d2d
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
@@ -425,4 +464,8 @@ parentheses. Don't worry, Emacs and other editors for Lisp and Scheme
 have parentheses-matching highlighting so you always know which
 enclosing set of parentheses you are in.
 
-[fn:10] Now, is Professor Smullyan saying ignorance is bliss?
+[fn:10] So is Professor Smullyan saying ignorance is bliss?
+
+[fn:11] We will explore Scheme code through liberal use of org-mode
+Babel code blocks. Babel code blocks interspersed throughout an Emacs
+org-mode file is an excellent form of /[[https://en.wikipedia.org/wiki/Literate_programming][literate programming]]/.
