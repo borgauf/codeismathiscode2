@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-01-28 Tue 23:22 -->
+<!-- 2025-02-02 Sun 21:09 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -107,12 +107,12 @@ pre.example {clear: none; }
 </nav>
 </div>
 </p>
-<section id="outline-container-org496e461" class="outline-2">
-<h2 id="org496e461">Little Schemer 2</h2>
-<div class="outline-text-2" id="text-org496e461">
-<figure id="org819e6b8">
+<section id="outline-container-org36242ad" class="outline-2">
+<h2 id="org36242ad">Little Schemer 2</h2>
+<div class="outline-text-2" id="text-org36242ad">
+<figure id="org6017210">
 
-<figure id="orge63ca02">
+<figure id="org37cd64c">
 <img src="images/LittleSchemerElephant1.png" alt="LittleSchemerElephant1.png">
 
 <figcaption><span class="figure-number">Figure 1: </span>The Little Schemer putting together a combinator.</figcaption>
@@ -120,13 +120,13 @@ pre.example {clear: none; }
 </figure>
 </div>
 </section>
-<section id="outline-container-org0037182" class="outline-2">
-<h2 id="org0037182"></h2>
-<div class="outline-text-2" id="text-org0037182">
+<section id="outline-container-orgd687782" class="outline-2">
+<h2 id="orgd687782"></h2>
+<div class="outline-text-2" id="text-orgd687782">
 </div>
-<div id="outline-container-org648c2f4" class="outline-3">
-<h3 id="org648c2f4">What are expressions?</h3>
-<div class="outline-text-3" id="text-org648c2f4">
+<div id="outline-container-org631bfca" class="outline-3">
+<h3 id="org631bfca">What are expressions?</h3>
+<div class="outline-text-3" id="text-org631bfca">
 <p>
 As mentioned previously, <i>functional</i> programming, as opposed to
 <i>procedural</i> or <i>imperative</i> programming, emphasizes <i>functions</i> as
@@ -139,7 +139,7 @@ detail as we progress.
 <p>
 Computer programming has advanced from the early days of literally
 having to give <i>commands</i> imperatively, one after the other, to the
-electronic organs of the CPU<label id='fnr.1' for='fnr-in.1.5913226' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.5913226' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+electronic organs of the CPU<label id='fnr.1' for='fnr-in.1.5769378' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.5769378' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
 <b>CPU</b>: central processing unit, the calculation &ldquo;brains&rdquo; of a
 computer.
 </span> (and the memory attached to it) in
@@ -161,15 +161,15 @@ analyze it in a higher math way <br>
 </p>
 
 <p>
-⇲<font color = "#0d3db3"> A <b>function</b> is a <i>relation</i> <label id='fnr.2' for='fnr-in.2.8263294' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.8263294' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+⇲<font color = "#0d3db3"> A <b>function</b> is a <i>relation</i> <label id='fnr.2' for='fnr-in.2.4547423' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.4547423' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
 &#x2026;more about <i>relations</i> in a higher math way later.
 </span>
-between a <i>set</i> <label id='fnr.3' for='fnr-in.3.4017446' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.4017446' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+between a <i>set</i> <label id='fnr.3' for='fnr-in.3.7709812' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.7709812' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
 &#x2026; <i>set</i> as in set theory sets. Some very formal texts call a
 set a <i>class</i>, by the way.
 </span> whose elements are inputs (the <i>domain</i>) and a
 set whose elements make up outputs (the range) with the key property
-that <i>each input is related to exactly one output</i>.<label id='fnr.4' for='fnr-in.4.4849930' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.4849930' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+that <i>each input is related to exactly one output</i>.<label id='fnr.4' for='fnr-in.4.7638907' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.7638907' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
 This important quality of a function was touched on in the
 preface.
 </span>
@@ -180,7 +180,7 @@ usual pre-algebra way of denoting a function, i.e., \(y = f(x)\), the
 symbol \(x\) stands for input and is called an <b>independent variable</b>,
 while the symbol that stands for output, \(y\), is called a <b>dependent
 variable</b>. And so the dependent variable of the range <i>depends</i> on the
-independent variable of the domain.<label id='fnr.5' for='fnr-in.5.8791831' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.8791831' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+independent variable of the domain.<label id='fnr.5' for='fnr-in.5.1345053' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.1345053' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
 In pre-algebra a function is typically graphed with the
 horizontal axis representing the <i>independent variable</i> and the
 vertical axis representing the <i>dependent variable</i>. <br>
@@ -239,7 +239,7 @@ and operators such as the symbols for add, subtract, multiply, divide,
 and equals.  </font> <br>
 <br>
 And so an equation (built around an equals sign) can be an expression
-after all.<label id='fnr.6' for='fnr-in.6.6439167' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.6439167' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+after all.<label id='fnr.6' for='fnr-in.6.5999288' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.5999288' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
 What follows was taken from <a href="https://www.reddit.com/r/mathematics/comments/wseco9/is_function_an_expression/">this</a> reddit discussion.
 </span> If an expression is, as restated from above,
 <font color = "#0d3db3">any way of combining numbers and
@@ -320,9 +320,9 @@ functions are expressions.</font>
 </p>
 </div>
 </div>
-<div id="outline-container-org8948797" class="outline-3">
-<h3 id="org8948797">S-expressions TLS-style</h3>
-<div class="outline-text-3" id="text-org8948797">
+<div id="outline-container-org581a722" class="outline-3">
+<h3 id="org581a722">S-expressions TLS-style</h3>
+<div class="outline-text-3" id="text-org581a722">
 <p>
 Now we will discuss the idea of a <b>symbolic expression</b> or
 <b>s-expression</b> as Lisp and Scheme mean it. On page 4 of TLS we&rsquo;re
@@ -335,7 +335,7 @@ suddenly confronted with, no explanation or warning, the term
 that this is a list? <br>
 <code>(atom turkey) or</code> <br>
 <span class="schemer">Λιττλε Σξηεμερ:</span> No,
-because these are actually two <b>S-expressions</b><label id='fnr.7' for='fnr-in.7.8811130' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.8811130' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+because these are actually two <b>S-expressions</b><label id='fnr.7' for='fnr-in.7.6848565' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.6848565' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
 We will use <b>sexp</b> the abbreviation for S-expression.
 </span> not enclosed by
 parentheses. The first one is a list containing two atoms, and the
@@ -357,7 +357,7 @@ necessitated by that law. For example, a higher math text might state
 addition and multiplication.  </font> <br>
 <br>
 Then a discussion would ensue as to why \(\mathbb{N}\) is not
-closed<label id='fnr.8' for='fnr-in.8.3919073' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.3919073' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+closed<label id='fnr.8' for='fnr-in.8.2585110' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.2585110' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
 A set of elements is <b>closed</b> under a binary operation if by
 applying the operation to any two elements of the set the result is
 also an element of the set. For example, \(2 + 2\) is \(4\), which is also
@@ -386,7 +386,7 @@ of sexp&rsquo;s enlosed by parentheses. <br>
 𝖟𝕭: <code>(((how) are) ((you) (doing so)) far)</code> is a list because it
 is a collection of sexp&rsquo;s enclosed by parentheses. <br>
 𝖟𝕭: The list <code>(((how) are) ((you) (doing so)) far)</code> has <i>three</i> sexp&rsquo;s which
-are <code>((how) are)</code>, <code>((you) (doing so))</code>, and <code>far</code>.<label id='fnr.9' for='fnr-in.9.7474389' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.7474389' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+are <code>((how) are)</code>, <code>((you) (doing so))</code>, and <code>far</code>.<label id='fnr.9' for='fnr-in.9.7499042' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.7499042' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
 At this point you might be getting lost in all the
 parentheses. Don&rsquo;t worry, Emacs and other editors for Lisp and Scheme
 have parentheses-matching highlighting so you always know which
@@ -399,9 +399,9 @@ So it&rsquo;s obvious that Scheme is organized into sexp&rsquo;s. But why, how?
 </p>
 </div>
 </div>
-<div id="outline-container-orgdf201f6" class="outline-3">
-<h3 id="orgdf201f6">S-expression theory</h3>
-<div class="outline-text-3" id="text-orgdf201f6">
+<div id="outline-container-orgac12847" class="outline-3">
+<h3 id="orgac12847">S-expression and symbols</h3>
+<div class="outline-text-3" id="text-orgac12847">
 <p>
 The first part of the term s-expression is <i>symbolic</i>, but what is
 meant by symbolic? Obviously, symbolic is an adjective that means
@@ -431,26 +431,30 @@ for summation, \(\int\) for integration, et cetera.</li>
 </ul>
 
 <p>
-Touching for a moment on the philosophical, we may stop and marvel at how
-humans have come to use and manipulate symbols, starting with the use
-of language. With human language we use <b>words</b> which <i>symbolize</i> real
-things or concepts. A word can be considered a <i>placeholder</i> for an
-object or idea. Some experts say humanity has only possessed real
-words-as-placeholder-symbols for forty thousand years. Others say
-sixty to one-hundred thousand years. And yet we surely have been
-anatomically <i>Homo sapiens</i> longer than we&rsquo;ve had language. What did
-we, with our big brains, do before we had language? Obviously, we had
-only intuitions, i.e., we would see two piles of nuts and only have
-vague intuitive notions that there were two piles and they might
-differ in size&#x2026; But just analyzing that last sentence demonstrates
-how powerful formal symbolic language can be. Whole logic systems
-spring to life when we resort to setting symbols to things and
-ideas. And so computing has been called <i>the manipulation of symbols</i>.
+Touching for a moment on the philosophical, we may stop and marvel at
+how humans have come to use and manipulate symbols, especially the use
+of language. With human language we employ <b>words</b> which <i>symbolize</i>
+real things or abstract concepts. A word can be considered a
+<i>placeholder</i> for an object or idea. Some experts say humanity has
+only possessed language as a set of words-as-placeholder-symbols for
+forty thousand years. Others say sixty to one-hundred thousand
+years. And yet we surely have been anatomically <i>Homo sapiens</i> longer
+than we&rsquo;ve had language. What did we, with our big brains, do before
+we had language?<label id='fnr.10' for='fnr-in.10.8583715' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.8583715' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
+&#x2026;some suggest telepathy&#x2026;
+</span> Obviously, we relied to some extent on
+intuitions, i.e., we would see two piles of nuts and only have vague
+intuitive notions that there were two piles and that they might differ
+in size&#x2026; But if we just analyze that last sentence we can begin to
+appreciate how powerful formal symbolic language can be. Whole logic
+systems spring to life once we have set up symbols to stand for things
+and ideas. Hence, it&rsquo;s no wonder computing has been called <i>the
+manipulation of symbols</i>.
 </p>
 
 <p>
 Here&rsquo;s a quote from math logician Raymond M. Smullyan&rsquo;s book <i>The Tao
-Is Silent</i><label id='fnr.10' for='fnr-in.10.2219476' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.2219476' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
+Is Silent</i><label id='fnr.11' for='fnr-in.11.3286090' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.3286090' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
 So is Professor Smullyan saying ignorance is bliss?
 </span>
 </p>
@@ -470,27 +474,29 @@ destruction of Tao, individual preferences come into being.
 <p>
 Yes, the rabbit hole of language and symbolism goes deep. But let&rsquo;s
 come back to what is meant by a <i>symbol</i> in the computer
-world. Basically, a symbol in a computer language represents a place
-in the computer&rsquo;s live memory. As we&rsquo;ve mentioned before, <i><a href="https://en.wikipedia.org/wiki/Assembly_language">Assembly
+world. Basically, a symbol in a computer program represents a place in
+the computer&rsquo;s live memory. As we&rsquo;ve mentioned before, <i><a href="https://en.wikipedia.org/wiki/Assembly_language">Assembly
 language</a></i> was the first attempt to represent the various computer
 commands and locations in a symbolic way with labels for particular
 actions and places in memory. Down through the years <i>symbolic
 computing</i> has kept advancing by abstracting more and more of the
-low-level computing through symbolic representations.
+low-level computing away through symbolic representations. Again, this
+is <i>declarative</i> rather than <i>imperative</i> programming.
 </p>
 
 <p>
 The version of Scheme we will primarily use is <a href="https://www.gnu.org/software/guile/">Guile</a>, which is the
 official extension language of the <a href="https://gnu.org/">GNU project</a>. A Guile program can be
-compiled to run stand-alone like any piece of software; but we will
-almost exclusively interact with the &ldquo;virtual machine&rdquo; <b><a href="https://en.wikipedia.org/wiki/Interpreter_(computing)">interpreter</a></b>
-through the <b>REPL</b> or the <i>read-evaluate-print loop</i> user
-interface. Below we see a screenshot of a live Guile REPL session.
+compiled to run stand-alone like any piece of executable software; but
+we will almost exclusively real-time <i>interact</i> with the &ldquo;virtual
+machine&rdquo; <b><a href="https://en.wikipedia.org/wiki/Interpreter_(computing)">interpreter</a></b> of Guile through the <b>REPL</b> or the
+<i>read-evaluate-print loop</i> user interface. Below we see a screenshot
+of a live <i>interactive</i> Guile REPL session
 </p>
 
-<figure id="org38570f5">
+<figure id="org8e43c0d">
 
-<figure id="org94dc380">
+<figure id="org9110a7b">
 <img src="images/GuileREPL.png" alt="GuileREPL.png">
 
 <figcaption><span class="figure-number">Figure 2: </span>REPL interface in Emacs buffer.</figcaption>
@@ -498,25 +504,21 @@ interface. Below we see a screenshot of a live Guile REPL session.
 </figure>
 
 <p>
-&#x2026;which is similar to Linux command line interface. The big
-difference is that a Scheme REPL is the visible human input/output
-interface to a Guile Scheme virtual machine. When we start a REPL we
-are starting a live &ldquo;session.&rdquo; How do we run code with a REPL?
+&#x2026;which is similar to Linux command line interface, the big
+difference being that a Scheme REPL is the visible human input/output
+interface to a live Guile Scheme virtual machine &ldquo;session.&rdquo; How do we
+run code with a REPL?
 </p>
 
 <ul class="org-ul">
 <li>By typing it directly into the REPL as in the picture above,</li>
 <li>by loading a file containing Scheme code into the
-REPL session, e.g., <code>load myfile.scm</code>,</li>
+REPL session, e.g., <code>&gt; load myfile.scm</code>,</li>
 <li>by evaluating org-mode Babel code blocks in an org-mode buffer as
-seen directly below<label id='fnr.11' for='fnr-in.11.7288065' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.7288065' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
-We will explore Scheme code through liberal use of org-mode
-Babel code blocks. Babel code blocks interspersed throughout an Emacs
-org-mode file is an excellent form of <i><a href="https://en.wikipedia.org/wiki/Literate_programming">literate programming</a></i>.
-</span></li>
+seen directly below</li>
 </ul>
 
-<pre class="example" id="org37a066c">
+<pre class="example" id="org44eb2f1">
 #+begin_src scheme :session *littleschemer*
 (define pi 3.141592654)
 (format #t "pi: ~a" pi)
@@ -524,46 +526,240 @@ org-mode file is an excellent form of <i><a href="https://en.wikipedia.org/wiki/
 </pre>
 
 <p>
-In the code block example above we see Scheme code that will assign a
-value to the <i>symbol</i> <code>pi</code>. To evaluate this code we enter <code>C-c C-c</code>,
-which produces
+We will explore Scheme code through liberal use of org-mode Babel code
+blocks. Babel code blocks like this interspersed throughout an Emacs
+org-mode text file is an excellent form of <i><a href="https://en.wikipedia.org/wiki/Literate_programming">literate programming</a></i>.
 </p>
 
-<pre class="example" id="orga4ab287">
+<p>
+In the code block example above we see Scheme code that will assign a
+value to the <i>symbol</i> <code>pi</code>. To evaluate this code we place the cursor
+inside the code block and enter <code>C-c C-c</code>, which produces
+</p>
+
+<pre class="example" id="org7735d91">
 #+RESULTS:
 : pi: 3.141592654
 </pre>
 
-
 <p>
-and the results of evaluating that code after the block. In fact, from
-now on we will begin using Babel code blocks to demonstrate Scheme
-code. However, you will only see the code and the results, but not the
-code block wrapper (<code>#+begin_src scheme</code> &#x2026; <code>#+end_src</code>), nor the
-results header (<code>#+RESULTS:</code> &#x2026; ).
+As we see in the code block&rsquo;s heading above, the two contained
+expressions will be evaluated in a specific REPL session named
+<code>*littleschemer*</code>. Next, let&rsquo;s <i>not</i> <code>define</code> a symbol, rather, just
+feed the session a symbol<label id='fnr.12' for='fnr-in.12.645358' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.645358' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
+From now on for visual purposes we will forego the code block
+wrappers , i.e., <code>#+begin_src scheme ... #+end_src</code>, and just display
+the code and the results. When in doubt about exactly what the code
+block wrapper should be, consult the raw version of this page.
+</span>
 </p>
-
-
-
-<p>
-Let&rsquo;s try a code block. The above code <code>(define pi 3.141592654)</code> shows
-how we assign a value to a symbol. The symbol was <code>pi</code> and the value
-was <code>3.141592654</code>. However, we may simply present 
-</p>
-
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org39af42c">testpi
+<pre class="src src-scheme" id="org85cee69">'mysymbol
 </pre>
 </div>
 
 <pre class="example">
-3.141592654
+mysymbol
 </pre>
 
 
+<p>
+As we see, Scheme just gives back the unassigned symbol&#x2014;and nothing
+further happens. However, that apostrophe before the symbol <code>'mysymbol</code>
+is not part of the symbol <code>mysymbol</code>. In the Lisp/Scheme world this is
+known as <i>quoting</i>, which turns anything quoted into <i>literal
+data</i>. Here&rsquo;s a more verbose version of quoting with the same effect
+</p>
+
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgb7d0ae3"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 2<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orge7946a1"><span class="org-rainbow-delimiters-depth-1">(</span>quote mysymbol<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+mysymbol
+</pre>
+
+
+<p>
+Why quote? Because Scheme considers any <i>unquoted</i> symbol as assigned
+and tries to retrieve or run it. However, when we quote an sexp, we&rsquo;re
+telling Scheme to treat it as just data. For example <code>(define pi
+3.141592654)</code> is an assignment, and once evaluated, <code>pi</code> is known
+during the life of the REPL session as the symbol for the value
+<code>3.141592654</code>. However
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="orgbb2be05">'<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-function-name">pi</span> 3.141592654<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(define pi 3.141592654)
+</pre>
+
+
+<p>
+produces just the literal sexp <code>(define pi 3.141592654)</code>. This &ldquo;trick&rdquo;
+is a powerful tool in functional languages. Why? Imagine passing a
+whole piece of real code <b>A</b> as input to another piece of code
+<b>B</b>. Consider this
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org31d05bf"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-function-name">pi-def</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">define</span> <span class="org-function-name">pi</span> 3.141592654<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>format #t <span class="org-string">"pi-def: ~a"</span> pi-def<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+pi-def: (define pi 3.141592654)
+</pre>
+
+
+<p>
+Lots and lots more about this &ldquo;trick&rdquo; soon. It&rsquo;s literally the backbone of
+functional programming.
+</p>
+</div>
+</div>
+<div id="outline-container-org8bc34ba" class="outline-3">
+<h3 id="org8bc34ba">Building a function</h3>
+<div class="outline-text-3" id="text-org8bc34ba">
+<p>
+So we&rsquo;ve seen how <code>(define pi 3.141592654)</code> and <code>'(define pi
+3.141592654)</code> are two different things. As we saw, the second example
+is <i>quoted</i>, which makes the whole sexp one big chunk of static,
+literal data. Good, but as opposed to what exactly?  Intuitively we
+can guess that the first unquoted sexp is, yes, <i>defining</i> <code>pi</code> to be
+<code>3.141592654</code>. How exactly does this work? <br>
+<br>
+<font color = "#0d3db3"> All Scheme code takes the form of
+lists, and the first sexp in the list&#x2014;unless the list is
+quoted&#x2014;serves as the <b>function</b> or <b>operator</b>, while the rest of the
+sexp&rsquo;s in the list are the parts the function or operator will work
+on: <code>(function sexp1 sexp2 ... sexpN)</code> </font> <br>
+<br>
+𝖟𝕭: <code>(+ 2 3)</code> &#x2026;note prefix notation <br>
+𝖟𝕭: <code>(abs -4)</code> &#x2026; first sexp is always a function or operator <br>
+𝖟𝕭: <code>(+ (* 2 3) 8)</code>  &#x2026; simplify the deepest sexp outward <br>
+𝖟𝕭: <code>(+ 3 4 5 1)</code> &#x2026; addition prefix notation can take multiple
+arguments <br>
+</p>
+
+<p>
+In each of the above examples the very first item in the list is the
+function/operator. For the arithmetic operators like <code>+</code>, <code>*</code>, et
+cetera, we see <a href="https://en.wikipedia.org/wiki/Polish_notation">prefix notation</a> with possibly multiple arguments. Now,
+let&rsquo;s see a full Scheme function that takes one argument and when
+evaluated, produces output<label id='fnr.13' for='fnr-in.13.9036426' class='margin-toggle sidenote-number'><sup class='numeral'>13</sup></label><input type='checkbox' id='fnr-in.13.9036426' class='margin-toggle'><span class='sidenote'><sup class='numeral'>13</sup>
+Anything following a &ldquo;;&rdquo; is a <i>comment</i> for the rest of that
+line and is not evaluated, rather, just passed on. However, with
+org-mode Babel&rsquo;s literate programming we need far less in-code
+comments since we can make all the commentary we need before and after
+the block.
+</span>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org674ae05"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">celsius-&gt;fahrenheit</span> celsius<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>+ <span class="org-rainbow-delimiters-depth-3">(</span>* 1.8 celsius<span class="org-rainbow-delimiters-depth-3">)</span> 32<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>  <span class="org-comment-delimiter">; </span><span class="org-comment">figure out temperature conversion</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>format #t <span class="org-string">"fahrenheit: ~a"</span> <span class="org-rainbow-delimiters-depth-2">(</span>celsius-&gt;fahrenheit 20<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">print answer</span>
+</pre>
+</div>
+
+<pre class="example">
+fahrenheit: 68.0
+</pre>
+
+
+<p>
+Of the two main sexp&rsquo;s in the code block above, the first
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org6d5213f"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">celsius-&gt;fahrenheit</span> celsius<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>+ <span class="org-rainbow-delimiters-depth-3">(</span>* 1.8 celsius<span class="org-rainbow-delimiters-depth-3">)</span> 32<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+is a typical nested list building a function. In this example the
+general form is <code>(define (function-name arguments)
+(calculating-code))</code> which has three main sexp&rsquo;s, the last on the next
+line and indented for better reading. Note how the calculation code is
+a prefix notation multiplication nested inside a prefix notation
+addition. In the <code>format</code> sexp we call the function
+<code>celsius-&gt;fahrenheit</code> with argument <code>20</code>.
+</p>
+
+<p>
+But we&rsquo;re getting ahead of ourselves a bit. Let&rsquo;s get back to
+S-expressions. 
+</p>
+</div>
+</div>
+<div id="outline-container-orgc39a444" class="outline-3">
+<h3 id="orgc39a444">S-expression lore</h3>
+<div class="outline-text-3" id="text-orgc39a444">
+<p>
+Symbolic programs are programs where symbolic expressions are
+manipulated to gain useful output. But what does this actually entail,
+how do we <i>manipulate symbolic expressions</i>? With Lisp and Scheme
+everything is housed in lists&#x2014;both data and code alike. So far we&rsquo;ve
+been nudging around the idea of how we build working code from
+lists. Now we&rsquo;ll explore more deeply what a list as an sexp really
+is. We&rsquo;ll start with a more formal look at s-expressions.
+</p>
+
+<p>
+Technically, formally an sexp is one of two possibilities
+</p>
+
+<ul class="org-ul">
+<li>an <b>atom</b>, <i>or</i></li>
+<li>a <b>cons cell</b></li>
+</ul>
+
+<p>
+&#x2026;which is, er, somewhat abstract. But didn&rsquo;t we just say a Scheme
+program is completely contained in lists, data and code? We&rsquo;ve seen
+the atom before. Recall, an atom is just a symbol object thing
+standing alone by itself. In the Scheme world, atoms can do two
+things: stand alone or be in a list, and we saw how just one atom
+surrounded by a set of parentheses becomes a list. We then saw how
+multiple atoms surrounded by a set of parentheses is also a list; how
+a set of parentheses surrounding a mixture of atoms and other lists is
+a list &#x2026; we saw that lists can be nested in lists nested in lists,
+ever deeper. Good. But calling an atom a sexp doesn&rsquo;t get us very
+far. For example, we saw earlier how we could put <code>'myatom</code> in the
+REPL&#x2014;and we only got <code>myatom</code> repeated back to us, i.e., no real
+computation is happening yet.
+</p>
+
+<p>
+Let&rsquo;s consider the second type of sexp given above, the <b><a href="https://en.wikipedia.org/wiki/Cons">cons
+cell</a></b>. This is where the action starts. A <b>cons cell</b> is what a Scheme
+list really is, so let&rsquo;s look at how a Scheme list comes into
+existence. <br>
+<br>
+<label for='mn-auto.6293918' class='margin-toggle'>&#8853;</label><input type='checkbox' id='mn-auto.6293918' class='margin-toggle'><span class='marginnote'> We&rsquo;ve touched on the idea of an <i>ordered pair</i> before with Cartesian coordinate pairs where the order of which is first and second matters&#x2026; </span>
+<font color = "#0d3db3"> A cons cell is an <b>ordered pair</b> of
+the form <code>(sexp1 . sexp2)</code>. </font> <br>
+</p>
+
+<p>
+Hmm, still rather theory-bound. So what&rsquo;s the connection between these
+ordered-pair <i>cons cells</i> and lists? The answer is we use Scheme&rsquo;s
+primitive function <code>cons</code> to create cons cells by fusing two sexp&rsquo;s
+together. Let&rsquo;s see an example where two sexp&rsquo;s as atoms are <i>consed</i>
+together
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="orga42f1d3"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 2<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -572,18 +768,424 @@ was <code>3.141592654</code>. However, we may simply present
 </pre>
 
 
+<p>
+Scheme just gave us back a cons cell. Let&rsquo;s play with this idea
+</p>
+
 <div class="org-src-container">
-<pre class="src src-scheme" id="org288531e"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 '<span class="org-rainbow-delimiters-depth-2">()</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org9e01512"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 3<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(1 2 . 3)
+</pre>
+
+
+<p>
+and
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org09912c8"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 4<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(1 2 3 . 4)
+</pre>
+
+
+<p>
+Except for that last dot between <code>3</code> and <code>4</code>, this looks like a
+regular list of numbers, no? So what is the difference between <code>(1 2 3
+. 4)</code> and the regular list <code>(1 2 3 4)</code>?
+</p>
+
+<p>
+So far we&rsquo;ve exampled our way into how lists are built in Scheme,
+namely, <i>a bunch of stuff gets <b>consed</b> together</i>. Let&rsquo;s try this
+again and watch exactly which parentheses are enclosing what
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org54ac258"><span class="org-rainbow-delimiters-depth-1">(</span>cons <span class="org-rainbow-delimiters-depth-2">(</span>cons '<span class="org-rainbow-delimiters-depth-3">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-3">)</span> '<span class="org-rainbow-delimiters-depth-3">(</span>5<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span> '<span class="org-rainbow-delimiters-depth-2">(</span>but so is six<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(((five is a nice number) 5) but so is six)
+</pre>
+
+
+<p>
+What happened this time? For one, we simply embedded one consing
+inside another. And yet both the inner and outer <code>cons</code> <i>consed</i> the
+sexp&rsquo;s into a real list, making the <code>cons</code> dots go away. Why and how?
+Let&rsquo;s do more examples
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org3b966bb"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 '<span class="org-rainbow-delimiters-depth-2">()</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(1)
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org199ecb6"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 '<span class="org-rainbow-delimiters-depth-4">()</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(1 2 3)
+</pre>
+
+
+<p>
+Now we see <code>cons</code> producing regular lists without any <i>cons pair</i>
+dots. Technically, under the hood, we still have our nested lists of
+consing&#x2014;which means <code>(1 2 3)</code> is really <code>(1 . (2 . (3 . NIL)))</code>
+where in Scheme <code>NIL</code> is <code>'()</code> or the <b>empty list</b>. We call <code>(1 2 3)</code>
+the <b><a href="https://en.wikipedia.org/wiki/Syntactic_sugar">syntactic sugar</a></b> version, i.e., we&rsquo;re given a more visually
+friendly, uncluttered version of a consed-together list.
+</p>
+
+<p>
+So <code>(1 2 3)</code> is really just a visually improved version of <code>(1 . (2
+. (3 . '())))</code>.<label id='fnr.14' for='fnr-in.14.8253767' class='margin-toggle sidenote-number'><sup class='numeral'>14</sup></label><input type='checkbox' id='fnr-in.14.8253767' class='margin-toggle'><span class='sidenote'><sup class='numeral'>14</sup>
+Realize of course that <br>
+<code>(1 . (2 . (3 . NIL)))</code> <br>
+is just a symbolic way of expressing <br>
+<code>(cons 1 (cons 2 (cons 3 '())))</code>. <br>
+The <i>dotted</i> version doesn&rsquo;t work in actual Scheme coding.
+</span> Awkward looking as the naked version is, it shows the
+details of how we&rsquo;re doing a particular sort of <i>connecting</i> or
+<i>associating</i> <code>1</code>, <code>2</code>, and <code>3</code> together. But it&rsquo;s probably not
+apparent why we need to <b>cons</b>-truct a list this way. Let&rsquo;s take a
+short &ldquo;math holiday&rdquo; to get started.
+</p>
+
+<p>
+⌜<br>
+<font color = "#0d3db3">⥤ <b>Math Holiday! &#x2026; working binarily</b> </font><label id='fnr.15' for='fnr-in.15.9316463' class='margin-toggle sidenote-number'><sup class='numeral'>15</sup></label><input type='checkbox' id='fnr-in.15.9316463' class='margin-toggle'><span class='sidenote'><sup class='numeral'>15</sup>
+<a href="https://en.wikipedia.org/wiki/Binary_operation">This Wikipedia article on binary operations</a> is quite
+abstract-formal, but we&rsquo;ll be getting into this lore meticulously as
+we progress. It, like all of higher math, assumes set theory, which is
+also the basis of much computer science theory.
+</span>
+</p>
+
+<p>
+Back in grade school when we were first being conditioned to perform
+arithmetic (rather than actually learning anything of the art of
+mathematical abstraction), we would see a stack of numbers like this
+and be told to &ldquo;add them up.&rdquo; But strictly speaking, addition is a
+<b>binary operation</b>, meaning only two numbers can be added at a time,
+not all of these numbers at once
+</p>
+
+\begin{align*}
+\require{enclose}
+\begin{array}{r}
+1 \\[-3pt]
+2 \\[-3pt]
+3 \\[-3pt]
+4 \\[-3pt]
++ \; \underline{5} \\
+15
+\end{array}
+\end{align*}
+
+<p>
+Doubtful that anyone can read the <a href="https://en.wikipedia.org/wiki/Addition">Addition Wikipedia article</a> and not
+learn something they didn&rsquo;t know about good old addition. For example,
+when we tackle a stack of numbers like above we are actually keeping a
+running tab in our heads of adding <i>only two of the numbers at a
+time</i>, i.e., <i>two</i> inputs produce <i>one</i> output. So let&rsquo;s start at the
+top with \(1 + 2\), which is \(3\). We then &ldquo;carry along&rdquo; this temporary
+result and add the next number \(3\) to it, and so on. In reality after
+that first binary operation of \(1 + 2\), we consider the result \(3\) to
+be the <b>augend</b>, while the next number \(3\) becomes the <b>addend</b>. The
+intermediary total of this sum then becomes the next <b>augend</b>, and so
+we progress down the stack reassigning the latest sum to the <b>augend</b>
+and adding the next <b>addend</b> to it. This is how many digital logic
+calculations are done. Lots more later. <br>
+⌟
+</p>
+
+<p>
+Now with a refreshing math holiday under our belts it should be clear
+that <code>cons</code> as a binary operation must operate similarly, i.e., there
+is no such thing as <code>(cons 1 2 3)</code>,<label id='fnr.16' for='fnr-in.16.344075' class='margin-toggle sidenote-number'><sup class='numeral'>16</sup></label><input type='checkbox' id='fnr-in.16.344075' class='margin-toggle'><span class='sidenote'><sup class='numeral'>16</sup>
+Most Scheme REPLs will give the error <code>wrong number of
+arguments</code> because it was expecting exactly two inputs.
+</span> rather, <code>cons</code> is a <i>binary
+operator</i> taking one thing and consing it together with one other
+thing. This is repeated until done everything is consed together into
+a finished list.
+</p>
+
+<p>
+𝖟𝕭: When we see <code>(cons 1 (cons 2 (cons 3 '())))</code> we&rsquo;re seeing the
+initial binary operation of <code>(cons 3 '())</code> which is <code>(3)</code>. This is
+embedded in <code>(cons 2 (3))</code> which evaluates to <code>(2 3)</code>, which is again
+embedded in <code>(cons 1 (2 3))</code> resulting in <code>(1 2
+3)</code>. \(\mathfrak{Fazit}\): <code>cons</code> is always consing just two sexp&rsquo;s.
+</p>
+
+<p>
+It may seem too soon to go on holidays again, but let&rsquo;s do another
+math holiday anyway!
+</p>
+
+<p>
+⌜<br>
+<font color = "#0d3db3">⥤ <b>Math Holiday! &#x2026; intro to
+recursion</b> </font>
+</p>
+
+<p>
+<b><a href="https://en.wikipedia.org/wiki/Recursion">Recursion</a></b> is a central idea in math and CS. Let&rsquo;s take a quick look
+at it in a basic theory way before we actually start practicing it
+with Scheme code. Consider this simple summation of the natural
+numbers \(\mathbb{N}\)
+</p>
+
+\begin{align*}
+\sum_{i=1}^n i = 1 + 2 + 3 + \ldots + (n - 1) + n
+\end{align*}
+
+
+
+<p>
+<br>
+⌟
+</p>
+
+<p>
+In the world of computer science <b><a href="https://en.wikipedia.org/wiki/Data_structure">data structures</a></b>, a list is more
+commonly thought of as a <b>linked list</b>. For <code>(cons 42 (cons 69 (cons
+613 '()))</code> or <code>(42 . (69 . (613 . '())))</code> we see the three individual
+<i>cons cells</i> in the image below
+</p>
+
+<figure id="org7ef5919">
+
+<figure id="org0c9c1d8">
+<img src="images/Cons-cells.png" alt="Cons-cells.png">
+
+<figcaption><span class="figure-number">Figure 3: </span>A linked list representation of the list <code>(42 69 613)</code>.</figcaption>
+</figure>
+</figure>
+
+<p>
+and a handy ascii representation would be
+</p>
+
+<pre class="example" id="orgc80d0c2">
+*----&gt;*----&gt;*----&gt;NIL
+|     |     |
+v     v     v
+42    69   613
+</pre>
+
+<p>
+In the Lisp-Scheme family we&rsquo;re not so concerned that this is a
+<i>linked</i> list, since the actual internal structure of a list doesn&rsquo;t
+require any knowledge of <b><a href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointers</a></b> as does a language like <b><a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a></b>. For
+C/C++ programmers these diagrams say that a location in memory for a
+cons cell with two &ldquo;compartments&rdquo; contains a pointer in the first
+compartment to, e.g., <code>42</code>, while the other compartment contains a
+pointer to the memory address of the next, the adjoining cons
+cell. But again, in Scheme we will never deal directly with actual
+pointer memory addresses. Nonetheless, with our pointer-based diagrams
+we have a train-looking thing with a <code>NIL</code> or <code>'()</code> as the
+caboose. What would just <code>(cons 'b 'c)</code> or <code>(b . c)</code> look like
+diagrammatically? It would in fact be a single cons cell
+</p>
+
+<figure id="orgf2189b4">
+
+<figure id="orgd69b046">
+<img src="images/bc.png" alt="bc.png">
+
+<figcaption><span class="figure-number">Figure 4: </span>Single cons cell for <code>(cons 'b 'c)</code>.</figcaption>
+</figure>
+</figure>
+
+<p>
+Here we see the right and left compartments named, the left is called
+the <code>car</code> and the right is called the <code>cdr</code> compartment. These names
+come from many decades ago when Lisp was first developed and deployed
+on a mainframe. But they are also Scheme primitive operators like
+<code>cons</code>. So if <code>(cons 'b 'c)</code> produces <code>(b . c)</code> then
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="orge8f62b7"><span class="org-rainbow-delimiters-depth-1">(</span>car <span class="org-rainbow-delimiters-depth-2">(</span>cons 'b  'c<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+b
+</pre>
+
+
+<p>
+and
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="orga8a89dc"><span class="org-rainbow-delimiters-depth-1">(</span>cdr <span class="org-rainbow-delimiters-depth-2">(</span>cons 'b 'c<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+c
+</pre>
+
+
+<p>
+And so they are operators that surgically remove the <b>head</b> and the
+<b>tail</b> of a cons cell. Let&rsquo;s try this again with <code>(cons 42 (cons 69 (cons 613 '())))</code> or
+sugared <code>(42 69 613)</code>
+</p>
+
+<figure id="org9867e4a">
+
+<figure id="org409d39e">
+<img src="images/Cons-cells2.png" alt="Cons-cells2.png">
+
+<figcaption><span class="figure-number">Figure 5: </span>A linked list representation of the list <code>(42 69 613)</code> with <code>car</code> and <code>cdr</code>.</figcaption>
+</figure>
+</figure>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org201b661"><span class="org-rainbow-delimiters-depth-1">(</span>car '<span class="org-rainbow-delimiters-depth-2">(</span>42 69 613<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+42
+</pre>
+
+
+<p>
+and
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="orga4b23a5"><span class="org-rainbow-delimiters-depth-1">(</span>cdr '<span class="org-rainbow-delimiters-depth-2">(</span>42 69 613<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(69 613)
+</pre>
+
+
+<p>
+Did this surprised you? Again, <code>car</code> returns the contents of the first
+element of the list, i.e., the <b>head</b> of the list; and <code>cdr</code> returns
+the <b>tail</b> or the <i>rest of the list</i>. Let&rsquo;s look at <code>cdr</code> without
+syntactic sugar
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org351f186"><span class="org-rainbow-delimiters-depth-1">(</span>cdr <span class="org-rainbow-delimiters-depth-2">(</span>cons 42 <span class="org-rainbow-delimiters-depth-3">(</span>cons 69 <span class="org-rainbow-delimiters-depth-4">(</span>cons 613 '<span class="org-rainbow-delimiters-depth-5">()</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(69 613)
+</pre>
+
+
+<p>
+As we see, Scheme throws back in the sugar, but what happened is the
+tail of <code>(cons 42 (cons 69 (cons 613 '())))</code> was returned, i.e.,
+<code>(cons 69 (cons 613 '()))</code> \(\rightarrow\) <code>(69 613)</code>. Let&rsquo;s now reverse this
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="orgb05a6bd"><span class="org-rainbow-delimiters-depth-1">(</span>cons 42 <span class="org-rainbow-delimiters-depth-2">(</span>cdr '<span class="org-rainbow-delimiters-depth-3">(</span>42 69 613<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(42 69 613)
+</pre>
+
+
+<p>
+Here&rsquo;s another example
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org017ee19"><span class="org-rainbow-delimiters-depth-1">(</span>car '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-4">)</span> 5<span class="org-rainbow-delimiters-depth-3">)</span> but so is six<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+((five is a nice number) 5)
+</pre>
+
+
+<p>
+and
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="orgd7c3fc3"><span class="org-rainbow-delimiters-depth-1">(</span>cdr '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-4">)</span> 5<span class="org-rainbow-delimiters-depth-3">)</span> but so is six<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(but so is six)
+</pre>
+
+
+<p>
+⌜ <br>
+<font color = "#4715b3"> ⇲ Try to glue <code>((five is a nice
+number) 5)</code> and <code>(but so is six)</code> back together with <code>cons</code>
+</font> <br>
+⌟
+</p>
+
+
+
+
+<p>
+So is <code>(b . c)</code> a true, <i>proper</i> list? No, it is called an <i>improper</i>
+list or a <i>dotted list</i> since we have just a single cons cell with <code>2</code>
+in the <i>cdr</i> position. The final <i>cdr</i> position of the last cons cell
+must be consed with the <code>nil</code> or the <i>empty set</i>. By this definition
+<code>(cons 1 '())</code> is a proper list, but something like <code>(a b c . d)</code> has
+as the last <i>cdr</i> <code>d</code> which is not <code>nil</code>, i.e., <code>'()</code>.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="orga81c3c4"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 '<span class="org-rainbow-delimiters-depth-2">()</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org3cb68a9"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 '<span class="org-rainbow-delimiters-depth-4">()</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org8bffff7"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 '<span class="org-rainbow-delimiters-depth-4">()</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
+
+
+
+
 <div class="org-src-container">
-<pre class="src src-scheme" id="orge449b50"><span class="org-rainbow-delimiters-depth-1">(</span>list 1 2 3<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org7da38f3"><span class="org-rainbow-delimiters-depth-1">(</span>list 1 2 3<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 

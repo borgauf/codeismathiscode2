@@ -605,7 +605,11 @@ means @@html:<font color = "#0d3db3">@@the truth of one side of the
 $\iff$ requires the other side to be true also.@@html:</font>@@ So if
 $a$ is an element of the union of $X$ and $Y$ then $a$ must be an
 element of $X$ *or* it is an element of $Y$ *or* it is an element of
-/both/ $X$ and $Y$ ---and the other way around as well.
+/both/ $X$ and $Y$ ---and the other way around as
+well. $\mathfrak{Fazit}$: We avoid writing $X \lor Y$ when considering
+just the set without involving the elements therein.
+
+$\mathfrak{Fazit}$
 
 ** ⥤ Summing up; data and data structures
 
@@ -720,7 +724,7 @@ two sets represented as circles have in common.
 and $B$? Better not. More on why later.
 
 [fn:20] (1) can be expanded for the union of more sets than just
-two.
+two, e.g., $A \cup B \cup C \cup \ldots$.
 
 [fn:21] The symbol $\in$ means "in" or "member of."
 

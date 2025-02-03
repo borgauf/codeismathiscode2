@@ -268,7 +268,7 @@ are ~((how) are)~, ~((you) (doing so))~, and ~far~.[fn:9]
 
 So it's obvious that Scheme is organized into sexp's. But why, how?
 
-** S-expression theory
+** S-expression and symbols
 
 The first part of the term s-expression is /symbolic/, but what is
 meant by symbolic? Obviously, symbolic is an adjective that means
@@ -294,24 +294,26 @@ e.g.,
 + Various *operation* and *binder symbols*, i.e., $+$, $-$, $\div$, $\sum$
   for summation, $\int$ for integration, et cetera.
 
-Touching for a moment on the philosophical, we may stop and marvel at how
-humans have come to use and manipulate symbols, starting with the use
-of language. With human language we use *words* which /symbolize/ real
-things or concepts. A word can be considered a /placeholder/ for an
-object or idea. Some experts say humanity has only possessed real
-words-as-placeholder-symbols for forty thousand years. Others say
-sixty to one-hundred thousand years. And yet we surely have been
-anatomically /Homo sapiens/ longer than we've had language. What did
-we, with our big brains, do before we had language? Obviously, we had
-only intuitions, i.e., we would see two piles of nuts and only have
-vague intuitive notions that there were two piles and they might
-differ in size... But just analyzing that last sentence demonstrates
-how powerful formal symbolic language can be. Whole logic systems
-spring to life when we resort to setting symbols to things and
-ideas. And so computing has been called /the manipulation of symbols/.
+Touching for a moment on the philosophical, we may stop and marvel at
+how humans have come to use and manipulate symbols, especially the use
+of language. With human language we employ *words* which /symbolize/
+real things or abstract concepts. A word can be considered a
+/placeholder/ for an object or idea. Some experts say humanity has
+only possessed language as a set of words-as-placeholder-symbols for
+forty thousand years. Others say sixty to one-hundred thousand
+years. And yet we surely have been anatomically /Homo sapiens/ longer
+than we've had language. What did we, with our big brains, do before
+we had language?[fn:10] Obviously, we relied to some extent on
+intuitions, i.e., we would see two piles of nuts and only have vague
+intuitive notions that there were two piles and that they might differ
+in size... But if we just analyze that last sentence we can begin to
+appreciate how powerful formal symbolic language can be. Whole logic
+systems spring to life once we have set up symbols to stand for things
+and ideas. Hence, it's no wonder computing has been called /the
+manipulation of symbols/.
 
 Here's a quote from math logician Raymond M. Smullyan's book /The Tao
-Is Silent/[fn:10]
+Is Silent/[fn:11]
 
 #+begin_quote
 The knowledge of the ancients was perfect. How perfect? I will tell
@@ -325,36 +327,38 @@ destruction of Tao, individual preferences come into being.
 
 Yes, the rabbit hole of language and symbolism goes deep. But let's
 come back to what is meant by a /symbol/ in the computer
-world. Basically, a symbol in a computer language represents a place
-in the computer's live memory. As we've mentioned before, /[[https://en.wikipedia.org/wiki/Assembly_language][Assembly
+world. Basically, a symbol in a computer program represents a place in
+the computer's live memory. As we've mentioned before, /[[https://en.wikipedia.org/wiki/Assembly_language][Assembly
 language]]/ was the first attempt to represent the various computer
 commands and locations in a symbolic way with labels for particular
 actions and places in memory. Down through the years /symbolic
 computing/ has kept advancing by abstracting more and more of the
-low-level computing through symbolic representations.
+low-level computing away through symbolic representations. Again, this
+is /declarative/ rather than /imperative/ programming.
 
 The version of Scheme we will primarily use is [[https://www.gnu.org/software/guile/][Guile]], which is the
 official extension language of the [[https://gnu.org/][GNU project]]. A Guile program can be
-compiled to run stand-alone like any piece of software; but we will
-almost exclusively interact with the "virtual machine" *[[https://en.wikipedia.org/wiki/Interpreter_(computing)][interpreter]]*
-through the *REPL* or the /read-evaluate-print loop/ user
-interface. Below we see a screenshot of a live Guile REPL session.
+compiled to run stand-alone like any piece of executable software; but
+we will almost exclusively real-time /interact/ with the "virtual
+machine" *[[https://en.wikipedia.org/wiki/Interpreter_(computing)][interpreter]]* of Guile through the *REPL* or the
+/read-evaluate-print loop/ user interface. Below we see a screenshot
+of a live /interactive/ Guile REPL session
 
 #+begin_figure
 #+CAPTION: REPL interface in Emacs buffer.
 [[file:images/GuileREPL.png]]
 #+end_figure
 
-...which is similar to Linux command line interface. The big
-difference is that a Scheme REPL is the visible human input/output
-interface to a Guile Scheme virtual machine. When we start a REPL we
-are starting a live "session." How do we run code with a REPL?
+...which is similar to Linux command line interface, the big
+difference being that a Scheme REPL is the visible human input/output
+interface to a live Guile Scheme virtual machine "session." How do we
+run code with a REPL?
 
 + By typing it directly into the REPL as in the picture above,
 + by loading a file containing Scheme code into the
-  REPL session, e.g., ~load myfile.scm~,
+  REPL session, e.g., ~> load myfile.scm~,
 + by evaluating org-mode Babel code blocks in an org-mode buffer as
-  seen directly below[fn:11]
+  seen directly below
 
 #+begin_example
 #+begin_src scheme :session *littleschemer*
@@ -363,44 +367,479 @@ are starting a live "session." How do we run code with a REPL?
 #+end_src
 #+end_example
 
+We will explore Scheme code through liberal use of org-mode Babel code
+blocks. Babel code blocks like this interspersed throughout an Emacs
+org-mode text file is an excellent form of /[[https://en.wikipedia.org/wiki/Literate_programming][literate programming]]/.
+
 In the code block example above we see Scheme code that will assign a
-value to the /symbol/ ~pi~. To evaluate this code we enter ~C-c C-c~,
-which produces
+value to the /symbol/ ~pi~. To evaluate this code we place the cursor
+inside the code block and enter ~C-c C-c~, which produces
 
 #+begin_example
 #+RESULTS:
 : pi: 3.141592654
 #+end_example
 
+As we see in the code block's heading above, the two contained
+expressions will be evaluated in a specific REPL session named
+~*littleschemer*~. Next, let's /not/ ~define~ a symbol, rather, just
+feed the session a symbol[fn:12]
 
-and the results of evaluating that code after the block. In fact, from
-now on we will begin using Babel code blocks to demonstrate Scheme
-code. However, you will only see the code and the results, but not the
-code block wrapper (~#+begin_src scheme~ ... ~#+end_src~), nor the
-results header (~#+RESULTS:~ ... ).
-
-
-
-Let's try a code block. The above code ~(define pi 3.141592654)~ shows
-how we assign a value to a symbol. The symbol was ~pi~ and the value
-was ~3.141592654~. However, we may simply present 
-
-
-#+name: fb69ff03-5e77-44a2-9642-91324da63a2c
+#+name: 7758a423-12c0-47ea-bdb1-88fbc753dbb3
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
-testpi
+'mysymbol
 #+end_src
 
-#+RESULTS: fb69ff03-5e77-44a2-9642-91324da63a2c
-: 3.141592654
+#+RESULTS: 7758a423-12c0-47ea-bdb1-88fbc753dbb3
+: mysymbol
 
-#+name: e45cfb6d-4110-49ba-bf7f-241682559d2d
+As we see, Scheme just gives back the unassigned symbol---and nothing
+further happens. However, that apostrophe before the symbol ~'mysymbol~
+is not part of the symbol ~mysymbol~. In the Lisp/Scheme world this is
+known as /quoting/, which turns anything quoted into /literal
+data/. Here's a more verbose version of quoting with the same effect
+
+#+name: 6ad87756-e469-4165-aa84-75ff8006b50d
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(quote mysymbol)
+#+end_src
+
+#+RESULTS: 6ad87756-e469-4165-aa84-75ff8006b50d
+: mysymbol
+
+Why quote? Because Scheme considers any /unquoted/ symbol as assigned
+and tries to retrieve or run it. However, when we quote an sexp, we're
+telling Scheme to treat it as just data. For example ~(define pi
+3.141592654)~ is an assignment, and once evaluated, ~pi~ is known
+during the life of the REPL session as the symbol for the value
+~3.141592654~. However
+
+#+name: bd2c666b-e533-4c34-b0bb-869674da97b7
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+'(define pi 3.141592654)
+#+end_src
+
+#+RESULTS: bd2c666b-e533-4c34-b0bb-869674da97b7
+: (define pi 3.141592654)
+
+produces just the literal sexp ~(define pi 3.141592654)~. This "trick"
+is a powerful tool in functional languages. Why? Imagine passing a
+whole piece of real code *A* as input to another piece of code
+*B*. Consider this
+
+#+name: 6141620c-8e02-4495-a488-4bca17cad00d
+#+begin_src scheme :session *littleschemer* :results output :exports both
+(define pi-def '(define pi 3.141592654))
+(format #t "pi-def: ~a" pi-def)
+#+end_src
+
+#+RESULTS: 6141620c-8e02-4495-a488-4bca17cad00d
+: pi-def: (define pi 3.141592654)
+
+Lots and lots more about this "trick" soon. It's literally the backbone of
+functional programming.
+
+** Building a function
+
+So we've seen how ~(define pi 3.141592654)~ and ~'(define pi
+3.141592654)~ are two different things. As we saw, the second example
+is /quoted/, which makes the whole sexp one big chunk of static,
+literal data. Good, but as opposed to what exactly?  Intuitively we
+can guess that the first unquoted sexp is, yes, /defining/ ~pi~ to be
+~3.141592654~. How exactly does this work? \\
+\\
+@@html:<font color = "#0d3db3">@@ All Scheme code takes the form of
+lists, and the first sexp in the list---unless the list is
+quoted---serves as the *function* or *operator*, while the rest of the
+sexp's in the list are the parts the function or operator will work
+on: ~(function sexp1 sexp2 ... sexpN)~ @@html:</font>@@ \\
+\\
+𝖟𝕭: ~(+ 2 3)~ ...note prefix notation \\
+𝖟𝕭: ~(abs -4)~ ... first sexp is always a function or operator \\
+𝖟𝕭: ~(+ (* 2 3) 8)~  ... simplify the deepest sexp outward \\
+𝖟𝕭: ~(+ 3 4 5 1)~ ... addition prefix notation can take multiple
+arguments \\
+
+In each of the above examples the very first item in the list is the
+function/operator. For the arithmetic operators like ~+~, ~*~, et
+cetera, we see [[https://en.wikipedia.org/wiki/Polish_notation][prefix notation]] with possibly multiple arguments. Now,
+let's see a full Scheme function that takes one argument and when
+evaluated, produces output[fn:13]
+
+#+name: 48a7817d-f1a4-4d6c-8ce0-578197a0425e
+#+begin_src scheme :session *littleschemer* :results output :exports both
+(define (celsius->fahrenheit celsius)
+  (+ (* 1.8 celsius) 32))  ; figure out temperature conversion
+(format #t "fahrenheit: ~a" (celsius->fahrenheit 20)) ; print answer
+#+end_src
+
+#+RESULTS: 48a7817d-f1a4-4d6c-8ce0-578197a0425e
+: fahrenheit: 68.0
+
+Of the two main sexp's in the code block above, the first
+
+#+name: d12a5049-e63e-490b-8265-161a0707aee5
+#+begin_src scheme :eval never :exports code
+(define (celsius->fahrenheit celsius)
+  (+ (* 1.8 celsius) 32))
+#+end_src
+
+is a typical nested list building a function. In this example the
+general form is ~(define (function-name arguments)
+(calculating-code))~ which has three main sexp's, the last on the next
+line and indented for better reading. Note how the calculation code is
+a prefix notation multiplication nested inside a prefix notation
+addition. In the ~format~ sexp we call the function
+~celsius->fahrenheit~ with argument ~20~.
+
+But we're getting ahead of ourselves a bit. Let's get back to
+S-expressions. 
+
+** S-expression lore
+
+Symbolic programs are programs where symbolic expressions are
+manipulated to gain useful output. But what does this actually entail,
+how do we /manipulate symbolic expressions/? With Lisp and Scheme
+everything is housed in lists---both data and code alike. So far we've
+been nudging around the idea of how we build working code from
+lists. Now we'll explore more deeply what a list as an sexp really
+is. We'll start with a more formal look at s-expressions.
+
+Technically, formally an sexp is one of two possibilities
+
++ an *atom*, /or/
++ a *cons cell*
+
+...which is, er, somewhat abstract. But didn't we just say a Scheme
+program is completely contained in lists, data and code? We've seen
+the atom before. Recall, an atom is just a symbol object thing
+standing alone by itself. In the Scheme world, atoms can do two
+things: stand alone or be in a list, and we saw how just one atom
+surrounded by a set of parentheses becomes a list. We then saw how
+multiple atoms surrounded by a set of parentheses is also a list; how
+a set of parentheses surrounding a mixture of atoms and other lists is
+a list ... we saw that lists can be nested in lists nested in lists,
+ever deeper. Good. But calling an atom a sexp doesn't get us very
+far. For example, we saw earlier how we could put ~'myatom~ in the
+REPL---and we only got ~myatom~ repeated back to us, i.e., no real
+computation is happening yet.
+
+Let's consider the second type of sexp given above, the *[[https://en.wikipedia.org/wiki/Cons][cons
+cell]]*. This is where the action starts. A *cons cell* is what a Scheme
+list really is, so let's look at how a Scheme list comes into
+existence. \\
+\\
+{{{marginnote(We've touched on the idea of an /ordered pair/ before
+with Cartesian coordinate pairs where the order of which is first and
+second matters...)}}}
+@@html:<font color = "#0d3db3">@@ A cons cell is an *ordered pair* of
+the form ~(sexp1 . sexp2)~. @@html:</font>@@ \\
+
+Hmm, still rather theory-bound. So what's the connection between these
+ordered-pair /cons cells/ and lists? The answer is we use Scheme's
+primitive function ~cons~ to create cons cells by fusing two sexp's
+together. Let's see an example where two sexp's as atoms are /consed/
+together
+
+#+name: 0ab608a3-69a1-4a34-b97b-69c4790214d6
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
 (cons 1 2)
 #+end_src
 
-#+RESULTS: e45cfb6d-4110-49ba-bf7f-241682559d2d
+#+RESULTS: 0ab608a3-69a1-4a34-b97b-69c4790214d6
 : (1 . 2)
+
+Scheme just gave us back a cons cell. Let's play with this idea
+
+#+name: c53865cf-680c-4aa6-90f7-58b23b98981d
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cons 1 (cons 2 3))
+#+end_src
+
+#+RESULTS: c53865cf-680c-4aa6-90f7-58b23b98981d
+: (1 2 . 3)
+
+and
+
+#+name: 007a1668-3dfb-4c10-8b41-74aa1b43a7c4
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cons 1 (cons 2 (cons 3 4)))
+#+end_src
+
+#+RESULTS: 007a1668-3dfb-4c10-8b41-74aa1b43a7c4
+: (1 2 3 . 4)
+
+Except for that last dot between ~3~ and ~4~, this looks like a
+regular list of numbers, no? So what is the difference between ~(1 2 3
+. 4)~ and the regular list ~(1 2 3 4)~?
+
+So far we've exampled our way into how lists are built in Scheme,
+namely, /a bunch of stuff gets *consed* together/. Let's try this
+again and watch exactly which parentheses are enclosing what
+
+#+name: f88a772e-6ed9-4431-95c0-c9e82f134b34
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cons (cons '(five is a nice number) '(5)) '(but so is six))
+#+end_src
+
+#+RESULTS: f88a772e-6ed9-4431-95c0-c9e82f134b34
+: (((five is a nice number) 5) but so is six)
+
+What happened this time? For one, we simply embedded one consing
+inside another. And yet both the inner and outer ~cons~ /consed/ the
+sexp's into a real list, making the ~cons~ dots go away. Why and how?
+Let's do more examples
+
+#+name: 83598e94-d50a-4d29-badc-16924d0256ec
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cons 1 '())
+#+end_src
+
+#+RESULTS: 83598e94-d50a-4d29-badc-16924d0256ec
+: (1)
+
+#+name: 5d30aeef-8da9-47df-a8f9-c86d826e2036
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cons 1 (cons 2 (cons 3 '())))
+#+end_src
+
+#+RESULTS: 5d30aeef-8da9-47df-a8f9-c86d826e2036
+: (1 2 3)
+
+Now we see ~cons~ producing regular lists without any /cons pair/
+dots. Technically, under the hood, we still have our nested lists of
+consing---which means ~(1 2 3)~ is really ~(1 . (2 . (3 . NIL)))~
+where in Scheme ~NIL~ is ~'()~ or the *empty list*. We call ~(1 2 3)~
+the *[[https://en.wikipedia.org/wiki/Syntactic_sugar][syntactic sugar]]* version, i.e., we're given a more visually
+friendly, uncluttered version of a consed-together list.
+
+So ~(1 2 3)~ is really just a visually improved version of ~(1 . (2
+. (3 . '())))~.[fn:14] Awkward looking as the naked version is, it shows the
+details of how we're doing a particular sort of /connecting/ or
+/associating/ ~1~, ~2~, and ~3~ together. But it's probably not
+apparent why we need to *cons*-truct a list this way. Let's take a
+short "math holiday" to get started.
+
+⌜\\
+@@html:<font color = "#0d3db3">@@⥤ *Math Holiday! ... working binarily* @@html:</font>@@[fn:15]
+
+Back in grade school when we were first being conditioned to perform
+arithmetic (rather than actually learning anything of the art of
+mathematical abstraction), we would see a stack of numbers like this
+and be told to "add them up." But strictly speaking, addition is a
+*binary operation*, meaning only two numbers can be added at a time,
+not all of these numbers at once
+
+\begin{align*}
+\require{enclose}
+\begin{array}{r}
+1 \\[-3pt]
+2 \\[-3pt]
+3 \\[-3pt]
+4 \\[-3pt]
++ \; \underline{5} \\
+15
+\end{array}
+\end{align*}
+
+Doubtful that anyone can read the [[https://en.wikipedia.org/wiki/Addition][Addition Wikipedia article]] and not
+learn something they didn't know about good old addition. For example,
+when we tackle a stack of numbers like above we are actually keeping a
+running tab in our heads of adding /only two of the numbers at a
+time/, i.e., /two/ inputs produce /one/ output. So let's start at the
+top with $1 + 2$, which is $3$. We then "carry along" this temporary
+result and add the next number $3$ to it, and so on. In reality after
+that first binary operation of $1 + 2$, we consider the result $3$ to
+be the *augend*, while the next number $3$ becomes the *addend*. The
+intermediary total of this sum then becomes the next *augend*, and so
+we progress down the stack reassigning the latest sum to the *augend*
+and adding the next *addend* to it. This is how many digital logic
+calculations are done. Lots more later. \\
+⌟
+
+Now with a refreshing math holiday under our belts it should be clear
+that ~cons~ as a binary operation must operate similarly, i.e., there
+is no such thing as ~(cons 1 2 3)~,[fn:16] rather, ~cons~ is a /binary
+operator/ taking one thing and consing it together with one other
+thing. This is repeated until done everything is consed together into
+a finished list.
+
+𝖟𝕭: When we see ~(cons 1 (cons 2 (cons 3 '())))~ we're seeing the
+initial binary operation of ~(cons 3 '())~ which is ~(3)~. This is
+embedded in ~(cons 2 (3))~ which evaluates to ~(2 3)~, which is again
+embedded in ~(cons 1 (2 3))~ resulting in ~(1 2
+3)~. $\mathfrak{Fazit}$: ~cons~ is always consing just two sexp's.
+
+It may seem too soon to go on holidays again, but let's do another
+math holiday anyway!
+
+⌜\\
+@@html:<font color = "#0d3db3">@@⥤ *Math Holiday! ... intro to
+recursion* @@html:</font>@@
+
+*[[https://en.wikipedia.org/wiki/Recursion][Recursion]]* is a central idea in math and CS. Let's take a quick look
+at it in a basic theory way before we actually start practicing it
+with Scheme code. Consider this simple summation of the natural
+numbers $\mathbb{N}$
+
+\begin{align*}
+\sum_{i=1}^n i = 1 + 2 + 3 + \ldots + (n - 1) + n
+\end{align*}
+
+
+
+\\
+⌟
+
+In the world of computer science *[[https://en.wikipedia.org/wiki/Data_structure][data structures]]*, a list is more
+commonly thought of as a *linked list*. For ~(cons 42 (cons 69 (cons
+613 '()))~ or ~(42 . (69 . (613 . '())))~ we see the three individual
+/cons cells/ in the image below
+
+#+begin_figure
+#+CAPTION: A linked list representation of the list ~(42 69 613)~.
+[[file:images/Cons-cells.png]]
+#+end_figure
+
+and a handy ascii representation would be
+
+#+begin_example
+*---->*---->*---->NIL
+|     |     |
+v     v     v
+42    69   613
+#+end_example
+
+In the Lisp-Scheme family we're not so concerned that this is a
+/linked/ list, since the actual internal structure of a list doesn't
+require any knowledge of *[[https://en.wikipedia.org/wiki/Pointer_(computer_programming)][pointers]]* as does a language like *[[https://en.wikipedia.org/wiki/C_(programming_language)][C]]*. For
+C/C++ programmers these diagrams say that a location in memory for a
+cons cell with two "compartments" contains a pointer in the first
+compartment to, e.g., ~42~, while the other compartment contains a
+pointer to the memory address of the next, the adjoining cons
+cell. But again, in Scheme we will never deal directly with actual
+pointer memory addresses. Nonetheless, with our pointer-based diagrams
+we have a train-looking thing with a ~NIL~ or ~'()~ as the
+caboose. What would just ~(cons 'b 'c)~ or ~(b . c)~ look like
+diagrammatically? It would in fact be a single cons cell
+
+#+begin_figure
+#+CAPTION: Single cons cell for ~(cons 'b 'c)~.
+[[file:images/bc.png]]
+#+end_figure
+
+Here we see the right and left compartments named, the left is called
+the ~car~ and the right is called the ~cdr~ compartment. These names
+come from many decades ago when Lisp was first developed and deployed
+on a mainframe. But they are also Scheme primitive operators like
+~cons~. So if ~(cons 'b 'c)~ produces ~(b . c)~ then
+
+#+name: 22c36165-15a5-4220-a2d1-3705302f39e0
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(car (cons 'b  'c))
+#+end_src
+
+#+RESULTS: 22c36165-15a5-4220-a2d1-3705302f39e0
+: b
+
+and
+
+#+name: 5d40cc99-3aef-4090-a5fa-36a392c7775c
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cdr (cons 'b 'c))
+#+end_src
+
+#+RESULTS: 5d40cc99-3aef-4090-a5fa-36a392c7775c
+: c
+
+And so they are operators that surgically remove the *head* and the
+*tail* of a cons cell. Let's try this again with ~(cons 42 (cons 69 (cons 613 '())))~ or
+sugared ~(42 69 613)~
+
+#+begin_figure
+#+CAPTION: A linked list representation of the list ~(42 69 613)~ with ~car~ and ~cdr~.
+[[file:images/Cons-cells2.png]]
+#+end_figure
+
+#+name: 9a5a45ad-86b9-4b5f-8f22-0f853698d9bb
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(car '(42 69 613))
+#+end_src
+
+#+RESULTS: 9a5a45ad-86b9-4b5f-8f22-0f853698d9bb
+: 42
+
+and
+
+#+name: a6c48364-ab5b-4e75-97a0-af4b080056db
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cdr '(42 69 613))
+#+end_src
+
+#+RESULTS: a6c48364-ab5b-4e75-97a0-af4b080056db
+: (69 613)
+
+Did this surprised you? Again, ~car~ returns the contents of the first
+element of the list, i.e., the *head* of the list; and ~cdr~ returns
+the *tail* or the /rest of the list/. Let's look at ~cdr~ without
+syntactic sugar
+
+#+name: f3c4f7ce-7668-4d2f-bb58-6bc7e9418f29
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cdr (cons 42 (cons 69 (cons 613 '()))))
+#+end_src
+
+#+RESULTS: f3c4f7ce-7668-4d2f-bb58-6bc7e9418f29
+: (69 613)
+
+As we see, Scheme throws back in the sugar, but what happened is the
+tail of ~(cons 42 (cons 69 (cons 613 '())))~ was returned, i.e.,
+~(cons 69 (cons 613 '()))~ $\rightarrow$ ~(69 613)~. Let's now reverse this
+
+#+name: 2fc9509a-c5de-4455-aea2-b876b7e77e9d
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cons 42 (cdr '(42 69 613)))
+#+end_src
+
+#+RESULTS: 2fc9509a-c5de-4455-aea2-b876b7e77e9d
+: (42 69 613)
+
+Here's another example
+
+#+name: 4772d381-118a-4c3d-9704-3d70494d5949
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(car '(((five is a nice number) 5) but so is six))
+#+end_src
+
+#+RESULTS: 4772d381-118a-4c3d-9704-3d70494d5949
+: ((five is a nice number) 5)
+
+and
+
+#+name: 95063d6e-c9c5-450b-9d69-d0d110ae5242
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cdr '(((five is a nice number) 5) but so is six))
+#+end_src
+
+#+RESULTS: 95063d6e-c9c5-450b-9d69-d0d110ae5242
+: (but so is six)
+
+⌜ \\
+@@html:<font color = "#4715b3">@@ ⇲ Try to glue ~((five is a nice
+number) 5)~ and ~(but so is six)~ back together with ~cons~
+@@html:</font>@@ \\
+⌟
+
+
+
+
+So is ~(b . c)~ a true, /proper/ list? No, it is called an /improper/
+list or a /dotted list/ since we have just a single cons cell with ~2~
+in the /cdr/ position. The final /cdr/ position of the last cons cell
+must be consed with the ~nil~ or the /empty set/. By this definition
+~(cons 1 '())~ is a proper list, but something like ~(a b c . d)~ has
+as the last /cdr/ ~d~ which is not ~nil~, i.e., ~'()~.
+
 
 #+name: 9b2d2b89-3eae-46c7-8cfa-0cc8b0a8ef01
 #+begin_src scheme :session *littleschemer* :results verbatim
@@ -417,6 +856,10 @@ testpi
 
 #+RESULTS: 1850bca2-9e37-4ce1-8641-bcef322e4e84
 : (1 2 3)
+
+
+
+
 
 #+name: 4232bfa8-5cd3-417a-a6d0-5b62aace9e11
 #+begin_src scheme :session *littleschemer* :results verbatim
@@ -464,8 +907,31 @@ parentheses. Don't worry, Emacs and other editors for Lisp and Scheme
 have parentheses-matching highlighting so you always know which
 enclosing set of parentheses you are in.
 
-[fn:10] So is Professor Smullyan saying ignorance is bliss?
+[fn:10] ...some suggest telepathy...
 
-[fn:11] We will explore Scheme code through liberal use of org-mode
-Babel code blocks. Babel code blocks interspersed throughout an Emacs
-org-mode file is an excellent form of /[[https://en.wikipedia.org/wiki/Literate_programming][literate programming]]/.
+[fn:11] So is Professor Smullyan saying ignorance is bliss?
+
+[fn:12] From now on for visual purposes we will forego the code block
+wrappers , i.e., ~#+begin_src scheme ... #+end_src~, and just display
+the code and the results. When in doubt about exactly what the code
+block wrapper should be, consult the raw version of this page.
+
+[fn:13] Anything following a ";" is a /comment/ for the rest of that
+line and is not evaluated, rather, just passed on. However, with
+org-mode Babel's literate programming we need far less in-code
+comments since we can make all the commentary we need before and after
+the block.
+
+[fn:14] Realize of course that \\
+~(1 . (2 . (3 . NIL)))~ \\
+is just a symbolic way of expressing \\
+~(cons 1 (cons 2 (cons 3 '())))~. \\
+The /dotted/ version doesn't work in actual Scheme coding.
+
+[fn:15] [[https://en.wikipedia.org/wiki/Binary_operation][This Wikipedia article on binary operations]] is quite
+abstract-formal, but we'll be getting into this lore meticulously as
+we progress. It, like all of higher math, assumes set theory, which is
+also the basis of much computer science theory.
+
+[fn:16] Most Scheme REPLs will give the error ~wrong number of
+arguments~ because it was expecting exactly two inputs.
