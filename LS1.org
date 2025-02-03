@@ -77,12 +77,12 @@
 
 /[[https://mitpress.mit.edu/9780262560993/the-little-schemer/][The Little Schemer]]/ (TLS), written by computer science professors
 Daniel P. Friedman and Matthias Felleisen, was a revolutionary book
-when it came out in its first edition as /The Little Lisper/ based on
-the programming language Lisp in 1987. Subsequent editions switched to
-Lisp's younger sister language Scheme. It was so unique because it
+when it came out in its first edition in 1987 as /The Little Lisper/
+based on the programming language Lisp. Subsequent editions switched
+to Lisp's younger sister language Scheme. It was so unique because it
 followed a "[[https://en.wikipedia.org/wiki/Socratic_method][Socratic]]" dialog style of question and answer in left and
-right columns throughout the book. Below is from the very first
-page of the first chapter entitled /1. Toys/![fn:1]
+right columns throughout the book. Below is from the very first page
+of the first chapter entitled /1. Toys/![fn:1]
 
 #+HTML_HEAD: <style type="text/css">
 #+HTML_HEAD: .styledtab col:nth-of-type(1) { width:  45%; }
@@ -118,24 +118,19 @@ page of the first chapter entitled /1. Toys/![fn:1]
 | Is it true that this is a list?    | Yes, because it is a collection of atoms [separated by spaces and] enclosed by parentheses.                                                 |
 | ~(atom turkey or)~                 |                                                                                                                                             |
 |                                    |                                                                                                                                             |
-This Socratic dialog in its chatty conversation style is teasing out
-the requisite /mathematical formalism/ [fn:2] where you the reader
-will experience a growing mental picture of theory and syntax as the
-conversation continues and the pages turn. The idea is the formalisms
-were always there, and we will gradually /coax/ them out with
-carefully constructed prodding. Instead of making direct statements
-about programming language theory or syntax rules, we get a stream of
-questions and replies that will form the desired world in our own
-minds. We are if effect /backing into/ Scheme programming and its
-underlying philosophy---and underlying is quite a bit of important
-computer science.[fn:3]
+This chatty conversation style is teasing out the requisite
+/formalism/ [fn:2] where you the reader will hopefully experience a
+growing mental picture of the important theory and language syntax as
+the conversation continues and the pages turn. We are in effect
+/backing into/ Scheme programming and its underlying philosophy---and
+underlying is quite a bit of important computer science.[fn:3]
 
 Some things, however, are directly stated. Before the first chapter
 entitled /1. Toys/, even before the title page, there are listed
 (jokingly named?) /The Ten Commandments/, followed by /The Five
-Rules/. Again, this is a nod to, a play on the mathematical formalism
-of an /[[https://en.wikipedia.org/wiki/Axiomatic_system][axiomatic system]]/. But what do we mean by an axiomatic system
-and why are they important?
+Rules/. Again, this is a nod to the mathematical formalism of an
+/[[https://en.wikipedia.org/wiki/Axiomatic_system][axiomatic system]]/. But what do we mean by an axiomatic system and why
+are they important?
 
 The multi-volume set [[https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms][Euclid's Elements]] (EE) from ca. 300 BC Greece is
 generally accepted as being the first example of mathematics built on
@@ -152,8 +147,8 @@ of, e.g., the /pons asinorum/ is a step-by-step establishing of
 undeniable facts based on Euclid's axioms called /Postulates/ and
 /Notions/. Again, this was the beginning of modern mathematics where a
 set of axioms could be called on to build /theorems/, i.e., additional
-true assumptions. [[https://en.wikipedia.org/wiki/Axiomatic_system][Axioms]] can go by many names, e.g., basic truths,
-givens, primitives. Here are Euclid's five postulates
+true things about the situation. [[https://en.wikipedia.org/wiki/Axiomatic_system][Axioms]] can go by many names, e.g.,
+basic truths, givens, primitives. Here are Euclid's five postulates
 
 
 - P1 :: A straight line may be drawn between any two points.
@@ -185,7 +180,7 @@ introducing with its odd wording the basic concept of one thing being
 of mathematics at Clark University, explanation
 
 #+begin_quote
-To say one magnitude $B$ is a part of another $A$ could be taken as
+To say one magnitude $B$ is a *part* of another $A$ could be taken as
 saying that $A$ is the sum of $B$ and $C$ for some third magnitude
 $C$, the remainder. Symbolically, $A > B$ means that there is some $C$
 such that $A = B + C$.
@@ -316,10 +311,12 @@ working programming language as just a bunch of lists stored in a
 computer file that some sort of evaluator processes and gives results?
 How does that work? Read on.
 
-At this point we should really know, understand what a list is, seeing
-as how a list can be seen as the most primitive, basic, introductory
-data structure in programming. But then we all know in the everyday
-sense what a list is, right? A grocery list is a good example
+** List basics
+
+At this point we take a theoretical look at what a list is, as the
+humble list is the most basic data structure in programming. But then
+we all know in the everyday sense what a list is, right? A grocery
+list is a good example
 
 - eggs
 - milk
@@ -327,9 +324,9 @@ sense what a list is, right? A grocery list is a good example
 - potatoes
 - butter
 
-Not so fast. We have a problem---at least with the math world. That's
-because in higher math there are also /sets/. So what is the
-difference between a list and a set? To the layman they might seem
+But we have a problem---at least with the math world. That's because
+in higher math there are also *sets*. So what is the difference
+between a list and a set? To the layman they might seem
 interchangeable. /[[https://en.wikipedia.org/wiki/Set_theory][Set theory]]/ is the fundamental starting point of
 higher math, as well as CS's Discrete Math.[fn:12] And so many books
 on set theory and discrete math start out with the deceptively simple
@@ -343,9 +340,10 @@ things ... objects ... stuff. @@html:</font> </i>@@
 ...which is kind of what a list is too. But to CS and higher math they
 are two different entities. What's the difference? First, our grocery
 /list/ is not technically a list because, again, in the CS/higher math
-world, /the *elements* (members) of a list have a specific order/. But
-then our grocery list above could be in any order, doesn't really
-matter as long as you come home with the those groceries...
+world,@@html:<font color = "#0d3db3">@@ /the *elements* (members) of
+a list have a specific order/ @@html:</font>@@. But then our grocery
+list above could be in any order, doesn't really matter as long as you
+come home with the those groceries...
 
 Plainly put, lists are defined as a collection of things in a specific
 order. Think of a /string/ of letters like you're reading right now. A
@@ -354,22 +352,20 @@ string of alphanumeric characters can be considered a list because
 between) is everything/. We typically call strings of letters and
 spaces /sentences/ ... where all the sentences in English are made up
 of differing combinations of the twenty-six letters (times two if we
-have both upper- and lower-case), the ten numerals, punctuation, and
-the space character. You can't be placing individual characters in any
-order and still have sensible sentences. So is our "grocery list"
-really a /set/ of groceries?
+have both upper- and lower-case), as well as the ten numerals, all the
+punctuation, and the space character. You can't be placing individual
+characters in any order and still have sensible sentences. So is our
+"grocery list" really a /set/ of groceries?
 
-Actually no. We should not call a grocery list a set either because
-even though order doesn't matter, sets allow duplicates. Really? In
-set theory there is the idea of the /[[https://en.wikipedia.org/wiki/Cardinality][cardinality]]/ of a set, i.e., what
-is the count of the /unique/ elements of the set, /not/ counting
-duplicates.[fn:13]
+Actually no. We should not call a grocery list a /set of groceries/
+either because even though order doesn't matter, sets allow
+duplicates. They do. In set theory there is the idea of the
+/[[https://en.wikipedia.org/wiki/Cardinality][cardinality]]/ of a set, i.e., what is the count of the /unique/
+elements of the set, /not/ counting duplicates.[fn:13]
 
-⌜\\
 𝖟𝕭: The set $A = \{1,1,1,2,2\}$ is /identical/ to set $B = \{1, 2\}$
 because they have the same cardinality, or $|\,A\,| = |\,B\,| =
-2$.[fn:14] \\
-⌟
+2$.[fn:14]
 
 This can be explained in a few ways. The simplest is to say the
 members, the elements of a set /belong/ to that set. So for example,
@@ -378,48 +374,53 @@ if I /belong/ to a club, it doesn't make sense to have me
 above, $1$ /belongs/ to $A$, so it doesn't need to belong again.
 
 Splitting hairs? Yes, well, set theory is a very fundamental thing in
-higher math and is, thus, very precisely defined based on axioms. For
-example, set theory has the /[[https://en.wikipedia.org/wiki/Axiom_of_extensionality][Axiom of Extensionality]]/ which simply and
-directly states @@html:<font color = "#0d3db3">@@ two sets are equal
-if they both have the same members@@html:</font>@@. In our example $A$
-and $B$ do indeed have the same members, namely, $1$ and $2$ ---and it
-doesn't matter, it doesn't count that $A$ repeats these members. Let's
-look at another example
+higher math, thus, very precisely defined based on axioms. For
+example, set theory has the /[[https://en.wikipedia.org/wiki/Axiom_of_extensionality][Axiom of Extensionality]]/ which states
+@@html:<font color = "#0d3db3">@@ two sets are equal if they both have
+the same members@@html:</font>@@. In our example $A$ and $B$ do indeed
+have the same members, namely, $1$ and $2$ ---and it doesn't matter,
+it doesn't count that $A$ repeats these members. Let's look at another
+example
 
-⌜\\
-𝖟𝕭: Given the *set* $A = \{\text{good, so-so, bad}\}$ and a *list* (as
-a named Scheme list): \\
-\\
-~(define week3 '(good bad bad so-so so-so so-so good))~ \\
-\\
-the set $A$ signifies the possible moods a person might be in; while
-~week3~ is the name we've defined for a list containing this daily
-mood data we're collecting each day of week 3.[fn:16] \\
-⌟
+𝖟𝕭: Given the *set* $A = \{\text{good, so-so, bad}\}$ and a defined
+(named) *list*
 
-So the order of set $A$ doesn't matter (and we'd ignore, say, a second
+#+name: 7f8774e8-5919-413d-8134-dfd3652d7b39
+#+begin_src scheme :eval never :exports code
+(define week3 '(bad so-so so-so so-so good))
+#+end_src
+
+\\
+the set $A$ contains the three possible moods a person might be in;
+while ~week3~ is the name we've told Scheme to call a list containing
+our daily workweek moods.[fn:16] \\
+
+The order of set $A$ doesn't matter (and we'd ignore, say, a second
 $good$), but the order of the list defined as ~week3~ is important
-because we don't want to mix up how we felt on what day, Sunday,
-Monday, etc., good, bad, or so-so. Also, it makes perfect sense for a
-list to have "repeats" since we're evaluating many days in succession,
-and each day can be one of the three choices. But then notice one more
-thing about a set: When we built the list ~week3~ we had to choose for
-each day (each successive position in the list representing each day
-of the week) good /or/ bad /or/ so-so. Remember Venn diagrams from
-pre-school/Kindergarten? For example, this sort of /or/ situation
-can be shown with a /[[https://en.wikipedia.org/wiki/Union_(set_theory)][union]]/ of circles.[fn:17]
+because we don't want to mix up how we felt on what day. Also, it
+makes perfect sense for a list to have "repeats" since we're
+evaluating many days in succession, and each day can be one of the
+three choices. But then notice one more thing about a set: When we
+built the list ~week3~ we had to choose for each day good /or/ bad
+/or/ so-so. Or did we? What would the list ~week3~ look like if we
+could have more than just one mood during a day? How about
 
-Now, let's go beyond the colored Venn diagram circles and take a more
-formal look at what a union is. Let's make a formal definition of a
-union:[fn:18]
+#+name: 5e0271e8-a0e4-430f-b594-f11e30c11403
+#+begin_src scheme :eval never :exports code
+(define week3 '(bad bad so-so (good so-so bad) (good so-so)))
+#+end_src
+
+Remember Venn diagrams from pre-school/Kindergarten? An /or/ situation
+can be shown with a /[[https://en.wikipedia.org/wiki/Union_(set_theory)][union]]/ of circles.[fn:17] Let's make a formal
+definition of a union:[fn:18]
 
 @@html:<font color = "#0d3db3">@@ The union of two sets $A$ and $B$
 (denoted by $A \cup B$) is the set of elements which are in $A$, in $B$,
 *or* in both $A$ and $B$.  @@html:</font>@@[fn:19]
 
-Now, for our set $A = \{\text{good, so-so, bad}\}$, we are using each
-element just once per the day slot of ~week3~. We can imagine $A$ as
-made up of the individual sets
+Now, for our set $A = \{\text{good, so-so, bad}\}$, if we are using
+each element just once per the day slot of ~week3~ we could imagine
+$A$ as made up of the individual sets
 
 \begin{align*}
 A_G &= \{\text{good}\} \\
@@ -427,20 +428,22 @@ A_{S} &= \{\text{so-so}\} \\
 A_B &= \{\text{bad}\}
 \end{align*}
 
-Now, a union $\{A_G \cup A_{S} \cup A_B \}$ will get us back to our original $A
-= \{\text{good, so-so, bad}\}$. Why are we looking at our set of mood
-choices like this? Because our eventual software code will need some
-sort of decision based on *or*, i.e., we need just /one/ of the three
-possibilities.
-
-When we look at $A_G$, $A_{S}$, and $A_B$ together we may call them
+and so a union $\{A_G \cup A_{S} \cup A_B \}$ will get us back to our original
+$A = \{\text{good, so-so, bad}\}$. $A_G$, $A_{S}$, and $A_B$ are
 /[[https://en.wikipedia.org/wiki/Disjoint_sets][disjoint sets]]/ since they have no elements in common when we
-union-ize them. And so if we made a Venn diagram, there would
-be no overlap between any of them. Lots more about data
-representations of disjoint sets in the future.
+union-ize them. And so if we made a Venn diagram, there would be no
+overlap between any of them. Why are we couching our mood choices in
+the language of set theory? Because we will eventually move on to
+another language, namely, [[https://en.wikipedia.org/wiki/Haskell][Haskell]], where a certain class of data types
+emulate just this sort of *[[https://en.wikipedia.org/wiki/Logical_disjunction][logical or]]*, i.e., the *sum type*. While
+Scheme is usually not directly explained in terms of higher math, the
+Haskell family of languages (Haskell, [[https://en.wikipedia.org/wiki/Standard_ML][Standard ML]], [[https://en.wikipedia.org/wiki/OCaml][OCaml]], [[https://en.wikipedia.org/wiki/F_Sharp_(programming_language)][F#]])
+are. Again, lots more about data representations of disjoint sets,
+logical conjunction and disjunction when we look into Haskell in the
+future.
 
-For another example of three set union-izing let's take three common
-alphabets as sets---the Greek, Latin, and Cyrillic
+𝖟𝕭: Consider three common alphabets as sets---the Greek, Latin, and
+Cyrillic alphabets
 
 \begin{align*}
 G &= \{Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, Τ, Υ, Φ, Χ, Ψ, Ω\} \\
@@ -449,7 +452,7 @@ C &= \{A, Б, В, Г, Д, E, Ё, Ж, З, И, Й, K, Л, М, Н, О, П, Р, С, 
 &  Ы, Ь, Э, Ю, Я\}
 \end{align*}
 
-Now, let's make a on big union-ed together set $A$ out of the
+Now, let's make one big union-ed together set $A$ out of the
 individual sets $G$, $L$, and $C$
 
 \begin{align*}
@@ -460,8 +463,8 @@ A &= \{ Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, 
 \end{align*}
 
 Below we see a Venn diagram for $A$, i.e., circles in which the
-/three/ sets of alphabetic characters are contained. We can also see
-how the intersecting circle edge lines also show the what /any two/
+/three/ sets of alphabetic characters are contained. We can see how
+the intersecting circumference lines also show the what /any two/
 alphabets share, and then in the very center what they /all/ share
 
 #+begin_figure
@@ -605,22 +608,22 @@ means @@html:<font color = "#0d3db3">@@the truth of one side of the
 $\iff$ requires the other side to be true also.@@html:</font>@@ So if
 $a$ is an element of the union of $X$ and $Y$ then $a$ must be an
 element of $X$ *or* it is an element of $Y$ *or* it is an element of
-/both/ $X$ and $Y$ ---and the other way around as
-well. $\mathfrak{Fazit}$: We avoid writing $X \lor Y$ when considering
-just the set without involving the elements therein.
+/both/ $X$ and $Y$ ---and the other way around as well. Note: we avoid
+writing $X \lor Y$ when considering just the sets without involving the
+elements therein.
 
-$\mathfrak{Fazit}$
-
-** ⥤ Summing up; data and data structures
+** Summing up; data and data structures
 
 We didn't even get off the first page of TLS, but we have laid some of
 the groundwork we'll need to proceed. And we can't emphasize this
 enough: Computer science is a branch of applied mathematics, and we
 need to get the math going alongside, parallel to the computer
-stuff. So expect more math-stumbling-block clearing.
+stuff. So expect more new math. Yes, this sort of math takes
+concentrated, deliberate thinking. We're becoming philosophers, i.e.,
+we're going beyond "plug-and-chug" math.
 
-Next, lists. This lesson began our introduction to /lists/. We'll
-learn more about how they are a very simple but important data
+Next, lists. While this lesson began our introduction to /lists/,
+we'll learn more about how they are a very simple but important data
 structure in computer /data management/ ... but then we're using the
 term /data management/ differently then the greater lay world does. So
 a quick word about the whole concept of /data/ and /data structures/
@@ -628,27 +631,29 @@ before we really dive in ahead. Today the term /data/ is mainly
 understood to be gobs and gobs of stuff held in databases or other
 storage schemes. That's not what we mean by data. For us "data" can
 simply be a number returned from an algorithm. That is to say, data is
-what the programming logic, the "code" is producing. Yes, of course,
-this production of data can pool and amass into great piles in vast
-electronic storage bins, but, for instance, this is data
+what the programming logic, the "code" is taking in, working on, then
+giving back to us. Yes, of course, this production of data can pool
+and amass into great piles in vast electronic storage bins, but, for
+instance, this is data
 
 #+name: 6ce99fb1-93d3-4a72-9e01-5d9b96f3c682
 #+begin_src scheme :eval never :exports code
-'(good bad bad so-so so-so so-so good)
+'(bad bad so-so so-so good)
 #+end_src
 
-i.e., a simple list surrounded in parentheses and prefaced by a
+i.e., just a simple list surrounded in parentheses and prefaced by a
 quotation mark ("'") at the beginning as is the custom in Scheme (and
 Lisp). That quote at the opening parenthesis indicates this is not
 code, rather, data. What we saw above
 
 #+name: e4667fd4-1f04-4d95-ac36-ee0ee01b44ca
 #+begin_src scheme :eval never :exports code
-(define week3 '(good bad bad so-so so-so so-so good))
+(define week3 '((bad bad so-so so-so good))
 #+end_src
 
-is a mixture of both code and data. In the next lesson we'll get into
-the weeds on just how this mixture of code and data can work together.
+is therefore a mixture of both code and data. As we progress we'll get
+into the weeds on just how this mixture of code and data can work
+together.
 
 #+INCLUDE: "./footer.org" :minlevel 1
 
@@ -661,8 +666,9 @@ Greek letters.
 formalism---although it's a bit formal...
 
 [fn:3] Despite containing actual Scheme programs, actual code, TLS was
-written so that a layperson could follow along with no knowledge of
-computers, e.g., someone from the eighteenth century!
+written so that a layperson could follow along with no access to nor
+knowledge of computers, e.g., someone from the nineteenth century such
+as [[https://en.wikipedia.org/wiki/Ada_Lovelace][Ada Lovelace]]!
 
 [fn:4] For example the (in)famous /[[https://en.wikipedia.org/wiki/Pons_asinorum][pons asinorum]]/ in /Euclid's
 Elements/ \\
@@ -681,7 +687,7 @@ courses pursued in the junior and senior year of a Bachelors math
 degree, i.e., those courses /after/ Calculus, Differential Equations,
 and Linear Algebra.
 
-[fn:7] These axioms are taken from Linear Algebra.
+[fn:7] These axioms relate to Linear Algebra.
 
 [fn:8] ... /quod erat demonstrandum/, meaning "that which was to be
 demonstrated".
@@ -701,17 +707,16 @@ Escher, Bach]] (1979).
 
 [fn:12] ...although it may be veiled or only partially explored.
 
-[fn:13] We indicate the cardinality of a set $A$ by
-surrounding it with vertical pipes: $|\,A\,|$ This is similar to the idea
-of a number's /absolute value/ which uses the same symbol.
+[fn:13] We indicate the cardinality of a set $A$ by surrounding it
+with vertical pipes: $|\,A\,|$ This is similar to the idea of a
+number's /absolute value/ which uses the same vertical bar symbols.
 
 [fn:14] 𝖟𝕭 is German for /zum Beispiel/ or /for example/.
 
 [fn:15] ...paying double membership fees?
 
-[fn:16] With our first introduction to Scheme syntax we've made a list
-containing our list in order to define our list. Notice the nested
-parentheses. More on how everything in Scheme is a list soon...
+[fn:16]  Notice once again the nested parentheses. To be sure,
+everything in Scheme is a list.
 
 [fn:17] A Venn diagram of two sets /or/-ed, /union/-ed together. \\
 [[file:images/VennUnion.png]] \\

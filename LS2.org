@@ -501,28 +501,26 @@ Symbolic programs are programs where symbolic expressions are
 manipulated to gain useful output. But what does this actually entail,
 how do we /manipulate symbolic expressions/? With Lisp and Scheme
 everything is housed in lists---both data and code alike. So far we've
-been nudging around the idea of how we build working code from
-lists. Now we'll explore more deeply what a list as an sexp really
-is. We'll start with a more formal look at s-expressions.
+been nudging around how to build working code from lists. Now we'll
+explore more deeply what a list as an sexp really is. We'll start with
+a more formal look at /s-expressions/ or sexp's.
 
 Technically, formally an sexp is one of two possibilities
 
 + an *atom*, /or/
 + a *cons cell*
 
-...which is, er, somewhat abstract. But didn't we just say a Scheme
-program is completely contained in lists, data and code? We've seen
-the atom before. Recall, an atom is just a symbol object thing
-standing alone by itself. In the Scheme world, atoms can do two
-things: stand alone or be in a list, and we saw how just one atom
+So we've seen the atom before. Recall, an atom is just a symbol object
+thing standing alone by itself. In the Scheme world, atoms can do two
+things: stand alone or be in a list. And we saw how just one atom
 surrounded by a set of parentheses becomes a list. We then saw how
 multiple atoms surrounded by a set of parentheses is also a list; how
 a set of parentheses surrounding a mixture of atoms and other lists is
 a list ... we saw that lists can be nested in lists nested in lists,
 ever deeper. Good. But calling an atom a sexp doesn't get us very
-far. For example, we saw earlier how we could put ~'myatom~ in the
-REPL---and we only got ~myatom~ repeated back to us, i.e., no real
-computation is happening yet.
+far. As we saw earlier, we could type ~'myatom~ into the REPL---and
+get ~myatom~ repeated back to us, i.e., no real computation is
+happening yet.
 
 Let's consider the second type of sexp given above, the *[[https://en.wikipedia.org/wiki/Cons][cons
 cell]]*. This is where the action starts. A *cons cell* is what a Scheme
@@ -536,7 +534,7 @@ second matters...)}}}
 the form ~(sexp1 . sexp2)~. @@html:</font>@@ \\
 
 Hmm, still rather theory-bound. So what's the connection between these
-ordered-pair /cons cells/ and lists? The answer is we use Scheme's
+ordered-pair cons cells and lists? The answer is we use Scheme's
 primitive function ~cons~ to create cons cells by fusing two sexp's
 together. Let's see an example where two sexp's as atoms are /consed/
 together
@@ -549,7 +547,7 @@ together
 #+RESULTS: 0ab608a3-69a1-4a34-b97b-69c4790214d6
 : (1 . 2)
 
-Scheme just gave us back a cons cell. Let's play with this idea
+Scheme gives us back a cons cell.[fn:14] Let's play with this idea
 
 #+name: c53865cf-680c-4aa6-90f7-58b23b98981d
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
@@ -573,7 +571,7 @@ Except for that last dot between ~3~ and ~4~, this looks like a
 regular list of numbers, no? So what is the difference between ~(1 2 3
 . 4)~ and the regular list ~(1 2 3 4)~?
 
-So far we've exampled our way into how lists are built in Scheme,
+We seem to be exampling our way into how lists are built in Scheme,
 namely, /a bunch of stuff gets *consed* together/. Let's try this
 again and watch exactly which parentheses are enclosing what
 
@@ -586,8 +584,8 @@ again and watch exactly which parentheses are enclosing what
 : (((five is a nice number) 5) but so is six)
 
 What happened this time? For one, we simply embedded one consing
-inside another. And yet both the inner and outer ~cons~ /consed/ the
-sexp's into a real list, making the ~cons~ dots go away. Why and how?
+inside another. But this time the inner and outer ~cons~ /consed/ the
+sexp's into a real list---and the ~cons~ dots went away. Why and how?
 Let's do more examples
 
 #+name: 83598e94-d50a-4d29-badc-16924d0256ec
@@ -613,19 +611,19 @@ where in Scheme ~NIL~ is ~'()~ or the *empty list*. We call ~(1 2 3)~
 the *[[https://en.wikipedia.org/wiki/Syntactic_sugar][syntactic sugar]]* version, i.e., we're given a more visually
 friendly, uncluttered version of a consed-together list.
 
-So ~(1 2 3)~ is really just a visually improved version of ~(1 . (2
-. (3 . '())))~.[fn:14] Awkward looking as the naked version is, it shows the
-details of how we're doing a particular sort of /connecting/ or
-/associating/ ~1~, ~2~, and ~3~ together. But it's probably not
-apparent why we need to *cons*-truct a list this way. Let's take a
-short "math holiday" to get started.
+So ~(1 2 3)~ is really just a visually improved version of ~(cons 1
+(cons 2 (cons 3 '())))~.[fn:15] Awkward looking as the naked version
+is, it shows the details of how we're doing a particular sort of
+/connecting/ or /associating/ ~1~, ~2~, and ~3~ together. But it's
+probably not apparent why we need to *cons*-truct a list this
+way. Let's take a short "math holiday" to unravel this.
 
 ⌜\\
-@@html:<font color = "#0d3db3">@@⥤ *Math Holiday! ... working binarily* @@html:</font>@@[fn:15]
+@@html:<font color = "#0d3db3">@@⥤ *Math Holiday! ... working binarily* @@html:</font>@@[fn:16]
 
 Back in grade school when we were first being conditioned to perform
 arithmetic (rather than actually learning anything of the art of
-mathematical abstraction), we would see a stack of numbers like this
+mathematical abstraction), we would see a stack of numbers like below
 and be told to "add them up." But strictly speaking, addition is a
 *binary operation*, meaning only two numbers can be added at a time,
 not all of these numbers at once
@@ -644,50 +642,51 @@ not all of these numbers at once
 
 Doubtful that anyone can read the [[https://en.wikipedia.org/wiki/Addition][Addition Wikipedia article]] and not
 learn something they didn't know about good old addition. For example,
-when we tackle a stack of numbers like above we are actually keeping a
-running tab in our heads of adding /only two of the numbers at a
-time/, i.e., /two/ inputs produce /one/ output. So let's start at the
-top with $1 + 2$, which is $3$. We then "carry along" this temporary
-result and add the next number $3$ to it, and so on. In reality after
-that first binary operation of $1 + 2$, we consider the result $3$ to
-be the *augend*, while the next number $3$ becomes the *addend*. The
-intermediary total of this sum then becomes the next *augend*, and so
-we progress down the stack reassigning the latest sum to the *augend*
-and adding the next *addend* to it. This is how many digital logic
-calculations are done. Lots more later. \\
+when we tackle a stack of numbers like above we are actually adding
+/only two of the numbers at a time/, i.e., /two/ inputs produce /one/
+output. So let's start at the top with $1 + 2$, which is $3$. We then
+"carry along" this temporary result and add the next number $3$ to it,
+and so on. In reality after that first binary operation of $1 + 2$,
+the result $3$ becomes the *augend*, while the next number $3$ becomes
+the *addend*. The intermediary total of this sum then becomes the next
+augend---and so we progress down the stack reassigning the latest sum
+to the augend and adding the next addend to it. This is how many
+digital logic calculations are done. Lots more later. \\
 ⌟
 
 Now with a refreshing math holiday under our belts it should be clear
-that ~cons~ as a binary operation must operate similarly, i.e., there
-is no such thing as ~(cons 1 2 3)~,[fn:16] rather, ~cons~ is a /binary
+that ~cons~ as a binary operation must operate similarly, e.g., there
+is no such thing as ~(cons 1 2 3)~,[fn:17] rather, ~cons~ is a /binary
 operator/ taking one thing and consing it together with one other
 thing. This is repeated until done everything is consed together into
 a finished list.
 
-𝖟𝕭: When we see ~(cons 1 (cons 2 (cons 3 '())))~ we're seeing the
-initial binary operation of ~(cons 3 '())~ which is ~(3)~. This is
+𝖟𝕭: When we see nested ~cons~ operations, e.g., ~(cons 1 (cons 2 (cons
+3 '())))~, we're seeing precedence-wise[fn:18] the initial /binary/
+operation of ~(cons 3 '())~ which is the /list/ ~(3)~. This is
 embedded in ~(cons 2 (3))~ which evaluates to ~(2 3)~, which is again
-embedded in ~(cons 1 (2 3))~ resulting in ~(1 2
-3)~. $\mathfrak{Fazit}$: ~cons~ is always consing just two sexp's.
+embedded in ~(cons 1 (2 3))~ resulting in ~(1 2 3)~. Thus, creating a
+real list with ~cons~ means consing a sexp onto a real list. Also,
+~cons~ can only cons two sexp's at a time.
 
 It may seem too soon to go on holidays again, but let's do another
 math holiday anyway!
 
 ⌜\\
-@@html:<font color = "#0d3db3">@@⥤ *Math Holiday! ... intro to
-recursion* @@html:</font>@@
+@@html:<font color = "#0d3db3">@@⥤ *Math Holiday! ... a brief, gentle
+intro to recursion* @@html:</font>@@
 
-*[[https://en.wikipedia.org/wiki/Recursion][Recursion]]* is a central idea in math and CS. Let's take a quick look
-at it in a basic theory way before we actually start practicing it
-with Scheme code. Consider this simple summation of the natural
-numbers $\mathbb{N}$
+*[[https://en.wikipedia.org/wiki/Recursion][Recursion]]* is a central idea in math and CS. Let's take a quick
+theoretical look before we actually start doing it with Scheme
+code. Consider this simple summation of the natural numbers
+$\mathbb{N}$
 
 \begin{align*}
 \sum_{i=1}^n i = 1 + 2 + 3 + \ldots + (n - 1) + n
 \end{align*}
 
-We can express this formula for summing the natural numbers
-/recursively/
+This simply sums all the counting numbers until $n$. We can also
+write a formula for summing $\mathbb{N}$ /recursively/
 
 \\
 ⌟
@@ -923,16 +922,23 @@ org-mode Babel's literate programming we need far less in-code
 comments since we can make all the commentary we need before and after
 the block.
 
-[fn:14] Realize of course that \\
-~(1 . (2 . (3 . NIL)))~ \\
-is just a symbolic way of expressing \\
-~(cons 1 (cons 2 (cons 3 '())))~. \\
-The /dotted/ version doesn't work in actual Scheme coding.
+[fn:14] This is also referred to as /dotted pair/.
 
-[fn:15] [[https://en.wikipedia.org/wiki/Binary_operation][This Wikipedia article on binary operations]] is quite
+[fn:15] Realize of course that \\
+~(1 . (2 . (3 . NIL)))~ \\
+is just the dotted symbolic way of expressing \\
+~(cons 1 (cons 2 (cons 3 '())))~. \\
+The dotted version doesn't work as actual Scheme code.
+
+[fn:16] [[https://en.wikipedia.org/wiki/Binary_operation][This Wikipedia article on binary operations]] is quite
 abstract-formal, but we'll be getting into this lore meticulously as
 we progress. It, like all of higher math, assumes set theory, which is
 also the basis of much computer science theory.
 
-[fn:16] Most Scheme REPLs will give the error ~wrong number of
+[fn:17] Some Scheme REPLs will give the error ~wrong number of
 arguments~ because it was expecting exactly two inputs.
+
+[fn:18] *precedence* is the order in which a simplification
+follows. Parentheses are usually the highest precedence, e.g., $4 \cdot
+(2 + 3) = 20$ because by parenthesizing the $(2 + 3)$ we created
+precedence over the multiplication.
