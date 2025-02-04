@@ -389,7 +389,7 @@ inside the code block and enter ~C-c C-c~, which produces
 As we see in the code block's heading above, the two contained
 expressions will be evaluated in a specific REPL session named
 ~*littleschemer*~. Next, let's /not/ ~define~ a symbol, rather, just
-feed the session a symbol[fn:10]
+feed the session a symbol[fn:9]
 
 #+name: 7758a423-12c0-47ea-bdb1-88fbc753dbb3
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
@@ -471,7 +471,7 @@ In each of the above examples the very first item in the list is the
 function/operator. For the arithmetic operators like ~+~, ~*~, et
 cetera, we see [[https://en.wikipedia.org/wiki/Polish_notation][prefix notation]] with possibly multiple arguments. Now,
 let's see a full Scheme function that takes one argument and when
-evaluated, produces output[fn:11]
+evaluated, produces output[fn:10]
 
 #+name: 48a7817d-f1a4-4d6c-8ce0-578197a0425e
 #+begin_src scheme :session *littleschemer* :results output :exports both
@@ -555,7 +555,7 @@ together
 #+RESULTS: 0ab608a3-69a1-4a34-b97b-69c4790214d6
 : (1 . 2)
 
-Scheme gives us back a cons cell.[fn:12] Let's play with this idea
+Scheme gives us back a cons cell.[fn:11] Let's play with this idea
 
 #+name: c53865cf-680c-4aa6-90f7-58b23b98981d
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
@@ -620,14 +620,14 @@ the *[[https://en.wikipedia.org/wiki/Syntactic_sugar][syntactic sugar]]* version
 friendly, uncluttered version of a consed-together list.
 
 So ~(1 2 3)~ is really just a visually improved version of ~(cons 1
-(cons 2 (cons 3 '())))~.[fn:13] Awkward looking as the naked version
+(cons 2 (cons 3 '())))~.[fn:12] Awkward looking as the naked version
 is, it shows the details of how we're doing a particular sort of
 /connecting/ or /associating/ ~1~, ~2~, and ~3~ together. But it's
 probably not apparent why we need to *cons*-truct a list this
 way. Let's take a short "math holiday" to unravel this.
 
 ⌜\\
-@@html:<font color = "#0d3db3">@@⥤ *Math Holiday! ... working binarily* @@html:</font>@@[fn:14]
+@@html:<font color = "#0d3db3">@@⥤ *Math Holiday! ... working binarily* @@html:</font>@@[fn:13]
 
 Back in grade school when we were first being conditioned to perform
 arithmetic (rather than actually learning anything of the art of
@@ -664,42 +664,83 @@ digital logic calculations are done. Lots more later. \\
 
 Now with a refreshing math holiday under our belts it should be clear
 that ~cons~ as a binary operation must operate similarly, e.g., there
-is no such thing as ~(cons 1 2 3)~,[fn:15] rather, ~cons~ is a /binary
+is no such thing as ~(cons 1 2 3)~,[fn:14] rather, ~cons~ is a /binary
 operator/ taking one thing and consing it together with one other
 thing. This is repeated until done everything is consed together into
 a finished list.
 
 𝖟𝕭: When we see nested ~cons~ operations, e.g., ~(cons 1 (cons 2 (cons
-3 '())))~, we're seeing precedence-wise[fn:16] the initial /binary/
+3 '())))~, we're seeing precedence-wise[fn:15] the initial /binary/
 operation of ~(cons 3 '())~ which is the /list/ ~(3)~. This is
 embedded in ~(cons 2 (3))~ which evaluates to ~(2 3)~, which is again
 embedded in ~(cons 1 (2 3))~ resulting in ~(1 2 3)~. Thus, creating a
 real list with ~cons~ means consing a sexp onto a real list. Also,
-~cons~ can only cons two sexp's at a time.
+~cons~ can only cons two sexp's at a time. \\
+\\
 
-It may seem too soon to go on holidays again, but let's do another
-math holiday anyway!
-
-⌜\\
-@@html:<font color = "#0d3db3">@@⥤ *Math Holiday! ... a brief, gentle
-intro to recursion* @@html:</font>@@
+** Recursion, let's get started with...
 
 *[[https://en.wikipedia.org/wiki/Recursion][Recursion]]* is a central idea in math and CS. Let's take a quick
-theoretical look before we actually start doing it with Scheme
-code. Consider this simple summation of the natural numbers
-$\mathbb{N}$
+theoretical look and then draw some parallels to what we've been doing
+with lists. Consider this simple summation of a *sequence* of natural
+numbers $\mathbb{N}$
 
 \begin{align*}
 \sum_{i=1}^n i = 1 + 2 + 3 + \ldots + (n - 1) + n
 \end{align*}
 
-This simply sums all the counting numbers until $n$. We can also
-write a formula for summing $\mathbb{N}$ /recursively/
+This sums the sequence of the counting numbers up to and including
+$n$. We can also write a formula for summing any $\mathbb{N}$ sequence
+/recursively/ by defining a system that will march, progress to the
+answer by referring or calling itself repeatedly. So $\sum_{i=1}^n i$ can be
+redone as a two-part algebraic function
 
-[continuation soon...]
-\\
+\begin{align}
+g(1) &= 1 \\
+g(n) &= g(n-1) + n,\; \text{for all} \; n \geq 2
+\end{align}
+
+This *[[https://en.wikipedia.org/wiki/Piecewise_function][piecewise function]]* approach to finding the sum has what is
+called the *base case* (3), which is also the terminal case, i.e.,
+when $n = 1$ we are done and the answer is simply given as $1$. But if
+$n \gt 1$ then we apply the *recursion rule* (4) where we define, we
+establish the function application at hand in terms of previous or
+next application of the function, or, one step in terms of the
+previous (or next) step ... which we then repeat stepping backward (or
+forward) until we arrive at the base or termination case. Got that?
+Better to just try it out once
+
+⌜ \\
+𝖟𝕭: If $n = 4$ then we start with the recursion rule (4) until the
+base case is /true/[fn:16]
+
+\begin{align*}
+g(4) &= g(4 - 1) + 4 = g(3) + 4 \quad\quad \text{...apply rule} \\
+g(3) &= g(3 - 1) + 3 = g(2) + 3 \quad\quad \text{...apply rule} \\
+g(2) &= g(2 - 1) + 2 = g(1) + 2 \quad\quad \text{...apply rule} \\
+g(1) &= 1 \quad\quad \text{...apply base case} 
+\end{align*}
+
+Now we nest these intermediary steps[fn:17]
+
+\begin{align*}
+g(4) &= g(3) + 4 \\
+     &= (g(2) + 3) + 4 \\
+     &= ((g(1) + 2) + 3) + 4 \\
+     &= 1 + 2 + 3 + 4
+\end{align*}
 ⌟
+
+
+
+Have we seen this step-wise nesting before? Yes, when we saw how lists
+are really just the consing of objects together. Scheme has a function *list*
+
+Who "checks" if the base case has arrived?
+
+
 \\
+
 ** A /linked/ list is...
 
 In the world of computer science *[[https://en.wikipedia.org/wiki/Data_structure][data structures]]*, a list is more
@@ -915,34 +956,40 @@ enclosing set of parentheses you are in.
 
 [fn:8] ...some suggest telepathy...
 
-[fn:10] From now on for visual purposes we will forego the code block
+[fn:9] From now on for visual purposes we will forego the code block
 wrappers , i.e., ~#+begin_src scheme ... #+end_src~, and just display
 the code and the results. When in doubt about exactly what the code
 block wrapper should be, consult the raw version of this page.
 
-[fn:11] Anything following a ";" is a /comment/ for the rest of that
+[fn:10] Anything following a ";" is a /comment/ for the rest of that
 line and is not evaluated, rather, just passed on. However, with
 org-mode Babel's literate programming we need far less in-code
 comments since we can make all the commentary we need before and after
 the block.
 
-[fn:12] This is also referred to as /dotted pair/.
+[fn:11] This is also referred to as /dotted pair/.
 
-[fn:13] Realize of course that \\
+[fn:12] Realize of course that \\
 ~(1 . (2 . (3 . NIL)))~ \\
 is just the dotted symbolic way of expressing \\
 ~(cons 1 (cons 2 (cons 3 '())))~. \\
 The dotted version doesn't work as actual Scheme code.
 
-[fn:14] [[https://en.wikipedia.org/wiki/Binary_operation][This Wikipedia article on binary operations]] is quite
+[fn:13] [[https://en.wikipedia.org/wiki/Binary_operation][This Wikipedia article on binary operations]] is quite
 abstract-formal, but we'll be getting into this lore meticulously as
 we progress. It, like all of higher math, assumes set theory, which is
 also the basis of much computer science theory.
 
-[fn:15] Some Scheme REPLs will give the error ~wrong number of
+[fn:14] Some Scheme REPLs will give the error ~wrong number of
 arguments~ because it was expecting exactly two inputs.
 
-[fn:16] *precedence* is the order in which a simplification
+[fn:15] *precedence* is the order in which a simplification
 follows. Parentheses are usually the highest precedence, e.g., $4 \cdot
 (2 + 3) = 20$ because by parenthesizing the $(2 + 3)$ we created
 precedence over the multiplication.
+
+[fn:16] /...until true/ belies a test for true or false, doesn't it?
+Hold that thought...
+
+[fn:17] This nesting in parentheses we see above is just like nesting
+in parentheses in Scheme of course. Parentheses keep law and order.
