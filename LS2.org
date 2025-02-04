@@ -98,19 +98,21 @@ calculations handled away from having to literally tell the CPU or the
 For the time being, let's consider a quick, ad hoc definition of a
 function and then later really take the idea of a function apart and
 analyze it in a higher math way \\
-
-⇲@@html:<font color = "#0d3db3">@@ A *function* is a /relation/ [fn:2]
-between a /set/ [fn:3] whose elements are inputs (the /domain/) and a
-set whose elements make up outputs (the range) with the key property
-that /each input is related to exactly one output/.[fn:4]
-@@html:</font>@@ \\
+\\
+{{{marginnote(...more about /relations/ in a higher math way
+later... /set/ as in set theory sets. Some very formal texts call a
+set a /class/ by the way.)}}}  ⇲@@html:<font color = "#0d3db3">@@ A
+*function* is a /relation/ between a /set/ whose elements are inputs
+(the /domain/) and a set whose elements make up outputs (the range)
+with the key property that /each input is related to exactly one
+output/.@@html:</font>@@[fn:2] \\
 \\
 Let's also look at a function in terms of /variables/. Recalling the
 usual pre-algebra way of denoting a function, i.e., $y = f(x)$, the
 symbol $x$ stands for input and is called an *independent variable*,
 while the symbol that stands for output, $y$, is called a *dependent
 variable*. And so the dependent variable of the range /depends/ on the
-independent variable of the domain.[fn:5]
+independent variable of the domain.[fn:3]
 
 At this point in our journey we need to be clear about what is meant
 in the math and CS literature by an *[[https://en.wikipedia.org/wiki/Expression_(mathematics)][expression]]*---a /mathematical/
@@ -137,7 +139,7 @@ be expressions too? After all the basics of an expression, i.e., the
 
 One important trait of expressions (which is very important in
 functional programming) is that expressions may be evaluated or
-simplified to find equivalent values. The expression $8 \cdot 5 - 2$
+simplified to find equivalent values. The expression $8 \cdot 2 - 5$
 simplifies to $16 - 5$ and then evaluates to $11$. And sometimes a
 mathematical expression comes from transcribing a statement, e.g.,
 "One number is six more than half of another number." So if we
@@ -156,7 +158,7 @@ and operators such as the symbols for add, subtract, multiply, divide,
 and equals.  @@html:</font>@@ \\
 \\
 And so an equation (built around an equals sign) can be an expression
-after all.[fn:6] If an expression is, as restated from above,
+after all.[fn:4] If an expression is, as restated from above,
 @@html:<font color = "#0d3db3">@@any way of combining numbers and
 symbols in a way that is syntactically correct@@html:</font>@@, then
 
@@ -178,7 +180,8 @@ syntactically valid; /and/ it is an equation because of the equals
 sign. But is it a function? Just in this form we haven't decided which
 is the dependent or the independent value. We could plug in (a)
 value(s) for $y$ and get an $x$ /or/ plug in (a) value(s) for $x$ and
-get a $y$ as it is now written. To be specific we could write it as
+get a $y$ as it is now written. To be more specific we could write it
+as
 
 \begin{align*}
 y = f(x) = e^x
@@ -197,10 +200,10 @@ we would have the function
 f(a)=7a+2b+3c
 \end{align}
 
-⥤ Food for thought: $a$ is a dependent variable in (1) and the symbols
-$b$ and $c$ must then be constants. But could more than just $a$ be a
-variable? If so, how could we express this? How about as a function of
-multiple variables?
+⥤ *Food for thought*: $a$ is a dependent variable in (1) and the
+symbols $b$ and $c$ must then be constants. But could more than just
+$a$ be a variable? If so, how could we express this? How about as a
+function of multiple variables?
 
 \begin{align}
 f(a,b,c)=7a+2b+3c
@@ -210,41 +213,40 @@ f(a,b,c)=7a+2b+3c
 we define what a Cartesian coordinate system really is, we'll also
 touch on the world of /[[https://en.wikipedia.org/wiki/Combinatorics][combinatorics]]/, or the science of counting or
 sampling combinations of different sets, which is really what's going
-on with this function-expression thingy.
-
-Bottom line: We will indeed say @@html:<font color = "#0d3db3">@@all
-functions are expressions.@@html:</font>@@
-
+on with this function-expression thingy. \\
+\\
+{{{marginnote(*Fazit*: German meaning /in conclusion/, /summing up/)}}}
+$\mathfrak{Fazit}$: We will indeed say @@html:<font color = "#0d3db3">@@all
+functions are expressions.@@html:</font>@@ \\
+\\
 ** S-expressions TLS-style
 
 Now we will discuss the idea of a *symbolic expression* or
-*s-expression* as Lisp and Scheme mean it. On page 4 of TLS we're
-suddenly confronted with, no explanation or warning, the term
-/S-expression/
+*s-expression* as Lisp and Scheme mean it. On page 4 of TLS we
+suddenly see, with no explanation or warning, the term /s-expression/
 
 @@html:<span class="schemer">@@Βιγ Σξηεμερ:@@html:</span>@@ Is it true
 that this is a list? \\
 ~(atom turkey) or~ \\
 @@html:<span class="schemer">@@Λιττλε Σξηεμερ:@@html:</span>@@ No,
-because these are actually two *S-expressions*[fn:7] not enclosed by
+because these are actually two *s-expressions*[fn:5] not enclosed by
 parentheses. The first one is a list containing two atoms, and the
 second one is an atom.
 
-Again, the discussion progresses by /backing into/ constructing the
-definition of sexp's by first giving key examples. This method is the
-reverse of what higher math usually does. How? Because higher math
-will typically state a rule, a proposition fundamental to the topic at
-hand, and then proceed with discussion and examples of what the
-fundamental law /implies/, i.e., what facts and uses unfold, are
-necessitated by that law. For example, a higher math text might state
-\\
+Again, the discussion progresses by /backing into/ the definition of
+sexp's by first giving key examples. This method is the reverse of
+what higher math usually does. How? Because higher math will typically
+state a rule, a proposition fundamental to the topic at hand, and then
+proceed with discussion and examples of what the fundamental law
+/implies/, i.e., what facts and uses unfold, are necessitated by that
+law. For example, a higher math text might state \\
 \\
 @@html:<font color = "#0d3db3">@@ The set of counting numbers, the
 /natural/ numbers, $\mathbb{N}$, is *closed* under binary operators
 addition and multiplication.  @@html:</font>@@ \\
 \\
 Then a discussion would ensue as to why $\mathbb{N}$ is not
-closed[fn:8] under, say, subtraction and division by asking
+closed[fn:6] under, say, subtraction and division by asking
 if@@html:<font color = "#0d3db3">@@ the operation $5 - 6$ result in an
 element of $\mathbb{N}$?@@html:</font>@@ No, because evaluating the
 expression $5 - 6$ results in $-1$ and $-1 \notin \mathbb{N}$, rather, $-1
@@ -252,7 +254,7 @@ expression $5 - 6$ results in $-1$ and $-1 \notin \mathbb{N}$, rather, $-1
 negative whole numbers along with $0$.
 
 Rather than copy the Big/Little Schemer chat verbatim, we'll just
-compile the examples directly
+give the examples directly
 
 𝖟𝕭: ~((atom turkey) or)~ is a list because the two sexp's are grouped
 completely inside parentheses. \\
@@ -264,9 +266,10 @@ of sexp's enlosed by parentheses. \\
 𝖟𝕭: ~(((how) are) ((you) (doing so)) far)~ is a list because it
 is a collection of sexp's enclosed by parentheses. \\
 𝖟𝕭: The list ~(((how) are) ((you) (doing so)) far)~ has /three/ sexp's which
-are ~((how) are)~, ~((you) (doing so))~, and ~far~.[fn:9]
+are ~((how) are)~, ~((you) (doing so))~, and ~far~.[fn:7]
 
-So it's obvious that Scheme is organized into sexp's. But why, how?
+So it's obvious that Scheme is organized into sexp's. But why, how? \\
+\\
 
 ** S-expression and symbols
 
@@ -300,20 +303,20 @@ of language. With human language we employ *words* which /symbolize/
 real things or abstract concepts. A word can be considered a
 /placeholder/ for an object or idea. Some experts say humanity has
 only possessed language as a set of words-as-placeholder-symbols for
-forty thousand years. Others say sixty to one-hundred thousand
+forty thousand years. Others say from sixty to one-hundred thousand
 years. And yet we surely have been anatomically /Homo sapiens/ longer
-than we've had language. What did we, with our big brains, do before
-we had language?[fn:10] Obviously, we relied to some extent on
-intuitions, i.e., we would see two piles of nuts and only have vague
-intuitive notions that there were two piles and that they might differ
-in size... But if we just analyze that last sentence we can begin to
+than we've had language. What did we do with our big brains before we
+had language?[fn:8] Obviously, we relied to some extent on intuitions,
+i.e., we would see two piles of nuts and only have vague intuitive
+notions that there were two piles and that they might differ in
+size... But if we just analyze that last sentence we can begin to
 appreciate how powerful formal symbolic language can be. Whole logic
 systems spring to life once we have set up symbols to stand for things
 and ideas. Hence, it's no wonder computing has been called /the
 manipulation of symbols/.
 
 Here's a quote from math logician Raymond M. Smullyan's book /The Tao
-Is Silent/[fn:11]
+Is Silent/
 
 #+begin_quote
 The knowledge of the ancients was perfect. How perfect? I will tell
@@ -324,7 +327,7 @@ distinctions between them but did not yet pass judgements upon
 them. When judgement was passed, Tao was destroyed. With the
 destruction of Tao, individual preferences come into being.
 #+end_quote
-
+{{{marginnote(So is Professor Smullyan saying ignorance is bliss?)}}}
 Yes, the rabbit hole of language and symbolism goes deep. But let's
 come back to what is meant by a /symbol/ in the computer
 world. Basically, a symbol in a computer program represents a place in
@@ -332,14 +335,17 @@ the computer's live memory. As we've mentioned before, /[[https://en.wikipedia.o
 language]]/ was the first attempt to represent the various computer
 commands and locations in a symbolic way with labels for particular
 actions and places in memory. Down through the years /symbolic
-computing/ has kept advancing by abstracting more and more of the
+computing/ has kept advancing by /abstracting/ more and more of the
 low-level computing away through symbolic representations. Again, this
-is /declarative/ rather than /imperative/ programming.
+is /declarative/ rather than /imperative/ programming. \\
+\\
+
+** Hands-on Scheme
 
 The version of Scheme we will primarily use is [[https://www.gnu.org/software/guile/][Guile]], which is the
 official extension language of the [[https://gnu.org/][GNU project]]. A Guile program can be
 compiled to run stand-alone like any piece of executable software; but
-we will almost exclusively real-time /interact/ with the "virtual
+we will almost exclusively, real-time /interact/ with the "virtual
 machine" *[[https://en.wikipedia.org/wiki/Interpreter_(computing)][interpreter]]* of Guile through the *REPL* or the
 /read-evaluate-print loop/ user interface. Below we see a screenshot
 of a live /interactive/ Guile REPL session
@@ -383,7 +389,7 @@ inside the code block and enter ~C-c C-c~, which produces
 As we see in the code block's heading above, the two contained
 expressions will be evaluated in a specific REPL session named
 ~*littleschemer*~. Next, let's /not/ ~define~ a symbol, rather, just
-feed the session a symbol[fn:12]
+feed the session a symbol[fn:10]
 
 #+name: 7758a423-12c0-47ea-bdb1-88fbc753dbb3
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
@@ -437,7 +443,8 @@ whole piece of real code *A* as input to another piece of code
 : pi-def: (define pi 3.141592654)
 
 Lots and lots more about this "trick" soon. It's literally the backbone of
-functional programming.
+functional programming. \\
+\\
 
 ** Building a function
 
@@ -464,7 +471,7 @@ In each of the above examples the very first item in the list is the
 function/operator. For the arithmetic operators like ~+~, ~*~, et
 cetera, we see [[https://en.wikipedia.org/wiki/Polish_notation][prefix notation]] with possibly multiple arguments. Now,
 let's see a full Scheme function that takes one argument and when
-evaluated, produces output[fn:13]
+evaluated, produces output[fn:11]
 
 #+name: 48a7817d-f1a4-4d6c-8ce0-578197a0425e
 #+begin_src scheme :session *littleschemer* :results output :exports both
@@ -493,7 +500,8 @@ addition. In the ~format~ sexp we call the function
 ~celsius->fahrenheit~ with argument ~20~.
 
 But we're getting ahead of ourselves a bit. Let's get back to
-S-expressions. 
+S-expressions.  \\
+\\
 
 ** S-expression lore
 
@@ -547,7 +555,7 @@ together
 #+RESULTS: 0ab608a3-69a1-4a34-b97b-69c4790214d6
 : (1 . 2)
 
-Scheme gives us back a cons cell.[fn:14] Let's play with this idea
+Scheme gives us back a cons cell.[fn:12] Let's play with this idea
 
 #+name: c53865cf-680c-4aa6-90f7-58b23b98981d
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
@@ -612,14 +620,14 @@ the *[[https://en.wikipedia.org/wiki/Syntactic_sugar][syntactic sugar]]* version
 friendly, uncluttered version of a consed-together list.
 
 So ~(1 2 3)~ is really just a visually improved version of ~(cons 1
-(cons 2 (cons 3 '())))~.[fn:15] Awkward looking as the naked version
+(cons 2 (cons 3 '())))~.[fn:13] Awkward looking as the naked version
 is, it shows the details of how we're doing a particular sort of
 /connecting/ or /associating/ ~1~, ~2~, and ~3~ together. But it's
 probably not apparent why we need to *cons*-truct a list this
 way. Let's take a short "math holiday" to unravel this.
 
 ⌜\\
-@@html:<font color = "#0d3db3">@@⥤ *Math Holiday! ... working binarily* @@html:</font>@@[fn:16]
+@@html:<font color = "#0d3db3">@@⥤ *Math Holiday! ... working binarily* @@html:</font>@@[fn:14]
 
 Back in grade school when we were first being conditioned to perform
 arithmetic (rather than actually learning anything of the art of
@@ -656,13 +664,13 @@ digital logic calculations are done. Lots more later. \\
 
 Now with a refreshing math holiday under our belts it should be clear
 that ~cons~ as a binary operation must operate similarly, e.g., there
-is no such thing as ~(cons 1 2 3)~,[fn:17] rather, ~cons~ is a /binary
+is no such thing as ~(cons 1 2 3)~,[fn:15] rather, ~cons~ is a /binary
 operator/ taking one thing and consing it together with one other
 thing. This is repeated until done everything is consed together into
 a finished list.
 
 𝖟𝕭: When we see nested ~cons~ operations, e.g., ~(cons 1 (cons 2 (cons
-3 '())))~, we're seeing precedence-wise[fn:18] the initial /binary/
+3 '())))~, we're seeing precedence-wise[fn:16] the initial /binary/
 operation of ~(cons 3 '())~ which is the /list/ ~(3)~. This is
 embedded in ~(cons 2 (3))~ which evaluates to ~(2 3)~, which is again
 embedded in ~(cons 1 (2 3))~ resulting in ~(1 2 3)~. Thus, creating a
@@ -688,8 +696,11 @@ $\mathbb{N}$
 This simply sums all the counting numbers until $n$. We can also
 write a formula for summing $\mathbb{N}$ /recursively/
 
+[continuation soon...]
 \\
 ⌟
+\\
+** A /linked/ list is...
 
 In the world of computer science *[[https://en.wikipedia.org/wiki/Data_structure][data structures]]*, a list is more
 commonly thought of as a *linked list*. For ~(cons 42 (cons 69 (cons
@@ -878,67 +889,60 @@ as the last /cdr/ ~d~ which is not ~nil~, i.e., ~'()~.
 [fn:1] *CPU*: central processing unit, the calculation "brains" of a
 computer.
 
-[fn:2] ...more about /relations/ in a higher math way later.
-
-[fn:3] ... /set/ as in set theory sets. Some very formal texts call a
-set a /class/, by the way.
-
-[fn:4] This important quality of a function was touched on in the
+[fn:2] This important quality of a function was touched on in the
 preface.
 
-[fn:5] In pre-algebra a function is typically graphed with the
+[fn:3] In pre-algebra a function is typically graphed with the
 horizontal axis representing the /independent variable/ and the
 vertical axis representing the /dependent variable/. \\
 [[file:images/Polynomialdeg2.png]] \\
 In this idea of the function, y is the /dependent variable/ and x is
 the /independent variable/.
 
-[fn:6] What follows was taken from [[https://www.reddit.com/r/mathematics/comments/wseco9/is_function_an_expression/][this]] reddit discussion.
+[fn:4] What follows was taken from [[https://www.reddit.com/r/mathematics/comments/wseco9/is_function_an_expression/][this]] reddit discussion.
 
-[fn:7] We will use *sexp* the abbreviation for S-expression.
+[fn:5] We will use *sexp* the abbreviation for S-expression.
 
-[fn:8] A set of elements is *closed* under a binary operation if by
+[fn:6] A set of elements is *closed* under a binary operation if by
 applying the operation to any two elements of the set the result is
 also an element of the set. For example, $2 + 2$ is $4$, which is also
 an element of the natural numbers $\mathbb{N}$.
 
-[fn:9] At this point you might be getting lost in all the
+[fn:7] At this point you might be getting lost in all the
 parentheses. Don't worry, Emacs and other editors for Lisp and Scheme
 have parentheses-matching highlighting so you always know which
 enclosing set of parentheses you are in.
 
-[fn:10] ...some suggest telepathy...
+[fn:8] ...some suggest telepathy...
 
-[fn:11] So is Professor Smullyan saying ignorance is bliss?
-
-[fn:12] From now on for visual purposes we will forego the code block
+[fn:10] From now on for visual purposes we will forego the code block
 wrappers , i.e., ~#+begin_src scheme ... #+end_src~, and just display
 the code and the results. When in doubt about exactly what the code
 block wrapper should be, consult the raw version of this page.
 
-[fn:13] Anything following a ";" is a /comment/ for the rest of that
+[fn:11] Anything following a ";" is a /comment/ for the rest of that
 line and is not evaluated, rather, just passed on. However, with
 org-mode Babel's literate programming we need far less in-code
 comments since we can make all the commentary we need before and after
 the block.
 
-[fn:14] This is also referred to as /dotted pair/.
+[fn:12] This is also referred to as /dotted pair/.
 
-[fn:15] Realize of course that \\
+[fn:13] Realize of course that \\
 ~(1 . (2 . (3 . NIL)))~ \\
 is just the dotted symbolic way of expressing \\
 ~(cons 1 (cons 2 (cons 3 '())))~. \\
 The dotted version doesn't work as actual Scheme code.
 
-[fn:16] [[https://en.wikipedia.org/wiki/Binary_operation][This Wikipedia article on binary operations]] is quite
+[fn:14] [[https://en.wikipedia.org/wiki/Binary_operation][This Wikipedia article on binary operations]] is quite
 abstract-formal, but we'll be getting into this lore meticulously as
 we progress. It, like all of higher math, assumes set theory, which is
 also the basis of much computer science theory.
 
-[fn:17] Some Scheme REPLs will give the error ~wrong number of
+[fn:15] Some Scheme REPLs will give the error ~wrong number of
 arguments~ because it was expecting exactly two inputs.
 
-[fn:18] *precedence* is the order in which a simplification
+[fn:16] *precedence* is the order in which a simplification
 follows. Parentheses are usually the highest precedence, e.g., $4 \cdot
 (2 + 3) = 20$ because by parenthesizing the $(2 + 3)$ we created
 precedence over the multiplication.
