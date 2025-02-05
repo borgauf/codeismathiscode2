@@ -682,18 +682,18 @@ real list with ~cons~ means consing a sexp onto a real list. Also,
 
 *[[https://en.wikipedia.org/wiki/Recursion][Recursion]]* is a central idea in math and CS. Let's take a quick
 theoretical look and then draw some parallels to what we've been doing
-with lists. Consider this simple summation of a *sequence* of natural
-numbers $\mathbb{N}$
+with lists. Consider this simple summation of the natural numbers
+$\mathbb{N}$
 
 \begin{align*}
 \sum_{i=1}^n i = 1 + 2 + 3 + \ldots + (n - 1) + n
 \end{align*}
 
-This sums the sequence of the counting numbers up to and including
-$n$. We can also write a formula for summing any $\mathbb{N}$ sequence
-/recursively/ by defining a system that will march, progress to the
-answer by referring or calling itself repeatedly. So $\sum_{i=1}^n i$ can be
-redone as a two-part algebraic function
+This sums the sequence[fn:16] of the counting numbers up to and
+including the nth element of $\mathbb{N}$. But we can also sum any
+$\mathbb{N}$ sequence /recursively/ by defining a system that will
+progress to the answer by referring or calling itself
+repeatedly. $\sum_{i=1}^n i$ can be redone as a two-part algebraic function
 
 \begin{align}
 g(1) &= 1 \\
@@ -701,18 +701,20 @@ g(n) &= g(n-1) + n,\; \text{for all} \; n \geq 2
 \end{align}
 
 This *[[https://en.wikipedia.org/wiki/Piecewise_function][piecewise function]]* approach to finding the sum has what is
-called the *base case* (3), which is also the terminal case, i.e.,
-when $n = 1$ we are done and the answer is simply given as $1$. But if
-$n \gt 1$ then we apply the *recursion rule* (4) where we define, we
-establish the function application at hand in terms of previous or
-next application of the function, or, one step in terms of the
-previous (or next) step ... which we then repeat stepping backward (or
-forward) until we arrive at the base or termination case. Got that?
-Better to just try it out once
+called the *base case* (3), which is also the terminal case, i.e., if
+$n = 1$ we are done and the answer given is simply $1$. But if $n \gt 1$
+then we apply the *recursion rule* (4) where we repeatedly define the
+function in terms of previous application of the function. We keep
+stepping backward until we arrive at the base or termination case. Got
+that? Better to just try it out
 
 ⌜ \\
-𝖟𝕭: If $n = 4$ then we start with the recursion rule (4) until the
-base case is /true/[fn:16]
+𝖟𝕭: What is the sum of the $\mathbb{N}$ sequence ending with $n = 4$?
+\\
+
+If $n = 4$ then no, this is obviously not the base-terminal case $n =
+1$, so we start applying the recursion rule (4) until the base case is
+/true/[fn:17]
 
 \begin{align*}
 g(4) &= g(4 - 1) + 4 = g(3) + 4 \quad\quad \text{...apply rule} \\
@@ -721,20 +723,91 @@ g(2) &= g(2 - 1) + 2 = g(1) + 2 \quad\quad \text{...apply rule} \\
 g(1) &= 1 \quad\quad \text{...apply base case} 
 \end{align*}
 
-Now we nest these intermediary steps[fn:17]
+Now we nest these intermediary steps[fn:18]
 
 \begin{align*}
 g(4) &= g(3) + 4 \\
-     &= (g(2) + 3) + 4 \\
-     &= ((g(1) + 2) + 3) + 4 \\
-     &= 1 + 2 + 3 + 4
+     &= (g(2) + 3) + 4 \quad\quad \text{...substituting previous} \\
+     &= ((g(1) + 2) + 3) + 4 \quad\quad \text{...substituting previous} \\
+     &= 1 + 2 + 3 + 4 \\
+     &= 10
 \end{align*}
 ⌟
 
+So a journey of a thousand miles begins with a single step---followed
+by another and another and another. Or, How do you descend a flight of
+stairs? You take one step down from the top step, then repeat, until
+you reach the bottom base case with no more steps to take. But what
+tells you to keep stepping until the end is reached? We'll discuss
+that now.
+
+Scheme has a function *list* that creates a list, i.e., conses
+together sexp's
+
+#+name: e89ee17e-79cd-4ed6-9490-a09665859bcc
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(list 1 2 3 4)
+#+end_src
+
+#+RESULTS: e89ee17e-79cd-4ed6-9490-a09665859bcc
+: (1 2 3 4)
+
+But as we've seen, this list ~(1 2 3 4)~ is really this
+
+#+name: 7ec3afa7-8c6e-46ee-b734-fab14a8eef95
+#+begin_src scheme :eval never :exports code
+(cons 1 (cons 2 (cons 3 (cons 4 '()))))
+#+end_src
+
+So the build-in Scheme function ~list~ is somehow creating the above
+sexp. Let's write our own (more basic) version of a list-making
+function that conses together things, primarily to see what role
+recursion plays
+
+#+name: 3860bfc7-d02e-4ff8-90fa-0a37c26df4db
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(define (makelist n)
+  (if (= n 1)
+      (list 1)                       ; base case. Return (1) if true
+      (cons n (makelist (- n 1)))))  ; else recursive case.
+#+end_src
+
+Testing it out, we'll make a list of four elements
+
+#+name: 7b92bc88-8e01-4cdd-821e-0e28f09efd38
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(makelist 4)
+#+end_src
+
+#+RESULTS: 7b92bc88-8e01-4cdd-821e-0e28f09efd38
+: (4 3 2 1)
+
+We ~define~ the function as ~makelist~ and set one argument ~n~ for
+user input. Next, we must test what the incoming input is. If the
+incoming value is ~1~ then the test expression ~(= n 1)~ is true and
+~(list 1)~ creates ~(1)~. Otherwise, the next line ~(cons n (makelist
+(- n 1)))~ is called. Got that? Not quite?
+
+Two big things are going on in this short piece of code. First, we
+have the *conditional* where a decision is made
+
+#+name: 91f7c57c-4c1d-46be-8a03-fa9f35fb3217
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(define (myvariable n) (if (> n 12) 1 0))
+#+end_src
+
+#+RESULTS: 91f7c57c-4c1d-46be-8a03-fa9f35fb3217
+: #<unspecified>
+
+#+name: 736dc827-2564-49dc-ba1c-7c57f88f5933
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(myvariable 15)
+#+end_src
+
+#+RESULTS: 736dc827-2564-49dc-ba1c-7c57f88f5933
+: 1
 
 
-Have we seen this step-wise nesting before? Yes, when we saw how lists
-are really just the consing of objects together. Scheme has a function *list*
 
 Who "checks" if the base case has arrived?
 
@@ -988,8 +1061,12 @@ follows. Parentheses are usually the highest precedence, e.g., $4 \cdot
 (2 + 3) = 20$ because by parenthesizing the $(2 + 3)$ we created
 precedence over the multiplication.
 
-[fn:16] /...until true/ belies a test for true or false, doesn't it?
+[fn:16] For now we'll stick to the layman's use of the term
+/sequence/. Later, we'll dive into what we mean mathematically.
+
+[fn:17] /...until true/ belies a test for true or false, doesn't it?
 Hold that thought...
 
-[fn:17] This nesting in parentheses we see above is just like nesting
-in parentheses in Scheme of course. Parentheses keep law and order.
+[fn:18] This math nesting in parentheses is just like nesting in
+parentheses in Scheme of course. Parentheses keep computational law
+and order.
