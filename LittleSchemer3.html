@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-02-05 Wed 16:11 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left">
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-org0c96d26" class="outline-2">
+<h2 id="org0c96d26">Little Schemer 3</h2>
+<div class="outline-text-2" id="text-org0c96d26">
+<figure id="orgb22ef7e">
+
+<figure id="orgd9cd98a">
+<img src="images/LittleSchemerElephant1.png" alt="LittleSchemerElephant1.png">
+
+<figcaption><span class="figure-number">Figure 1: </span>The Little Schemer putting together a combinator.</figcaption>
+</figure>
+</figure>
+</div>
+</section>
+<section id="outline-container-org4a63c07" class="outline-2">
+<h2 id="org4a63c07"></h2>
+<div class="outline-text-2" id="text-org4a63c07">
+</div>
+<div id="outline-container-org3f63f7f" class="outline-3">
+<h3 id="org3f63f7f">The math behind the if-then-else</h3>
+<div class="outline-text-3" id="text-org3f63f7f">
+<div class="org-src-container">
+<pre class="src src-scheme" id="org50a2617"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">mylogictest</span> n<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">or</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">and</span> <span class="org-rainbow-delimiters-depth-4">(</span>&gt; n 12<span class="org-rainbow-delimiters-depth-4">)</span> 1<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">and</span> <span class="org-rainbow-delimiters-depth-4">(</span>&lt;= n 12<span class="org-rainbow-delimiters-depth-4">)</span> 0<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+
+
+
+<p>
+Who &ldquo;checks&rdquo; if the base case has arrived?
+</p>
+
+
+<p>
+<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org4d96662" class="outline-3">
+<h3 id="org4d96662">A <i>linked</i> list is&#x2026;</h3>
+<div class="outline-text-3" id="text-org4d96662">
+<p>
+In the world of computer science <b><a href="https://en.wikipedia.org/wiki/Data_structure">data structures</a></b>, a list is more
+commonly thought of as a <b>linked list</b>. For <code>(cons 42 (cons 69 (cons
+613 '()))</code> or <code>(42 . (69 . (613 . '())))</code> we see the three individual
+<i>cons cells</i> in the image below
+</p>
+
+<figure id="org530237a">
+
+<figure id="org648c2f4">
+<img src="images/Cons-cells.png" alt="Cons-cells.png">
+
+<figcaption><span class="figure-number">Figure 2: </span>A linked list representation of the list <code>(42 69 613)</code>.</figcaption>
+</figure>
+</figure>
+
+<p>
+and a handy ascii representation would be
+</p>
+
+<pre class="example" id="org651f861">
+*----&gt;*----&gt;*----&gt;NIL
+|     |     |
+v     v     v
+42    69   613
+</pre>
+
+<p>
+In the Lisp-Scheme family we&rsquo;re not so concerned that this is a
+<i>linked</i> list, since the actual internal structure of a list doesn&rsquo;t
+require any knowledge of <b><a href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointers</a></b> as does a language like <b><a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a></b>. For
+C/C++ programmers these diagrams say that a location in memory for a
+cons cell with two &ldquo;compartments&rdquo; contains a pointer in the first
+compartment to, e.g., <code>42</code>, while the other compartment contains a
+pointer to the memory address of the next, the adjoining cons
+cell. But again, in Scheme we will never deal directly with actual
+pointer memory addresses. Nonetheless, with our pointer-based diagrams
+we have a train-looking thing with a <code>NIL</code> or <code>'()</code> as the
+caboose. What would just <code>(cons 'b 'c)</code> or <code>(b . c)</code> look like
+diagrammatically? It would in fact be a single cons cell
+</p>
+
+<figure id="org8948797">
+
+<figure id="org6ee8555">
+<img src="images/bc.png" alt="bc.png">
+
+<figcaption><span class="figure-number">Figure 3: </span>Single cons cell for <code>(cons 'b 'c)</code>.</figcaption>
+</figure>
+</figure>
+
+<p>
+Here we see the right and left compartments named, the left is called
+the <code>car</code> and the right is called the <code>cdr</code> compartment. These names
+come from many decades ago when Lisp was first developed and deployed
+on a mainframe. But they are also Scheme primitive operators like
+<code>cons</code>. So if <code>(cons 'b 'c)</code> produces <code>(b . c)</code> then
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org94dc380"><span class="org-rainbow-delimiters-depth-1">(</span>car <span class="org-rainbow-delimiters-depth-2">(</span>cons 'b  'c<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+b
+</pre>
+
+
+<p>
+and
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org7e0b801"><span class="org-rainbow-delimiters-depth-1">(</span>cdr <span class="org-rainbow-delimiters-depth-2">(</span>cons 'b 'c<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+c
+</pre>
+
+
+<p>
+And so they are operators that surgically remove the <b>head</b> and the
+<b>tail</b> of a cons cell. Let&rsquo;s try this again with <code>(cons 42 (cons 69 (cons 613 '())))</code> or
+sugared <code>(42 69 613)</code>
+</p>
+
+<figure id="orga4ab287">
+
+<figure id="org37a066c">
+<img src="images/Cons-cells2.png" alt="Cons-cells2.png">
+
+<figcaption><span class="figure-number">Figure 4: </span>A linked list representation of the list <code>(42 69 613)</code> with <code>car</code> and <code>cdr</code>.</figcaption>
+</figure>
+</figure>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org39af42c"><span class="org-rainbow-delimiters-depth-1">(</span>car '<span class="org-rainbow-delimiters-depth-2">(</span>42 69 613<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+42
+</pre>
+
+
+<p>
+and
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="orgb7d0ae3"><span class="org-rainbow-delimiters-depth-1">(</span>cdr '<span class="org-rainbow-delimiters-depth-2">(</span>42 69 613<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(69 613)
+</pre>
+
+
+<p>
+Did this surprised you? Again, <code>car</code> returns the contents of the first
+element of the list, i.e., the <b>head</b> of the list; and <code>cdr</code> returns
+the <b>tail</b> or the <i>rest of the list</i>. Let&rsquo;s look at <code>cdr</code> without
+syntactic sugar
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org288531e"><span class="org-rainbow-delimiters-depth-1">(</span>cdr <span class="org-rainbow-delimiters-depth-2">(</span>cons 42 <span class="org-rainbow-delimiters-depth-3">(</span>cons 69 <span class="org-rainbow-delimiters-depth-4">(</span>cons 613 '<span class="org-rainbow-delimiters-depth-5">()</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(69 613)
+</pre>
+
+
+<p>
+As we see, Scheme throws back in the sugar, but what happened is the
+tail of <code>(cons 42 (cons 69 (cons 613 '())))</code> was returned, i.e.,
+<code>(cons 69 (cons 613 '()))</code> \(\rightarrow\) <code>(69 613)</code>. Let&rsquo;s now reverse this
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org3cb68a9"><span class="org-rainbow-delimiters-depth-1">(</span>cons 42 <span class="org-rainbow-delimiters-depth-2">(</span>cdr '<span class="org-rainbow-delimiters-depth-3">(</span>42 69 613<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(42 69 613)
+</pre>
+
+
+<p>
+Here&rsquo;s another example
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="orge449b50"><span class="org-rainbow-delimiters-depth-1">(</span>car '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-4">)</span> 5<span class="org-rainbow-delimiters-depth-3">)</span> but so is six<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+((five is a nice number) 5)
+</pre>
+
+
+<p>
+and
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org0037182"><span class="org-rainbow-delimiters-depth-1">(</span>cdr '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-4">)</span> 5<span class="org-rainbow-delimiters-depth-3">)</span> but so is six<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(but so is six)
+</pre>
+
+
+<p>
+⌜ <br>
+<font color = "#4715b3"> ⇲ Try to glue <code>((five is a nice
+number) 5)</code> and <code>(but so is six)</code> back together with <code>cons</code>
+</font> <br>
+⌟
+</p>
+
+
+
+
+<p>
+So is <code>(b . c)</code> a true, <i>proper</i> list? No, it is called an <i>improper</i>
+list or a <i>dotted list</i> since we have just a single cons cell with <code>2</code>
+in the <i>cdr</i> position. The final <i>cdr</i> position of the last cons cell
+must be consed with the <code>nil</code> or the <i>empty set</i>. By this definition
+<code>(cons 1 '())</code> is a proper list, but something like <code>(a b c . d)</code> has
+as the last <i>cdr</i> <code>d</code> which is not <code>nil</code>, i.e., <code>'()</code>.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org049cd7c"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 '<span class="org-rainbow-delimiters-depth-2">()</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org5dc7041"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 '<span class="org-rainbow-delimiters-depth-4">()</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+
+
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org9f6b9d4"><span class="org-rainbow-delimiters-depth-1">(</span>list 1 2 3<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

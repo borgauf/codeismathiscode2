@@ -693,7 +693,8 @@ This sums the sequence[fn:16] of the counting numbers up to and
 including the nth element of $\mathbb{N}$. But we can also sum any
 $\mathbb{N}$ sequence /recursively/ by defining a system that will
 progress to the answer by referring or calling itself
-repeatedly. $\sum_{i=1}^n i$ can be redone as a two-part algebraic function
+repeatedly. $\sum_{i=1}^n i$ can be redone as a two-part algebraic
+function[fn:17]
 
 \begin{align}
 g(1) &= 1 \\
@@ -714,7 +715,7 @@ that? Better to just try it out
 
 If $n = 4$ then no, this is obviously not the base-terminal case $n =
 1$, so we start applying the recursion rule (4) until the base case is
-/true/[fn:17]
+/true/[fn:18]
 
 \begin{align*}
 g(4) &= g(4 - 1) + 4 = g(3) + 4 \quad\quad \text{...apply rule} \\
@@ -723,13 +724,13 @@ g(2) &= g(2 - 1) + 2 = g(1) + 2 \quad\quad \text{...apply rule} \\
 g(1) &= 1 \quad\quad \text{...apply base case} 
 \end{align*}
 
-Now we nest these intermediary steps[fn:18]
+Now we nest these intermediary steps[fn:19]
 
 \begin{align*}
-g(4) &= g(3) + 4 \\
-     &= (g(2) + 3) + 4 \quad\quad \text{...substituting previous} \\
-     &= ((g(1) + 2) + 3) + 4 \quad\quad \text{...substituting previous} \\
-     &= 1 + 2 + 3 + 4 \\
+g(4) &= \bbox[yellow,3px]{g(3)} + 4 \\
+     &= (\bbox[yellow,3px]{g(2) + 3)} + 4 \quad\quad \text{...substituting previous} \\
+     &= ((\bbox[lightgray,3px]{g(1)} + 2) + 3) + 4 \quad\quad \text{...substituting previous} \\
+     &= \bbox[lightgray,3px]{1} + 2 + 3 + 4 \quad \text{...finally substituting in base case}\\
      &= 10
 \end{align*}
 ⌟
@@ -741,8 +742,8 @@ you reach the bottom base case with no more steps to take. But what
 tells you to keep stepping until the end is reached? We'll discuss
 that now.
 
-Scheme has a function *list* that creates a list, i.e., conses
-together sexp's
+Scheme has a built-in function ~list~ that creates a list, i.e.,
+conses together sexp's
 
 #+name: e89ee17e-79cd-4ed6-9490-a09665859bcc
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
@@ -752,23 +753,23 @@ together sexp's
 #+RESULTS: e89ee17e-79cd-4ed6-9490-a09665859bcc
 : (1 2 3 4)
 
-But as we've seen, this list ~(1 2 3 4)~ is really this
+But as we've seen, a list such as ~(1 2 3 4)~ is really
 
 #+name: 7ec3afa7-8c6e-46ee-b734-fab14a8eef95
 #+begin_src scheme :eval never :exports code
 (cons 1 (cons 2 (cons 3 (cons 4 '()))))
 #+end_src
 
-So the build-in Scheme function ~list~ is somehow creating the above
-sexp. Let's write our own (more basic) version of a list-making
-function that conses together things, primarily to see what role
-recursion plays
+So ~list~ conses together all the arguments it is given. Let's write
+our own (more basic) version of a list-making function that conses
+together just integers, primarily to see what role recursion plays and
+how Scheme does recursion
 
 #+name: 3860bfc7-d02e-4ff8-90fa-0a37c26df4db
-#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+#+begin_src scheme :session *littleschemer* :results verbatim :exports code
 (define (makelist n)
   (if (= n 1)
-      (list 1)                       ; base case. Return (1) if true
+      (list 1)   ; base case. Return the list (1) if true
       (cons n (makelist (- n 1)))))  ; else recursive case.
 #+end_src
 
@@ -782,36 +783,133 @@ Testing it out, we'll make a list of four elements
 #+RESULTS: 7b92bc88-8e01-4cdd-821e-0e28f09efd38
 : (4 3 2 1)
 
-We ~define~ the function as ~makelist~ and set one argument ~n~ for
+We ~define~ the function as ~makelist~ and give one argument ~n~ for
 user input. Next, we must test what the incoming input is. If the
 incoming value is ~1~ then the test expression ~(= n 1)~ is true and
-~(list 1)~ creates ~(1)~. Otherwise, the next line ~(cons n (makelist
-(- n 1)))~ is called. Got that? Not quite?
+~(list 1)~ creates the list ~(1)~. Otherwise, the next line ~(cons n
+(makelist (- n 1)))~ is called. Got that? Not quite?
 
 Two big things are going on in this short piece of code. First, we
-have the *conditional* where a decision is made
+have the *[[https://en.wikipedia.org/wiki/Conditional_(computer_programming)][conditional]]* where a decision is made which part of the
+recursion function we need to apply, 1) the base case or, 2) the
+recursion rule. Below is a simpler /one-liner/ that makes it easier to
+see what's going on. ~myvariable~ takes in an argument and "decides"
+that if it greater than ~12~ the output is ~1~, but if it is less than
+or equal to ~12~ it returns ~0~
 
 #+name: 91f7c57c-4c1d-46be-8a03-fa9f35fb3217
-#+begin_src scheme :session *littleschemer* :results verbatim :exports both
-(define (myvariable n) (if (> n 12) 1 0))
+#+begin_src scheme :session *littleschemer* :results verbatim :exports code
+(define (mytest n) (if (> n 12) 1 0))
 #+end_src
 
 #+RESULTS: 91f7c57c-4c1d-46be-8a03-fa9f35fb3217
 : #<unspecified>
 
+Let's test it
+
 #+name: 736dc827-2564-49dc-ba1c-7c57f88f5933
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
-(myvariable 15)
+(mytest 15)
 #+end_src
 
 #+RESULTS: 736dc827-2564-49dc-ba1c-7c57f88f5933
 : 1
 
+The basic form of a conditional test is \\
+\\
+@@html:<font color = "#0d3db3" size = 5%>@@ $\quad\quad\quad\quad$ if $t_1$ then $sexp_1$ else $sexp_2$
+@@html:</font>@@ \\
 
+So in ~mytest~ the test $t_1$ is the sexp ~(> n 12)~ and $sexp_1$ is
+~1~ and $sexp_2$ is ~0~. As you can probably surmise, we're asking /if
+the incoming ~n~ is greater than ~12~ then return ~1~, if not default
+to ~0~.
 
-Who "checks" if the base case has arrived?
+Next chapter we'll take a much closer look and really get into the
+weeds of the whole /conditional/, if-then-else story, but for now
+let's get back to our recursion example. So in
 
+#+name: 4c9bad9e-b349-4406-9033-85b71b441593
+#+begin_src scheme :eval never :exports code
+(define (makelist n)
+  (if (= n 1)
+      (list 1)   ; base case. Return the list (1) if true
+      (cons n (makelist (- n 1)))))  ; else recursive case.
+#+end_src
 
+The beauty of this code is what happens if ~n~ does not equal ~1~. In
+that case the incoming ~n~ value is consed to ... what's happening
+there?! What is happening is recursion. @@html:<font color =
+"#0d3db3">@@ The function ~makelist~ is quite literally /calling
+itself/, and it is passing an argument decremented, ~1~
+less.@@html:</font>@@
+
+This can be hard to picture. Let's walk through it when ~n~ is
+~4~. We'll use a built-in utility in Guile Scheme called ~trace~ at
+the REPL input
+
+#+begin_example
+scheme@(guile-user)> ,trace (makelist 4)
+trace: |  (makelist 4)
+trace: |  |  (makelist 3)
+trace: |  |  |  (makelist 2)
+trace: |  |  |  |  (makelist 1)
+trace: |  |  |  |  (1)
+trace: |  |  |  (2 1)
+trace: |  |  (3 2 1)
+trace: |  (4 3 2 1)
+#+end_example
+
+This indicates how ~makelist~ is going down rabbit holes, i.e.,
+~makelist~ calls itself repeatedly until the condition ~(= n 1)~ is
+satisfied, then the terminating /base case/ ~(list 1)~ is called and
+the program climbs back out of the rabbit holes. When we first call
+~makelist~ with ~n~ as ~4~, it lands in the ~else~ sexp
+
+#+name: 3a0c3790-0239-4c20-ab12-ef4898559302
+#+begin_src scheme :eval never :exports code
+(cons n (makelist (- n 1))) ;else branch of if=then-else
+#+end_src
+
+which sets up
+
+#+name: 81c243ab-465b-491e-b1fc-c46a56fc6022
+#+begin_src scheme :eval never :exports code
+(cons 4 (makelist 3)) ;makelist calls itself from within itself!
+#+end_src
+
+which re-enters ~makelist~ with argument ~3~. Again, the test ~(= n 1)
+fails and we have stacked up
+
+#+name: 598bb5f9-7376-486d-b4a5-8d07e03c6c63
+#+begin_src scheme :eval never :exports code
+(cons 4 (cons 3 (makelist 2))) ;...calls itself again!
+#+end_src
+
+then
+
+#+name: ad58c5ba-d370-449e-8545-eb8914563e57
+#+begin_src scheme :eval never :exports code
+(cons 4 (cons 3 (cons 2 (makelist 1)))) ;calls itself again
+#+end_src
+
+Now when ~(makelist 1)~ is called it will pass the ~(= n 1)~ test and
+return ~(1)~ giving us the desired
+
+#+name: 4a6a0a68-a6d7-4e4a-be1f-2ea24d570295
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cons 4 (cons 3 (cons 2 (list 1))))
+#+end_src
+
+#+RESULTS: 4a6a0a68-a6d7-4e4a-be1f-2ea24d570295
+: (4 3 2 1)
+
+Again, we'll go into detail on conditionals and especially all the
+lore on recursion soon. But for now let's look at what a list is
+"under the hood," which shows us simultaneously how the individual
+elements can be manipulated with the Scheme primitives ~car~ and
+~cdr~.
+\\
 \\
 
 ** A /linked/ list is...
@@ -838,7 +936,7 @@ v     v     v
 In the Lisp-Scheme family we're not so concerned that this is a
 /linked/ list, since the actual internal structure of a list doesn't
 require any knowledge of *[[https://en.wikipedia.org/wiki/Pointer_(computer_programming)][pointers]]* as does a language like *[[https://en.wikipedia.org/wiki/C_(programming_language)][C]]*. For
-C/C++ programmers these diagrams say that a location in memory for a
+*C/C++* programmers these diagrams say that a location in memory for a
 cons cell with two "compartments" contains a pointer in the first
 compartment to, e.g., ~42~, while the other compartment contains a
 pointer to the memory address of the next, the adjoining cons
@@ -1064,9 +1162,12 @@ precedence over the multiplication.
 [fn:16] For now we'll stick to the layman's use of the term
 /sequence/. Later, we'll dive into what we mean mathematically.
 
-[fn:17] /...until true/ belies a test for true or false, doesn't it?
+[fn:17] Recursion and [[https://en.wikipedia.org/wiki/Mathematical_induction][induction]] are closely related. We'll look into
+induction later.
+
+[fn:18] /...until true/ belies a test for true or false, doesn't it?
 Hold that thought...
 
-[fn:18] This math nesting in parentheses is just like nesting in
+[fn:19] This math nesting in parentheses is just like nesting in
 parentheses in Scheme of course. Parentheses keep computational law
-and order.
+and order. The yellow-highlighting emphasizes the substitution.
