@@ -139,12 +139,13 @@ be expressions too? After all the basics of an expression, i.e., the
 
 One important trait of expressions (which is very important in
 functional programming) is that expressions may be evaluated or
-simplified to find equivalent values. The expression $8 \cdot 2 - 5$
-simplifies to $16 - 5$ and then evaluates to $11$. And sometimes a
-mathematical expression comes from transcribing a statement, e.g.,
-"One number is six more than half of another number." So if we
-represent the "other number" as $a$ then a mathematical expression of
-this statement could be
+simplified to find equivalent values. Repeating, @@html:<font color =
+"#0d3db3">@@expressions have values.@@html:</font>@@ The expression $8
+\cdot 2 - 5$ simplifies to $16 - 5$ and then evaluates to $11$. And
+sometimes a mathematical expression comes from transcribing a
+statement, e.g., "One number is six more than half of another number."
+So if we represent the "other number" as $a$ then a mathematical
+expression of this statement could be
 
 \begin{align*}
 \frac{a}{2} + 6
@@ -268,7 +269,8 @@ is a collection of sexp's enclosed by parentheses. \\
 𝖟𝕭: The list ~(((how) are) ((you) (doing so)) far)~ has /three/ sexp's which
 are ~((how) are)~, ~((you) (doing so))~, and ~far~.[fn:7]
 
-So it's obvious that Scheme is organized into sexp's. But why, how? \\
+So it's obvious that Scheme is organized into sexp's, and from before
+we established that expressions have values. But why, how? \\
 \\
 
 ** S-expression and symbols
@@ -682,32 +684,36 @@ real list with ~cons~ means consing a sexp onto a real list. Also,
 
 *[[https://en.wikipedia.org/wiki/Recursion][Recursion]]* is a central idea in math and CS. Let's take a quick
 theoretical look and then draw some parallels to what we've been doing
-with lists. Consider this simple summation of the natural numbers
-$\mathbb{N}$
+with lists. We'll go much deeper into the whole world of recursion as
+we move along.
+
+Consider this simple summation of the natural numbers $\mathbb{N}$
 
 \begin{align*}
 \sum_{i=1}^n i = 1 + 2 + 3 + \ldots + (n - 1) + n
 \end{align*}
 
-This sums the sequence[fn:16] of the counting numbers up to and
-including the nth element of $\mathbb{N}$. But we can also sum any
-$\mathbb{N}$ sequence /recursively/ by defining a system that will
-progress to the answer by referring or calling itself
-repeatedly. $\sum_{i=1}^n i$ can be redone as a two-part algebraic
-function[fn:17]
+This expression will sum the sequence[fn:16] of the counting numbers
+up to and including the nth element of $\mathbb{N}$. But let's look at
+a different way to sum any $\mathbb{N}$ sequence, namely,
+/recursively/ by setting up a method that progresses to the answer
+stepwise by referring or calling itself repeatedly. Let's reimagine
+$\sum_{i=1}^n i$ as a two-part algebraic function[fn:17]
 
 \begin{align}
 g(1) &= 1 \\
 g(n) &= g(n-1) + n,\; \text{for all} \; n \geq 2
 \end{align}
 
-This *[[https://en.wikipedia.org/wiki/Piecewise_function][piecewise function]]* approach to finding the sum has what is
-called the *base case* (3), which is also the terminal case, i.e., if
-$n = 1$ we are done and the answer given is simply $1$. But if $n \gt 1$
-then we apply the *recursion rule* (4) where we repeatedly define the
-function in terms of previous application of the function. We keep
-stepping backward until we arrive at the base or termination case. Got
-that? Better to just try it out
+This *[[https://en.wikipedia.org/wiki/Piecewise_function][piecewise function]]* made up of (3) and (4) breaks the problem
+into two parts:
+
++ the *base case* (3), which is also the terminal case, i.e., if $n =
+  1$ we are done and the answer given is simply $1$, and
++ the *recursion rule* (4) where we repeatedly define the function in
+  terms of the previous application of the function.
+
+Got that? Still too abstract?[fn:18] Right. Example time...
 
 ⌜ \\
 𝖟𝕭: What is the sum of the $\mathbb{N}$ sequence ending with $n = 4$?
@@ -715,7 +721,7 @@ that? Better to just try it out
 
 If $n = 4$ then no, this is obviously not the base-terminal case $n =
 1$, so we start applying the recursion rule (4) until the base case is
-/true/[fn:18]
+in fact /true/[fn:19]
 
 \begin{align*}
 g(4) &= g(4 - 1) + 4 = g(3) + 4 \quad\quad \text{...apply rule} \\
@@ -724,11 +730,11 @@ g(2) &= g(2 - 1) + 2 = g(1) + 2 \quad\quad \text{...apply rule} \\
 g(1) &= 1 \quad\quad \text{...apply base case} 
 \end{align*}
 
-Now we nest these intermediary steps[fn:19]
+Now we nest these intermediary steps[fn:20]
 
 \begin{align*}
 g(4) &= \bbox[yellow,3px]{g(3)} + 4 \\
-     &= (\bbox[yellow,3px]{g(2) + 3)} + 4 \quad\quad \text{...substituting previous} \\
+     &= \bbox[yellow,3px]{(g(2) + 3)} + 4 \quad\quad \text{...substituting previous} \\
      &= ((\bbox[lightgray,3px]{g(1)} + 2) + 3) + 4 \quad\quad \text{...substituting previous} \\
      &= \bbox[lightgray,3px]{1} + 2 + 3 + 4 \quad \text{...finally substituting in base case}\\
      &= 10
@@ -763,10 +769,10 @@ But as we've seen, a list such as ~(1 2 3 4)~ is really
 So ~list~ conses together all the arguments it is given. Let's write
 our own (more basic) version of a list-making function that conses
 together just integers, primarily to see what role recursion plays and
-how Scheme does recursion
+how Scheme does basic recursion.[fn:21]
 
 #+name: 3860bfc7-d02e-4ff8-90fa-0a37c26df4db
-#+begin_src scheme :session *littleschemer* :results verbatim :exports code
+#+begin_src scheme +n :session *littleschemer* :results verbatim :exports code 
 (define (makelist n)
   (if (= n 1)
       (list 1)   ; base case. Return the list (1) if true
@@ -783,19 +789,21 @@ Testing it out, we'll make a list of four elements
 #+RESULTS: 7b92bc88-8e01-4cdd-821e-0e28f09efd38
 : (4 3 2 1)
 
-We ~define~ the function as ~makelist~ and give one argument ~n~ for
-user input. Next, we must test what the incoming input is. If the
-incoming value is ~1~ then the test expression ~(= n 1)~ is true and
-~(list 1)~ creates the list ~(1)~. Otherwise, the next line ~(cons n
-(makelist (- n 1)))~ is called. Got that? Not quite?
+On line 1 we ~define~ the function as ~makelist~ and give one argument
+~n~ for user input. On lines 2 through 4 we have the greater
+*if-then-else* sexp which starts on line 2 with the sexp ~(= n 1)~
+("is ~n~ equal to ~1~?") as the test. If the incoming value is ~1~
+then the test expression ~(= n 1)~ is true and on line 3 ~(list 1)~
+creates the list ~(1)~. Otherwise, on line 4 ~(cons n (makelist (- n
+1)))~ is called. Got that? Not quite?
 
 Two big things are going on in this short piece of code. First, we
-have the *[[https://en.wikipedia.org/wiki/Conditional_(computer_programming)][conditional]]* where a decision is made which part of the
-recursion function we need to apply, 1) the base case or, 2) the
-recursion rule. Below is a simpler /one-liner/ that makes it easier to
-see what's going on. ~myvariable~ takes in an argument and "decides"
-that if it greater than ~12~ the output is ~1~, but if it is less than
-or equal to ~12~ it returns ~0~
+have the *[[https://en.wikipedia.org/wiki/Conditional_(computer_programming)][conditional]]*, the commonly called /if-then-else/ where a
+decision is made on which part of the recursion function we need to
+apply, 1) the base case or, 2) the recursion rule. Below is a simpler
+/one-liner/ that makes it easier to see what's going on. ~mytest~
+takes in an argument and "decides" that if it greater than ~12~ the
+output is ~1~, but if it is less than or equal to ~12~ it returns ~0~
 
 #+name: 91f7c57c-4c1d-46be-8a03-fa9f35fb3217
 #+begin_src scheme :session *littleschemer* :results verbatim :exports code
@@ -820,17 +828,17 @@ The basic form of a conditional test is \\
 @@html:<font color = "#0d3db3" size = 5%>@@ $\quad\quad\quad\quad$ if $t_1$ then $sexp_1$ else $sexp_2$
 @@html:</font>@@ \\
 
-So in ~mytest~ the test $t_1$ is the sexp ~(> n 12)~ and $sexp_1$ is
-~1~ and $sexp_2$ is ~0~. As you can probably surmise, we're asking /if
-the incoming ~n~ is greater than ~12~ then return ~1~, if not default
-to ~0~.
+In ~mytest~ the test $t_1$ is the sexp ~(> n 12)~ and $sexp_1$ is ~1~
+and $sexp_2$ is ~0~. As you can probably tell, we're asking /if the
+incoming ~n~ is greater than ~12~ then return ~1~, if not default to
+~0~/.
 
 Next chapter we'll take a much closer look and really get into the
 weeds of the whole /conditional/, if-then-else story, but for now
 let's get back to our recursion example. So in
 
 #+name: 4c9bad9e-b349-4406-9033-85b71b441593
-#+begin_src scheme :eval never :exports code
+#+begin_src scheme -n 1 :eval never :exports code
 (define (makelist n)
   (if (= n 1)
       (list 1)   ; base case. Return the list (1) if true
@@ -841,7 +849,7 @@ The beauty of this code is what happens if ~n~ does not equal ~1~. In
 that case the incoming ~n~ value is consed to ... what's happening
 there?! What is happening is recursion. @@html:<font color =
 "#0d3db3">@@ The function ~makelist~ is quite literally /calling
-itself/, and it is passing an argument decremented, ~1~
+itself/, and it is passing an argument decremented, i.e., ~1~
 less.@@html:</font>@@
 
 This can be hard to picture. Let's walk through it when ~n~ is
@@ -878,7 +886,7 @@ which sets up
 (cons 4 (makelist 3)) ;makelist calls itself from within itself!
 #+end_src
 
-which re-enters ~makelist~ with argument ~3~. Again, the test ~(= n 1)
+which re-enters ~makelist~ with argument ~3~. Again, the test ~(= n 1)~
 fails and we have stacked up
 
 #+name: 598bb5f9-7376-486d-b4a5-8d07e03c6c63
@@ -894,7 +902,7 @@ then
 #+end_src
 
 Now when ~(makelist 1)~ is called it will pass the ~(= n 1)~ test and
-return ~(1)~ giving us the desired
+return ~(list 1)~ giving us the desired
 
 #+name: 4a6a0a68-a6d7-4e4a-be1f-2ea24d570295
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
@@ -904,19 +912,18 @@ return ~(1)~ giving us the desired
 #+RESULTS: 4a6a0a68-a6d7-4e4a-be1f-2ea24d570295
 : (4 3 2 1)
 
-Again, we'll go into detail on conditionals and especially all the
-lore on recursion soon. But for now let's look at what a list is
-"under the hood," which shows us simultaneously how the individual
-elements can be manipulated with the Scheme primitives ~car~ and
-~cdr~.
-\\
+And so this is the magic of recursion. Again, we'll go into detail on
+conditionals and especially all the lore on recursion soon. But for
+now let's look at what a list is "under the hood," which shows us
+simultaneously how the individual elements can be manipulated with the
+Scheme primitives ~car~ and ~cdr~.  \\
 \\
 
 ** A /linked/ list is...
 
 In the world of computer science *[[https://en.wikipedia.org/wiki/Data_structure][data structures]]*, a list is more
 commonly thought of as a *linked list*. For ~(cons 42 (cons 69 (cons
-613 '()))~ or ~(42 . (69 . (613 . '())))~ we see the three individual
+613 '()))~ or ~(42 . (69 . (613 . NIL)))~ we see the three individual
 /cons cells/ in the image below
 
 #+begin_figure
@@ -924,7 +931,7 @@ commonly thought of as a *linked list*. For ~(cons 42 (cons 69 (cons
 [[file:images/Cons-cells.png]]
 #+end_figure
 
-and a handy ascii representation would be
+and a DIY ascii representation would be
 
 #+begin_example
 *---->*---->*---->NIL
@@ -939,7 +946,7 @@ require any knowledge of *[[https://en.wikipedia.org/wiki/Pointer_(computer_prog
 *C/C++* programmers these diagrams say that a location in memory for a
 cons cell with two "compartments" contains a pointer in the first
 compartment to, e.g., ~42~, while the other compartment contains a
-pointer to the memory address of the next, the adjoining cons
+/pointer/ to the memory address of the next, the adjoining cons
 cell. But again, in Scheme we will never deal directly with actual
 pointer memory addresses. Nonetheless, with our pointer-based diagrams
 we have a train-looking thing with a ~NIL~ or ~'()~ as the
@@ -951,11 +958,11 @@ diagrammatically? It would in fact be a single cons cell
 [[file:images/bc.png]]
 #+end_figure
 
-Here we see the right and left compartments named, the left is called
+Here we see the right and left compartments named: the left is called
 the ~car~ and the right is called the ~cdr~ compartment. These names
 come from many decades ago when Lisp was first developed and deployed
-on a mainframe. But they are also Scheme primitive operators like
-~cons~. So if ~(cons 'b 'c)~ produces ~(b . c)~ then
+on a mainframe. But they are also primitive operators like ~cons~. So
+if ~(cons 'b 'c)~ produces ~(b . c)~ then
 
 #+name: 22c36165-15a5-4220-a2d1-3705302f39e0
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
@@ -1002,10 +1009,9 @@ and
 #+RESULTS: a6c48364-ab5b-4e75-97a0-af4b080056db
 : (69 613)
 
-Did this surprised you? Again, ~car~ returns the contents of the first
-element of the list, i.e., the *head* of the list; and ~cdr~ returns
-the *tail* or the /rest of the list/. Let's look at ~cdr~ without
-syntactic sugar
+Did this surprised you? Again, ~car~ returns the first element of the
+list aka the *head* of the list; and ~cdr~ returns the *tail* or
+the /rest of the list/. Let's look at ~cdr~ without syntactic sugar
 
 #+name: f3c4f7ce-7668-4d2f-bb58-6bc7e9418f29
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
@@ -1015,9 +1021,9 @@ syntactic sugar
 #+RESULTS: f3c4f7ce-7668-4d2f-bb58-6bc7e9418f29
 : (69 613)
 
-As we see, Scheme throws back in the sugar, but what happened is the
-tail of ~(cons 42 (cons 69 (cons 613 '())))~ was returned, i.e.,
-~(cons 69 (cons 613 '()))~ $\rightarrow$ ~(69 613)~. Let's now reverse this
+As we see with the result, Scheme throws back in the sugar. The tail
+of ~(cons 42 (cons 69 (cons 613 '())))~ was returned, i.e., ~(cons 69
+(cons 613 '()))~ $\rightarrow$ ~(69 613)~. Let's now reverse this
 
 #+name: 2fc9509a-c5de-4455-aea2-b876b7e77e9d
 #+begin_src scheme :session *littleschemer* :results verbatim :exports both
@@ -1053,44 +1059,22 @@ number) 5)~ and ~(but so is six)~ back together with ~cons~
 @@html:</font>@@ \\
 ⌟
 
-
-
-
-So is ~(b . c)~ a true, /proper/ list? No, it is called an /improper/
-list or a /dotted list/ since we have just a single cons cell with ~2~
-in the /cdr/ position. The final /cdr/ position of the last cons cell
-must be consed with the ~nil~ or the /empty set/. By this definition
-~(cons 1 '())~ is a proper list, but something like ~(a b c . d)~ has
-as the last /cdr/ ~d~ which is not ~nil~, i.e., ~'()~.
-
+Now, is ~(b . c)~ a proper list? No, it is called an /improper/ list
+or a /dotted pair/ since we have just a single cons cell with ~b~ in
+the ~car~ compartment and ~c~ in the ~cdr~ compartment---with nothing
+further linked. And so, to have a real list the final /cdr/
+compartment of the last cons cell must point to, be consed with the
+~nil~ or the /empty set/. By this definition ~(cons 1 '())~ is a
+proper list, but something like ~(a b c . d)~ has as the last /cdr/
+pointing to ~d~ which is not ~nil~.
 
 #+name: 9b2d2b89-3eae-46c7-8cfa-0cc8b0a8ef01
 #+begin_src scheme :session *littleschemer* :results verbatim
-(cons 1 '())
+(cdr (cdr (cdr '(a b c . d))))
 #+end_src
 
 #+RESULTS: 9b2d2b89-3eae-46c7-8cfa-0cc8b0a8ef01
-: (1)
-
-#+name: 1850bca2-9e37-4ce1-8641-bcef322e4e84
-#+begin_src scheme :session *littleschemer* :results verbatim
-(cons 1 (cons 2 (cons 3 '())))
-#+end_src
-
-#+RESULTS: 1850bca2-9e37-4ce1-8641-bcef322e4e84
-: (1 2 3)
-
-
-
-
-
-#+name: 4232bfa8-5cd3-417a-a6d0-5b62aace9e11
-#+begin_src scheme :session *littleschemer* :results verbatim
-(list 1 2 3)
-#+end_src
-
-#+RESULTS: 4232bfa8-5cd3-417a-a6d0-5b62aace9e11
-: (1 2 3)
+: d
 
 
 
@@ -1160,14 +1144,22 @@ follows. Parentheses are usually the highest precedence, e.g., $4 \cdot
 precedence over the multiplication.
 
 [fn:16] For now we'll stick to the layman's use of the term
-/sequence/. Later, we'll dive into what we mean mathematically.
+/sequence/. Later, we'll dive into what the math world thinks a
+sequence is.
 
 [fn:17] Recursion and [[https://en.wikipedia.org/wiki/Mathematical_induction][induction]] are closely related. We'll look into
 induction later.
 
-[fn:18] /...until true/ belies a test for true or false, doesn't it?
-Hold that thought...
+[fn:18] Often in math you'll read the abstract, general rule, then
+explore examples, then say "A ha! Now I get it!" So yes, we will come
+to love these awfully painfully formalistic, highly abstract
+generalizations...
 
-[fn:19] This math nesting in parentheses is just like nesting in
-parentheses in Scheme of course. Parentheses keep computational law
-and order. The yellow-highlighting emphasizes the substitution.
+[fn:19] /...until true/ seems to suggest some test for true or false,
+doesn't it?  Hold that thought...
+
+[fn:20] This math nesting in parentheses is just like nesting in
+parentheses in Scheme. Parentheses keep computational law and
+order. The yellow and gray highlighting emphasizes the substitution.
+
+[fn:21]  Note: code line numbers are not part of the Scheme code.

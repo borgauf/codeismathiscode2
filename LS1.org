@@ -92,32 +92,27 @@ of the first chapter entitled /1. Toys/![fn:1]
 #+NAME: LSTable2
 #+ATTR_HTML: :class fullwidth
 #+ATTR_HTML: :class styledtab
-|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
-| Βιγ Σξηεμερ                        | Λιττλε Σξηεμερ                                                                                                                              |
-|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
-| Is it true that this is an /atom/? | Yes, because ~atom1~ is a string of characters beginning with the letter ~a~.                                                               |
-| ~atom1~                            |                                                                                                                                             |
-|                                    |                                                                                                                                             |
-|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
-| Is it true that this is an /atom/? | Yes, because ~turkey~ is a string of characters beginning with a letter.                                                                    |
-| ~turkey~                           |                                                                                                                                             |
-|                                    |                                                                                                                                             |
-|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
-| Is it true that this is an /atom/? | Yes, because ~1492~ is a string of digits.                                                                                                  |
-| ~1492~                             |                                                                                                                                             |
-|                                    |                                                                                                                                             |
-|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
-| Is it true that this is an /atom/? | Yes, because ~*abc$~ is a string of characters beginning with a letter or special character other than a left ~(~ or right ~)~ parenthesis. |
-| ~*abc$~                            |                                                                                                                                             |
-|                                    |                                                                                                                                             |
-|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
-| Is it true that this is a /list/?  | Yes, because ~(atom)~ is an atom enclosed by parentheses.                                                                                   |
-| ~(atom)~                           |                                                                                                                                             |
-|                                    |                                                                                                                                             |
-|------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
-| Is it true that this is a list?    | Yes, because it is a collection of atoms [separated by spaces and] enclosed by parentheses.                                                 |
-| ~(atom turkey or)~                 |                                                                                                                                             |
-|                                    |                                                                                                                                             |
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Βιγ Σξηεμερ                                        | Λιττλε Σξηεμερ                                                                                                                              |
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? ~atom1~         | Yes, because ~atom1~ is a string of characters beginning with the letter ~a~.                                                               |
+|                                                    |                                                                                                                                             |
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? ~turkey~        | Yes, because ~turkey~ is a string of characters beginning with a letter.                                                                    |
+|                                                    |                                                                                                                                             |
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? ~1492~          | Yes, because ~1492~ is a string of digits.                                                                                                  |
+|                                                    |                                                                                                                                             |
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? ~*abc$~         | Yes, because ~*abc$~ is a string of characters beginning with a letter or special character other than a left ~(~ or right ~)~ parenthesis. |
+|                                                    |                                                                                                                                             |
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is a /list/? ~(atom)~         | Yes, because ~(atom)~ is an atom enclosed by parentheses.                                                                                   |
+|                                                    |                                                                                                                                             |
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is a list? ~(atom turkey or)~ | Yes, because it is a collection of atoms [separated by spaces and] enclosed by parentheses.                                                 |
+|                                                    |                                                                                                                                             |
+
 This chatty conversation style is teasing out the requisite
 /formalism/ [fn:2] where you the reader will hopefully experience a
 growing mental picture of the important theory and language syntax as
