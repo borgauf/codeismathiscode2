@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-02-06 Thu 12:10 -->
+<!-- 2025-02-06 Thu 14:58 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -1465,11 +1465,10 @@ number) 5)</code> and <code>(but so is six)</code> back together with <code>cons
 
 <p>
 Now, is <code>(b . c)</code> a proper list? No, it is called an <i>improper</i> list
-or a <i>dotted pair</i> since we have just a single cons cell with <code>b</code> in
-the <code>car</code> compartment and <code>c</code> in the <code>cdr</code> compartment&#x2014;with nothing
-further linked. And so, to have a real list the final <i>cdr</i>
+or a <i>dotted pair</i> since we have <code>b</code> in the <code>car</code> compartment and <code>c</code>
+in the <code>cdr</code> compartment. To have a real list the final <i>cdr</i>
 compartment of the last cons cell must point to, be consed with the
-<code>nil</code> or the <i>empty set</i>. By this definition <code>(cons 1 '())</code> is a
+<code>nil</code> or the <i>empty list</i>. By this definition <code>(cons 1 '())</code> is a
 proper list, but something like <code>(a b c . d)</code> has as the last <i>cdr</i>
 pointing to <code>d</code> which is not <code>nil</code>.
 </p>
@@ -1478,6 +1477,11 @@ pointing to <code>d</code> which is not <code>nil</code>.
 <pre class="src src-scheme" id="org81c074c"><span class="org-rainbow-delimiters-depth-1">(</span>cdr <span class="org-rainbow-delimiters-depth-2">(</span>cdr <span class="org-rainbow-delimiters-depth-3">(</span>cdr '<span class="org-rainbow-delimiters-depth-4">(</span>a b c . d<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
+
+<pre class="example">
+d
+</pre>
+
 
 
 

@@ -1060,16 +1060,15 @@ number) 5)~ and ~(but so is six)~ back together with ~cons~
 ⌟
 
 Now, is ~(b . c)~ a proper list? No, it is called an /improper/ list
-or a /dotted pair/ since we have just a single cons cell with ~b~ in
-the ~car~ compartment and ~c~ in the ~cdr~ compartment---with nothing
-further linked. And so, to have a real list the final /cdr/
+or a /dotted pair/ since we have ~b~ in the ~car~ compartment and ~c~
+in the ~cdr~ compartment. To have a real list the final /cdr/
 compartment of the last cons cell must point to, be consed with the
-~nil~ or the /empty set/. By this definition ~(cons 1 '())~ is a
+~nil~ or the /empty list/. By this definition ~(cons 1 '())~ is a
 proper list, but something like ~(a b c . d)~ has as the last /cdr/
 pointing to ~d~ which is not ~nil~.
 
 #+name: 9b2d2b89-3eae-46c7-8cfa-0cc8b0a8ef01
-#+begin_src scheme :session *littleschemer* :results verbatim
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
 (cdr (cdr (cdr '(a b c . d))))
 #+end_src
 
