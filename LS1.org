@@ -124,8 +124,8 @@ Some things, however, are directly stated. Before the first chapter
 entitled /1. Toys/, even before the title page, there are listed
 (jokingly named?) /The Ten Commandments/, followed by /The Five
 Rules/. Again, this is a nod to the mathematical formalism of an
-/[[https://en.wikipedia.org/wiki/Axiomatic_system][axiomatic system]]/. But what do we mean by an axiomatic system and why
-are they important?
+/[[https://en.wikipedia.org/wiki/Axiomatic_system][axiomatic system]]/. Now, what do we mean by an axiomatic system and
+why are they important?
 
 The multi-volume set [[https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms][Euclid's Elements]] (EE) from ca. 300 BC Greece is
 generally accepted as being the first example of mathematics built on
@@ -135,15 +135,29 @@ staple of high school math, /though often dreaded/, as it was the
 student's first exposure to the strange idea of /proving/ math instead
 of just doing math. Proving something in math requires a deep grasp of
 a topic, which is completely different from the typical style of "when
-you see this, do this" conditioning. Starting with [[https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms][Euclidean Geometry]],
-the student is asked to see a geometric situation[fn:4] and understand
-why something about it is /necessarily/ (proven to be) true. The proof
-of, e.g., the /pons asinorum/ is a step-by-step establishing of
-undeniable facts based on Euclid's axioms called /Postulates/ and
-/Notions/. Again, this was the beginning of modern mathematics where a
-set of axioms could be called on to build /theorems/, i.e., additional
-true things about the situation. [[https://en.wikipedia.org/wiki/Axiomatic_system][Axioms]] can go by many names, e.g.,
-basic truths, givens, primitives. Here are Euclid's five postulates
+you see this, do this" behavior conditioning. Starting with [[https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms][Euclidean
+Geometry]], the student is asked to see a geometric situation[fn:4] and
+understand why something about it is /necessarily/ (proven to be)
+true. The proof of, e.g., the /pons asinorum/ is a step-by-step
+establishing of undeniable facts based on Euclid's axioms, his
+/Postulates/ and /Notions/. Again, this was the beginning of modern
+mathematics where a set of axioms could be called on to build
+/theorems/, i.e., additional true things about the situation. Here's
+Kenneth Rosen from his widely-used /[[https://www.mheducation.com/highered/product/Discrete-Mathematics-and-Its-Applications-Rosen.html][Discrete Mathematics and Its
+Applications]]/
+
+#+begin_quote
+To understand mathematics, we must understand what makes up a correct
+mathematical argument, that is, a *proof*. Once we prove a
+mathematical statement is true, we call it a *theorem*. A collection
+of theorems on a topic organize what we know about this topic.
+#+end_quote
+
+
+
+[[https://en.wikipedia.org/wiki/Axiomatic_system][Axioms]]
+can go by many names, e.g., basic truths, givens, primitives. Here are
+Euclid's *Five Postulates*
 
 
 - P1 :: A straight line may be drawn between any two points.
@@ -156,7 +170,7 @@ basic truths, givens, primitives. Here are Euclid's five postulates
 
 The last postulate is a more modern rewording of the original, meaning
 /truly parallel lines may exist that never cross/. To these first
-five, Euclid added another five basic truths, his /Common Notions/
+five, Euclid added another five basic truths, his *Common Notions*
 
 - N1 :: Things which are equal to the same thing are also equal to
   each other.
@@ -675,7 +689,8 @@ of an isosceles triangle are themselves equal.
 fundamental. Something /implies/ something else; because $A$, that
 means $B$ as well. Implication goes by many names: /[[https://en.wikipedia.org/wiki/Material_conditional][material
 conditional]]/, [[https://en.wikipedia.org/wiki/Modus_ponens][modus ponens]], [[https://en.wikipedia.org/wiki/Logical_consequence][logical consequence]]. We first see
-implication in programming with the basic /if-then-else/ conditional.
+implication in programming with the basic /if-then-else/ conditional
+starting with our third chapter.
 
 [fn:6] /Higher math/ in the U.S. typically means those college math
 courses pursued in the junior and senior year of a Bachelors math

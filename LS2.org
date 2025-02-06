@@ -733,10 +733,10 @@ g(1) &= 1 \quad\quad \text{...apply base case}
 Now we nest these intermediary steps[fn:20]
 
 \begin{align*}
-g(4) &= \bbox[yellow,3px]{g(3)} + 4 \\
-     &= \bbox[yellow,3px]{(g(2) + 3)} + 4 \quad\quad \text{...substituting previous} \\
-     &= ((\bbox[lightgray,3px]{g(1)} + 2) + 3) + 4 \quad\quad \text{...substituting previous} \\
-     &= \bbox[lightgray,3px]{1} + 2 + 3 + 4 \quad \text{...finally substituting in base case}\\
+g(4) &= \bbox[yellow,4px]{g(3)} + 4 \\
+     &= \bbox[yellow,4px]{(g(2) + 3)} + 4 \quad\quad \text{...substituting previous} \\
+     &= ((\bbox[lightgray,4px]{g(1)} + 2) + 3) + 4 \quad\quad \text{...substituting previous} \\
+     &= \bbox[lightgray,4px]{1} + 2 + 3 + 4 \quad \text{...finally substituting in base case}\\
      &= 10
 \end{align*}
 ⌟
