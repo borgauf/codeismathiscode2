@@ -214,12 +214,13 @@ f(a,b,c)=7a+2b+3c
 we define what a Cartesian coordinate system really is, we'll also
 touch on the world of /[[https://en.wikipedia.org/wiki/Combinatorics][combinatorics]]/, or the science of counting or
 sampling combinations of different sets, which is really what's going
-on with this function-expression thingy. \\
+on with this function-expression thingy. *[[https://en.wikipedia.org/wiki/Currying][currying]]* will be discussed. \\
 \\
 {{{marginnote(*Fazit*: German meaning /in conclusion/, /summing up/)}}}
 $\mathfrak{Fazit}$: We will indeed say @@html:<font color = "#0d3db3">@@all
 functions are expressions.@@html:</font>@@ \\
 \\
+
 ** S-expressions TLS-style
 
 Now we will discuss the idea of a *symbolic expression* or
@@ -710,8 +711,9 @@ into two parts:
 
 + the *base case* (3), which is also the terminal case, i.e., if $n =
   1$ we are done and the answer given is simply $1$, and
-+ the *recursion rule* (4) where we repeatedly define the function in
-  terms of the previous application of the function.
++ the *recursion rule* (or iteration rule) (4) where we repeatedly
+  define the function in terms of the previous application of the
+  function.
 
 Got that? Still too abstract?[fn:18] Right. Example time...
 
