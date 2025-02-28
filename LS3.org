@@ -71,20 +71,271 @@
 :END:
 
 
-* 
+** Mathematical logic
+
+If someone completely ignorant of math asks "What is math?" we might
+simply answer, "Math is the art of developing useful generalizations
+about specific situations." If they then ask, "What do you mean by
+generalizations?" we could say "Generalization is the /abstraction/ of
+specific situations into what they all have in common, i.e., /general/
+rules that apply to these many specific situations." In any case, the
+whole philosophical "we observe and conclude" dynamic is what is
+behind mathematics ... which makes math a form of philosophy. Chances
+are, however, that you have never experienced math in a philosophical
+way. Up until now it's always been about "problem solving." We mean to
+go further than mere problem solving.
+
+But why do we need to abstract and generalize? Yes, we might need
+certain formulæ that let us get answers to, say, how much our mortgage
+payments should be. But do we need to go so deep into abstractions and
+generalization?
+
+A story or two to that question. First Gottfried Leibnitz is
+considered by many to be the father of modern mathematical logic. He
+was the first to ask seriously if we could create a mathematically
+manipulatable calculus for human thought. But he also attempted to
+find a "real" definition of a straight line, saying the commonly
+accepted definition, namely, the shortest distance between two points,
+only described a property straight line. But by finding evermore
+fundamental abstractions, math gains in power, depth, and breadth.
+
+A curious example of getting deeper and broader would be Einstein's
+/[[https://en.wikipedia.org/wiki/General_relativity][General Theory of Relativity]]/, which took the abstraction of gravity
+to previously unimaginable heights. Before Einstein, physics relied
+on Issac Newton's all but complete computational model of gravity as a
+real force ($F$)
+
+\begin{align*}
+F = G\frac{m_1m_2}{r^2}
+\end{align*}
+
+On the other hand, Einstein's General Relativity described gravity as
+an "artifact of four-dimensional space-time geometry." Physicists
+today are unanimous in considering Einstein's explanation of gravity
+the superior, overarching, "meta" view, even if gravity has been
+seemingly downgraded to an "artifact."
+
+Now let's take one more look at axiomatizing and abstracting stuff. \\
 \\
 
-** A bit of math behind the if-then-else
+** Axiomatic thinking redux
+
+Let's take apart a simple arithmetic calculation from primary school
+
+\begin{align*}
+2 + 3 \cdot 7
+\end{align*}
+
+which we were taught (read conditioned) to reduce to $23$ without much
+theoretic talk of what exactly we were doing or what it all really
+meant. First we see [[https://en.wikipedia.org/wiki/Number][numbers]], e.g., $2$, $3$, and $7$. These are
+/symbols/ representing amounts or aggregates. Then we have operator
+/symbols/, here, "$+$" and "$\cdot$". These operators /operate/ on the
+number symbols following precedence rules. And so to get $23$ from
+$2 + 3 \cdot 7$ we acknowledge that the multiplication is done before
+addition. We then evaluate $3 \cdot 7$ to $21$, which we substitute in for
+the expression $3 \cdot 7$. This process could be called "reducing to
+simplest terms". It could also be called /rewriting/. This may seem
+too simple to worry about, but higher math gets curious whenever a
+bunch of symbols like this start interacting, moving around. This is
+computing, and computer science wants to know exactly what's happening
+in order to automate it.
+
+
+** Peano axiomatizes mathematics
+
+So-called higher math wants to ground math in logically unassailable,
+fundamental, formalistic, foundational bedrock. This became a serious
+pursuit of math starting in the late nineteenth century. [[https://en.wikipedia.org/wiki/Giuseppe_Peano][Giuseppe
+Peano]] put forth his [[https://en.wikipedia.org/wiki/Peano_axioms][Peano Axioms]] in 1889, which became that bedrock
+upn which all math could be built. 
+
+
+
+
+** Propositional logic
+
+@@html:<font color = "#0d3db3">@@ The term *[[https://en.wikipedia.org/wiki/Propositional_calculus][propositional logic]]* (PL)
+contains the root *proposition*, which is a statement that can be
+evaluated to be true or false, as well as how these statements may be
+combined.  @@html:</font>@@
+
+PL is the most basic form of logic, started mainly by the Greeks,
+largely centered around Aristotle, literally to sort out
+thinking. Fast forward to the nineteenth century when the English
+mathematician [[https://en.wikipedia.org/wiki/George_Boole][George Boole]] in his books /The Mathematical Analysis of
+Logic/ and /The Laws of Thought/ went about modernizing Aristotelian
+logic. Boole's attempt to answer the existential question, Can we
+formalize, mathematize human thought? resulted in *Boolean algebra*,
+which, among other things, became the basis of digital computer
+circuitry.
+
+
+
+
+** Implication
+
+We want to discuss the *if-then-else* sexp we saw before in more
+depth. An /if statement/ is a programming application of the general
+math concept of the *[[https://en.wikipedia.org/wiki/Material_conditional][implication]]*.
+
+Consider the conditional statement /If it snows, the snowplows
+will come out/. This is also contains, i.e., something is
+being implied. The symbol used for implication is a right-pointing
+arrow between the *antecedent* (or hypothesis) and the *consequent*
+(or conclusion) like this
+
+\begin{align*}
+p \longrightarrow q
+\end{align*}
+
+and can be phrased in many different ways
+
+- $p$ implies $q$
+- if $p$ then $q$
+- $p$ only if $q$
+- $q$ if $p$
+- all $p$ are $q$
+- if $p$, $q$
+- whenever $p$ is true, $q$ is true
+- $q$ is true whenever $p$ is true
+- $q$ is necessary for $p$ (or, if $p$ is true, then $q$ is necessarily
+  true)
+- $p$ is sufficient for $q$ (or, for $q$ to be true, it is sufficient
+  to show $p$ is true)  
+
+Let's use these in normal sentences
+
+⌜ \\
+𝖟𝕭: /If you live in Wichita, the you live in Kansas./
+
+- You live in Kansas if you live in Wichita.
+- To live in Wichita is to live in Kansas.
+- You must live in Kansas to live in Wichita.
+- To live in Wichita suffices to live in Kansas.
+- Any resident of Wichita is a resident of Kansas.
+- Being a resident of Wichita implies residency in Kansas.
+
+...and many more twists of wording. \\
+⌟
+
+
+
+
+
+Proofs in mathematics are typically based around implications. Here is
+an axiomatic truth about integers
+
+@@html:<font color = "#0d3db3">@@ The integer $n$ is even if there
+exists an integer $k$ such that $n = 2k$, and $n$ is odd if there
+exists an integer $k$ such that $n = 2k + 1$. Note that every integer
+is either even or odd, and no integer is both even and odd. Two
+integers have the same parity when both are even or both are odd; they
+have opposite parity when one is even and the other is odd.
+@@html:</font>@@
+
+Now, a /direct proof/ of any sort of conditional statement of the form
+$p \longrightarrow q$ will rely on the truth of implication. A theorem
+we need to prove as valid will typically start by assuming the $p$
+part, the hypothesis, then use axioms, definitions, givens, as well as
+previously proven theorems to prove the $q$ part must also be
+true. Let's see an example
+
+⌜ \\
+𝖟𝕭: Prove that @@html:<font color = "#0d3db3">@@if $n$ is an odd
+integer, then $n^2$ is odd@@html:</font>@@
+
+We obviously see an implication in the wording. But first, let's
+develop a more formal, higher math way of expressing
+
+\\
+⌟
+
+
+
+
+** Syllogisms
+
+*[[https://en.wikipedia.org/wiki/Syllogism][Syllogisms]]* are a typical starting point with logic. The classic
+Aristotelian syllogism goes like this
+
+- *Major premise*:  All humans are mortal.
+- *Minor premise*:  All Greeks are humans.
+- *Conclusion/Consequent*: All Greeks are mortal.
+
+Why not abstract this?[fn:1]
+
+\begin{align*}
+&\text{All H are M}& \\
+&\underline{\text{All G are H}}& \\
+\therefore\: &\text{All G are M}&
+\end{align*}
+
+Again, we see symbols (letters) standing in for specific
+things. But obviously we can't just stick anything in for the letter
+symbols. False premises will only get us false conclusions.
+
+\begin{align*}
+&\text{All fish are towns.}& \\
+&\underline{\text{All guppies are fish.}}& \\
+\therefore\: &\text{All guppies are towns.}&
+\end{align*}
+
+This would only make sense if all fish are towns.
+
+** Hypothetical syllogisms
+
+As a part of the *[[https://en.wikipedia.org/wiki/Hypothetical_syllogism][hypothetical syllogism]]*
+is a variation of syllogisms where /conditional/ statements are
+made. 
+
+
+
+
+
+The pure hypothetical syllogism looks like this
+
+\begin{align*}
+&p \longrightarrow q& \\
+&\underline{q \longrightarrow r}& \\
+\therefore\: &p \longrightarrow r&
+\end{align*}
+
+
+
+
+As we discussed in the first section, higher math wants to be
+/axiomatically/-based, i.e., we have basic /axioms/ and
+we /deduce/ with valid rules of inference useful facts, these useful
+generalization. And this process of deduction involves crafting
+propositions, declarations that can be checked as we construct them as
+/true/ or /false/.
+
+
 
 In the previous section we touched lightly, briefly on recursion with
 some examples, but as we saw, recursion relies on the ability to /test
-the progress/ of the iteration.
+the progress/ of the recursion, the iteration in order to know when to
+invoke the base case and thereby end the iterating. One thing we see
+with our first exposure to /if-then-else/ is how a computer language
+can be very compact and terse. In Scheme we don't even mention the
+/then-else/ part of the /if-then-else/ conditional. The whole
+conditional sexp is just ~(if (> n 12) 1 0)~ where we see the strict
+Scheme syntax of ~(operator operand1 operand2 ...)~, hence, we must
+assume the /then/ and /else/, i.e., ~(if (> n 12) then 1 else 0)~.
+
+Inference causal versus non-causal.
+
+"All birds can fly, then I'm president."
 
 
 #+name: c650cd72-a6db-4de1-8f09-5c04d109a207
 #+begin_src scheme :session *littleschemer* :results verbatim :exports code
 (define (mylogictest n) (or (and (> n 12) 1) (and (<= n 12) 0)))
 #+end_src
+
+#+RESULTS: c650cd72-a6db-4de1-8f09-5c04d109a207
+: #<unspecified>
 
 
 
@@ -101,3 +352,4 @@ Who "checks" if the base case has arrived?
 
 * Footnotes
 
+[fn:1] The symbol $\therefore$ means /therefore/.

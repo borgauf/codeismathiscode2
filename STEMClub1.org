@@ -1,0 +1,496 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: STEMClub1.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* STEM Club 1
+
+**  Bibliography :noexport:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+:END:
+
+** Not exported :noexport:
+
+#+begin_src haskell :eval never :exports code :tangle ./src/stemclub1.hs :noweb yes
+module STEMCLUB1 where
+<<1e87308f-8ab6-43ce-87a9-1e3818c63753>>
+
+<<af3e4f87-3492-4f87-8e19-6d43b5bcf035>>
+
+<<9d7afc7e-4e0d-4bcd-aef7-1eb81a5310b0>>
+
+
+
+#+end_src
+
+#+name: 2b702810-8387-4ce3-af0c-067fd15b4e33
+#+begin_src haskell :session *myhaskell*
+1 + 1
+#+end_src
+
+#+RESULTS: 2b702810-8387-4ce3-af0c-067fd15b4e33
+: 2
+
+#+name: 1e87308f-8ab6-43ce-87a9-1e3818c63753
+#+begin_src haskell :eval never :exports code
+import GHC.Real
+#+end_src
+
+
+* 
+
+** Doing math with computers
+
+*Q*: Why do we do STEM? \\
+*A*: Because somebody will pay us to do science, technology,
+engineering, and especially mathematics for them.
+
+*/Where/ is math?*[fn:1]
+
+1. In our brains.
+2. In math books.
+3. On white/black boards.
+4. Built into various mechanical devices
+5. In digital computing devices as circuitry and software.
+
+...and now more than ever #5. So what does it mean to have math
+expressed in software.
+
+*How do computers "compute" stuff?*[fn:2]
+
+- Develop algorithms
+- Encode algorithms in programming language
+- Run code in device \\
+\\
+
+
+** Basic fractions on the computer
+
+Let's go down the rabbit hole of how to do fractions---adding,
+subtracting unlike denominator fractions---on the computer. Here we
+enter The world of number theory and its concentration on the behavior
+of prime numbers. The first step will be factoring numbers
+
+@@html:<font color = "#4715b3">@@ ⥤ A *prime number* is an integer
+that can only be divided by $1$ or itself.  @@html:</font>@@ \\
+\\
+...IOW, a prime number is /not/ a *composite number*, i.e., a multiple
+of other numbers.
+
+⇲ Theorem *Fundamental Theorem of Arithmetic*
+
+@@html:<font color = "#4715b3">@@Every positive integer $𝑛 \gt 1$ can be
+represented in exactly one way as a product of prime
+powers.@@html:</font>@@ 
+
+
+- *Q*: What is meant by prime /powers/, why not just primes? \\
+- *A*: By "prime power" we mean a prime raised to a power. Consider
+  these /composite numbers/ broken down into products of prime powers
+
+\begin{align*}
+4 &= 2^2 \\
+8 &= 2^3 \\
+12 &= 2^2 \cdot 3^1 \\
+25 &= 5^2 \\
+50 &= 2^1 \cdot 5^2 \\
+72 &= 2^3 \cdot 3^2 \\
+128 &= 2^7 \\
+\ldots
+\end{align*} 
+\\
+
+Let's use Scheme's function ~expt~ to find $2^7$
+
+#+name: 010e1d3f-41fa-4ad8-991a-4a6bf11715c4
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(expt 2 7)
+#+end_src
+
+#+RESULTS: 010e1d3f-41fa-4ad8-991a-4a6bf11715c4
+: 128
+
+Let's jump ahead. [[https://gemini.google.com/app][Google Gemini]] produced this Haskell code when the
+keywords /haskell prime factors of a number/ were entered into a
+Gemini search[fn:3]
+
+#+name: af3e4f87-3492-4f87-8e19-6d43b5bcf035
+#+begin_src haskell :eval never :exports code
+primeFactors :: Integer -> [Integer] 
+primeFactors n = go [2..] n
+  where
+    go primes num 
+      | num == 1 = [] 
+      | head primes * head primes > num = [num] 
+      | num `mod` head primes == 0 = head primes : go primes (num `div` head primes) 
+      | otherwise = go (tail primes) num
+#+end_src
+
+#+name: bb062a62-db47-419d-a3ad-c8ade99a8ec2
+#+begin_src haskell :results verbatim :exports both
+primeFactors 120
+#+end_src
+
+#+RESULTS: bb062a62-db47-419d-a3ad-c8ade99a8ec2
+: [2,2,2,3,5]
+
+Too much all at once. Better to break things down, like the approach
+taken in [[https://www.collegepublications.co.uk/computing/?00004][/The
+Haskell Road to Logic, Maths, and Programming/]] by Doets and van
+Eijck. They start with the
+
+*** Prime number test
+
+Prime numbers: $2, 3, 5, 7, 11, 13,\ldots$[fn:4]
+
+⇲ Definition *Divides*
+
+@@html:<font color = "#4715b3">@@ If $a, b \in \mathbb{Z}$ we say that
+$a$ divides $b$, written $a \mid b$, if $a \cdot c = b$ for some $c ∈
+\mathbb{Z}$. In this case, we say $a$ is a /divisor/ of $b$. We say
+that $a$ does not divide $b$, written $a \nmid b$, if there is no $c ∈
+\mathbb{Z}$ such that $a \cdot c = b$.  @@html:</font>@@
+
+$2 \mid 6$ ($2$ /divides/ $6$) and $-3 \mid 15$ ($-3$ /divides/
+$6$). All integers divide $0$, but only $0$ divides $0$. This is why
+division by $0$ is problematic. $q = \frac{a}{0}$ would imply $q \cdot 0 =
+a$, but if $a$ is not zero, then this is nonsense.
+
+Keep in mind, /division/ is the /inverse of multiplication/, e.g.,
+$\frac{6}{3} = x$ is identical to $x \cdot 3 = 6$.
+
+Now, let's turn *divides* into code
+
+#+name: 9d7afc7e-4e0d-4bcd-aef7-1eb81a5310b0
+#+begin_src haskell :eval never :exports code
+divides d n = rem n d == 0
+#+end_src
+
+This is simple, but there's a lot going on for the beginner. We see
+~=~, the /is defined as/ symbol in Haskell---which makes anything
+using it an *equation*, i.e., ~divides d n = rem n d == 0~ is an
+equation. We also see on the right hand side of ~=~ the symbol ~==~
+for *identity*. Let's look into exactly what an identity is in the
+math world.
+
+⇲ Definition *Identity*
+
+@@html:<font color = "#4715b3">@@ An *identity* is a type of
+/equality/ relating one mathematical expression $A$ to another
+mathematical expression $B$, such that $A$ and $B$ (which might
+contain some variables) produce the same value for all values of the
+variables within a certain domain of discourse.  @@html:</font>@@
+
+Unfortunately, two symbols are used to indicate identity. For example
+
+\begin{align*}
+(a + b)^2 = a^2 + 2ab + b^2
+\end{align*}
+
+uses the $=$ equals sign to indicate /identical values/ are guaranteed
+given any specific $a$ or $b$.[fn:5] Another identity would be
+
+\begin{align*}
+sin^{2}\theta + cos^{2}\theta = 1
+\end{align*}
+
+Again, we mean the left- and right-hand sides are identical
+mathematically, although they're obviously different.[fn:6] /Which
+means they are interchangeable/. Which means when solving a trig
+problem, you can substitute in one for the other.
+
+Having said all this, the Haskell operator ~==~ and its opposite ~/=~
+are actually functions that take two /formal arguments/ and return a
+"decision" of whether they are or are not identical. In our ~divides~
+code we have ~rem~ which takes two arguments and returns only the
+remainder of dividing the first argument by the second
+
+#+name: 83946008-f006-4f83-8185-58adef363236
+#+begin_src haskell :results verbatim :exports both
+rem 8 4
+#+end_src
+
+#+RESULTS: 83946008-f006-4f83-8185-58adef363236
+: 0
+
+#+name: 12f5ec95-d089-4f43-a731-a532b5d35dcb
+#+begin_src haskell :results verbatim :exports both
+rem 9 5
+#+end_src
+
+#+RESULTS: 12f5ec95-d089-4f43-a731-a532b5d35dcb
+: 4
+
+i.e., ~rem~ throws away the quotient and keeps just the
+remainder.
+
+In Haskell, being a *typed language* means that every expression in
+the program has a type---such as integer, real number, characters in
+an alphabet, etc.---and these types are checked by the compiler to
+make sure we're not doing something strange, e.g., adding $5$ to $z$,
+before the program is run. This type checking is a fundamental part of
+Haskell's design and contributes significantly to its safety,
+reliability, and expressiveness. Asking Haskell for the *type*
+information of ~rem~
+
+#+name: 1a8f7e6a-1f68-47ff-bda8-829a677e0f02
+#+begin_src haskell :results verbatim :exports both
+:t rem
+#+end_src
+
+#+RESULTS: 1a8f7e6a-1f68-47ff-bda8-829a677e0f02
+: rem :: Integral a => a -> a -> a
+
+The Haskell REPL command ~:type~ (~:t~ for short) gives us back the
+/type signature/ of ~rem~, i.e., what type(s) can take for input
+arguments, how many, and what it will return as its value when
+evaluated. In this case ~a~ is a *unconstrained type variable* instead
+of one specific type. This means ~rem~ can take different types for
+input. What different types? The signature starts with ~Integral a
+=>~, which means any type of the ~Integral~ class. Hold that
+thought...
+
+Now, to the right of ~Integral =>~ we have the chain ~a -> a ->
+a~. This is the actual breakdown of the function type-wise. The type
+of the function's output is always the last symbol on the far right, while
+the ~a -> a~ indicates two input arguments. Which makes sense---~rem~
+takes two arguments and returns one answer.
+
+Back to ~Integral~. Which is a *type class* declared internally in
+Haskell. The ~Integral a =>~ prefix in the type signature of ~rem~
+says ~a~ can be any of the types that have "registered" with the type
+class ~Integral~. Let's unpack the ~Integral~ type class with the
+Haskell REPL command ~:info~ (or just ~:i~)[fn:7]
+
+#+name: 1219802e-34bc-4d13-ab8e-27e7119f07db
+#+begin_src haskell :results verbatim :exports both
+:info Integral
+#+end_src
+
+#+RESULTS: 1219802e-34bc-4d13-ab8e-27e7119f07db
+#+begin_example
+type Integral :: * -> Constraint
+class (Real a, Enum a) => Integral a where
+  quot :: a -> a -> a
+  rem :: a -> a -> a
+  div :: a -> a -> a
+  mod :: a -> a -> a
+  quotRem :: a -> a -> (a, a)
+  divMod :: a -> a -> (a, a)
+  toInteger :: a -> Integer
+  {-# MINIMAL quotRem, toInteger #-}
+  	-- Defined in ‘GHC.Real’
+instance Integral Int -- Defined in ‘GHC.Real’
+instance Integral Integer -- Defined in ‘GHC.Real’
+instance Integral Word -- Defined in ‘GHC.Real’
+#+end_example
+
+indicates, whatever
+type ~a~ is, it must be "registered" with the type class
+~Integral~. We'll dive deeper into the whole type class system later,
+but for now just know that ~Integral~ provides whole-number division
+and remainder functions, such as ~rem~ which can then be customized by
+specific types.
+
+
+This output tells us that any type that wants to have the functions
+~quot~, ~rem~, ..., ~toInteger~ needs to have a registered /instance/
+with type class ~Integral~. Above, we see types the ~Int~, ~Integer~,
+and ~Word~ do indeed have their own specific versions of the basic
+functions ~quot~, ~rem~,...
+
+Now, back to ~divides d n = rem n d == 0~. We have really have just
+created a nice /is-defined-as/ wrapper for the /identity/ ~rem n d ==
+0~, i.e., we have a Haskell version of $d \mid n$. Let's look at its
+type
+
+#+name: 2c92d4df-1f1b-4ed1-a70a-d9245a97059b
+#+begin_src haskell :results verbatim :exports both
+:t divides
+#+end_src
+
+#+RESULTS: 2c92d4df-1f1b-4ed1-a70a-d9245a97059b
+: divides :: Integral a => a -> a -> Bool
+
+Here Haskell reports our ~divides~ takes two arguments that have
+instance registration with ~Integral~ and gives back a value of type
+~Boolean~. 
+
+
+⇲ We define $LD(n)$ as the least natural number greater than $1$ that
+divides $n$, or a /least divisor/.
+
+Every number has at least one divisor.[fn:8] Therefore, every number
+$n$ has a least divisor, $LD(n)$, of its set of divisors, even if that
+set has only one element.
+
+⇲ Proposition
+
+1. If $n > 1$ then $LD(n)$ is a prime number.
+2. If $n > 1$ and $n$ is not a prime number, then $(LD(n))^2 \le n$
+
+The gist of these two implications will be turned into code that will
+test if a number is prime. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#+name: c6de585a-8794-4046-8212-696711c686df
+#+begin_src haskell :eval never :exports code
+reduce ::  (Integral a) => a -> a -> Ratio a
+{-# SPECIALISE reduce :: Integer -> Integer -> Rational #-}
+reduce _ 0              =  ratioZeroDenominatorError
+reduce x y              =  (x `quot` d) :% (y `quot` d)
+                           where d = gcd x y
+
+x % y                   =  reduce (x * signum y) (abs y)
+
+numerator   (x :% _)    =  x
+denominator (_ :% y)    =  y
+#+end_src
+
+
+#+name: a8533852-2631-4895-9d14-54c6360a9fa8
+#+begin_src haskell :eval never :exports code
+gcd             :: (Integral a) => a -> a -> a
+gcd x y         =  gcd' (abs x) (abs y)
+                   where gcd' a 0  =  a
+                         gcd' a b  =  gcd' b (a `rem` b)
+#+end_src
+
+#+name: 8cf8add5-a62e-44d4-95d8-5836ecf08cf7
+#+begin_src haskell :eval never :exports code
+lcm             :: (Integral a) => a -> a -> a
+lcm _ 0         =  0
+lcm 0 _         =  0
+lcm x y         =  abs ((x `quot` (gcd x y)) * y)
+#+end_src
+
+
+⥤ *Exclusive or*
+
+An *exclusive or* is the negation of an implication
+
+#+NAME: XORTAB1
+#+ATTR_HTML: :border 2 :rules all :frame border
+| <c> | <c> |          <c>           |    <c>     |
+|  P  |  Q  | P $\nleftrightarrow Q$ | P $\iff Q$ |
+|-----+-----+------------------------+------------|
+|  t  |  t  |           f            |     t      |
+|  t  |  f  |           t            |     f      |
+|  f  |  t  |           t            |     f      |
+|  f  |  f  |           f            |     t      |
+|-----+-----+------------------------+------------|
+\\
+
+This shows that *exclusive or* is indeed the negation of *if and only
+if equivalence*. Only if the arguments $P$ and $Q$ have different
+truth values is the *exclusive or* true.
+
+For example, /Did $A$ (exclusive) or $B$ win?/ So "win" as in true;
+hence, both cannot have won, nor can both have lost.
+
+
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] We'll discuss another possibility, namely, the Platonic belief
+math is out in the universe, later.
+
+[fn:2] Let's watch [[https://youtu.be/8xPRn9weLYg?si=5fplvY_vDQD2dbHb][this video]] realistically depicting a STEM
+environment. No magic, just people taking math out of books and
+putting it into their technology.
+
+[fn:3] This is not serious number factoring code. The "art" of
+factoring numbers is at the heart of modern cryptography. In fact, it
+is still unknown whether factoring code can be written that can factor
+any number in a reasonable time.
+
+[fn:4] In higher math the *natural counting numbers*
+$\{1,2,3,4,\ldots\}$ are signified by $\mathbb{N}$, while the
+*integers* $\{\ldots,-2,-1,0,1,2,\ldots\}$ are $\mathbb{Z}$. Both are
+whole numbers.
+
+[fn:5] In Haskell, everything has a value. This is an abstraction
+meant to keep things highly mathematical, i.e., above imperative
+programming where evaluating code leads to state changes. With
+Haskell, the evaluation of code yields values intentionally not
+involved with state changes.
+
+[fn:6] The [[https://en.wikipedia.org/wiki/Pythagorean_trigonometric_identity][proof/derivation]] of $sin^{2}\theta + cos^{2}\theta = 1$ is usually included
+in trigonometry texts. This is just one proven identity. But the
+general idea of *[[https://en.wikipedia.org/wiki/Rewriting][term rewriting]]*, i.e., the art of redoing an
+expression into an identical one, is an important field in math and
+computability.
+
+[fn:7] ~:t~ and ~:i~ are your best friends when navigating the Haskell
+type world.
+
+[fn:8] Prime number have exactly one divisor greater than $1$.

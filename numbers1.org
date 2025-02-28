@@ -84,7 +84,7 @@ module NUMBERS1 where
 #+end_src
 
 #+name: 6b14996d-7528-4c2a-a081-ccd244799b49
-#+begin_src haskell :results verbatim :exports both
+#+begin_src haskell :results verbatim :exports both :session *myhaskell*
 1 + 1
 #+end_src
 
@@ -486,6 +486,7 @@ this. [creating a source block]
 #+RESULTS: 2e8551ec-b0f4-4459-81d8-5a9474795d00
 : [1]
 
+
 @@html:<span class="fraktur">@@𝔘𝔯𝔰𝔲𝔩𝔞:@@html:</span>@@ [continuing]
 for ~cons~ and then this for concatenation
 
@@ -493,6 +494,9 @@ for ~cons~ and then this for concatenation
 #+begin_src haskell :results verbatim :exports both
 [1] ++ [2]
 #+end_src
+
+#+RESULTS: 52c16133-e6f4-4d5e-96df-36d8b84a07a3
+: [1,2]
 
 @@html:<span class="fraktur">@@𝔘𝔴𝔢:@@html:</span>@@ You showed me that
 [[https://stackoverflow.com/questions/19238091/union-function-in-haskell][stackoverflow post]] where they created a ~union~ function for

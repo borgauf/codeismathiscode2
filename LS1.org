@@ -78,7 +78,7 @@
 /[[https://mitpress.mit.edu/9780262560993/the-little-schemer/][The Little Schemer]]/ (TLS), written by computer science professors
 Daniel P. Friedman and Matthias Felleisen, was a revolutionary book
 when it came out in its first edition in 1987 as /The Little Lisper/
-based on the programming language Lisp. Subsequent editions switched
+based on the programming language [[https://en.wikipedia.org/wiki/Lisp_(programming_language)][Lisp]]. Subsequent editions switched
 to Lisp's younger sister language Scheme. It was so unique because it
 followed a "[[https://en.wikipedia.org/wiki/Socratic_method][Socratic]]" dialog style of question and answer in left and
 right columns throughout the book. Below is from the very first page
@@ -120,12 +120,11 @@ the conversation continues and the pages turn. We are in effect
 /backing into/ Scheme programming and its underlying philosophy---and
 underlying is quite a bit of important computer science.[fn:3]
 
-Some things, however, are directly stated. Before the first chapter
-entitled /1. Toys/, even before the title page, there are listed
-(jokingly named?) /The Ten Commandments/, followed by /The Five
-Rules/. Again, this is a nod to the mathematical formalism of an
-/[[https://en.wikipedia.org/wiki/Axiomatic_system][axiomatic system]]/. Now, what do we mean by an axiomatic system and
-why are they important?
+Some things, however, are directly stated. Before /1. Toys/, even
+before the title page, there are listed (jokingly named?) /The Ten
+Commandments/, followed by /The Five Rules/. Again, this is a nod to
+the mathematical formalism of an /[[https://en.wikipedia.org/wiki/Axiomatic_system][axiomatic system]]/. Now, what do we
+mean by an axiomatic system and why are they important?
 
 The multi-volume set [[https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms][Euclid's Elements]] (EE) from ca. 300 BC Greece is
 generally accepted as being the first example of mathematics built on
@@ -153,8 +152,6 @@ mathematical statement is true, we call it a *theorem*. A collection
 of theorems on a topic organize what we know about this topic.
 #+end_quote
 
-
-
 [[https://en.wikipedia.org/wiki/Axiomatic_system][Axioms]]
 can go by many names, e.g., basic truths, givens, primitives. Here are
 Euclid's *Five Postulates*
@@ -177,16 +174,16 @@ five, Euclid added another five basic truths, his *Common Notions*
 - N2 :: If equals are added to equals, the wholes (results) are equal.
 - N3 :: If equals are subtracted from equals, the remainders are equal.
 - N4 :: Things which coincide with one another are equal to one another.
-- N5 :: The whole is greater than the part.
+- N5 :: The whole is greater than a part of the whole.
 
 With these ten axiomatic statements begins much geometry, logic,
-number and set theory. That is to say, great amounts of /implication/,
+number and set theory. That is to say, great amounts of /[[https://en.wikipedia.org/wiki/Propositional_calculus#Inference_rules][implication]]/,
 "if this then that" can be derived from these ten accepted
 givens.[fn:5] For example, the last notion, N5, seems to say something
-almost silly and trivial. But as [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this treatment]] explains, N5 is
-introducing with its odd wording the basic concept of one thing being
-/larger/ than another, i.e., $A>B$. Here's David E. Joyce's, professor
-of mathematics at Clark University, explanation
+almost silly and trivial. But as [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this treatment]] explains, N5 with its
+odd wording starts whith the basic concept of one thing being /larger/
+than another, i.e., $A>B$. Here's David E. Joyce's, professor of
+mathematics at Clark University, explanation
 
 #+begin_quote
 To say one magnitude $B$ is a *part* of another $A$ could be taken as
@@ -674,10 +671,10 @@ Greek letters.
 [fn:2] Go [[https://en.wikipedia.org/wiki/Formalism_(philosophy_of_mathematics)][here]] to see the Wikipedia discussion about mathematic
 formalism---although it's a bit formal...
 
-[fn:3] Despite containing actual Scheme programs, actual code, TLS was
-written so that a layperson could follow along with no access to nor
-knowledge of computers, e.g., someone from the nineteenth century such
-as [[https://en.wikipedia.org/wiki/Ada_Lovelace][Ada Lovelace]]!
+[fn:3] Despite containing actual Scheme programs, i.e., real code, TLS
+was written so that a layperson could follow along with no access to
+nor knowledge of computers, e.g., someone from the nineteenth century
+such as [[https://en.wikipedia.org/wiki/Ada_Lovelace][Ada Lovelace]]!
 
 [fn:4] For example the (in)famous /[[https://en.wikipedia.org/wiki/Pons_asinorum][pons asinorum]]/ in /Euclid's
 Elements/ \\

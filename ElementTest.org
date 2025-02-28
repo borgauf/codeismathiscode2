@@ -1,0 +1,121 @@
+#+TITLE: Org Test File
+#+AUTHOR: Jesse Millwood
+* Some Time Stamps
+  - An appointment: <2017-08-21 Mon>
+  - Something done: [2017-08-21 Mon]
+* List of things I need to get done
+** TODO Parse an org file
+
+
+
+#+begin_src emacs-lisp :results code replace
+(org-element-parse-buffer)
+#+end_src   
+
+#+RESULTS:
+#+begin_src emacs-lisp
+(org-data
+ (:standard-properties
+  [1 1 1 12009 12009 0 nil org-data nil nil nil 3 12009 nil #<buffer ElementTest.org> nil nil nil]
+  :path "/home/galaxybeing/Dropbox/org/codeismathiscode2/ElementTest.org" :CATEGORY "ElementTest")
+ (section
+  (:standard-properties
+   [1 1 1 49 49 0 nil first-section nil nil nil 1 49 nil #<buffer ElementTest.org> nil nil #0])
+  (keyword
+   (:standard-properties
+    [1 1 nil nil 24 0 nil top-comment nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #1]
+    :key "TITLE" :value "Org Test File"))
+  (keyword
+   (:standard-properties
+    [24 24 nil nil 49 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #1]
+    :key "AUTHOR" :value "Jesse Millwood")))
+ (headline
+  (:standard-properties
+   [49 49 68 142 142 0
+       (:title)
+       nil nil nil nil 70 140 1 #<buffer ElementTest.org> nil nil #0]
+   :pre-blank 0 :raw-value "Some Time Stamps" :title
+   (#("Some Time Stamps" 0 16
+      (:parent #1)))
+   :level 1 :priority nil :tags nil :todo-keyword nil :todo-type nil :footnote-section-p nil :archivedp nil :commentedp nil)
+  (section
+   (:standard-properties
+    [68 68 68 142 142 0 nil section nil nil nil 68 142 nil #<buffer ElementTest.org> nil nil #1])
+   (plain-list
+    (:standard-properties
+     [68 68 68 142 142 0 nil planning nil nil nil nil nil nil #<buffer ElementTest.org> nil
+         ((68 2 "- " nil nil nil 105)
+          (105 2 "- " nil nil nil 142))
+         #2]
+     :type unordered)
+    (item
+     (:standard-properties
+      [68 68 72 105 105 0
+          (:tag)
+          item nil nil nil nil nil nil #<buffer ElementTest.org> nil
+          ((68 2 "- " nil nil nil 105)
+           (105 2 "- " nil nil nil 142))
+          #3]
+      :bullet "- " :checkbox nil :counter nil :pre-blank 0 :tag nil)
+     (paragraph
+      (:standard-properties
+       [72 72 72 105 105 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #4])
+      #("An appointment: " 0 16
+        (:parent #5))
+      (timestamp
+       (:standard-properties
+        [88 nil nil nil 104 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #5]
+        :type active :range-type nil :raw-value "<2017-08-21 Mon>" :year-start 2017 :month-start 8 :day-start 21 :hour-start nil :minute-start nil :year-end 2017 :month-end 8 :day-end 21 :hour-end nil :minute-end nil))
+      #("\n" 0 1
+        (:parent #5))))
+    (item
+     (:standard-properties
+      [105 105 109 142 142 0
+           (:tag)
+           item nil nil nil nil nil nil #<buffer ElementTest.org> nil
+           ((68 2 "- " nil nil nil 105)
+            (105 2 "- " nil nil nil 142))
+           #3]
+      :bullet "- " :checkbox nil :counter nil :pre-blank 0 :tag nil)
+     (paragraph
+      (:standard-properties
+       [109 109 109 142 142 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #4])
+      #("Something done: " 0 16
+        (:parent #5))
+      (timestamp
+       (:standard-properties
+        [125 nil nil nil 141 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #5]
+        :type inactive :range-type nil :raw-value "[2017-08-21 Mon]" :year-start 2017 :month-start 8 :day-start 21 :hour-start nil :minute-start nil :year-end 2017 :month-end 8 :day-end 21 :hour-end nil :minute-end nil))
+      #("\n" 0 1
+        (:parent #5)))))))
+ (headline
+  (:standard-properties
+   [142 142 178 12009 12009 0
+        (:title)
+        nil nil nil nil 180 12007 1 #<buffer ElementTest.org> nil nil #0]
+   :pre-blank 0 :raw-value "List of things I need to get done" :title
+   (#("List of things I need to get done" 0 33
+      (:parent #1)))
+   :level 1 :priority nil :tags nil :todo-keyword nil :todo-type nil :footnote-section-p nil :archivedp nil :commentedp nil)
+  (headline
+   (:standard-properties
+    [178 178 207 12009 12009 0
+         (:title)
+         section nil nil nil 209 12007 2 #<buffer ElementTest.org> nil nil #1]
+    :pre-blank 3 :raw-value "Parse an org file" :title
+    (#("Parse an org file" 0 17
+       (:parent #2)))
+    :level 2 :priority nil :tags nil :todo-keyword "TODO" :todo-type todo :footnote-section-p nil :archivedp nil :commentedp nil)
+   (section
+    (:standard-properties
+     [207 207 207 12009 12009 0 nil section nil nil nil 207 12009 nil #<buffer ElementTest.org> nil nil #2])
+    (src-block
+     (:standard-properties
+      [207 207 nil nil 293 1 nil planning nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #3]
+      :language "emacs-lisp" :switches nil :parameters ":results code replace" :number-lines nil :preserve-indent nil :retain-labels t :use-labels t :label-fmt nil :value "(org-element-parse-buffer)\n"))
+    (src-block
+     (:standard-properties
+      [293 304 nil nil 12009 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #3]
+      :language "emacs-lisp" :switches nil :parameters nil :number-lines nil :preserve-indent nil :retain-labels t :use-labels t :label-fmt nil :value "(org-data\n (:standard-properties\n  [1 1 1 6686 6686 0 nil org-data nil nil nil 3 6686 nil #<buffer ElementTest.org> nil nil nil]\n  :path \"/home/galaxybeing/Dropbox/org/codeismathiscode2/ElementTest.org\" :CATEGORY \"ElementTest\")\n (section\n  (:standard-properties\n   [1 1 1 78 78 0 nil first-section nil nil nil 1 78 nil #<buffer ElementTest.org> nil nil #0])\n  (keyword\n   (:standard-properties\n    [1 1 nil nil 24 0 nil top-comment nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #1]\n    :key \"TITLE\" :value \"Org Test File\"))\n  (keyword\n   (:standard-properties\n    [24 24 nil nil 49 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #1]\n    :key \"AUTHOR\" :value \"Jesse Millwood\"))\n  (keyword\n   (:standard-properties\n    [49 49 nil nil 78 1 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #1]\n    :key \"TODO\" :value \"TODO WAITING | DONE\")))\n (headline\n  (:standard-properties\n   [78 78 97 171 171 0\n       (:title)\n       nil nil nil nil 99 169 1 #<buffer ElementTest.org> nil nil #0]\n   :pre-blank 0 :raw-value \"Some Time Stamps\" :title\n   (#(\"Some Time Stamps\" 0 16\n      (:parent #1)))\n   :level 1 :priority nil :tags nil :todo-keyword nil :todo-type nil :footnote-section-p nil :archivedp nil :commentedp nil)\n  (section\n   (:standard-properties\n    [97 97 97 171 171 0 nil section nil nil nil 97 171 nil #<buffer ElementTest.org> nil nil #1])\n   (plain-list\n    (:standard-properties\n     [97 97 97 171 171 0 nil planning nil nil nil nil nil nil #<buffer ElementTest.org> nil\n         ((97 2 \"- \" nil nil nil 134)\n          (134 2 \"- \" nil nil nil 171))\n         #2]\n     :type unordered)\n    (item\n     (:standard-properties\n      [97 97 101 134 134 0\n          (:tag)\n          item nil nil nil nil nil nil #<buffer ElementTest.org> nil\n          ((97 2 \"- \" nil nil nil 134)\n           (134 2 \"- \" nil nil nil 171))\n          #3]\n      :bullet \"- \" :checkbox nil :counter nil :pre-blank 0 :tag nil)\n     (paragraph\n      (:standard-properties\n       [101 101 101 134 134 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #4])\n      #(\"An appointment: \" 0 16\n        (:parent #5))\n      (timestamp\n       (:standard-properties\n        [117 nil nil nil 133 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #5]\n        :type active :range-type nil :raw-value \"<2017-08-21 Mon>\" :year-start 2017 :month-start 8 :day-start 21 :hour-start nil :minute-start nil :year-end 2017 :month-end 8 :day-end 21 :hour-end nil :minute-end nil))\n      #(\"\\n\" 0 1\n        (:parent #5))))\n    (item\n     (:standard-properties\n      [134 134 138 171 171 0\n           (:tag)\n           item nil nil nil nil nil nil #<buffer ElementTest.org> nil\n           ((97 2 \"- \" nil nil nil 134)\n            (134 2 \"- \" nil nil nil 171))\n           #3]\n      :bullet \"- \" :checkbox nil :counter nil :pre-blank 0 :tag nil)\n     (paragraph\n      (:standard-properties\n       [138 138 138 171 171 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #4])\n      #(\"Something done: \" 0 16\n        (:parent #5))\n      (timestamp\n       (:standard-properties\n        [154 nil nil nil 170 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #5]\n        :type inactive :range-type nil :raw-value \"[2017-08-21 Mon]\" :year-start 2017 :month-start 8 :day-start 21 :hour-start nil :minute-start nil :year-end 2017 :month-end 8 :day-end 21 :hour-end nil :minute-end nil))\n      #(\"\\n\" 0 1\n        (:parent #5)))))))\n (headline\n  (:standard-properties\n   [171 171 207 6686 6686 0\n        (:title)\n        nil nil nil nil 209 6684 1 #<buffer ElementTest.org> nil nil #0]\n   :pre-blank 0 :raw-value \"List of things I need to get done\" :title\n   (#(\"List of things I need to get done\" 0 33\n      (:parent #1)))\n   :level 1 :priority nil :tags nil :todo-keyword nil :todo-type nil :footnote-section-p nil :archivedp nil :commentedp nil)\n  (headline\n   (:standard-properties\n    [207 207 236 6686 6686 0\n         (:title)\n         section nil nil nil 238 6684 2 #<buffer ElementTest.org> nil nil #1]\n    :pre-blank 3 :raw-value \"Parse an org file\" :title\n    (#(\"Parse an org file\" 0 17\n       (:parent #2)))\n    :level 2 :priority nil :tags nil :todo-keyword \"TODO\" :todo-type todo :footnote-section-p nil :archivedp nil :commentedp nil)\n   (section\n    (:standard-properties\n     [236 236 236 6686 6686 0 nil section nil nil nil 236 6686 nil #<buffer ElementTest.org> nil nil #2])\n    (src-block\n     (:standard-properties\n      [236 236 nil nil 322 1 nil planning nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #3]\n      :language \"emacs-lisp\" :switches nil :parameters \":results code replace\" :number-lines nil :preserve-indent nil :retain-labels t :use-labels t :label-fmt nil :value \"(org-element-parse-buffer)\\n\"))\n    (src-block\n     (:standard-properties\n      [322 333 nil nil 6686 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #3]\n      :language \"emacs-lisp\" :switches nil :parameters nil :number-lines nil :preserve-indent nil :retain-labels t :use-labels t :label-fmt nil :value \"(org-data\\n (:standard-properties\\n  [1 1 1 423 423 0 nil org-data nil nil nil 3 423 nil #<buffer ElementTest.org> nil nil nil]\\n  :path \\\"/home/galaxybeing/Dropbox/org/codeismathiscode2/ElementTest.org\\\" :CATEGORY \\\"ElementTest\\\")\\n (section\\n  (:standard-properties\\n   [1 1 1 78 78 0 nil first-section nil nil nil 1 78 nil #<buffer ElementTest.org> nil nil #0])\\n  (keyword\\n   (:standard-properties\\n    [1 1 nil nil 24 0 nil top-comment nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #1]\\n    :key \\\"TITLE\\\" :value \\\"Org Test File\\\"))\\n  (keyword\\n   (:standard-properties\\n    [24 24 nil nil 49 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #1]\\n    :key \\\"AUTHOR\\\" :value \\\"Jesse Millwood\\\"))\\n  (keyword\\n   (:standard-properties\\n    [49 49 nil nil 78 1 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #1]\\n    :key \\\"TODO\\\" :value \\\"TODO WAITING | DONE\\\")))\\n (headline\\n  (:standard-properties\\n   [78 78 97 171 171 0\\n       (:title)\\n       nil nil nil nil 99 169 1 #<buffer ElementTest.org> nil nil #0]\\n   :pre-blank 0 :raw-value \\\"Some Time Stamps\\\" :title\\n   (#(\\\"Some Time Stamps\\\" 0 16\\n      (:parent #1)))\\n   :level 1 :priority nil :tags nil :todo-keyword nil :todo-type nil :footnote-section-p nil :archivedp nil :commentedp nil)\\n  (section\\n   (:standard-properties\\n    [97 97 97 171 171 0 nil section nil nil nil 97 171 nil #<buffer ElementTest.org> nil nil #1])\\n   (plain-list\\n    (:standard-properties\\n     [97 97 97 171 171 0 nil planning nil nil nil nil nil nil #<buffer ElementTest.org> nil\\n         ((97 2 \\\"- \\\" nil nil nil 134)\\n          (134 2 \\\"- \\\" nil nil nil 171))\\n         #2]\\n     :type unordered)\\n    (item\\n     (:standard-properties\\n      [97 97 101 134 134 0\\n          (:tag)\\n          item nil nil nil nil nil nil #<buffer ElementTest.org> nil\\n          ((97 2 \\\"- \\\" nil nil nil 134)\\n           (134 2 \\\"- \\\" nil nil nil 171))\\n          #3]\\n      :bullet \\\"- \\\" :checkbox nil :counter nil :pre-blank 0 :tag nil)\\n     (paragraph\\n      (:standard-properties\\n       [101 101 101 134 134 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #4])\\n      #(\\\"An appointment: \\\" 0 16\\n        (:parent #5))\\n      (timestamp\\n       (:standard-properties\\n        [117 nil nil nil 133 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #5]\\n        :type active :range-type nil :raw-value \\\"<2017-08-21 Mon>\\\" :year-start 2017 :month-start 8 :day-start 21 :hour-start nil :minute-start nil :year-end 2017 :month-end 8 :day-end 21 :hour-end nil :minute-end nil))\\n      #(\\\"\\\\n\\\" 0 1\\n        (:parent #5))))\\n    (item\\n     (:standard-properties\\n      [134 134 138 171 171 0\\n           (:tag)\\n           item nil nil nil nil nil nil #<buffer ElementTest.org> nil\\n           ((97 2 \\\"- \\\" nil nil nil 134)\\n            (134 2 \\\"- \\\" nil nil nil 171))\\n           #3]\\n      :bullet \\\"- \\\" :checkbox nil :counter nil :pre-blank 0 :tag nil)\\n     (paragraph\\n      (:standard-properties\\n       [138 138 138 171 171 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #4])\\n      #(\\\"Something done: \\\" 0 16\\n        (:parent #5))\\n      (timestamp\\n       (:standard-properties\\n        [154 nil nil nil 170 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #5]\\n        :type inactive :range-type nil :raw-value \\\"[2017-08-21 Mon]\\\" :year-start 2017 :month-start 8 :day-start 21 :hour-start nil :minute-start nil :year-end 2017 :month-end 8 :day-end 21 :hour-end nil :minute-end nil))\\n      #(\\\"\\\\n\\\" 0 1\\n        (:parent #5)))))))\\n (headline\\n  (:standard-properties\\n   [171 171 207 423 423 0\\n        (:title)\\n        nil nil nil nil 209 421 1 #<buffer ElementTest.org> nil nil #0]\\n   :pre-blank 0 :raw-value \\\"List of things I need to get done\\\" :title\\n   (#(\\\"List of things I need to get done\\\" 0 33\\n      (:parent #1)))\\n   :level 1 :priority nil :tags nil :todo-keyword nil :todo-type nil :footnote-section-p nil :archivedp nil :commentedp nil)\\n  (headline\\n   (:standard-properties\\n    [207 207 nil nil 233 0\\n         (:title)\\n         section nil nil nil nil nil 2 #<buffer ElementTest.org> nil nil #1]\\n    :pre-blank 0 :raw-value \\\"Parse an org file\\\" :title\\n    (#(\\\"Parse an org file\\\" 0 17\\n       (:parent #2)))\\n    :level 2 :priority nil :tags nil :todo-keyword \\\"TODO\\\" :todo-type todo :footnote-section-p nil :archivedp nil :commentedp nil))\\n  (headline\\n   (:standard-properties\\n    [233 233 nil nil 260 0\\n         (:title)\\n         nil nil nil nil nil nil 2 #<buffer ElementTest.org> nil nil #1]\\n    :pre-blank 0 :raw-value \\\"Look at the AST\\\" :title\\n    (#(\\\"Look at the AST\\\" 0 15\\n       (:parent #2)))\\n    :level 2 :priority nil :tags nil :todo-keyword \\\"WAITING\\\" :todo-type todo :footnote-section-p nil :archivedp nil :commentedp nil))\\n  (headline\\n   (:standard-properties\\n    [260 260 286 423 423 0\\n         (:title)\\n         nil nil nil nil 288 421 2 #<buffer ElementTest.org> nil nil #1]\\n    :pre-blank 0 :raw-value \\\"Verify the AST\\\" :title\\n    (#(\\\"Verify the AST\\\" 0 14\\n       (:parent #2)))\\n    :level 2 :priority nil :tags nil :todo-keyword \\\"WAITING\\\" :todo-type todo :footnote-section-p nil :archivedp nil :commentedp nil)\\n   (section\\n    (:standard-properties\\n     [286 286 286 423 423 0 nil section nil nil nil 286 423 nil #<buffer ElementTest.org> nil nil #2])\\n    (plain-list\\n     (:standard-properties\\n      [286 286 286 337 339 2 nil planning nil nil nil nil nil nil #<buffer ElementTest.org> nil\\n           ((286 3 \\\"- \\\" nil nil nil 337))\\n           #3]\\n      :type unordered)\\n     (item\\n      (:standard-properties\\n       [286 286 291 337 337 0\\n            (:tag)\\n            item nil nil nil nil nil nil #<buffer ElementTest.org> nil\\n            ((286 3 \\\"- \\\" nil nil nil 337))\\n            #4]\\n       :bullet \\\"- \\\" :checkbox nil :counter nil :pre-blank 0 :tag nil)\\n      (paragraph\\n       (:standard-properties\\n        [291 291 291 337 337 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #5])\\n       #(\\\"And make sure the ast contains the right info\\\\n\\\" 0 46\\n         (:parent #6)))))\\n    (src-block\\n     (:standard-properties\\n      [339 339 nil nil 423 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #3]\\n      :language \\\"emacs-lisp\\\" :switches nil :parameters \\\":results code replace\\\" :number-lines nil :preserve-indent nil :retain-labels t :use-labels t :label-fmt nil :value \\\"(org-element-parse-buffer)\\\\n\\\"))))))\\n\" :results\n      (\"\")))))))\n" :results
+      ("")))))))
+#+end_src

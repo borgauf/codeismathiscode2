@@ -433,8 +433,9 @@ during the life of the REPL session as the symbol for the value
 
 produces just the literal sexp ~(define pi 3.141592654)~. This "trick"
 is a powerful tool in functional languages. Why? Imagine passing a
-whole piece of real code *A* as input to another piece of code
-*B*. Consider this
+whole piece of real code *A* as just inert /input/ to another piece of
+code *B*. We'll explore functions that take functions as input soon,
+but for now consider
 
 #+name: 6141620c-8e02-4495-a488-4bca17cad00d
 #+begin_src scheme :session *littleschemer* :results output :exports both
@@ -462,19 +463,22 @@ can guess that the first unquoted sexp is, yes, /defining/ ~pi~ to be
 lists, and the first sexp in the list---unless the list is
 quoted---serves as the *function* or *operator*, while the rest of the
 sexp's in the list are the parts the function or operator will work
-on: ~(function sexp1 sexp2 ... sexpN)~ @@html:</font>@@ \\
+on: ~(function sexp1 sexp2 ... sexpN)~ or ~(operator operand1 operand2
+...)~ @@html:</font>@@ \\
 \\
 𝖟𝕭: ~(+ 2 3)~ ...note prefix notation \\
 𝖟𝕭: ~(abs -4)~ ... first sexp is always a function or operator \\
-𝖟𝕭: ~(+ (* 2 3) 8)~  ... simplify the deepest sexp outward \\
+𝖟𝕭: ~(+ (* 2 3) 8)~ ... simplify the deepest sexp outward \\
 𝖟𝕭: ~(+ 3 4 5 1)~ ... addition prefix notation can take multiple
 arguments \\
 
 In each of the above examples the very first item in the list is the
-function/operator. For the arithmetic operators like ~+~, ~*~, et
-cetera, we see [[https://en.wikipedia.org/wiki/Polish_notation][prefix notation]] with possibly multiple arguments. Now,
-let's see a full Scheme function that takes one argument and when
-evaluated, produces output[fn:10]
+function/operator. In keeping with this rule of operator first, we see
+even the arithmetic operators like ~+~, ~*~, et cetera, using [[https://en.wikipedia.org/wiki/Polish_notation][prefix
+notation]] and yes, there can in the case of addition and multiplication
+be multiple arguments or operands. Now, let's see a full Scheme
+function that takes one argument and when evaluated, produces
+output[fn:10]
 
 #+name: 48a7817d-f1a4-4d6c-8ce0-578197a0425e
 #+begin_src scheme :session *littleschemer* :results output :exports both
@@ -505,6 +509,166 @@ addition. In the ~format~ sexp we call the function
 But we're getting ahead of ourselves a bit. Let's get back to
 S-expressions.  \\
 \\
+
+** A /linked/ list is...
+
+In the world of computer science *[[https://en.wikipedia.org/wiki/Data_structure][data structures]]*, a list is more
+commonly thought of as a *linked list*. For ~(cons 42 (cons 69 (cons
+613 '()))~ or ~(42 . (69 . (613 . NIL)))~ we see the three individual
+/cons cells/ in the image below
+
+#+begin_figure
+#+CAPTION: A linked list representation of the list ~(42 69 613)~.
+[[file:images/Cons-cells.png]]
+#+end_figure
+
+and a DIY ascii representation would be
+
+#+begin_example
+*---->*---->*---->NIL
+|     |     |
+v     v     v
+42    69   613
+#+end_example
+
+In the Lisp-Scheme family we're not so concerned that this is a
+/linked/ list, since the actual internal structure of a list doesn't
+require any knowledge of *[[https://en.wikipedia.org/wiki/Pointer_(computer_programming)][pointers]]* as does a language like *[[https://en.wikipedia.org/wiki/C_(programming_language)][C]]*. For
+*C/C++* programmers these diagrams say that a location in memory for a
+cons cell with two "compartments" contains a pointer in the first
+compartment to, e.g., ~42~, while the other compartment contains a
+/pointer/ to the memory address of the next, the adjoining cons
+cell. But again, in Scheme we will never deal directly with actual
+pointer memory addresses. Nonetheless, with our pointer-based diagrams
+we have a train-looking thing with a ~NIL~ or ~'()~ as the
+caboose. What would just ~(cons 'b 'c)~ or ~(b . c)~ look like
+diagrammatically? It would in fact be a single cons cell
+
+#+begin_figure
+#+CAPTION: Single cons cell for ~(cons 'b 'c)~.
+[[file:images/bc.png]]
+#+end_figure
+
+Here we see the right and left compartments named: the left is called
+the ~car~ and the right is called the ~cdr~ compartment. These names
+come from many decades ago when Lisp was first developed and deployed
+on a mainframe. But they are also primitive operators like ~cons~. So
+if ~(cons 'b 'c)~ produces ~(b . c)~ then
+
+#+name: 22c36165-15a5-4220-a2d1-3705302f39e0
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(car (cons 'b  'c))
+#+end_src
+
+#+RESULTS: 22c36165-15a5-4220-a2d1-3705302f39e0
+: b
+
+and
+
+#+name: 5d40cc99-3aef-4090-a5fa-36a392c7775c
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cdr (cons 'b 'c))
+#+end_src
+
+#+RESULTS: 5d40cc99-3aef-4090-a5fa-36a392c7775c
+: c
+
+And so they are operators that surgically remove the *head* and the
+*tail* of a cons cell. Let's try this again with ~(cons 42 (cons 69 (cons 613 '())))~ or
+sugared ~(42 69 613)~
+
+#+begin_figure
+#+CAPTION: A linked list representation of the list ~(42 69 613)~ with ~car~ and ~cdr~.
+[[file:images/Cons-cells2.png]]
+#+end_figure
+
+#+name: 9a5a45ad-86b9-4b5f-8f22-0f853698d9bb
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(car '(42 69 613))
+#+end_src
+
+#+RESULTS: 9a5a45ad-86b9-4b5f-8f22-0f853698d9bb
+: 42
+
+and
+
+#+name: a6c48364-ab5b-4e75-97a0-af4b080056db
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cdr '(42 69 613))
+#+end_src
+
+#+RESULTS: a6c48364-ab5b-4e75-97a0-af4b080056db
+: (69 613)
+
+Did this surprised you? Again, ~car~ returns the first element of the
+list aka the *head* of the list; and ~cdr~ returns the *tail* or
+the /rest of the list/. Let's look at ~cdr~ without syntactic sugar
+
+#+name: f3c4f7ce-7668-4d2f-bb58-6bc7e9418f29
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cdr (cons 42 (cons 69 (cons 613 '()))))
+#+end_src
+
+#+RESULTS: f3c4f7ce-7668-4d2f-bb58-6bc7e9418f29
+: (69 613)
+
+As we see with the result, Scheme throws back in the sugar. The tail
+of ~(cons 42 (cons 69 (cons 613 '())))~ was returned, i.e., ~(cons 69
+(cons 613 '()))~ $\rightarrow$ ~(69 613)~. Let's now reverse this
+
+#+name: 2fc9509a-c5de-4455-aea2-b876b7e77e9d
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cons 42 (cdr '(42 69 613)))
+#+end_src
+
+#+RESULTS: 2fc9509a-c5de-4455-aea2-b876b7e77e9d
+: (42 69 613)
+
+Here's another example
+
+#+name: 4772d381-118a-4c3d-9704-3d70494d5949
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(car '(((five is a nice number) 5) but so is six))
+#+end_src
+
+#+RESULTS: 4772d381-118a-4c3d-9704-3d70494d5949
+: ((five is a nice number) 5)
+
+and
+
+#+name: 95063d6e-c9c5-450b-9d69-d0d110ae5242
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cdr '(((five is a nice number) 5) but so is six))
+#+end_src
+
+#+RESULTS: 95063d6e-c9c5-450b-9d69-d0d110ae5242
+: (but so is six)
+
+⌜ \\
+@@html:<font color = "#4715b3">@@ ⇲ Try to glue ~((five is a nice
+number) 5)~ and ~(but so is six)~ back together with ~cons~
+@@html:</font>@@ \\
+⌟
+
+Now, is ~(b . c)~ a proper list? No, it is called an /improper/ list
+or a /dotted pair/ since we have ~b~ in the ~car~ compartment and ~c~
+in the ~cdr~ compartment. To have a real list the final /cdr/
+compartment of the last cons cell must point to, be consed with the
+~nil~ or the /empty list/. By this definition ~(cons 1 '())~ is a
+proper list, but something like ~(a b c . d)~ has as the last /cdr/
+pointing to ~d~ which is not ~nil~.
+
+#+name: 9b2d2b89-3eae-46c7-8cfa-0cc8b0a8ef01
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(cdr (cdr (cdr '(a b c . d))))
+#+end_src
+
+#+RESULTS: 9b2d2b89-3eae-46c7-8cfa-0cc8b0a8ef01
+: d
+
+
+
+
 
 ** S-expression lore
 
@@ -681,6 +845,175 @@ real list with ~cons~ means consing a sexp onto a real list. Also,
 ~cons~ can only cons two sexp's at a time. \\
 \\
 
+** Lists are the shipping containers of the Scheme world
+
+Was it a bit weird to see
+
+#+name: 3f35efa9-0c5b-4d80-add3-33098746a6a0
+#+begin_src scheme :eval never :exports code
+(((five is a nice number) 5) but so is six)
+#+end_src
+
+i.e., all that stuff crammed willy-nilly between
+parentheses?  We seem to be building a real computer language out of
+surrounding things in parentheses. As we've discussed, Scheme's basic
+syntax is ~(operator operand1 operand2 ...)~, but what would happen if
+we put ~(((five is a nice number) 5) but so is six)~ into the Guile
+REPL and hit Enter?
+
+#+name: e4cf4dfb-5472-4f48-a6b7-6a316e808469
+#+begin_src scheme :eval never :exports code
+(((five is a nice number) 5) but so is six)
+#+end_src
+
+#+begin_example
+#+RESULTS: fa92687e-212c-471e-8090-ed06a91e3b8d
+: ice-9/boot-9.scm:1676:22: In procedure raise-exception:
+;;; <stdin>:446:3: warning: possibly unbound variable `five'
+;;; <stdin>:446:8: warning: possibly unbound variable `is'
+;;; <stdin>:446:11: warning: possibly unbound variable `a'
+;;; <stdin>:446:18: warning: possibly unbound variable `number'
+;;; <stdin>:446:29: warning: possibly unbound variable `but'
+;;; <stdin>:446:33: warning: possibly unbound variable `so'
+;;; <stdin>:446:39: warning: possibly unbound variable `six'
+#+end_example
+
+Looks like quite the mess---all because that first sexp ~((five is a
+nice number) 5)~ is /not an operator/. Let's try again, this time
+quoting the whole sexp
+
+#+name: 86e22bbd-e740-447d-9cbb-dadbbc0dba53
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+'(((five is a nice number) 5) but so is six)
+#+end_src
+
+#+RESULTS: 86e22bbd-e740-447d-9cbb-dadbbc0dba53
+: (((five is a nice number) 5) but so is six)
+
+Recall, in the functional world of Scheme an sexp /has a value/, i.e.,
+can be evaluated. And so the non-quoted version could not be
+successfully evaluated, while the quoted evaluated to itself. Still,
+lists may contain whatever we like. They can be as big and long and
+complex as we like---as long as we handle them correctly. Lists in the
+Lisp-Scheme family are truly the shipping containers of both code and
+data. Consider this Emacs Lisp list
+
+#+name: a4fb25c4-16ea-4df7-80d5-057e0dec0e66
+#+begin_src scheme :eval never :exports code
+(custom-set-variables
+ '(TeX-electric-math '("$" . "$"))
+ '(add-org-graph-puhc nil)
+ '(agda2-program-name "/home/myhome/.local/bin/agda")
+ '(column-number-mode t)
+ '(company-global-modes '(not org-mode))
+ '(coq-prog-args
+   '("-topfile" "/home/myhome/Dropbox/org/coq/math-comp-test/mct1.v" "-emacs"))
+ '(display-battery-mode t)
+ '(display-time-mode t)
+ '(doc-view-continuous t)
+ '(ediprolog-program "/home/myhome/bin/swipl")
+ '(ediprolog-system 'swi)
+ '(geiser-active-implementations '(mit chicken chez guile))
+ '(geiser-default-implementation 'guile)
+ '(geiser-implementations-alist
+   '(((regexp "\\.pkg$")
+      mit)
+     ((regexp "\\.ss\\'")
+      chez)
+     ((regexp "\\.def\\'")
+      chez)))
+ '(geiser-mit-binary "/usr/local/bin/scheme")
+ ...
+ '(sml-program-name "/home/myhome/opt/smlnj110.99.4/bin/sml")
+ '(tool-bar-mode nil)
+ '(user-full-name "Little Schemer")
+ '(warning-suppress-types '((org) (comp))))
+#+end_src
+
+i.e., one single list stretches over 150 lines---all of that just
+one list! Again, looking in the first position we find the Elisp
+function ~custom-set-variables~, which according to the Emacs Help
+will
+
+#+begin_example
+Install user customizations of variable values specified in ARGS.
+#+end_example
+
+where the quoted arguments following ~custom-set-variables~ are the
+various customization variables Emacs will use to set up a working
+environment upon startup.
+
+Lisp before Scheme had a rich history in such disparate uses of the
+basic list for data representation. Much of that carries on. For
+example, a Scheme 
+
+Here's a truly wild-looking use of a list where an *[[https://en.wikipedia.org/wiki/Abstract_syntax_tree][abstract syntax
+tree]]* is created from an org-mode file. Here is the simple org-mode
+file
+
+#+begin_example
+#+TITLE: Org Test File
+#+AUTHOR: Jesse Millwood
+ * Some Time Stamps
+  - An appointment: <2017-08-21 Mon>
+  - Something done: [2017-08-21 Mon]
+ * List of things I need to get done
+ ** TODO Parse an org file
+#+end_example
+
+on which we'll use Org Element's command ~org-element-parse-buffer~,
+which will *[[https://en.wikipedia.org/wiki/Parsing][parse]]* that seven-line org-mode file into an /abstract
+syntax tree/, all of it packed into single huge list
+
+#+begin_src emacs-lisp :eval never :results code replace
+(org-element-parse-buffer)
+#+end_src
+
+#+begin_example
+(org-data
+ (:standard-properties
+  [1 1 1 12009 12009 0 nil org-data nil nil nil 3 12009 nil #<buffer ElementTest.org> nil nil nil]
+  :path "/home/myhome/Dropbox/org/codeismathiscode2/ElementTest.org" :CATEGORY "ElementTest")
+ (section
+  (:standard-properties
+   [1 1 1 49 49 0 nil first-section nil nil nil 1 49 nil #<buffer ElementTest.org> nil nil #0])
+  (keyword
+   (:standard-properties
+    [1 1 nil nil 24 0 nil top-comment nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #1]
+    :key "TITLE" :value "Org Test File"))
+  (keyword
+   (:standard-properties
+    [24 24 nil nil 49 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #1]
+    :key "AUTHOR" :value "Jesse Millwood")))
+ (headline
+  (:standard-properties
+   [49 49 68 142 142 0
+       (:title)
+       nil nil nil nil 70 140 1 #<buffer ElementTest.org> nil nil #0]
+   :pre-blank 0 :raw-value "Some Time Stamps" :title
+   (#("Some Time Stamps" 0 16
+      (:parent #1)))
+   :level 1 :priority nil :tags nil :todo-keyword nil :todo-type nil :footnote-section-p nil :archivedp nil :commentedp nil)
+  (section
+   (:standard-properties
+    [68 68 68 142 142 0 nil section nil nil nil 68 142 nil #<buffer ElementTest.org> nil nil #1])
+   (plain-list
+   ...
+   :language "emacs-lisp" :switches nil :parameters nil :number-lines nil :preserve-indent nil :retain-labels t :use-labels t :label-fmt nil :value "(org-data\n (:standard-properties\n  [1 1 1 6686 6686 0 nil org-data nil nil nil 3 6686 nil #<buffer ElementTest.org> nil nil nil]\n  :path \"/home/myhome/Dropbox/org/codeismathiscode2/ElementTest.org\" :CATEGORY \"ElementTest\")\n (section\n  (:standard-properties\n   [1 1 1 78 78 0 nil first-section nil nil nil 1 78 nil #<buffer ElementTest.org> nil nil #0])\n  (keyword\n   (:standard-properties\n    [1 1 nil nil 24 0 nil top-comment nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #1]\n    :key \"TITLE\" :value \"Org Test File\"))\n  (keyword\n   (:standard-properties\n    [24 24 nil nil 49 0 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #1]\n    :key \"AUTHOR\" :value \"Jesse Millwood\"))\n  (keyword\n   (:standard-properties\n    [49 49 nil nil 78 1 nil nil nil nil nil nil nil nil #<buffer ElementTest.org> nil nil #1]\n    :key \"TODO\" :value \"TODO WAITING | DONE\")))\n (headline\n  (:standard-properties\n   [78 78 97 171 171 0\n       (:title)\n       nil nil nil nil 99 169 1 #<buffer ElementTest.org> nil nil #0]\n   :pre-blank 0 :raw-value \"Some Time Stamps\" :title\n   (#(\"Some Time Stamps\" 0 16\n      (:parent #1)))\n   :level 1 :priority nil :tags nil :todo-keyword nil :todo-type nil :footnote-section-p nil :archivedp nil :commentedp nil)\n
+   ...
+   \\\"(org-element-parse-buffer)\\\\n\\\"))))))\\n\" :results\n      (\"\")))))))\n" :results
+   ("")))))))
+#+end_example
+
+Yes, what you see above is one single very huge list with lots of
+nested lists, all of it representing structured data, although we have
+cut out lots (note the ... gaps) to fit it on the page. (Also, use the
+slider to see the hidden parts.) As mentioned above, this is a list
+acting as an /abstract syntax tree/.[fn:16] ASTs are central to
+programming in that any programming code must be parsed, i.e.,
+transformed into an AST in order to be evaluated by the interpreter or
+compiler.
+
 ** Recursion, let's get started with...
 
 *[[https://en.wikipedia.org/wiki/Recursion][Recursion]]* is a central idea in math and CS. Let's take a quick
@@ -694,12 +1027,12 @@ Consider this simple summation of the natural numbers $\mathbb{N}$
 \sum_{i=1}^n i = 1 + 2 + 3 + \ldots + (n - 1) + n
 \end{align*}
 
-This expression will sum the sequence[fn:16] of the counting numbers
+This expression will sum the sequence[fn:17] of the counting numbers
 up to and including the nth element of $\mathbb{N}$. But let's look at
 a different way to sum any $\mathbb{N}$ sequence, namely,
 /recursively/ by setting up a method that progresses to the answer
 stepwise by referring or calling itself repeatedly. Let's reimagine
-$\sum_{i=1}^n i$ as a two-part algebraic function[fn:17]
+$\sum_{i=1}^n i$ as a two-part algebraic function[fn:18]
 
 \begin{align}
 g(1) &= 1 \\
@@ -715,7 +1048,7 @@ into two parts:
   define the function in terms of the previous application of the
   function.
 
-Got that? Still too abstract?[fn:18] Right. Example time...
+Got that? Still too abstract?[fn:19] Right. Example time...
 
 ⌜ \\
 𝖟𝕭: What is the sum of the $\mathbb{N}$ sequence ending with $n = 4$?
@@ -723,7 +1056,7 @@ Got that? Still too abstract?[fn:18] Right. Example time...
 
 If $n = 4$ then no, this is obviously not the base-terminal case $n =
 1$, so we start applying the recursion rule (4) until the base case is
-in fact /true/[fn:19]
+in fact /true/[fn:20]
 
 \begin{align*}
 g(4) &= g(4 - 1) + 4 = g(3) + 4 \quad\quad \text{...apply rule} \\
@@ -732,7 +1065,7 @@ g(2) &= g(2 - 1) + 2 = g(1) + 2 \quad\quad \text{...apply rule} \\
 g(1) &= 1 \quad\quad \text{...apply base case} 
 \end{align*}
 
-Now we nest these intermediary steps[fn:20]
+Now we nest these intermediary steps[fn:21]
 
 \begin{align*}
 g(4) &= \bbox[yellow,4px]{g(3)} + 4 \\
@@ -771,7 +1104,7 @@ But as we've seen, a list such as ~(1 2 3 4)~ is really
 So ~list~ conses together all the arguments it is given. Let's write
 our own (more basic) version of a list-making function that conses
 together just integers, primarily to see what role recursion plays and
-how Scheme does basic recursion.[fn:21]
+how Scheme does basic recursion.[fn:22]
 
 #+name: 3860bfc7-d02e-4ff8-90fa-0a37c26df4db
 #+begin_src scheme +n :session *littleschemer* :results verbatim :exports code 
@@ -802,10 +1135,11 @@ creates the list ~(1)~. Otherwise, on line 4 ~(cons n (makelist (- n
 Two big things are going on in this short piece of code. First, we
 have the *[[https://en.wikipedia.org/wiki/Conditional_(computer_programming)][conditional]]*, the commonly called /if-then-else/ where a
 decision is made on which part of the recursion function we need to
-apply, 1) the base case or, 2) the recursion rule. Below is a simpler
-/one-liner/ that makes it easier to see what's going on. ~mytest~
-takes in an argument and "decides" that if it greater than ~12~ the
-output is ~1~, but if it is less than or equal to ~12~ it returns ~0~
+apply, 1) the base case or, 2) the recursion/iteration rule. Below is
+a simpler /one-liner/ that makes it easier to see what's going
+on. ~mytest~ takes in an argument and "decides" that if it greater
+than ~12~ the output is ~1~, but if it is less than or equal to ~12~
+it returns ~0~
 
 #+name: 91f7c57c-4c1d-46be-8a03-fa9f35fb3217
 #+begin_src scheme :session *littleschemer* :results verbatim :exports code
@@ -918,167 +1252,9 @@ And so this is the magic of recursion. Again, we'll go into detail on
 conditionals and especially all the lore on recursion soon. But for
 now let's look at what a list is "under the hood," which shows us
 simultaneously how the individual elements can be manipulated with the
-Scheme primitives ~car~ and ~cdr~.  \\
-\\
+Scheme primitives ~car~ and ~cdr~.  
 
-** A /linked/ list is...
-
-In the world of computer science *[[https://en.wikipedia.org/wiki/Data_structure][data structures]]*, a list is more
-commonly thought of as a *linked list*. For ~(cons 42 (cons 69 (cons
-613 '()))~ or ~(42 . (69 . (613 . NIL)))~ we see the three individual
-/cons cells/ in the image below
-
-#+begin_figure
-#+CAPTION: A linked list representation of the list ~(42 69 613)~.
-[[file:images/Cons-cells.png]]
-#+end_figure
-
-and a DIY ascii representation would be
-
-#+begin_example
-*---->*---->*---->NIL
-|     |     |
-v     v     v
-42    69   613
-#+end_example
-
-In the Lisp-Scheme family we're not so concerned that this is a
-/linked/ list, since the actual internal structure of a list doesn't
-require any knowledge of *[[https://en.wikipedia.org/wiki/Pointer_(computer_programming)][pointers]]* as does a language like *[[https://en.wikipedia.org/wiki/C_(programming_language)][C]]*. For
-*C/C++* programmers these diagrams say that a location in memory for a
-cons cell with two "compartments" contains a pointer in the first
-compartment to, e.g., ~42~, while the other compartment contains a
-/pointer/ to the memory address of the next, the adjoining cons
-cell. But again, in Scheme we will never deal directly with actual
-pointer memory addresses. Nonetheless, with our pointer-based diagrams
-we have a train-looking thing with a ~NIL~ or ~'()~ as the
-caboose. What would just ~(cons 'b 'c)~ or ~(b . c)~ look like
-diagrammatically? It would in fact be a single cons cell
-
-#+begin_figure
-#+CAPTION: Single cons cell for ~(cons 'b 'c)~.
-[[file:images/bc.png]]
-#+end_figure
-
-Here we see the right and left compartments named: the left is called
-the ~car~ and the right is called the ~cdr~ compartment. These names
-come from many decades ago when Lisp was first developed and deployed
-on a mainframe. But they are also primitive operators like ~cons~. So
-if ~(cons 'b 'c)~ produces ~(b . c)~ then
-
-#+name: 22c36165-15a5-4220-a2d1-3705302f39e0
-#+begin_src scheme :session *littleschemer* :results verbatim :exports both
-(car (cons 'b  'c))
-#+end_src
-
-#+RESULTS: 22c36165-15a5-4220-a2d1-3705302f39e0
-: b
-
-and
-
-#+name: 5d40cc99-3aef-4090-a5fa-36a392c7775c
-#+begin_src scheme :session *littleschemer* :results verbatim :exports both
-(cdr (cons 'b 'c))
-#+end_src
-
-#+RESULTS: 5d40cc99-3aef-4090-a5fa-36a392c7775c
-: c
-
-And so they are operators that surgically remove the *head* and the
-*tail* of a cons cell. Let's try this again with ~(cons 42 (cons 69 (cons 613 '())))~ or
-sugared ~(42 69 613)~
-
-#+begin_figure
-#+CAPTION: A linked list representation of the list ~(42 69 613)~ with ~car~ and ~cdr~.
-[[file:images/Cons-cells2.png]]
-#+end_figure
-
-#+name: 9a5a45ad-86b9-4b5f-8f22-0f853698d9bb
-#+begin_src scheme :session *littleschemer* :results verbatim :exports both
-(car '(42 69 613))
-#+end_src
-
-#+RESULTS: 9a5a45ad-86b9-4b5f-8f22-0f853698d9bb
-: 42
-
-and
-
-#+name: a6c48364-ab5b-4e75-97a0-af4b080056db
-#+begin_src scheme :session *littleschemer* :results verbatim :exports both
-(cdr '(42 69 613))
-#+end_src
-
-#+RESULTS: a6c48364-ab5b-4e75-97a0-af4b080056db
-: (69 613)
-
-Did this surprised you? Again, ~car~ returns the first element of the
-list aka the *head* of the list; and ~cdr~ returns the *tail* or
-the /rest of the list/. Let's look at ~cdr~ without syntactic sugar
-
-#+name: f3c4f7ce-7668-4d2f-bb58-6bc7e9418f29
-#+begin_src scheme :session *littleschemer* :results verbatim :exports both
-(cdr (cons 42 (cons 69 (cons 613 '()))))
-#+end_src
-
-#+RESULTS: f3c4f7ce-7668-4d2f-bb58-6bc7e9418f29
-: (69 613)
-
-As we see with the result, Scheme throws back in the sugar. The tail
-of ~(cons 42 (cons 69 (cons 613 '())))~ was returned, i.e., ~(cons 69
-(cons 613 '()))~ $\rightarrow$ ~(69 613)~. Let's now reverse this
-
-#+name: 2fc9509a-c5de-4455-aea2-b876b7e77e9d
-#+begin_src scheme :session *littleschemer* :results verbatim :exports both
-(cons 42 (cdr '(42 69 613)))
-#+end_src
-
-#+RESULTS: 2fc9509a-c5de-4455-aea2-b876b7e77e9d
-: (42 69 613)
-
-Here's another example
-
-#+name: 4772d381-118a-4c3d-9704-3d70494d5949
-#+begin_src scheme :session *littleschemer* :results verbatim :exports both
-(car '(((five is a nice number) 5) but so is six))
-#+end_src
-
-#+RESULTS: 4772d381-118a-4c3d-9704-3d70494d5949
-: ((five is a nice number) 5)
-
-and
-
-#+name: 95063d6e-c9c5-450b-9d69-d0d110ae5242
-#+begin_src scheme :session *littleschemer* :results verbatim :exports both
-(cdr '(((five is a nice number) 5) but so is six))
-#+end_src
-
-#+RESULTS: 95063d6e-c9c5-450b-9d69-d0d110ae5242
-: (but so is six)
-
-⌜ \\
-@@html:<font color = "#4715b3">@@ ⇲ Try to glue ~((five is a nice
-number) 5)~ and ~(but so is six)~ back together with ~cons~
-@@html:</font>@@ \\
-⌟
-
-Now, is ~(b . c)~ a proper list? No, it is called an /improper/ list
-or a /dotted pair/ since we have ~b~ in the ~car~ compartment and ~c~
-in the ~cdr~ compartment. To have a real list the final /cdr/
-compartment of the last cons cell must point to, be consed with the
-~nil~ or the /empty list/. By this definition ~(cons 1 '())~ is a
-proper list, but something like ~(a b c . d)~ has as the last /cdr/
-pointing to ~d~ which is not ~nil~.
-
-#+name: 9b2d2b89-3eae-46c7-8cfa-0cc8b0a8ef01
-#+begin_src scheme :session *littleschemer* :results verbatim :exports both
-(cdr (cdr (cdr '(a b c . d))))
-#+end_src
-
-#+RESULTS: 9b2d2b89-3eae-46c7-8cfa-0cc8b0a8ef01
-: d
-
-
-
+** 
 #+INCLUDE: "./footer.org" :minlevel 1
 
 * Footnotes
@@ -1144,23 +1320,26 @@ follows. Parentheses are usually the highest precedence, e.g., $4 \cdot
 (2 + 3) = 20$ because by parenthesizing the $(2 + 3)$ we created
 precedence over the multiplication.
 
-[fn:16] For now we'll stick to the layman's use of the term
+[fn:16] Soon we will explore how lists can represent sets, vectors,
+matrices, graphs, and other structures.
+
+[fn:17] For now we'll stick to the layman's use of the term
 /sequence/. Later, we'll dive into what the math world thinks a
 sequence is.
 
-[fn:17] Recursion and [[https://en.wikipedia.org/wiki/Mathematical_induction][induction]] are closely related. We'll look into
+[fn:18] Recursion and [[https://en.wikipedia.org/wiki/Mathematical_induction][induction]] are closely related. We'll look into
 induction later.
 
-[fn:18] Often in math you'll read the abstract, general rule, then
+[fn:19] Often in math you'll read the abstract, general rule, then
 explore examples, then say "A ha! Now I get it!" So yes, we will come
 to love these awfully painfully formalistic, highly abstract
 generalizations...
 
-[fn:19] /...until true/ seems to suggest some test for true or false,
+[fn:20] /...until true/ seems to suggest some test for true or false,
 doesn't it?  Hold that thought...
 
-[fn:20] This math nesting in parentheses is just like nesting in
+[fn:21] This math nesting in parentheses is just like nesting in
 parentheses in Scheme. Parentheses keep computational law and
 order. The yellow and gray highlighting emphasizes the substitution.
 
-[fn:21]  Note: code line numbers are not part of the Scheme code.
+[fn:22]  Note: code line numbers are not part of the Scheme code.

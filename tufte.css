@@ -160,7 +160,8 @@ body {
 
 .MathJax {
     /* font-size: 1.3em !important; */
-    font-size: 100% !important; 
+    font-size: 100% !important;
+    color: #2f2f2f;
 }
 
 /* .TEX-I { */
@@ -224,6 +225,7 @@ pre.example {
 .src-haskell {
     max-width: 60% !important;
     color: #0a6060;
+    /* background: #f8ecd7; */
     overflow-x: auto;
     float: left;
 }
@@ -231,10 +233,18 @@ pre.example {
 .src-scheme {
     max-width: 60% !important;
     color: #0a6060;
-    background: #f8ecd7;
+    /* background: #f8ecd7; */
     overflow-x: auto;
     float: left;
     margin-top: -0.2em;
+}
+
+[class^="src-"], [class*=" src-"] {
+    background: #f8ecd7;
+    max-width: 60% !important;
+    color: #0a6060;
+    overflow-x: auto;
+    float: left;
 }
 
 /* added */

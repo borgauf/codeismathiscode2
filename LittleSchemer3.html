@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-02-07 Fri 10:13 -->
+<!-- 2025-02-13 Thu 11:53 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -24,6 +24,38 @@ pre.example {clear: none; }
 </style>
 <style> .title { display: none; } </style>
 <style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <article id="content" class="content">
@@ -87,26 +119,345 @@ pre.example {clear: none; }
 </figure>
 </figure>
 </div>
-</section>
-<section id="outline-container-org8b8830a" class="outline-2">
-<h2 id="org8b8830a"></h2>
-<div class="outline-text-2" id="text-org8b8830a">
+<div id="outline-container-org8b8830a" class="outline-3">
+<h3 id="org8b8830a">Mathematical logic</h3>
+<div class="outline-text-3" id="text-org8b8830a">
 <p>
+If someone completely ignorant of math asks &ldquo;What is math?&rdquo; we might
+simply answer, &ldquo;Math is the art of developing useful generalizations
+about specific situations.&rdquo; If they then ask, &ldquo;What do you mean by
+generalizations?&rdquo; we could say &ldquo;Generalization is the <i>abstraction</i> of
+specific situations into what they all have in common, i.e., <i>general</i>
+rules that apply to these many specific situations.&rdquo; In any case, the
+whole philosophical &ldquo;we observe and conclude&rdquo; dynamic is what is
+behind mathematics &#x2026; which makes math a form of philosophy. Chances
+are, however, that you have never experienced math in a philosophical
+way. Up until now it&rsquo;s always been about &ldquo;problem solving.&rdquo; We mean to
+go further than mere problem solving.
+</p>
+
+<p>
+But why do we need to abstract and generalize? Yes, we might need
+certain formulæ that let us get answers to, say, how much our mortgage
+payments should be. But do we need to go so deep into abstractions and
+generalization?
+</p>
+
+<p>
+A story or two to that question. First Gottfried Leibnitz is
+considered by many to be the father of modern mathematical logic. He
+was the first to ask seriously if we could create a mathematically
+manipulatable calculus for human thought. But he also attempted to
+find a &ldquo;real&rdquo; definition of a straight line, saying the commonly
+accepted definition, namely, the shortest distance between two points,
+only described a property straight line. But by finding evermore
+fundamental abstractions, math gains in power, depth, and breadth.
+</p>
+
+<p>
+A curious example of getting deeper and broader would be Einstein&rsquo;s
+<i><a href="https://en.wikipedia.org/wiki/General_relativity">General Theory of Relativity</a></i>, which took the abstraction of gravity
+to previously unimaginable heights. Before Einstein, physics relied
+on Issac Newton&rsquo;s all but complete computational model of gravity as a
+real force (\(F\))
+</p>
+
+\begin{align*}
+F = G\frac{m_1m_2}{r^2}
+\end{align*}
+
+<p>
+On the other hand, Einstein&rsquo;s General Relativity described gravity as
+an &ldquo;artifact of four-dimensional space-time geometry.&rdquo; Physicists
+today are unanimous in considering Einstein&rsquo;s explanation of gravity
+the superior, overarching, &ldquo;meta&rdquo; view, even if gravity has been
+seemingly downgraded to an &ldquo;artifact.&rdquo;
+</p>
+
+<p>
+Abstraction uses symbols. If we wanted to depict a person&rsquo;s life as a
+<i>set</i> of key events, we could paint an elaborate mural on a huge wall
+showing various scenes from that person&rsquo;s life. Or we could just do
+this
+</p>
+
+\begin{align*}
+L_{P} = \{E_1, E_2, E_3, \ldots E_n  \}
+\end{align*}
+
+<p>
+where \(E_k\) is a key event. Obviously, this would not be a very
+colorful, let alone descriptive depiction of a life; but if we
+represent a life as a set of event elements, perhaps we could develop
+a method for each of the elements to carry more information&#x2014;and now
+we&rsquo;re entering the world of data management and math. Important is how
+we have reduced and generalized to a set. And as we&rsquo;ve noted before,
+modern mathematics wants to ground so much of itself in set
+theory. Now let&rsquo;s take one more look at axiomatizing and abstracting
+stuff. <br>
 <br>
 </p>
 </div>
+</div>
+<div id="outline-container-org50a2617" class="outline-3">
+<h3 id="org50a2617">Axiomatic thinking redux</h3>
+<div class="outline-text-3" id="text-org50a2617">
+<p>
+Let&rsquo;s take apart a simple arithmetic calculation from primary school
+</p>
+
+\begin{align*}
+2 + 3 \cdot 7
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org3f63f7f" class="outline-3">
+<h3 id="org3f63f7f">Peano axiomatizes mathematics</h3>
+<div class="outline-text-3" id="text-org3f63f7f">
+<p>
+So-called higher math wants to ground math in logically unassailable,
+fundamental, formalistic, foundational bedrock. This became a serious
+pursuit of math starting in the late nineteenth century. <a href="https://en.wikipedia.org/wiki/Giuseppe_Peano">Giuseppe
+Peano</a> put forth his <a href="https://en.wikipedia.org/wiki/Peano_axioms">Peano Axioms</a> in 1889, which became that bedrock
+upn which all math could be built. 
+</p>
+</div>
+</div>
 <div id="outline-container-org648c2f4" class="outline-3">
-<h3 id="org648c2f4">A bit of math behind the if-then-else</h3>
+<h3 id="org648c2f4">Propositional logic</h3>
 <div class="outline-text-3" id="text-org648c2f4">
+<p>
+<font color = "#0d3db3"> The term <b><a href="https://en.wikipedia.org/wiki/Propositional_calculus">propositional logic</a></b> (PL)
+contains the root <b>proposition</b>, which is a statement that can be
+evaluated to be true or false, as well as how these statements may be
+combined.  </font>
+</p>
+
+<p>
+PL is the most basic form of logic, started mainly by the Greeks,
+largely centered around Aristotle, literally to sort out
+thinking. Fast forward to the nineteenth century when the English
+mathematician <a href="https://en.wikipedia.org/wiki/George_Boole">George Boole</a> in his books <i>The Mathematical Analysis of
+Logic</i> and <i>The Laws of Thought</i> went about modernizing Aristotelian
+logic. Boole&rsquo;s attempt to answer the existential question, Can we
+formalize, mathematize human thought? resulted in <b>Boolean algebra</b>,
+which, among other things, became the basis of digital computer
+circuitry.
+</p>
+</div>
+</div>
+<div id="outline-container-org530237a" class="outline-3">
+<h3 id="org530237a">Implication</h3>
+<div class="outline-text-3" id="text-org530237a">
+<p>
+We want to discuss the <b>if-then-else</b> sexp we saw before in more
+depth. An <i>if statement</i> is a programming application of the general
+math concept of the <b><a href="https://en.wikipedia.org/wiki/Material_conditional">implication</a></b>.
+</p>
+
+<p>
+Consider the conditional statement <i>If it snows, the snowplows
+will come out</i>. This is also contains, i.e., something is
+being implied. The symbol used for implication is a right-pointing
+arrow between the <b>antecedent</b> (or hypothesis) and the <b>consequent</b>
+(or conclusion) like this
+</p>
+
+\begin{align*}
+p \longrightarrow q
+\end{align*}
+
+<p>
+and can be phrased in many different ways
+</p>
+
+<ul class="org-ul">
+<li>\(p\) implies \(q\)</li>
+<li>if \(p\) then \(q\)</li>
+<li>\(p\) only if \(q\)</li>
+<li>\(q\) if \(p\)</li>
+<li>all \(p\) are \(q\)</li>
+<li>if \(p\), \(q\)</li>
+<li>whenever \(p\) is true, \(q\) is true</li>
+<li>\(q\) is true whenever \(p\) is true</li>
+<li>\(q\) is necessary for \(p\) (or, if \(p\) is true, then \(q\) is necessarily
+true)</li>
+<li>\(p\) is sufficient for \(q\) (or, for \(q\) to be true, it is sufficient
+to show \(p\) is true)</li>
+</ul>
+
+<p>
+Let&rsquo;s use these in normal sentences
+</p>
+
+<p>
+⌜ <br>
+𝖟𝕭: <i>If you live in Wichita, the you live in Kansas.</i>
+</p>
+
+<ul class="org-ul">
+<li>You live in Kansas if you live in Wichita.</li>
+<li>To live in Wichita is to live in Kansas.</li>
+<li>You must live in Kansas to live in Wichita.</li>
+<li>To live in Wichita suffices to live in Kansas.</li>
+<li>Any resident of Wichita is a resident of Kansas.</li>
+<li>Being a resident of Wichita implies residency in Kansas.</li>
+</ul>
+
+<p>
+&#x2026;and many more twists of wording. <br>
+⌟
+</p>
+
+
+
+
+
+<p>
+Proofs in mathematics are typically based around implications. Here is
+an axiomatic truth about integers
+</p>
+
+<p>
+<font color = "#0d3db3"> The integer \(n\) is even if there
+exists an integer \(k\) such that \(n = 2k\), and \(n\) is odd if there
+exists an integer \(k\) such that \(n = 2k + 1\). Note that every integer
+is either even or odd, and no integer is both even and odd. Two
+integers have the same parity when both are even or both are odd; they
+have opposite parity when one is even and the other is odd.
+</font>
+</p>
+
+<p>
+Now, a <i>direct proof</i> of any sort of conditional statement of the form
+\(p \longrightarrow q\) will rely on the truth of implication. A theorem
+we need to prove as valid will typically start by assuming the \(p\)
+part, the hypothesis, then use axioms, definitions, givens, as well as
+previously proven theorems to prove the \(q\) part must also be
+true. Let&rsquo;s see an example
+</p>
+
+<p>
+⌜ <br>
+𝖟𝕭: Prove that <font color = "#0d3db3">if \(n\) is an odd
+integer, then \(n^2\) is odd</font>
+</p>
+
+<p>
+We obviously see an implication in the wording. But first, let&rsquo;s
+develop a more formal, higher math way of expressing
+</p>
+
+<p>
+<br>
+⌟
+</p>
+</div>
+</div>
+<div id="outline-container-org6ee8555" class="outline-3">
+<h3 id="org6ee8555">Syllogisms</h3>
+<div class="outline-text-3" id="text-org6ee8555">
+<p>
+<b><a href="https://en.wikipedia.org/wiki/Syllogism">Syllogisms</a></b> are a typical starting point with logic. The classic
+Aristotelian syllogism goes like this
+</p>
+
+<ul class="org-ul">
+<li><b>Major premise</b>:  All humans are mortal.</li>
+<li><b>Minor premise</b>:  All Greeks are humans.</li>
+<li><b>Conclusion/Consequent</b>: All Greeks are mortal.</li>
+</ul>
+
+<p>
+Why not abstract this?<label id='fnr.1' for='fnr-in.1.3919073' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.3919073' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+The symbol \(\therefore\) means <i>therefore</i>.
+</span>
+</p>
+
+\begin{align*}
+&\text{All H are M}& \\
+&\underline{\text{All G are H}}& \\
+\therefore\: &\text{All G are M}&
+\end{align*}
+
+<p>
+Again, we see symbols (letters) standing in for specific
+things. But obviously we can&rsquo;t just stick anything in for the letter
+symbols. False premises will only get us false conclusions.
+</p>
+
+\begin{align*}
+&\text{All fish are towns.}& \\
+&\underline{\text{All guppies are fish.}}& \\
+\therefore\: &\text{All guppies are towns.}&
+\end{align*}
+
+<p>
+This would only make sense if all fish are towns.
+</p>
+</div>
+</div>
+<div id="outline-container-org94dc380" class="outline-3">
+<h3 id="org94dc380">Hypothetical syllogisms</h3>
+<div class="outline-text-3" id="text-org94dc380">
+<p>
+As a part of the <b><a href="https://en.wikipedia.org/wiki/Hypothetical_syllogism">hypothetical syllogism</a></b>
+is a variation of syllogisms where <i>conditional</i> statements are
+made. 
+</p>
+
+
+
+
+
+<p>
+The pure hypothetical syllogism looks like this
+</p>
+
+\begin{align*}
+&p \longrightarrow q& \\
+&\underline{q \longrightarrow r}& \\
+\therefore\: &p \longrightarrow r&
+\end{align*}
+
+
+
+
+<p>
+As we discussed in the first section, higher math wants to be
+<i>axiomatically</i>-based, i.e., we have basic <i>axioms</i> and
+we <i>deduce</i> with valid rules of inference useful facts, these useful
+generalization. And this process of deduction involves crafting
+propositions, declarations that can be checked as we construct them as
+<i>true</i> or <i>false</i>.
+</p>
+
+
+
 <p>
 In the previous section we touched lightly, briefly on recursion with
 some examples, but as we saw, recursion relies on the ability to <i>test
-the progress</i> of the iteration.
+the progress</i> of the recursion, the iteration in order to know when to
+invoke the base case and thereby end the iterating. One thing we see
+with our first exposure to <i>if-then-else</i> is how a computer language
+can be very compact and terse. In Scheme we don&rsquo;t even mention the
+<i>then-else</i> part of the <i>if-then-else</i> conditional. The whole
+conditional sexp is just <code>(if (&gt; n 12) 1 0)</code> where we see the strict
+Scheme syntax of <code>(operator operand1 operand2 ...)</code>, hence, we must
+assume the <i>then</i> and <i>else</i>, i.e., <code>(if (&gt; n 12) then 1 else 0)</code>.
+</p>
+
+<p>
+Inference causal versus non-causal.
+</p>
+
+<p>
+&ldquo;All birds can fly, then I&rsquo;m president.&rdquo;
 </p>
 
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org3f63f7f"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">mylogictest</span> n<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">or</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">and</span> <span class="org-rainbow-delimiters-depth-4">(</span>&gt; n 12<span class="org-rainbow-delimiters-depth-4">)</span> 1<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">and</span> <span class="org-rainbow-delimiters-depth-4">(</span>&lt;= n 12<span class="org-rainbow-delimiters-depth-4">)</span> 0<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orgbec9ad4"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">mylogictest</span> n<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">or</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">and</span> <span class="org-rainbow-delimiters-depth-4">(</span>&gt; n 12<span class="org-rainbow-delimiters-depth-4">)</span> 1<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">and</span> <span class="org-rainbow-delimiters-depth-4">(</span>&lt;= n 12<span class="org-rainbow-delimiters-depth-4">)</span> 0<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
