@@ -62,6 +62,7 @@
 
 ** Not exported :noexport:
 
+#+name: module
 #+begin_src haskell :eval never :exports code :tangle ./src/stemclub1.hs :noweb yes
 module STEMCLUB1 where
 <<1e87308f-8ab6-43ce-87a9-1e3818c63753>>
@@ -70,7 +71,15 @@ module STEMCLUB1 where
 
 <<9d7afc7e-4e0d-4bcd-aef7-1eb81a5310b0>>
 
+<<929a7a61-6918-4f5f-9a89-502b66003760>>
 
+<<dadbe877-e9c4-436e-843d-144005fef37d>>
+
+<<94268e73-4fb6-465b-b810-fdd34c488c72>>
+
+<<4d37a5ff-41e7-4efb-83ec-bdf53b60e009>>
+
+<<6cf24bbe-c37f-4480-8b57-79509a9adc40>>
 
 #+end_src
 
@@ -111,22 +120,25 @@ expressed in software.
 
 - Develop algorithms
 - Encode algorithms in programming language
-- Run code in device \\
-\\
+- Run code in device 
 
+In other words, we're taking the math out of books, papers, off
+blackboards, out of brains, reverse-engineering mechanical
+devices---and putting in into digital computing devices.
 
 ** Basic fractions on the computer
 
-Let's go down the rabbit hole of how to do fractions---adding,
-subtracting unlike denominator fractions---on the computer. Here we
-enter The world of number theory and its concentration on the behavior
-of prime numbers. The first step will be factoring numbers
+Let's go down the rabbit hole of how to do fractions---specifically,
+/adding, subtracting unlike denominator fractions/---on the
+computer. Here we enter The world of number theory and its
+concentration on the behavior of prime numbers.
 
 @@html:<font color = "#4715b3">@@ ⥤ A *prime number* is an integer
 that can only be divided by $1$ or itself.  @@html:</font>@@ \\
 \\
-...IOW, a prime number is /not/ a *composite number*, i.e., a multiple
-of other numbers.
+A prime number is /not/ a *composite number*, i.e., a multiple of
+other numbers. This means there is no number $d$ between $1$ and the
+prime $p$ that will evenly divide it.
 
 ⇲ Theorem *Fundamental Theorem of Arithmetic*
 
@@ -149,7 +161,6 @@ powers.@@html:</font>@@
 128 &= 2^7 \\
 \ldots
 \end{align*} 
-\\
 
 Let's use Scheme's function ~expt~ to find $2^7$
 
@@ -161,9 +172,18 @@ Let's use Scheme's function ~expt~ to find $2^7$
 #+RESULTS: 010e1d3f-41fa-4ad8-991a-4a6bf11715c4
 : 128
 
+This idea of multiplying unique sets of primes to get any whole number
+is an almost mysterious thing in mathematics. The [[https://en.wikipedia.org/wiki/Peano_axioms][Peano Axioms]],
+supposedly the most bedrock foundation of mathematics, says if we
+start with zero we can get any of the natural counting numbers,
+$\mathbb{N}$, by simply adding "one more" over and over.[fn:3] But we
+can also "get" any $n \in \mathbb{N}$ by multiplying sets of
+primes. Hence, we can almost say, prime numbers /necessitate/ (bring
+into existence?) multiplication. At the very least primes beg their multiplication.
+
 Let's jump ahead. [[https://gemini.google.com/app][Google Gemini]] produced this Haskell code when the
 keywords /haskell prime factors of a number/ were entered into a
-Gemini search[fn:3]
+Gemini search[fn:4]
 
 #+name: af3e4f87-3492-4f87-8e19-6d43b5bcf035
 #+begin_src haskell :eval never :exports code
@@ -192,7 +212,7 @@ Eijck. They start with the
 
 *** Prime number test
 
-Prime numbers: $2, 3, 5, 7, 11, 13,\ldots$[fn:4]
+Prime numbers: $2, 3, 5, 7, 11, 13,\ldots$[fn:5]
 
 ⇲ Definition *Divides*
 
@@ -239,14 +259,14 @@ Unfortunately, two symbols are used to indicate identity. For example
 \end{align*}
 
 uses the $=$ equals sign to indicate /identical values/ are guaranteed
-given any specific $a$ or $b$.[fn:5] Another identity would be
+given any specific $a$ or $b$.[fn:6] Another identity would be
 
 \begin{align*}
 sin^{2}\theta + cos^{2}\theta = 1
 \end{align*}
 
 Again, we mean the left- and right-hand sides are identical
-mathematically, although they're obviously different.[fn:6] /Which
+mathematically, although they're obviously different.[fn:7] /Which
 means they are interchangeable/. Which means when solving a trig
 problem, you can substitute in one for the other.
 
@@ -277,12 +297,15 @@ remainder.
 
 In Haskell, being a *typed language* means that every expression in
 the program has a type---such as integer, real number, characters in
-an alphabet, etc.---and these types are checked by the compiler to
-make sure we're not doing something strange, e.g., adding $5$ to $z$,
-before the program is run. This type checking is a fundamental part of
-Haskell's design and contributes significantly to its safety,
-reliability, and expressiveness. Asking Haskell for the *type*
-information of ~rem~
+an alphabet, etc.---and these types are checked by the Haskell
+compiler to make sure we're not doing something strange, e.g., adding
+the number $5$ to the letter $z$, before the program is run. This type
+checking is a fundamental part of Haskell's design and contributes
+significantly to its safety, reliability, and expressiveness. The
+Haskell REPL command ~:type~ (~:t~ for short) will give us back the
+/type signature/ of ~rem~, i.e., what type(s) ~rem~ can take for input
+arguments, how many, and what it will return as its value when
+evaluated
 
 #+name: 1a8f7e6a-1f68-47ff-bda8-829a677e0f02
 #+begin_src haskell :results verbatim :exports both
@@ -292,26 +315,23 @@ information of ~rem~
 #+RESULTS: 1a8f7e6a-1f68-47ff-bda8-829a677e0f02
 : rem :: Integral a => a -> a -> a
 
-The Haskell REPL command ~:type~ (~:t~ for short) gives us back the
-/type signature/ of ~rem~, i.e., what type(s) can take for input
-arguments, how many, and what it will return as its value when
-evaluated. In this case ~a~ is a *unconstrained type variable* instead
+In this case ~a~ is a *unconstrained type variable* instead
 of one specific type. This means ~rem~ can take different types for
 input. What different types? The signature starts with ~Integral a
 =>~, which means any type of the ~Integral~ class. Hold that
 thought...
 
-Now, to the right of ~Integral =>~ we have the chain ~a -> a ->
-a~. This is the actual breakdown of the function type-wise. The type
-of the function's output is always the last symbol on the far right, while
+To the right of ~Integral =>~ we see the chain ~a -> a -> a~. This is
+the actual breakdown of the function type-wise. The type of the
+function's output is always the last symbol on the far right, while
 the ~a -> a~ indicates two input arguments. Which makes sense---~rem~
 takes two arguments and returns one answer.
 
 Back to ~Integral~. Which is a *type class* declared internally in
 Haskell. The ~Integral a =>~ prefix in the type signature of ~rem~
-says ~a~ can be any of the types that have "registered" with the type
-class ~Integral~. Let's unpack the ~Integral~ type class with the
-Haskell REPL command ~:info~ (or just ~:i~)[fn:7]
+says ~a~ can be any of the individual types that have "registered"
+with the type class ~Integral~. Let's unpack the ~Integral~ type class
+with the Haskell REPL command ~:info~ (or just ~:i~)[fn:8]
 
 #+name: 1219802e-34bc-4d13-ab8e-27e7119f07db
 #+begin_src haskell :results verbatim :exports both
@@ -336,24 +356,19 @@ instance Integral Integer -- Defined in ‘GHC.Real’
 instance Integral Word -- Defined in ‘GHC.Real’
 #+end_example
 
-indicates, whatever
-type ~a~ is, it must be "registered" with the type class
-~Integral~. We'll dive deeper into the whole type class system later,
-but for now just know that ~Integral~ provides whole-number division
-and remainder functions, such as ~rem~ which can then be customized by
-specific types.
+We'll dive deeper into the whole type class story later, but for now
+just know that ~Integral~ provides /generic/ whole-number division and
+remainder functions, ~quot~, ~rem~, ~div~, ~mod~, ~quotRem~, ~divMod~,
+and ~toInteger~, which are then customized by the specific types
+~Int~, ~Integer~. This output tells us that any type that wants to
+have the functions ~quot~, ~rem~, ..., ~toInteger~ needs to have a
+registered /instance/ with type class ~Integral~. Which means the
+types ~Int~, ~Integer~, and ~Word~ do indeed have their own specific
+versions of the basic functions ~quot~, ~rem~,...
 
-
-This output tells us that any type that wants to have the functions
-~quot~, ~rem~, ..., ~toInteger~ needs to have a registered /instance/
-with type class ~Integral~. Above, we see types the ~Int~, ~Integer~,
-and ~Word~ do indeed have their own specific versions of the basic
-functions ~quot~, ~rem~,...
-
-Now, back to ~divides d n = rem n d == 0~. We have really have just
-created a nice /is-defined-as/ wrapper for the /identity/ ~rem n d ==
-0~, i.e., we have a Haskell version of $d \mid n$. Let's look at its
-type
+Now, back to ~divides d n = rem n d == 0~. Which is really just a nice
+/is-defined-as/ wrapper for the /identity/ ~rem n d == 0~, i.e., we
+have created a Haskell version of $d \mid n$. Let's look at its type
 
 #+name: 2c92d4df-1f1b-4ed1-a70a-d9245a97059b
 #+begin_src haskell :results verbatim :exports both
@@ -363,36 +378,314 @@ type
 #+RESULTS: 2c92d4df-1f1b-4ed1-a70a-d9245a97059b
 : divides :: Integral a => a -> a -> Bool
 
-Here Haskell reports our ~divides~ takes two arguments that have
-instance registration with ~Integral~ and gives back a value of type
-~Boolean~. 
+Here Haskell reports ~divides~ takes two arguments of type ~a~,
+meaning, as we just discussed, they could be any of the three types
+instance registration with ~Integral~, and gives back a value of type
+~Boolean~. So what does this ~Boolean~ mean? A ~Boolean~ is a type of
+/truth value/. While the set of natural numbers $\mathbb{N} =
+\{0,1,2,\ldots\}$ is endless, the ~Boolean~ set is made up of just two
+elements, $\{\top, \bot\}$ (logic symbols for /top/ or /truth/ and
+/bottom/ or /falsity/) or in Haskell simply ~True~ and ~False~.
 
+In the type signature for ~divides~ We see the two input arguments ~n~
+and ~d~, but why does the code ~...rem n d == 0~ return as its value
+either a ~True~ or ~False~. Because in the realm of Haskell,
+/everything has a value/. While $sin^{2}\theta + cos^{2}\theta = 1$ is indeed an
+identity, what is the /value/ of this identity? Here we enter the
+realm of mathematical logic. While the value of the left-hand side,
+$sin^{2}\theta + cos^{2}\theta$, is whatever $\theta$ we plug in, and the value of the
+right-hand side, $1$, is just $1$, the /value of the identity as a
+whole/ is either true or false. And so the Haskell identity operator
+~(==)~ /returns the value ~True~ or ~False~
 
-⇲ We define $LD(n)$ as the least natural number greater than $1$ that
-divides $n$, or a /least divisor/.
+#+name: 7db9545a-cc55-450a-b3f8-e08b5b5c2cba
+#+begin_src haskell :results verbatim :exports both
+:t (==)
+#+end_src
 
-Every number has at least one divisor.[fn:8] Therefore, every number
+#+RESULTS: 7db9545a-cc55-450a-b3f8-e08b5b5c2cba
+: (==) :: Eq a => a -> a -> Bool
+
+Again, we see ~a~ as a type variable, meaning more than one type is
+possible. And we see reference to a type class. This time the ~Eq a
+=>~ indicates whatever actual types ~a~ is, those types must be
+registered with the type class ~Eq~. And what is ~Eq~?
+
+#+name: a7b19c2d-8b81-4e9b-89d9-1f3a6ca9d35b
+#+begin_src haskell :eval never :exports code
+:i Eq
+#+end_src
+
+#+begin_example
+type Eq :: * -> Constraint
+class Eq a where
+  (==) :: a -> a -> Bool
+  (/=) :: a -> a -> Bool
+  {-# MINIMAL (==) | (/=) #-}
+  	-- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Integer -- Defined in ‘GHC.Num.Integer’
+instance (Eq a, Eq b) => Eq (Either a b)
+  -- Defined in ‘Data.Either’
+instance Eq a => Eq (Maybe a) -- Defined in ‘GHC.Maybe’
+instance Eq a => Eq (Ratio a) -- Defined in ‘GHC.Real’
+...
+instance Eq Bool -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Char -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Double -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Float -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Int -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Ordering -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq a => Eq (Solo a)
+  -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Word -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq a => Eq [a] -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+#+end_example
+
+As the ellipsis (...) indicate, much was cut out for brevity. But of
+course the idea behind ~Eq~ is mathematical logic equality or
+*equivalence*[fn:9]
+
+⥤ *Side note* establishing equivalence \\
+
+It may be obvious that $1$ is equivalent to $1$, but what if we have
+created our own data type, say
+
+#+name: 929a7a61-6918-4f5f-9a89-502b66003760
+#+begin_src haskell :eval never :exports code
+data Color = Red | Yellow | Blue | Green deriving (Show,Read)
+#+end_src
+
+Can we /add/ these self-made colors? Not really
+
+#+name: 242f84f3-7270-4260-a8f3-26a8a926b562
+#+begin_src haskell :eval never :exports code
+Red + Yellow
+#+end_src
+
+#+begin_example
+<interactive>:628:5: error:
+    • No instance for (Num Color) arising from a use of ‘+’
+    • In the expression: Red + Yellow
+#+end_example
+
+...meaning our ~Color~ type does not have addition defined. The error
+message indicates the type class ~Num~ doesn't have an /instance/ of
+~Color~ registered with it. Can we /compare/ colors for order or
+equivalence? Not yet. But if we specifically create an instance in
+~Eq~ telling Haskell what is, e.g., equivalent
+
+#+name: dadbe877-e9c4-436e-843d-144005fef37d
+#+begin_src haskell :eval never :exports code
+instance Eq Color where
+  Red == Red = True      -- could also be (==) Red Red = True
+  Yellow == Yellow = True
+  Blue == Blue = True
+  Green == Green = True
+  _ == _ = False         -- by now anything else must be false
+#+end_src
+
+we now can test for equivalence
+
+#+name: c8a4b3f9-ed5c-4157-8595-10c069927433
+#+begin_src haskell :results verbatim :exports both
+Blue == Blue
+#+end_src
+
+#+RESULTS: c8a4b3f9-ed5c-4157-8595-10c069927433
+: True
+
+#+name: b5e6cda1-5ae5-4bd9-a037-73d1629a17ed
+#+begin_src haskell :results verbatim :exports both
+Red == Blue
+#+end_src
+
+#+RESULTS: b5e6cda1-5ae5-4bd9-a037-73d1629a17ed
+: False
+
+So we have a Haskell code version of math's $d$ /divides $n$. Let's
+move on.
+
+*** A /least divisor/
+
+⇲ We define $LD(n)$ as the least natural number /greater than $1$/
+that divides $n$, or the /least divisor/ of $n$.
+
+Every number has at least one divisor.[fn:10] Therefore, every number
 $n$ has a least divisor, $LD(n)$, of its set of divisors, even if that
-set has only one element.
+set has only one element. For example $12$, a composite number, has
+the set of divisors $\{2,3,4,6,12\}$ with $LD(12) = 2$. But what if
+the set of $LD(n)$ is just one number? What sort of number would $n$
+therefore be? Intuitively we know that if a number has only one
+divisor, it cannot be any sort of composite number; otherwise, the
+number would still have a divisor. But that's just our intuition...
 
+Consider the set of divisors of $12$ again: $\{2,3,4,6,12\}$. We see
+two primes to start with, $2$ and $3$---then non-prime composites,
+$4$, $6$, $12$. The least divisor in this set is $2$, and it is
+prime. What about $120$? The divisor set[fn:11] would be
+
+\begin{align*}
+\{2,3,4,5,6,8,10,12,15,20,24,30,40,60,120\}
+\end{align*}
+
+and we can get it with this Haskell code
+
+#+name: 94268e73-4fb6-465b-b810-fdd34c488c72<<94268e73-4fb6-465b-b810-fdd34c488c72>>
+#+begin_src haskell :eval never :exports code
+divisors :: Integer -> [Integer]
+divisors n = [d | d <- [2..abs n], abs n `mod` d == 0]
+#+end_src
+
+testing
+
+#+name: 78636291-ee0d-4c8e-a94d-0dba38caad3d
+#+begin_src haskell :results verbatim :exports both
+divisors 120
+#+end_src
+
+#+RESULTS: 78636291-ee0d-4c8e-a94d-0dba38caad3d
+: [2,3,4,5,6,8,10,12,15,20,24,30,40,60,120]
+
+Again, we see a pattern where we start with divisors that are prime
+numbers, then (if any) composite numbers appear.[fn:12] In both
+examples notice that the square the $LD(n)$, e.g., with $120$ squaring
+$2$ is $4$, i.e., less than $120$. Why is this germane?
+
+Consider the composite number $143$. Its divisors are two prime
+numbers, $11$ and $13$. Now, $11^2 = 121$, while $13^2 = 169$, i.e.,
+the square of the former is less than $143$ and the square of the
+latter is greater than $143$. Neat observation, but does it help us
+ultimately in testing a number for prime-ness? Yes, and we'll find out
+why below.
+
+
+@@html:<font color = "#4715b3">@@
 ⇲ Proposition
-
 1. If $n > 1$ then $LD(n)$ is a prime number.
 2. If $n > 1$ and $n$ is not a prime number, then $(LD(n))^2 \le n$
+@@html:</font>@@
 
 The gist of these two implications will be turned into code that will
-test if a number is prime. 
+help test if a number is prime.
 
+Why concentrate on the least divisor? The first part of the
+proposition will anchor the fact that the least divisor is always a
+prime. This will be necessary for when a number is analyzed for
+primeness and no divisor less than the number itself is found. We need
+to be sure that least divisor is indeed prime.
 
+Besides just our intuitive notion, we can prove this. We'll employ
+/contradiction/[fn:13], i.e., we set up a contradiction to what we
+want to prove, then exposing it as not true. In this case, let's
+assume $c = LD(n)$ and $c$ is /not/ prime, a contradiction of our
+original statement. But if $c$ is not prime it must then be a
+composite number itself, e.g., $c = a \cdot b$ where $1 \lt a \lt c$. But that
+would mean $a$ now divides $n$, and $a$ is smaller than $c$ the
+supposed $LD(n)$. Therefore, a $LD(n)$ must be prime.
 
+Now, before attacking the second part, let's do an example.
 
+@@html:<font color = "#0d3db3">@@
+𝖟𝕭: Is $599$ a prime?
+@@html:</font>@@
 
+If $599$ is composite, then $599 = d \cdot e$ with $d,e \gt 1$. This implies
 
+\begin{align*}
+d &\le \sqrt{599} \quad or \\
+e &\le \sqrt{599}
+\end{align*}
 
+because if both $d$ and $e$ were greater than $\sqrt{599}$ that would
+make $d \cdot e$ greater than $\sqrt{599} \cdot \sqrt{599} = 599$, which it
+can't be. So if $599$ is composite, it has a factor between $2$ and $\lfloor
+\sqrt{599} \rfloor$[fn:14] or $24$.
 
+At this point we can guess that to show $599$ is prime, we need to
+show it is not a composite number. $24^2 = 576$, the /floor/ of
+$\sqrt{599}$, but $25^2 = 625$ which is overshoot. We can restate the
+second part of the proposition thusly
 
+@@html:<font color = "#4715b3">@@ ⇲ Proposition \\
+Let $n$ be a natural number. If $n$ is /composite/ then $n$ has a
+prime divisor between $2$ and $\lfloor\sqrt{n}\rfloor$. Thus, if $n \gt 1$ and $n$
+has /no/ prime divisors between $2$ and $\lfloor\sqrt{n}\rfloor$, then $n$ must be
+prime.  @@html:</font>@@
 
+which allows us to quit looking for a $LD(n)$, i.e., some prime, long
+before we get to $599$. If we test this on $599$ we see that none of
+the primes between $2$ and $24$, namely the set
+$\{2,3,5,7,11,13,17,19,23\}$ divides $599$ evenly; therefore, $599$ is
+prime.
 
+So we have our main tool for establishing primality, namely,
+$LD(n)$. Let's put it into code. We'll break it into two parts
+
+#+name: 4d37a5ff-41e7-4efb-83ec-bdf53b60e009
+#+begin_src haskell :eval never :exports code
+ld n = ldf 2 n
+ldf k n | divides k n = k
+        | k^2 > n = n
+        | otherwise = ldf (k+1) n
+#+end_src
+
+~ld~ is just a wrapper to feed our number in question into ~ldf~, the
+"least divisor function." What we see with ~ldf~ is Haskell's
+*equation guarding*, which allows us to set up test *cases*. ~ldf~
+first tries ~divides~ (which yields either ~True~ or ~False~) on the
+incoming number argument ~n~ using the argument ~k~. We see ~ldf~
+begins with the lowest prime $2$ for ~k~. So if $2 \mid n$ then we're
+through, the $LD(n) = k$. But if it is not then we move on to the next
+/case/, namely, Is ~k~ squared greater than ~n~? Again, this yields a
+~True~ or ~False~. If ~True~, then ~n~ is the least divisor. But if
+this second test case also fails, we go onto the third, which is not a
+normal test case, but a hardwired ~True~, i.e., we're going with this
+case---because there are no other possible situations. What's unique
+about this last case is that it simply calls itself, but with ~k~
+incremented by $1$. In other words, we have a repeating mechanism
+whereby we can march up through the whole numbers one after the other
+testing each. This is *recursion*, and we'll soon be exploring it in
+depth. But for now just accept that ~ldf~ is calling itself, driving
+inside itself, so to speak, to try another time.
+
+Let's investigate the number $5$ and how ~ldf~ handles it
+
+#+name: 69a1dad9-38c5-471b-8ac5-7743b2380db9
+#+begin_src haskell :results verbatim :exports both
+ld 5
+#+end_src
+
+#+RESULTS: 69a1dad9-38c5-471b-8ac5-7743b2380db9
+: 5
+
+How did ~ld~ find this? In the first iteration, the first test case,
+$2 \mid 5$, fails, followed by the second test case, ~2^2 > 5~, which
+is also ~False~. Hence, recursion ensues with ~ldf 3 5~. On the first
+test case ~divides 3 5~ also fails, but then the second test case,
+~3^2 > 5~ is ~True~; and so we know $5$ is indeed prime. And so we
+have turned our Proposition theorems into an algorithm and working
+code! Let's see a more general (non-abbreviated) explanation of
+/equation guarding/
+
+#+name: 3f177117-e78a-4dbf-af1f-e58644006648
+#+begin_src haskell :eval never :exports code
+foo t | condition_1 = body_1
+foo t | condition_2 = body_2
+foo t | condition_3 = body_3
+foo t |             = body_4
+#+end_src
+
+So now let's define our first version of a /test for primes/
+
+#+name: 6cf24bbe-c37f-4480-8b57-79509a9adc40
+#+begin_src haskell :eval never :exports code
+prime0 n | n < 1 = error "Not a positive integer"
+         | n == 1 = False
+         | otherwise = ld n == n
+#+end_src
+
+When we compile this, our Haskell REPL complains that we didn't
+provide a type signature for ~prime0~ and then suggests one
 
 
 
@@ -468,29 +761,51 @@ math is out in the universe, later.
 environment. No magic, just people taking math out of books and
 putting it into their technology.
 
-[fn:3] This is not serious number factoring code. The "art" of
+[fn:3] Fundamental to Peano's approach is recursion and induction,
+which we will explore in depth soon.
+
+[fn:4] This is not serious number factoring code. The "art" of
 factoring numbers is at the heart of modern cryptography. In fact, it
 is still unknown whether factoring code can be written that can factor
 any number in a reasonable time.
 
-[fn:4] In higher math the *natural counting numbers*
+[fn:5] In higher math the *natural counting numbers*
 $\{1,2,3,4,\ldots\}$ are signified by $\mathbb{N}$, while the
 *integers* $\{\ldots,-2,-1,0,1,2,\ldots\}$ are $\mathbb{Z}$. Both are
 whole numbers.
 
-[fn:5] In Haskell, everything has a value. This is an abstraction
+[fn:6] In Haskell, everything has a value. This is an abstraction
 meant to keep things highly mathematical, i.e., above imperative
 programming where evaluating code leads to state changes. With
 Haskell, the evaluation of code yields values intentionally not
 involved with state changes.
 
-[fn:6] The [[https://en.wikipedia.org/wiki/Pythagorean_trigonometric_identity][proof/derivation]] of $sin^{2}\theta + cos^{2}\theta = 1$ is usually included
+[fn:7] The [[https://en.wikipedia.org/wiki/Pythagorean_trigonometric_identity][proof/derivation]] of $sin^{2}\theta + cos^{2}\theta = 1$ is usually included
 in trigonometry texts. This is just one proven identity. But the
 general idea of *[[https://en.wikipedia.org/wiki/Rewriting][term rewriting]]*, i.e., the art of redoing an
 expression into an identical one, is an important field in math and
 computability.
 
-[fn:7] ~:t~ and ~:i~ are your best friends when navigating the Haskell
+[fn:8] ~:t~ and ~:i~ are your best friends when navigating the Haskell
 type world.
 
-[fn:8] Prime number have exactly one divisor greater than $1$.
+[fn:9] In mathematical logic statements, expressions $p$ and $q$ are
+*[[https://en.wikipedia.org/wiki/Logical_equivalence][logically equivalent]]* if they have the same /truth value/ in every
+case of possible inputs. Moral of the story: Keep /is-defined-as/ ~=~
+separate from /equivalence/ ~==~ (or non-equivalence ~/+~).
+
+[fn:10] A prime number has exactly one divisor greater than $1$, i.e.,
+the prime number itself. Remember this for later...
+
+[fn:11] ...or the /factors/ of $120$.
+
+[fn:12] Let's not forget the /Fundamental Theorem of Arithmetic/,
+i.e., that $120$ can also be expressed as product of powers of those
+first three primes.
+
+[fn:13] See [[https://en.wikipedia.org/wiki/Proof_by_contradiction][proof by contradiction]].
+
+[fn:14] The *floor* ($\lfloor\; \rfloor$) of $\sqrt{599}$? First, get the square
+root of $599$, which is $24.474476501040833$; so the /lowest/ whole
+number, the floor, would be $24$. The $\lceil\sqrt{599}\rceil$, or the *ceiling*
+of the square root of $599$ would be $25$.

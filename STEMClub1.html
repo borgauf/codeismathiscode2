@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-02-28 Fri 10:14 -->
+<!-- 2025-03-03 Mon 17:04 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -107,16 +107,16 @@ pre.example {clear: none; }
 </nav>
 </div>
 </p>
-<section id="outline-container-org0ce0959" class="outline-2">
-<h2 id="org0ce0959">STEM Club 1</h2>
+<section id="outline-container-orgfcdabc2" class="outline-2">
+<h2 id="orgfcdabc2">STEM Club 1</h2>
 </section>
-<section id="outline-container-org8948797" class="outline-2">
-<h2 id="org8948797"></h2>
-<div class="outline-text-2" id="text-org8948797">
+<section id="outline-container-org6d5213f" class="outline-2">
+<h2 id="org6d5213f"></h2>
+<div class="outline-text-2" id="text-org6d5213f">
 </div>
-<div id="outline-container-orgb948b55" class="outline-3">
-<h3 id="orgb948b55">Doing math with computers</h3>
-<div class="outline-text-3" id="text-orgb948b55">
+<div id="outline-container-orgf30939b" class="outline-3">
+<h3 id="orgf30939b">Doing math with computers</h3>
+<div class="outline-text-3" id="text-orgf30939b">
 <p>
 <b>Q</b>: Why do we do STEM? <br>
 <b>A</b>: Because somebody will pay us to do science, technology,
@@ -124,7 +124,7 @@ engineering, and especially mathematics for them.
 </p>
 
 <p>
-<b><i>Where</i> is math?</b><label id='fnr.1' for='fnr-in.1.572549' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.572549' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+<b><i>Where</i> is math?</b><label id='fnr.1' for='fnr-in.1.8329943' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.8329943' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
 We&rsquo;ll discuss another possibility, namely, the Platonic belief
 math is out in the universe, later.
 </span>
@@ -144,7 +144,7 @@ expressed in software.
 </p>
 
 <p>
-<b>How do computers &ldquo;compute&rdquo; stuff?</b><label id='fnr.2' for='fnr-in.2.4993595' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.4993595' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+<b>How do computers &ldquo;compute&rdquo; stuff?</b><label id='fnr.2' for='fnr-in.2.127195' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.127195' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
 Let&rsquo;s watch <a href="https://youtu.be/8xPRn9weLYg?si=5fplvY_vDQD2dbHb">this video</a> realistically depicting a STEM
 environment. No magic, just people taking math out of books and
 putting it into their technology.
@@ -154,29 +154,33 @@ putting it into their technology.
 <ul class="org-ul">
 <li>Develop algorithms</li>
 <li>Encode algorithms in programming language</li>
-<li>Run code in device <br></li>
+<li>Run code in device</li>
 </ul>
+
 <p>
-<br>
+In other words, we&rsquo;re taking the math out of books, papers, off
+blackboards, out of brains, reverse-engineering mechanical
+devices&#x2014;and putting in into digital computing devices.
 </p>
 </div>
 </div>
-<div id="outline-container-org0c8fbd7" class="outline-3">
-<h3 id="org0c8fbd7">Basic fractions on the computer</h3>
-<div class="outline-text-3" id="text-org0c8fbd7">
+<div id="outline-container-org85ab081" class="outline-3">
+<h3 id="org85ab081">Basic fractions on the computer</h3>
+<div class="outline-text-3" id="text-org85ab081">
 <p>
-Let&rsquo;s go down the rabbit hole of how to do fractions&#x2014;adding,
-subtracting unlike denominator fractions&#x2014;on the computer. Here we
-enter The world of number theory and its concentration on the behavior
-of prime numbers. The first step will be factoring numbers
+Let&rsquo;s go down the rabbit hole of how to do fractions&#x2014;specifically,
+<i>adding, subtracting unlike denominator fractions</i>&#x2014;on the
+computer. Here we enter The world of number theory and its
+concentration on the behavior of prime numbers.
 </p>
 
 <p>
 <font color = "#4715b3"> ⥤ A <b>prime number</b> is an integer
 that can only be divided by \(1\) or itself.  </font> <br>
 <br>
-&#x2026;IOW, a prime number is <i>not</i> a <b>composite number</b>, i.e., a multiple
-of other numbers.
+A prime number is <i>not</i> a <b>composite number</b>, i.e., a multiple of
+other numbers. This means there is no number \(d\) between \(1\) and the
+prime \(p\) that will evenly divide it.
 </p>
 
 <p>
@@ -206,16 +210,13 @@ these <i>composite numbers</i> broken down into products of prime powers</li>
 128 &= 2^7 \\
 \ldots
 \end{align*} 
-<p>
-<br>
-</p>
 
 <p>
 Let&rsquo;s use Scheme&rsquo;s function <code>expt</code> to find \(2^7\)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org2dc1f56"><span class="org-rainbow-delimiters-depth-1">(</span>expt 2 7<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org0313799"><span class="org-rainbow-delimiters-depth-1">(</span>expt 2 7<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -225,9 +226,23 @@ Let&rsquo;s use Scheme&rsquo;s function <code>expt</code> to find \(2^7\)
 
 
 <p>
+This idea of multiplying unique sets of primes to get any whole number
+is an almost mysterious thing in mathematics. The <a href="https://en.wikipedia.org/wiki/Peano_axioms">Peano Axioms</a>,
+supposedly the most bedrock foundation of mathematics, says if we
+start with zero we can get any of the natural counting numbers,
+\(\mathbb{N}\), by simply adding &ldquo;one more&rdquo; over and over.<label id='fnr.3' for='fnr-in.3.5642681' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.5642681' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+Fundamental to Peano&rsquo;s approach is recursion and induction,
+which we will explore in depth soon.
+</span> But we
+can also &ldquo;get&rdquo; any \(n \in \mathbb{N}\) by multiplying sets of
+primes. Hence, we can almost say, prime numbers <i>necessitate</i> (bring
+into existence?) multiplication. At the very least primes beg their multiplication.
+</p>
+
+<p>
 Let&rsquo;s jump ahead. <a href="https://gemini.google.com/app">Google Gemini</a> produced this Haskell code when the
 keywords <i>haskell prime factors of a number</i> were entered into a
-Gemini search<label id='fnr.3' for='fnr-in.3.2232248' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.2232248' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+Gemini search<label id='fnr.4' for='fnr-in.4.6509637' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.6509637' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
 This is not serious number factoring code. The &ldquo;art&rdquo; of
 factoring numbers is at the heart of modern cryptography. In fact, it
 is still unknown whether factoring code can be written that can factor
@@ -236,7 +251,7 @@ any number in a reasonable time.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org7161a33"><span class="org-haskell-definition">primeFactors</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-type">Integer</span><span class="org-rainbow-delimiters-depth-1">]</span> 
+<pre class="src src-haskell" id="org8dfee0a"><span class="org-haskell-definition">primeFactors</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-type">Integer</span><span class="org-rainbow-delimiters-depth-1">]</span> 
 <span class="org-haskell-definition">primeFactors</span> n <span class="org-haskell-operator">=</span> go <span class="org-rainbow-delimiters-depth-1">[</span>2<span class="org-haskell-operator">..</span><span class="org-rainbow-delimiters-depth-1">]</span> n
   <span class="org-haskell-keyword">where</span>
     go primes num 
@@ -248,7 +263,7 @@ any number in a reasonable time.
 </div>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org0043671"><span class="org-haskell-definition">primeFactors</span> 120
+<pre class="src src-haskell" id="orgebfd51c"><span class="org-haskell-definition">primeFactors</span> 120
 </pre>
 </div>
 
@@ -264,11 +279,11 @@ Haskell Road to Logic, Maths, and Programming</i></a> by Doets and van
 Eijck. They start with the
 </p>
 </div>
-<div id="outline-container-org6ee8555" class="outline-4">
-<h4 id="org6ee8555">Prime number test</h4>
-<div class="outline-text-4" id="text-org6ee8555">
+<div id="outline-container-org7a794ef" class="outline-4">
+<h4 id="org7a794ef">Prime number test</h4>
+<div class="outline-text-4" id="text-org7a794ef">
 <p>
-Prime numbers: \(2, 3, 5, 7, 11, 13,\ldots\)<label id='fnr.4' for='fnr-in.4.9670868' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.9670868' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+Prime numbers: \(2, 3, 5, 7, 11, 13,\ldots\)<label id='fnr.5' for='fnr-in.5.9358773' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.9358773' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
 In higher math the <b>natural counting numbers</b>
 \(\{1,2,3,4,\ldots\}\) are signified by \(\mathbb{N}\), while the
 <b>integers</b> \(\{\ldots,-2,-1,0,1,2,\ldots\}\) are \(\mathbb{Z}\). Both are
@@ -305,7 +320,7 @@ Now, let&rsquo;s turn <b>divides</b> into code
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgff52af2"><span class="org-haskell-definition">divides</span> d n <span class="org-haskell-operator">=</span> rem n d <span class="org-haskell-operator">==</span> 0
+<pre class="src src-haskell" id="org0e605d2"><span class="org-haskell-definition">divides</span> d n <span class="org-haskell-operator">=</span> rem n d <span class="org-haskell-operator">==</span> 0
 </pre>
 </div>
 
@@ -340,7 +355,7 @@ Unfortunately, two symbols are used to indicate identity. For example
 
 <p>
 uses the \(=\) equals sign to indicate <i>identical values</i> are guaranteed
-given any specific \(a\) or \(b\).<label id='fnr.5' for='fnr-in.5.8196407' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.8196407' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+given any specific \(a\) or \(b\).<label id='fnr.6' for='fnr-in.6.1952839' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.1952839' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
 In Haskell, everything has a value. This is an abstraction
 meant to keep things highly mathematical, i.e., above imperative
 programming where evaluating code leads to state changes. With
@@ -355,7 +370,7 @@ sin^{2}\theta + cos^{2}\theta = 1
 
 <p>
 Again, we mean the left- and right-hand sides are identical
-mathematically, although they&rsquo;re obviously different.<label id='fnr.6' for='fnr-in.6.7200933' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.7200933' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+mathematically, although they&rsquo;re obviously different.<label id='fnr.7' for='fnr-in.7.7368631' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.7368631' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
 The <a href="https://en.wikipedia.org/wiki/Pythagorean_trigonometric_identity">proof/derivation</a> of \(sin^{2}\theta + cos^{2}\theta = 1\) is usually included
 in trigonometry texts. This is just one proven identity. But the
 general idea of <b><a href="https://en.wikipedia.org/wiki/Rewriting">term rewriting</a></b>, i.e., the art of redoing an
@@ -375,7 +390,7 @@ remainder of dividing the first argument by the second
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org0c2fec5"><span class="org-haskell-definition">rem</span> 8 4
+<pre class="src src-haskell" id="org5b806d2"><span class="org-haskell-definition">rem</span> 8 4
 </pre>
 </div>
 
@@ -385,7 +400,7 @@ remainder of dividing the first argument by the second
 
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgf42ba8d"><span class="org-haskell-definition">rem</span> 9 5
+<pre class="src src-haskell" id="org6017210"><span class="org-haskell-definition">rem</span> 9 5
 </pre>
 </div>
 
@@ -402,16 +417,19 @@ remainder.
 <p>
 In Haskell, being a <b>typed language</b> means that every expression in
 the program has a type&#x2014;such as integer, real number, characters in
-an alphabet, etc.&#x2014;and these types are checked by the compiler to
-make sure we&rsquo;re not doing something strange, e.g., adding \(5\) to \(z\),
-before the program is run. This type checking is a fundamental part of
-Haskell&rsquo;s design and contributes significantly to its safety,
-reliability, and expressiveness. Asking Haskell for the <b>type</b>
-information of <code>rem</code>
+an alphabet, etc.&#x2014;and these types are checked by the Haskell
+compiler to make sure we&rsquo;re not doing something strange, e.g., adding
+the number \(5\) to the letter \(z\), before the program is run. This type
+checking is a fundamental part of Haskell&rsquo;s design and contributes
+significantly to its safety, reliability, and expressiveness. The
+Haskell REPL command <code>:type</code> (<code>:t</code> for short) will give us back the
+<i>type signature</i> of <code>rem</code>, i.e., what type(s) <code>rem</code> can take for input
+arguments, how many, and what it will return as its value when
+evaluated
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org5c0e423"><span class="org-haskell-constructor">:</span>t rem
+<pre class="src src-haskell" id="org262d4f4"><span class="org-haskell-constructor">:</span>t rem
 </pre>
 </div>
 
@@ -421,10 +439,7 @@ rem :: Integral a =&gt; a -&gt; a -&gt; a
 
 
 <p>
-The Haskell REPL command <code>:type</code> (<code>:t</code> for short) gives us back the
-<i>type signature</i> of <code>rem</code>, i.e., what type(s) can take for input
-arguments, how many, and what it will return as its value when
-evaluated. In this case <code>a</code> is a <b>unconstrained type variable</b> instead
+In this case <code>a</code> is a <b>unconstrained type variable</b> instead
 of one specific type. This means <code>rem</code> can take different types for
 input. What different types? The signature starts with <code>Integral a
 =&gt;</code>, which means any type of the <code>Integral</code> class. Hold that
@@ -432,9 +447,9 @@ thought&#x2026;
 </p>
 
 <p>
-Now, to the right of <code>Integral =&gt;</code> we have the chain <code>a -&gt; a -&gt;
-a</code>. This is the actual breakdown of the function type-wise. The type
-of the function&rsquo;s output is always the last symbol on the far right, while
+To the right of <code>Integral =&gt;</code> we see the chain <code>a -&gt; a -&gt; a</code>. This is
+the actual breakdown of the function type-wise. The type of the
+function&rsquo;s output is always the last symbol on the far right, while
 the <code>a -&gt; a</code> indicates two input arguments. Which makes sense---<code>rem</code>
 takes two arguments and returns one answer.
 </p>
@@ -442,20 +457,20 @@ takes two arguments and returns one answer.
 <p>
 Back to <code>Integral</code>. Which is a <b>type class</b> declared internally in
 Haskell. The <code>Integral a =&gt;</code> prefix in the type signature of <code>rem</code>
-says <code>a</code> can be any of the types that have &ldquo;registered&rdquo; with the type
-class <code>Integral</code>. Let&rsquo;s unpack the <code>Integral</code> type class with the
-Haskell REPL command <code>:info</code> (or just <code>:i</code>)<label id='fnr.7' for='fnr-in.7.2535754' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.2535754' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+says <code>a</code> can be any of the individual types that have &ldquo;registered&rdquo;
+with the type class <code>Integral</code>. Let&rsquo;s unpack the <code>Integral</code> type class
+with the Haskell REPL command <code>:info</code> (or just <code>:i</code>)<label id='fnr.8' for='fnr-in.8.1345053' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.1345053' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
 <code>:t</code> and <code>:i</code> are your best friends when navigating the Haskell
 type world.
 </span>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orge63ca02"><span class="org-haskell-constructor">:</span>info <span class="org-haskell-constructor">Integral</span>
+<pre class="src src-haskell" id="orgff53ab8"><span class="org-haskell-constructor">:</span>info <span class="org-haskell-constructor">Integral</span>
 </pre>
 </div>
 
-<pre class="example" id="org819e6b8">
+<pre class="example" id="org7702441">
 type Integral :: * -&gt; Constraint
 class (Real a, Enum a) =&gt; Integral a where
   quot :: a -&gt; a -&gt; a
@@ -473,32 +488,25 @@ instance Integral Word -- Defined in ‘GHC.Real’
 </pre>
 
 <p>
-indicates, whatever
-type <code>a</code> is, it must be &ldquo;registered&rdquo; with the type class
-<code>Integral</code>. We&rsquo;ll dive deeper into the whole type class system later,
-but for now just know that <code>Integral</code> provides whole-number division
-and remainder functions, such as <code>rem</code> which can then be customized by
-specific types.
-</p>
-
-
-<p>
-This output tells us that any type that wants to have the functions
-<code>quot</code>, <code>rem</code>, &#x2026;, <code>toInteger</code> needs to have a registered <i>instance</i>
-with type class <code>Integral</code>. Above, we see types the <code>Int</code>, <code>Integer</code>,
-and <code>Word</code> do indeed have their own specific versions of the basic
-functions <code>quot</code>, <code>rem</code>,&#x2026;
+We&rsquo;ll dive deeper into the whole type class story later, but for now
+just know that <code>Integral</code> provides <i>generic</i> whole-number division and
+remainder functions, <code>quot</code>, <code>rem</code>, <code>div</code>, <code>mod</code>, <code>quotRem</code>, <code>divMod</code>,
+and <code>toInteger</code>, which are then customized by the specific types
+<code>Int</code>, <code>Integer</code>. This output tells us that any type that wants to
+have the functions <code>quot</code>, <code>rem</code>, &#x2026;, <code>toInteger</code> needs to have a
+registered <i>instance</i> with type class <code>Integral</code>. Which means the
+types <code>Int</code>, <code>Integer</code>, and <code>Word</code> do indeed have their own specific
+versions of the basic functions <code>quot</code>, <code>rem</code>,&#x2026;
 </p>
 
 <p>
-Now, back to <code>divides d n = rem n d == 0</code>. We have really have just
-created a nice <i>is-defined-as</i> wrapper for the <i>identity</i> <code>rem n d ==
-0</code>, i.e., we have a Haskell version of \(d \mid n\). Let&rsquo;s look at its
-type
+Now, back to <code>divides d n = rem n d == 0</code>. Which is really just a nice
+<i>is-defined-as</i> wrapper for the <i>identity</i> <code>rem n d == 0</code>, i.e., we
+have created a Haskell version of \(d \mid n\). Let&rsquo;s look at its type
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgd9cd98a"><span class="org-haskell-constructor">:</span>t divides
+<pre class="src src-haskell" id="orgaed2590"><span class="org-haskell-constructor">:</span>t divides
 </pre>
 </div>
 
@@ -508,49 +516,419 @@ divides :: Integral a =&gt; a -&gt; a -&gt; Bool
 
 
 <p>
-Here Haskell reports our <code>divides</code> takes two arguments that have
-instance registration with <code>Integral</code> and gives back a value of type
-<code>Boolean</code>. 
+Here Haskell reports <code>divides</code> takes two arguments of type <code>a</code>,
+meaning, as we just discussed, they could be any of the three types
+instance registration with <code>Integral</code>, and gives back a value of type
+<code>Boolean</code>. So what does this <code>Boolean</code> mean? A <code>Boolean</code> is a type of
+<i>truth value</i>. While the set of natural numbers \(\mathbb{N} =
+\{0,1,2,\ldots\}\) is endless, the <code>Boolean</code> set is made up of just two
+elements, \(\{\top, \bot\}\) (logic symbols for <i>top</i> or <i>truth</i> and
+<i>bottom</i> or <i>falsity</i>) or in Haskell simply <code>True</code> and <code>False</code>.
 </p>
+
+<p>
+In the type signature for <code>divides</code> We see the two input arguments <code>n</code>
+and <code>d</code>, but why does the code <code>...rem n d == 0</code> return as its value
+either a <code>True</code> or <code>False</code>. Because in the realm of Haskell,
+<i>everything has a value</i>. While \(sin^{2}\theta + cos^{2}\theta = 1\) is indeed an
+identity, what is the <i>value</i> of this identity? Here we enter the
+realm of mathematical logic. While the value of the left-hand side,
+\(sin^{2}\theta + cos^{2}\theta\), is whatever \(\theta\) we plug in, and the value of the
+right-hand side, \(1\), is just \(1\), the <i>value of the identity as a
+whole</i> is either true or false. And so the Haskell identity operator
+<code>(==)</code> /returns the value <code>True</code> or <code>False</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org406fa16"><span class="org-haskell-constructor">:</span>t <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">==</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(==) :: Eq a =&gt; a -&gt; a -&gt; Bool
+</pre>
 
 
 <p>
-⇲ We define \(LD(n)\) as the least natural number greater than \(1\) that
-divides \(n\), or a <i>least divisor</i>.
+Again, we see <code>a</code> as a type variable, meaning more than one type is
+possible. And we see reference to a type class. This time the <code>Eq a
+=&gt;</code> indicates whatever actual types <code>a</code> is, those types must be
+registered with the type class <code>Eq</code>. And what is <code>Eq</code>?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org46190d2"><span class="org-haskell-constructor">:</span>i <span class="org-haskell-constructor">Eq</span>
+</pre>
+</div>
+
+<pre class="example" id="orgdcdebe5">
+type Eq :: * -&gt; Constraint
+class Eq a where
+  (==) :: a -&gt; a -&gt; Bool
+  (/=) :: a -&gt; a -&gt; Bool
+  {-# MINIMAL (==) | (/=) #-}
+  	-- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Integer -- Defined in ‘GHC.Num.Integer’
+instance (Eq a, Eq b) =&gt; Eq (Either a b)
+  -- Defined in ‘Data.Either’
+instance Eq a =&gt; Eq (Maybe a) -- Defined in ‘GHC.Maybe’
+instance Eq a =&gt; Eq (Ratio a) -- Defined in ‘GHC.Real’
+...
+instance Eq Bool -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Char -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Double -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Float -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Int -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Ordering -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq a =&gt; Eq (Solo a)
+  -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq Word -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+instance Eq a =&gt; Eq [a] -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
+</pre>
+
+<p>
+As the ellipsis (&#x2026;) indicate, much was cut out for brevity. But of
+course the idea behind <code>Eq</code> is mathematical logic equality or
+<b>equivalence</b><label id='fnr.9' for='fnr-in.9.7716984' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.7716984' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+In mathematical logic statements, expressions \(p\) and \(q\) are
+<b><a href="https://en.wikipedia.org/wiki/Logical_equivalence">logically equivalent</a></b> if they have the same <i>truth value</i> in every
+case of possible inputs. Moral of the story: Keep <i>is-defined-as</i> <code>=</code>
+separate from <i>equivalence</i> <code>==</code> (or non-equivalence <code>/+</code>).
+</span>
 </p>
 
 <p>
-Every number has at least one divisor.<label id='fnr.8' for='fnr-in.8.8263294' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.8263294' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
-Prime number have exactly one divisor greater than \(1\).
+⥤ <b>Side note</b> establishing equivalence <br>
+</p>
+
+<p>
+It may be obvious that \(1\) is equivalent to \(1\), but what if we have
+created our own data type, say
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org1f49030"><span class="org-haskell-keyword">data</span> <span class="org-haskell-type">Color</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">Red</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Yellow</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Blue</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Green</span> <span class="org-haskell-keyword">deriving</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">Show</span>,<span class="org-haskell-constructor">Read</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Can we <i>add</i> these self-made colors? Not really
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgf1e86c7"><span class="org-haskell-constructor">Red</span> <span class="org-haskell-definition">+</span> <span class="org-haskell-constructor">Yellow</span>
+</pre>
+</div>
+
+<pre class="example" id="org856dc83">
+&lt;interactive&gt;:628:5: error:
+    • No instance for (Num Color) arising from a use of ‘+’
+    • In the expression: Red + Yellow
+</pre>
+
+<p>
+&#x2026;meaning our <code>Color</code> type does not have addition defined. The error
+message indicates the type class <code>Num</code> doesn&rsquo;t have an <i>instance</i> of
+<code>Color</code> registered with it. Can we <i>compare</i> colors for order or
+equivalence? Not yet. But if we specifically create an instance in
+<code>Eq</code> telling Haskell what is, e.g., equivalent
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org4c322af"><span class="org-haskell-keyword">instance</span> <span class="org-haskell-type">Eq</span> <span class="org-haskell-type">Color</span> <span class="org-haskell-keyword">where</span>
+  <span class="org-haskell-constructor">Red</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-constructor">Red</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">True</span>      <span class="org-comment-delimiter">-- </span><span class="org-comment">could also be (==) Red Red = True</span>
+  <span class="org-haskell-constructor">Yellow</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-constructor">Yellow</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">True</span>
+  <span class="org-haskell-constructor">Blue</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-constructor">Blue</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">True</span>
+  <span class="org-haskell-constructor">Green</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-constructor">Green</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">True</span>
+  <span class="org-haskell-keyword">_</span> <span class="org-haskell-operator">==</span> <span class="org-haskell-keyword">_</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">False</span>         <span class="org-comment-delimiter">-- </span><span class="org-comment">by now anything else must be false</span>
+</pre>
+</div>
+
+<p>
+we now can test for equivalence
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org72ffebb"><span class="org-haskell-constructor">Blue</span> <span class="org-haskell-definition">==</span> <span class="org-haskell-constructor">Blue</span>
+</pre>
+</div>
+
+<pre class="example">
+True
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org17c6411"><span class="org-haskell-constructor">Red</span> <span class="org-haskell-definition">==</span> <span class="org-haskell-constructor">Blue</span>
+</pre>
+</div>
+
+<pre class="example">
+False
+</pre>
+
+
+<p>
+So we have a Haskell code version of math&rsquo;s \(d\) /divides \(n\). Let&rsquo;s
+move on.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd1f7e75" class="outline-4">
+<h4 id="orgd1f7e75">A <i>least divisor</i></h4>
+<div class="outline-text-4" id="text-orgd1f7e75">
+<p>
+⇲ We define \(LD(n)\) as the least natural number <i>greater than \(1\)</i>
+that divides \(n\), or the <i>least divisor</i> of \(n\).
+</p>
+
+<p>
+Every number has at least one divisor.<label id='fnr.10' for='fnr-in.10.8583715' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.8583715' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
+A prime number has exactly one divisor greater than \(1\), i.e.,
+the prime number itself. Remember this for later&#x2026;
 </span> Therefore, every number
 \(n\) has a least divisor, \(LD(n)\), of its set of divisors, even if that
-set has only one element.
+set has only one element. For example \(12\), a composite number, has
+the set of divisors \(\{2,3,4,6,12\}\) with \(LD(12) = 2\). But what if
+the set of \(LD(n)\) is just one number? What sort of number would \(n\)
+therefore be? Intuitively we know that if a number has only one
+divisor, it cannot be any sort of composite number; otherwise, the
+number would still have a divisor. But that&rsquo;s just our intuition&#x2026;
 </p>
 
 <p>
-⇲ Proposition
+Consider the set of divisors of \(12\) again: \(\{2,3,4,6,12\}\). We see
+two primes to start with, \(2\) and $3$&#x2014;then non-prime composites,
+\(4\), \(6\), \(12\). The least divisor in this set is \(2\), and it is
+prime. What about \(120\)? The divisor set<label id='fnr.11' for='fnr-in.11.3286090' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.3286090' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
+&#x2026;or the <i>factors</i> of \(120\).
+</span> would be
 </p>
 
+\begin{align*}
+\{2,3,4,5,6,8,10,12,15,20,24,30,40,60,120\}
+\end{align*}
+
+<p>
+and we can get it with this Haskell code
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org6a61510"><span class="org-haskell-definition">divisors</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-type">Integer</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-haskell-definition">divisors</span> n <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span>d <span class="org-haskell-operator">|</span> d <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span>2<span class="org-haskell-operator">..</span>abs n<span class="org-rainbow-delimiters-depth-2">]</span>, abs n <span class="org-haskell-operator">`mod`</span> d <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<p>
+testing
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org038a23b"><span class="org-haskell-definition">divisors</span> 120
+</pre>
+</div>
+
+<pre class="example">
+&lt;interactive&gt;:1892:1-8: error:
+    Variable not in scope: divisors :: t0 -&gt; t
+</pre>
+
+
+<p>
+Again, we see a pattern where we start with divisors that are prime
+numbers, then (if any) composite numbers appear.<label id='fnr.12' for='fnr-in.12.4185407' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.4185407' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
+Let&rsquo;s not forget the <i>Fundamental Theorem of Arithmetic</i>,
+i.e., that \(120\) can also be expressed as product of powers of those
+first three primes.
+</span> In both
+examples notice that the square the \(LD(n)\), e.g., with \(120\) squaring
+\(2\) is \(4\), i.e., less than \(120\). Why is this germane?
+</p>
+
+<p>
+Consider the composite number \(143\). Its divisors are two prime
+numbers, \(11\) and \(13\). Now, \(11^2 = 121\), while \(13^2 = 169\), i.e.,
+the square of the former is less than \(143\) and the square of the
+latter is greater than \(143\). Neat observation, but does it help us
+ultimately in testing a number for prime-ness? Yes, and we&rsquo;ll find out
+why below.
+</p>
+
+
+<p>
+<font color = "#4715b3">
+⇲ Proposition
+</p>
 <ol class="org-ol">
 <li>If \(n > 1\) then \(LD(n)\) is a prime number.</li>
 <li>If \(n > 1\) and \(n\) is not a prime number, then \((LD(n))^2 \le n\)</li>
 </ol>
+<p>
+</font>
+</p>
 
 <p>
 The gist of these two implications will be turned into code that will
-test if a number is prime. 
+help test if a number is prime.
 </p>
 
+<p>
+Why concentrate on the least divisor? The first part of the
+proposition will anchor the fact that the least divisor is always a
+prime. This will be necessary for when a number is analyzed for
+primeness and no divisor less than the number itself is found. We need
+to be sure that least divisor is indeed prime.
+</p>
+
+<p>
+Besides just our intuitive notion, we can prove this. We&rsquo;ll employ
+<i>contradiction</i><label id='fnr.13' for='fnr-in.13.4363633' class='margin-toggle sidenote-number'><sup class='numeral'>13</sup></label><input type='checkbox' id='fnr-in.13.4363633' class='margin-toggle'><span class='sidenote'><sup class='numeral'>13</sup>
+See <a href="https://en.wikipedia.org/wiki/Proof_by_contradiction">proof by contradiction</a>.
+</span>, i.e., we set up a contradiction to what we
+want to prove, then exposing it as not true. In this case, let&rsquo;s
+assume \(c = LD(n)\) and \(c\) is <i>not</i> prime, a contradiction of our
+original statement. But if \(c\) is not prime it must then be a
+composite number itself, e.g., \(c = a \cdot b\) where \(1 \lt a \lt c\). But that
+would mean \(a\) now divides \(n\), and \(a\) is smaller than \(c\) the
+supposed \(LD(n)\). Therefore, a \(LD(n)\) must be prime.
+</p>
+
+<p>
+Now, before attacking the second part, let&rsquo;s do an example.
+</p>
+
+<p>
+<font color = "#0d3db3">
+𝖟𝕭: Is \(599\) a prime?
+</font>
+</p>
+
+<p>
+If \(599\) is composite, then \(599 = d \cdot e\) with \(d,e \gt 1\). This implies
+</p>
+
+\begin{align*}
+d &\le \sqrt{599} \quad or \\
+e &\le \sqrt{599}
+\end{align*}
+
+<p>
+because if both \(d\) and \(e\) were greater than \(\sqrt{599}\) that would
+make \(d \cdot e\) greater than \(\sqrt{599} \cdot \sqrt{599} = 599\), which it
+can&rsquo;t be. So if \(599\) is composite, it has a factor between \(2\) and \(\lfloor
+\sqrt{599} \rfloor\)<label id='fnr.14' for='fnr-in.14.645358' class='margin-toggle sidenote-number'><sup class='numeral'>14</sup></label><input type='checkbox' id='fnr-in.14.645358' class='margin-toggle'><span class='sidenote'><sup class='numeral'>14</sup>
+The <b>floor</b> (\(\lfloor\; \rfloor\)) of \(\sqrt{599}\)? First, get the square
+root of \(599\), which is \(24.474476501040833\); so the <i>lowest</i> whole
+number, the floor, would be \(24\). The \(\lceil\sqrt{599}\rceil\), or the <b>ceiling</b>
+of the square root of \(599\) would be \(25\).
+</span> or \(24\).
+</p>
+
+<p>
+At this point we can guess that to show \(599\) is prime, we need to
+show it is not a composite number. \(24^2 = 576\), the <i>floor</i> of
+\(\sqrt{599}\), but \(25^2 = 625\) which is overshoot. We can restate the
+second part of the proposition thusly
+</p>
+
+<p>
+<font color = "#4715b3"> ⇲ Proposition <br>
+Let \(n\) be a natural number. If \(n\) is <i>composite</i> then \(n\) has a
+prime divisor between \(2\) and \(\lfloor\sqrt{n}\rfloor\). Thus, if \(n \gt 1\) and \(n\)
+has <i>no</i> prime divisors between \(2\) and \(\lfloor\sqrt{n}\rfloor\), then \(n\) must be
+prime.  </font>
+</p>
+
+<p>
+which allows us to quit looking for a \(LD(n)\), i.e., some prime, long
+before we get to \(599\). If we test this on \(599\) we see that none of
+the primes between \(2\) and \(24\), namely the set
+\(\{2,3,5,7,11,13,17,19,23\}\) divides \(599\) evenly; therefore, \(599\) is
+prime.
+</p>
+
+<p>
+So we have our main tool for establishing primality, namely,
+\(LD(n)\). Let&rsquo;s put it into code. We&rsquo;ll break it into two parts
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org85cee69"><span class="org-haskell-definition">ld</span> n <span class="org-haskell-operator">=</span> ldf 2 n
+<span class="org-haskell-definition">ldf</span> k n <span class="org-haskell-operator">|</span> divides k n <span class="org-haskell-operator">=</span> k
+        <span class="org-haskell-operator">|</span> k<span class="org-haskell-operator">^</span>2 <span class="org-haskell-operator">&gt;</span> n <span class="org-haskell-operator">=</span> n
+        <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> ldf <span class="org-rainbow-delimiters-depth-1">(</span>k<span class="org-haskell-operator">+</span>1<span class="org-rainbow-delimiters-depth-1">)</span> n
+</pre>
+</div>
+
+<p>
+<code>ld</code> is just a wrapper to feed our number in question into <code>ldf</code>, the
+&ldquo;least divisor function.&rdquo; What we see with <code>ldf</code> is Haskell&rsquo;s
+<b>equation guarding</b>, which allows us to set up test <b>cases</b>. <code>ldf</code>
+first tries <code>divides</code> (which yields either <code>True</code> or <code>False</code>) on the
+incoming number argument <code>n</code> using the argument <code>k</code>. We see <code>ldf</code>
+begins with the lowest prime \(2\) for <code>k</code>. So if \(2 \mid n\) then we&rsquo;re
+through, the \(LD(n) = k\). But if it is not then we move on to the next
+<i>case</i>, namely, Is <code>k</code> squared greater than <code>n</code>? Again, this yields a
+<code>True</code> or <code>False</code>. If <code>True</code>, then <code>n</code> is the least divisor. But if
+this second test case also fails, we go onto the third, which is not a
+normal test case, but a hardwired <code>True</code>, i.e., we&rsquo;re going with this
+case&#x2014;because there are no other possible situations. What&rsquo;s unique
+about this last case is that it simply calls itself, but with <code>k</code>
+incremented by \(1\). In other words, we have a repeating mechanism
+whereby we can march up through the whole numbers one after the other
+testing each. This is <b>recursion</b>, and we&rsquo;ll soon be exploring it in
+depth. But for now just accept that <code>ldf</code> is calling itself, driving
+inside itself, so to speak, to try another time.
+</p>
+
+<p>
+Let&rsquo;s investigate the number \(5\) and how <code>ldf</code> handles it
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org679ebfa"><span class="org-haskell-definition">ld</span> 5
+</pre>
+</div>
+
+<pre class="example">
+5
+</pre>
 
 
+<p>
+How did <code>ld</code> find this? In the first iteration, the first test case,
+\(2 \mid 5\), fails, followed by the second test case, <code>2^2 &gt; 5</code>, which
+is also <code>False</code>. Hence, recursion ensues with <code>ldf 3 5</code>. On the first
+test case <code>divides 3 5</code> also fails, but then the second test case,
+<code>3^2 &gt; 5</code> is <code>True</code>; and so we know \(5\) is indeed prime. And so we
+have turned our Proposition theorems into an algorithm and working
+code! Let&rsquo;s see a more general (non-abbreviated) explanation of
+<i>equation guarding</i>
+</p>
 
+<div class="org-src-container">
+<pre class="src src-haskell" id="org3e8c570"><span class="org-haskell-definition">foo</span> t <span class="org-haskell-operator">|</span> condition_1 <span class="org-haskell-operator">=</span> body_1
+<span class="org-haskell-definition">foo</span> t <span class="org-haskell-operator">|</span> condition_2 <span class="org-haskell-operator">=</span> body_2
+<span class="org-haskell-definition">foo</span> t <span class="org-haskell-operator">|</span> condition_3 <span class="org-haskell-operator">=</span> body_3
+<span class="org-haskell-definition">foo</span> t <span class="org-haskell-operator">|</span>             <span class="org-haskell-operator">=</span> body_4
+</pre>
+</div>
 
+<p>
+So now let&rsquo;s define our first version of a <i>test for primes</i>
+</p>
 
+<div class="org-src-container">
+<pre class="src src-haskell" id="org73dfc09"><span class="org-haskell-definition">prime0</span> n <span class="org-haskell-operator">|</span> n <span class="org-haskell-operator">&lt;</span> 1 <span class="org-haskell-operator">=</span> error <span class="org-string">"Not a positive integer"</span>
+         <span class="org-haskell-operator">|</span> n <span class="org-haskell-operator">==</span> 1 <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">False</span>
+         <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> ld n <span class="org-haskell-operator">==</span> n
+</pre>
+</div>
 
-
-
-
-
+<p>
+When we compile this, our Haskell REPL complains that we didn&rsquo;t
+provide a type signature for <code>prime0</code> and then suggests one
+</p>
 
 
 
@@ -558,7 +936,7 @@ test if a number is prime.
 
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org8b8830a"><span class="org-haskell-definition">reduce</span> <span class="org-haskell-operator">::</span>  <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Ratio</span> a
+<pre class="src src-haskell" id="orgcffaa4e"><span class="org-haskell-definition">reduce</span> <span class="org-haskell-operator">::</span>  <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Ratio</span> a
 <span class="org-haskell-pragma">{-# SPECIALISE reduce :: Integer -&gt; Integer -&gt; Rational #-}</span>
 <span class="org-haskell-definition">reduce</span> <span class="org-haskell-keyword">_</span> 0              <span class="org-haskell-operator">=</span>  ratioZeroDenominatorError
 <span class="org-haskell-definition">reduce</span> x y              <span class="org-haskell-operator">=</span>  <span class="org-rainbow-delimiters-depth-1">(</span>x <span class="org-haskell-operator">`quot`</span> d<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-constructor">:%</span> <span class="org-rainbow-delimiters-depth-1">(</span>y <span class="org-haskell-operator">`quot`</span> d<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -573,7 +951,7 @@ x <span class="org-haskell-definition">%</span> y                   <span class=
 
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org3f63f7f"><span class="org-haskell-definition">gcd</span>             <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a
+<pre class="src src-haskell" id="org8ac718a"><span class="org-haskell-definition">gcd</span>             <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a
 <span class="org-haskell-definition">gcd</span> x y         <span class="org-haskell-operator">=</span>  gcd' <span class="org-rainbow-delimiters-depth-1">(</span>abs x<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">(</span>abs y<span class="org-rainbow-delimiters-depth-1">)</span>
                    <span class="org-haskell-keyword">where</span> gcd' a 0  <span class="org-haskell-operator">=</span>  a
                          gcd' a b  <span class="org-haskell-operator">=</span>  gcd' b <span class="org-rainbow-delimiters-depth-1">(</span>a <span class="org-haskell-operator">`rem`</span> b<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -581,7 +959,7 @@ x <span class="org-haskell-definition">%</span> y                   <span class=
 </div>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org530237a"><span class="org-haskell-definition">lcm</span>             <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a
+<pre class="src src-haskell" id="org674ae05"><span class="org-haskell-definition">lcm</span>             <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a
 <span class="org-haskell-definition">lcm</span> <span class="org-haskell-keyword">_</span> 0         <span class="org-haskell-operator">=</span>  0
 <span class="org-haskell-definition">lcm</span> 0 <span class="org-haskell-keyword">_</span>         <span class="org-haskell-operator">=</span>  0
 <span class="org-haskell-definition">lcm</span> x y         <span class="org-haskell-operator">=</span>  abs <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>x <span class="org-haskell-operator">`quot`</span> <span class="org-rainbow-delimiters-depth-3">(</span>gcd x y<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">*</span> y<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -597,7 +975,7 @@ x <span class="org-haskell-definition">%</span> y                   <span class=
 An <b>exclusive or</b> is the negation of an implication
 </p>
 
-<table id="org651f861" border="2" rules="all" frame="border">
+<table id="orga4f7f59" border="2" rules="all" frame="border">
 
 
 <colgroup>
