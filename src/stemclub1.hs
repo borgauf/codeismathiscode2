@@ -21,13 +21,15 @@ instance Eq Color where
   Green == Green = True
   _ == _ = False         -- by now anything else must be false
 
-
+divisors :: Integer -> [Integer]
+divisors n = [d | d <- [2..abs n], abs n `mod` d == 0]
 
 ld n = ldf 2 n
 ldf k n | divides k n = k
         | k^2 > n = n
         | otherwise = ldf (k+1) n
 
+prime0 :: Integral a => a -> Bool
 prime0 n | n < 1 = error "Not a positive integer"
          | n == 1 = False
          | otherwise = ld n == n

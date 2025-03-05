@@ -79,7 +79,7 @@ module STEMCLUB1 where
 
 <<4d37a5ff-41e7-4efb-83ec-bdf53b60e009>>
 
-<<6cf24bbe-c37f-4480-8b57-79509a9adc40>>
+<<4d38f6dd-987b-4709-bee2-8de927d0ce94>>
 
 #+end_src
 
@@ -101,6 +101,13 @@ import GHC.Real
 
 ** Doing math with computers
 
+*The birth of mathematics*:
+
+#+begin_quote
+Caveman #1 (looking at flock of birds): Many.
+Caveman #2: *How* many?
+#+end_quote
+
 *Q*: Why do we do STEM? \\
 *A*: Because somebody will pay us to do science, technology,
 engineering, and especially mathematics for them.
@@ -108,48 +115,55 @@ engineering, and especially mathematics for them.
 */Where/ is math?*[fn:1]
 
 1. In our brains.
-2. In math books.
-3. On white/black boards.
+2. In math books and papers.
+3. On classroom white/black boards.
 4. Built into various mechanical devices
 5. In digital computing devices as circuitry and software.
 
-...and now more than ever #5. So what does it mean to have math
+...but, yes, now more than ever #5. So what does it mean to have math
 expressed in software.
 
 *How do computers "compute" stuff?*[fn:2]
 
-- Develop algorithms
+- Develop algorithms from math
 - Encode algorithms in programming language
-- Run code in device 
+- Run code on device 
 
 In other words, we're taking the math out of books, papers, off
 blackboards, out of brains, reverse-engineering mechanical
-devices---and putting in into digital computing devices.
+devices---and putting in into digital computing devices. And with the
+digital computing devices count about to exceed /three times/ the
+world's human population, that's a big deal.
 
 ** Basic fractions on the computer
 
-Let's go down the rabbit hole of how to do fractions---specifically,
-/adding, subtracting unlike denominator fractions/---on the
-computer. Here we enter The world of number theory and its
-concentration on the behavior of prime numbers.
+Let's start with something presumably simple like how to do
+fractions---specifically, /adding, subtracting unlike denominator
+fractions/---on the computer. We'll first dive into the world of
+number theory and its concentration on the behavior of prime
+numbers. So what is the working definition of a prime whole number?
 
 @@html:<font color = "#4715b3">@@ ⥤ A *prime number* is an integer
-that can only be divided by $1$ or itself.  @@html:</font>@@ \\
+that can only be /divided evenly/ (producing no remainder) by $1$ or
+itself.  @@html:</font>@@ \\
 \\
-A prime number is /not/ a *composite number*, i.e., a multiple of
-other numbers. This means there is no number $d$ between $1$ and the
-prime $p$ that will evenly divide it.
+The opposite of a prime number is a *composite number*, i.e., an
+integer that is a /multiple/ of other numbers beside $1$ and the
+number, let's call it $n$, itself. With composites there does exist a
+number, call it $d$, between $1$ and $n$ that will evenly divide
+it. There are many consequences of these two number opposites. One is
+the fact that integers are made up of primes
 
-⇲ Theorem *Fundamental Theorem of Arithmetic*
-
-@@html:<font color = "#4715b3">@@Every positive integer $𝑛 \gt 1$ can be
-represented in exactly one way as a product of prime
-powers.@@html:</font>@@ 
+@@html:<font color = "#4715b3">@@ ⇲ Theorem: *Fundamental Theorem of
+Arithmetic* \\
+Every positive integer $𝑛 \gt 1$ can be represented in exactly one way
+as a product of prime powers.@@html:</font>@@
 
 
 - *Q*: What is meant by prime /powers/, why not just primes? \\
-- *A*: By "prime power" we mean a prime raised to a power. Consider
-  these /composite numbers/ broken down into products of prime powers
+- *A*: By "prime power" we simply mean a prime raised to a
+  power. Consider these /composite numbers/ broken down into products
+  of prime powers
 
 \begin{align*}
 4 &= 2^2 \\
@@ -176,14 +190,14 @@ This idea of multiplying unique sets of primes to get any whole number
 is an almost mysterious thing in mathematics. The [[https://en.wikipedia.org/wiki/Peano_axioms][Peano Axioms]],
 supposedly the most bedrock foundation of mathematics, says if we
 start with zero we can get any of the natural counting numbers,
-$\mathbb{N}$, by simply adding "one more" over and over.[fn:3] But we
-can also "get" any $n \in \mathbb{N}$ by multiplying sets of
+$\mathbb{N}$,[fn:3] by simply adding "one more" over and over.[fn:4]
+But we can also "get" any $n \in \mathbb{N}$ by multiplying sets of
 primes. Hence, we can almost say, prime numbers /necessitate/ (bring
-into existence?) multiplication. At the very least primes beg their multiplication.
+into existence?) multiplication.
 
-Let's jump ahead. [[https://gemini.google.com/app][Google Gemini]] produced this Haskell code when the
-keywords /haskell prime factors of a number/ were entered into a
-Gemini search[fn:4]
+Let's jump way ahead just for a moment. [[https://gemini.google.com/app][Google Gemini]] produced this
+Haskell code when the keywords /haskell prime factors of a number/
+were entered into a Gemini search[fn:5]
 
 #+name: af3e4f87-3492-4f87-8e19-6d43b5bcf035
 #+begin_src haskell :eval never :exports code
@@ -212,23 +226,25 @@ Eijck. They start with the
 
 *** Prime number test
 
-Prime numbers: $2, 3, 5, 7, 11, 13,\ldots$[fn:5]
+Again, prime numbers: $2, 3, 5, 7, 11, 13,\ldots$, divisible only by
+$1$ or the number itself.
 
 ⇲ Definition *Divides*
 
-@@html:<font color = "#4715b3">@@ If $a, b \in \mathbb{Z}$ we say that
-$a$ divides $b$, written $a \mid b$, if $a \cdot c = b$ for some $c ∈
-\mathbb{Z}$. In this case, we say $a$ is a /divisor/ of $b$. We say
-that $a$ does not divide $b$, written $a \nmid b$, if there is no $c ∈
-\mathbb{Z}$ such that $a \cdot c = b$.  @@html:</font>@@
+@@html:<font color = "#4715b3">@@ If $a, b \in \mathbb{Z}$, the
+integers, we say that $a$ divides $b$, written $a \mid b$, if $a \cdot c =
+b$ for some $c ∈ \mathbb{Z}$. In this case, we say $a$ is a /divisor/
+of $b$. We say that $a$ does not divide $b$, written $a \nmid b$, if
+there is no $c ∈ \mathbb{Z}$ such that $a \cdot c = b$.  @@html:</font>@@
 
-$2 \mid 6$ ($2$ /divides/ $6$) and $-3 \mid 15$ ($-3$ /divides/
-$6$). All integers divide $0$, but only $0$ divides $0$. This is why
-division by $0$ is problematic. $q = \frac{a}{0}$ would imply $q \cdot 0 =
-a$, but if $a$ is not zero, then this is nonsense.
-
-Keep in mind, /division/ is the /inverse of multiplication/, e.g.,
-$\frac{6}{3} = x$ is identical to $x \cdot 3 = 6$.
+Division is the inverse of multiplication, e.g., $\frac{6}{3} = x$
+is identical to $x \cdot 3 = 6$ as we've seen in basic algebra. Defining
+/divides/ in terms of multiplication by another whole number implies
+division without a remainder. $2 \mid 6$ ($2$ /divides/ $6$) and $-3
+\mid 15$ ($-3$ /divides/ $6$). All integers divide $0$, but only $0$
+divides $0$. This is why division by $0$ is problematic. $q =
+\frac{a}{0}$ would imply $q \cdot 0 = a$, but if $a$ is not zero, then
+this is nonsense.
 
 Now, let's turn *divides* into code
 
@@ -238,11 +254,11 @@ divides d n = rem n d == 0
 #+end_src
 
 This is simple, but there's a lot going on for the beginner. We see
-~=~, the /is defined as/ symbol in Haskell---which makes anything
-using it an *equation*, i.e., ~divides d n = rem n d == 0~ is an
-equation. We also see on the right hand side of ~=~ the symbol ~==~
-for *identity*. Let's look into exactly what an identity is in the
-math world.
+~=~, the /is defined as/ or /is by definition equal to/ symbol in
+Haskell---which makes anything using it an *equation*, i.e., ~divides
+d n = rem n d == 0~ is an equation. We also see on the right hand side
+of ~=~ the double-equals symbol ~==~ for *identity*. Let's look into
+exactly what an identity is in the math world.
 
 ⇲ Definition *Identity*
 
@@ -266,9 +282,11 @@ sin^{2}\theta + cos^{2}\theta = 1
 \end{align*}
 
 Again, we mean the left- and right-hand sides are identical
-mathematically, although they're obviously different.[fn:7] /Which
-means they are interchangeable/. Which means when solving a trig
-problem, you can substitute in one for the other.
+mathematically, as in, both sides have identical values, although
+they're obviously different symbols.[fn:7] /Which means they are
+interchangeable/. Which means when solving a trig problem, you can
+substitute in one for the other. Keep track of the subtle difference
+between /is defined as/ and /identical values/.
 
 Having said all this, the Haskell operator ~==~ and its opposite ~/=~
 are actually functions that take two /formal arguments/ and return a
@@ -366,9 +384,10 @@ registered /instance/ with type class ~Integral~. Which means the
 types ~Int~, ~Integer~, and ~Word~ do indeed have their own specific
 versions of the basic functions ~quot~, ~rem~,...
 
-Now, back to ~divides d n = rem n d == 0~. Which is really just a nice
-/is-defined-as/ wrapper for the /identity/ ~rem n d == 0~, i.e., we
-have created a Haskell version of $d \mid n$. Let's look at its type
+Now, back to ~divides d n = rem n d == 0~, where the left-hand side
+~divides d n~ is really just a nice /is-defined-as/ wrapper for the
+/identity/ ~rem n d == 0~, i.e., we have created a Haskell version of
+$d \mid n$. Let's look at its type
 
 #+name: 2c92d4df-1f1b-4ed1-a70a-d9245a97059b
 #+begin_src haskell :results verbatim :exports both
@@ -378,7 +397,7 @@ have created a Haskell version of $d \mid n$. Let's look at its type
 #+RESULTS: 2c92d4df-1f1b-4ed1-a70a-d9245a97059b
 : divides :: Integral a => a -> a -> Bool
 
-Here Haskell reports ~divides~ takes two arguments of type ~a~,
+Haskell reports ~divides~ takes two arguments of type ~a~,
 meaning, as we just discussed, they could be any of the three types
 instance registration with ~Integral~, and gives back a value of type
 ~Boolean~. So what does this ~Boolean~ mean? A ~Boolean~ is a type of
@@ -387,13 +406,13 @@ instance registration with ~Integral~, and gives back a value of type
 elements, $\{\top, \bot\}$ (logic symbols for /top/ or /truth/ and
 /bottom/ or /falsity/) or in Haskell simply ~True~ and ~False~.
 
-In the type signature for ~divides~ We see the two input arguments ~n~
+In the type signature for ~divides~ we see the two input arguments ~n~
 and ~d~, but why does the code ~...rem n d == 0~ return as its value
 either a ~True~ or ~False~. Because in the realm of Haskell,
 /everything has a value/. While $sin^{2}\theta + cos^{2}\theta = 1$ is indeed an
 identity, what is the /value/ of this identity? Here we enter the
 realm of mathematical logic. While the value of the left-hand side,
-$sin^{2}\theta + cos^{2}\theta$, is whatever $\theta$ we plug in, and the value of the
+$sin^{2}\theta + cos^{2}\theta$, becomes whatever $\theta$ we plug in, and the value of the
 right-hand side, $1$, is just $1$, the /value of the identity as a
 whole/ is either true or false. And so the Haskell identity operator
 ~(==)~ /returns the value ~True~ or ~False~
@@ -408,7 +427,7 @@ whole/ is either true or false. And so the Haskell identity operator
 
 Again, we see ~a~ as a type variable, meaning more than one type is
 possible. And we see reference to a type class. This time the ~Eq a
-=>~ indicates whatever actual types ~a~ is, those types must be
+=>~ indicates whatever actual types ~a~ is, those types must each be
 registered with the type class ~Eq~. And what is ~Eq~?
 
 #+name: a7b19c2d-8b81-4e9b-89d9-1f3a6ca9d35b
@@ -441,14 +460,14 @@ instance Eq Word -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
 instance Eq a => Eq [a] -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
 #+end_example
 
-As the ellipsis (...) indicate, much was cut out for brevity. But of
-course the idea behind ~Eq~ is mathematical logic equality or
-*equivalence*[fn:9]
+As the ellipsis (...) indicate, much was cut out for brevity. The idea
+behind ~Eq~ is mathematical logic equality or *equivalence*[fn:9]
 
 ⥤ *Side note* establishing equivalence \\
 
-It may be obvious that $1$ is equivalent to $1$, but what if we have
-created our own data type, say
+It may be obvious that $1$ is equivalent to $1$, and all the
+~Integer~, ~Double~, etc. numbers are equal in value to themselves,
+but what if we have created our own data type, say
 
 #+name: 929a7a61-6918-4f5f-9a89-502b66003760
 #+begin_src haskell :eval never :exports code
@@ -468,11 +487,11 @@ Red + Yellow
     • In the expression: Red + Yellow
 #+end_example
 
-...meaning our ~Color~ type does not have addition defined. The error
-message indicates the type class ~Num~ doesn't have an /instance/ of
-~Color~ registered with it. Can we /compare/ colors for order or
-equivalence? Not yet. But if we specifically create an instance in
-~Eq~ telling Haskell what is, e.g., equivalent
+...meaning our ~Color~ type does not have addition defined.[fn:10] The
+error message indicates the type class ~Num~ doesn't have an
+/instance/ of ~Color~ registered with it. Can we /compare/ colors for
+order or equivalence? Not yet. But if we specifically create an
+instance for ~Eq~ telling Haskell what is, e.g., equivalent
 
 #+name: dadbe877-e9c4-436e-843d-144005fef37d
 #+begin_src haskell :eval never :exports code
@@ -502,15 +521,18 @@ Red == Blue
 #+RESULTS: b5e6cda1-5ae5-4bd9-a037-73d1629a17ed
 : False
 
-So we have a Haskell code version of math's $d$ /divides $n$. Let's
-move on.
+Good. More Haskell lore as we go. So we have a Haskell code version of
+math's $d$ /divides/ $n$. Let's move on.
 
 *** A /least divisor/
 
+
+@@html:<font color = "#4715b3">@@
 ⇲ We define $LD(n)$ as the least natural number /greater than $1$/
 that divides $n$, or the /least divisor/ of $n$.
+@@html:</font>@@
 
-Every number has at least one divisor.[fn:10] Therefore, every number
+Every number has at least one divisor.[fn:11] Therefore, every number
 $n$ has a least divisor, $LD(n)$, of its set of divisors, even if that
 set has only one element. For example $12$, a composite number, has
 the set of divisors $\{2,3,4,6,12\}$ with $LD(12) = 2$. But what if
@@ -522,7 +544,7 @@ number would still have a divisor. But that's just our intuition...
 Consider the set of divisors of $12$ again: $\{2,3,4,6,12\}$. We see
 two primes to start with, $2$ and $3$---then non-prime composites,
 $4$, $6$, $12$. The least divisor in this set is $2$, and it is
-prime. What about $120$? The divisor set[fn:11] would be
+prime. What about $120$? The divisor set[fn:12] would be
 
 \begin{align*}
 \{2,3,4,5,6,8,10,12,15,20,24,30,40,60,120\}
@@ -530,7 +552,7 @@ prime. What about $120$? The divisor set[fn:11] would be
 
 and we can get it with this Haskell code
 
-#+name: 94268e73-4fb6-465b-b810-fdd34c488c72<<94268e73-4fb6-465b-b810-fdd34c488c72>>
+#+name: 94268e73-4fb6-465b-b810-fdd34c488c72
 #+begin_src haskell :eval never :exports code
 divisors :: Integer -> [Integer]
 divisors n = [d | d <- [2..abs n], abs n `mod` d == 0]
@@ -547,7 +569,7 @@ divisors 120
 : [2,3,4,5,6,8,10,12,15,20,24,30,40,60,120]
 
 Again, we see a pattern where we start with divisors that are prime
-numbers, then (if any) composite numbers appear.[fn:12] In both
+numbers, then (if any) composite numbers appear.[fn:13] In both
 examples notice that the square the $LD(n)$, e.g., with $120$ squaring
 $2$ is $4$, i.e., less than $120$. Why is this germane?
 
@@ -575,7 +597,7 @@ primeness and no divisor less than the number itself is found. We need
 to be sure that least divisor is indeed prime.
 
 Besides just our intuitive notion, we can prove this. We'll employ
-/contradiction/[fn:13], i.e., we set up a contradiction to what we
+/contradiction/[fn:14], i.e., we set up a contradiction to what we
 want to prove, then exposing it as not true. In this case, let's
 assume $c = LD(n)$ and $c$ is /not/ prime, a contradiction of our
 original statement. But if $c$ is not prime it must then be a
@@ -599,7 +621,7 @@ e &\le \sqrt{599}
 because if both $d$ and $e$ were greater than $\sqrt{599}$ that would
 make $d \cdot e$ greater than $\sqrt{599} \cdot \sqrt{599} = 599$, which it
 can't be. So if $599$ is composite, it has a factor between $2$ and $\lfloor
-\sqrt{599} \rfloor$[fn:14] or $24$.
+\sqrt{599} \rfloor$[fn:15] or $24$.
 
 At this point we can guess that to show $599$ is prime, we need to
 show it is not a composite number. $24^2 = 576$, the /floor/ of
@@ -613,10 +635,10 @@ has /no/ prime divisors between $2$ and $\lfloor\sqrt{n}\rfloor$, then $n$ must 
 prime.  @@html:</font>@@
 
 which allows us to quit looking for a $LD(n)$, i.e., some prime, long
-before we get to $599$. If we test this on $599$ we see that none of
-the primes between $2$ and $24$, namely the set
-$\{2,3,5,7,11,13,17,19,23\}$ divides $599$ evenly; therefore, $599$ is
-prime.
+before we get to $599$. If we test this algorithmic proposition on
+$599$ we see that none of the primes between $2$ and $24$, namely the
+set $\{2,3,5,7,11,13,17,19,23\}$ divides $599$ evenly; therefore,
+$599$ is prime.
 
 So we have our main tool for establishing primality, namely,
 $LD(n)$. Let's put it into code. We'll break it into two parts
@@ -636,17 +658,18 @@ first tries ~divides~ (which yields either ~True~ or ~False~) on the
 incoming number argument ~n~ using the argument ~k~. We see ~ldf~
 begins with the lowest prime $2$ for ~k~. So if $2 \mid n$ then we're
 through, the $LD(n) = k$. But if it is not then we move on to the next
-/case/, namely, Is ~k~ squared greater than ~n~? Again, this yields a
-~True~ or ~False~. If ~True~, then ~n~ is the least divisor. But if
-this second test case also fails, we go onto the third, which is not a
-normal test case, but a hardwired ~True~, i.e., we're going with this
-case---because there are no other possible situations. What's unique
-about this last case is that it simply calls itself, but with ~k~
-incremented by $1$. In other words, we have a repeating mechanism
-whereby we can march up through the whole numbers one after the other
-testing each. This is *recursion*, and we'll soon be exploring it in
-depth. But for now just accept that ~ldf~ is calling itself, driving
-inside itself, so to speak, to try another time.
+/case/, namely, Is ~k~ squared greater than ~n~?[fn:16] Again, this
+yields a ~True~ or ~False~. If ~True~, then ~n~ is the least
+divisor. But if this second test case also fails, we go onto the
+third, which is not a normal test case, but a hardwired ~True~, i.e.,
+we're going with this case---because there are no other possible
+situations. What's unique about this last case is that it simply calls
+itself, but with ~k~ incremented by $1$. In other words, we have a
+repeating mechanism whereby we can march up through the whole numbers
+one after the other testing each. This is *recursion*, and we'll soon
+be exploring it in depth. But for now just accept that ~ldf~ is
+calling itself, driving inside itself, so to speak, to try another
+time.
 
 Let's investigate the number $5$ and how ~ldf~ handles it
 
@@ -685,7 +708,26 @@ prime0 n | n < 1 = error "Not a positive integer"
 #+end_src
 
 When we compile this, our Haskell REPL complains that we didn't
-provide a type signature for ~prime0~ and then suggests one
+provide a type signature for ~prime0~ and then suggests one---or we
+can simply ask
+
+#+name: 9918a478-cb0f-4511-a63b-bae7c499fd9c
+#+begin_src haskell :results verbatim :exports both
+:t prime0
+#+end_src
+
+#+RESULTS: 9918a478-cb0f-4511-a63b-bae7c499fd9c
+: prime0 :: Integral a => a -> Bool
+
+Let's add it
+
+#+name: 4d38f6dd-987b-4709-bee2-8de927d0ce94
+#+begin_src haskell :eval never :exports code
+prime0 :: Integral a => a -> Bool
+prime0 n | n < 1 = error "Not a positive integer"
+         | n == 1 = False
+         | otherwise = ld n == n
+#+end_src
 
 
 
@@ -755,24 +797,26 @@ hence, both cannot have won, nor can both have lost.
 * Footnotes
 
 [fn:1] We'll discuss another possibility, namely, the Platonic belief
-math is out in the universe, later.
+math is just out there in the universe, later.
 
-[fn:2] Let's watch [[https://youtu.be/8xPRn9weLYg?si=5fplvY_vDQD2dbHb][this video]] realistically depicting a STEM
+[fn:2] Let's watch [[https://youtu.be/8xPRn9weLYg?si=5fplvY_vDQD2dbHb][this video]] (semi-)realistically depicting a STEM
 environment. No magic, just people taking math out of books and
 putting it into their technology.
 
-[fn:3] Fundamental to Peano's approach is recursion and induction,
-which we will explore in depth soon.
-
-[fn:4] This is not serious number factoring code. The "art" of
-factoring numbers is at the heart of modern cryptography. In fact, it
-is still unknown whether factoring code can be written that can factor
-any number in a reasonable time.
-
-[fn:5] In higher math the *natural counting numbers*
+[fn:3] In higher math the *natural counting numbers*
 $\{1,2,3,4,\ldots\}$ are signified by $\mathbb{N}$, while the
 *integers* $\{\ldots,-2,-1,0,1,2,\ldots\}$ are $\mathbb{Z}$. Both are
 whole numbers.
+
+[fn:4] Fundamental to Peano's approach is recursion and induction,
+which we will explore in depth soon.
+
+[fn:5] This is not serious number factoring code. The "art" of
+factoring numbers is at the heart of modern cryptography. In fact, it
+is still unknown whether any variation of factoring code running on
+conventional computers can factor any significantly large number in a
+reasonable amount of time. This issue belongs to the realm of
+*[[https://en.wikipedia.org/wiki/Computability_theory][computability theory]]* and was the instigator to the digital computer.
 
 [fn:6] In Haskell, everything has a value. This is an abstraction
 meant to keep things highly mathematical, i.e., above imperative
@@ -791,21 +835,33 @@ type world.
 
 [fn:9] In mathematical logic statements, expressions $p$ and $q$ are
 *[[https://en.wikipedia.org/wiki/Logical_equivalence][logically equivalent]]* if they have the same /truth value/ in every
-case of possible inputs. Moral of the story: Keep /is-defined-as/ ~=~
-separate from /equivalence/ ~==~ (or non-equivalence ~/+~).
+case of possible inputs for $p$ and $q$. Moral of the story: Keep
+/is-defined-as/ ~=~ separate from /equivalence/ ~==~ (or
+non-equivalence ~/+~).
 
-[fn:10] A prime number has exactly one divisor greater than $1$, i.e.,
+[fn:10] Technically only numbers can be added, subtracted,
+etc. For addition, e.g., non-number objects are /aggregated/.
+
+[fn:11] A prime number has exactly one divisor greater than $1$, i.e.,
 the prime number itself. Remember this for later...
 
-[fn:11] ...or the /factors/ of $120$.
+[fn:12] ...or the /factors/ of $120$.
 
-[fn:12] Let's not forget the /Fundamental Theorem of Arithmetic/,
+[fn:13] Let's not forget the /Fundamental Theorem of Arithmetic/,
 i.e., that $120$ can also be expressed as product of powers of those
 first three primes.
 
-[fn:13] See [[https://en.wikipedia.org/wiki/Proof_by_contradiction][proof by contradiction]].
+[fn:14] See [[https://en.wikipedia.org/wiki/Proof_by_contradiction][proof by contradiction]].
 
-[fn:14] The *floor* ($\lfloor\; \rfloor$) of $\sqrt{599}$? First, get the square
+[fn:15] The *floor* ($\lfloor\; \rfloor$) of $\sqrt{599}$? First, get the square
 root of $599$, which is $24.474476501040833$; so the /lowest/ whole
 number, the floor, would be $24$. The $\lceil\sqrt{599}\rceil$, or the *ceiling*
 of the square root of $599$ would be $25$.
+
+[fn:16] This is the second part of $LD(n)$ Proposition, i.e., we've
+flipped the $(LD(n))^2 \le n$. ~ld~ looks for a prime divisor of $n$ by
+checking $k \mid n$ for all $k$ with $2 \le k \le \sqrt{n}$. But isn't a
+$LD(n)$ supposed to be prime? We will improve on ~ld~ so it doesn't
+waste time checking non-prime $k$ within $2 \le k \le \sqrt{n}$.
+
+[fn:17] DEFINITION NOT FOUND.
