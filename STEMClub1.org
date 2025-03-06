@@ -532,25 +532,21 @@ math's $d$ /divides/ $n$. Let's move on.
 that divides $n$, or the /least divisor/ of $n$.
 @@html:</font>@@
 
-Every number has at least one divisor.[fn:11] Therefore, every number
-$n$ has a least divisor, $LD(n)$, of its set of divisors, even if that
-set has only one element. For example $12$, a composite number, has
-the set of divisors $\{2,3,4,6,12\}$ with $LD(12) = 2$. But what if
-the set of $LD(n)$ is just one number? What sort of number would $n$
-therefore be? Intuitively we know that if a number has only one
-divisor, it cannot be any sort of composite number; otherwise, the
-number would still have a divisor. But that's just our intuition...
+Every number has at least one divisor greater than /unit/ $1$.[fn:11]
+Therefore, every number $n$ has a smallest, /least/ divisor, $LD(n)$,
+in its set of divisors, even if that set has only one element. We will
+leverage this fact to test a number for primeness. Read on.
 
-Consider the set of divisors of $12$ again: $\{2,3,4,6,12\}$. We see
-two primes to start with, $2$ and $3$---then non-prime composites,
-$4$, $6$, $12$. The least divisor in this set is $2$, and it is
-prime. What about $120$? The divisor set[fn:12] would be
+Let's look at a /composite/ number $12$ with the set of divisors
+$\{2,3,4,6,12\}$. Here, $LD(12) = 2$ and the *cardinality*[fn:12] of
+the set is $5$, i.e., greater than $1$. What about $120$? The divisor
+set[fn:13] would be much larger
 
 \begin{align*}
 \{2,3,4,5,6,8,10,12,15,20,24,30,40,60,120\}
 \end{align*}
 
-and we can get it with this Haskell code
+and we can get it with this Haskell code[fn:14]
 
 #+name: 94268e73-4fb6-465b-b810-fdd34c488c72
 #+begin_src haskell :eval never :exports code
@@ -568,18 +564,16 @@ divisors 120
 #+RESULTS: 78636291-ee0d-4c8e-a94d-0dba38caad3d
 : [2,3,4,5,6,8,10,12,15,20,24,30,40,60,120]
 
-Again, we see a pattern where we start with divisors that are prime
-numbers, then (if any) composite numbers appear.[fn:13] In both
-examples notice that the square the $LD(n)$, e.g., with $120$ squaring
-$2$ is $4$, i.e., less than $120$. Why is this germane?
+As with $12$, we see a pattern where we start with a divisor that is
+prime, then (if any) composite numbers follow.[fn:15] In both examples
+notice that the square the $LD(n)$, e.g., with $120$ squaring $2$ is
+$4$, is less than $120$. Why is this germane?
 
 Consider the composite number $143$. Its divisors are two prime
 numbers, $11$ and $13$. Now, $11^2 = 121$, while $13^2 = 169$, i.e.,
-the square of the former is less than $143$ and the square of the
-latter is greater than $143$. Neat observation, but does it help us
-ultimately in testing a number for prime-ness? Yes, and we'll find out
-why below.
-
+the square of the former, i.e., the $LD(143)$, is less than
+$143$. Neat observation, but does this help us in testing a number for
+primeness? Yes, and we'll find out why below.
 
 @@html:<font color = "#4715b3">@@
 ⇲ Proposition
@@ -590,20 +584,19 @@ why below.
 The gist of these two implications will be turned into code that will
 help test if a number is prime.
 
-Why concentrate on the least divisor? The first part of the
+Why concentrate on the least divisor? The first part of our
 proposition will anchor the fact that the least divisor is always a
 prime. This will be necessary for when a number is analyzed for
-primeness and no divisor less than the number itself is found. We need
-to be sure that least divisor is indeed prime.
-
-Besides just our intuitive notion, we can prove this. We'll employ
-/contradiction/[fn:14], i.e., we set up a contradiction to what we
-want to prove, then exposing it as not true. In this case, let's
-assume $c = LD(n)$ and $c$ is /not/ prime, a contradiction of our
-original statement. But if $c$ is not prime it must then be a
-composite number itself, e.g., $c = a \cdot b$ where $1 \lt a \lt c$. But that
-would mean $a$ now divides $n$, and $a$ is smaller than $c$ the
-supposed $LD(n)$. Therefore, a $LD(n)$ must be prime.
+primeness and no divisor less than the number itself has been
+found. But we need to prove that least divisor is indeed prime. How?
+We'll employ a proof method called /contradiction/[fn:16] where we
+claim just the opposite of what we want to prove, then expose it as
+not true. In this case, let's assume $c = LD(n)$ and $c$ is /not/
+prime, a contradiction of our original statement. But if $c$ is not
+prime it must then be a composite number itself, e.g., $c = a \cdot b$
+where $1 \lt a \lt c$. But that would mean $a$ now divides $n$, and $a$ is
+smaller than $c$ the supposed $LD(n)$. Therefore, a $LD(n)$ must be
+prime.
 
 Now, before attacking the second part, let's do an example.
 
@@ -618,13 +611,14 @@ d &\le \sqrt{599} \quad or \\
 e &\le \sqrt{599}
 \end{align*}
 
-because if both $d$ and $e$ were greater than $\sqrt{599}$ that would
-make $d \cdot e$ greater than $\sqrt{599} \cdot \sqrt{599} = 599$, which it
-can't be. So if $599$ is composite, it has a factor between $2$ and $\lfloor
-\sqrt{599} \rfloor$[fn:15] or $24$.
+because if both $d$ and $e$ were greater than $\sqrt{599}$ (the
+opposite of less than or equal to) that would make $d \cdot e$ greater
+than $\sqrt{599} \cdot \sqrt{599} = 599$, which it can't be. So if $599$
+is composite, it has a divisor between $2$ and $\lfloor \sqrt{599} \rfloor$[fn:17]
+or $24$.
 
 At this point we can guess that to show $599$ is prime, we need to
-show it is not a composite number. $24^2 = 576$, the /floor/ of
+show it has no divisor  not a composite number. $24^2 = 576$, the /floor/ of
 $\sqrt{599}$, but $25^2 = 625$ which is overshoot. We can restate the
 second part of the proposition thusly
 
@@ -637,14 +631,15 @@ prime.  @@html:</font>@@
 which allows us to quit looking for a $LD(n)$, i.e., some prime, long
 before we get to $599$. If we test this algorithmic proposition on
 $599$ we see that none of the primes between $2$ and $24$, namely the
-set $\{2,3,5,7,11,13,17,19,23\}$ divides $599$ evenly; therefore,
-$599$ is prime.
+set of primes $\{2,3,5,7,11,13,17,19,23\}$ divides $599$ evenly;
+therefore, $599$ is prime.
 
-So we have our main tool for establishing primality, namely,
-$LD(n)$. Let's put it into code. We'll break it into two parts
+We now have our main tool for establishing primality, namely, $LD(n)$
+proven. Let's put it into code. We'll break it into two parts
 
 #+name: 4d37a5ff-41e7-4efb-83ec-bdf53b60e009
 #+begin_src haskell :eval never :exports code
+ld :: Integral t => t -> t
 ld n = ldf 2 n
 ldf k n | divides k n = k
         | k^2 > n = n
@@ -652,24 +647,24 @@ ldf k n | divides k n = k
 #+end_src
 
 ~ld~ is just a wrapper to feed our number in question into ~ldf~, the
-"least divisor function." What we see with ~ldf~ is Haskell's
-*equation guarding*, which allows us to set up test *cases*. ~ldf~
-first tries ~divides~ (which yields either ~True~ or ~False~) on the
-incoming number argument ~n~ using the argument ~k~. We see ~ldf~
-begins with the lowest prime $2$ for ~k~. So if $2 \mid n$ then we're
-through, the $LD(n) = k$. But if it is not then we move on to the next
-/case/, namely, Is ~k~ squared greater than ~n~?[fn:16] Again, this
-yields a ~True~ or ~False~. If ~True~, then ~n~ is the least
-divisor. But if this second test case also fails, we go onto the
-third, which is not a normal test case, but a hardwired ~True~, i.e.,
-we're going with this case---because there are no other possible
-situations. What's unique about this last case is that it simply calls
-itself, but with ~k~ incremented by $1$. In other words, we have a
-repeating mechanism whereby we can march up through the whole numbers
-one after the other testing each. This is *recursion*, and we'll soon
-be exploring it in depth. But for now just accept that ~ldf~ is
-calling itself, driving inside itself, so to speak, to try another
-time.
+"least divisor function" which will do the actual work. What we see
+with ~ldf~ is Haskell's *equation guarding*, which allows us to set up
+test *cases*. ~ldf~ first tries ~divides~ (which yields either ~True~
+or ~False~) on the incoming number argument ~n~ using the argument
+~k~. We see ~ldf~ begins with the lowest prime $2$ for ~k~. So if $2
+\mid n$ then we're through, the $LD(n) = k$. But if it is not then we
+move on to the next /case/, namely, Is ~k~ squared greater than
+~n~?[fn:18] Again, this yields a ~True~ or ~False~. If ~True~, then
+~n~ is the least divisor. But if this second test case also fails, we
+go onto the third, which is not a normal test case, but a hardwired
+~True~, i.e., we're going with this case---because there are no other
+possible situations. What's unique about this last case is that it
+simply calls itself, but with ~k~ incremented by $1$. In other words,
+we have a repeating mechanism whereby we can march up through the
+whole numbers one after the other testing each. This is *recursion*,
+and we'll soon be exploring it in depth. But for now just accept that
+~ldf~ is calling itself, driving inside itself, so to speak, to try
+another time.
 
 Let's investigate the number $5$ and how ~ldf~ handles it
 
@@ -683,12 +678,12 @@ ld 5
 
 How did ~ld~ find this? In the first iteration, the first test case,
 $2 \mid 5$, fails, followed by the second test case, ~2^2 > 5~, which
-is also ~False~. Hence, recursion ensues with ~ldf 3 5~. On the first
-test case ~divides 3 5~ also fails, but then the second test case,
-~3^2 > 5~ is ~True~; and so we know $5$ is indeed prime. And so we
-have turned our Proposition theorems into an algorithm and working
-code! Let's see a more general (non-abbreviated) explanation of
-/equation guarding/
+is also ~False~ since $4 \lt 5$. Hence, recursion ensues with ~ldf 3
+5~. On the first test case ~divides 3 5~ also fails, but then the
+second test case, ~3^2 > 5~ is ~True~; and so we know $5$ is indeed
+the least divisor. And so we have turned our Proposition theorems into
+an algorithm and working code! Let's see a more general
+(non-abbreviated) explanation of /equation guarding/
 
 #+name: 3f177117-e78a-4dbf-af1f-e58644006648
 #+begin_src haskell :eval never :exports code
@@ -698,7 +693,8 @@ foo t | condition_3 = body_3
 foo t |             = body_4
 #+end_src
 
-So now let's define our first version of a /test for primes/
+Now using our ~ld~ function, let's define our first version of a /test
+for primes/
 
 #+name: 6cf24bbe-c37f-4480-8b57-79509a9adc40
 #+begin_src haskell :eval never :exports code
@@ -796,8 +792,8 @@ hence, both cannot have won, nor can both have lost.
 
 * Footnotes
 
-[fn:1] We'll discuss another possibility, namely, the Platonic belief
-math is just out there in the universe, later.
+[fn:1] We'll discuss another possibility, namely, the Platonic
+belief math is just out there in the universe, later.
 
 [fn:2] Let's watch [[https://youtu.be/8xPRn9weLYg?si=5fplvY_vDQD2dbHb][this video]] (semi-)realistically depicting a STEM
 environment. No magic, just people taking math out of books and
@@ -842,26 +838,32 @@ non-equivalence ~/+~).
 [fn:10] Technically only numbers can be added, subtracted,
 etc. For addition, e.g., non-number objects are /aggregated/.
 
-[fn:11] A prime number has exactly one divisor greater than $1$, i.e.,
-the prime number itself. Remember this for later...
+[fn:11] Again, a prime number has exactly one divisor greater than $1$, i.e.,
+the prime number itself.
 
-[fn:12] ...or the /factors/ of $120$.
+[fn:12] The *cardinality* of a set is the count of the unique elements
+contained in the set.
 
-[fn:13] Let's not forget the /Fundamental Theorem of Arithmetic/,
+[fn:13] ...or the /factors/ of $120$.
+
+[fn:14] This is the Haskell version of *[[https://en.wikipedia.org/wiki/Set-builder_notation][set comprehension]]*. More
+later.
+
+[fn:15] Let's not forget the /Fundamental Theorem of Arithmetic/,
 i.e., that $120$ can also be expressed as product of powers of those
 first three primes.
 
-[fn:14] See [[https://en.wikipedia.org/wiki/Proof_by_contradiction][proof by contradiction]].
+[fn:16] See [[https://en.wikipedia.org/wiki/Proof_by_contradiction][proof by contradiction]].
 
-[fn:15] The *floor* ($\lfloor\; \rfloor$) of $\sqrt{599}$? First, get the square
+[fn:17] The *floor* ($\lfloor\; \rfloor$) of $\sqrt{599}$? First, get the square
 root of $599$, which is $24.474476501040833$; so the /lowest/ whole
 number, the floor, would be $24$. The $\lceil\sqrt{599}\rceil$, or the *ceiling*
 of the square root of $599$ would be $25$.
 
-[fn:16] This is the second part of $LD(n)$ Proposition, i.e., we've
+[fn:18] This is the second part of $LD(n)$ Proposition, i.e., we've
 flipped the $(LD(n))^2 \le n$. ~ld~ looks for a prime divisor of $n$ by
 checking $k \mid n$ for all $k$ with $2 \le k \le \sqrt{n}$. But isn't a
 $LD(n)$ supposed to be prime? We will improve on ~ld~ so it doesn't
 waste time checking non-prime $k$ within $2 \le k \le \sqrt{n}$.
 
-[fn:17] DEFINITION NOT FOUND.
+[fn:19] DEFINITION NOT FOUND.

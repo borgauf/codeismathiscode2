@@ -24,6 +24,7 @@ instance Eq Color where
 divisors :: Integer -> [Integer]
 divisors n = [d | d <- [2..abs n], abs n `mod` d == 0]
 
+ld :: Integral t => t -> t
 ld n = ldf 2 n
 ldf k n | divides k n = k
         | k^2 > n = n

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-03-05 Wed 17:20 -->
+<!-- 2025-03-05 Wed 23:35 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -110,9 +110,9 @@ pre.example {clear: none; }
 <section id="outline-container-orgc7eb2b3" class="outline-2">
 <h2 id="orgc7eb2b3">STEM Club 1</h2>
 </section>
-<section id="outline-container-orga7d7645" class="outline-2">
-<h2 id="orga7d7645"></h2>
-<div class="outline-text-2" id="text-orga7d7645">
+<section id="outline-container-org6a61510" class="outline-2">
+<h2 id="org6a61510"></h2>
+<div class="outline-text-2" id="text-org6a61510">
 </div>
 <div id="outline-container-org7d8b5ad" class="outline-3">
 <h3 id="org7d8b5ad">Doing math with computers</h3>
@@ -136,8 +136,8 @@ engineering, and especially mathematics for them.
 
 <p>
 <b><i>Where</i> is math?</b><label id='fnr.1' for='fnr-in.1.7279737' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.7279737' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
-We&rsquo;ll discuss another possibility, namely, the Platonic belief
-math is just out there in the universe, later.
+We&rsquo;ll discuss another possibility, namely, the Platonic
+belief math is just out there in the universe, later.
 </span>
 </p>
 
@@ -699,9 +699,9 @@ math&rsquo;s \(d\) <i>divides</i> \(n\). Let&rsquo;s move on.
 </p>
 </div>
 </div>
-<div id="outline-container-org998704a" class="outline-4">
-<h4 id="org998704a">A <i>least divisor</i></h4>
-<div class="outline-text-4" id="text-org998704a">
+<div id="outline-container-org430a3f8" class="outline-4">
+<h4 id="org430a3f8">A <i>least divisor</i></h4>
+<div class="outline-text-4" id="text-org430a3f8">
 <p>
 <font color = "#4715b3">
 ⇲ We define \(LD(n)\) as the least natural number <i>greater than \(1\)</i>
@@ -710,26 +710,25 @@ that divides \(n\), or the <i>least divisor</i> of \(n\).
 </p>
 
 <p>
-Every number has at least one divisor.<label id='fnr.11' for='fnr-in.11.9318355' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.9318355' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
-A prime number has exactly one divisor greater than \(1\), i.e.,
-the prime number itself. Remember this for later&#x2026;
-</span> Therefore, every number
-\(n\) has a least divisor, \(LD(n)\), of its set of divisors, even if that
-set has only one element. For example \(12\), a composite number, has
-the set of divisors \(\{2,3,4,6,12\}\) with \(LD(12) = 2\). But what if
-the set of \(LD(n)\) is just one number? What sort of number would \(n\)
-therefore be? Intuitively we know that if a number has only one
-divisor, it cannot be any sort of composite number; otherwise, the
-number would still have a divisor. But that&rsquo;s just our intuition&#x2026;
+Every number has at least one divisor greater than <i>unit</i> \(1\).<label id='fnr.11' for='fnr-in.11.9318355' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.9318355' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
+Again, a prime number has exactly one divisor greater than \(1\), i.e.,
+the prime number itself.
+</span>
+Therefore, every number \(n\) has a smallest, <i>least</i> divisor, \(LD(n)\),
+in its set of divisors, even if that set has only one element. We will
+leverage this fact to test a number for primeness. Read on.
 </p>
 
 <p>
-Consider the set of divisors of \(12\) again: \(\{2,3,4,6,12\}\). We see
-two primes to start with, \(2\) and $3$&#x2014;then non-prime composites,
-\(4\), \(6\), \(12\). The least divisor in this set is \(2\), and it is
-prime. What about \(120\)? The divisor set<label id='fnr.12' for='fnr-in.12.5128396' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.5128396' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
+Let&rsquo;s look at a <i>composite</i> number \(12\) with the set of divisors
+\(\{2,3,4,6,12\}\). Here, \(LD(12) = 2\) and the <b>cardinality</b><label id='fnr.12' for='fnr-in.12.5128396' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.5128396' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
+The <b>cardinality</b> of a set is the count of the unique elements
+contained in the set.
+</span> of
+the set is \(5\), i.e., greater than \(1\). What about \(120\)? The divisor
+set<label id='fnr.13' for='fnr-in.13.460304' class='margin-toggle sidenote-number'><sup class='numeral'>13</sup></label><input type='checkbox' id='fnr-in.13.460304' class='margin-toggle'><span class='sidenote'><sup class='numeral'>13</sup>
 &#x2026;or the <i>factors</i> of \(120\).
-</span> would be
+</span> would be much larger
 </p>
 
 \begin{align*}
@@ -737,11 +736,14 @@ prime. What about \(120\)? The divisor set<label id='fnr.12' for='fnr-in.12.5128
 \end{align*}
 
 <p>
-and we can get it with this Haskell code
+and we can get it with this Haskell code<label id='fnr.14' for='fnr-in.14.5769378' class='margin-toggle sidenote-number'><sup class='numeral'>14</sup></label><input type='checkbox' id='fnr-in.14.5769378' class='margin-toggle'><span class='sidenote'><sup class='numeral'>14</sup>
+This is the Haskell version of <b><a href="https://en.wikipedia.org/wiki/Set-builder_notation">set comprehension</a></b>. More
+later.
+</span>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgf945b5f"><span class="org-haskell-definition">divisors</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-type">Integer</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<pre class="src src-haskell" id="orgb2aae9d"><span class="org-haskell-definition">divisors</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integer</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-type">Integer</span><span class="org-rainbow-delimiters-depth-1">]</span>
 <span class="org-haskell-definition">divisors</span> n <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">[</span>d <span class="org-haskell-operator">|</span> d <span class="org-haskell-operator">&lt;-</span> <span class="org-rainbow-delimiters-depth-2">[</span>2<span class="org-haskell-operator">..</span>abs n<span class="org-rainbow-delimiters-depth-2">]</span>, abs n <span class="org-haskell-operator">`mod`</span> d <span class="org-haskell-operator">==</span> 0<span class="org-rainbow-delimiters-depth-1">]</span>
 </pre>
 </div>
@@ -751,7 +753,7 @@ testing
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgb2aae9d"><span class="org-haskell-definition">divisors</span> 120
+<pre class="src src-haskell" id="orgff53ab8"><span class="org-haskell-definition">divisors</span> 120
 </pre>
 </div>
 
@@ -761,25 +763,23 @@ testing
 
 
 <p>
-Again, we see a pattern where we start with divisors that are prime
-numbers, then (if any) composite numbers appear.<label id='fnr.13' for='fnr-in.13.2610941' class='margin-toggle sidenote-number'><sup class='numeral'>13</sup></label><input type='checkbox' id='fnr-in.13.2610941' class='margin-toggle'><span class='sidenote'><sup class='numeral'>13</sup>
+As with \(12\), we see a pattern where we start with a divisor that is
+prime, then (if any) composite numbers follow.<label id='fnr.15' for='fnr-in.15.8898497' class='margin-toggle sidenote-number'><sup class='numeral'>15</sup></label><input type='checkbox' id='fnr-in.15.8898497' class='margin-toggle'><span class='sidenote'><sup class='numeral'>15</sup>
 Let&rsquo;s not forget the <i>Fundamental Theorem of Arithmetic</i>,
 i.e., that \(120\) can also be expressed as product of powers of those
 first three primes.
-</span> In both
-examples notice that the square the \(LD(n)\), e.g., with \(120\) squaring
-\(2\) is \(4\), i.e., less than \(120\). Why is this germane?
+</span> In both examples
+notice that the square the \(LD(n)\), e.g., with \(120\) squaring \(2\) is
+\(4\), is less than \(120\). Why is this germane?
 </p>
 
 <p>
 Consider the composite number \(143\). Its divisors are two prime
 numbers, \(11\) and \(13\). Now, \(11^2 = 121\), while \(13^2 = 169\), i.e.,
-the square of the former is less than \(143\) and the square of the
-latter is greater than \(143\). Neat observation, but does it help us
-ultimately in testing a number for prime-ness? Yes, and we&rsquo;ll find out
-why below.
+the square of the former, i.e., the \(LD(143)\), is less than
+\(143\). Neat observation, but does this help us in testing a number for
+primeness? Yes, and we&rsquo;ll find out why below.
 </p>
-
 
 <p>
 <font color = "#4715b3">
@@ -799,24 +799,21 @@ help test if a number is prime.
 </p>
 
 <p>
-Why concentrate on the least divisor? The first part of the
+Why concentrate on the least divisor? The first part of our
 proposition will anchor the fact that the least divisor is always a
 prime. This will be necessary for when a number is analyzed for
-primeness and no divisor less than the number itself is found. We need
-to be sure that least divisor is indeed prime.
-</p>
-
-<p>
-Besides just our intuitive notion, we can prove this. We&rsquo;ll employ
-<i>contradiction</i><label id='fnr.14' for='fnr-in.14.5999288' class='margin-toggle sidenote-number'><sup class='numeral'>14</sup></label><input type='checkbox' id='fnr-in.14.5999288' class='margin-toggle'><span class='sidenote'><sup class='numeral'>14</sup>
+primeness and no divisor less than the number itself has been
+found. But we need to prove that least divisor is indeed prime. How?
+We&rsquo;ll employ a proof method called <i>contradiction</i><label id='fnr.16' for='fnr-in.16.1637764' class='margin-toggle sidenote-number'><sup class='numeral'>16</sup></label><input type='checkbox' id='fnr-in.16.1637764' class='margin-toggle'><span class='sidenote'><sup class='numeral'>16</sup>
 See <a href="https://en.wikipedia.org/wiki/Proof_by_contradiction">proof by contradiction</a>.
-</span>, i.e., we set up a contradiction to what we
-want to prove, then exposing it as not true. In this case, let&rsquo;s
-assume \(c = LD(n)\) and \(c\) is <i>not</i> prime, a contradiction of our
-original statement. But if \(c\) is not prime it must then be a
-composite number itself, e.g., \(c = a \cdot b\) where \(1 \lt a \lt c\). But that
-would mean \(a\) now divides \(n\), and \(a\) is smaller than \(c\) the
-supposed \(LD(n)\). Therefore, a \(LD(n)\) must be prime.
+</span> where we
+claim just the opposite of what we want to prove, then expose it as
+not true. In this case, let&rsquo;s assume \(c = LD(n)\) and \(c\) is <i>not</i>
+prime, a contradiction of our original statement. But if \(c\) is not
+prime it must then be a composite number itself, e.g., \(c = a \cdot b\)
+where \(1 \lt a \lt c\). But that would mean \(a\) now divides \(n\), and \(a\) is
+smaller than \(c\) the supposed \(LD(n)\). Therefore, a \(LD(n)\) must be
+prime.
 </p>
 
 <p>
@@ -839,20 +836,21 @@ e &\le \sqrt{599}
 \end{align*}
 
 <p>
-because if both \(d\) and \(e\) were greater than \(\sqrt{599}\) that would
-make \(d \cdot e\) greater than \(\sqrt{599} \cdot \sqrt{599} = 599\), which it
-can&rsquo;t be. So if \(599\) is composite, it has a factor between \(2\) and \(\lfloor
-\sqrt{599} \rfloor\)<label id='fnr.15' for='fnr-in.15.1637764' class='margin-toggle sidenote-number'><sup class='numeral'>15</sup></label><input type='checkbox' id='fnr-in.15.1637764' class='margin-toggle'><span class='sidenote'><sup class='numeral'>15</sup>
+because if both \(d\) and \(e\) were greater than \(\sqrt{599}\) (the
+opposite of less than or equal to) that would make \(d \cdot e\) greater
+than \(\sqrt{599} \cdot \sqrt{599} = 599\), which it can&rsquo;t be. So if \(599\)
+is composite, it has a divisor between \(2\) and \(\lfloor \sqrt{599} \rfloor\)<label id='fnr.17' for='fnr-in.17.6785610' class='margin-toggle sidenote-number'><sup class='numeral'>17</sup></label><input type='checkbox' id='fnr-in.17.6785610' class='margin-toggle'><span class='sidenote'><sup class='numeral'>17</sup>
 The <b>floor</b> (\(\lfloor\; \rfloor\)) of \(\sqrt{599}\)? First, get the square
 root of \(599\), which is \(24.474476501040833\); so the <i>lowest</i> whole
 number, the floor, would be \(24\). The \(\lceil\sqrt{599}\rceil\), or the <b>ceiling</b>
 of the square root of \(599\) would be \(25\).
-</span> or \(24\).
+</span>
+or \(24\).
 </p>
 
 <p>
 At this point we can guess that to show \(599\) is prime, we need to
-show it is not a composite number. \(24^2 = 576\), the <i>floor</i> of
+show it has no divisor  not a composite number. \(24^2 = 576\), the <i>floor</i> of
 \(\sqrt{599}\), but \(25^2 = 625\) which is overshoot. We can restate the
 second part of the proposition thusly
 </p>
@@ -869,17 +867,18 @@ prime.  </font>
 which allows us to quit looking for a \(LD(n)\), i.e., some prime, long
 before we get to \(599\). If we test this algorithmic proposition on
 \(599\) we see that none of the primes between \(2\) and \(24\), namely the
-set \(\{2,3,5,7,11,13,17,19,23\}\) divides \(599\) evenly; therefore,
-\(599\) is prime.
+set of primes \(\{2,3,5,7,11,13,17,19,23\}\) divides \(599\) evenly;
+therefore, \(599\) is prime.
 </p>
 
 <p>
-So we have our main tool for establishing primality, namely,
-\(LD(n)\). Let&rsquo;s put it into code. We&rsquo;ll break it into two parts
+We now have our main tool for establishing primality, namely, \(LD(n)\)
+proven. Let&rsquo;s put it into code. We&rsquo;ll break it into two parts
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org631bfca"><span class="org-haskell-definition">ld</span> n <span class="org-haskell-operator">=</span> ldf 2 n
+<pre class="src src-haskell" id="org0b91ca2"><span class="org-haskell-definition">ld</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integral</span> t <span class="org-haskell-operator">=&gt;</span> t <span class="org-haskell-operator">-&gt;</span> t
+<span class="org-haskell-definition">ld</span> n <span class="org-haskell-operator">=</span> ldf 2 n
 <span class="org-haskell-definition">ldf</span> k n <span class="org-haskell-operator">|</span> divides k n <span class="org-haskell-operator">=</span> k
         <span class="org-haskell-operator">|</span> k<span class="org-haskell-operator">^</span>2 <span class="org-haskell-operator">&gt;</span> n <span class="org-haskell-operator">=</span> n
         <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> ldf <span class="org-rainbow-delimiters-depth-1">(</span>k<span class="org-haskell-operator">+</span>1<span class="org-rainbow-delimiters-depth-1">)</span> n
@@ -888,30 +887,30 @@ So we have our main tool for establishing primality, namely,
 
 <p>
 <code>ld</code> is just a wrapper to feed our number in question into <code>ldf</code>, the
-&ldquo;least divisor function.&rdquo; What we see with <code>ldf</code> is Haskell&rsquo;s
-<b>equation guarding</b>, which allows us to set up test <b>cases</b>. <code>ldf</code>
-first tries <code>divides</code> (which yields either <code>True</code> or <code>False</code>) on the
-incoming number argument <code>n</code> using the argument <code>k</code>. We see <code>ldf</code>
-begins with the lowest prime \(2\) for <code>k</code>. So if \(2 \mid n\) then we&rsquo;re
-through, the \(LD(n) = k\). But if it is not then we move on to the next
-<i>case</i>, namely, Is <code>k</code> squared greater than <code>n</code>?<label id='fnr.16' for='fnr-in.16.6848565' class='margin-toggle sidenote-number'><sup class='numeral'>16</sup></label><input type='checkbox' id='fnr-in.16.6848565' class='margin-toggle'><span class='sidenote'><sup class='numeral'>16</sup>
+&ldquo;least divisor function&rdquo; which will do the actual work. What we see
+with <code>ldf</code> is Haskell&rsquo;s <b>equation guarding</b>, which allows us to set up
+test <b>cases</b>. <code>ldf</code> first tries <code>divides</code> (which yields either <code>True</code>
+or <code>False</code>) on the incoming number argument <code>n</code> using the argument
+<code>k</code>. We see <code>ldf</code> begins with the lowest prime \(2\) for <code>k</code>. So if \(2
+\mid n\) then we&rsquo;re through, the \(LD(n) = k\). But if it is not then we
+move on to the next <i>case</i>, namely, Is <code>k</code> squared greater than
+<code>n</code>?<label id='fnr.18' for='fnr-in.18.1864738' class='margin-toggle sidenote-number'><sup class='numeral'>18</sup></label><input type='checkbox' id='fnr-in.18.1864738' class='margin-toggle'><span class='sidenote'><sup class='numeral'>18</sup>
 This is the second part of \(LD(n)\) Proposition, i.e., we&rsquo;ve
 flipped the \((LD(n))^2 \le n\). <code>ld</code> looks for a prime divisor of \(n\) by
 checking \(k \mid n\) for all \(k\) with \(2 \le k \le \sqrt{n}\). But isn&rsquo;t a
 \(LD(n)\) supposed to be prime? We will improve on <code>ld</code> so it doesn&rsquo;t
 waste time checking non-prime \(k\) within \(2 \le k \le \sqrt{n}\).
-</span> Again, this
-yields a <code>True</code> or <code>False</code>. If <code>True</code>, then <code>n</code> is the least
-divisor. But if this second test case also fails, we go onto the
-third, which is not a normal test case, but a hardwired <code>True</code>, i.e.,
-we&rsquo;re going with this case&#x2014;because there are no other possible
-situations. What&rsquo;s unique about this last case is that it simply calls
-itself, but with <code>k</code> incremented by \(1\). In other words, we have a
-repeating mechanism whereby we can march up through the whole numbers
-one after the other testing each. This is <b>recursion</b>, and we&rsquo;ll soon
-be exploring it in depth. But for now just accept that <code>ldf</code> is
-calling itself, driving inside itself, so to speak, to try another
-time.
+</span> Again, this yields a <code>True</code> or <code>False</code>. If <code>True</code>, then
+<code>n</code> is the least divisor. But if this second test case also fails, we
+go onto the third, which is not a normal test case, but a hardwired
+<code>True</code>, i.e., we&rsquo;re going with this case&#x2014;because there are no other
+possible situations. What&rsquo;s unique about this last case is that it
+simply calls itself, but with <code>k</code> incremented by \(1\). In other words,
+we have a repeating mechanism whereby we can march up through the
+whole numbers one after the other testing each. This is <b>recursion</b>,
+and we&rsquo;ll soon be exploring it in depth. But for now just accept that
+<code>ldf</code> is calling itself, driving inside itself, so to speak, to try
+another time.
 </p>
 
 <p>
@@ -919,7 +918,7 @@ Let&rsquo;s investigate the number \(5\) and how <code>ldf</code> handles it
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org581a722"><span class="org-haskell-definition">ld</span> 5
+<pre class="src src-haskell" id="orgdcdebe5"><span class="org-haskell-definition">ld</span> 5
 </pre>
 </div>
 
@@ -931,16 +930,16 @@ Let&rsquo;s investigate the number \(5\) and how <code>ldf</code> handles it
 <p>
 How did <code>ld</code> find this? In the first iteration, the first test case,
 \(2 \mid 5\), fails, followed by the second test case, <code>2^2 &gt; 5</code>, which
-is also <code>False</code>. Hence, recursion ensues with <code>ldf 3 5</code>. On the first
-test case <code>divides 3 5</code> also fails, but then the second test case,
-<code>3^2 &gt; 5</code> is <code>True</code>; and so we know \(5\) is indeed prime. And so we
-have turned our Proposition theorems into an algorithm and working
-code! Let&rsquo;s see a more general (non-abbreviated) explanation of
-<i>equation guarding</i>
+is also <code>False</code> since \(4 \lt 5\). Hence, recursion ensues with <code>ldf 3
+5</code>. On the first test case <code>divides 3 5</code> also fails, but then the
+second test case, <code>3^2 &gt; 5</code> is <code>True</code>; and so we know \(5\) is indeed
+the least divisor. And so we have turned our Proposition theorems into
+an algorithm and working code! Let&rsquo;s see a more general
+(non-abbreviated) explanation of <i>equation guarding</i>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgb819978"><span class="org-haskell-definition">foo</span> t <span class="org-haskell-operator">|</span> condition_1 <span class="org-haskell-operator">=</span> body_1
+<pre class="src src-haskell" id="org84b7ac4"><span class="org-haskell-definition">foo</span> t <span class="org-haskell-operator">|</span> condition_1 <span class="org-haskell-operator">=</span> body_1
 <span class="org-haskell-definition">foo</span> t <span class="org-haskell-operator">|</span> condition_2 <span class="org-haskell-operator">=</span> body_2
 <span class="org-haskell-definition">foo</span> t <span class="org-haskell-operator">|</span> condition_3 <span class="org-haskell-operator">=</span> body_3
 <span class="org-haskell-definition">foo</span> t <span class="org-haskell-operator">|</span>             <span class="org-haskell-operator">=</span> body_4
@@ -948,11 +947,12 @@ code! Let&rsquo;s see a more general (non-abbreviated) explanation of
 </div>
 
 <p>
-So now let&rsquo;s define our first version of a <i>test for primes</i>
+Now using our <code>ld</code> function, let&rsquo;s define our first version of a <i>test
+for primes</i>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org84b7ac4"><span class="org-haskell-definition">prime0</span> n <span class="org-haskell-operator">|</span> n <span class="org-haskell-operator">&lt;</span> 1 <span class="org-haskell-operator">=</span> error <span class="org-string">"Not a positive integer"</span>
+<pre class="src src-haskell" id="orgd604e9a"><span class="org-haskell-definition">prime0</span> n <span class="org-haskell-operator">|</span> n <span class="org-haskell-operator">&lt;</span> 1 <span class="org-haskell-operator">=</span> error <span class="org-string">"Not a positive integer"</span>
          <span class="org-haskell-operator">|</span> n <span class="org-haskell-operator">==</span> 1 <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">False</span>
          <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> ld n <span class="org-haskell-operator">==</span> n
 </pre>
@@ -965,7 +965,7 @@ can simply ask
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgd604e9a"><span class="org-haskell-constructor">:</span>t prime0
+<pre class="src src-haskell" id="org6613e8d"><span class="org-haskell-constructor">:</span>t prime0
 </pre>
 </div>
 
@@ -979,7 +979,7 @@ Let&rsquo;s add it
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="orgb1e7d46"><span class="org-haskell-definition">prime0</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integral</span> a <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Bool</span>
+<pre class="src src-haskell" id="org353ca53"><span class="org-haskell-definition">prime0</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Integral</span> a <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Bool</span>
 <span class="org-haskell-definition">prime0</span> n <span class="org-haskell-operator">|</span> n <span class="org-haskell-operator">&lt;</span> 1 <span class="org-haskell-operator">=</span> error <span class="org-string">"Not a positive integer"</span>
          <span class="org-haskell-operator">|</span> n <span class="org-haskell-operator">==</span> 1 <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor">False</span>
          <span class="org-haskell-operator">|</span> otherwise <span class="org-haskell-operator">=</span> ld n <span class="org-haskell-operator">==</span> n
@@ -992,7 +992,7 @@ Let&rsquo;s add it
 
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org353ca53"><span class="org-haskell-definition">reduce</span> <span class="org-haskell-operator">::</span>  <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Ratio</span> a
+<pre class="src src-haskell" id="org37c0cf1"><span class="org-haskell-definition">reduce</span> <span class="org-haskell-operator">::</span>  <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-type">Ratio</span> a
 <span class="org-haskell-pragma">{-# SPECIALISE reduce :: Integer -&gt; Integer -&gt; Rational #-}</span>
 <span class="org-haskell-definition">reduce</span> <span class="org-haskell-keyword">_</span> 0              <span class="org-haskell-operator">=</span>  ratioZeroDenominatorError
 <span class="org-haskell-definition">reduce</span> x y              <span class="org-haskell-operator">=</span>  <span class="org-rainbow-delimiters-depth-1">(</span>x <span class="org-haskell-operator">`quot`</span> d<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-constructor">:%</span> <span class="org-rainbow-delimiters-depth-1">(</span>y <span class="org-haskell-operator">`quot`</span> d<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1007,7 +1007,7 @@ x <span class="org-haskell-definition">%</span> y                   <span class=
 
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org37c0cf1"><span class="org-haskell-definition">gcd</span>             <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a
+<pre class="src src-haskell" id="org00e6e4b"><span class="org-haskell-definition">gcd</span>             <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a
 <span class="org-haskell-definition">gcd</span> x y         <span class="org-haskell-operator">=</span>  gcd' <span class="org-rainbow-delimiters-depth-1">(</span>abs x<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">(</span>abs y<span class="org-rainbow-delimiters-depth-1">)</span>
                    <span class="org-haskell-keyword">where</span> gcd' a 0  <span class="org-haskell-operator">=</span>  a
                          gcd' a b  <span class="org-haskell-operator">=</span>  gcd' b <span class="org-rainbow-delimiters-depth-1">(</span>a <span class="org-haskell-operator">`rem`</span> b<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1015,7 +1015,7 @@ x <span class="org-haskell-definition">%</span> y                   <span class=
 </div>
 
 <div class="org-src-container">
-<pre class="src src-haskell" id="org00e6e4b"><span class="org-haskell-definition">lcm</span>             <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a
+<pre class="src src-haskell" id="org998704a"><span class="org-haskell-definition">lcm</span>             <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-type">Integral</span> a<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a
 <span class="org-haskell-definition">lcm</span> <span class="org-haskell-keyword">_</span> 0         <span class="org-haskell-operator">=</span>  0
 <span class="org-haskell-definition">lcm</span> 0 <span class="org-haskell-keyword">_</span>         <span class="org-haskell-operator">=</span>  0
 <span class="org-haskell-definition">lcm</span> x y         <span class="org-haskell-operator">=</span>  abs <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>x <span class="org-haskell-operator">`quot`</span> <span class="org-rainbow-delimiters-depth-3">(</span>gcd x y<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-haskell-operator">*</span> y<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1031,7 +1031,7 @@ x <span class="org-haskell-definition">%</span> y                   <span class=
 An <b>exclusive or</b> is the negation of an implication
 </p>
 
-<table id="org7a794ef" border="2" rules="all" frame="border">
+<table id="orga7d7645" border="2" rules="all" frame="border">
 
 
 <colgroup>
