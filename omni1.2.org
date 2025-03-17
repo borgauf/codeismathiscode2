@@ -1,29 +1,33 @@
-# # -*- mode: org -*-
-# # -*- coding: utf-8 -*-
-# Place title here
-#+TITLE:
-# Place author here
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
 #+AUTHOR:
-# Place email here
 #+EMAIL: 
-# Call borgauf/insert-dateutc.1 here
 #+DATE: 
-# #+Filetags: :SAGA
-# #+TAGS: experiment_nata(e) idea_nata(i) chem_nata(c) logs_nata(l) y_stem(y)
 #+LANGUAGE:  en
-# #+INFOJS_OPT: view:showall ltoc:t mouse:underline path:http://orgmode.org/org-info.js
-# #+HTML_HEAD: <link rel="stylesheet" href="../data/stylesheet.css" type="text/css">
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
 #+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="./ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+OPTIONS: H:15 num:15 toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
-# #+OPTIONS: prop:t
-# This makes MathJax not work
-# #+OPTIONS: tex:imagemagick
-# this makes MathJax work
+#+EXPORT_FILE_NAME: omni1.2.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
 #+OPTIONS: tex:t
-# This also replaces MathJax with images, i.e., don’t use.
-# #+OPTIONS: tex:dvipng
+#+OPTIONS: html-postamble:nil
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [american]
 # Setup tikz package for both LaTeX and HTML export:
@@ -32,7 +36,6 @@
 #+LaTeX_HEADER: \usepackage{pgfplots}
 #+LaTeX_HEADER: \usepackage{sansmath}
 #+LaTeX_HEADER: \usepackage{mathtools}
-#+HTML_MATHJAX: align: left indent: 5em tagside: left font: Neo-Euler
 #+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
 #
 #+PROPERTY: header-args:latex+ :exports results :fit yes
@@ -40,15 +43,15 @@
 #+STARTUP: showall
 #+STARTUP: align
 #+STARTUP: indent
+#+STARTUP: shrink
 # This makes MathJax/LaTeX appear in buffer (UTF-8)
 #+STARTUP: entitiespretty
-# #+STARTUP: logdrawer
-# This makes pictures appear in buffer
-# #+STARTUP: inlineimages
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
 #+STARTUP: fnadjust
-
-#+OPTIONS: html-style:nil
-# #+BIBLIOGRAPHY: ref plain
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
 
 #+begin_export html
 <div class="header">
@@ -66,31 +69,29 @@
 :END:
 :RESOURCES:
 - [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
-- [[cite:&brezov2018introduction]]
-- [[cite:&weissman2020illustrated]]
-- [[cite:&levesque2012thinking]]
+- brezov2018introduction
+- weissman2020illustrated
+- levesque2012thinking
 :END:
-
-
 
 ** Not exported :noexport:
 
-#+begin_src haskell :eval never :exports code :tangle omni1.2.hs :noweb yes
+#+name: module
+#+begin_src haskell :eval never :exports code :tangle ./src/omni1_2.hs :noweb yes
 module OMNI1_2 where
 
-<<c7b27de7-bd6e-49fb-bf65-8453e6242ab7>>
-<<ae254645-7732-4de7-8559-d4e825b836df>>
-<<350e6179-fdff-47a4-9bf3-80413b7316bb>>
-<<6e231094-1d98-4e5c-99f9-541f140e390a>>
-<<35167592-7de1-424b-aac2-8918ffa2d3a0>>
-<<2191f911-a28c-4081-9803-e6873933991c>>  
+
+
+
+<<6b3a146d-3f45-4c13-a803-a00345c3df63>>
+
 #+end_src
 
 
 
 ** Rabbit holes
 @@html:<font color = "#375e79">@@
-⌜🐇 *Rabbit holes* to get started with CIMMIC are:
+⌜🐇 *Rabbit holes* to get started with CIMIC are:
 
 @@html:</font>@@🐇⌟
 
@@ -103,7 +104,6 @@ when we divide a number by another? Two possibilities:
 - One number cannot divide the other without producing a "residual," a
   "leftover" number you know as a /remainder/. For example, $8$
   divided by $3$ cannot happen as a binary.
-
 
 So what do we do? When our ancestors were confronted with this dual
 nature of division, they envisioned a new sort of number they called a
@@ -120,7 +120,8 @@ sandwiched in between $\mathbb{N}$ and $\mathbb{Z}\;$
 
 In Haskell rational numbers are handled by ~Data.Ratio~
 
-#+begin_src haskell :results silent :exports code
+#+name: 6b3a146d-3f45-4c13-a803-a00345c3df63
+#+begin_src haskell :eval never :exports code
 import Data.Ratio
 #+end_src
 
@@ -140,10 +141,15 @@ numerator (60 % 20)
 #+RESULTS:
 : 3
 
+#+name: 6e48f293-ced0-44f9-ab89-b7295d5e791b
+#+begin_src haskell :eval never :exports code
+combRatio r = show (numerator (r)) ++ "/" ++ show (denominator (r))
+#+end_src
+
 #+begin_src haskell :results silent :exports code
 :{
 -- combRatio :: Ratio
-combRatio r = show (numerator (r)) ++ "/" ++ show (denominator (r))
+
 :}
 #+end_src
 

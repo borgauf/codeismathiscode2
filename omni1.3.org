@@ -1,16 +1,30 @@
-# # -*- mode: org -*-
-# # -*- coding: utf-8 -*-
-#+TITLE:
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
 #+AUTHOR:
 #+EMAIL: 
 #+DATE: 
 #+LANGUAGE:  en
 # #+INFOJS_OPT: view:showall ltoc:t mouse:underline
 #+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="./ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
 #+INCLUDE: "./header.org" :minlevel 1
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+EXPORT_FILE_NAME: sets.html
+#+EXPORT_FILE_NAME: omni1.3.html
 #+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
 #+OPTIONS: tex:t
 #+OPTIONS: html-postamble:nil
@@ -29,19 +43,54 @@
 #+STARTUP: showall
 #+STARTUP: align
 #+STARTUP: indent
+#+STARTUP: shrink
 # This makes MathJax/LaTeX appear in buffer (UTF-8)
 #+STARTUP: entitiespretty
 # #+STARTUP: logdrawer # This makes pictures appear in buffer
 #+STARTUP: inlineimages
 #+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
 
-#+OPTIONS: html-style:nil
+* Not exported :noexport:
+
+#+begin_src haskell
+1 + 1
+#+end_src
+
+#+RESULTS:
+: 2
+
+#+name: module
+#+begin_src haskell :eval never :exports code :tangle ./src/omni1_3.hs :noweb yes
+module OMNI1_3 where
+
+-- first come import statements
+<<3b5747f7-dd38-4fd5-af05-62db3d8477af>>
+<<1e0d0649-30f1-4609-94b3-c7b6e47c70ce>>  
+
+--then everything else  
+<<d2fb9599-0a53-4d2c-8411-9da0d7d795f8>>
+<<2f2aea18-b10e-4821-999a-018db8b8308c>>
+<<f4ab8cec-3485-49fc-92f5-7c6a0dbcddf4>>  
+
+
+<<673b1826-da41-4072-8ed8-06535215ca36>>
+
+<<628d88ec-1da8-4f59-947e-f1a5f6de3a36>>
+
+<<7e6eb6af-a15c-4adf-a222-698b65f81929>>
+
+#+end_src
+
+#+name: 1e0d0649-30f1-4609-94b3-c7b6e47c70ce
+#+begin_src haskell :eval never :exports code
+import Data.Int
+#+end_src
+
 
 * Sets, types, and lists
-:RESOURCES:
-- [[cite:&doets2012haskell]]
-- [[cite:&o2006discrete]]
-:END:
 
 ** Why sets?
 
@@ -313,7 +362,9 @@ might all be the same set, but
 
 #+name: d2fb9599-0a53-4d2c-8411-9da0d7d795f8
 #+begin_src haskell :eval never :exports code
-a = [1,2,3,4] b = [1,2,3,4,2,1] c = [3,4,2,1]
+a = [1,2,3,4]
+b = [1,2,3,4,2,1]
+c = [3,4,2,1]
 #+end_src
 
 are different lists. Again, think of a Haskell list as a /sequence/ of
@@ -328,9 +379,11 @@ means of removing them. There is built-in (~Data.List~) ~delete~ which
 returns a new list[fn:10] with the first instance of the argument missing
 
 #+name: 3b5747f7-dd38-4fd5-af05-62db3d8477af
-#+begin_src haskell :eval never :exports code
+#+begin_src haskell :results output :exports both
 import Data.List
 #+end_src
+
+#+RESULTS: 3b5747f7-dd38-4fd5-af05-62db3d8477af
 
 #+name: aa504dda-906b-4d27-a1ef-d40f7448a403
 #+begin_src haskell :results verbatim :exports both
@@ -482,10 +535,6 @@ rmDups2 [1,2,3,1,1,2,4,6,1,5,5,5]
 Let's end with Haskell's built-in function called ~nub~ (part of
 ~Data.List~) for complete elimination of list duplicates. One simple
 implementation of ~nub~ that leverages ~filter~ would be
-
-:RESOURCES:
-- [[cite:&nizamani2016]]
-:END:
 
 #+name: 8d31ddf8-dbac-429b-9f53-b7cedf40cb5b
 #+begin_src haskell :eval never :exports code
@@ -757,9 +806,6 @@ conjunction to multiplication*,
 Now, how do we bring this sort of abstraction into the computer?
 
 ** Ordering: sets and regular algebraic math
-:RESOURCES:
-- [[cite:&courant1996mathematics]]
-:END:
 
 There are two big ideas about numbers --- beyond their main uses as
 indicators of quantity and enumerating things. They are /equivalence/
@@ -824,17 +870,17 @@ by defining our ~Color~ type
 
 #+name: 2f2aea18-b10e-4821-999a-018db8b8308c
 #+begin_src haskell :eval never :exports code
-data Color = Red | Yellow | Blue | Green | Purple | Orange | Brown deriving (Show,Eq,Enum)
+data Colors = Reds | Yellows | Blues | Greens | Purples | Oranges | Browns deriving (Show,Eq,Enum)
 #+end_src
 
 
-~Color~ has seven /tags/ or /data constructors/, i.e., ~Red~,
+~Colors~ has seven /tags/ or /data constructors/, i.e., ~Red~,
 ~Yellow~, ... ~Brown~ are individual tag-constructors[fn:23]. So let's
 create a list of colors of type ~Color~
 
 #+name: 31a4b742-077b-419a-8cd1-b822f40c2cf7
 #+begin_src haskell :results silent :exports code
-myColor1 = [Blue,Orange,Yellow]
+myColor1 = [Blues,Oranges,Yellows]
 #+end_src
 
 #+name: b97829e6-b2b6-454e-8dc8-e40c835de662
@@ -843,18 +889,18 @@ myColor1
 #+end_src
 
 #+RESULTS: b97829e6-b2b6-454e-8dc8-e40c835de662
-: [Blue,Orange,Yellow]
+: [Blues,Oranges,Yellows]
 
-Notice how our ~Color~ type definition almost looks like a set itself,
+Notice how our ~Colors~ type definition almost looks like a set itself,
 a sort of container holding all seven of the possible colors
 
 #+name: 4f60fdc0-df8c-446f-b289-49ac38fa7e12
 #+begin_src haskell :results verbatim :exports both
-[a | a <- [(Red::Color)..]]
+[f | f <- [(Reds::Colors)..]]
 #+end_src
 
 #+RESULTS: 4f60fdc0-df8c-446f-b289-49ac38fa7e12
-: [Red,Yellow,Blue,Green,Purple,Orange,Brown]
+: [Reds,Yellows,Blues,Greens,Purples,Oranges,Browns]
 
 Technically speaking, a data constructor like ~Red~ or ~Green~ is also
 function; however, in this case they take no arguments but return a
@@ -936,14 +982,12 @@ We can leverage this basic "or-ness," but we have to include the
 removal of duplicates
 
 #+name: 673b1826-da41-4072-8ed8-06535215ca36
-#+begin_src haskell :results silent :exports code
-:{
+#+begin_src haskell :eval never :exports code
 myUnion :: Eq a => [a] -> [a] -> [a]
 myUnion [] ys = ys
 myUnion (x:xs) ys = if (elem x xs) || (elem x ys)
                     then x : myUnion (filter (/=x) xs) (filter (/=x) ys)
                     else x : myUnion xs ys
-:}
 #+end_src
 
 This seems to work
@@ -969,14 +1013,12 @@ myUnion [1,2,3,4] [2,3,5,5,6,7]
 We could kludge something
 
 #+name: 628d88ec-1da8-4f59-947e-f1a5f6de3a36
-#+begin_src haskell :results silent :exports code
-:{
+#+begin_src haskell :eval never :exports code
 myUnion2 :: Eq a => [a] -> [a] -> [a]
 myUnion2 [] ys = nub ys
 myUnion2 (x:xs) ys = if (elem x xs) || (elem x ys)
                     then x : myUnion2 (filter (/= x) xs) (filter (/=x) ys)
                     else x : myUnion2 xs ys
-:}
 #+end_src
 
 #+name: cb464947-fb3e-46e0-8b0b-ba5fe5c94b62
@@ -1009,13 +1051,13 @@ Let's repeat the definition here
 
 #+name: 7e6eb6af-a15c-4adf-a222-698b65f81929
 #+begin_src haskell :eval never :exports code
-data Color = Red | Yellow | Blue | Green | Purple | Orange | Brown deriving (Show,Eq,Enum)
+data O13Color = O13Red | O13Yellow | O13Blue | O13Green | O13Purple | O13Orange | O13Brown deriving (Show,Eq,Enum)
 #+end_src
 
 
 The initial "math" we do on ~Color~ is contained in the
 definition. Notice the ~deriving (Show,Eq)~~. These connect our
-~Color~ type to the Haskell typeclasses ~Show~ and ~Eq~, creating a
+~O13Color~ type to the Haskell typeclasses ~Show~ and ~Eq~, creating a
 default instances of ~Show Color~ and ~Eq Color~. Now, what would we
 expect "equal-ness" to be in the case of ~Color~? Let's assume it
 means ~Red == Red~, ~Yellow == Yellow~, etc. they evaluate to
@@ -1023,7 +1065,7 @@ means ~Red == Red~, ~Yellow == Yellow~, etc. they evaluate to
 
 #+name: 75cfe732-4e2a-4cb3-b269-6c3df14f35ba
 #+begin_src haskell :results verbatim :exports both
-Red == Red
+O13Red == O13Red
 #+end_src
 
 #+RESULTS: 75cfe732-4e2a-4cb3-b269-6c3df14f35ba
@@ -1242,57 +1284,13 @@ if their individual elements are matched one-to-one, equal-to-equal.
 
 
 
-#+name: 66ac9589-05d1-474f-92fa-ee1d7f0ef389
-#+begin_src haskell :results silent :exports code
-:{
-a = [1,2,3]
-a = [1,2,3,4]
-:}
-#+end_src
-
-
-
-
-
-
 
 #+INCLUDE: "./footer.org" :minlevel 1
 
 
 
 
-* Bibliography :noexport:
-:RESOURCES:
-- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
-- 
-:END:
 
-* Not exported :noexport:
-
-#+begin_src haskell :results silent :exports both
-1 + 1
-#+end_src
-
-#+name: 1e0d0649-30f1-4609-94b3-c7b6e47c70ce
-#+begin_src haskell :eval never :exports code
-import Data.Int
-#+end_src
-
-
-#+begin_src haskell :eval never :exports code :tangle omni1.3.hs :noweb yes
-module OMNI1_3 where
-
--- first come import statements
-<<3b5747f7-dd38-4fd5-af05-62db3d8477af>>
-<<1e0d0649-30f1-4609-94b3-c7b6e47c70ce>>  
-
---then everything else  
-<<d2fb9599-0a53-4d2c-8411-9da0d7d795f8>>
-<<2f2aea18-b10e-4821-999a-018db8b8308c>>
-<<f4ab8cec-3485-49fc-92f5-7c6a0dbcddf4>>  
-
-
-#+end_src
 
 * Footnotes
 

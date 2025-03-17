@@ -1,0 +1,232 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="./ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: STEMClubIntro.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackqqqage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* STEM Club 1
+
+**  Bibliography :noexport:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+:END:
+
+** Not exported :noexport:
+
+#+name: module
+#+begin_src haskell :eval never :exports code :tangle ./src/stemclubintro.hs :noweb yes
+module STEMCLUBINTRO where
+<<1e87308f-8ab6-43ce-87a9-1e3818c63753>>
+
+<<af3e4f87-3492-4f87-8e19-6d43b5bcf035>>
+
+<<9d7afc7e-4e0d-4bcd-aef7-1eb81a5310b0>>
+
+<<929a7a61-6918-4f5f-9a89-502b66003760>>
+
+<<dadbe877-e9c4-436e-843d-144005fef37d>>
+
+<<94268e73-4fb6-465b-b810-fdd34c488c72>>
+
+<<4d37a5ff-41e7-4efb-83ec-bdf53b60e009>>
+
+<<4d38f6dd-987b-4709-bee2-8de927d0ce94>>
+
+#+end_src
+
+#+name: 2b702810-8387-4ce3-af0c-067fd15b4e33
+#+begin_src haskell :session *myhaskell*
+1 + 1
+#+end_src
+
+#+RESULTS: 2b702810-8387-4ce3-af0c-067fd15b4e33
+: 2
+
+#+name: 1e87308f-8ab6-43ce-87a9-1e3818c63753
+#+begin_src haskell :eval never :exports code
+import GHC.Real
+#+end_src
+
+
+* 
+
+** What is math?
+
+#+begin_quote
+Caveman #1 (looking at flock of birds): Many. \\
+Caveman #2: *How* many?
+#+end_quote
+
+...but what does /how/ mean? /How/ then does /how/ before /many/ beg,
+suggest /counting/? If we look at
+
+#+begin_quote
+*How* do you feel?
+#+end_quote
+
+We are essentially asking, /What is your state of well-being?/ Or if
+we ask
+
+#+begin_quote
+*How* do I get to town?
+#+end_quote
+
+We are asking, /What way must I do to arrive in town?/ Therefore,
+/how/ in these two examples seems to be a idiomatic shortening of
+/what/...?
+
+We may then wonder, how did the concept of *counting* enter the
+picture?
+
+#+begin_quote
+What is the count? $\equiv$ How many?
+#+end_quote
+
+Here's a quote from math logician Raymond M. Smullyan's book /[[https://www.raymondsmullyan.com/books/the-tao-is-silent/][The Tao
+Is Silent]]/
+
+#+begin_quote
+The knowledge of the ancients was perfect. How perfect? I will tell
+you. At first they did not yet know that there were things. This is
+the most perfect knowledge; nothing can be added. Next they knew
+things but did not yet make distinctions between them. Next they made
+distinctions between them but did not yet pass judgements upon
+them. When judgement was passed, Tao was destroyed. With the
+destruction of Tao, individual preferences come into being.
+#+end_quote
+
+This addresses a big question in anthropology, namely, when did
+humans, we /Homo sapiens/, develop language? The answer is a bit
+strange. We supposedly developed languages /long/ into being humans as
+we are now, perhaps many tens of thousands of years after we had
+become humans. How then did we /Homo sapiens/ with our big
+intelligence communicate before words and speech? Some say
+telepathically---or as studies of, e.g., chimps indicate, through
+small facial or body expressions or stances, the rest relying on
+context. As some popular anthro-philosophers insist, we've lost
+something from those "silent Taoist" days...
+
+*** Conditioning versus logical thinking
+
+Let's watch this: [[https://youtu.be/Rzhpf1Ai7Z4?si=0Alsg5XAAIJxw2Fy][Should Computers Run the World? - with Hannah Fry]]
+
+This might indicate that our cavemen from long, long ago might have
+been able to choose---if shown two very similar in number
+flocks--which was larger /only at an intuitive level/, especially if
+trained, conditioned to do this. Perhaps within a certain margin of
+error, a human might be trained/conditioned to tell a flock of $100$
+birds is just slightly smaller than a flock of $101$ birds. But when
+does this fine, single-unit level of intuitive, conditioned
+discernment of sizes begin to fail? Can we train/condition a human to
+discern a flock of $1,000$ birds is slightly different from a flock of
+$1,001$? At some point, humans began to work with /abstraction/ and
+/logic/. But then when and how?
+
+
+
+
+Anticipation?
+
+*** Abstraction
+
+I nearly exploded when I heard how Einstein's theory of relativity
+describes gravity as an /artifact of four-dimensional space-time
+geometry/. Newton described gravity directly as a force. It's just
+like math to render something in the real world as simply an artifact
+of its underlying structures.
+
+*** God and the devil
+
+Let's start with the devil. In 1814, the eminent mathematician [[https://en.wikipedia.org/wiki/Pierre-Simon_Laplace][Pierre Simon Laplace]],
+
+#+begin_quote
+We may regard the present state of the universe as the effect of its
+past and the cause of its future. An intellect which at a certain
+moment would know all forces that set nature in motion, and all
+positions of all items of which nature is composed, if this intellect
+were also vast enough to submit these data to analysis, it would
+embrace in a single formula the movements of the greatest bodies of
+the universe and those of the tiniest atom; for such an intellect
+nothing would be uncertain and the future just like the past would be
+the present to it. \\
+ ---Pierre Simon Laplace, *A Philosophical Essay on Probabilities*
+#+end_quote
+
+This proposition is called /[[https://en.wikipedia.org/wiki/Laplace%27s_demon][Laplace's demon]]/
+
+
+*** Why no software guarantees?
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+*** Logical entailment
+
+⥤ Gravity is an artifact of four-dimensional space-time geometry.
+⥤ Chess board covered by dominoes --- two colors always covered by one
+domino.
+
+*** Which crowd would you rather run with?
+
+The Office versus Particle Fever
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes

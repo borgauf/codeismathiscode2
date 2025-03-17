@@ -512,6 +512,23 @@ S-expressions.  \\
 
 ** A /linked/ list is...
 
+#+begin_figure
+#+CAPTION: Syntax tree and linked list for ~a + 7 * x~ 
+[[file:images/SyntaxTree.png]]
+#+end_figure
+
+Jumping ahead, we see an expression, its representation as an
+*[[https://en.wikipedia.org/wiki/Abstract_syntax_tree][abstract symbol tree]]* and its representation as a linked list. The
+expression in Scheme syntax would be
+
+#+name: 581f18ff-e72d-4694-8d2d-b0974966a42b
+#+begin_src scheme :eval never :exports code
+(+ a (* 7 x))
+#+end_src
+
+This shows the fact that Lisp/Scheme programs built from lists are
+already their own 
+
 In the world of computer science *[[https://en.wikipedia.org/wiki/Data_structure][data structures]]*, a list is more
 commonly thought of as a *linked list*. For ~(cons 42 (cons 69 (cons
 613 '()))~ or ~(42 . (69 . (613 . NIL)))~ we see the three individual

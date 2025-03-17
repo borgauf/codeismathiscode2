@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-02-09 Sun 23:54 -->
+<!-- 2025-03-10 Mon 23:21 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -107,12 +107,12 @@ pre.example {clear: none; }
 </nav>
 </div>
 </p>
-<section id="outline-container-orgce24d19" class="outline-2">
-<h2 id="orgce24d19">Little Schemer 2</h2>
-<div class="outline-text-2" id="text-orgce24d19">
-<figure id="orge7946a1">
+<section id="outline-container-org9639605" class="outline-2">
+<h2 id="org9639605">Little Schemer 2</h2>
+<div class="outline-text-2" id="text-org9639605">
+<figure id="org0ce0959">
 
-<figure id="org679ebfa">
+<figure id="orgee35afe">
 <img src="images/LittleSchemerElephant1.png" alt="LittleSchemerElephant1.png">
 
 <figcaption><span class="figure-number">Figure 1: </span>The Little Schemer putting together a combinator.</figcaption>
@@ -120,13 +120,13 @@ pre.example {clear: none; }
 </figure>
 </div>
 </section>
-<section id="outline-container-orge6e7da7" class="outline-2">
-<h2 id="orge6e7da7"></h2>
-<div class="outline-text-2" id="text-orge6e7da7">
+<section id="outline-container-org981c191" class="outline-2">
+<h2 id="org981c191"></h2>
+<div class="outline-text-2" id="text-org981c191">
 </div>
-<div id="outline-container-org5a28188" class="outline-3">
-<h3 id="org5a28188">What are expressions?</h3>
-<div class="outline-text-3" id="text-org5a28188">
+<div id="outline-container-orgde0f8b8" class="outline-3">
+<h3 id="orgde0f8b8">What are expressions?</h3>
+<div class="outline-text-3" id="text-orgde0f8b8">
 <p>
 As mentioned previously, <i>functional</i> programming, as opposed to
 <i>procedural</i> or <i>imperative</i> programming, emphasizes <i>functions</i> as
@@ -139,7 +139,7 @@ detail as we progress.
 <p>
 Computer programming has advanced from the early days of literally
 having to give <i>commands</i> imperatively, one after the other, to the
-electronic organs of the CPU<label id='fnr.1' for='fnr-in.1.1317969' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.1317969' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+electronic organs of the CPU<label id='fnr.1' for='fnr-in.1.4993595' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.4993595' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
 <b>CPU</b>: central processing unit, the calculation &ldquo;brains&rdquo; of a
 computer.
 </span> (and the memory attached to it) in
@@ -163,7 +163,7 @@ analyze it in a higher math way <br>
 <b>function</b> is a <i>relation</i> between a <i>set</i> whose elements are inputs
 (the <i>domain</i>) and a set whose elements make up outputs (the range)
 with the key property that <i>each input is related to exactly one
-output</i>.</font><label id='fnr.2' for='fnr-in.2.1252464' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.1252464' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+output</i>.</font><label id='fnr.2' for='fnr-in.2.1716693' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.1716693' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
 This important quality of a function was touched on in the
 preface.
 </span> <br>
@@ -173,7 +173,7 @@ usual pre-algebra way of denoting a function, i.e., \(y = f(x)\), the
 symbol \(x\) stands for input and is called an <b>independent variable</b>,
 while the symbol that stands for output, \(y\), is called a <b>dependent
 variable</b>. And so the dependent variable of the range <i>depends</i> on the
-independent variable of the domain.<label id='fnr.3' for='fnr-in.3.4366853' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.4366853' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+independent variable of the domain.<label id='fnr.3' for='fnr-in.3.5738824' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.5738824' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
 In pre-algebra a function is typically graphed with the
 horizontal axis representing the <i>independent variable</i> and the
 vertical axis representing the <i>dependent variable</i>. <br>
@@ -233,7 +233,7 @@ and operators such as the symbols for add, subtract, multiply, divide,
 and equals.  </font> <br>
 <br>
 And so an equation (built around an equals sign) can be an expression
-after all.<label id='fnr.4' for='fnr-in.4.2060973' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.2060973' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+after all.<label id='fnr.4' for='fnr-in.4.9481302' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.9481302' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
 What follows was taken from <a href="https://www.reddit.com/r/mathematics/comments/wseco9/is_function_an_expression/">this</a> reddit discussion.
 </span> If an expression is, as restated from above,
 <font color = "#0d3db3">any way of combining numbers and
@@ -315,9 +315,9 @@ functions are expressions.</font> <br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgd1f7e75" class="outline-3">
-<h3 id="orgd1f7e75">S-expressions TLS-style</h3>
-<div class="outline-text-3" id="text-orgd1f7e75">
+<div id="outline-container-org0043671" class="outline-3">
+<h3 id="org0043671">S-expressions TLS-style</h3>
+<div class="outline-text-3" id="text-org0043671">
 <p>
 Now we will discuss the idea of a <b>symbolic expression</b> or
 <b>s-expression</b> as Lisp and Scheme mean it. On page 4 of TLS we
@@ -329,7 +329,7 @@ suddenly see, with no explanation or warning, the term <i>s-expression</i>
 that this is a list? <br>
 <code>(atom turkey) or</code> <br>
 <span class="schemer">Λιττλε Σξηεμερ:</span> No,
-because these are actually two <b>s-expressions</b><label id='fnr.5' for='fnr-in.5.5091461' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.5091461' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+because these are actually two <b>s-expressions</b><label id='fnr.5' for='fnr-in.5.8061131' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.8061131' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
 We will use <b>sexp</b> the abbreviation for S-expression.
 </span> not enclosed by
 parentheses. The first one is a list containing two atoms, and the
@@ -350,7 +350,7 @@ law. For example, a higher math text might state <br>
 addition and multiplication.  </font> <br>
 <br>
 Then a discussion would ensue as to why \(\mathbb{N}\) is not
-closed<label id='fnr.6' for='fnr-in.6.5558105' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.5558105' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+closed<label id='fnr.6' for='fnr-in.6.6442931' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.6442931' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
 A set of elements is <b>closed</b> under a binary operation if by
 applying the operation to any two elements of the set the result is
 also an element of the set. For example, \(2 + 2\) is \(4\), which is also
@@ -379,7 +379,7 @@ of sexp&rsquo;s enlosed by parentheses. <br>
 𝖟𝕭: <code>(((how) are) ((you) (doing so)) far)</code> is a list because it
 is a collection of sexp&rsquo;s enclosed by parentheses. <br>
 𝖟𝕭: The list <code>(((how) are) ((you) (doing so)) far)</code> has <i>three</i> sexp&rsquo;s which
-are <code>((how) are)</code>, <code>((you) (doing so))</code>, and <code>far</code>.<label id='fnr.7' for='fnr-in.7.6469498' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.6469498' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+are <code>((how) are)</code>, <code>((you) (doing so))</code>, and <code>far</code>.<label id='fnr.7' for='fnr-in.7.852288' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.852288' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
 At this point you might be getting lost in all the
 parentheses. Don&rsquo;t worry, Emacs and other editors for Lisp and Scheme
 have parentheses-matching highlighting so you always know which
@@ -394,9 +394,9 @@ we established that expressions have values. But why, how? <br>
 </p>
 </div>
 </div>
-<div id="outline-container-org5fc4a20" class="outline-3">
-<h3 id="org5fc4a20">S-expression and symbols</h3>
-<div class="outline-text-3" id="text-org5fc4a20">
+<div id="outline-container-orga55bdd4" class="outline-3">
+<h3 id="orga55bdd4">S-expression and symbols</h3>
+<div class="outline-text-3" id="text-orga55bdd4">
 <p>
 The first part of the term s-expression is <i>symbolic</i>, but what is
 meant by symbolic? Obviously, symbolic is an adjective that means
@@ -435,7 +435,7 @@ only possessed language as a set of words-as-placeholder-symbols for
 forty thousand years. Others say from sixty to one-hundred thousand
 years. And yet we surely have been anatomically <i>Homo sapiens</i> longer
 than we&rsquo;ve had language. What did we do with our big brains before we
-had language?<label id='fnr.8' for='fnr-in.8.3094572' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.3094572' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+had language?<label id='fnr.8' for='fnr-in.8.1471703' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.1471703' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
 &#x2026;some suggest telepathy&#x2026;
 </span> Obviously, we relied to some extent on intuitions,
 i.e., we would see two piles of nuts and only have vague intuitive
@@ -479,9 +479,9 @@ is <i>declarative</i> rather than <i>imperative</i> programming. <br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgfd189a4" class="outline-3">
-<h3 id="orgfd189a4">Hands-on Scheme</h3>
-<div class="outline-text-3" id="text-orgfd189a4">
+<div id="outline-container-org819e6b8" class="outline-3">
+<h3 id="org819e6b8">Hands-on Scheme</h3>
+<div class="outline-text-3" id="text-org819e6b8">
 <p>
 The version of Scheme we will primarily use is <a href="https://www.gnu.org/software/guile/">Guile</a>, which is the
 official extension language of the <a href="https://gnu.org/">GNU project</a>. A Guile program can be
@@ -492,9 +492,9 @@ machine&rdquo; <b><a href="https://en.wikipedia.org/wiki/Interpreter_(computing)
 of a live <i>interactive</i> Guile REPL session
 </p>
 
-<figure id="org5c9c416">
+<figure id="orgff52af2">
 
-<figure id="orge18d154">
+<figure id="org1520f12">
 <img src="images/GuileREPL.png" alt="GuileREPL.png">
 
 <figcaption><span class="figure-number">Figure 2: </span>REPL interface in Emacs buffer.</figcaption>
@@ -516,7 +516,7 @@ REPL session, e.g., <code>&gt; load myfile.scm</code>,</li>
 seen directly below</li>
 </ul>
 
-<pre class="example" id="org8a1a578">
+<pre class="example" id="org79c4fb7">
 #+begin_src scheme :session *littleschemer*
 (define pi 3.141592654)
 (format #t "pi: ~a" pi)
@@ -535,7 +535,7 @@ value to the <i>symbol</i> <code>pi</code>. To evaluate this code we place the c
 inside the code block and enter <code>C-c C-c</code>, which produces
 </p>
 
-<pre class="example" id="org0c9c1d8">
+<pre class="example" id="orgf718da5">
 #+RESULTS:
 : pi: 3.141592654
 </pre>
@@ -544,7 +544,7 @@ inside the code block and enter <code>C-c C-c</code>, which produces
 As we see in the code block&rsquo;s heading above, the two contained
 expressions will be evaluated in a specific REPL session named
 <code>*littleschemer*</code>. Next, let&rsquo;s <i>not</i> <code>define</code> a symbol, rather, just
-feed the session a symbol<label id='fnr.9' for='fnr-in.9.3556249' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.3556249' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+feed the session a symbol<label id='fnr.9' for='fnr-in.9.711221' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.711221' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
 From now on for visual purposes we will forego the code block
 wrappers , i.e., <code>#+begin_src scheme ... #+end_src</code>, and just display
 the code and the results. When in doubt about exactly what the code
@@ -553,7 +553,7 @@ block wrapper should be, consult the raw version of this page.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgd3ef37b">'mysymbol
+<pre class="src src-scheme" id="org8a1512e">'mysymbol
 </pre>
 </div>
 
@@ -571,7 +571,7 @@ data</i>. Here&rsquo;s a more verbose version of quoting with the same effect
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org9bd862e"><span class="org-rainbow-delimiters-depth-1">(</span>quote mysymbol<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org72a3840"><span class="org-rainbow-delimiters-depth-1">(</span>quote mysymbol<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -590,7 +590,7 @@ during the life of the REPL session as the symbol for the value
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orge93fd58">'<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-function-name">pi</span> 3.141592654<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orgaf542ca">'<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-function-name">pi</span> 3.141592654<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -608,7 +608,7 @@ but for now consider
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org9867e4a"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-function-name">pi-def</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">define</span> <span class="org-function-name">pi</span> 3.141592654<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orge63ca02"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-function-name">pi-def</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">define</span> <span class="org-function-name">pi</span> 3.141592654<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>format #t <span class="org-string">"pi-def: ~a"</span> pi-def<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -625,9 +625,9 @@ functional programming. <br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgc9f054e" class="outline-3">
-<h3 id="orgc9f054e">Building a function</h3>
-<div class="outline-text-3" id="text-orgc9f054e">
+<div id="outline-container-org50a2617" class="outline-3">
+<h3 id="org50a2617">Building a function</h3>
+<div class="outline-text-3" id="text-org50a2617">
 <p>
 So we&rsquo;ve seen how <code>(define pi 3.141592654)</code> and <code>'(define pi
 3.141592654)</code> are two different things. As we saw, the second example
@@ -657,7 +657,7 @@ even the arithmetic operators like <code>+</code>, <code>*</code>, et cetera, us
 notation</a> and yes, there can in the case of addition and multiplication
 be multiple arguments or operands. Now, let&rsquo;s see a full Scheme
 function that takes one argument and when evaluated, produces
-output<label id='fnr.10' for='fnr-in.10.7220262' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.7220262' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
+output<label id='fnr.10' for='fnr-in.10.3344225' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.3344225' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
 Anything following a &ldquo;;&rdquo; is a <i>comment</i> for the rest of that
 line and is not evaluated, rather, just passed on. However, with
 org-mode Babel&rsquo;s literate programming we need far less in-code
@@ -667,7 +667,7 @@ the block.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orga4b23a5"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">celsius-&gt;fahrenheit</span> celsius<span class="org-rainbow-delimiters-depth-2">)</span>
+<pre class="src src-scheme" id="orgb22ef7e"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">celsius-&gt;fahrenheit</span> celsius<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>+ <span class="org-rainbow-delimiters-depth-3">(</span>* 1.8 celsius<span class="org-rainbow-delimiters-depth-3">)</span> 32<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>  <span class="org-comment-delimiter">; </span><span class="org-comment">figure out temperature conversion</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>format #t <span class="org-string">"fahrenheit: ~a"</span> <span class="org-rainbow-delimiters-depth-2">(</span>celsius-&gt;fahrenheit 20<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">print answer</span>
 </pre>
@@ -683,7 +683,7 @@ Of the two main sexp&rsquo;s in the code block above, the first
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org351f186"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">celsius-&gt;fahrenheit</span> celsius<span class="org-rainbow-delimiters-depth-2">)</span>
+<pre class="src src-scheme" id="org8b8830a"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">celsius-&gt;fahrenheit</span> celsius<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>+ <span class="org-rainbow-delimiters-depth-3">(</span>* 1.8 celsius<span class="org-rainbow-delimiters-depth-3">)</span> 32<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -705,9 +705,34 @@ S-expressions.  <br>
 </p>
 </div>
 </div>
-<div id="outline-container-org837c4eb" class="outline-3">
-<h3 id="org837c4eb">A <i>linked</i> list is&#x2026;</h3>
-<div class="outline-text-3" id="text-org837c4eb">
+<div id="outline-container-org9f6b9d4" class="outline-3">
+<h3 id="org9f6b9d4">A <i>linked</i> list is&#x2026;</h3>
+<div class="outline-text-3" id="text-org9f6b9d4">
+<figure id="org648c2f4">
+
+<figure id="org3f63f7f">
+<img src="images/SyntaxTree.png" alt="SyntaxTree.png">
+
+<figcaption><span class="figure-number">Figure 3: </span>Syntax tree and linked list for <code>a + 7 * x</code></figcaption>
+</figure>
+</figure>
+
+<p>
+Jumping ahead, we see an expression, its representation as an
+<b><a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract symbol tree</a></b> and its representation as a linked list. The
+expression in Scheme syntax would be
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme" id="org651f861"><span class="org-rainbow-delimiters-depth-1">(</span>+ a <span class="org-rainbow-delimiters-depth-2">(</span>* 7 x<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+This shows the fact that Lisp/Scheme programs built from lists are
+already their own 
+</p>
+
 <p>
 In the world of computer science <b><a href="https://en.wikipedia.org/wiki/Data_structure">data structures</a></b>, a list is more
 commonly thought of as a <b>linked list</b>. For <code>(cons 42 (cons 69 (cons
@@ -715,12 +740,12 @@ commonly thought of as a <b>linked list</b>. For <code>(cons 42 (cons 69 (cons
 <i>cons cells</i> in the image below
 </p>
 
-<figure id="orgb05a6bd">
+<figure id="org8948797">
 
-<figure id="org45be8b5">
+<figure id="org6ee8555">
 <img src="images/Cons-cells.png" alt="Cons-cells.png">
 
-<figcaption><span class="figure-number">Figure 3: </span>A linked list representation of the list <code>(42 69 613)</code>.</figcaption>
+<figcaption><span class="figure-number">Figure 4: </span>A linked list representation of the list <code>(42 69 613)</code>.</figcaption>
 </figure>
 </figure>
 
@@ -728,7 +753,7 @@ commonly thought of as a <b>linked list</b>. For <code>(cons 42 (cons 69 (cons
 and a DIY ascii representation would be
 </p>
 
-<pre class="example" id="org85074ab">
+<pre class="example" id="orgbec9ad4">
 *----&gt;*----&gt;*----&gt;NIL
 |     |     |
 v     v     v
@@ -750,12 +775,12 @@ caboose. What would just <code>(cons 'b 'c)</code> or <code>(b . c)</code> look 
 diagrammatically? It would in fact be a single cons cell
 </p>
 
-<figure id="orgdf52b67">
+<figure id="org38570f5">
 
-<figure id="org017ee19">
+<figure id="org94dc380">
 <img src="images/bc.png" alt="bc.png">
 
-<figcaption><span class="figure-number">Figure 4: </span>Single cons cell for <code>(cons 'b 'c)</code>.</figcaption>
+<figcaption><span class="figure-number">Figure 5: </span>Single cons cell for <code>(cons 'b 'c)</code>.</figcaption>
 </figure>
 </figure>
 
@@ -768,7 +793,7 @@ if <code>(cons 'b 'c)</code> produces <code>(b . c)</code> then
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgd7c3fc3"><span class="org-rainbow-delimiters-depth-1">(</span>car <span class="org-rainbow-delimiters-depth-2">(</span>cons 'b  'c<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org37a066c"><span class="org-rainbow-delimiters-depth-1">(</span>car <span class="org-rainbow-delimiters-depth-2">(</span>cons 'b  'c<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -782,7 +807,7 @@ and
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orga81c3c4"><span class="org-rainbow-delimiters-depth-1">(</span>cdr <span class="org-rainbow-delimiters-depth-2">(</span>cons 'b 'c<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orgc36236b"><span class="org-rainbow-delimiters-depth-1">(</span>cdr <span class="org-rainbow-delimiters-depth-2">(</span>cons 'b 'c<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -797,17 +822,17 @@ And so they are operators that surgically remove the <b>head</b> and the
 sugared <code>(42 69 613)</code>
 </p>
 
-<figure id="org8bffff7">
+<figure id="org9c54a6f">
 
-<figure id="org1bb9423">
+<figure id="org39af42c">
 <img src="images/Cons-cells2.png" alt="Cons-cells2.png">
 
-<figcaption><span class="figure-number">Figure 5: </span>A linked list representation of the list <code>(42 69 613)</code> with <code>car</code> and <code>cdr</code>.</figcaption>
+<figcaption><span class="figure-number">Figure 6: </span>A linked list representation of the list <code>(42 69 613)</code> with <code>car</code> and <code>cdr</code>.</figcaption>
 </figure>
 </figure>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org7da38f3"><span class="org-rainbow-delimiters-depth-1">(</span>car '<span class="org-rainbow-delimiters-depth-2">(</span>42 69 613<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orgf4316c4"><span class="org-rainbow-delimiters-depth-1">(</span>car '<span class="org-rainbow-delimiters-depth-2">(</span>42 69 613<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -821,7 +846,7 @@ and
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org545ac77"><span class="org-rainbow-delimiters-depth-1">(</span>cdr '<span class="org-rainbow-delimiters-depth-2">(</span>42 69 613<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orgca4550f"><span class="org-rainbow-delimiters-depth-1">(</span>cdr '<span class="org-rainbow-delimiters-depth-2">(</span>42 69 613<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -837,7 +862,7 @@ the <i>rest of the list</i>. Let&rsquo;s look at <code>cdr</code> without syntac
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org2688957"><span class="org-rainbow-delimiters-depth-1">(</span>cdr <span class="org-rainbow-delimiters-depth-2">(</span>cons 42 <span class="org-rainbow-delimiters-depth-3">(</span>cons 69 <span class="org-rainbow-delimiters-depth-4">(</span>cons 613 '<span class="org-rainbow-delimiters-depth-5">()</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org97f457e"><span class="org-rainbow-delimiters-depth-1">(</span>cdr <span class="org-rainbow-delimiters-depth-2">(</span>cons 42 <span class="org-rainbow-delimiters-depth-3">(</span>cons 69 <span class="org-rainbow-delimiters-depth-4">(</span>cons 613 '<span class="org-rainbow-delimiters-depth-5">()</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -853,7 +878,7 @@ of <code>(cons 42 (cons 69 (cons 613 '())))</code> was returned, i.e., <code>(co
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org6229e12"><span class="org-rainbow-delimiters-depth-1">(</span>cons 42 <span class="org-rainbow-delimiters-depth-2">(</span>cdr '<span class="org-rainbow-delimiters-depth-3">(</span>42 69 613<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orgdf201f6"><span class="org-rainbow-delimiters-depth-1">(</span>cons 42 <span class="org-rainbow-delimiters-depth-2">(</span>cdr '<span class="org-rainbow-delimiters-depth-3">(</span>42 69 613<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -867,7 +892,7 @@ Here&rsquo;s another example
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgeded659"><span class="org-rainbow-delimiters-depth-1">(</span>car '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-4">)</span> 5<span class="org-rainbow-delimiters-depth-3">)</span> but so is six<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org0fa2dbb"><span class="org-rainbow-delimiters-depth-1">(</span>car '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-4">)</span> 5<span class="org-rainbow-delimiters-depth-3">)</span> but so is six<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -881,7 +906,7 @@ and
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org006d5bc"><span class="org-rainbow-delimiters-depth-1">(</span>cdr '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-4">)</span> 5<span class="org-rainbow-delimiters-depth-3">)</span> but so is six<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org9c1da07"><span class="org-rainbow-delimiters-depth-1">(</span>cdr '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-4">)</span> 5<span class="org-rainbow-delimiters-depth-3">)</span> but so is six<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -909,7 +934,7 @@ pointing to <code>d</code> which is not <code>nil</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org93d6f87"><span class="org-rainbow-delimiters-depth-1">(</span>cdr <span class="org-rainbow-delimiters-depth-2">(</span>cdr <span class="org-rainbow-delimiters-depth-3">(</span>cdr '<span class="org-rainbow-delimiters-depth-4">(</span>a b c . d<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orgd15c569"><span class="org-rainbow-delimiters-depth-1">(</span>cdr <span class="org-rainbow-delimiters-depth-2">(</span>cdr <span class="org-rainbow-delimiters-depth-3">(</span>cdr '<span class="org-rainbow-delimiters-depth-4">(</span>a b c . d<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -918,9 +943,9 @@ d
 </pre>
 </div>
 </div>
-<div id="outline-container-orgf72e493" class="outline-3">
-<h3 id="orgf72e493">S-expression lore</h3>
-<div class="outline-text-3" id="text-orgf72e493">
+<div id="outline-container-orgac01944" class="outline-3">
+<h3 id="orgac01944">S-expression lore</h3>
+<div class="outline-text-3" id="text-orgac01944">
 <p>
 Symbolic programs are programs where symbolic expressions are
 manipulated to gain useful output. But what does this actually entail,
@@ -974,7 +999,7 @@ together
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org5dbca42"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 2<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org4a63c07"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 2<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -984,13 +1009,13 @@ together
 
 
 <p>
-Scheme gives us back a cons cell.<label id='fnr.11' for='fnr-in.11.1073210' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.1073210' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
+Scheme gives us back a cons cell.<label id='fnr.11' for='fnr-in.11.5900263' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.5900263' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
 This is also referred to as <i>dotted pair</i>.
 </span> Let&rsquo;s play with this idea
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org5aac506"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 3<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org1def633"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 3<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1004,7 +1029,7 @@ and
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org7005991"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 4<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org06d8357"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 4<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1026,7 +1051,7 @@ again and watch exactly which parentheses are enclosing what
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org578fbe4"><span class="org-rainbow-delimiters-depth-1">(</span>cons <span class="org-rainbow-delimiters-depth-2">(</span>cons '<span class="org-rainbow-delimiters-depth-3">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-3">)</span> '<span class="org-rainbow-delimiters-depth-3">(</span>5<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span> '<span class="org-rainbow-delimiters-depth-2">(</span>but so is six<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org908c1c6"><span class="org-rainbow-delimiters-depth-1">(</span>cons <span class="org-rainbow-delimiters-depth-2">(</span>cons '<span class="org-rainbow-delimiters-depth-3">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-3">)</span> '<span class="org-rainbow-delimiters-depth-3">(</span>5<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span> '<span class="org-rainbow-delimiters-depth-2">(</span>but so is six<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1043,7 +1068,7 @@ Let&rsquo;s do more examples
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orga08e3f5"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 '<span class="org-rainbow-delimiters-depth-2">()</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org4fa171c"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 '<span class="org-rainbow-delimiters-depth-2">()</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1053,7 +1078,7 @@ Let&rsquo;s do more examples
 
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgf98416e"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 '<span class="org-rainbow-delimiters-depth-4">()</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org13b1d79"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 '<span class="org-rainbow-delimiters-depth-4">()</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1073,7 +1098,7 @@ friendly, uncluttered version of a consed-together list.
 
 <p>
 So <code>(1 2 3)</code> is really just a visually improved version of <code>(cons 1
-(cons 2 (cons 3 '())))</code>.<label id='fnr.12' for='fnr-in.12.2596456' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.2596456' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
+(cons 2 (cons 3 '())))</code>.<label id='fnr.12' for='fnr-in.12.7297817' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.7297817' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
 Realize of course that <br>
 <code>(1 . (2 . (3 . NIL)))</code> <br>
 is just the dotted symbolic way of expressing <br>
@@ -1088,7 +1113,7 @@ way. Let&rsquo;s take a short &ldquo;math holiday&rdquo; to unravel this.
 
 <p>
 ⌜<br>
-<font color = "#0d3db3">⥤ <b>Math Holiday! &#x2026; working binarily</b> </font><label id='fnr.13' for='fnr-in.13.7033854' class='margin-toggle sidenote-number'><sup class='numeral'>13</sup></label><input type='checkbox' id='fnr-in.13.7033854' class='margin-toggle'><span class='sidenote'><sup class='numeral'>13</sup>
+<font color = "#0d3db3">⥤ <b>Math Holiday! &#x2026; working binarily</b> </font><label id='fnr.13' for='fnr-in.13.9966157' class='margin-toggle sidenote-number'><sup class='numeral'>13</sup></label><input type='checkbox' id='fnr-in.13.9966157' class='margin-toggle'><span class='sidenote'><sup class='numeral'>13</sup>
 <a href="https://en.wikipedia.org/wiki/Binary_operation">This Wikipedia article on binary operations</a> is quite
 abstract-formal, but we&rsquo;ll be getting into this lore meticulously as
 we progress. It, like all of higher math, assumes set theory, which is
@@ -1136,7 +1161,7 @@ digital logic calculations are done. Lots more later. <br>
 <p>
 Now with a refreshing math holiday under our belts it should be clear
 that <code>cons</code> as a binary operation must operate similarly, e.g., there
-is no such thing as <code>(cons 1 2 3)</code>,<label id='fnr.14' for='fnr-in.14.5957173' class='margin-toggle sidenote-number'><sup class='numeral'>14</sup></label><input type='checkbox' id='fnr-in.14.5957173' class='margin-toggle'><span class='sidenote'><sup class='numeral'>14</sup>
+is no such thing as <code>(cons 1 2 3)</code>,<label id='fnr.14' for='fnr-in.14.1262755' class='margin-toggle sidenote-number'><sup class='numeral'>14</sup></label><input type='checkbox' id='fnr-in.14.1262755' class='margin-toggle'><span class='sidenote'><sup class='numeral'>14</sup>
 Some Scheme REPLs will give the error <code>wrong number of
 arguments</code> because it was expecting exactly two inputs.
 </span> rather, <code>cons</code> is a <i>binary
@@ -1147,7 +1172,7 @@ a finished list.
 
 <p>
 𝖟𝕭: When we see nested <code>cons</code> operations, e.g., <code>(cons 1 (cons 2 (cons
-3 '())))</code>, we&rsquo;re seeing precedence-wise<label id='fnr.15' for='fnr-in.15.1843603' class='margin-toggle sidenote-number'><sup class='numeral'>15</sup></label><input type='checkbox' id='fnr-in.15.1843603' class='margin-toggle'><span class='sidenote'><sup class='numeral'>15</sup>
+3 '())))</code>, we&rsquo;re seeing precedence-wise<label id='fnr.15' for='fnr-in.15.5307921' class='margin-toggle sidenote-number'><sup class='numeral'>15</sup></label><input type='checkbox' id='fnr-in.15.5307921' class='margin-toggle'><span class='sidenote'><sup class='numeral'>15</sup>
 <b>precedence</b> is the order in which a simplification
 follows. Parentheses are usually the highest precedence, e.g., \(4 \cdot
 (2 + 3) = 20\) because by parenthesizing the \((2 + 3)\) we created
@@ -1162,15 +1187,15 @@ real list with <code>cons</code> means consing a sexp onto a real list. Also,
 </p>
 </div>
 </div>
-<div id="outline-container-org158f531" class="outline-3">
-<h3 id="org158f531">Lists are the shipping containers of the Scheme world</h3>
-<div class="outline-text-3" id="text-org158f531">
+<div id="outline-container-org8bbe013" class="outline-3">
+<h3 id="org8bbe013">Lists are the shipping containers of the Scheme world</h3>
+<div class="outline-text-3" id="text-org8bbe013">
 <p>
 Was it a bit weird to see
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org7f97e75"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-3">)</span> 5<span class="org-rainbow-delimiters-depth-2">)</span> but so is six<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org53652d1"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-3">)</span> 5<span class="org-rainbow-delimiters-depth-2">)</span> but so is six<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1184,11 +1209,11 @@ REPL and hit Enter?
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org3cb283c"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-3">)</span> 5<span class="org-rainbow-delimiters-depth-2">)</span> but so is six<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orgf2b533c"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-3">)</span> 5<span class="org-rainbow-delimiters-depth-2">)</span> but so is six<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
-<pre class="example" id="org5fda7b0">
+<pre class="example" id="orgf4d1ff3">
 #+RESULTS: fa92687e-212c-471e-8090-ed06a91e3b8d
 : ice-9/boot-9.scm:1676:22: In procedure raise-exception:
 ;;; &lt;stdin&gt;:446:3: warning: possibly unbound variable `five'
@@ -1207,7 +1232,7 @@ quoting the whole sexp
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org2bdcafc">'<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-3">)</span> 5<span class="org-rainbow-delimiters-depth-2">)</span> but so is six<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orge0e0487">'<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>five is a nice number<span class="org-rainbow-delimiters-depth-3">)</span> 5<span class="org-rainbow-delimiters-depth-2">)</span> but so is six<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1227,7 +1252,7 @@ data. Consider this Emacs Lisp list
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org9eb27e4"><span class="org-rainbow-delimiters-depth-1">(</span>custom-set-variables
+<pre class="src src-scheme" id="org86c1bc6"><span class="org-rainbow-delimiters-depth-1">(</span>custom-set-variables
  '<span class="org-rainbow-delimiters-depth-2">(</span>TeX-electric-math '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"$"</span> . <span class="org-string">"$"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
  '<span class="org-rainbow-delimiters-depth-2">(</span>add-org-graph-puhc nil<span class="org-rainbow-delimiters-depth-2">)</span>
  '<span class="org-rainbow-delimiters-depth-2">(</span>agda2-program-name <span class="org-string">"/home/myhome/.local/bin/agda"</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -1265,7 +1290,7 @@ function <code>custom-set-variables</code>, which according to the Emacs Help
 will
 </p>
 
-<pre class="example" id="org0fa0400">
+<pre class="example" id="orge57af97">
 Install user customizations of variable values specified in ARGS.
 </pre>
 
@@ -1287,7 +1312,7 @@ tree</a></b> is created from an org-mode file. Here is the simple org-mode
 file
 </p>
 
-<pre class="example" id="orgec30cd7">
+<pre class="example" id="orgc8c7c33">
 #+TITLE: Org Test File
 #+AUTHOR: Jesse Millwood
  * Some Time Stamps
@@ -1299,7 +1324,7 @@ file
 
 <p>
 on which we&rsquo;ll use Org Element&rsquo;s command <code>org-element-parse-buffer</code>,
-which will <b>parse</b> that seven-line org-mode file into an <i>abstract
+which will <b><a href="https://en.wikipedia.org/wiki/Parsing">parse</a></b> that seven-line org-mode file into an <i>abstract
 syntax tree</i>, all of it packed into single huge list
 </p>
 
@@ -1308,7 +1333,7 @@ syntax tree</i>, all of it packed into single huge list
 </pre>
 </div>
 
-<pre class="example" id="org77fe3d9">
+<pre class="example" id="orgbea751c">
 (org-data
  (:standard-properties
   [1 1 1 12009 12009 0 nil org-data nil nil nil 3 12009 nil #&lt;buffer ElementTest.org&gt; nil nil nil]
@@ -1349,18 +1374,19 @@ Yes, what you see above is one single very huge list with lots of
 nested lists, all of it representing structured data, although we have
 cut out lots (note the &#x2026; gaps) to fit it on the page. (Also, use the
 slider to see the hidden parts.) As mentioned above, this is a list
-acting as an <i>abstract syntax tree</i>.<label id='fnr.16' for='fnr-in.16.1315906' class='margin-toggle sidenote-number'><sup class='numeral'>16</sup></label><input type='checkbox' id='fnr-in.16.1315906' class='margin-toggle'><span class='sidenote'><sup class='numeral'>16</sup>
+acting as an <i>abstract syntax tree</i>.<label id='fnr.16' for='fnr-in.16.984248' class='margin-toggle sidenote-number'><sup class='numeral'>16</sup></label><input type='checkbox' id='fnr-in.16.984248' class='margin-toggle'><span class='sidenote'><sup class='numeral'>16</sup>
 Soon we will explore how lists can represent sets, vectors,
 matrices, graphs, and other structures.
-</span> ASTs are central to programming
-in that any programming code must be transformed into an AST in order
-to be evaluated by the interpreter or compiler.
+</span> ASTs are central to
+programming in that any programming code must be parsed, i.e.,
+transformed into an AST in order to be evaluated by the interpreter or
+compiler.
 </p>
 </div>
 </div>
-<div id="outline-container-org9e15600" class="outline-3">
-<h3 id="org9e15600">Recursion, let&rsquo;s get started with&#x2026;</h3>
-<div class="outline-text-3" id="text-org9e15600">
+<div id="outline-container-orgce49449" class="outline-3">
+<h3 id="orgce49449">Recursion, let&rsquo;s get started with&#x2026;</h3>
+<div class="outline-text-3" id="text-orgce49449">
 <p>
 <b><a href="https://en.wikipedia.org/wiki/Recursion">Recursion</a></b> is a central idea in math and CS. Let&rsquo;s take a quick
 theoretical look and then draw some parallels to what we&rsquo;ve been doing
@@ -1377,7 +1403,7 @@ Consider this simple summation of the natural numbers \(\mathbb{N}\)
 \end{align*}
 
 <p>
-This expression will sum the sequence<label id='fnr.17' for='fnr-in.17.3306365' class='margin-toggle sidenote-number'><sup class='numeral'>17</sup></label><input type='checkbox' id='fnr-in.17.3306365' class='margin-toggle'><span class='sidenote'><sup class='numeral'>17</sup>
+This expression will sum the sequence<label id='fnr.17' for='fnr-in.17.2682680' class='margin-toggle sidenote-number'><sup class='numeral'>17</sup></label><input type='checkbox' id='fnr-in.17.2682680' class='margin-toggle'><span class='sidenote'><sup class='numeral'>17</sup>
 For now we&rsquo;ll stick to the layman&rsquo;s use of the term
 <i>sequence</i>. Later, we&rsquo;ll dive into what the math world thinks a
 sequence is.
@@ -1386,7 +1412,7 @@ up to and including the nth element of \(\mathbb{N}\). But let&rsquo;s look at
 a different way to sum any \(\mathbb{N}\) sequence, namely,
 <i>recursively</i> by setting up a method that progresses to the answer
 stepwise by referring or calling itself repeatedly. Let&rsquo;s reimagine
-\(\sum_{i=1}^n i\) as a two-part algebraic function<label id='fnr.18' for='fnr-in.18.6238621' class='margin-toggle sidenote-number'><sup class='numeral'>18</sup></label><input type='checkbox' id='fnr-in.18.6238621' class='margin-toggle'><span class='sidenote'><sup class='numeral'>18</sup>
+\(\sum_{i=1}^n i\) as a two-part algebraic function<label id='fnr.18' for='fnr-in.18.474339' class='margin-toggle sidenote-number'><sup class='numeral'>18</sup></label><input type='checkbox' id='fnr-in.18.474339' class='margin-toggle'><span class='sidenote'><sup class='numeral'>18</sup>
 Recursion and <a href="https://en.wikipedia.org/wiki/Mathematical_induction">induction</a> are closely related. We&rsquo;ll look into
 induction later.
 </span>
@@ -1411,7 +1437,7 @@ function.</li>
 </ul>
 
 <p>
-Got that? Still too abstract?<label id='fnr.19' for='fnr-in.19.5448327' class='margin-toggle sidenote-number'><sup class='numeral'>19</sup></label><input type='checkbox' id='fnr-in.19.5448327' class='margin-toggle'><span class='sidenote'><sup class='numeral'>19</sup>
+Got that? Still too abstract?<label id='fnr.19' for='fnr-in.19.1106891' class='margin-toggle sidenote-number'><sup class='numeral'>19</sup></label><input type='checkbox' id='fnr-in.19.1106891' class='margin-toggle'><span class='sidenote'><sup class='numeral'>19</sup>
 Often in math you&rsquo;ll read the abstract, general rule, then
 explore examples, then say &ldquo;A ha! Now I get it!&rdquo; So yes, we will come
 to love these awfully painfully formalistic, highly abstract
@@ -1428,7 +1454,7 @@ generalizations&#x2026;
 <p>
 If \(n = 4\) then no, this is obviously not the base-terminal case \(n =
 1\), so we start applying the recursion rule (4) until the base case is
-in fact <i>true</i><label id='fnr.20' for='fnr-in.20.1549679' class='margin-toggle sidenote-number'><sup class='numeral'>20</sup></label><input type='checkbox' id='fnr-in.20.1549679' class='margin-toggle'><span class='sidenote'><sup class='numeral'>20</sup>
+in fact <i>true</i><label id='fnr.20' for='fnr-in.20.9636768' class='margin-toggle sidenote-number'><sup class='numeral'>20</sup></label><input type='checkbox' id='fnr-in.20.9636768' class='margin-toggle'><span class='sidenote'><sup class='numeral'>20</sup>
 <i>&#x2026;until true</i> seems to suggest some test for true or false,
 doesn&rsquo;t it?  Hold that thought&#x2026;
 </span>
@@ -1442,7 +1468,7 @@ g(1) &= 1 \quad\quad \text{...apply base case}
 \end{align*}
 
 <p>
-Now we nest these intermediary steps<label id='fnr.21' for='fnr-in.21.6673095' class='margin-toggle sidenote-number'><sup class='numeral'>21</sup></label><input type='checkbox' id='fnr-in.21.6673095' class='margin-toggle'><span class='sidenote'><sup class='numeral'>21</sup>
+Now we nest these intermediary steps<label id='fnr.21' for='fnr-in.21.704363' class='margin-toggle sidenote-number'><sup class='numeral'>21</sup></label><input type='checkbox' id='fnr-in.21.704363' class='margin-toggle'><span class='sidenote'><sup class='numeral'>21</sup>
 This math nesting in parentheses is just like nesting in
 parentheses in Scheme. Parentheses keep computational law and
 order. The yellow and gray highlighting emphasizes the substitution.
@@ -1475,7 +1501,7 @@ conses together sexp&rsquo;s
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org4fbfc2e"><span class="org-rainbow-delimiters-depth-1">(</span>list 1 2 3 4<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orgd237ecc"><span class="org-rainbow-delimiters-depth-1">(</span>list 1 2 3 4<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1489,7 +1515,7 @@ But as we&rsquo;ve seen, a list such as <code>(1 2 3 4)</code> is really
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org1ff1657"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 <span class="org-rainbow-delimiters-depth-4">(</span>cons 4 '<span class="org-rainbow-delimiters-depth-5">()</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="org4c5d452"><span class="org-rainbow-delimiters-depth-1">(</span>cons 1 <span class="org-rainbow-delimiters-depth-2">(</span>cons 2 <span class="org-rainbow-delimiters-depth-3">(</span>cons 3 <span class="org-rainbow-delimiters-depth-4">(</span>cons 4 '<span class="org-rainbow-delimiters-depth-5">()</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1497,13 +1523,13 @@ But as we&rsquo;ve seen, a list such as <code>(1 2 3 4)</code> is really
 So <code>list</code> conses together all the arguments it is given. Let&rsquo;s write
 our own (more basic) version of a list-making function that conses
 together just integers, primarily to see what role recursion plays and
-how Scheme does basic recursion.<label id='fnr.22' for='fnr-in.22.2630243' class='margin-toggle sidenote-number'><sup class='numeral'>22</sup></label><input type='checkbox' id='fnr-in.22.2630243' class='margin-toggle'><span class='sidenote'><sup class='numeral'>22</sup>
+how Scheme does basic recursion.<label id='fnr.22' for='fnr-in.22.2210364' class='margin-toggle sidenote-number'><sup class='numeral'>22</sup></label><input type='checkbox' id='fnr-in.22.2210364' class='margin-toggle'><span class='sidenote'><sup class='numeral'>22</sup>
 Note: code line numbers are not part of the Scheme code.
 </span>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org50b86de"><span class="linenr">1: </span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">makelist</span> n<span class="org-rainbow-delimiters-depth-2">)</span>
+<pre class="src src-scheme" id="org81c074c"><span class="linenr">1: </span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">makelist</span> n<span class="org-rainbow-delimiters-depth-2">)</span>
 <span class="linenr">2: </span>  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">if</span> <span class="org-rainbow-delimiters-depth-3">(</span>= n 1<span class="org-rainbow-delimiters-depth-3">)</span>
 <span class="linenr">3: </span>      <span class="org-rainbow-delimiters-depth-3">(</span>list 1<span class="org-rainbow-delimiters-depth-3">)</span>   <span class="org-comment-delimiter">; </span><span class="org-comment">base case. Return the list (1) if true</span>
 <span class="linenr">4: </span>      <span class="org-rainbow-delimiters-depth-3">(</span>cons n <span class="org-rainbow-delimiters-depth-4">(</span>makelist <span class="org-rainbow-delimiters-depth-5">(</span>- n 1<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>  <span class="org-comment-delimiter">; </span><span class="org-comment">else recursive case.</span>
@@ -1515,7 +1541,7 @@ Testing it out, we&rsquo;ll make a list of four elements
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgfc5f5a3"><span class="org-rainbow-delimiters-depth-1">(</span>makelist 4<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orgd2ce4f6"><span class="org-rainbow-delimiters-depth-1">(</span>makelist 4<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1546,7 +1572,7 @@ it returns <code>0</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgabc8455"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">mytest</span> n<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">if</span> <span class="org-rainbow-delimiters-depth-3">(</span>&gt; n 12<span class="org-rainbow-delimiters-depth-3">)</span> 1 0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orgbbba6e1"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">mytest</span> n<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">if</span> <span class="org-rainbow-delimiters-depth-3">(</span>&gt; n 12<span class="org-rainbow-delimiters-depth-3">)</span> 1 0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1555,7 +1581,7 @@ Let&rsquo;s test it
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org3f39e4a"><span class="org-rainbow-delimiters-depth-1">(</span>mytest 15<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orgc7eb2b3"><span class="org-rainbow-delimiters-depth-1">(</span>mytest 15<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1585,7 +1611,7 @@ let&rsquo;s get back to our recursion example. So in
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org4fd1845"><span class="linenr">1: </span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">makelist</span> n<span class="org-rainbow-delimiters-depth-2">)</span>
+<pre class="src src-scheme" id="orge391aae"><span class="linenr">1: </span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">makelist</span> n<span class="org-rainbow-delimiters-depth-2">)</span>
 <span class="linenr">2: </span>  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">if</span> <span class="org-rainbow-delimiters-depth-3">(</span>= n 1<span class="org-rainbow-delimiters-depth-3">)</span>
 <span class="linenr">3: </span>      <span class="org-rainbow-delimiters-depth-3">(</span>list 1<span class="org-rainbow-delimiters-depth-3">)</span>   <span class="org-comment-delimiter">; </span><span class="org-comment">base case. Return the list (1) if true</span>
 <span class="linenr">4: </span>      <span class="org-rainbow-delimiters-depth-3">(</span>cons n <span class="org-rainbow-delimiters-depth-4">(</span>makelist <span class="org-rainbow-delimiters-depth-5">(</span>- n 1<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>  <span class="org-comment-delimiter">; </span><span class="org-comment">else recursive case.</span>
@@ -1607,7 +1633,7 @@ This can be hard to picture. Let&rsquo;s walk through it when <code>n</code> is
 the REPL input
 </p>
 
-<pre class="example" id="org1ac024b">
+<pre class="example" id="orgfa95acf">
 scheme@(guile-user)&gt; ,trace (makelist 4)
 trace: |  (makelist 4)
 trace: |  |  (makelist 3)
@@ -1628,7 +1654,7 @@ the program climbs back out of the rabbit holes. When we first call
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org490c238"><span class="org-rainbow-delimiters-depth-1">(</span>cons n <span class="org-rainbow-delimiters-depth-2">(</span>makelist <span class="org-rainbow-delimiters-depth-3">(</span>- n 1<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">else branch of if=then-else</span>
+<pre class="src src-scheme" id="orgb4feeb7"><span class="org-rainbow-delimiters-depth-1">(</span>cons n <span class="org-rainbow-delimiters-depth-2">(</span>makelist <span class="org-rainbow-delimiters-depth-3">(</span>- n 1<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">else branch of if=then-else</span>
 </pre>
 </div>
 
@@ -1637,7 +1663,7 @@ which sets up
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org510e4b3"><span class="org-rainbow-delimiters-depth-1">(</span>cons 4 <span class="org-rainbow-delimiters-depth-2">(</span>makelist 3<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">makelist calls itself from within itself!</span>
+<pre class="src src-scheme" id="org84752f7"><span class="org-rainbow-delimiters-depth-1">(</span>cons 4 <span class="org-rainbow-delimiters-depth-2">(</span>makelist 3<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">makelist calls itself from within itself!</span>
 </pre>
 </div>
 
@@ -1647,7 +1673,7 @@ fails and we have stacked up
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org0d977d6"><span class="org-rainbow-delimiters-depth-1">(</span>cons 4 <span class="org-rainbow-delimiters-depth-2">(</span>cons 3 <span class="org-rainbow-delimiters-depth-3">(</span>makelist 2<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">...calls itself again!</span>
+<pre class="src src-scheme" id="orgc0121f7"><span class="org-rainbow-delimiters-depth-1">(</span>cons 4 <span class="org-rainbow-delimiters-depth-2">(</span>cons 3 <span class="org-rainbow-delimiters-depth-3">(</span>makelist 2<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">...calls itself again!</span>
 </pre>
 </div>
 
@@ -1656,7 +1682,7 @@ then
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org17b3d4d"><span class="org-rainbow-delimiters-depth-1">(</span>cons 4 <span class="org-rainbow-delimiters-depth-2">(</span>cons 3 <span class="org-rainbow-delimiters-depth-3">(</span>cons 2 <span class="org-rainbow-delimiters-depth-4">(</span>makelist 1<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">calls itself again</span>
+<pre class="src src-scheme" id="orgde717ef"><span class="org-rainbow-delimiters-depth-1">(</span>cons 4 <span class="org-rainbow-delimiters-depth-2">(</span>cons 3 <span class="org-rainbow-delimiters-depth-3">(</span>cons 2 <span class="org-rainbow-delimiters-depth-4">(</span>makelist 1<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">calls itself again</span>
 </pre>
 </div>
 
@@ -1666,7 +1692,7 @@ return <code>(list 1)</code> giving us the desired
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgec4672b"><span class="org-rainbow-delimiters-depth-1">(</span>cons 4 <span class="org-rainbow-delimiters-depth-2">(</span>cons 3 <span class="org-rainbow-delimiters-depth-3">(</span>cons 2 <span class="org-rainbow-delimiters-depth-4">(</span>list 1<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-scheme" id="orgde5bb59"><span class="org-rainbow-delimiters-depth-1">(</span>cons 4 <span class="org-rainbow-delimiters-depth-2">(</span>cons 3 <span class="org-rainbow-delimiters-depth-3">(</span>cons 2 <span class="org-rainbow-delimiters-depth-4">(</span>list 1<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1684,9 +1710,9 @@ Scheme primitives <code>car</code> and <code>cdr</code>.
 </p>
 </div>
 </div>
-<div id="outline-container-org0a9c95c" class="outline-3">
-<h3 id="org0a9c95c"></h3>
-<div class="outline-text-3" id="text-org0a9c95c">
+<div id="outline-container-org0e5a331" class="outline-3">
+<h3 id="org0e5a331"></h3>
+<div class="outline-text-3" id="text-org0e5a331">
 <p>
 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
 </p>
