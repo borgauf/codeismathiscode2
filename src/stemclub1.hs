@@ -34,3 +34,10 @@ prime0 :: Integral a => a -> Bool
 prime0 n | n < 1 = error "Not a positive integer"
          | n == 1 = False
          | otherwise = ld n == n
+
+primesUpTo :: Int -> [Int]
+primesUpTo n = sieve [2..n]
+  where
+    sieve :: [Int] -> [Int]
+    sieve [] = []
+    sieve (p:xs) = p : sieve (filter (\x -> x `mod` p /= 0) xs)

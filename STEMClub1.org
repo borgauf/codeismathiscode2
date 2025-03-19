@@ -81,6 +81,8 @@ module STEMCLUB1 where
 
 <<4d38f6dd-987b-4709-bee2-8de927d0ce94>>
 
+<<62583d65-caaa-4d3e-a77d-794904ac555d>>
+
 #+end_src
 
 #+name: 2b702810-8387-4ce3-af0c-067fd15b4e33
@@ -98,43 +100,6 @@ import GHC.Real
 
 
 * 
-
-** Doing math with computers
-
-*The birth of mathematics*:
-
-#+begin_quote
-Caveman #1 (looking at flock of birds): Many. \\
-Caveman #2: *How* many?
-#+end_quote
-
-*Q*: Why do we do STEM? \\
-*A*: Because somebody will pay us to do science, technology,
-engineering, and especially mathematics for them.
-
-*/Where/ is math?*[fn:1]
-
-1. In our brains.
-2. In math books and papers.
-3. On classroom white/black boards.
-4. Built into various mechanical devices
-5. In digital computing devices as circuitry and software.
-
-...but, yes, now more than ever #5. So what does it mean to have math
-expressed in software.
-
-*How do computers "compute" stuff?*[fn:2]
-
-- Develop algorithms from math
-- Encode algorithms in programming language
-- Run code on device 
-
-In other words, we're taking the math out of books, papers, off
-blackboards, out of brains, reverse-engineering mechanical
-devices---and packing it into digital computing devices, mainly in the
-form of software, code. And with the digital computing devices count
-about to exceed /three times/ the world's human population, that's a
-big deal.
 
 ** Basic fractions on the computer
 
@@ -156,7 +121,7 @@ remainder), a fraction as a whole is called a quotient as well
 $\frac{a}{b}$ where both $a$ and $b$ are *integers* and $b \ne 0$. That
 means, e.g., $\frac{\sqrt{2}}{2}$ is not a rational number, but is
 still considered a fraction. And so we can call any rational number a
-fraction, but not all fractions are rational numbers.[fn:3] The set of
+fraction, but not all fractions are rational numbers.[fn:1] The set of
 rational numbers is denoted by $\mathbb{Q}$, which, again, stands for
 /quotient/.
 
@@ -215,14 +180,14 @@ This idea of multiplying unique sets of primes to get any whole number
 is an almost mysterious thing in mathematics. The [[https://en.wikipedia.org/wiki/Peano_axioms][Peano Axioms]],
 supposedly the most bedrock foundation of mathematics, says if we
 start with zero we can get any of the natural counting numbers,
-$\mathbb{N}$,[fn:4] by simply adding "one more" over and over.[fn:5]
+$\mathbb{N}$,[fn:2] by simply adding "one more" over and over.[fn:3]
 But we can also "get" any $n \in \mathbb{N}$ by multiplying sets of
 primes. Hence, we can almost say, prime numbers /necessitate/ (bring
 into existence?) multiplication.
 
 Let's jump way ahead just for a moment. [[https://gemini.google.com/app][Google Gemini]] produced this
 Haskell code when the keywords /haskell prime factors of a number/
-were entered into a Gemini search[fn:6]
+were entered into a Gemini search[fn:4]
 
 #+name: af3e4f87-3492-4f87-8e19-6d43b5bcf035
 #+begin_src haskell :eval never :exports code
@@ -300,7 +265,7 @@ Unfortunately, two symbols are used to indicate identity. For example
 \end{align*}
 
 uses the $=$ equals sign to indicate /identical values/ are guaranteed
-given any specific $a$ or $b$.[fn:7] Another identity would be
+given any specific $a$ or $b$.[fn:5] Another identity would be
 
 \begin{align*}
 sin^{2}\theta + cos^{2}\theta = 1
@@ -308,7 +273,7 @@ sin^{2}\theta + cos^{2}\theta = 1
 
 Again, we mean the left- and right-hand sides are identical
 mathematically, as in, both sides have identical values, although
-they're obviously different symbols.[fn:8] /Which means they are
+they're obviously different symbols.[fn:6] /Which means they are
 interchangeable/. Which means when solving a trig problem, you can
 substitute in one for the other. Keep track of the subtle difference
 between /is defined as/ and /identical values/.
@@ -374,7 +339,7 @@ Back to ~Integral~. Which is a *type class* declared internally in
 Haskell. The ~Integral a =>~ prefix in the type signature of ~rem~
 says ~a~ can be any of the individual types that have "registered"
 with the type class ~Integral~. Let's unpack the ~Integral~ type class
-with the Haskell REPL command ~:info~ (or just ~:i~)[fn:9]
+with the Haskell REPL command ~:info~ (or just ~:i~)[fn:7]
 
 #+name: 1219802e-34bc-4d13-ab8e-27e7119f07db
 #+begin_src haskell :results verbatim :exports both
@@ -486,7 +451,7 @@ instance Eq a => Eq [a] -- Defined in ‘ghc-prim-0.9.1:GHC.Classes’
 #+end_example
 
 As the ellipsis (...) indicate, much was cut out for brevity. The idea
-behind ~Eq~ is mathematical logic equality or *equivalence*[fn:10]
+behind ~Eq~ is mathematical logic equality or *equivalence*[fn:8]
 
 ⥤ *Side note* establishing equivalence \\
 
@@ -512,7 +477,7 @@ Red + Yellow
     • In the expression: Red + Yellow
 #+end_example
 
-...meaning our ~Color~ type does not have addition defined.[fn:11] The
+...meaning our ~Color~ type does not have addition defined.[fn:9] The
 error message indicates the type class ~Num~ doesn't have an
 /instance/ of ~Color~ registered with it. Can we /compare/ colors for
 order or equivalence? Not yet. But if we specifically create an
@@ -557,21 +522,21 @@ math's $d$ /divides/ $n$. Let's move on.
 that divides $n$, or the /least divisor/ of $n$.
 @@html:</font>@@
 
-Every number has at least one divisor greater than /unit/ $1$.[fn:12]
+Every number has at least one divisor greater than /unit/ $1$.[fn:10]
 Therefore, every number $n$ has a smallest, /least/ divisor, $LD(n)$,
 in its set of divisors, even if that set has only one element. We will
 leverage this fact to test a number for primeness. Read on.
 
 Let's look at a /composite/ number $12$ with the set of divisors
-$\{2,3,4,6,12\}$. Here, $LD(12) = 2$ and the *cardinality*[fn:13] of
+$\{2,3,4,6,12\}$. Here, $LD(12) = 2$ and the *cardinality*[fn:11] of
 the set is $5$, i.e., greater than $1$. What about $120$? The divisor
-set[fn:14] would be much larger
+set[fn:12] would be much larger
 
 \begin{align*}
 \{2,3,4,5,6,8,10,12,15,20,24,30,40,60,120\}
 \end{align*}
 
-and we can get it with this Haskell code[fn:15]
+and we can get it with this Haskell code[fn:13]
 
 #+name: 94268e73-4fb6-465b-b810-fdd34c488c72
 #+begin_src haskell :eval never :exports code
@@ -590,7 +555,7 @@ divisors 120
 : [2,3,4,5,6,8,10,12,15,20,24,30,40,60,120]
 
 As with $12$, we see a pattern where we start with a divisor that is
-prime, then (if any) composite numbers follow.[fn:16] In both examples
+prime, then (if any) composite numbers follow.[fn:14] In both examples
 notice that the square the $LD(n)$, e.g., with $120$ squaring $2$ is
 $4$, is less than $120$. Why is this germane?
 
@@ -614,7 +579,7 @@ proposition will anchor the fact that the least divisor is always a
 prime. This will be necessary for when a number is analyzed for
 primeness and no divisor less than the number itself has been
 found. But we need to prove that least divisor is indeed prime. How?
-We'll employ a proof method called /contradiction/[fn:17] where we
+We'll employ a proof method called /contradiction/[fn:15] where we
 claim just the opposite of what we want to prove, then expose it as
 not true. In this case, let's assume $c = LD(n)$ and $c$ is /not/
 prime, a contradiction of our original statement. But if $c$ is not
@@ -639,7 +604,7 @@ e &\le \sqrt{599}
 because if both $d$ and $e$ were greater than $\sqrt{599}$ (the
 opposite of less than or equal to) that would make $d \cdot e$ greater
 than $\sqrt{599} \cdot \sqrt{599} = 599$, which it can't be. So if $599$
-is composite, it has a divisor between $2$ and $\lfloor \sqrt{599} \rfloor$[fn:18]
+is composite, it has a divisor between $2$ and $\lfloor \sqrt{599} \rfloor$[fn:16]
 or $24$.
 
 At this point we can guess that to show $599$ is prime, we need to
@@ -679,7 +644,7 @@ or ~False~) on the incoming number argument ~n~ using the argument
 ~k~. We see ~ldf~ begins with the lowest prime $2$ for ~k~. So if $2
 \mid n$ then we're through, the $LD(n) = k$. But if it is not then we
 move on to the next /case/, namely, Is ~k~ squared greater than
-~n~?[fn:19] Again, this yields a ~True~ or ~False~. If ~True~, then
+~n~?[fn:17] Again, this yields a ~True~ or ~False~. If ~True~, then
 ~n~ is the least divisor. But if this second test case also fails, we
 go onto the third, which is not a normal test case, but a hardwired
 ~True~, i.e., we're going with this case---because there are no other
@@ -811,90 +776,94 @@ For example, /Did $A$ (exclusive) or $B$ win?/ So "win" as in true;
 hence, both cannot have won, nor can both have lost.
 
 
+#+name: 62583d65-caaa-4d3e-a77d-794904ac555d
+#+begin_src haskell :eval never :exports code
+primesUpTo :: Int -> [Int]
+primesUpTo n = sieve [2..n]
+  where
+    sieve :: [Int] -> [Int]
+    sieve [] = []
+    sieve (p:xs) = p : sieve (filter (\x -> x `mod` p /= 0) xs)
+#+end_src
+
+
 
 
 #+INCLUDE: "./footer.org" :minlevel 1
 
 * Footnotes
 
-[fn:1] We'll discuss another possibility, namely, the Platonic
-belief math is just out there in the universe, later.
-
-[fn:2] Let's watch [[https://youtu.be/8xPRn9weLYg?si=5fplvY_vDQD2dbHb][this video]] (semi-)realistically depicting a STEM
-environment. No magic, just people taking math out of books and
-putting it into their technology.
-
-[fn:3] A fraction can be resolved into a *[[https://en.wikipedia.org/wiki/Fraction#Decimal_fractions_and_percentages][decimal fraction]]*, e.g.,
+[fn:1] A fraction can be resolved into a *[[https://en.wikipedia.org/wiki/Fraction#Decimal_fractions_and_percentages][decimal fraction]]*, e.g.,
 $\frac{3}{4}$ is $0.75$. But even repeating decimal, e.g.,
 $\frac{1}{3} = 0.333\ldots$ where the number to the right of the
 decimal is an *infinite series*, i.e., $\frac{3}{10} + \frac{3}{100} +
 \frac{3}{1000} \ldots$.
 
-[fn:4] In higher math the *natural counting numbers*
+[fn:2] In higher math the *natural counting numbers*
 $\{1,2,3,4,\ldots\}$ are signified by $\mathbb{N}$, while the
 *integers* $\{\ldots,-2,-1,0,1,2,\ldots\}$ are $\mathbb{Z}$. Both are
 whole numbers.
 
-[fn:5] Fundamental to Peano's approach is recursion and induction,
+[fn:3] Fundamental to Peano's approach is recursion and induction,
 which we will explore in depth soon.
 
-[fn:6] This is not serious number factoring code. The "art" of
+[fn:4] This is not serious number factoring code. The "art" of
 factoring numbers is at the heart of modern cryptography. In fact, it
 is still unknown whether any variation of factoring code running on
 conventional computers can factor any significantly large number in a
 reasonable amount of time. This issue belongs to the realm of
 *[[https://en.wikipedia.org/wiki/Computability_theory][computability theory]]* and was the instigator to the digital computer.
 
-[fn:7] In Haskell, everything has a value. This is an abstraction
+[fn:5] In Haskell, everything has a value. This is an abstraction
 meant to keep things highly mathematical, i.e., above imperative
 programming where evaluating code leads to state changes. With
 Haskell, the evaluation of code yields values intentionally not
 involved with state changes.
 
-[fn:8] The [[https://en.wikipedia.org/wiki/Pythagorean_trigonometric_identity][proof/derivation]] of $sin^{2}\theta + cos^{2}\theta = 1$ is usually included
+[fn:6] The [[https://en.wikipedia.org/wiki/Pythagorean_trigonometric_identity][proof/derivation]] of $sin^{2}\theta + cos^{2}\theta = 1$ is usually included
 in trigonometry texts. This is just one proven identity. But the
 general idea of *[[https://en.wikipedia.org/wiki/Rewriting][term rewriting]]*, i.e., the art of redoing an
 expression into an identical one, is an important field in math and
 computability.
 
-[fn:9] ~:t~ and ~:i~ are your best friends when navigating the Haskell
+[fn:7] ~:t~ and ~:i~ are your best friends when navigating the Haskell
 type world.
 
-[fn:10] In mathematical logic statements, expressions $p$ and $q$ are
+[fn:8] In mathematical logic statements, expressions $p$ and $q$ are
 *[[https://en.wikipedia.org/wiki/Logical_equivalence][logically equivalent]]* if they have the same /truth value/ in every
 case of possible inputs for $p$ and $q$. Moral of the story: Keep
 /is-defined-as/ ~=~ separate from /equivalence/ ~==~ (or
 non-equivalence ~/+~).
 
-[fn:11] Technically only numbers can be added, subtracted,
+[fn:9] Technically only numbers can be added, subtracted,
 etc. For addition, e.g., non-number objects are /aggregated/.
 
-[fn:12] Again, a prime number has exactly one divisor greater than $1$, i.e.,
+[fn:10] Again, a prime number has exactly one divisor greater than $1$, i.e.,
 the prime number itself.
 
-[fn:13] The *cardinality* of a set is the count of the unique elements
+[fn:11] The *cardinality* of a set is the count of the unique elements
 contained in the set.
 
-[fn:14] ...or the /factors/ of $120$.
+[fn:12] ...or the /factors/ of $120$.
 
-[fn:15] This is the Haskell version of *[[https://en.wikipedia.org/wiki/Set-builder_notation][set comprehension]]*. More
+[fn:13] This is the Haskell version of *[[https://en.wikipedia.org/wiki/Set-builder_notation][set comprehension]]*. More
 later.
 
-[fn:16] Let's not forget the /Fundamental Theorem of Arithmetic/,
+[fn:14] Let's not forget the /Fundamental Theorem of Arithmetic/,
 i.e., that $120$ can also be expressed as product of powers of those
 first three primes.
 
-[fn:17] See [[https://en.wikipedia.org/wiki/Proof_by_contradiction][proof by contradiction]].
+[fn:15] See [[https://en.wikipedia.org/wiki/Proof_by_contradiction][proof by contradiction]].
 
-[fn:18] The *floor* ($\lfloor\; \rfloor$) of $\sqrt{599}$? First, get the square
+[fn:16] The *floor* ($\lfloor\; \rfloor$) of $\sqrt{599}$? First, get the square
 root of $599$, which is $24.474476501040833$; so the /lowest/ whole
 number, the floor, would be $24$. The $\lceil\sqrt{599}\rceil$, or the *ceiling*
 of the square root of $599$ would be $25$.
 
-[fn:19] This is the second part of $LD(n)$ Proposition, i.e., we've
+[fn:17] This is the second part of $LD(n)$ Proposition, i.e., we've
 flipped the $(LD(n))^2 \le n$. ~ld~ looks for a prime divisor of $n$ by
 checking $k \mid n$ for all $k$ with $2 \le k \le \sqrt{n}$. But isn't a
 $LD(n)$ supposed to be prime? We will improve on ~ld~ so it doesn't
 waste time checking non-prime $k$ within $2 \le k \le \sqrt{n}$.
 
-[fn:20] DEFINITION NOT FOUND.
+[fn:18] DEFINITION NOT FOUND.

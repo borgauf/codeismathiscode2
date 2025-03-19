@@ -1,0 +1,104 @@
+Here is a Haskell program that generates a list of all prime numbers less than or equal to a given whole number ( n ). The program uses the Sieve of Eratosthenes algorithm, which is an efficient method for finding all prime numbers up to a specified integer.
+
+*** Program Code
+    :PROPERTIES:
+    :CUSTOM_ID: program-code
+    :END:
+#+begin_src haskell :eval never :exports code
+primesUpTo :: Int -> [Int]
+primesUpTo n = sieve [2..n]
+  where
+    sieve :: [Int] -> [Int]
+    sieve [] = []
+    sieve (p:xs) = p : sieve (filter (\x -> x `mod` p /= 0) xs)
+
+main :: IO ()
+main = do
+    putStrLn "Enter a whole number n:"
+    n <- readLn
+    let primes = primesUpTo n
+    putStrLn $ "Primes up to " ++ show n ++ ": " ++ show primes
+#+end_src
+
+*** Explanation
+    :PROPERTIES:
+    :CUSTOM_ID: explanation
+    :END:
+**** What is a Prime Number?
+     :PROPERTIES:
+     :CUSTOM_ID: what-is-a-prime-number
+     :END:
+A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. For example, 2, 3, 5, and 7 are prime numbers, while 4 (divisible by 2) and 6 (divisible by 2 and 3) are not.
+
+**** How the Program Works
+     :PROPERTIES:
+     :CUSTOM_ID: how-the-program-works
+     :END:
+The program consists of two main parts: the =primesUpTo= function, which computes the list of primes, and the =main= function, which handles user input and output.
+
+1. *=primesUpTo= Function*
+   - *Signature*: =primesUpTo :: Int -> [Int]=
+   - *Purpose*: Takes an integer ( n ) and returns a list of all prime numbers from 2 up to ( n ).
+   - *Implementation*: It uses a helper function =sieve= to apply the Sieve of Eratosthenes algorithm:
+     - Starts with a list of integers from 2 to ( n ) (i.e., =[2..n]=).
+     - The =sieve= function processes this list recursively.
+2. *=sieve= Helper Function*
+   - *Base Case*: =sieve [] = []=
+     - If the list is empty, there are no more numbers to process, so it returns an empty list.
+   - *Recursive Case*: =sieve (p:xs) = p : sieve (filter (\x -> x=mod=p /= 0) xs)=
+     - Takes the first number ( p ) from the list, which is a prime.
+     - Filters out all multiples of ( p ) from the remaining list =xs= using =filter=.
+     - Recursively applies =sieve= to the filtered list and prepends ( p ) to the result.
+   - *How It Filters*: The expression =filter (\x -> x=mod=p /= 0) xs= keeps only those numbers in =xs= that are not divisible by ( p ) (i.e., =x=mod=p /= 0=).
+3. *=main= Function*
+   - *Purpose*: Provides an interactive interface for the user.
+   - *Steps*:
+     - Prints a prompt: ="Enter a whole number n:"=.
+     - Reads the user's input as an integer using =readLn=.
+     - Computes the list of primes by calling =primesUpTo n=.
+     - Prints the result in a readable format, e.g., ="Primes up to 10: [2,3,5,7]"=.
+
+**** Example Execution
+     :PROPERTIES:
+     :CUSTOM_ID: example-execution
+     :END:
+- *Input*: =10=
+- *Process*:
+  - =primesUpTo 10= calls =sieve [2,3,4,5,6,7,8,9,10]=.
+  - =sieve [2,3,4,5,6,7,8,9,10]=:
+    - ( p = 2 ), filter multiples of 2 from =[3,4,5,6,7,8,9,10]= → =[3,5,7,9]=.
+    - Result: =2 : sieve [3,5,7,9]=.
+  - =sieve [3,5,7,9]=:
+    - ( p = 3 ), filter multiples of 3 from =[5,7,9]= → =[5,7]=.
+    - Result: =3 : sieve [5,7]=.
+  - =sieve [5,7]=:
+    - ( p = 5 ), filter multiples of 5 from =[7]= → =[7]=.
+    - Result: =5 : sieve [7]=.
+  - =sieve [7]=:
+    - ( p = 7 ), filter multiples of 7 from =[]= → =[]=.
+    - Result: =7 : sieve []=.
+  - =sieve [] = []=, so the final list is =[2,3,5,7]=.
+- *Output*: =Primes up to 10: [2,3,5,7]=
+
+**** Edge Cases
+     :PROPERTIES:
+     :CUSTOM_ID: edge-cases
+     :END:
+- *( n < 2 )*: If ( n = 1 ) or ( n = 0 ), =[2..n]= produces an empty list, and =sieve []= returns =[]=, which is correct since there are no primes less than 2.
+- *Negative ( n )*: Similarly, =[2..n]= is empty, so the result is =[]=, which aligns with the assumption that "whole number" means non-negative integer.
+
+*** Running the Program
+    :PROPERTIES:
+    :CUSTOM_ID: running-the-program
+    :END:
+To use this program: 1. Save it in a file, e.g., =Primes.hs=. 2. Load it into GHCi or compile it with GHC. 3. Run it, enter a number like =20=, and it will output something like:
+=Enter a whole number n:    20    Primes up to 20: [2,3,5,7,11,13,17,19]=
+
+*** Notes
+    :PROPERTIES:
+    :CUSTOM_ID: notes
+    :END:
+- *Efficiency*: This implementation has a time complexity of approximately ( O(n \log \log n) ), typical for the Sieve of Eratosthenes. However, for very large ( n ) (e.g., ( 10^8 )), memory usage might be a concern due to Haskell's linked list representation.
+- *Robustness*: The program assumes valid integer input. For a production environment, you might add error handling for invalid inputs using =try= or =readMaybe=.
+
+This program fully satisfies the requirement to generate a list of all prime numbers less than or equal to a given whole number ( n ).

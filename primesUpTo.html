@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-03-18 Tue 12:14 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Galaxy Being" />
+<meta name="generator" content="Org Mode" />
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#program-code">1. Program Code</a></li>
+<li><a href="#explanation">2. Explanation</a>
+<ul>
+<li><a href="#what-is-a-prime-number">2.1. What is a Prime Number?</a></li>
+<li><a href="#how-the-program-works">2.2. How the Program Works</a></li>
+<li><a href="#example-execution">2.3. Example Execution</a></li>
+<li><a href="#edge-cases">2.4. Edge Cases</a></li>
+</ul>
+</li>
+<li><a href="#running-the-program">3. Running the Program</a></li>
+<li><a href="#notes">4. Notes</a></li>
+</ul>
+</div>
+</div>
+<p>
+Here is a Haskell program that generates a list of all prime numbers less than or equal to a given whole number ( n ). The program uses the Sieve of Eratosthenes algorithm, which is an efficient method for finding all prime numbers up to a specified integer.
+</p>
+<div id="outline-container-program-code" class="outline-2">
+<h2 id="program-code"><span class="section-number-2">1.</span> Program Code</h2>
+<div class="outline-text-2" id="text-program-code">
+<div class="org-src-container">
+<pre class="src src-haskell"><span class="org-haskell-definition">primesUpTo</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">Int</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-type">Int</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-haskell-definition">primesUpTo</span> n <span class="org-haskell-operator">=</span> sieve <span class="org-rainbow-delimiters-depth-1">[</span>2<span class="org-haskell-operator">..</span>n<span class="org-rainbow-delimiters-depth-1">]</span>
+  <span class="org-haskell-keyword">where</span>
+    sieve <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-type">Int</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-haskell-type">Int</span><span class="org-rainbow-delimiters-depth-1">]</span>
+    sieve <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-haskell-operator">=</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span>
+    sieve <span class="org-rainbow-delimiters-depth-1">(</span>p<span class="org-haskell-constructor">:</span>xs<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">=</span> p <span class="org-haskell-constructor">:</span> sieve <span class="org-rainbow-delimiters-depth-1">(</span>filter <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-haskell-operator">\</span>x <span class="org-haskell-operator">-&gt;</span> x <span class="org-haskell-operator">`mod`</span> p <span class="org-haskell-operator">/=</span> 0<span class="org-rainbow-delimiters-depth-2">)</span> xs<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-haskell-definition">main</span> <span class="org-haskell-operator">::</span> <span class="org-haskell-type">IO</span> <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">()</span></span>
+<span class="org-haskell-definition">main</span> <span class="org-haskell-operator">=</span> <span class="org-haskell-keyword">do</span>
+    putStrLn <span class="org-string">"Enter a whole number n:"</span>
+    n <span class="org-haskell-operator">&lt;-</span> readLn
+    <span class="org-haskell-keyword">let</span> primes <span class="org-haskell-operator">=</span> primesUpTo n
+    putStrLn <span class="org-haskell-operator">$</span> <span class="org-string">"Primes up to "</span> <span class="org-haskell-operator">++</span> show n <span class="org-haskell-operator">++</span> <span class="org-string">": "</span> <span class="org-haskell-operator">++</span> show primes
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-explanation" class="outline-2">
+<h2 id="explanation"><span class="section-number-2">2.</span> Explanation</h2>
+<div class="outline-text-2" id="text-explanation">
+</div>
+<div id="outline-container-what-is-a-prime-number" class="outline-3">
+<h3 id="what-is-a-prime-number"><span class="section-number-3">2.1.</span> What is a Prime Number?</h3>
+<div class="outline-text-3" id="text-what-is-a-prime-number">
+<p>
+A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. For example, 2, 3, 5, and 7 are prime numbers, while 4 (divisible by 2) and 6 (divisible by 2 and 3) are not.
+</p>
+</div>
+</div>
+<div id="outline-container-how-the-program-works" class="outline-3">
+<h3 id="how-the-program-works"><span class="section-number-3">2.2.</span> How the Program Works</h3>
+<div class="outline-text-3" id="text-how-the-program-works">
+<p>
+The program consists of two main parts: the <code>primesUpTo</code> function, which computes the list of primes, and the <code>main</code> function, which handles user input and output.
+</p>
+
+<ol class="org-ol">
+<li><b><code>primesUpTo</code> Function</b>
+<dl class="org-dl">
+<dt><b>Signature</b>: =primesUpTo</dt><dd>Int -&gt; [Int]=</dd>
+<dt>(no term)</dt><dd><b>Purpose</b>: Takes an integer ( n ) and returns a list of all prime numbers from 2 up to ( n ).</dd>
+<dt>(no term)</dt><dd><b>Implementation</b>: It uses a helper function <code>sieve</code> to apply the Sieve of Eratosthenes algorithm:
+<ul class="org-ul">
+<li>Starts with a list of integers from 2 to ( n ) (i.e., <code>[2..n]</code>).</li>
+<li>The <code>sieve</code> function processes this list recursively.</li>
+</ul></dd>
+</dl></li>
+<li><b><code>sieve</code> Helper Function</b>
+<ul class="org-ul">
+<li><b>Base Case</b>: <code>sieve [] = []</code>
+<ul class="org-ul">
+<li>If the list is empty, there are no more numbers to process, so it returns an empty list.</li>
+</ul></li>
+<li><b>Recursive Case</b>: <code>sieve (p:xs) = p : sieve (filter (\x -&gt; x=mod=p /</code> 0) xs)=
+<ul class="org-ul">
+<li>Takes the first number ( p ) from the list, which is a prime.</li>
+<li>Filters out all multiples of ( p ) from the remaining list <code>xs</code> using <code>filter</code>.</li>
+<li>Recursively applies <code>sieve</code> to the filtered list and prepends ( p ) to the result.</li>
+</ul></li>
+<li><b>How It Filters</b>: The expression <code>filter (\x -&gt; x=mod=p /</code> 0) xs= keeps only those numbers in <code>xs</code> that are not divisible by ( p ) (i.e., <code>x=mod=p /</code> 0=).</li>
+</ul></li>
+<li><b><code>main</code> Function</b>
+<ul class="org-ul">
+<li><b>Purpose</b>: Provides an interactive interface for the user.</li>
+<li><b>Steps</b>:
+<ul class="org-ul">
+<li>Prints a prompt: <code>"Enter a whole number n:"</code>.</li>
+<li>Reads the user&rsquo;s input as an integer using <code>readLn</code>.</li>
+<li>Computes the list of primes by calling <code>primesUpTo n</code>.</li>
+<li>Prints the result in a readable format, e.g., <code>"Primes up to 10: [2,3,5,7]"</code>.</li>
+</ul></li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-example-execution" class="outline-3">
+<h3 id="example-execution"><span class="section-number-3">2.3.</span> Example Execution</h3>
+<div class="outline-text-3" id="text-example-execution">
+<ul class="org-ul">
+<li><b>Input</b>: <code>10</code></li>
+<li><b>Process</b>:
+<ul class="org-ul">
+<li><code>primesUpTo 10</code> calls <code>sieve [2,3,4,5,6,7,8,9,10]</code>.</li>
+<li><code>sieve [2,3,4,5,6,7,8,9,10]</code>:
+<ul class="org-ul">
+<li>( p = 2 ), filter multiples of 2 from <code>[3,4,5,6,7,8,9,10]</code> → <code>[3,5,7,9]</code>.</li>
+<li>Result: <code>2 : sieve [3,5,7,9]</code>.</li>
+</ul></li>
+<li><code>sieve [3,5,7,9]</code>:
+<ul class="org-ul">
+<li>( p = 3 ), filter multiples of 3 from <code>[5,7,9]</code> → <code>[5,7]</code>.</li>
+<li>Result: <code>3 : sieve [5,7]</code>.</li>
+</ul></li>
+<li><code>sieve [5,7]</code>:
+<ul class="org-ul">
+<li>( p = 5 ), filter multiples of 5 from <code>[7]</code> → <code>[7]</code>.</li>
+<li>Result: <code>5 : sieve [7]</code>.</li>
+</ul></li>
+<li><code>sieve [7]</code>:
+<ul class="org-ul">
+<li>( p = 7 ), filter multiples of 7 from <code>[]</code> → <code>[]</code>.</li>
+<li>Result: <code>7 : sieve []</code>.</li>
+</ul></li>
+<li><code>sieve [] = []</code>, so the final list is <code>[2,3,5,7]</code>.</li>
+</ul></li>
+<li><b>Output</b>: <code>Primes up to 10: [2,3,5,7]</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-edge-cases" class="outline-3">
+<h3 id="edge-cases"><span class="section-number-3">2.4.</span> Edge Cases</h3>
+<div class="outline-text-3" id="text-edge-cases">
+<ul class="org-ul">
+<li><b>( n &lt; 2 )</b>: If ( n = 1 ) or ( n = 0 ), <code>[2..n]</code> produces an empty list, and <code>sieve []</code> returns <code>[]</code>, which is correct since there are no primes less than 2.</li>
+<li><b>Negative ( n )</b>: Similarly, <code>[2..n]</code> is empty, so the result is <code>[]</code>, which aligns with the assumption that &ldquo;whole number&rdquo; means non-negative integer.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-running-the-program" class="outline-2">
+<h2 id="running-the-program"><span class="section-number-2">3.</span> Running the Program</h2>
+<div class="outline-text-2" id="text-running-the-program">
+<p>
+To use this program: 1. Save it in a file, e.g., <code>Primes.hs</code>. 2. Load it into GHCi or compile it with GHC. 3. Run it, enter a number like <code>20</code>, and it will output something like:
+<code>Enter a whole number n:    20    Primes up to 20: [2,3,5,7,11,13,17,19]</code>
+</p>
+</div>
+</div>
+<div id="outline-container-notes" class="outline-2">
+<h2 id="notes"><span class="section-number-2">4.</span> Notes</h2>
+<div class="outline-text-2" id="text-notes">
+<ul class="org-ul">
+<li><b>Efficiency</b>: This implementation has a time complexity of approximately ( O(n log log n) ), typical for the Sieve of Eratosthenes. However, for very large ( n ) (e.g., ( 10<sup>8</sup> )), memory usage might be a concern due to Haskell&rsquo;s linked list representation.</li>
+<li><b>Robustness</b>: The program assumes valid integer input. For a production environment, you might add error handling for invalid inputs using <code>try</code> or <code>readMaybe</code>.</li>
+</ul>
+
+<p>
+This program fully satisfies the requirement to generate a list of all prime numbers less than or equal to a given whole number ( n ).
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Galaxy Being</p>
+<p class="date">Created: 2025-03-18 Tue 12:14</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
