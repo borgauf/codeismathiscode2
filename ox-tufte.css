@@ -443,9 +443,10 @@ div.marginnote p {
 /* BEGIN: captions on figures */
 figure > figcaption { /* undo tufte-css tweaks, till they're better supported */
     max-width: unset;
-    float: left;
+    float: right;
     width: 100%;
     padding-top: 1.2em;
+    text-align: center;
 }
 /* undo tufte-css tweaks, till they're better supported */
 figure.fullwidth figcaption {
@@ -485,8 +486,8 @@ article code {
 
 .src-haskell {
     max-width: 60% !important;
-    color: #0a6060;
+    /* color: #0a6060; */
     overflow-x: auto;
     float: left;
-    padding-bottom: 1.8em;
+    padding-bottom: 1.0em;
 }

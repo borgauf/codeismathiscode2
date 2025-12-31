@@ -1,0 +1,38 @@
+* Proof
+
+1. *Given:* We are given that $(a, b) = 1$, which means that $a$ and $b$ are relatively prime (coprime).
+
+2. *Let $d = (a+b, a-b)$:* We want to show that $d$ must be either $1$ or $2$. By definition, $d$ divides both $a+b$ and $a-b$.
+
+3. *Linear Combinations:* Since $d$ divides both $a+b$ and $a-b$, it must also divide any linear combination of them. Specifically:
+
+   - $d$ divides $(a+b) + (a-b) = 2a$
+   - $d$ divides $(a+b) - (a-b) = 2b$
+
+4. *$d$ Divides $2a$ and $2b$:* We have shown that $d$ divides both $2a$ and $2b$. Thus, $d$ must divide their greatest common divisor, so $d$ divides $(2a, 2b)$.
+
+5. *Using the GCD Property:* We can use the property that $(ka, kb) = k(a, b)$ for any positive integer $k$. Applying this:
+
+   - $(2a, 2b) = 2(a, b)$
+
+6. *Substituting $(a, b) = 1$:* Since we are given that $(a, b) = 1$, we have:
+
+   - $(2a, 2b) = 2(1) = 2$
+
+7. *$d$ Divides 2:* We know that $d$ divides $(2a, 2b)$, which equals $2$. Therefore, $d$ must divide $2$.
+
+8. *Possible Values of $d$:* The only positive divisors of $2$ are $1$ and $2$.
+
+9. *Conclusion:* Therefore, $(a+b, a-b)$ must equal $1$ or $2$.
+
+** Formal Proof Summary
+
+Let $d = (a+b, a-b)$. Since $d$ divides $a+b$ and $a-b$, it divides
+their sum and difference:
+
+- $d | (a+b) + (a-b) = 2a$
+- $d | (a+b) - (a-b) = 2b$
+
+Thus, $d | (2a, 2b)$. We know $(2a, 2b) = 2(a, b)$. Since $(a, b) = 1$, we have $(2a, 2b) = 2$. Therefore, $d | 2$. The only positive divisors of $2$ are $1$ and $2$, so $d = 1$ or $d = 2$.
+
+Hence, $(a+b, a-b) = 1$ or $2$.

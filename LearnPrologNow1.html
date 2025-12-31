@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-04-16 Wed 11:07 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href="./ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-org5fc4a20" class="outline-2">
+<h2 id="org5fc4a20">Graphs, search, state space</h2>
+<div class="outline-text-2" id="text-org5fc4a20">
+</div>
+<div id="outline-container-orgf1e86c7" class="outline-3">
+<h3 id="orgf1e86c7">Basics of graph theory</h3>
+<div class="outline-text-3" id="text-orgf1e86c7">
+<p>
+In its most basic form a <b>graph</b> is nothing more than points and lines
+connecting these points. But of course the whole purpose of these
+points and connecting lines is to represent concepts. Below we see a
+section of a <i>thematic</i> map of the London subway system.
+</p>
+
+<figure id="org3326b9b">
+
+<figure id="org4657b25">
+<img src="images/LondonUnderground1.png" alt="LondonUnderground1.png">
+
+<figcaption><span class="figure-number">Figure 1: </span>Section of the London subway system thematic map</figcaption>
+</figure>
+</figure>
+
+<p>
+Being &ldquo;thematic&rdquo; means we aren&rsquo;t supposed to see this map as a true
+and accurate map as the roughly same area depicted below
+</p>
+
+<figure id="org1f49030">
+
+<figure id="org84b7ac4">
+<img src="images/GoogleMapsLondon1.png" alt="GoogleMapsLondon1.png">
+
+<figcaption><span class="figure-number">Figure 2: </span>Section of Google Maps London</figcaption>
+</figure>
+</figure>
+
+<p>
+Instead, the London Underground map is meant to display only the
+relevant information of
+</p>
+
+<ul class="org-ul">
+<li>subway stops</li>
+<li>relative positions of the subway stops</li>
+<li>rail lines running between subway stops</li>
+</ul>
+
+<p>
+with no consideration of further accuracy or usage. Obviously, we&rsquo;re
+in the realm of abstraction when we boil down a regular, reasonably
+accurate map into one of just points and lines. And yet even small
+children can grasp what is meant by Figure 1. Below is a thematic map
+depiction of the seven bridges of Königsberg, where graph theory began
+as Leonard Euler first abstracted the idea of bridges and land masses
+(two river banks and two islands in a river)
+</p>
+
+<figure id="orgd604e9a">
+
+<figure id="org935ec9f">
+<img src="images/eulergraphbridges.png" alt="eulergraphbridges.png">
+
+<figcaption><span class="figure-number">Figure 3: </span>Euler&rsquo;s seven bridges of Königsberg</figcaption>
+</figure>
+</figure>
+
+<p>
+<font color = "#650d1c">
+A graph is an ordered pair \(G = (V, E)\) where \(V\) is the set of vertices, and \(E ⊆
+\{{x, y\} \; \vert \; x, y \in V, x \ne y}\) is a set of unordered pairs of vertices called edges.
+</font>
+</p>
+</div>
+</div>
+<div id="outline-container-org199ecb6" class="outline-3">
+<h3 id="org199ecb6">Graph Theory as State space representation</h3>
+<div class="outline-text-3" id="text-org199ecb6">
+<div class="org-src-container">
+<pre class="src src-prolog" id="org4c322af"><span style="color: #61afef;">likes</span><span style="color: #8c8c8c;">(</span>george, swimming<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">likes</span><span style="color: #8c8c8c;">(</span>susie, tennis<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">likes</span><span style="color: #8c8c8c;">(</span>susie, swimming<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">likes</span><span style="color: #8c8c8c;">(</span>mary, <span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span> :- likes<span style="color: #8c8c8c;">(</span>susie, <span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>, likes<span style="color: #8c8c8c;">(</span>george, <span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example">
+Warning: user://136:1841:
+Warning:    Redefined static procedure likes/2
+Warning:    Previously defined at user://121:1629
+|: |: |: |:
+true.
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="org37c0cf1">?- likes<span style="color: #8c8c8c;">(</span>mary, <span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example">
+Warning: user://137:1854:
+Warning:    Singleton variables: [X]
+|:
+true.
+</pre>
+
+
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="orgda06ba3"><span style="color: #61afef;">ml</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span> :- likes<span style="color: #8c8c8c;">(</span>mary,<span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example">
+X = swimming.
+</pre>
+
+
+
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="org6a61510">?- =<span style="color: #8c8c8c;">(</span>mia,mia<span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example">
+|:
+true.
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="org452d03f">    fourtyone<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">A</span><span style="color: #8c8c8c;">)</span> :- <span style="color: #61afef;">A</span> is 41.
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-prolog"><span style="color: #61afef;">vrt</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span>,<span style="color: #61afef;">Y</span>,<span style="color: #61afef;">Z</span><span style="color: #8c8c8c;">)</span> := vertical<span style="color: #8c8c8c;">(</span>line<span style="color: #93a8c6;">(</span>point<span style="color: #b0b1a3;">(</span><span style="color: #61afef;">X</span>,<span style="color: #61afef;">Y</span><span style="color: #b0b1a3;">)</span>,point<span style="color: #b0b1a3;">(</span><span style="color: #61afef;">X</span>,<span style="color: #61afef;">Z</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>.
+<span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">horizontal(line(point(X,Y),point(Z,Y))).</span>
+</pre>
+</div>
+
+<p>
+Given this knowledge base
+</p>
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="org85cee69"><span style="color: #61afef;">f</span><span style="color: #8c8c8c;">(</span>a<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">f</span><span style="color: #8c8c8c;">(</span>b<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">g</span><span style="color: #8c8c8c;">(</span>a<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">g</span><span style="color: #8c8c8c;">(</span>b<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">h</span><span style="color: #8c8c8c;">(</span>b<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">k</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span> :- f<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>,g<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>,h<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example" id="org6b77ebe">
+Warning: user://141:1895:
+Warning:    Redefined static procedure f/1
+Warning:    Previously defined at user://126:1683
+|: |:
+Warning: user://141:1901:
+Warning:    Redefined static procedure g/1
+Warning:    Previously defined at user://126:1689
+|: |:
+Warning: user://141:1907:
+Warning:    Redefined static procedure h/1
+Warning:    Previously defined at user://126:1695
+|:
+Warning: user://141:1912:
+Warning:    Redefined static procedure k/1
+Warning:    Previously defined at user://126:1700
+|:
+true.
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="orgce24d19">?- k<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example">
+Warning: user://142:1922:
+Warning:    Singleton variables: [X]
+|:
+true.
+</pre>
+
+
+<p>
+we can then
+</p>
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="org73dfc09"><span style="color: #61afef;">k1</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span> :- k<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example">
+X = b.
+</pre>
+
+
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="orgb68b394">?- =<span style="color: #8c8c8c;">(</span>mia, mia<span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example">
+|:
+true.
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="orga4f7f59"><span style="color: #61afef;">loves</span><span style="color: #8c8c8c;">(</span>vincent,mia<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">loves</span><span style="color: #8c8c8c;">(</span>marcellus,mia<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">jealous</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span>,<span style="color: #61afef;">Y</span><span style="color: #8c8c8c;">)</span> :- loves<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span>,<span style="color: #61afef;">Z</span><span style="color: #8c8c8c;">)</span>,loves<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">Y</span>,<span style="color: #61afef;">Z</span><span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example">
+Warning: user://145:1950:
+Warning:    Redefined static procedure loves/2
+Warning:    Previously defined at user://130:1738
+|: |:
+Warning: user://145:1956:
+Warning:    Redefined static procedure jealous/2
+Warning:    Previously defined at user://130:1744
+|:
+true.
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="orgba92c8c"><span style="color: #61afef;">j</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span>,<span style="color: #61afef;">Y</span><span style="color: #8c8c8c;">)</span> :- jealous<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span>,<span style="color: #61afef;">Y</span><span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example">
+X = Y, Y = vincent.
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="org789eb2e"><span style="color: #61afef;">wizard</span><span style="color: #8c8c8c;">(</span>harry<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">house_elf</span><span style="color: #8c8c8c;">(</span>dobby<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">witch</span><span style="color: #8c8c8c;">(</span>hermione<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">witch</span><span style="color: #8c8c8c;">(</span><span style="color: #98be65;">'McGonagall'</span><span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">witch</span><span style="color: #8c8c8c;">(</span>rita_skeeter<span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">magic</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span> :- house_elf<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">magic</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span> :- wizard<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>.
+<span style="color: #61afef;">magic</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span> :- witch<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example" id="orgc9d02b0">
+Warning: user://147:1979:
+Warning:    Redefined static procedure wizard/1
+Warning:    Previously defined at user://132:1767
+|:
+Warning: user://147:1984:
+Warning:    Redefined static procedure house_elf/1
+Warning:    Previously defined at user://132:1772
+|:
+Warning: user://147:1989:
+Warning:    Redefined static procedure witch/1
+Warning:    Previously defined at user://132:1777
+|: |: |:
+Warning: user://147:1996:
+Warning:    Redefined static procedure magic/1
+Warning:    Previously defined at user://132:1784
+|: |: |:
+true.
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="org6abcec4"><span style="color: #61afef;">wh</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">A</span><span style="color: #8c8c8c;">)</span> :- wizard<span style="color: #8c8c8c;">(</span>harry<span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example">
+true.
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="org54ac258"><span style="color: #61afef;">wr</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">A</span><span style="color: #8c8c8c;">)</span> :- wizard<span style="color: #8c8c8c;">(</span>ron<span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example">
+false.
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-prolog" id="org000c690"><span style="color: #61afef;">mmg</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">A</span><span style="color: #8c8c8c;">)</span> :- magic<span style="color: #8c8c8c;">(</span><span style="color: #98be65;">'McGonagall'</span><span style="color: #8c8c8c;">)</span>.
+</pre>
+</div>
+
+<pre class="example">
+true.
+</pre>
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

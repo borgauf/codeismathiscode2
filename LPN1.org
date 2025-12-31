@@ -1,0 +1,323 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="./ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: LearnPrologNow1.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+# #+LATEX_HEADER: \usepackqqqage{tikz}
+# #+LATEX_HEADER: \usepackage{commath}
+# #+LaTeX_HEADER: \usepackage{pgfplots}
+# #+LaTeX_HEADER: \usepackage{sansmath}
+# #+LaTeX_HEADER: \usepackage{mathtools}
+# #+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: latexpreview
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer
+# This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* Graphs, search, state space
+
+**  Bibliography :noexport:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&blackburn2006learn]]
+:END:
+
+** Not exported :noexport:
+
+#+name: module
+#+begin_src prolog :eval never :exports code :tangle ./src/lpn1.pl :noweb yes
+
+
+#+end_src
+
+** Basics of graph theory
+
+In its most basic form a *graph* is nothing more than points and lines
+connecting these points. But of course the whole purpose of these
+points and connecting lines is to represent concepts. Below we see a
+section of a /thematic/ map of the London subway system.
+
+#+begin_figure
+#+CAPTION: Section of the London subway system thematic map
+[[file:images/LondonUnderground1.png]]
+#+end_figure
+
+Being "thematic" means we aren't supposed to see this map as a true
+and accurate map as the roughly same area depicted below
+
+#+begin_figure
+#+CAPTION: Section of Google Maps London
+[[file:images/GoogleMapsLondon1.png]]
+#+end_figure
+
+Instead, the London Underground map is meant to display only the
+relevant information of
+
+- subway stops
+- relative positions of the subway stops
+- rail lines running between subway stops
+
+with no consideration of further accuracy or usage. Obviously, we're
+in the realm of abstraction when we boil down a regular, reasonably
+accurate map into one of just points and lines. And yet even small
+children can grasp what is meant by Figure 1. Below is a thematic map
+depiction of the famous /[[https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg][Seven Bridges of Königsberg]]/, where graph
+theory began as the Swiss mathematician Leonard Euler first abstracted
+the idea of bridges and land masses (two river banks and two islands
+in a river) down to just points and lines.
+
+#+begin_figure
+#+CAPTION: Euler's seven bridges of Königsberg
+[[file:images/eulergraphbridges.png]]
+#+end_figure
+
+@@html:<font color = "#650d1c">@@
+A graph is an ordered pair $G = (V, E)$ where $V$ is the set of vertices, and $E ⊆
+\{{x, y\} \; \vert \; x, y \in V, x \ne y}$ is a set of unordered pairs of vertices called edges.
+@@html:</font>@@
+
+
+
+
+
+
+** Graph Theory as State space representation
+
+
+
+
+#+name: 21903f70-70e6-4274-b379-362f505a990d
+#+HEADER: :session *prolog-1*
+#+begin_src prolog :exports both :results output
+likes(george, swimming).
+likes(susie, tennis).
+likes(susie, swimming).
+likes(mary, X) :- likes(susie, X), likes(george, X).
+#+end_src
+
+#+RESULTS: 21903f70-70e6-4274-b379-362f505a990d
+: |: |: |: |:
+: true.
+
+#+name: c7adfeff-b292-4543-a5cf-4a58808b9eba
+#+HEADER: :session *prolog-1*
+#+begin_src prolog :results output :exports both
+?- likes(mary, X).
+#+end_src
+
+#+RESULTS: c7adfeff-b292-4543-a5cf-4a58808b9eba
+: Warning: user://2:17:
+: Warning:    Singleton variables: [X]
+: |:
+: true.
+
+
+#+name: 0c1f6bcc-0664-41bb-ba55-3be491bec55e
+#+HEADER: :session *prolog-1*
+#+HEADER: :goal ml(X)
+#+begin_src prolog :exports both :results verbatim
+ml(X) :- likes(mary,X).
+#+end_src
+
+#+RESULTS: 0c1f6bcc-0664-41bb-ba55-3be491bec55e
+: X = swimming.
+
+
+
+#+name: d86cee0b-f33f-4804-9b6f-6393d0b0de2b
+#+HEADER: :session *prolog-1*
+#+HEADER: :goal
+#+begin_src prolog :exports both :results verbatim
+?- =(mia,mia).
+#+end_src
+
+#+RESULTS: d86cee0b-f33f-4804-9b6f-6393d0b0de2b
+: |:
+: true.
+
+#+NAME: session-test
+  #+HEADER: :session *prolog-1*
+  #+HEADER: :goal fourtyone(A)
+  #+HEADER: :results verbatim
+  #+BEGIN_SRC prolog
+    fourtyone(A) :- A is 41.
+  #+END_SRC
+
+#+name: 4272891e-51ed-4099-8ebf-68766425135d
+#+HEADER: :session *prolog-1*
+# #+HEADER: :goal vrt(X,Y,Z)
+#+begin_src prolog :exports both :results verbatim
+vrt(X,Y,Z) := vertical(line(point(X,Y),point(X,Z))).
+% horizontal(line(point(X,Y),point(Z,Y))).
+#+end_src
+
+#+RESULTS:
+
+
+Given this knowledge base
+
+#+name: bd64f72b-546f-4e16-b849-42c3683a37b5
+#+HEADER: :session *prolog-1*
+#+begin_src prolog :results output :exports both
+f(a).
+f(b).
+g(a).
+g(b).
+h(b).
+k(X) :- f(X),g(X),h(X).
+#+end_src
+
+#+RESULTS: bd64f72b-546f-4e16-b849-42c3683a37b5
+: |: |: |: |: |: |:
+: true.
+
+#+name: 61efb1c2-3b69-4a24-9652-5f2f2505673c
+#+HEADER: :session *prolog-1*
+#+begin_src prolog :exports both :results output
+?- k(X).
+#+end_src
+
+#+RESULTS: 61efb1c2-3b69-4a24-9652-5f2f2505673c
+: Warning: user://11:98:
+: Warning:    Singleton variables: [X]
+: |:
+: true.
+
+we can then
+
+#+name: 8b6cbad0-3de2-4ec4-a3f9-5bd536b0cc4b
+#+HEADER: :session *prolog-1*
+#+HEADER: :goal k1(X)
+#+begin_src prolog :exports both :results output
+k1(X) :- k(X).
+#+end_src
+
+#+RESULTS: 8b6cbad0-3de2-4ec4-a3f9-5bd536b0cc4b
+: X = b.
+
+
+#+name: e1bc9d21-c8e3-4512-83e6-36b1e4489358
+#+HEADER: :session *prolog-1*
+#+HEADER: :goal
+#+begin_src prolog :exports both :results verbatim
+?- =(mia, mia).
+#+end_src
+
+#+RESULTS: e1bc9d21-c8e3-4512-83e6-36b1e4489358
+: |:
+: true.
+
+#+name: a03d7ae6-1b78-46bc-96b4-30d2877f2b85
+#+HEADER: :session *prolog-1*
+#+HEADER: :goal
+#+begin_src prolog :exports both :results verbatim
+loves(vincent,mia).
+loves(marcellus,mia).
+jealous(X,Y) :- loves(X,Z),loves(Y,Z).
+#+end_src
+
+#+RESULTS: a03d7ae6-1b78-46bc-96b4-30d2877f2b85
+: |: |: |:
+: true.
+
+#+name: 1ca93572-4439-4864-8bd2-a9bcc87196be
+#+HEADER: :session *prolog-1*
+#+HEADER: :goal j(X,Y)
+#+begin_src prolog :exports both :results output
+j(X,Y) :- jealous(X,Y).
+#+end_src
+
+#+RESULTS: 1ca93572-4439-4864-8bd2-a9bcc87196be
+: X = Y, Y = vincent.
+
+#+name: c9da4dfd-e000-4a20-af2f-be20250127b6
+#+HEADER: :session *prolog-1*
+#+HEADER: :goal
+#+begin_src prolog :exports both :results verbatim
+wizard(harry).
+house_elf(dobby).
+witch(hermione).
+witch('McGonagall').
+witch(rita_skeeter).
+magic(X) :- house_elf(X).
+magic(X) :- wizard(X).
+magic(X) :- witch(X).
+#+end_src
+
+#+RESULTS: c9da4dfd-e000-4a20-af2f-be20250127b6
+#+begin_example
+true.
+#+end_example
+
+#+name: 5778b9ae-b713-4370-970c-03ead359bd40
+#+HEADER: :session *prolog-1*
+#+HEADER: :goal wh(A)
+#+begin_src prolog :exports both :results verbatim
+wh(A) :- wizard(harry).
+#+end_src
+
+#+RESULTS: 5778b9ae-b713-4370-970c-03ead359bd40
+: true.
+
+#+name: cc516669-d441-4e8b-9f49-1398118882ea
+#+HEADER: :session *prolog-1*
+#+HEADER: :goal wr(A)
+#+begin_src prolog :exports both :results verbatim
+wr(A) :- wizard(ron).
+#+end_src
+
+#+RESULTS: cc516669-d441-4e8b-9f49-1398118882ea
+: false.
+
+#+name: 34a4f59f-4d92-449a-9f1f-9ee60a34af03
+#+HEADER: :session *prolog-1*
+#+HEADER: :goal mmg(A)
+#+begin_src prolog :exports both :results verbatim
+mmg(A) :- magic('McGonagall').
+#+end_src
+
+#+RESULTS: 34a4f59f-4d92-449a-9f1f-9ee60a34af03
+: true.
+
+#+INCLUDE: "./footer.org" :minlevel 1

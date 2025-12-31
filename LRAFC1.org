@@ -1,0 +1,380 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="./ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: LogicalReasoning1.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+# #+LATEX_HEADER: \usepackqqqage{tikz}
+# #+LATEX_HEADER: \usepackage{commath}
+# #+LaTeX_HEADER: \usepackage{pgfplots}
+# #+LaTeX_HEADER: \usepackage{sansmath}
+# #+LaTeX_HEADER: \usepackage{mathtools}
+# #+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: latexpreview
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer
+# This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* Logical reasoning 1
+
+**  Bibliography :noexport:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+:END:
+
+** Not exported :noexport:
+
+#+name: module
+#+begin_src haskell :eval never :exports code :tangle ./src/lrafc1.hs :noweb yes
+{-# LANGUAGE FlexibleInstances #-}
+{-# OPTIONS_GHC -Wno-type-defaults #-}
+module LRAFC1 where
+
+infix 1 ==>
+
+(==>) :: Bool -> Bool -> Bool
+x ==> y = (not x) || y
+
+infix 1 <=>
+
+(<=>) :: Bool -> Bool -> Bool
+x <=> y = x == y 
+
+infixr 2 <+>
+
+(<+>) :: Bool -> Bool -> Bool
+x <+> y = x /= y 
+
+testp :: Bool  
+testp = True
+testq :: Bool  
+testq = False
+
+formula1 :: Bool  
+formula1 = (not testp) && (testp ==> testq) <=> not (testq && (not testp))
+
+formula2 :: Bool -> Bool -> Bool  
+formula2 p q = ((not p) && (p ==> q) <=> not (q && (not p)))
+
+valid1 :: (Bool -> Bool) -> Bool
+valid1 bf =  (bf True) && (bf False)
+
+excluded_middle :: Bool -> Bool
+excluded_middle p = p || not p
+
+valid2 :: (Bool -> Bool -> Bool)  -> Bool
+valid2 bf =   (bf True  True)  
+           && (bf True  False) 
+           && (bf False True) 
+           && (bf False False)
+
+form1 :: Bool -> Bool -> Bool  
+form1 p q = p ==> (q ==> p)
+
+form2 :: Bool -> Bool -> Bool  
+form2 p q = (p ==> q) ==> p
+
+valid3 :: (Bool -> Bool -> Bool -> Bool) -> Bool
+valid3 bf = and [ bf p q r | p <- [True,False], 
+                             q <- [True,False], 
+                             r <- [True,False]] 
+
+valid4 :: (Bool -> Bool -> Bool -> Bool -> Bool) -> Bool
+valid4 bf = and [ bf p q r s | p <- [True,False], 
+                               q <- [True,False], 
+                               r <- [True,False], 
+                               s <- [True,False]] 
+
+logEquiv1 ::  (Bool -> Bool) -> (Bool -> Bool) -> Bool
+logEquiv1 bf1 bf2 =  
+    (bf1 True  <=> bf2 True) && (bf1 False <=> bf2 False) 
+
+logEquiv2 :: (Bool -> Bool -> Bool) -> 
+                    (Bool -> Bool -> Bool) -> Bool
+logEquiv2 bf1 bf2 = 
+  and [(bf1 p q) <=> (bf2 p q)  |  p <- [True,False], 
+                                   q <- [True,False]]
+
+logEquiv3 :: (Bool -> Bool -> Bool -> Bool) ->
+                 (Bool -> Bool -> Bool -> Bool) -> Bool
+logEquiv3 bf1 bf2 = 
+  and [(bf1 p q r) <=> (bf2 p q r) |  p <- [True,False], 
+                                      q <- [True,False], 
+                                      r <- [True,False]]
+
+formula3 :: p1 -> p2 -> p1
+formula3 p _q = p -- formula3 p _ = p
+
+formula4 :: Bool -> Bool -> Bool
+formula4 p q = (p <+> q) <+> q
+
+formula5 :: Bool -> Bool -> Bool  
+formula5 p q = p <=> ((p <+> q) <+> q)
+
+class TF p where 
+  valid :: p -> Bool
+  lequiv :: p -> p -> Bool
+
+instance TF Bool
+ where
+  valid  = id
+  lequiv f g = f == g
+
+instance TF p => TF (Bool -> p)
+ where
+  valid f = valid (f True) && valid (f False)
+  lequiv f g = (f True) `lequiv` (g True)
+               && (f False) `lequiv` (g False)
+
+test1, test2a, test2b, test3a, test3b, test4a, test4b, test4c,
+  test5a, test5b, test6a, test6b, test7a, test7b, test8a,
+  test8b, test9a, test9b :: Bool
+test1  = lequiv id (\ p -> not (not p))
+test2a = lequiv id (\ p -> p && p) 
+test2b = lequiv id (\ p -> p || p) 
+test3a = lequiv (\ p q -> p ==> q) (\ p q -> not p || q)
+test3b = lequiv (\ p q -> not (p ==> q)) (\ p q -> p && not q)
+test4a = lequiv (\ p q -> not p ==> not q) (\ p q -> q ==> p)
+test4b = lequiv (\ p q -> p ==> not q) (\ p q -> q ==> not p)
+test4c = lequiv (\ p q -> not p ==> q) (\ p q -> not q ==> p)
+test5a = lequiv (\ p q -> p <=> q) 
+                (\ p q -> (p ==> q) && (q ==> p))
+test5b = lequiv (\ p q -> p <=> q) 
+                (\ p q -> (p && q) || (not p && not q))
+test6a = lequiv (\ p q -> p && q) (\ p q -> q && p)
+test6b = lequiv (\ p q -> p || q) (\ p q -> q || p)
+test7a = lequiv (\ p q -> not (p && q)) 
+                (\ p q -> not p || not q)
+test7b = lequiv (\ p q -> not (p || q)) 
+                (\ p q -> not p && not q)
+test8a = lequiv (\ p q r -> p && (q && r)) 
+                (\ p q r -> (p && q) && r)
+test8b = lequiv (\ p q r -> p || (q || r)) 
+                (\ p q r -> (p || q) || r)
+test9a = lequiv (\ p q r -> p && (q || r)) 
+                (\ p q r -> (p && q) || (p && r))
+test9b = lequiv (\ p q r ->  p || (q && r)) 
+                (\ p q r -> (p || q) && (p || r))
+
+square1 :: Integer -> Integer
+square1 x = x^2 
+
+square2 :: Integer -> Integer 
+square2 = \ x -> x^2
+
+m1 :: Integer -> Integer -> Integer 
+m1 = \ x -> \ y -> x*y
+
+m2 :: Integer -> Integer -> Integer 
+m2 = \ x y -> x*y
+
+solveQdr :: (Float,Float,Float) -> (Float,Float) 
+solveQdr =  \ (a,b,c) -> if a == 0 then error "not quadratic"
+                         else let d = b^2 - 4*a*c in 
+                         if d < 0 then error "no real solutions"
+                         else 
+                           ((- b + sqrt d) / 2*a,
+                            (- b - sqrt d) / 2*a)
+
+every, some :: [a] -> (a -> Bool) -> Bool
+every xs p = all p xs 
+some  xs p = any p xs
+
+
+
+#+end_src
+
+#+name: 2b702810-8387-4ce3-af0c-067fd15b4e33
+#+begin_src haskell :session *myhaskell*
+1 + 1
+#+end_src
+
+#+RESULTS: 2b702810-8387-4ce3-af0c-067fd15b4e33
+: 2
+
+[[cite:&nederpelt2004logical]]
+
+
+* 
+
+** Connectives
+
+- if...then
+- and
+- or
+- not
+- if and only if
+
+#+CAPTION: Basic connectives
+#+ATTR_HTML: :border 2 :rules all :frame border  
+|      <c>       |    <c>     |     <c>     |
+|     *name*     |  *symbol*  | *math name* |
+|----------------+------------+-------------|
+|      and       |    $\land$     | conjunction |
+|       or       |    $\lor$     | disjunction |
+|      not       |  $\lnot$   |  negation   |
+|   if...then    | $\implies$ | implication |
+| if and only if |   $\iff$   | equivalence |
+
+#+name: 6cd5f35c-ea64-4876-96fc-2a1f2ee36bed
+#+begin_src haskell :eval never :exports code
+--  Boolean "and", lazy in the second argument
+(&&)                    :: Bool -> Bool -> Bool
+True  && x              =  x
+False && _              =  False
+
+--  Boolean "or", lazy in the second argument
+(||)                    :: Bool -> Bool -> Bool
+True  || _              =  True
+False || x              =  x
+
+-- Boolean "not"
+not                     :: Bool -> Bool
+not True                =  False
+not False               =  True
+#+end_src
+
+
+
+** Abstract propositions
+
+@@html:<font color = "#4715b3">@@ ⥤ *Definition 2.3.1* (Abstract
+proposition) \\
+\\
+/Basis/: Proposition variables (like $a$, $b$ and $c$) are themselves
+abstract propositions. \\
+/Step (case 1)/: If $P$ is an abstract proposition, then so is $(¬P
+)$. \\
+/Step (case 2)/: If $P$ and $Q$ are abstract propositions, then so are
+$(P ∧ Q)$, $(P ⇒ Q)$, and $(P ⇔ Q)$ @@html:</font>@@
+
+The word /recursive/ literally means "running back." What runs back in
+a recursive definition? We are actually going forward in the building
+of our abstract propositions: from $a$ and $b$ to $a ∧ b$, from $c$ to
+$¬c$, etc. This word recursive does not really refer to the building
+of the propositions, but rather to breaking them down into smaller
+pieces. This process of breaking down into smaller pieces is needed
+when we come across a ready-made formula which we want to check
+whether it is an abstract proposition.
+
+#+begin_figure
+#+CAPTION: The tree of $((a \land b) \implies (\lnot c))$
+[[file:images/logictree1.png]]
+#+end_figure
+
+
+*** Exclusive or
+
+\begin{align*}
+(P \lor Q) \land \lnot (P \land Q) \equiv \lnot (P \iff Q)
+\end{align*}
+
+#+CAPTION: Truth table for $(P \lor Q) \land \lnot (P \land Q)$
+#+ATTR_HTML: :border 2 :rules all :frame border
+| <c> | <c> |            <c>            |
+| $P$ | $Q$ | $(P \lor Q) \land \lnot (P \land Q)$ |
+|-----+-----+---------------------------|
+|  1  |  1  |             0             |
+|  1  |  0  |             1             |
+|  0  |  1  |             1             |
+|  0  |  0  |             0             |
+
+
+***  Different symbols for propositional connectives
+
+For $\land$, especially in the field of electrical engineering, one also
+uses the multiplication sign $\cdot$, for $\lor$ plus sign $+$. This is
+because the truth values of $P \land Q$ and $P \lor Q$ can be calculated from
+those of P and Q via the multiplication, respectively, the addition of
+the values $0$ and $1$.[fn:1] For example, When $P$ has value $0$ and
+$Q$ has value $1$, then $P \land Q$ has the value $0 \cdot 1 = 0$ and $P \lor Q$
+has the value $0 + 1 = 1$. We should hence use the Boolean algebra
+convention that $1 + 1 = 1$.
+
+
+We can also see conjunction $\land$ as /minimum/ operation and disjunction
+$\lor$ as a /maximum/ operation. With the conjunction truth table
+
+#+NAME: ConjunctionTruthTable
+#+ATTR_HTML: :border 2 :rules all :frame border
+| <c> | <c> |    <c>    |
+| $P$ | $Q$ | $(P \land Q)$ |
+|-----+-----+-----------|
+|  1  |  1  |     1     |
+|  1  |  0  |     0     |
+|  0  |  1  |     0     |
+|  0  |  0  |     0     |
+
+we have truth values with equivalence to the minimum operation, i.e.,
+$min(x,y)$.
+
+** Boolean behavior of propositions
+
+As we've seen, truth tables have only true or false entries, which can
+be thought of as $1$ for truth or $0$ for false. But for how many
+cases are we deciding $1$ or $0$, i.e., how many rows are necessary in
+a truth table to show all possible combinations? This directly depends
+on how many proposition variables are involved. The simplest truth
+table would be an abstract proposition with only one proposition
+variable. For example
+
+#+name: 90f1d437-f20c-4e88-b07b-56894c43225d
+#+begin_src haskell :results verbatim :exports both
+[x | x <- [0,1]]
+#+end_src
+
+#+RESULTS: 90f1d437-f20c-4e88-b07b-56894c43225d
+: [0,1]
+
+#+name: cafb7c98-5850-41d2-8c85-5dae006b5f33
+#+begin_src haskell :results verbatim :exports both
+
+#+end_src
+
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] Related to the *[[https://en.wikipedia.org/wiki/Rule_of_product][rule of product]]* and the [[https://en.wikipedia.org/wiki/Addition_principle][*rule of sum]]* Later...

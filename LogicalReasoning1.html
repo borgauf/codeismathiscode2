@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-04-04 Fri 22:49 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href="./ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-orgc025086" class="outline-2">
+<h2 id="orgc025086">Logical reasoning 1</h2>
+</section>
+<section id="outline-container-orgb7d0ae3" class="outline-2">
+<h2 id="orgb7d0ae3"></h2>
+<div class="outline-text-2" id="text-orgb7d0ae3">
+</div>
+<div id="outline-container-orgd9cd98a" class="outline-3">
+<h3 id="orgd9cd98a">Connectives</h3>
+<div class="outline-text-3" id="text-orgd9cd98a">
+<ul class="org-ul">
+<li>if&#x2026;then</li>
+<li>and</li>
+<li>or</li>
+<li>not</li>
+<li>if and only if</li>
+</ul>
+
+<table border="2" rules="all" frame="border">
+<caption class="t-bottom"><span class="table-number">Table 1:</span> Basic connectives</caption>
+
+<colgroup>
+<col  class="org-center">
+
+<col  class="org-center">
+
+<col  class="org-center">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-center"><b>name</b></th>
+<th scope="col" class="org-center"><b>symbol</b></th>
+<th scope="col" class="org-center"><b>math name</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-center">and</td>
+<td class="org-center">\(\land\)</td>
+<td class="org-center">conjunction</td>
+</tr>
+
+<tr>
+<td class="org-center">or</td>
+<td class="org-center">\(\lor\)</td>
+<td class="org-center">disjunction</td>
+</tr>
+
+<tr>
+<td class="org-center">not</td>
+<td class="org-center">\(\lnot\)</td>
+<td class="org-center">negation</td>
+</tr>
+
+<tr>
+<td class="org-center">if&#x2026;then</td>
+<td class="org-center">\(\implies\)</td>
+<td class="org-center">implication</td>
+</tr>
+
+<tr>
+<td class="org-center">if and only if</td>
+<td class="org-center">\(\iff\)</td>
+<td class="org-center">equivalence</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org496e461"><span style="color: #687080; font-style: italic;">--  </span><span style="color: #687080; font-style: italic;">Boolean "and", lazy in the second argument</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">&amp;&amp;</span><span style="color: #8c8c8c;">)</span>                    <span style="color: #61afef;">::</span> <span style="color: #61afef;">Bool</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Bool</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Bool</span>
+<span style="color: #61afef;">True</span>  <span style="color: #61afef;">&amp;&amp;</span> x              <span style="color: #61afef;">=</span>  x
+<span style="color: #61afef;">False</span> <span style="color: #61afef;">&amp;&amp;</span> <span style="color: #c678dd; font-weight: bold;">_</span>              <span style="color: #61afef;">=</span>  <span style="color: #61afef;">False</span>
+
+<span style="color: #687080; font-style: italic;">--  </span><span style="color: #687080; font-style: italic;">Boolean "or", lazy in the second argument</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">||</span><span style="color: #8c8c8c;">)</span>                    <span style="color: #61afef;">::</span> <span style="color: #61afef;">Bool</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Bool</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Bool</span>
+<span style="color: #61afef;">True</span>  <span style="color: #61afef;">||</span> <span style="color: #c678dd; font-weight: bold;">_</span>              <span style="color: #61afef;">=</span>  <span style="color: #61afef;">True</span>
+<span style="color: #61afef;">False</span> <span style="color: #61afef;">||</span> x              <span style="color: #61afef;">=</span>  x
+
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">Boolean "not"</span>
+<span style="color: #61afef;">not</span>                     <span style="color: #61afef;">::</span> <span style="color: #61afef;">Bool</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Bool</span>
+<span style="color: #61afef;">not</span> <span style="color: #61afef;">True</span>                <span style="color: #61afef;">=</span>  <span style="color: #61afef;">False</span>
+<span style="color: #61afef;">not</span> <span style="color: #61afef;">False</span>               <span style="color: #61afef;">=</span>  <span style="color: #61afef;">True</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8b8830a" class="outline-3">
+<h3 id="org8b8830a">Abstract propositions</h3>
+<div class="outline-text-3" id="text-org8b8830a">
+<p>
+<font color = "#4715b3"> ⥤ <b>Definition 2.3.1</b> (Abstract
+proposition) <br>
+<br>
+<i>Basis</i>: Proposition variables (like \(a\), \(b\) and \(c\)) are themselves
+abstract propositions. <br>
+<i>Step (case 1)</i>: If \(P\) is an abstract proposition, then so is \((¬P
+)\). <br>
+<i>Step (case 2)</i>: If \(P\) and \(Q\) are abstract propositions, then so are
+\((P ∧ Q)\), \((P ⇒ Q)\), and \((P ⇔ Q)\) </font>
+</p>
+
+<p>
+The word <i>recursive</i> literally means &ldquo;running back.&rdquo; What runs back in
+a recursive definition? We are actually going forward in the building
+of our abstract propositions: from \(a\) and \(b\) to \(a ∧ b\), from \(c\) to
+\(¬c\), etc. This word recursive does not really refer to the building
+of the propositions, but rather to breaking them down into smaller
+pieces. This process of breaking down into smaller pieces is needed
+when we come across a ready-made formula which we want to check
+whether it is an abstract proposition.
+</p>
+
+<figure id="org0c96d26">
+
+<figure id="orgb22ef7e">
+<img src="images/logictree1.png" alt="logictree1.png">
+
+<figcaption><span class="figure-number">Figure 1: </span>The tree of \(((a \land b) \implies (\lnot c))\)</figcaption>
+</figure>
+</figure>
+</div>
+<div id="outline-container-org3f63f7f" class="outline-4">
+<h4 id="org3f63f7f">Exclusive or</h4>
+<div class="outline-text-4" id="text-org3f63f7f">
+\begin{align*}
+(P \lor Q) \land \lnot (P \land Q) \equiv \lnot (P \iff Q)
+\end{align*}
+
+<table border="2" rules="all" frame="border">
+<caption class="t-bottom"><span class="table-number">Table 2:</span> Truth table for \((P \lor Q) \land \lnot (P \land Q)\)</caption>
+
+<colgroup>
+<col  class="org-center">
+
+<col  class="org-center">
+
+<col  class="org-center">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-center">\(P\)</th>
+<th scope="col" class="org-center">\(Q\)</th>
+<th scope="col" class="org-center">\((P \lor Q) \land \lnot (P \land Q)\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-center">1</td>
+<td class="org-center">1</td>
+<td class="org-center">0</td>
+</tr>
+
+<tr>
+<td class="org-center">1</td>
+<td class="org-center">0</td>
+<td class="org-center">1</td>
+</tr>
+
+<tr>
+<td class="org-center">0</td>
+<td class="org-center">1</td>
+<td class="org-center">1</td>
+</tr>
+
+<tr>
+<td class="org-center">0</td>
+<td class="org-center">0</td>
+<td class="org-center">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org8948797" class="outline-4">
+<h4 id="org8948797">Different symbols for propositional connectives</h4>
+<div class="outline-text-4" id="text-org8948797">
+<p>
+For \(\land\), especially in the field of electrical engineering, one also
+uses the multiplication sign \(\cdot\), for \(\lor\) plus sign \(+\). This is
+because the truth values of \(P \land Q\) and \(P \lor Q\) can be calculated from
+those of P and Q via the multiplication, respectively, the addition of
+the values \(0\) and \(1\).<label id='fnr.1' for='fnr-in.1.7675764' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.7675764' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+Related to the <b><a href="https://en.wikipedia.org/wiki/Rule_of_product">rule of product</a></b> and the <a href="https://en.wikipedia.org/wiki/Addition_principle">*rule of sum</a>* Later&#x2026;
+</span> For example, When \(P\) has value \(0\) and
+\(Q\) has value \(1\), then \(P \land Q\) has the value \(0 \cdot 1 = 0\) and \(P \lor Q\)
+has the value \(0 + 1 = 1\). We should hence use the Boolean algebra
+convention that \(1 + 1 = 1\).
+</p>
+
+
+<p>
+We can also see conjunction \(\land\) as <i>minimum</i> operation and disjunction
+\(\lor\) as a <i>maximum</i> operation. With the conjunction truth table
+</p>
+
+<table id="org6ee8555" border="2" rules="all" frame="border">
+
+
+<colgroup>
+<col  class="org-center">
+
+<col  class="org-center">
+
+<col  class="org-center">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-center">\(P\)</th>
+<th scope="col" class="org-center">\(Q\)</th>
+<th scope="col" class="org-center">\((P \land Q)\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-center">1</td>
+<td class="org-center">1</td>
+<td class="org-center">1</td>
+</tr>
+
+<tr>
+<td class="org-center">1</td>
+<td class="org-center">0</td>
+<td class="org-center">0</td>
+</tr>
+
+<tr>
+<td class="org-center">0</td>
+<td class="org-center">1</td>
+<td class="org-center">0</td>
+</tr>
+
+<tr>
+<td class="org-center">0</td>
+<td class="org-center">0</td>
+<td class="org-center">0</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+we have truth values with equivalence to the minimum operation, i.e.,
+\(min(x,y)\).
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org9c54a6f" class="outline-3">
+<h3 id="org9c54a6f">Boolean behavior of propositions</h3>
+<div class="outline-text-3" id="text-org9c54a6f">
+<p>
+As we&rsquo;ve seen, truth tables have only true or false entries, which can
+be thought of as \(1\) for truth or \(0\) for false. But for how many
+cases are we deciding \(1\) or \(0\), i.e., how many rows are necessary in
+a truth table to show all possible combinations? This directly depends
+on how many proposition variables are involved. The simplest truth
+table would be an abstract proposition with only one proposition
+variable. For example
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org38570f5"><span style="color: #8c8c8c;">[</span>x <span style="color: #61afef;">|</span> x <span style="color: #61afef;">&lt;-</span> <span style="color: #93a8c6;">[</span>0,1<span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>
+</pre>
+</div>
+
+<pre class="example">
+[0,1]
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="orgc36236b">
+</pre>
+</div>
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

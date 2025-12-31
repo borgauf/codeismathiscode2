@@ -65,23 +65,23 @@
 
 }
 
-caption.t-bottom {
-    font-size: 95%;
-    padding-top: .5em;
-    line-height: 1.2em;
-    font-family: 'cmu_sans_serifmedium';
-    font-style: italic;
-    caption-side: bottom;
-}
+/* caption.t-bottom { */
+/*     font-size: 75%; */
+/*     padding-top: .5em; */
+/*     line-height: 1.2em; */
+/*     font-family: 'cmu_sans_serifmedium'; */
+/*     /\* font-style: italic; *\/ */
+/*     caption-side: bottom; */
+/* } */
 
 
-caption.t-above {
-    font-size: 95%;
-    padding-bottom: .5em;
-    line-height: 1.2em;
-    font-family: 'cmu_sans_serifmedium';
-    font-style: italic;
-}
+/* caption.t-above { */
+/*     font-size: 95%; */
+/*     padding-bottom: .5em; */
+/*     line-height: 1.2em; */
+/*     font-family: 'cmu_sans_serifmedium'; */
+/*     font-style: italic; */
+/* } */
 
 /* Import ET Book styles
    adapted from https://github.com/edwardtufte/et-book/blob/gh-pages/et-book.css */
@@ -224,7 +224,7 @@ pre.example {
 
 .src-haskell {
     max-width: 60% !important;
-    color: #0a6060;
+    /* color: #0a6060; */
     /* background: #f8ecd7; */
     overflow-x: auto;
     float: left;
@@ -232,7 +232,7 @@ pre.example {
 
 .src-scheme {
     max-width: 60% !important;
-    color: #0a6060;
+    /* color: #0a6060; */
     /* background: #f8ecd7; */
     overflow-x: auto;
     float: left;
@@ -242,7 +242,7 @@ pre.example {
 [class^="src-"], [class*=" src-"] {
     background: #f8ecd7;
     max-width: 60% !important;
-    color: #0a6060;
+    /* color: #0a6060; */
     overflow-x: auto;
     float: left;
 }
@@ -312,22 +312,24 @@ span.star {
     content: "\1F7C4";
 }
 
+
 caption.t-bottom {
-    font-size: 95%;
+    font-size: 80%;
     padding-top: .5em;
     line-height: 1.2em;
-    font-family: 'cmu_sans_serifmedium';
-    font-style: italic;
+    /* font-family: 'cmu_bright'; */
+    font-family: 'cmu_bright';
+    /* font-style: italic; */
     caption-side: bottom;
 }
 
 
 caption.t-above {
-    font-size: 95%;
+    font-size: 80%;
     padding-bottom: .5em;
     line-height: 1.2em;
-    font-family: 'cmu_sans_serifmedium';
-    font-style: italic;
+    font-family: 'cmu_bright';
+    /* font-style: italic; */
 }
 
 /* borrowed */
@@ -640,6 +642,14 @@ blockquote .marginnote {
 div.fullwidth,
 table.fullwidth {
     width: 100%;
+}
+
+table {
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+    min-width: 59%;
+    margin-left: 5.5em;
+    margin-right: auto:
 }
 
 div.table-wrapper {
