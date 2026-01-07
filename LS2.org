@@ -75,15 +75,15 @@
 
 ** What are expressions?
 
-As mentioned previously, /functional/ programming, as opposed to
-/procedural/ or /imperative/ programming, emphasizes /functions/ as
-the computational building blocks. Key is how functions in functional
-programming languages behave as if they were true mathematical
-functions. This is a great advantage---for reasons we will explore in
-detail as we progress.
+As mentioned previously, **functional** programming, as opposed to
+**procedural** or **imperative** programming, emphasizes **functions**
+as the computational building blocks. Key is how functions in
+functional programming languages behave as if they were true
+mathematical functions. This is a great advantage---for reasons we
+will explore in detail as we progress.
 
 Computer programming has advanced from the early days of literally
-having to give /commands/ imperatively, one after the other, to the
+having to give **commands** imperatively, one after the other, to the
 electronic organs of the CPU[fn:1] (and the memory attached to it) in
 order to, e.g., perform simple addition or subtraction. For an
 analogy, imagine having to tell your body exactly how to breathe. That
@@ -91,7 +91,7 @@ would be very restricting, taking up so much of your attention and
 concentration. And so your brain simply handles breathing
 semi-automatically at a lower, unconscious level. Similarly, in order
 to be more productive, programming languages have striven over the
-years to /abstract/ the gnarly details of getting data and
+years to **abstract** the gnarly details of getting data and
 calculations handled away from having to literally tell the CPU or the
 "bare metal" each and every low-level step of a calculation.
 
@@ -101,11 +101,12 @@ analyze it in a higher math way \\
 \\
 {{{marginnote(...more about /relations/ in a higher math way
 later... /set/ as in set theory sets. Some very formal texts call a
-set a /class/ by the way.)}}}  ⇲@@html:<font color = "#0d3db3">@@ A
-*function* is a /relation/ between a /set/ whose elements are inputs
-(the /domain/) and a set whose elements make up outputs (the range)
-with the key property that /each input is related to exactly one
-output/.@@html:</font>@@[fn:2] \\
+set a /class/, by the way.)}}}  ⇲@@html:<font color = "#0d3db3">@@ A
+**function** is a **relation** between a **set** whose elements are
+inputs (the **domain**) and a set whose elements make up outputs (the
+**range**) with the key property that /each input is related to
+exactly one output/...and no more than one
+output.@@html:</font>@@[fn:2] \\
 \\
 Let's also look at a function in terms of /variables/. Recalling the
 usual pre-algebra way of denoting a function, i.e., $y = f(x)$, the
