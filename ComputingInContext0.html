@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-01-11 Sun 21:03 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href="./ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-org0ce0959" class="outline-2">
+<h2 id="org0ce0959">Preface</h2>
+<div class="outline-text-2" id="text-org0ce0959">
+<p>
+<br>
+</p>
+<img src="./images/meitner.jpg" width="725px" style="padding: 15px 0px 0px 0px" alt="Lise Meitner" class="center">
+<span class="cap">Lise Meitner, discoverer of nuclear fission</span>
+
+<blockquote>
+<p>
+Das Leben muß nicht leicht sein wenn es nur inhaltsreich ist.<br>
+Life doesn&rsquo;t have to be easy if it&rsquo;s rich in content.<br>
+                                       &#x2014;Lise Meitner
+</p>
+</blockquote>
+</div>
+<div id="outline-container-orgb948b55" class="outline-3">
+<h3 id="orgb948b55">Getting math onto a computer</h3>
+<div class="outline-text-3" id="text-orgb948b55">
+<p>
+<font color = "#0d3db3">
+<b><b>The birth of mathematics</b></b>
+</p>
+
+<blockquote>
+<p>
+Caveman #1 (looking at flock of birds): Many! <br>
+Caveman #2: <b><b>How</b></b> many?
+</p>
+</blockquote>
+<p>
+</font>
+</p>
+
+<p>
+&#x2026;but why is <i>How many?</i> inviting us, <i>compelling</i> us to <i>count</i> the
+birds? Hold that thought&#x2026;
+</p>
+
+
+<p>
+<label for="mn-demo" class="margin-toggle"></label>
+<input type="checkbox" id="mn-demo" class="margin-toggle">
+<span class="marginnote">
+<img src="images/EulersMethodHiddenFigures.png" alt="EulersMethodHiddenFigures.png">
+<br>
+</span>
+</p>
+
+<p>
+The 2016 Hollywood film <i><a href="https://youtu.be/v-pbGAts_Fg">Hidden Figures</a></i> is a story about the
+early-1960s space race. In one scene we see NASA&rsquo;s scientific team of
+mathematicians, physicists, and engineers trying to figure out how to
+get a space capsule flying in orbit around the Earth back on the
+ground. Ironically, they know how to get the capsule in orbit, <i>but
+they don&rsquo;t know how to get it back down to the ground again</i>. And so
+they need to come up with the math to transition the vehicle from an
+<i>elliptical orbit</i> around planet Earth into a (half) parabolic-shaped
+descent path<label id='fnr.1' for='fnr-in.1.572549' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.572549' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+Technically speaking, a spacecraft orbiting the Earth is in an
+<i>elliptic</i>, not circular orbit. And the path back to Earth after
+breaking this orbit will resemble half of a parabola turned on its
+side, hence, the adjective parabolic.
+</span> back down on the ground. This is a rare moment in a
+popular Hollywood film where they actually get the science right. That
+is to say, there is no magic, no special effects, no superheroes with
+super-human powers, no brainiac grade-schooler who hacks Pentagon
+computers in three seconds; instead, just a bunch of ordinary-looking
+people from disparate backgrounds putting their heads together to
+solve a critical problem.
+</p>
+
+<p>
+Why is this so special?  Because during the process of finding the
+answer we see the math coming out of books, out of heads, and being
+put to work on a real-world, life-or-death problem. The icing on the
+cake is how the film depicts the team getting the just-delivered IBM
+mainframe computer (that initially no one knows how to run!) to help
+them. Takeaway: In the world of STEM you&rsquo;re never far from the
+front lines, the cutting edge, the &ldquo;no one has done this before.&rdquo;
+</p>
+
+<p>
+Fast-forward to today where <i>tens of billions</i> of computing
+devices&#x2014;nearly all much more powerful than that first NASA
+computer&#x2014;are doing computations big and small in every corner of the
+world. Of course most of these calculations are relatively simple, but
+many are quite complex. This is the sort of math that, pre-Computer
+Age, would have been found only in dense books and dry collections of
+tables, on classroom and office blackboards, embodied in mechanical
+contraptions or analog electrical circuits, and, most mysteriously, as
+&ldquo;mental representations&rdquo; in the brains of that small cadre of people
+called <i>mathematicians</i>, <i>physicists</i> and <i>engineers</i>. Now math is
+happening on computers. And so today we should not underestimate the
+significance, the breadth and scope, the sheer amazing-ness of this
+transfer of math from paper, chalk, and thought into code running on
+very fast machines in our modern world.
+</p>
+
+<p>
+Learning the skills necessary to run math and science on computing
+devices will only increase in importance as we advance into the
+future. Our mission: see the math, <i>grok</i><label id='fnr.2' for='fnr-in.2.4993595' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.4993595' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+To <b><b>grok</b></b> something is to understand it at its deepest level,
+to <i>get it</i> so thoroughly that you merge with it and it with you,
+coined by the sci-fi writer Robert Heinlein in his classic novel
+<i>Stranger in a Strange Land</i>.
+</span> the math, then get the
+math going on the computer.
+</p>
+</div>
+</div>
+<div id="outline-container-org1520f12" class="outline-3">
+<h3 id="org1520f12">What about AI?</h3>
+<div class="outline-text-3" id="text-org1520f12">
+<p>
+Here we are well into the twenty-first century and the elephant in
+the middle of the room is <b><b><a href="https://en.wikipedia.org/wiki/Artificial_intelligence">artificial intelligence</a></b></b>, or, the quest
+to teach computers to actually think, i.e., reason, plan,
+problem-solve, perceive, create, learn&#x2014;and not just passively run
+software. In the past, it was widely believed teaching a computer to
+handle, manipulate, if not at some level <i>understand</i> human language
+was an integral part of raising computers up to some form of
+human-like sentience. But the difficulty of this task was hugely
+underestimated. Why? Because human language is <i>fraught</i>. Some
+examples
+</p>
+
+<ul class="org-ul">
+<li>It&rsquo;s not that I don&rsquo;t like you&#x2026;</li>
+<li>They did not not go into the city.</li>
+<li>I didn&rsquo;t go nowhere today.</li>
+</ul>
+
+<p>
+These are three examples of the <i>double negative</i>, a notoriously gray
+area of language.<label id='fnr.3' for='fnr-in.3.5738824' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.5738824' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+If we said \(a = a\) and \(\lnot\; a = \lnot\; a\;\) and \(\lnot\;a
+\ne a\) and that \(\lnot\; \lnot\;a = a\;\) what can we infer the \(\lnot\)
+symbol is doing? More later.
+</span> When we say, e.g., <i>It&rsquo;s not that I didn&rsquo;t
+want to come to your birthday party&#x2026;</i>, we&rsquo;re not saying outright <i>I
+wanted to come to your birthday party</i>, are we? No, to be sure, we&rsquo;re
+being &ldquo;nuanced&rdquo; about what we really wanted to do about the birthday
+party. But then mathematics say, <i>A negative times a negative is a
+positive</i> &#x2014; and that&rsquo;s clear, black-and-white. But this is not the
+case with double negatives in daily language use. Indeed, we humans
+have an intuitive feel for what these examples mean&#x2014;even when
+improperly formulated like the double negative in the last example
+which probably should have been <i>I didn&rsquo;t go anywhere today</i>. But then
+the statement <i>Due to the wind the snow was not falling straight down</i>
+could mean the snow was moving <i>horizontally</i> as well as being
+whooshed back upwards. Here the opposite of down is not only up, but a
+third possibility, sideways. But then how could we tell a computer
+about all these details, some of them logical, so many very odd,
+non-rational illogical and hopelessly nuanced? More quicksand would
+be all the wordplay, all the double/hidden meaning/entendre we employ
+</p>
+
+<blockquote>
+<p>
+Take care of the sense, and the sounds will take care of themselves.
+</p>
+</blockquote>
+
+<p>
+&#x2026;is from Lewis Carroll&rsquo;s <i><a href="https://en.wikipedia.org/wiki/Alice%27s_Adventures_in_Wonderland">Alice in Wonderland</a></i> and rhyme-plays on
+the proverb, <i>Take care of the pence and the pounds will take care of
+themselves.</i> Which itself is a variation of <i>penny-wise, pound
+foolish</i>. How is a computer to know all these twists and
+turns&#x2014;unless we simply specifically tell it about each and every one
+of these twists and turns?
+</p>
+
+<p>
+In his book <i><a href="https://mitpress.mit.edu/9780262534741/thinking-as-computation/">Thinking as Computation</a></i> Professor Hector Levesque of
+University of Toronto talks about <b><b><a href="https://en.wikipedia.org/wiki/Logical_consequence">logical entailment</a></b></b> (LE) or
+logical consequence, which is indeed purely logic consequences-based,
+where we do in fact tell the computer, through logic-based programming
+techniques, exactly what means what. For example, Levesque feeds a
+coded version of the following <i>conditional</i> statement into a running
+Prolog session<label id='fnr.4' for='fnr-in.4.9481302' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.9481302' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+<b><a href="https://en.wikipedia.org/wiki/Prolog">Prolog</a></b> is a programming language in which rules, facts, and
+relational <i>predicates</i> are given, then logic <i>deductions</i> can be
+made. More about all this upcoming.
+</span>
+</p>
+
+<blockquote>
+<p>
+If X is a child of Y then Y is a parent of X.
+</p>
+</blockquote>
+
+<p>
+If we then tell Prolog the fact
+</p>
+
+<blockquote>
+<p>
+John is a child of Sue.
+</p>
+</blockquote>
+
+<p>
+Prolog can then take this fact, look at the conditional, and <i>deduce</i>
+that Sue is a <i>parent</i> of John &#x2026; and for this one single moment the
+computer is doing something we humans do. But can this logical
+entailment trick scale? Can we create a Prolog <b><b>knowledge base</b></b>
+containing all the little facts about the world? Hold that thought&#x2026;
+</p>
+
+<p>
+Here&rsquo;s a joke with LE consequences
+</p>
+
+<p>
+<i>Two people are walking along the beach when one says, &ldquo;Look! A dead
+seagull!&rdquo; The other looks up into the sky and says, &ldquo;Where? Where?&rdquo;</i>
+</p>
+
+<p>
+This is humorous because we consider it daft for someone to think that
+just because seagulls are birds spending most of their lives sailing
+up in the air, that when one dies it would remain aloft. But a
+computer scientist might not laugh. Why? Because in our joke, the
+logic of a dead bird no longer being able to fly is simply taken for
+granted. But again, must we tell a computer literally everything? Here
+we are facing the question of what can be deduced, inferred.
+</p>
+
+<p>
+Consider this sequence of objects: \(\{1,\; nickel,\; 10,\; quarter,
+\;50, \;?\}\). What should the last element &ldquo;?&rdquo; be?  Having experience
+with these sorts of aptitude test questions, most Americans would say
+\(dollar\). But to know that \(dollar\) completes the sequence assumes
+much LE. A whole lot of facts must be in place before we have the
+necessary knowledge base to <i>deduce</i> dollar. The bottom line is, in
+the computer world logical entailment is a great big thing.
+</p>
+
+<p>
+For your <i>early</i> information (lots more about this to come), Prolog is
+essentially a computerized form of <b><b>Predicate Logic</b></b> or
+<b><b>First-order Logic</b></b>. The programming of logical consequences and
+entailment follows from the mathematical logic world first established
+in the golden age of mathematical logic starting in the 1800s with
+mathematicians like Cantor, Frege, Peano, Dedekind, Whitehead and
+Russell, and many others. For example in mathematician Tom Apostol&rsquo;s
+book <i>Introduction to Analytic Number Theory</i> (1976) he discusses the
+details and derivation of the <b><b><a href="https://en.wikipedia.org/wiki/Greatest_common_divisor">greatest common divisor</a></b></b> of two or
+more numbers. As an exercise he asks the reader to <i>prove</i><label id='fnr.5' for='fnr-in.5.2232248' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.2232248' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+&#x2026;below, the tuple form \((a,b)\) means <i>the greatest common
+divisor of \(a\) and \(b\).</i>
+</span>
+</p>
+
+<p>
+<font color = "#0d3db3">
+If \((a,b) = 1\), then \((a+b, a-b)\) is either \(1\) or \(2\).
+</font>
+</p>
+
+<p>
+If we started unpacking the above statement&#x2014;we&rsquo;d be deep in a
+<b><b>Number Theory</b></b> lecture reaching back thousands of years to a Greek
+named Euclid. And yet much of AI research has been devoted to getting
+computers to take in, to <i>grok</i> math axioms and theorems<label id='fnr.6' for='fnr-in.6.8061131' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.8061131' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+We&rsquo;ll explore <b><b>axiomatic mathematics</b></b> in great detail as we
+go. For now just understand that <b><b>axioms</b></b> are basic, given truths
+and facts, and <b><b>theorems</b></b> are derived using the basic axioms to
+explain and justify them.
+</span> to the point
+that they can solve and prove just such a problem. In general, it has
+long been known <i>there is great correspondence between formal math and
+computer algorithms</i>, which is why discrete math emphasizes formal,
+axiomatic mathematics. Lots more on this truism to come.
+</p>
+
+<p>
+Early AI was solely based on logic as mathematics sees it. But
+recently another type of AI has roared to the front. Today we are in
+the middle of what is called <b><b><a href="https://en.wikipedia.org/wiki/Generative_artificial_intelligence">generative artificial intelligence</a></b></b>
+based on <b><b><a href="https://en.wikipedia.org/wiki/Large_language_model">large language modeling</a></b></b> (LLM). You&rsquo;ve no doubt heard of
+<i>ChatGPT</i>, <i>Gemini</i>, and <i>Grok</i>, no?<label id='fnr.7' for='fnr-in.7.6442931' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.6442931' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+By the way, <a href="gcdproof1.html">here</a> is a math proof generated by Google&rsquo;s
+Gemini. Ironically, we&rsquo;ve essentially asked something not
+logically-based to do, simulate logic&#x2026;
+</span> Here&rsquo;s a good quote from
+computer consultant Eugene Asahara
+</p>
+
+<blockquote>
+<p>
+The notion of training an LLM model is similar to that of training a
+new skill into your human brain. We have no direct control over the
+synapse wiring in our brains as we are trained. We train our brain
+indirectly mostly through cycles of repetitions of exercises and
+observations and adjustment tweaks over a period of time&#x2014;like the
+proverbial, Train ten thousand hours to perfect a skill.
+</p>
+</blockquote>
+
+<p>
+In other words, this new AI isn&rsquo;t trying to construct logical
+entailment links&#x2014;one for every possible phenomenon&#x2014;and then forge
+deductive links together. Generative artificial intelligence arises
+from <i>conditioning</i> a brain-like <b><b>neural network</b></b> inside a computer
+to respond properly. And yes, we can describe a problem to an AI
+bot&#x2014;and presto! it seemingly magically gives us a response. For
+example, if we ask <a href="https://grok.com/">Grok</a>
+</p>
+
+<blockquote>
+<p>
+Write a Haskell program that will give a list of all prime numbers
+less than or equal to some number n.
+</p>
+</blockquote>
+
+<p>
+On &ldquo;think mode&rdquo; Grok comes back with this code
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org0043671"><span style="color: #61afef;">primesUpTo</span> <span style="color: #61afef;">::</span> <span style="color: #61afef;">Int</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #8c8c8c;">[</span><span style="color: #61afef;">Int</span><span style="color: #8c8c8c;">]</span>
+<span style="color: #61afef;">primesUpTo</span> n <span style="color: #61afef;">=</span> sieve <span style="color: #8c8c8c;">[</span>2<span style="color: #61afef;">..</span>n<span style="color: #8c8c8c;">]</span>
+  <span style="color: #c678dd; font-weight: bold;">where</span>
+    sieve <span style="color: #61afef;">::</span> <span style="color: #8c8c8c;">[</span><span style="color: #61afef;">Int</span><span style="color: #8c8c8c;">]</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #8c8c8c;">[</span><span style="color: #61afef;">Int</span><span style="color: #8c8c8c;">]</span>
+    sieve <span style="color: #8c8c8c;">[]</span> <span style="color: #61afef;">=</span> <span style="color: #8c8c8c;">[]</span>
+    sieve <span style="color: #8c8c8c;">(</span>p<span style="color: #61afef;">:</span>xs<span style="color: #8c8c8c;">)</span> <span style="color: #61afef;">=</span> p <span style="color: #61afef;">:</span> sieve <span style="color: #8c8c8c;">(</span>filter <span style="color: #93a8c6;">(</span><span style="color: #61afef;">\</span>x <span style="color: #61afef;">-&gt;</span> x <span style="color: #61afef;">`mod`</span> p <span style="color: #61afef;">/=</span> 0<span style="color: #93a8c6;">)</span> xs<span style="color: #8c8c8c;">)</span>
+</pre>
+</div>
+
+<p>
+&#x2026;followed by a lengthy explanation of the code almost simple enough
+for a layperson to understand.<label id='fnr.8' for='fnr-in.8.1471703' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.1471703' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+See <a href="primesUpTo.html">primesUpTo</a>, the Grok answer converted into a plain org
+file.
+</span> Now, does this mean Grok was
+taught all the logical entailment of programming Haskell? Does it mean
+all Haskell computer programmers are out of a job? No and no. Somehow
+Grok &ldquo;learned to code&rdquo; even though it didn&rsquo;t really&#x2014;at least in any
+logically traceable progression. But again, are all programmers out of
+a job? No. What this really means is <i>now more than ever we need to
+have even greater math and computer science knowledge</i>. Why?  Because
+when we interact with AI we need to
+</p>
+
+<ul class="org-ul">
+<li>know what to ask</li>
+<li>know how to ask it</li>
+<li>understand AI&rsquo;s response</li>
+<li>be able to apply the answer</li>
+<li>take responsibility for the code as a quasi-manager would take
+responsibility of an underling&rsquo;s work</li>
+</ul>
+
+<p>
+As Jensen Huang, CEO of Nvidia said,
+</p>
+
+<blockquote>
+<p>
+AI will not replace all humans, just those humans who do not use AI.
+</p>
+</blockquote>
+
+<p>
+For an analogy, pocket calculators, beginning in the 1960s were feared
+because some believed school children&rsquo;s arithmetic skills would go
+soft. However, most mathematicians welcomed calculators, arguing that
+they only freed up kids from tedious calculations to learn more,
+better, higher math. This is a version of the old argument that a
+building&rsquo;s quality isn&rsquo;t negatively impacted because the brick masons
+used a forklift to move pallets of bricks rather than hand-carry
+them. All in all, that last point, i.e., taking responsibility for
+what you&rsquo;ve &ldquo;sub-contracted&rdquo; out to AI, will require top computer
+science knowledge more than ever. The pace will increase, and you, the
+<i>Informatiker</i><label id='fnr.9' for='fnr-in.9.9670868' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.9670868' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+<i>Informatik</i> is the German term for <i>computer science</i>. Edsger
+Dijkstra, the famous Dutch &ldquo;computer scientist&rdquo; said, &ldquo;Computer
+science is no more about computers than astronomy is about
+telescopes,&rdquo; emphasizing that computer science is about the underlying
+principles and methods, not just the machines themselves. Dijkstra
+considered himself an applied mathematician and hardly ever used an
+actual computer.
+</span> will have to keep up.
+</p>
+
+<p>
+Finally, today&rsquo;s generative AI is <i>not</i> conscious as humans are
+conscious and perceptive. The vast majority of experts in the computer
+science field all agree that large language model generative AI is a
+dead end in the pursuit of <b><b><a href="https://en.wikipedia.org/wiki/Artificial_general_intelligence">artificial general intelligence</a></b></b>, which
+is supposedly AI with real sentient consciousness. Watch this space&#x2026;
+</p>
+</div>
+</div>
+<div id="outline-container-orge63ca02" class="outline-3">
+<h3 id="orge63ca02">Code is math is code is math&#x2026;</h3>
+<div class="outline-text-3" id="text-orge63ca02">
+<p>
+As computer scientist David Schmidt said
+</p>
+
+<blockquote>
+<p>
+<font color = "#650d1c">Any notation for giving instructions
+is a programming language.</font>
+</p>
+</blockquote>
+
+<p>
+and, yes, giving a computer &ldquo;instructions&rdquo; is what we&rsquo;re doing with
+programming<label id='fnr.10' for='fnr-in.10.2061938' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.2061938' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
+There are two general categories of &ldquo;giving instructions&rdquo; to a
+computer in the form of computer programming: <i>imperative</i> programming with
+statements and <i>declarative</i> programming with expressions. Read on.
+</span>. But still to this day we do not fully understand
+how we humans convey knowledge, instructions to one another. We don&rsquo;t
+really know how one human teaches math to another. No surprise, but
+it&rsquo;s likewise not obvious how we should &ldquo;do math&rdquo; on a computer. Yes,
+at some stage of one human teaching, sharing math with another human,
+and the teacher and student eventually get on the same page. The
+student catches on, &ldquo;syncs up&rdquo; their understanding with the teacher&rsquo;s,
+and the knowledge is duly conveyed, mathematical abstraction
+grokked. Still, if we don&rsquo;t really understand how math is mentally
+represented in a human brain, nor how one mental representation gets
+reconstructed in another&rsquo;s brain, then adding the digital computer
+into this mix makes everything even more mysterious and intriguing. In
+order to bring the computer into this process our mantra will be
+</p>
+
+<blockquote>
+<p>
+<font color = "#650d1c">Code is math is code</font>
+</p>
+</blockquote>
+
+<p>
+meaning the transfer, the syncing up of math must happen alongside
+producing representative code, i.e., we&rsquo;ll combine learning math with
+learning to <i>code</i> that math.
+</p>
+
+<p>
+Contrary to what various &ldquo;learn to code&rdquo; promoters<label id='fnr.11' for='fnr-in.11.8196407' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.8196407' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
+Most &ldquo;learn to code&rdquo; initiatives are rushed oversimplifications
+primarily geared towards only a narrow part of the huge and diverse IT
+world. User-interface (UI) coding is emphasized, while the other
+branches, e.g., data management, systems programming, and especially
+computational-numerical programming aren&rsquo;t covered or are given
+short-shrift.
+</span> might say,
+the programming part of this puzzle cannot simply be a stand-alone
+boot camp-style cram session. <i>Oh no,</i> you might say, <i>there&rsquo;s already
+so much math to learn, and here&rsquo;s yet more to learn!</i> Yes and no. Yes,
+it will be challenging, but we believe teaching math with code and the
+code with math will make both realms come alive and be fun to
+learn. We&rsquo;ve seen this pairing make beautiful music together, and we
+want to build on this winning combination<label id='fnr.12' for='fnr-in.12.7200933' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.7200933' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
+One huge inspiration for CIMIC is the book <i><a href="https://en.wikipedia.org/wiki/Structure_and_Interpretation_of_Classical_Mechanics">Structure and
+Interpretation of Classical Mechanics</a></i> by Gerald Jay Sussman, Jack
+Wisdom, and Meinhard E. Mayer. And this was based in part on Donald
+Knuth&rsquo;s <i><a href="https://en.wikipedia.org/wiki/Literate_programming">literate programming</a></i> initiative, also championed by Timothy
+Daly.
+</span>.
+</p>
+
+<p>
+So if computer programs are written in computer programming languages,
+what language shall we write our code in? This may seem a
+controversial choice to some, but we&rsquo;ll start out with Scheme (a Lisp
+dialect), which is a functional language, then transition to <a href="https://en.wikipedia.org/wiki/Haskell_(programming_language)">Haskell</a>,
+a <i>typed, purely functional</i> <label id='fnr.13' for='fnr-in.13.711221' class='margin-toggle sidenote-number'><sup class='numeral'>13</sup></label><input type='checkbox' id='fnr-in.13.711221' class='margin-toggle'><span class='sidenote'><sup class='numeral'>13</sup>
+We&rsquo;ll dive into what <i>typed</i> and <i>functional</i> languages are
+later&#x2026;
+</span> language. One big reason Haskell
+is our choice is that it is, beyond any doubt, the most math-centric,
+math-conscious language there is. Pick up Haskell and it <i>oozes</i>
+mathematical elegance<label id='fnr.14' for='fnr-in.14.3252421' class='margin-toggle sidenote-number'><sup class='numeral'>14</sup></label><input type='checkbox' id='fnr-in.14.3252421' class='margin-toggle'><span class='sidenote'><sup class='numeral'>14</sup>
+Often enough, you can open a higher-level math text, e.g.,
+abstract algebra, pick a topic, then google Haskell and your obscure
+abstract algebra topic and, chances are, somebody has explored a
+code-is-math-is-code treatment of it, written libraries for it.
+</span>. But why choose Haskell with its rather
+steep learning curve? Why not learn, say, an easier &ldquo;blub&rdquo; language?
+<a href="https://en.wikipedia.org/wiki/Paul_Graham_(programmer)#Blub">Blub</a> languages have earned this not-so-flattering name by <i>not</i> being
+<i>functional</i> languages. What does that mean? Let&rsquo;s begin to unpack
+this now.
+</p>
+
+<p>
+When you write code in non-functional Blub, you are basically telling,
+controlling the computer &#x2014; sometimes literally line-by-line &#x2014; what
+to do. <i>Literally</i> line-for-line programming would be <a href="https://en.wikipedia.org/wiki/Assembly_language">Assembly</a>
+coding. But imperative languages such as C/C++ will have you
+explicitly, manually managing your program&rsquo;s memory. That is to say,
+<i>memory management</i> is done by the programmer and not automatically
+handled behind the scenes as it now is in most modern languages. This
+is a hold-over from the early days of the so-called <a href="https://en.wikipedia.org/wiki/Von_Neumann_architecture">von Neumann
+machine</a>-based digital computers of the 1950s. <i>Imperative</i> programming
+is where each line is a command, a statement, an imperative
+instruction.
+</p>
+
+<p>
+A functional language, on the other hand, is based primarily on the
+mathematical concept of a <i>function</i>. Functional languages are
+<i>declarative</i><label id='fnr.15' for='fnr-in.15.7408686' class='margin-toggle sidenote-number'><sup class='numeral'>15</sup></label><input type='checkbox' id='fnr-in.15.7408686' class='margin-toggle'><span class='sidenote'><sup class='numeral'>15</sup>
+Maybe peruse <a href="https://en.wikipedia.org/wiki/Declarative_programming">this article</a> on declarative programming. Don&rsquo;t
+worry, we&rsquo;ll cover all this in depth as we go.
+</span> where <i>code can be considered mathematical
+statements in the form of true mathematical functions</i>. One main
+advantage of being declarative and function-based programming is that
+our code will conform to math function behavior, that is, when we put
+something into a function we get back exactly <i>one</i> answer&#x2014;and not
+one answer now, then perhaps a different, unexpected answer the next
+time because the <i>state</i>, the conditions of the program have changed.
+</p>
+
+<p>
+When did you first hear about a true function having only one output?
+You probably don&rsquo;t remember, but a hint would be, <i>A vertical line is
+&ldquo;undefined.&rdquo;</i> In a future section we&rsquo;ll discuss middle-school math
+notions of functions plotted on a Cartesian coordinate system versus
+higher math&rsquo;s more thorough treatment. Below we see in the top graphic
+a supposed function that maps one \(x\) coordinate to <i>three</i> \(y\)
+coordinates. But this violates the one-output rule, therefore, this
+line cannot be expressed as a traditional function. See the <a href="https://en.wikipedia.org/wiki/Vertical_line_test">vertical
+line test</a>.  <br>
+<br>
+<img src="images/Vertical_line_test.png" alt="Vertical_line_test.png"> <br>
+</p>
+
+<p>
+This might seem too hair-splittingly abstract so early in our
+discussion, but functional programming&rsquo;s only-one-output,
+side-effects-free feature is an absolute necessity for computational
+predictability.<label id='fnr.16' for='fnr-in.16.9115149' class='margin-toggle sidenote-number'><sup class='numeral'>16</sup></label><input type='checkbox' id='fnr-in.16.9115149' class='margin-toggle'><span class='sidenote'><sup class='numeral'>16</sup>
+We&rsquo;ll discuss no side effects or <i>referential transparency</i>,
+the technical term for this idea, later, but in the meantime you might
+want to take a crack at the Wikipedia article <a href="https://en.wikipedia.org/wiki/Referential_transparency">here</a>.
+</span> Being able to know and trust your code helps
+reduce bugs and errors that may crop up as rude surprises when your
+program suddenly does something other than what you were expecting it
+to do<label id='fnr.17' for='fnr-in.17.362816' class='margin-toggle sidenote-number'><sup class='numeral'>17</sup></label><input type='checkbox' id='fnr-in.17.362816' class='margin-toggle'><span class='sidenote'><sup class='numeral'>17</sup>
+It might be hard to get all of what Charles Scalfani is saying
+in his <a href="https://spectrum.ieee.org/functional-programming">IEEE Spectrum</a> article <a href="https://spectrum.ieee.org/functional-programming">Why Functional Programming Should Be the
+Future of Software Development</a>, but one easy take-away is that
+non-functional languages don&rsquo;t scale well due to lack of referential
+transparency and too much state juggling. A typical Blub-written
+project without referential transparency must rely in extensive
+testing and debugging &#x2014; which can&rsquo;t always find all the worst-case
+scenarios where an input produces the wrong output.
+</span>. By the way, there&rsquo;s a very big push these days to make
+code &ldquo;provable,&rdquo; i.e., guaranteed to do what it&rsquo;s supposed to and not
+what it&rsquo;s not supposed to do. Typed functional languages like Haskell
+are the base camp of this mountain.
+</p>
+
+<p>
+Again, this only-one-answer predicability is built-in to math
+functions &#x2014; right? Yes, of course it is! And why this is true
+can be seen in how math defines functions. We&rsquo;ll soon take a
+higher-math dive into exactly what a math function is and why it&rsquo;s so
+important in functional programming.
+</p>
+
+<p>
+So if not Blub, why not a CAS<label id='fnr.18' for='fnr-in.18.9956131' class='margin-toggle sidenote-number'><sup class='numeral'>18</sup></label><input type='checkbox' id='fnr-in.18.9956131' class='margin-toggle'><span class='sidenote'><sup class='numeral'>18</sup>
+CAS is short for <i>computer algebra system</i>. Wikipedia has a good
+article <a href="https://en.wikipedia.org/wiki/Computer_algebra_system">here</a>.
+</span>, i.e., a math software package
+like <i>MatLab</i>, <i>Wolfram Mathematica</i>, or <i>Maxima</i>, or a numerical
+package available with Python such as <i>SymPy</i>? The short answer is we
+really should learn to do hands-on programming. Why? Because software
+packages with ready-made plug-and-chug solutions won&rsquo;t help us learn
+to negotiate the real computationally-based STEM world. <i>But I&rsquo;ve
+heard Python is very popular for math stuff</i>, you might say. For an
+analogy, doing math with Python is like eating soup with a butter
+knife (C++ with a steak knife). Scheme and Haskell&#x2014;for many
+reasons&#x2014;are like eating soup with a spoon. They&rsquo;re the best
+utensils for what we&rsquo;re after here.
+</p>
+
+<p>
+Learning Scheme and Haskell will fall into two categories:
+</p>
+
+<ul class="org-ul">
+<li>theory deep dives, and,</li>
+<li>toolbox-building</li>
+</ul>
+
+<p>
+A deep dive will take us on an exploration of just how and why Scheme
+or Haskell is doing something the way they do, i.e., based on
+math. Again, functional is math-friendly, especially
+Haskell<label id='fnr.19' for='fnr-in.19.2535754' class='margin-toggle sidenote-number'><sup class='numeral'>19</sup></label><input type='checkbox' id='fnr-in.19.2535754' class='margin-toggle'><span class='sidenote'><sup class='numeral'>19</sup>
+&#x2026;as well as its very worthy siblings in the typed functional
+sphere: SML, Ocaml, Purescript, and F#.
+</span>. Toolbox-building, on the other hand, will be more
+&ldquo;learn to code,&rdquo; only with Scheme and Haskell, we&rsquo;re learning syntax,
+semantics, <i>first principles</i> hands-on. So yes, with Scheme or Haskell
+we may build our own calculator, our own CAS, but we&rsquo;ll go beyond
+calculation into concepts.<label id='fnr.20' for='fnr-in.20.1650310' class='margin-toggle sidenote-number'><sup class='numeral'>20</sup></label><input type='checkbox' id='fnr-in.20.1650310' class='margin-toggle'><span class='sidenote'><sup class='numeral'>20</sup>
+Perhaps watch <a href="https://youtu.be/6APBx0WsgeQ?si=Hpl1zLcdjkuDtHDP">Why does Cambridge teach OCaml as the first
+programming language?</a> to better understand why functional.
+</span>
+</p>
+</div>
+</div>
+<div id="outline-container-org0c96d26" class="outline-3">
+<h3 id="org0c96d26">Math is abstraction</h3>
+<div class="outline-text-3" id="text-org0c96d26">
+<p>
+We believe anyone can do math, not because we&rsquo;re cheery, sunny booster
+optimists, but because it&rsquo;s just a fact.<label id='fnr.21' for='fnr-in.21.7036216' class='margin-toggle sidenote-number'><sup class='numeral'>21</sup></label><input type='checkbox' id='fnr-in.21.7036216' class='margin-toggle'><span class='sidenote'><sup class='numeral'>21</sup>
+Watch <a href="https://youtu.be/-MTRxRO5SRA?si=3nvDTCra6MV2rJTj">Let&rsquo;s teach for mastery, not test scores; Sal Khan</a>. A
+real game-changer.
+</span> But why then is math so
+difficult to learn for so many people? We believe the learning
+problems arise because
+</p>
+
+<blockquote>
+<p>
+<font color = "#650d1c"> We really don&rsquo;t understand how the
+human mind deals with abstraction.</font>
+</p>
+</blockquote>
+
+<p>
+Since <a href="https://en.wikipedia.org/wiki/Alexander_Luria">Alexander Luria</a>&rsquo;s groundbreaking studies of the IQs of
+pre-literate people in the Caucus Mountains, we&rsquo;ve gradually come to
+see abstraction as a much more complicated beast than
+before<label id='fnr.22' for='fnr-in.22.3344225' class='margin-toggle sidenote-number'><sup class='numeral'>22</sup></label><input type='checkbox' id='fnr-in.22.3344225' class='margin-toggle'><span class='sidenote'><sup class='numeral'>22</sup>
+See <a href="https://youtu.be/9vpqilhW9uI">James Flynn</a>&rsquo;s TED talk, and read the first chapter of James
+Gleick&rsquo;s <i><a href="https://en.wikipedia.org/wiki/The_Information:_A_History,_a_Theory,_a_Flood">The Information: A History, a Theory, a Flood</a></i>.
+</span>. Long story shortened, math can be a very imposing
+vertical wall of abstraction. And, as Luria discovered, there may even
+exist social and cultural barriers, actual social-psychological
+resistance <i>against</i> abstraction and symbolism that our milieu has
+imbued us with. We cannot simply assume that any and all abstraction
+and symbolism can and will be instantly grokked by our math
+audience<label id='fnr.23' for='fnr-in.23.5913226' class='margin-toggle sidenote-number'><sup class='numeral'>23</sup></label><input type='checkbox' id='fnr-in.23.5913226' class='margin-toggle'><span class='sidenote'><sup class='numeral'>23</sup>
+The classic line, &ldquo;What is this for? Why are we doing this?&rdquo;
+is the elephant in the middle of the math classroom.
+</span>. But if we approach the abstraction curve with respect
+for its difficulty and steepness <i>and</i> we don&rsquo;t resort to force or
+hand-waving,<label id='fnr.24' for='fnr-in.24.8263294' class='margin-toggle sidenote-number'><sup class='numeral'>24</sup></label><input type='checkbox' id='fnr-in.24.8263294' class='margin-toggle'><span class='sidenote'><sup class='numeral'>24</sup>
+To <i>hand-wave</i> in science is to dismiss or downplay
+complexity, to skip over or sweep something difficult under the
+rug. We will avoid hand-waving at all costs.
+</span> we can master deeper symbolism and abstraction. We
+must build up the abstraction receptor sites in our brains, so to
+speak.
+</p>
+
+<p>
+By the way, mathematics is just as much about words as it is about
+numbers and formulae. Of course some math doesn&rsquo;t require any
+words. There is the story of an American math professor who
+&ldquo;translated&rdquo; Russian math books &#x2014; without understanding a word of
+Russian. But that is very rare. A typical upper-level math text on,
+e.g., abstract algebra or real analysis, will have the reader
+weighing, pondering every word in every sentence, over and over. You
+may spend a week trying to wrap your head around just one page of one
+chapter. Hence, we need to develop a very sharp, precise and exacting
+focus on what words really mean, what they really imply. <i>And</i> we need
+to expand our math and computer science vocabulary. A doctor who had
+just graduated from medical school once said his school had
+emphasized, to what seemed an extreme degree, the knowing of
+terminology, remembering sheer masses of words. This will be somewhat
+similar. Because if we get the words and their precise meaning
+down&#x2014;the learning will go much smoother. Otherwise, every sentence
+risks becoming bogged down in ambiguity and confusion.
+</p>
+</div>
+</div>
+<div id="outline-container-org3f63f7f" class="outline-3">
+<h3 id="org3f63f7f">Bad math</h3>
+<div class="outline-text-3" id="text-org3f63f7f">
+<p>
+One big, <i>big</i> mistake in the teaching and learning of math,
+especially in the public K-12 world, is <i>conditioning</i>. When circus
+masters train (torture) their animals, they simply repeat routines
+over and over (under duress) until the animal finally complies,
+although with no real understanding of what&rsquo;s going on. Does the rat
+being forced to negotiate a maze or the lion to jump through a burning
+hoop know, understand what the idea, the concept, the purpose is?
+No. They&rsquo;re simply in a stimulus-response <a href="https://en.wikipedia.org/wiki/Behaviorism#21st-century_behaviorism_(behavior_analysis)">behaviorist</a> loop.<label id='fnr.25' for='fnr-in.25.4849930' class='margin-toggle sidenote-number'><sup class='numeral'>25</sup></label><input type='checkbox' id='fnr-in.25.4849930' class='margin-toggle'><span class='sidenote'><sup class='numeral'>25</sup>
+Mathematician Eugenia Cheng talks about Kindergartners
+learning the &ldquo;counting poem.&rdquo; Children are taught to count to ten on
+their fingers, \(1,2,3,\ldots\). Now, are they really learning anything
+of the mathematical symbolism of numbers&#x2014;or are they just imitating,
+rote-learning a group activity?
+</span>
+</p>
+
+<p>
+This sort of behaviorist conditioning can be in the form of <i>rote</i>
+learning &#x2014; which everyone agrees these days is not the best way. And
+yet we hear math teachers saying over and over, in one form or
+another, <font color = "#650d1c">When you see this, do
+this.</font> Mathematician <a href="https://longformmath.com/">Jay Cummings</a> calls this <i>The
+Way</i>. So in your math class you are shown <i>The Way</i> to solve
+problems. You see The Way used in examples, then The Way is employed
+to solve the exercises at the end of the chapter. And when you see
+problems on a test, you respond by using The Way. But learning math by
+simply piling up as many The Ways as possible rarely leads to any real
+understanding of math, let alone its purpose, let alone its aesthetics
+or beauty.
+</p>
+
+<p>
+What&rsquo;s the alternative to rote, behaviorist conditioning, to The Way?
+Better would be concept-based learning, getting above the details into
+carefully constructed, carefully worded, carefully delineated
+generalizations where similarities and patterns can be grouped and
+mentally aggregated into a deeper understanding. Another technique is
+to simply <i>triangulate</i>, i.e., hit the problem from different angles,
+not be afraid to see off-beat examples. Yes, The Way is often
+unavoidable, but with careful triangulation, deeper meaning can be
+gleaned. More on all this learning psychology as we progress.
+</p>
+
+<p>
+Another great technique is to start at some finished piece of math &#x2014;
+and methodically unpack it, go down all the rabbit holes, take into
+account the history, the people behind the supporting
+ideas<label id='fnr.26' for='fnr-in.26.8791831' class='margin-toggle sidenote-number'><sup class='numeral'>26</sup></label><input type='checkbox' id='fnr-in.26.8791831' class='margin-toggle'><span class='sidenote'><sup class='numeral'>26</sup>
+Watch Sabine Hossenfelder&rsquo;s video on the <a href="https://youtu.be/A0da8TEeaeE">Principle of Least
+Action</a>. It&rsquo;s a bit beyond our level, but you get the &ldquo;unpack, trace it
+back&rdquo; idea.
+</span>.
+</p>
+</div>
+</div>
+<div id="outline-container-org6ee8555" class="outline-3">
+<h3 id="org6ee8555">Editorial rant: The precarious state of STEM</h3>
+<div class="outline-text-3" id="text-org6ee8555">
+<p>
+The American public K-12 math curriculum is designed to be a smooth,
+gradual on-ramp for further mathematics, physics, and engineering
+studies at the college level. This strategy started back in the Cold
+War Era when we found ourselves behind the Russians as they were the
+first to put a satellite in orbit in 1957. The so-called &ldquo;Sputnik
+crisis&rdquo; resulted in a scramble to improve American math, science, and
+engineering. Problematic is how today in the twenty-first century this
+mid-twentieth-century curriculum does practically nothing to prepare
+students for the ever-growing, evermore-important sector of
+computational math and computer science. Today&rsquo;s incoming college
+Freshmen choosing computer science are confronted with many strange
+and alien concepts they&rsquo;ve never seen before, the main one being
+<i>discrete</i> mathematics<label id='fnr.27' for='fnr-in.27.7675764' class='margin-toggle sidenote-number'><sup class='numeral'>27</sup></label><input type='checkbox' id='fnr-in.27.7675764' class='margin-toggle'><span class='sidenote'><sup class='numeral'>27</sup>
+We&rsquo;ll learn plenty about discrete math as we go. But for a
+quick introduction, consider a light switch that goes on or
+off. That&rsquo;s two <i>discrete</i> states. The opposite of discrete would be
+<i>continuous</i>. So think of a volume control knob on your radio,
+<i>continuous</i> in that it <i>continually</i> changes, i.e., one <i>continuous</i>,
+uninterrupted sweep from soft to loud.
+</span>. Without any previous exposure to the
+specialized math of computer science, the first two, three, four
+semesters of a college comp-sci degree are typically a quick-time
+march to catch up<label id='fnr.28' for='fnr-in.28.8811130' class='margin-toggle sidenote-number'><sup class='numeral'>28</sup></label><input type='checkbox' id='fnr-in.28.8811130' class='margin-toggle'><span class='sidenote'><sup class='numeral'>28</sup>
+Imagine wanting to study math in college after having seen
+absolutely <i>no</i> math K-12. The <a href="https://en.wikipedia.org/wiki/Common_Core_State_Standards_Initiative">Common Core State Standards Initiative</a>
+has taken steps to narrow this gap. Much of their math curriculum
+attempts to expose kids to a discrete math, if not a computer
+algorithm way of seeing math. But in our humble opinion it&rsquo;s far too
+little.
+</span>. The result is, nation-wide, high
+drop-out/flunk-out rates in CS departments&#x2026;
+</p>
+
+<p>
+&#x2026;but not necessarily at the elite universities with their
+90th-percentile students. At the world-class STEM schools the pace is
+fast and furious, but the majority survive. At the second-tier
+schools, however, this sort of pace usually isn&rsquo;t maintained and
+corners are cut. And so a two-tiered world has emerged, one group
+getting a solid CS education, the other getting a watered down,
+sometimes nothing but a vocational school version of CS. Here we will
+attempt to build an on-ramp to computer-centric math alongside,
+complimented by coding that is, in turn, grounded back into solid math
+and computer science. To accomplish this we&rsquo;ll explore the world of
+discrete math, algorithms,<label id='fnr.29' for='fnr-in.29.3919073' class='margin-toggle sidenote-number'><sup class='numeral'>29</sup></label><input type='checkbox' id='fnr-in.29.3919073' class='margin-toggle'><span class='sidenote'><sup class='numeral'>29</sup>
+You&rsquo;ve no doubt heard of <i>algorithms</i>. Very simply put, an
+algorithm is a set of instructions, imagine perhaps a baking recipe,
+that produces a mathematical cake. In computational math, we&rsquo;re
+basically redoing, reimagining math formulae as algorithms which then
+can run on computers. Lots and lots more about algorithms as we move
+along.
+</span> data structures, and numerical
+applications parallel to their underlying mathematics.
+</p>
+</div>
+</div>
+<div id="outline-container-org94dc380" class="outline-3">
+<h3 id="org94dc380">A project-based, real-world approach</h3>
+<div class="outline-text-3" id="text-org94dc380">
+<p>
+No doubt the typical, standard public school K-12 math curriculum is a
+well thought out, gentle and gradual on-ramp for most higher-ed STEM
+studies. But we won&rsquo;t always be so gradual. Often enough we&rsquo;ll be
+&ldquo;deep end,&rdquo; as in throw you in the. <i>Sounds brutal</i>, you say, <i>Are you
+sure that&rsquo;s the best approach?</i>
+</p>
+
+<p>
+As approaches go, deep end is pretty much a given in the real STEM
+world. Rarely will a new task or project be something you already know
+everything about, something you can simply shake out of your sleeve in
+no time then go home early. Rather, the STEM real world is all about
+being baffled, out of your depth, overwhelmed &#x2014; until you back off,
+take a few breaths, begin to think it through, pick it apart, try this
+and that, do some rabbit-holing and woodshedding<label id='fnr.30' for='fnr-in.30.8006679' class='margin-toggle sidenote-number'><sup class='numeral'>30</sup></label><input type='checkbox' id='fnr-in.30.8006679' class='margin-toggle'><span class='sidenote'><sup class='numeral'>30</sup>
+<i>Woodshedding</i> is a jazz music term meaning to learn and
+practice.
+</span>, ask around if
+anybody else has seen anything similar &#x2026; which leads to failures
+then minor successes, followed again by more failures and
+successes&#x2026; Again, this is how the real STEM world works. The
+difference will be you&rsquo;re not our paid employee, and it&rsquo;s up to you to
+set the pace and deadlines<label id='fnr.31' for='fnr-in.31.2219476' class='margin-toggle sidenote-number'><sup class='numeral'>31</sup></label><input type='checkbox' id='fnr-in.31.2219476' class='margin-toggle'><span class='sidenote'><sup class='numeral'>31</sup>
+One motivational speaker said there are two kinds of
+people. Those who self-motivate, self-educate, and are able to create
+their own future; and those who wait around for events, circumstances,
+more powerful people to tell, force them what to do.
+</span>.
+</p>
+</div>
+</div>
+<div id="outline-container-org38570f5" class="outline-3">
+<h3 id="org38570f5">The journey ahead; where are we going?</h3>
+<div class="outline-text-3" id="text-org38570f5">
+<p>
+Where are we going? What do we expect to achieve? The Computer Age has
+forced a split between what is now called <i>continuous</i> math, i.e., the
+math of physics and engineering; and <i>discrete</i> math, the math brought
+to the fore by the theoretical implications and requirements of
+computers. We know what continuous math is &#x2014; as we&rsquo;ve mentioned, the
+K-12 math curriculum concentrates on it. And we can readily see what
+it does, i.e., the modern technology all around us. But where is the
+computer-led side of science and technology going? Many today might
+say it has gathered around AI. But teaching a computer to really
+think, not just imitate it, has proven to be an elusive goal. To keep
+pace in the Computer Age we must have a good understanding of its
+mathematical and theoretical foundation. Let&rsquo;s start now.
+</p>
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

@@ -1,0 +1,444 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE:
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href="./ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: ComputingInContext1.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer
+# This makes pictures appear in buffer
+#+STARTUP: inlineimages
+#+STARTUP: fnadjust
+#+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* 1.1: Statements and Conditional Statements
+
+** Introduction to Statements
+
+Much of our work in mathematics deals with statements. In mathematics, a *statement* is a declarative sentence that is either true or false but not both. A statement is sometimes called a *proposition*. The key is that there must be no ambiguity. To be a statement, a sentence must be true or false, and it cannot be both. So a sentence such as "The sky is beautiful" is not a statement since whether the sentence is true or not is a matter of opinion. A question such as "Is it raining?" is not a statement because it is a question and is not declaring or asserting that something is true.
+
+Some sentences that are mathematical in nature often are not statements because we may not know precisely what a variable represents. For example, the equation 2x+5 = 10 is not a statement since we do not know what x represents. If we substitute a specific value for x (such as x = 3), then the resulting equation, 2·3 +5 = 10 is a statement (which is a false statement). Following are some more examples:
+
+*** Example
+
+- There exists a real number x such that 2x+5 = 10.
+
+  This is a statement because either such a real number exists or such a real number does not exist. In this case, this is a true statement since such a real number does exist, namely x = 2.5.
+
+- For each real number x, 2x +5 = 2 ( x + 5/2 ).
+
+  This is a statement since either the sentence 2x +5 = 2 ( x + 5/2 ) is true when any real number is substituted for x (in which case, the statement is true) or there is at least one real number that can be substituted for x and produce a false statement (in which case, the statement is false). In this case, the given statement is true.
+
+- Solve the equation x^2 - 7x +10 =0.
+
+  This is not a statement since it is a directive. It does not assert that something is true.
+
+- (a+b)^2 = a^2+b^2 is not a statement since it is not known what a and b represent. However, the sentence, “There exist real numbers a and b such that (a+b)^2 = a^2+b^2)" is a statement. In fact, this is a true statement since there are such integers. For example, if a=1 and b=0, then (a+b)^2 = a^2+b^2.
+
+- Compare the statement in the previous item to the statement, “For all real numbers a and b, (a+b)^2 = a^2+b^2)." This is a false statement since there are values for a and b for which (a+b)^2 ≠ a^2+b^2. For example, if a=2 and b=3, then (a+b)^2 = 5^2 = 25 and a^2 + b^2 = 2^2 +3^2 = 13.
+
+*** Progress Check 1.1: Statements
+
+Which of the following sentences are statements? Do not worry about determining whether a statement is true or false; just determine whether each sentence is a statement or not.
+
+1. 3 + 4 = 8.
+
+2. 2·7 + 8 = 22.
+
+3. (x-1) = √(x + 11).
+
+4. 2x + 5y = 7.
+
+5. There are integers x and y such that 2x + 5y = 7.
+
+6. There are integers x and y such that 23x + 27y = 52.
+
+7. Given a line L and a point P not on that line, there is a unique line through P that does not intersect L.
+
+8. (a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3.
+
+9. (a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 for all real numbers a and b.
+
+10. The derivative of f(x) = sin x is f' (x) = cos x.
+
+11. Does the equation 3x^2 - 5x - 7 = 0 have two real number solutions?
+
+12. If ABC is a right triangle with right angle at vertex B, and if D is the midpoint of the hypotenuse, then the line segment connecting vertex B to D is half the length of the hypotenuse.
+
+13. There do not exist three integers x, y, and z such that x^3 + y^2 = z^3.
+
+** Answer
+
+Add texts here. Do not delete this text first.
+
+** How Do We Decide If a Statement Is True or False?
+
+In mathematics, we often establish that a statement is true by writing a mathematical proof. To establish that a statement is false, we often find a so-called counterexample. (These ideas will be explored later in this chapter.) So mathematicians must be able to discover and construct proofs. In addition, once the discovery has been made, the mathematician must be able to communicate this discovery to others who speak the language of mathematics. We will be dealing with these ideas throughout the text.
+
+For now, we want to focus on what happens before we start a proof. One thing that mathematicians often do is to make a conjecture beforehand as to whether the statement is true or false. This is often done through exploration. The role of exploration in mathematics is often difficult because the goal is not to find a specific answer but simply to investigate. Following are some techniques of exploration that might be helpful.
+
+*** Techniques of Exploration
+
+- *Guesswork and conjectures*. Formulate and write down questions and conjectures. When we make a guess in mathematics, we usually call it a conjecture.
+
+- *Examples. Constructing appropriate examples is extremely important*. Exploration often requires looking at lots of examples. In this way, we can gather information that provides evidence that a statement is true, or we might find an example that shows the statement is false. This type of example is called a *counterexample*.
+
+  Example:
+
+  For example, if someone makes the conjecture that sin(2x) = 2 sin(x), for all real numbers x, we can test this conjecture by substituting specific values for x. One way to do this is to choose values of x for which sin(x)is known. Using x = π/4, we see that
+
+  sin(2(π/4)) = sin(π/2) = 1, and
+
+  2sin(π/4) = 2(√2/2) = √2.
+
+  Since 1 ≠ √2, these calculations show that this conjecture is false. However, if we do not find a counterexample for a conjecture, we usually cannot claim the conjecture is true. The best we can say is that our examples indicate the conjecture is true. As an example, consider the conjecture that
+
+  If x and y are odd integers, then x + y is an even integer.
+
+  We can do lots of calculation, such as 3 + 7 = 10 and 5 + 11 = 16, and find that every time we add two odd integers, the sum is an even integer. However, it is not possible to test every pair of odd integers, and so we can only say that the conjecture appears to be true. (We will prove that this statement is true in the next section.)
+
+- *Use of prior knowledge.* This also is very important. We cannot start from square one every time we explore a statement. We must make use of our acquired mathematical knowledge. For the conjecture that sin (2x) = 2 sin(x), for all real numbers x, we might recall that there are trigonometric identities called “double angle identities.” We may even remember the correct identity for sin (2x), but if we do not, we can always look it up. We should recall (or find) that
+
+  for all real numbers x, sin(2x) = 2 sin(x)cos(x).
+
+- We could use this identity to argue that the conjecture “for all real numbers x, sin (2x) = 2 sin(x)” is false, but if we do, it is still a good idea to give a specific counterexample as we did before.
+
+- *Cooperation and brainstorming*. Working together is often more fruitful than working alone. When we work with someone else, we can compare notes and articulate our ideas. Thinking out loud is often a useful brainstorming method that helps generate new ideas.
+
+*** Progress Check 1.2: Explorations
+
+Use the techniques of exploration to investigate each of the following statements. Can you make a conjecture as to whether the statement is true or false? Can you determine whether it is true or false?
+
+1. (a + b)^2 = a^2 + b^2, for all real numbers a and b.
+
+2. There are integers x and y such that 2x + 5y = 41.
+
+3. If x is an even integer, then x^2 is an even integer.
+
+4. If x and y are odd integers, then x · y is an odd integer.
+
+** Answer
+
+Add texts here. Do not delete this text first.
+
+** Conditional Statements
+
+One of the most frequently used types of statements in mathematics is the so-called conditional statement. Given statements P and Q, a statement of the form “If P then Q” is called a *conditional statement*. It seems reasonable that the truth value (true or false) of the conditional statement “If P then Q” depends on the truth values of P and Q. The statement “If P then Q” means that Q must be true whenever P is true. The statement P is called the *hypothesis* of the conditional statement, and the statement Q is called the *conclusion* of the conditional statement. Since conditional statements are probably the most important type of statement in mathematics, we give a more formal definition.
+
+*** Definition
+
+A *conditional statement* is a statement that can be written in the form “If P then Q,” where P and Q are sentences. For this conditional statement, P is called the *hypothesis* and Q is called the *conclusion*.
+
+Intuitively, “If P then Q” means that Q must be true whenever P is true. Because conditional statements are used so often, a symbolic shorthand notation is used to represent the conditional statement “If P then Q.” We will use the notation P → Q to represent “If P then Q.” When P and Q are statements, it seems reasonable that the truth value (true or false) of the conditional statement P → Q depends on the truth values of P and Q. There are four cases to consider:
+
+- P is true and Q is true.
+
+- P is false and Q is true.
+
+- P is true and Q is false.
+
+- P is false and Q is false.
+
+The conditional statement P → Q means that Q is true whenever P is true. It says nothing about the truth value of Q when P is false. Using this as a guide, we define the conditional statement P → Q to be false only when P is true and Q is false, that is, only when the hypothesis is true and the conclusion is false. In all other cases, P → Q is true. This is summarized in Table 1.1, which is called a *truth table* for the conditional statement P → Q. (In Table 1.1, T stands for “true” and F stands for “false.”)
+
+| P | Q | P → Q |
+|---|----|-------|
+| T | T | T     |
+| T | F | F     |
+| F | T | T     |
+| F | F | T     |
+
+Table 1.1: Truth Table for P → Q
+
+The important thing to remember is that the conditional statement P → Q has its own truth value. It is either true or false (and not both). Its truth value depends on the truth values for P and Q, but some find it a bit puzzling that the conditional statement is considered to be true when the hypothesis P is false. We will provide a justification for this through the use of an example.
+
+*** Example 1.3
+
+Suppose that I say
+
+“If it is not raining, then Daisy is riding her bike.”
+
+We can represent this conditional statement as P → Q where P is the statement, “It is not raining” and Q is the statement, “Daisy is riding her bike.”
+
+Although it is not a perfect analogy, think of the statement P → Q as being false to mean that I lied and think of the statement P → Q as being true to mean that I did not lie. We will now check the truth value of P → Q based on the truth values of P and Q.
+
+1. Suppose that both P and Q are true. That is, it is not raining and Daisy is riding her bike. In this case, it seems reasonable to say that I told the truth and that P → Q is true.
+
+2. Suppose that P is true and Q is false or that it is not raining and Daisy is not riding her bike. It would appear that by making the statement, “If it is not raining, then Daisy is riding her bike,” that I have not told the truth. So in this case, the statement P → Q is false.
+
+3. Now suppose that P is false and Q is true or that it is raining and Daisy is riding her bike. Did I make a false statement by stating that if it is not raining, then Daisy is riding her bike? The key is that I did not make any statement about what would happen if it was raining, and so I did not tell a lie. So we consider the conditional statement, “If it is not raining, then Daisy is riding her bike,” to be true in the case where it is raining and Daisy is riding her bike.
+
+4. Finally, suppose that both P and Q are false. That is, it is raining and Daisy is not riding her bike. As in the previous situation, since my statement was P → Q, I made no claim about what would happen if it was raining, and so I did not tell a lie. So the statement P → Q cannot be false in this case and so we consider it to be true.
+
+*** Progress Check 1.4: Explorations with Conditional Statements
+
+1. Consider the following sentence:
+
+   If x is a positive real number, then x^2 + 8x is a positive real number.
+
+   Although the hypothesis and conclusion of this conditional sentence are not statements, the conditional sentence itself can be considered to be a statement as long as we know what possible numbers may be used for the variable x. From the context of this sentence, it seems that we can substitute any positive real number for x. We can also substitute 0 for x or a negative real number for x provided that we are willing to work with a false hypothesis in the conditional statement. (In Chapter 2, we will learn how to be more careful and precise with these types of conditional statements.)
+
+   (a) Notice that if x = -3, then x^2 + 8x = -15, which is negative. Does this mean that the given conditional statement is false?
+
+   (b) Notice that if x = 4, then x^2 + 8x = 48, which is positive. Does this mean that the given conditional statement is true?
+
+   (c) Do you think this conditional statement is true or false? Record the results for at least five different examples where the hypothesis of this conditional statement is true.
+
+2. “If n is a positive integer, then n^2 - n +41 is a prime number.” (Remember that a prime number is a positive integer greater than 1 whose only positive factors are 1 and itself.)
+
+   To explore whether or not this statement is true, try using (and recording your results) for n = 1, n = 2, n = 3, n = 4, n = 5, and n = 10. Then record the results for at least four other values of n. Does this conditional statement appear to be true?
+
+** Answer
+
+Add texts here. Do not delete this text first.
+
+** Further Remarks about Conditional Statements
+
+1. The conventions for the truth value of conditional statements may seem a bit strange,especially the fact that the conditional statement is true when the hypothesis of the conditional statement is false. The following example is meant to show that this makes sense.
+   
+   Suppose that Ed has exactly $52 in his wallet. The following four statements will use the four possible truth combinations for the hypothesis and conclusion of a conditional statement.
+
+   - If Ed has exactly $52 in his wallet, then he has $20 in his wallet. This is a true statement. Notice that both the hypothesis and the conclusion are true.
+
+   - If Ed has exactly $52 in his wallet, then he has $100 in his wallet. This statement is false. Notice that the hypothesis is true and the conclusion is false.
+
+   - If Ed has $100 in his wallet, then he has at least $50 in his wallet. This statement is true regardless of how much money he has in his wallet. In this case, the hypothesis is false and the conclusion is true.
+
+   - If Ed has $100 in his wallet, then he has at least $80 in his wallet. This statement is true regardless of how much money he has in his wallet. In this case, the hypothesis is false and the conclusion is false.
+
+   This is admittedly a contrived example but it does illustrate that the conventions for the truth value of a conditional statement make sense. The message is that in order to be complete in mathematics, we need to have conventions about when a conditional statement is true and when it is false.
+
+2. The fact that there is only one case when a conditional statement is false often provides a method to show that a given conditional statement is false. In Progress Check 1.4, you were asked if you thought the following conditional statement was true or false.
+   
+   If n is a positive integer, then (n^2 - n + 41) is a prime number.
+
+   Perhaps for all of the values you tried for n, (n^2 - n + 41) turned out to be a prime number. However, if we try n = 41, we get
+
+   n^2 - n + 41 = 41^2 - 41 + 41
+
+   n^2 - n + 41 = 41^2
+
+   So in the case where n = 41, the hypothesis is true (41 is a positive integer) and the conclusion is false 41^2 is not prime. Therefore, 41 is a counterexample for this conjecture and the conditional statement
+
+   “If n is a positive integer, then (n^2 - n + 41) is a prime number”
+
+   is false. There are other counterexamples (such as n = 42, n = 45, and n = 50), but only one counterexample is needed to prove that the statement is false.
+
+3. Although one example can be used to prove that a conditional statement is false, in most cases, we cannot use examples to prove that a conditional statement is true. For example, in Progress Check 1.4, we substituted values for x for the conditional statement “If x is a positive real number, then x^2 + 8x is a positive real number.” For every positive real number used for x, we saw that x^2 + 8x was positive. However, this does not prove the conditional statement to be true because it is impossible to substitute every positive real number for x. So, although we may believe this statement is true, to be able to conclude it is true, we need to write a mathematical proof. Methods of proof will be discussed in Section 1.2 and Chapter 3.
+
+*** Progress Check 1.5: Working with a Conditional Statement
+
+The following statement is a true statement, which is proven in many calculus texts.
+
+If the function f is differentiable at a, then the function f is continuous at a.
+
+Using only this true statement, is it possible to make a conclusion about the function in each of the following cases?
+
+1. It is known that the function f, where f(x) = sin x, is differentiable at 0.
+
+2. It is known that the function f, where f(x) = ∛x, is not differentiable at 0.
+
+3. It is known that the function f, where f(x) = |x|, is continuous at 0.
+
+4. It is known that the function f, where f(x) = |x|/x is not continuous at 0.
+
+** Answer
+
+Add texts here. Do not delete this text first.
+
+** Closure Properties of Number Systems
+
+The primary number system used in algebra and calculus is the *real number system*. We usually use the symbol R to stand for the set of all real numbers. The real numbers consist of the rational numbers and the irrational numbers. The *rational numbers* are those real numbers that can be written as a quotient of two integers (with a nonzero denominator), and the *irrational numbers* are those real numbers that cannot be written as a quotient of two integers. That is, a rational number can be written in the form of a fraction, and an irrational number cannot be written in the form of a fraction. Some common irrational numbers are √2, π and e. We usually use the symbol ℚ to represent the set of all rational numbers. (The letter ℚ is used because rational numbers are quotients of integers.) There is no standard symbol for the set of all irrational numbers.
+
+Perhaps the most basic number system used in mathematics is the set of *natural numbers*. The natural numbers consist of the positive whole numbers such as 1, 2, 3, 107, and 203. We will use the symbol ℕ to stand for the set of natural numbers. Another basic number system that we will be working with is the set of *integers*. The integers consist of zero, the positive whole numbers, and the negatives of the positive whole numbers. If n is an integer, we can write n = n/1. So each integer is a rational number and hence also a real number.
+
+We will use the letter ℤ to stand for the set of integers. (The letter ℤ is from the German word, Zahlen, for numbers.) Three of the basic properties of the integers are that the set ℤ is *closed under addition*, the set ℤ is *closed under multiplication*, and the set of integers is *closed under subtraction.* This means that
+
+- If x and y are integers, then x + y is an integer;
+
+- If x and y are integers, then x · y is an integer; and
+
+- If x and y are integers, then x - y is an integer.
+
+Notice that these so-called closure properties are defined in terms of conditional statements. This means that if we can find one instance where the hypothesis is true and the conclusion is false, then the conditional statement is false.
+
+*** Example 1.6: Closure
+
+1. In order for the set of natural numbers to be closed under subtraction, the following conditional statement would have to be true: If x and y are natural numbers, then x - y is a natural number. However, since 5 and 8 are natural numbers, 5 - 8 = -3, which is not a natural number, this conditional statement is false. Therefore, the set of natural numbers is not closed under subtraction.
+
+2. We can use the rules for multiplying fractions and the closure rules for the integers to show that the rational numbers are closed under multiplication. If a/b and c/d are rational numbers (so a, b, c, and d are integers and b and d are not zero), then
+
+   a/b · c/d = ac/bd.
+
+   Since the integers are closed under multiplication, we know that ac and bd are integers and since b ≠ 0 and d ≠ 0, bd ≠ 0. Hence, ac/bd is a rational number and this shows that the rational numbers are closed under multiplication.
+
+*** Progress Check 1.7: Closure Properties
+
+Answer each of the following questions.
+
+1. Is the set of rational numbers closed under addition? Explain.
+
+2. Is the set of integers closed under division? Explain.
+
+3. Is the set of rational numbers closed under subtraction? Explain.
+
+** Answer
+
+Add texts here. Do not delete this text first.
+
+** Exercises 1.1
+
+1. Which of the following sentences are statements?
+
+   (a) 3^2 + 4^2 = 5^2.
+
+   (b) a^2 + b^2 = c^2.
+
+   (c) There exist integers a, b, and c such that a^2 + b^2 = c^2.
+
+   (d) If x^2 = 4, then x = 2.
+
+   (e) For each real number x, if x^2 = 4, then x = 2.
+
+   (f) For each real number t, sin^2 t + cos^2 t = 1.
+
+   (g) sin x < sin (π/4).
+
+   (h) If n is a prime number, then n^2 has three positive factors.
+
+   (i) 1 + tan^2 θ = sec^2 θ.
+
+   (j) Every rectangle is a parallelogram.
+
+   (k) Every even natural number greater than or equal to 4 is the sum of two prime numbers.
+
+2. Identify the hypothesis and the conclusion for each of the following conditional statements.
+
+   (a) If n is a prime number, then n^2 has three positive factors.
+
+   (b) If a is an irrational number and b is an irrational number, then a · b is an irrational number.
+
+   (c) If p is a prime number, then p = 2 or p is an odd number.
+
+   (d) If p is a prime number and p ≠ 2, then p is an odd number.
+
+   (e) If p ≠ 2 and p is an even number, then p is not prime.
+
+3. Determine whether each of the following conditional statements is true or false.
+
+   (a) If 10 < 7, then 3 = 4.
+
+   (b) If 7 < 10, then 3 = 4.
+
+   (c) If 10 < 7, then 3 + 5 = 8.
+
+   (d) If 7 < 10, then 3 + 5 = 8.
+
+4. Determine the conditions under which each of the following conditional sentences will be a true statement.
+
+   (a) If a + 2 = 5, then 8 < 5.
+
+   (b) If 5 < 8, then a + 2 = 5.
+
+5. Let P be the statement “Student X passed every assignment in Calculus I,” and let Q be the statement “Student X received a grade of C or better in Calculus I.”
+
+   (a) What does it mean for P to be true? What does it mean for Q to be true?
+
+   (b) Suppose that Student X passed every assignment in Calculus I and received a grade of B-, and that the instructor made the statement P → Q. Would you say that the instructor lied or told the truth?
+
+   (c) Suppose that Student X did not pass two assignments in Calculus I and received a grade of D, and that the instructor made the statement P → Q. Would you say that the instructor lied or told the truth?
+
+   (d) Now suppose that Student X passed every assignment in Calculus I and received a grade of C-, and that the instructor made the statement P → Q. Would you say that the instructor lied or told the truth?
+
+   (e) How are Parts (5b), (5c), and (5d) related to the truth table for P → Q?
+
+6. Following is a statement of a mathematical theorem:
+
+   If h is a function such that h(1) = 2, h(2) = 5, h(3) = 10, h'(1) = 3, h'(2) = 5, and h'(3) = 7, then there exists a number a between 2 and 3 such that h(a) = 2a + 3.
+
+   (a) Rewrite this theorem as a conditional statement in the form of “If P, then Q,” where P is the hypothesis and Q is the conclusion. In so doing, you will need to use the word and since the hypothesis will be a compound statement.
+
+   (b) Assume that the hypothesis of this conditional statement is true. Then use the truth table for a conditional statement to explain why the conclusion must also be true.
+
+7. Determine if each of the following statements is true or false. Provide an explanation for your decision.
+
+   (a) If n, m are integers and n + m is even, then n is even or m is even.
+
+   (b) If n, m are integers and n + m is even, then n is even and m is even.
+
+   (c) If n, m are integers and n · m is even, then n is even or m is even.
+
+   (d) If n, m are integers and n · m is even, then n is even and m is even.
+
+8. The following is a statement of a mathematical definition:
+
+   A quadrilateral is a polygon with four edges and four vertices.
+
+   (a) Rewrite this definition as a conditional statement in the form of “If P, then Q,” where P is the hypothesis and Q is the conclusion.
+
+   (b) Is a square a quadrilateral? Explain.
+
+   (c) Is a rhombus a quadrilateral? Explain.
+
+   (d) Is a parallelogram a quadrilateral? Explain.
+
+9. Explore the Closure Properties.
+
+   (a) Is the set of odd integers closed under addition? Explain.
+
+   (b) Is the set of even integers closed under addition? Explain.
+
+   (c) Is the set of rational numbers closed under division? Explain.
+
+   (d) Is the set of integers closed under multiplication? Explain.
+
+   (e) Is the set of positive real numbers closed under subtraction? Explain.
+
+** Answer
+
+Add texts here. Do not delete this text first.
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
