@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-01-17 Sat 23:42 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-org0ce0959" class="outline-2">
+<h2 id="org0ce0959">Existence and uniqueness</h2>
+<div class="outline-text-2" id="text-org0ce0959">
+<p>
+Apostol is leaning into the foundational <i>Existence and Uniqueness</i>
+property of the real number system. While it might seem like common
+sense—of course \(2 + 3\) is \(5\) &#x2014; in the context of Tom Apostol’s
+rigorous approach, this statement is the first step in defining
+<b><b>Binary Operations</b></b> &#x2014; which we&rsquo;ll explore soon.
+</p>
+
+<p>
+By starting here, Apostol is establishing the <b><b>Field Axioms</b></b>.
+</p>
+
+<hr>
+</div>
+<div id="outline-container-orgb948b55" class="outline-3">
+<h3 id="orgb948b55">1. Addition and Multiplication as Functions</h3>
+<div class="outline-text-3" id="text-orgb948b55">
+<p>
+In higher mathematics, we view addition (\(+\)) and multiplication (\(\cdot\))
+as <b><b>functions</b></b> that take an ordered pair of real numbers and map
+them to a single result. As mentioned earlier, functions in higher
+math have a more exacting definition which we&rsquo;ll only briefly touch
+here.
+</p>
+
+<p>
+Apostol is essentially saying:<label id='fnr.1' for='fnr-in.1.572549' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.572549' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+Quickly described, a <b><b>binary operation</b></b> is any operation on
+<i>two</i> things. Yes, but in grade school we added a whole column of
+numbers. No, you didn&rsquo;t. Technically, you added two numbers, got an
+answer, then added the next number to that <i>augend</i> answer&#x2014;over and
+over. This touches on the <i>recursive</i> nature of math lurking in so
+many places. We&rsquo;ll have <i>lots</i> more fun with recursion later. (Perhaps
+see the Wikipedia on <b><b><a href="https://en.wikipedia.org/wiki/Addition">Addition</a></b></b> for more detail about why adding is
+a binary operation.)
+</span>, <label id='fnr.2' for='fnr-in.2.4993595' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.4993595' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+Don&rsquo;t worry about the <i>tuple</i> \((x,y)\). You&rsquo;ve seen pairs
+(tuples) as points plotted on graphs, i.e., the first number
+represents the x-axis and the second number the y-axis. Here the tuple
+refers to the higher-math definition of a function where, as in the
+algebra graph example, a <b><b>function</b></b> <i>pairs</i> a number from the x-axis
+with a number from the y-axis. A binary operation like adding \(3\) and \(2\)
+would be represented as \((3,2)\).
+</span>
+</p>
+<ul class="org-ul">
+<li><b><b>Binary Operation:</b></b> For every pair \((x, y)\) &#x2014; or in regular
+arithmetic \(x + y\) &#x2014; there is a result.</li>
+<li><b><b>Well-defined:</b></b> The result is <b><b>unique</b></b>. You will never perform
+\(x + y\) and get two different answers.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2dc1f56" class="outline-3">
+<h3 id="org2dc1f56">2. The Property of Closure</h3>
+<div class="outline-text-3" id="text-org2dc1f56">
+<p>
+This assumption also implies <b><b>closure</b></b>. If \(x\) and \(y\) are real
+numbers, the <i>unique</i> result \(x + y\) is also a member of the set of
+real numbers. This ensures that when we do algebra we never &ldquo;fall out
+of&rdquo; or escape the set of real numbers into something undefined. In
+fancy math talk, <i>the <b><b>binary operation</b></b> of addition is <b><b>closed</b></b>
+in the set of real numbers</i>. Again, it just means when you add
+real numbers, you get a real number, not some surprise non-real
+number. This may seem the worst of hair-splitting, but consider
+\(\mathbb{N}\), the &ldquo;natural&rdquo; counting numbers \(1, 2, 3, 4, \ldots\) Now,
+we cannot say there is a closure on binary operation of subtraction,
+since, e.g., \(3 - 4\) is a <i>negative</i> number, i.e., outside the
+counting numbers, which are always positive.
+</p>
+
+<p>
+<b><b>Comparison with Other Operations</b></b>
+</p>
+
+<p>
+To see why uniqueness matters, consider operations that <b><b>don&rsquo;t</b></b>
+always have this property in other contexts:
+</p>
+
+<table id="org9beed48" class="fullwidth">
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b><b>Operation</b></b></td>
+<td class="org-left"><b><b>Unique in \(\mathbb{R}\)?</b></b></td>
+<td class="org-left"><b><b>Reason</b></b></td>
+</tr>
+
+<tr>
+<td class="org-left">Addition (\(x + y\))</td>
+<td class="org-left">Yes</td>
+<td class="org-left">Field Axiom 1</td>
+</tr>
+
+<tr>
+<td class="org-left">Multiplication (\(xy\))</td>
+<td class="org-left">Yes</td>
+<td class="org-left">Field Axiom 1</td>
+</tr>
+
+<tr>
+<td class="org-left">Square Root (\(\sqrt{x}\))</td>
+<td class="org-left">No</td>
+<td class="org-left">\(x^2 = 4\) has two solutions: \(2\) and \(-2\).</td>
+</tr>
+
+<tr>
+<td class="org-left">Division (\(x / y\))</td>
+<td class="org-left">Mostly</td>
+<td class="org-left">Unique <i>except</i> when \(y = 0\) (undefined).</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgfa898cb" class="outline-3">
+<h3 id="orgfa898cb">3. Why Bother Stating the Obvious?</h3>
+<div class="outline-text-3" id="text-orgfa898cb">
+<p>
+It sets the stage for proving everything else. Without the guarantee
+of uniqueness:
+</p>
+
+<ul class="org-ul">
+<li><b><b>Substitution would fail:</b></b> If \(x + y\) could be two different things, you couldn&rsquo;t reliably replace \(x + y\) with a single value in an equation.</li>
+<li><b><b>Equivalence would break:</b></b> We couldn&rsquo;t say \(a = b \implies a + c = b + c\) with absolute certainty.</li>
+</ul>
+
+<p>
+Later we&rsquo;ll get into the most basic laws of arithmetic, namely
+<b><b>Peano&rsquo;s Axioms</b></b><label id='fnr.3' for='fnr-in.3.2232248' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.2232248' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+Imagine you meet seemingly advanced aliens who just landed in a
+fancy space ship. You start communications by writing numbers on a
+board, \(1,2,3,\ldots\), and they eventually understand, but smirk and
+act dismissive. Confused, you ask them to explain how they do simple
+numbers, &ldquo;So tell us what how you would represent \(3\).&rdquo; They write on
+the board \(3 = S(S(S(0)))\). They explain that \(S\) is a <i>successor</i>
+function that gives you &ldquo;the next number,&rdquo; starting with \(S(0) = 1\)
+&#x2026; this is the basis of Peano established. Soon&#x2026;
+</span> and how everything builds up from that. As we
+mentioned in the preface, this is all about <i>logical entailment</i>,
+which is invariably what computers need. Mathematics eventually
+explained in ironclad detail exactly why, e.g., addition works &#x2014;
+<i>addition is a logical consequence of how sets interact</i>. Another way
+to say this is, <i>addition is an <b><b>artefact</b></b> of set interaction</i>,
+which is more mysterious. Think about what this could mean. As an AI
+prompt ask:
+</p>
+
+<blockquote>
+<p>
+Einstein supposedly said &ldquo;Gravity is an artefact of space-time geometry.&rdquo; Can you explain this?
+</p>
+</blockquote>
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

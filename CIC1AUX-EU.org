@@ -1,0 +1,164 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: ComputingInContext1AuxExistUnique.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+# #+STARTUP: latexpreview
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* Existence and uniqueness
+
+Apostol is leaning into the foundational /Existence and Uniqueness/
+property of the real number system. While it might seem like common
+sense—of course $2 + 3$ is $5$ --- in the context of Tom Apostol’s
+rigorous approach, this statement is the first step in defining
+**Binary Operations** --- which we'll explore soon.
+
+By starting here, Apostol is establishing the **Field Axioms**.
+
+-----
+
+** 1. Addition and Multiplication as Functions
+
+In higher mathematics, we view addition ($+$) and multiplication ($\cdot$)
+as **functions** that take an ordered pair of real numbers and map
+them to a single result. As mentioned earlier, functions in higher
+math have a more exacting definition which we'll only briefly touch
+here.
+
+Apostol is essentially saying:[fn:1], [fn:2]
+- **Binary Operation:** For every pair $(x, y)$ --- or in regular
+  arithmetic $x + y$ --- there is a result.
+- **Well-defined:** The result is **unique**. You will never perform
+  $x + y$ and get two different answers.
+
+** 2. The Property of Closure
+
+This assumption also implies **closure**. If $x$ and $y$ are real
+numbers, the /unique/ result $x + y$ is also a member of the set of
+real numbers. This ensures that when we do algebra we never "fall out
+of" or escape the set of real numbers into something undefined. In
+fancy math talk, /the **binary operation** of addition is **closed**
+in the set of real numbers/. Again, it just means when you add
+real numbers, you get a real number, not some surprise non-real
+number. This may seem the worst of hair-splitting, but consider
+$\mathbb{N}$, the "natural" counting numbers $1, 2, 3, 4, \ldots$ Now,
+we cannot say there is a closure on binary operation of subtraction,
+since, e.g., $3 - 4$ is a /negative/ number, i.e., outside the
+counting numbers, which are always positive.
+
+**Comparison with Other Operations**
+
+To see why uniqueness matters, consider operations that **don't**
+always have this property in other contexts:
+
+#+NAME: UETable1
+#+ATTR_HTML: :class fullwidth :center nil
+| **Operation**            | **Unique in $\mathbb{R}$?** | **Reason**                                 |
+| <l>                      | <l>                         | <l>                                        |
+| Addition ($x + y$)       | Yes                         | Field Axiom 1                              |
+| Multiplication ($xy$)    | Yes                         | Field Axiom 1                              |
+| Square Root ($\sqrt{x}$) | No                          | $x^2 = 4$ has two solutions: $2$ and $-2$. |
+| Division ($x / y$)       | Mostly                      | Unique /except/ when $y = 0$ (undefined).  |
+
+
+** 3. Why Bother Stating the Obvious?
+
+It sets the stage for proving everything else. Without the guarantee
+of uniqueness:
+
+- **Substitution would fail:** If $x + y$ could be two different things, you couldn't reliably replace $x + y$ with a single value in an equation.
+- **Equivalence would break:** We couldn't say $a = b \implies a + c = b + c$ with absolute certainty.
+
+Later we'll get into the most basic laws of arithmetic, namely
+**Peano's Axioms**[fn:3] and how everything builds up from that. As we
+mentioned in the preface, this is all about /logical entailment/,
+which is invariably what computers need. Mathematics eventually
+explained in ironclad detail exactly why, e.g., addition works ---
+/addition is a logical consequence of how sets interact/. Another way
+to say this is, /addition is an **artefact** of set interaction/,
+which is more mysterious. Think about what this could mean. As an AI
+prompt ask:
+
+#+begin_quote
+Einstein supposedly said "Gravity is an artefact of space-time geometry." Can you explain this?
+#+end_quote
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] Quickly described, a **binary operation** is any operation on
+/two/ things. Yes, but in grade school we added a whole column of
+numbers. No, you didn't. Technically, you added two numbers, got an
+answer, then added the next number to that /augend/ answer---over and
+over. This touches on the /recursive/ nature of math lurking in so
+many places. We'll have /lots/ more fun with recursion later. (Perhaps
+see the Wikipedia on **[[https://en.wikipedia.org/wiki/Addition][Addition]]** for more detail about why adding is
+a binary operation.)
+
+[fn:2] Don't worry about the /tuple/ $(x,y)$. You've seen pairs
+(tuples) as points plotted on graphs, i.e., the first number
+represents the x-axis and the second number the y-axis. Here the tuple
+refers to the higher-math definition of a function where, as in the
+algebra graph example, a **function** /pairs/ a number from the x-axis
+with a number from the y-axis. A binary operation like adding $3$ and $2$
+would be represented as $(3,2)$.
+
+[fn:3] Imagine you meet seemingly advanced aliens who just landed in a
+fancy space ship. You start communications by writing numbers on a
+board, $1,2,3,\ldots$, and they eventually understand, but smirk and
+act dismissive. Confused, you ask them to explain how they do simple
+numbers, "So tell us what how you would represent $3$." They write on
+the board $3 = S(S(S(0)))$. They explain that $S$ is a /successor/
+function that gives you "the next number," starting with $S(0) = 1$
+... this is the basis of Peano established. Soon...

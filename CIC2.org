@@ -24,7 +24,7 @@
 #+INCLUDE: "./header.org" :minlevel 1
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+EXPORT_FILE_NAME: ComputingInContext1.html
+#+EXPORT_FILE_NAME: ComputingInContext2.html
 #+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
 #+OPTIONS: tex:t
 #+OPTIONS: html-postamble:nil
@@ -54,7 +54,7 @@
 #+html_head_extra: <style> .title { display: none; } </style>
 #+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
 
-* Discrete Mathematics for High School 1
+* Computing in Context 2
 
 \\
 #+begin_figure
@@ -108,7 +108,18 @@ with computers.
 
 ** What is discrete math?
 
-
+#+name: 0d9fda57-b635-43e7-a06c-90b198bb75fb
+#+begin_src scheme :session *littleschemer* :results verbatim :exports both
+(define (decimal-to-binary n)
+;; Converts a non-negative integer n to a binary list (MSB first).
+;; Returns '(0) for n=0.
+  (if (< n 0)
+      (error "Input must be a non-negative integer")
+      (let loop ((num n) (acc '()))
+        (if (= num 0)
+            (if (null? acc) '(0) acc)
+            (loop (quotient num 2) (cons (remainder num 2) acc))))))
+#+end_src
 
 
 ** Axiomatic mathematics

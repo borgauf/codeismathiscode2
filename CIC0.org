@@ -60,10 +60,24 @@
 <span class="cap">Lise Meitner, discoverer of nuclear fission</span>
 #+end_export
 
+# #+begin_epigraph
+# #+begin_quote
+# Das Leben muß nicht leicht sein wenn es nur inhaltsreich ist.\\
+# Life doesn't have to be easy if it's rich in content.\\
+# #+caption: Richard P. Feynman
+# #+end_quote
+# #+end_epigraph
+
 #+begin_quote
 Das Leben muß nicht leicht sein wenn es nur inhaltsreich ist.\\
 Life doesn't have to be easy if it's rich in content.\\
-                                       ---Lise Meitner
+---Lise Meitner
+#+end_quote
+
+#+begin_quote
+Wir müssen wissen, wir werden wissen! \\
+We must know, we will know! \\
+---David Hilbert
 #+end_quote
 
 ** Getting math onto a computer
@@ -508,42 +522,72 @@ risks becoming bogged down in ambiguity and confusion.
 
 ** Bad math
 
-One big, /big/ mistake in the teaching and learning of math,
-especially in the public K-12 world, is /conditioning/. When circus
-masters train (torture) their animals, they simply repeat routines
-over and over (under duress) until the animal finally complies,
-although with no real understanding of what's going on. Does the rat
-being forced to negotiate a maze or the lion to jump through a burning
-hoop know, understand what the idea, the concept, the purpose is?
-No. They're simply in a stimulus-response [[https://en.wikipedia.org/wiki/Behaviorism#21st-century_behaviorism_(behavior_analysis)][behaviorist]] loop.[fn:25]
+The failure of American public school K-12 mathematics would seem to
+be reaching its noisy crescendo. No matter what educators try, nothing
+seems to work, while math test scores keep sinking. And each new
+iteration of curriculum tinkering brings little or no
+improvement---often as not just creates new problems. What has gone
+wrong? What can we do about it?
 
-This sort of behaviorist conditioning can be in the form of /rote/
-learning --- which everyone agrees these days is not the best way. And
-yet we hear math teachers saying over and over, in one form or
-another, @@html:<font color = "#650d1c">@@When you see this, do
-this.@@html:</font>@@ Mathematician [[https://longformmath.com/][Jay Cummings]] calls this /The
-Way/. So in your math class you are shown /The Way/ to solve
-problems. You see The Way used in examples, then The Way is employed
-to solve the exercises at the end of the chapter. And when you see
-problems on a test, you respond by using The Way. But learning math by
-simply piling up as many The Ways as possible rarely leads to any real
-understanding of math, let alone its purpose, let alone its aesthetics
-or beauty.
+One /big/ mistake is /conditioned/ learning. Back in the bad 'ol days
+when circuses trained (tortured) animals to do inane tricks, the
+animals were forced to repeat routines over and over (under duress)
+until they finally complied. But of course the animal never really
+understood the whys, the what's going on. Does the rat being forced to
+negotiate a maze or the lion to jump through a burning hoop know,
+understand what the idea, the concept, the purpose is?  No. They're
+simply placed in a stimulus-response [[https://en.wikipedia.org/wiki/Behaviorism#21st-century_behaviorism_(behavior_analysis)][behaviorist]] loop. Mathematician
+Eugenia Cheng talks about Kindergartners learning the "counting poem,"
+i.e., children being taught to count to ten on their fingers,
+$1,2,3,\ldots$. Now, are they really learning anything of the
+mathematical symbolism of numbers---or are they just imitating,
+rote-learning a group activity? Sure, they're just little kids, and we
+cannot expect much from them. But as they move through the grades the
+symbolism, the abstraction necessary to really understand is never
+brought forth, rather, just more imitation, conditioned responses...
+
+...and so begins years of teachers drilling students with, @@html:<font
+color = "#650d1c">@@When you see this, do this@@html:</font>@@, what
+mathematician [[https://longformmath.com/][Jay Cummings]] calls /The Way/. So in your math class you
+are shown /The Way/ to solve problems. You see The Way used in
+examples, then The Way is employed to solve the exercises at the
+end of the chapter. And when you see problems on a test, you respond
+by using The Way. But learning math by simply piling up as many The
+Ways as possible rarely leads to any real understanding of math, let
+alone its purpose, let alone again its aesthetics or beauty. Students,
+like circus animals, simply become bored and demoralized. By the time
+a student has reached Algebra I they have no experience with actually
+thinking about math, only responding to irksome stimuli.
+
+Another problem is what might be called the "cans on the pantry shelf"
+approach to curriculum. This analogy has math like neat little cans of
+food the teacher takes off the shelf, feeds the class, then makes the
+class regurgitate on a test. Next can... And of course topics in a can
+are designed to march a large class of kids along a very carefully
+constructed and managed, very gradual learning experience that only
+"micro-challenges" a scientifically-determined median student. The
+artificiality, the blandness of this canned, controlled, gradated
+learning all but guarantees a student will never learn to handle
+real-world STEM challenges---such as in the /Hidden Figures/ scenario
+described above.
 
 What's the alternative to rote, behaviorist conditioning, to The Way?
-Better would be concept-based learning, getting above the details into
-carefully constructed, carefully worded, carefully delineated
-generalizations where similarities and patterns can be grouped and
-mentally aggregated into a deeper understanding. Another technique is
-to simply /triangulate/, i.e., hit the problem from different angles,
-not be afraid to see off-beat examples. Yes, The Way is often
-unavoidable, but with careful triangulation, deeper meaning can be
-gleaned. More on all this learning psychology as we progress.
-
-Another great technique is to start at some finished piece of math ---
-and methodically unpack it, go down all the rabbit holes, take into
-account the history, the people behind the supporting
-ideas[fn:26].
+Better would be concept-based learning, getting past stimulus-response
+and not being afraid to roll up our sleeves and take on the actual
+symbolism and abstraction which is the real heart of mathematics. One
+technique is /triangulation/, i.e., hit the problem from different
+angles, not be afraid to see off-beat examples---/until generalities
+become apparent/. Truly, math is the art of abstracting and
+generalizing phenomena. Yes, The Way is often unavoidable, but when we
+place abstraction as the overarching focus, math can become a
+wonderful thing. Is math difficult? Very. But we should not cringe
+away from this fact. One technique is to start at some finished piece
+of math---daunting as it may be---and methodically unpack it, go down
+all the rabbit holes, take into account the history, the people behind
+the supporting ideas.[fn:25] This is all about not being afraid to
+dive into the deep end. As mentioned above, the real world (starting
+at the university) is /all/ deep end, so let's start getting used to
+it.
 
 ** Editorial rant: The precarious state of STEM
 
@@ -559,10 +603,10 @@ students for the ever-growing, evermore-important sector of
 computational math and computer science. Today's incoming college
 Freshmen choosing computer science are confronted with many strange
 and alien concepts they've never seen before, the main one being
-/discrete/ mathematics[fn:27]. Without any previous exposure to the
+/discrete/ mathematics[fn:26]. Without any previous exposure to the
 specialized math of computer science, the first two, three, four
 semesters of a college comp-sci degree are typically a quick-time
-march to catch up[fn:28]. The result is, nation-wide, high
+march to catch up[fn:27]. The result is, nation-wide, high
 drop-out/flunk-out rates in CS departments...
 
 ...but not necessarily at the elite universities with their
@@ -575,16 +619,16 @@ sometimes nothing but a vocational school version of CS. Here we will
 attempt to build an on-ramp to computer-centric math alongside,
 complimented by coding that is, in turn, grounded back into solid math
 and computer science. To accomplish this we'll explore the world of
-discrete math, algorithms,[fn:29] data structures, and numerical
+discrete math, algorithms,[fn:28] data structures, and numerical
 applications parallel to their underlying mathematics.
 
 ** A project-based, real-world approach
 
-No doubt the typical, standard public school K-12 math curriculum is a
-well thought out, gentle and gradual on-ramp for most higher-ed STEM
-studies. But we won't always be so gradual. Often enough we'll be
-"deep end," as in throw you in the. /Sounds brutal/, you say, /Are you
-sure that's the best approach?/
+Yes, the canned public school K-12 math curriculum is a well thought
+out, gentle and gradual on-ramp for most higher-ed STEM studies. But
+as mentioned above, we cannot always be so soft and gradual. Often
+enough we'll be "deep end," as in throw you in the. /Sounds brutal/,
+you say, /Are you sure that's the best approach?/
 
 As approaches go, deep end is pretty much a given in the real STEM
 world. Rarely will a new task or project be something you already know
@@ -592,12 +636,11 @@ everything about, something you can simply shake out of your sleeve in
 no time then go home early. Rather, the STEM real world is all about
 being baffled, out of your depth, overwhelmed --- until you back off,
 take a few breaths, begin to think it through, pick it apart, try this
-and that, do some rabbit-holing and woodshedding[fn:30], ask around if
+and that, do some rabbit-holing and woodshedding[fn:29], ask around if
 anybody else has seen anything similar ... which leads to failures
 then minor successes, followed again by more failures and
-successes... Again, this is how the real STEM world works. The
-difference will be you're not our paid employee, and it's up to you to
-set the pace and deadlines[fn:31].
+successes... This is how the real STEM world works, and it's up to you
+to set the pace and deadlines[fn:30].
 
 ** The journey ahead; where are we going?
 
@@ -613,6 +656,53 @@ say it has gathered around AI. But teaching a computer to really
 think, not just imitate it, has proven to be an elusive goal. To keep
 pace in the Computer Age we must have a good understanding of its
 mathematical and theoretical foundation. Let's start now.
+
+** Guide to reading
+
+This site employs the style of book layout and information display
+developed and popularized by the statistician [[https://en.wikipedia.org/wiki/Edward_Tufte][Edward Tufte]], best known
+for his series of books on statistical information display starting
+with [[https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/][The Visual Display of Quantitative Information]]. This is a
+modified [[https://orgmode.org/][org-mode]] version of the [[https://edwardtufte.github.io/tufte-css/][Tufte CSS]], which was developed for
+producing LaTeX books and websites in the Tufte style.
+
+As you see above, we have two columns---left column larger than the
+right column, the right intended to display footnotes as they appear
+in the text immediately to the right as "sidenotes" for quick
+consumption. As you see, we make liberal use of this feature.
+
+Along with clarifying sidenotes, we sprinkle in links---mainly to
+Wikipedia. These are strictly YMMV---your mileage may vary. That is,
+you can dive as deep as you'd like. Although math and computer science
+on Wikipedia can go deep, so try not to get too intimidated.
+
+A great org-mode feature is being able to embed real working code
+inside an org-mode doc---which is then can be converted into web pages
+as you see here. Often source code will be embedded, surrounded by
+text, in an org-mode doc. These code blocks can then be run inside the
+org-mode doc, which will then display the results under that code
+block. The document might then be processed to copy out or "tangle"
+the code out into another just-code file. We'll lean into this heavily
+as we go along.
+
+In addition, we'll get involved with AI by asking it
+questions. Basically, we'll get in the habit of involving AI as our
+personal tutors. These answers can be saved in the form of org-mode
+docs that can be converted into web pages just like we do with our
+/Computing in Context/ website.
+
+/Computing in Context/ should challenge and enlighten. Probably the
+single most important aspect is all the rabbit holes, side-detours,
+and "math holidays" we will have to take to pull together enough
+knowledge to understand a topic or issue. In addition, we will drop
+bombshells, i.e., we'll routinely jump in the deep end---where you're
+definitely over your head. But then we'll learn to swim, we'll tackle
+the /difficult/ things, slowly pick them apart, finally reaching a
+summary. No, you've probably never encountered this learning style
+before. But don't let it scare you. Real-world STEM is nearly always
+/never done this before/ territory. Persevere and you'll be richly
+rewarded.
+
 
 #+INCLUDE: "./footer.org" :minlevel 1
 
@@ -639,7 +729,7 @@ made. More about all this upcoming.
 [fn:5] ...below, the tuple form $(a,b)$ means /the greatest common
 divisor of $a$ and $b$./
 
-[fn:6] We'll explore **axiomatic mathematics** in great detail as we
+[fn:6] We'll explore **[[https://en.wikipedia.org/wiki/Axiomatic_system][axiomatic mathematics]]** in great detail as we
 go. For now just understand that **axioms** are basic, given truths
 and facts, and **theorems** are derived using the basic axioms to
 explain and justify them.
@@ -722,41 +812,36 @@ is the elephant in the middle of the math classroom.
 complexity, to skip over or sweep something difficult under the
 rug. We will avoid hand-waving at all costs.
 
-[fn:25] Mathematician Eugenia Cheng talks about Kindergartners
-learning the "counting poem." Children are taught to count to ten on
-their fingers, $1,2,3,\ldots$. Now, are they really learning anything
-of the mathematical symbolism of numbers---or are they just imitating,
-rote-learning a group activity?
-
-[fn:26] Watch Sabine Hossenfelder's video on the [[https://youtu.be/A0da8TEeaeE][Principle of Least
+[fn:25] Watch Sabine Hossenfelder's video on the [[https://youtu.be/A0da8TEeaeE][Principle of Least
 Action]]. It's a bit beyond our level, but you get the "unpack, trace it
 back" idea.
 
-[fn:27] We'll learn plenty about discrete math as we go. But for a
+[fn:26] We'll learn plenty about discrete math as we go. But for a
 quick introduction, consider a light switch that goes on or
-off. That's two /discrete/ states. The opposite of discrete would be
-/continuous/. So think of a volume control knob on your radio,
-/continuous/ in that it /continually/ changes, i.e., one /continuous/,
-uninterrupted sweep from soft to loud.
+off. That's two /discrete/ states. Consider an elevator: You go to
+floors with whole numbers, not, e.g., floor 17.0032. The opposite of
+discrete would be /continuous/. So think of a ball rolling on the
+floor. It is in /continuous/ contact with the floor. Or think of a
+volume control knob on your radio, /continually/ changes, i.e., one
+/continuous/, uninterrupted sweep from soft to loud.
 
-[fn:28] Imagine wanting to study math in college after having seen
+[fn:27] Imagine wanting to study math in college after having seen
 absolutely /no/ math K-12. The [[https://en.wikipedia.org/wiki/Common_Core_State_Standards_Initiative][Common Core State Standards Initiative]]
-has taken steps to narrow this gap. Much of their math curriculum
-attempts to expose kids to a discrete math, if not a computer
-algorithm way of seeing math. But in our humble opinion it's far too
-little.
+has taken steps to introduce discrete math ideas, to expose kids to a
+discrete math, if not a computer algorithmic way of seeing math. But
+in our humble opinion it's far too little.
 
-[fn:29] You've no doubt heard of /algorithms/. Very simply put, an
+[fn:28] You've no doubt heard of /algorithms/. Very simply put, an
 algorithm is a set of instructions, imagine perhaps a baking recipe,
 that produces a mathematical cake. In computational math, we're
 basically redoing, reimagining math formulae as algorithms which then
 can run on computers. Lots and lots more about algorithms as we move
 along.
 
-[fn:30] /Woodshedding/ is a jazz music term meaning to learn and
+[fn:29] /Woodshedding/ is a jazz music term meaning to learn and
 practice.
 
-[fn:31] One motivational speaker said there are two kinds of
-people. Those who self-motivate, self-educate, and are able to create
-their own future; and those who wait around for events, circumstances,
-more powerful people to tell, force them what to do.
+[fn:30] One motivational speaker said there are two kinds of
+people. Those who self-motivate, self-educate, and create their own
+future; and those who wait around for events, circumstances, more
+powerful people to tell, force them what to do.
