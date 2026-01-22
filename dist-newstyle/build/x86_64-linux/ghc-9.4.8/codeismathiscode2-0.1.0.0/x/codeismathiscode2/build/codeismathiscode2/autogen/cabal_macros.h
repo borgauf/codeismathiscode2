@@ -10,15 +10,15 @@
   (major1) == 0 && (major2) <  1 || \
   (major1) == 0 && (major2) == 1 && (minor) <= 0)
 #endif /* MIN_VERSION_codeismathiscode2 */
-/* package QuickCheck-2.15.0.1 */
+/* package QuickCheck-2.17.1.0 */
 #ifndef VERSION_QuickCheck
-#define VERSION_QuickCheck "2.15.0.1"
+#define VERSION_QuickCheck "2.17.1.0"
 #endif /* VERSION_QuickCheck */
 #ifndef MIN_VERSION_QuickCheck
 #define MIN_VERSION_QuickCheck(major1,major2,minor) (\
   (major1) <  2 || \
-  (major1) == 2 && (major2) <  15 || \
-  (major1) == 2 && (major2) == 15 && (minor) <= 0)
+  (major1) == 2 && (major2) <  17 || \
+  (major1) == 2 && (major2) == 17 && (minor) <= 1)
 #endif /* MIN_VERSION_QuickCheck */
 /* package algebra-4.3.1 */
 #ifndef VERSION_algebra
@@ -30,15 +30,15 @@
   (major1) == 4 && (major2) <  3 || \
   (major1) == 4 && (major2) == 3 && (minor) <= 1)
 #endif /* MIN_VERSION_algebra */
-/* package algebraic-graphs-0.7 */
+/* package algebraic-graphs-0.8 */
 #ifndef VERSION_algebraic_graphs
-#define VERSION_algebraic_graphs "0.7"
+#define VERSION_algebraic_graphs "0.8"
 #endif /* VERSION_algebraic_graphs */
 #ifndef MIN_VERSION_algebraic_graphs
 #define MIN_VERSION_algebraic_graphs(major1,major2,minor) (\
   (major1) <  0 || \
-  (major1) == 0 && (major2) <  7 || \
-  (major1) == 0 && (major2) == 7 && (minor) <= 0)
+  (major1) == 0 && (major2) <  8 || \
+  (major1) == 0 && (major2) == 8 && (minor) <= 0)
 #endif /* MIN_VERSION_algebraic_graphs */
 /* package base-4.17.2.1 */
 #ifndef VERSION_base
@@ -70,25 +70,25 @@
   (major1) == 0 && (major2) <  6 || \
   (major1) == 0 && (major2) == 6 && (minor) <= 7)
 #endif /* MIN_VERSION_containers */
-/* package diagrams-1.4.1 */
+/* package diagrams-1.4.2 */
 #ifndef VERSION_diagrams
-#define VERSION_diagrams "1.4.1"
+#define VERSION_diagrams "1.4.2"
 #endif /* VERSION_diagrams */
 #ifndef MIN_VERSION_diagrams
 #define MIN_VERSION_diagrams(major1,major2,minor) (\
   (major1) <  1 || \
   (major1) == 1 && (major2) <  4 || \
-  (major1) == 1 && (major2) == 4 && (minor) <= 1)
+  (major1) == 1 && (major2) == 4 && (minor) <= 2)
 #endif /* MIN_VERSION_diagrams */
-/* package extra-1.8 */
+/* package extra-1.8.1 */
 #ifndef VERSION_extra
-#define VERSION_extra "1.8"
+#define VERSION_extra "1.8.1"
 #endif /* VERSION_extra */
 #ifndef MIN_VERSION_extra
 #define MIN_VERSION_extra(major1,major2,minor) (\
   (major1) <  1 || \
   (major1) == 1 && (major2) <  8 || \
-  (major1) == 1 && (major2) == 8 && (minor) <= 0)
+  (major1) == 1 && (major2) == 8 && (minor) <= 1)
 #endif /* MIN_VERSION_extra */
 /* package hmatrix-0.20.2 */
 #ifndef VERSION_hmatrix
@@ -100,15 +100,15 @@
   (major1) == 0 && (major2) <  20 || \
   (major1) == 0 && (major2) == 20 && (minor) <= 2)
 #endif /* MIN_VERSION_hmatrix */
-/* package text-2.1.1 */
+/* package text-2.1.3 */
 #ifndef VERSION_text
-#define VERSION_text "2.1.1"
+#define VERSION_text "2.1.3"
 #endif /* VERSION_text */
 #ifndef MIN_VERSION_text
 #define MIN_VERSION_text(major1,major2,minor) (\
   (major1) <  2 || \
   (major1) == 2 && (major2) <  1 || \
-  (major1) == 2 && (major2) == 1 && (minor) <= 1)
+  (major1) == 2 && (major2) == 1 && (minor) <= 3)
 #endif /* MIN_VERSION_text */
 
 /* tool alex-3.2.7.1 */
@@ -121,15 +121,15 @@
   (major1) == 3 && (major2) <  2 || \
   (major1) == 3 && (major2) == 2 && (minor) <= 7)
 #endif /* MIN_TOOL_VERSION_alex */
-/* tool gcc-12 */
+/* tool gcc-14 */
 #ifndef TOOL_VERSION_gcc
-#define TOOL_VERSION_gcc "12"
+#define TOOL_VERSION_gcc "14"
 #endif /* TOOL_VERSION_gcc */
 #ifndef MIN_TOOL_VERSION_gcc
 #define MIN_TOOL_VERSION_gcc(major1,major2,minor) (\
-  (major1) <  12 || \
-  (major1) == 12 && (major2) <  0 || \
-  (major1) == 12 && (major2) == 0 && (minor) <= 0)
+  (major1) <  14 || \
+  (major1) == 14 && (major2) <  0 || \
+  (major1) == 14 && (major2) == 0 && (minor) <= 0)
 #endif /* MIN_TOOL_VERSION_gcc */
 /* tool ghc-9.4.8 */
 #ifndef TOOL_VERSION_ghc
@@ -211,15 +211,15 @@
   (major1) == 9 && (major2) <  4 || \
   (major1) == 9 && (major2) == 4 && (minor) <= 8)
 #endif /* MIN_TOOL_VERSION_runghc */
-/* tool strip-2.40 */
+/* tool strip-2.44 */
 #ifndef TOOL_VERSION_strip
-#define TOOL_VERSION_strip "2.40"
+#define TOOL_VERSION_strip "2.44"
 #endif /* TOOL_VERSION_strip */
 #ifndef MIN_TOOL_VERSION_strip
 #define MIN_TOOL_VERSION_strip(major1,major2,minor) (\
   (major1) <  2 || \
-  (major1) == 2 && (major2) <  40 || \
-  (major1) == 2 && (major2) == 40 && (minor) <= 0)
+  (major1) == 2 && (major2) <  44 || \
+  (major1) == 2 && (major2) == 44 && (minor) <= 0)
 #endif /* MIN_TOOL_VERSION_strip */
 
 #ifndef CURRENT_COMPONENT_ID

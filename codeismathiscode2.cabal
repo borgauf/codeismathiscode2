@@ -67,7 +67,9 @@ library
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.17.2.1,
+    build-depends:
+    --	base ^>=4.17.2.1,
+    	base >= 4.17 && < 4.19,
         containers
 
     -- Directories containing source files.
@@ -91,7 +93,8 @@ executable codeismathiscode2
 
     -- Other library packages from which modules are imported.
     build-depends:
-        base ^>=4.17.2.1,
+    --  base ^>=4.17.2.1,
+    	base >= 4.17 && < 4.19,
         text >=2.1.1,
         algebra >=4.3.1,
         hmatrix >=0.20.2,
@@ -132,5 +135,6 @@ test-suite codeismathiscode2-test
 
     -- Test dependencies.
     build-depends:
-        base ^>=4.17.2.1,
+     --   base ^>=4.17.2.1,
+     	base >= 4.17 && < 4.19,
         codeismathiscode2

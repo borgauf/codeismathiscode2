@@ -56,46 +56,249 @@
 
 * Existence and uniqueness
 
-Apostol is leaning into the foundational /Existence and Uniqueness/
-property of the real number system. While it might seem like common
-sense—of course $2 + 3$ is $5$ --- in the context of Tom Apostol’s
-rigorous approach, this statement is the first step in defining
-**Binary Operations** --- which we'll explore soon.
+Tom Apostol is being higher-math formal when he speaks of
+**existence** and **uniqueness** in the context of the real number
+system for calculus. But why do we need so much theory just to add two
+numbers and trust that an answer, a /unique/ answer exists? That's our
+intuitive human side talking, based on years of building up working
+assumptions we've never had to explain or back up with solid
+facts. Really? Can't we just go with $2 + 2$ is $4$ and leave it at
+that? Point taken, but now we're going to start nailing down existence
+and uniqueness formally, and in this short, whirlwind tour we'll gain
+some insight into the higher math way of thinking about things,
+uncovering strange twists, correcting misconceptions. We need to
+challenge assumptions, reject hand-waving. Following our major theme,
+/we formalize in order to operationalize/, as well as minding the
+/logical entailment/: This is /derived/ from that; this /implies/
+that. We'll start by talking about what **binary operations** are in a
+higher math way, but just a beginner version scraping the surface,
+leaving a more thorough investigation for later. This will be more of
+a math holiday, but try to follow along, a full development follows...
 
-By starting here, Apostol is establishing the **Field Axioms**.
+**Binary operation --- the simple definition**
+
+The short explanation is surprisingly simple: @@html:<font color =
+"#0d3db3">@@a /binary operation/ is any operation performed on /two/
+things.@@html:</font>@@ That sounds easy enough. Common operations in
+arithmetic are binary. **[[https://en.wikipedia.org/wiki/Addition][Addition]]**[fn:1] is a binary operation. But
+wait, in grade school didn't we add whole, big columns, rows of
+numbers? Yes and no. Technically speaking, you added two numbers, got
+an answer, then added the next number to that /augend/
+answer---repeatedly until everything is totalled up.[fn:2]
 
 -----
 
-** 1. Addition and Multiplication as Functions
+** 1. Addition and multiplication as /functions/
 
-In higher mathematics, we view addition ($+$) and multiplication ($\cdot$)
-as **functions** that take an ordered pair of real numbers and map
-them to a single result. As mentioned earlier, functions in higher
-math have a more exacting definition which we'll only briefly touch
-here.
+Higher mathematics has a more general, universal view of addition and
+multiplication, i.e., @@html:<font color = "#0d3db3">@@they are
+**functions** that take an /ordered pair/ of numbers and maps them to
+a single result@@html:</font>@@.[fn:3] And as mentioned earlier,
+functions in higher math have a more exacting definition, which
+originates in set theory, and, yes, the definition above is talking in
+terms of set theory. But don't worry, for now we'll just be
+tourists...
 
-Apostol is essentially saying:[fn:1], [fn:2]
-- **Binary Operation:** For every pair $(x, y)$ --- or in regular
-  arithmetic $x + y$ --- there is a result.
-- **Well-defined:** The result is **unique**. You will never perform
-  $x + y$ and get two different answers.
+Let's look at an example from the programming world, specifically from
+the programming language [[https://en.wikipedia.org/wiki/Lisp_(programming_language)][Lisp]]. Addition in Lisp looks like this: ~(+ 2
+2)~. What you see is a Lisp **list**, really nothing more than things
+listed inside of parentheses. In Lisp /the first element of a list is
+considered a function/, while the elements after the function are the
+function's input variables, e.g., the list ~(func a b)~ has the
+function ~func~ taking as input ~a~ and ~b~. Again, Lisp programs are
+just lists and only lists, hence, our example ~(+ 2 2)~ can be
+considered an entire Lisp program. So to Lisp ~+~ is truly a function
+in the higher-math sense. Now, how could we write ~(+ a b)~, i.e.,
+adding two numbers together, as a standard algebra function? /In order
+to take two input numbers to add, we would need **two** independent
+variables/, e.g., $f(x,y) = x + y$.
+
+What was your first exposure to functions? Most students first
+encountered the idea of a function graphing line on a Cartesian
+coordinate system plane. Notice, however, that $f(x,y)$ is not like
+the typical line-plotting function, $f(x) = y$. Hold that thought,
+we're coming right back...
+
+So now that we know a little Lisp, what would this Lisp code do, ~(+ 1
+2 3 4)~? Yes, it would be just like adding up a column of four numbers
+like you did in grade school, and it should give ~10~.
+
+\begin{align*}
+  & 1 \\[-3pt]
+  & 2 \\[-3pt]
+  & 3 \\[-3pt]
+  +& 4 \\
+  \hline
+  &\!\! 10
+\end{align*}
+
+Again, let's ask what an algebra function for adding this list of
+numbers would look like. To add up any /four/ numbers let's try
+
+\begin{align*}
+g(w,x,y,z) = w + x + y + z
+\end{align*}
+
+Good, but now we're held to exactly /four/ independent input
+variables, i.e., the function $g$ would only work for adding a column
+of /four/ numbers. Don't we really need something more general, more
+flexible that can take a list, a column of numbers of any size and add
+them?  ... But wait, at this point we seem to be at odds with the rule
+that addition is binary, i.e., that addition can take only two numbers
+at a time.
+
+If Lisp holds strictly to addition is a binary operation, it would
+need a way to add the first /two/ numbers of a longer list, save that
+/augend/, then add the next number, update the augend---doing this
+over and over until done. However, our Lisp code, ~(+ 1 2 3 4)~, just
+on the face of it, doesn't seem to offer a way out. How is Lisp's ~+~
+function even defined? Obviously, we need some way to repeat, cycle,
+iterate until we have everything added to give a final answer. Indeed,
+this is what /recursion/ is about, probably the biggest concept in
+computing. For our Lisp **form**[fn:4] ~(+ 1 2 3 4)~, consider this
+rewrite: ~(+ (+ (+ 1 2) 3) 4)~. This makes addition binary again. Lisp
+parentheses work just like algebra's---work from the deepest nesting
+outward. Behind the scenes Lisp's ~+~ function is doing something just
+like the heavily-parenthesized version.[fn:5] We'll see how later...
+
+Back to Apostol who makes our two main points about addition:
+- **Exists:** For every /pair/ $(x, y)$ of numbers being added, $x +
+  y$, there is an answer, i.e., /a result exists/...
+- **Well-defined:** ...and this guaranteed result is **unique**, i.e.,
+  you will never perform $x + y$ and get two different answers.
+
+All right, so if we take a /pair/ of numbers and add these two
+numbers---we get a result, and this result is unique. Again, this
+seems just too obvious to take serious. But higher math needs to be
+exact. This is all for the sake of logical entailment: @@html:<font
+color = "#0d3db3">@@Uniqueness in this sense is tied directly to the
+binary operation of addition being a /function/ and functions only
+allowing /one/ unique answer to a given input.@@html:</font>@@
+
+Think back when you were told a /vertical/ line on a graph fails the
+so-called /Vertical Line Test/. Why? Again, plugging in any $x$ to a
+function can only result in one, single $y$. Even if we can envision a
+vertical line, say, at $x=4$ on the graph, $(4,y)$, $y$ can be many
+values, your algebra teacher didn't allow this. What? I can draw a
+vertical line---but it's not supposed to be there? One typical reason
+given was /the **slope** of a vertical line cannot be
+ascertained/. Remember how slope is "rise over run"
+$\frac{\Delta{y}}{\Delta{x}}$. With a vertical line we have the undefined
+situation $m = \frac{\Delta{y}}{0}$. Pure logical entailment here...[fn:6]
+
+Realize, however, that the pair $(x,y)$ we're talking about is /not/
+meant as an actual /point/ on a Cartesian coordinate system plane to
+be graphed, but as an abstract point in an abstract plane. We'll
+completely dissect this soon, but let's continue here by looking at an
+example in Haskell that might shed some light on this subtle
+difference
+
+#+name: 72a2e984-b68f-4c7a-8301-55eb9f6d119e
+#+begin_src haskell :results verbatim :exports both
+[(x, y) | x <- [1, 2], y <- ["red", "blue"]]
+#+end_src
+
+When we "evaluate"[fn:7] this code we get
+
+#+RESULTS: 72a2e984-b68f-4c7a-8301-55eb9f6d119e
+: [(1,"red"),(1,"blue"),(2,"red"),(2,"blue")]
+
+So we seem to have four "points" in this abstract plane where one axis
+was just two discrete, separate things $1$ and $2$, and the other
+(perpendicular?) axis was, again, just two discrete things
+$\text{red}$ and $\text{blue}$. Let's see how the Haskell code above
+would be expressed in mathematical set notation[fn:8]
+
+\begin{align*}
+\{ (x, y) \mid x \in \{1, 2\}, \; y \in \{\text{red}, \text{blue}\} \}
+\end{align*}
+
+In both version we see what is probably our /pair/, our /tuple/, and
+indeed it is. Translating into English, @@html:<font color =
+"#0d3db3">@@the /set/ of all possible pairs $(x,y)$ such that the
+first, $x$, comes from the set $\{1,2\}$ and the second, $y$, comes
+from the set $\{\text{red}, \text{blue}\}$@@html:</font>@@. In the
+Haskell output above you see every possible /combination/ of the two
+sets is listed as a pair.[fn:9] We also see in the code that Haskell
+represents sets in curly brackets $\{ \;\; \}$ as /lists/, only that
+Haskell lists are contained in square brackets ~[ ]~.
+
+But then how can we display a vertical line on a graph? As we will
+soon explore, there are functions (strict) and there are /relations/
+(looser).[fn:10] But we need to get serious about set theory to ease
+into this distinction.
+
+Notice the mention of **pair**. A pair $(x,y)$ is also called a
+/tuple/. As we've mentioned, you probably first saw pairs (tuples) of
+numbers as identifying points plotted on graphs, i.e., the first
+number, the /x-coordinate/ represents a place on the x-axis and the
+second number the /y-coordinate/ a place on the y-axis, taken
+together, a point on the two-dimensional plane. But for Apostol the
+tuple refers to the higher-math definition of a function where a
+function /pairs/ together, or **maps** one set of numbers to another
+set of numbers. Yes, $f(x) = x^2$ is a little factory that /makes/
+squares of numbers; but seen from set theory, @@html:<font color =
+"#0d3db3">@@$f(x) = x^2$ is taking a number from the /set/ of real
+numbers and /mapping/ (connecting, joining, pointing, pairing, looping
+back to) another number of that same real number set.@@html:</font>@@
+A binary operation, such as adding $3$ and $2$ together, would have
+the tuple $(3,2)$, the first and second numbers coming from the set of
+all real numbers $\mathbb{R}$. That is, addition in the higher math
+world is a binary operation that "maps" a tuple, $(a,b)$, through
+addition to another real number.
+
+\begin{align}
+(a,b) \mapsto a + b
+\end{align}
+
+Stare at (1) a bit. Mull over the above wording. But then let's back
+up to plotting points on a plane from algebra. The typical expression
+when graphing was $f(x) = y$, e.g., $f(x) = x^2$, or, confusingly, $y
+= x^2$ for plotting a parabola. Be mindful that we're dealing with an
+x-dimension and a y-dimension of a 2-dimensional plane. Now, how is
+this different from our first stab at an algebra function for adding
+two numbers, i.e., $g(x,y) = x + y$? The problem lies with the fact
+that $f(x) = y$ is /not/ mapping $x$ /and/ $y$ to a new unique $z$. We
+are not doing $z = g(x,y); instead, a function like $f(x) = x^2$ is
+/mapping/ the $x$ value to a $y$ value. This is actually /not/ a
+binary operation, rather, a **unary** operation, i.e., a /single/
+variable is being mapped to a value. Hence, with our new notation
+$f(x) = x^2$ would be $f: x \mapsto x^2$. Yes, a Cartesian coordinate
+system is working with pairs, i.e., each point is $(x,y)$, but in
+reality the pairs are actually $(x,f(x))$ since $y = f(x)$. Recapping,
+in our new notation we will see
+
+\begin{align} f &: \mathbb{R} \rightarrow \mathbb{R}, \;where\; x \mapsto x^2 \\
+g &: \mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}, \;where\; (x,y) \mapsto x + y = z \end{align}
+
+Again, we'll cover this in depth later, but $\mathbb{R} \times \mathbb{R} \rightarrow
+\mathbb{R}$ just means we take /two/ numbers from the set of real
+numbers and get a /third/ number from the set of real numbers. On the
+other hand, $\mathbb{R} \rightarrow \mathbb{R}$ means we take /one/ number from
+the set of real numbers and get a /second/ number.
+
 
 ** 2. The Property of Closure
 
-This assumption also implies **closure**. If $x$ and $y$ are real
-numbers, the /unique/ result $x + y$ is also a member of the set of
-real numbers. This ensures that when we do algebra we never "fall out
-of" or escape the set of real numbers into something undefined. In
-fancy math talk, /the **binary operation** of addition is **closed**
-in the set of real numbers/. Again, it just means when you add
-real numbers, you get a real number, not some surprise non-real
-number. This may seem the worst of hair-splitting, but consider
-$\mathbb{N}$, the "natural" counting numbers $1, 2, 3, 4, \ldots$ Now,
-we cannot say there is a closure on binary operation of subtraction,
-since, e.g., $3 - 4$ is a /negative/ number, i.e., outside the
-counting numbers, which are always positive.
+Existence and uniqueness also involve the higher-math concept of
+**closure**. For example, if $x$ and $y$ are real numbers, the
+/unique/ result $x + y$ is also a member of the set of real
+numbers. Seems obvious, no? But it turns out we can't just /assume/
+this.
 
-**Comparison with Other Operations**
+Closure ensures that when we do math like addition we never "fall out
+of" or escape the set of real numbers into some other sort of numbers
+undefined. In higher-math talk we would say, /The **binary operation**
+of addition is **closed** in the set of real numbers/. Again, it just
+means when you add real numbers, you get a real number, not some
+surprise non-real number. This may seem like the worst of
+hair-splitting yet, but consider $\mathbb{N}$, the "natural" counting
+numbers $1, 2, 3, 4, \ldots$ Now, we cannot say there is a closure on
+binary operation of subtraction, since, e.g., $3 - 4$ gives us a
+/negative/ number, i.e., outside the counting numbers, which are
+always positive.[fn:11]
+
+** Comparison with Other Operations
 
 To see why uniqueness matters, consider operations that **don't**
 always have this property in other contexts:
@@ -109,56 +312,110 @@ always have this property in other contexts:
 | Square Root ($\sqrt{x}$) | No                          | $x^2 = 4$ has two solutions: $2$ and $-2$. |
 | Division ($x / y$)       | Mostly                      | Unique /except/ when $y = 0$ (undefined).  |
 
+Yes, the square root highlights how uniqueness must be nailed
+down---and it's a common mistake to forget that taking a square root
+will produce both a negative and positive possible roots. But then
+we're prejudiced toward the /principle/ root, i.e., the positive root,
+e.g., $\surd 9 = 3$, while $\sqrt{9} = \pm3$.[fn:12]
 
-** 3. Why Bother Stating the Obvious?
 
-It sets the stage for proving everything else. Without the guarantee
-of uniqueness:
+** 3. Why bother stating such obvious things?
+
+Because it sets the stage for proving everything else. /Higher math
+attacks our hazy, prejudiced, inexact assumptions with rigor/. Without
+the guarantee of uniqueness:
 
 - **Substitution would fail:** If $x + y$ could be two different things, you couldn't reliably replace $x + y$ with a single value in an equation.
 - **Equivalence would break:** We couldn't say $a = b \implies a + c = b + c$ with absolute certainty.
 
-Later we'll get into the most basic laws of arithmetic, namely
-**Peano's Axioms**[fn:3] and how everything builds up from that. As we
-mentioned in the preface, this is all about /logical entailment/,
-which is invariably what computers need. Mathematics eventually
-explained in ironclad detail exactly why, e.g., addition works ---
-/addition is a logical consequence of how sets interact/. Another way
-to say this is, /addition is an **artefact** of set interaction/,
-which is more mysterious. Think about what this could mean. As an AI
-prompt ask:
+Later we'll tackle one the most basic sets of laws in mathematics,
+namely **Peano's Axioms**[fn:13] and how everything builds up from
+that. As we mentioned in the preface, this is all about /logical
+entailment/, which is invariably what computers need. Mathematics
+eventually explained in ironclad detail exactly why, e.g., addition
+works --- /addition is a logical consequence of how sets
+interact/. Another way to say this is, /addition is an **artefact** of
+set interaction/, which is definitely more mysterious. Even worse,
+Grok says: /Addition is the canonical binary operation satisfying the
+group axioms on the set/. This is a long way from just doing
+arithmetic in grade school with pencil and paper. Before we're
+through, we'll understand what all this means. As an assignment, use
+this AI prompt to ask:
 
 #+begin_quote
-Einstein supposedly said "Gravity is an artefact of space-time geometry." Can you explain this?
+Einstein supposedly said "Gravity is an **artefact** of space-time geometry." Can you explain this?
 #+end_quote
+
+When we get better at abstraction, we're well on our way to
+understanding why math formalism meshes so well with computer
+operationalization.
 
 
 #+INCLUDE: "./footer.org" :minlevel 1
 
 * Footnotes
 
-[fn:1] Quickly described, a **binary operation** is any operation on
-/two/ things. Yes, but in grade school we added a whole column of
-numbers. No, you didn't. Technically, you added two numbers, got an
-answer, then added the next number to that /augend/ answer---over and
-over. This touches on the /recursive/ nature of math lurking in so
-many places. We'll have /lots/ more fun with recursion later. (Perhaps
-see the Wikipedia on **[[https://en.wikipedia.org/wiki/Addition][Addition]]** for more detail about why adding is
-a binary operation.)
+[fn:1] Maybe glance over the Wikipedia link to read up on some of the
+details of addition.
 
-[fn:2] Don't worry about the /tuple/ $(x,y)$. You've seen pairs
-(tuples) as points plotted on graphs, i.e., the first number
-represents the x-axis and the second number the y-axis. Here the tuple
-refers to the higher-math definition of a function where, as in the
-algebra graph example, a **function** /pairs/ a number from the x-axis
-with a number from the y-axis. A binary operation like adding $3$ and $2$
-would be represented as $(3,2)$.
+[fn:2] This touches on the /recursive/ nature of math lurking in so
+many places. We'll have /lots/ of fun with recursion later.
 
-[fn:3] Imagine you meet seemingly advanced aliens who just landed in a
+[fn:3] Why a pair? Because it's a __binary__, two inputs
+operation. And it's ordered because sometimes it matters which is
+first and which is second, not with addition (due to commutativity),
+but in other instances. Read on.
+
+[fn:4] A **form** refers to any valid piece of code (an expression)
+that can be evaluated by the language's evaluator to produce a
+value. We'll get into detail about what an expression in the math
+world is later.
+
+[fn:5] It looks like we started from the left of the list of elements
+and worked our way two at a time to the right. But we could have
+started from the right and gone left. Perhaps write down how the
+parentheses would have look computing right-to-left.
+
+[fn:6] Which came first, "a negative times a negative is a positive"
+or the Distributive Property of binomials? Consider $7 \cdot 7 = 49$. We
+could rewrite this as $(9 - 2)(9 - 2) = 49$. But then expanding
+according to the square of differences, $(a+b)^2 = a^2 -2ab + b^2$, we
+have $81 - 2(18) + (-2 \cdot -2)$ giving $45 + (-2 \cdot -2)$. Now, to get
+$49$ we must have $(-2 \cdot -2) = 4$. Is this "proof" of a negative times
+a negative is a positive? Welcome to the land of logical entailment...
+
+[fn:7] Fancy but exact way of saying /run/ the code. Haskell isn't
+/running/ code, it is /evaluating expressions/. Details later...
+
+[fn:8] Don't worry, we'll go into detail about set theory and its set
+notation shorthand soon. Just try to read it.
+
+[fn:9]  The math symbol for "in" or "of" is $\in$, i.e., $x \in \{1,2\}$
+means $x$ in the set $\{1,2\}$. Haskell duplicates this visually with
+~<-~.
+
+[fn:10] Strangely enough, some pre-calculus texts do go into basic set
+theory and the difference between a /relation/ and a
+/function/. However, at this level they typically hand-wave. The
+exception is Stitz and Zeager's Precalculus which states /A
+**relation** is a set of points in the plane/, then /a **function** is
+a relation.../ ...restricted to that set of points that do not map
+some number in the domain to more than one number in the range.
+
+[fn:11] We will explore the different types of numbers (natural,
+integer, rational, real, complex) and not just assume real numbers as
+does high school algebra and calculus.
+
+[fn:12] There is a great example of why we should /not/ be
+mathematically prejudiced toward positive roots behind the story of
+how we discovered antimatter. See [[https://youtu.be/Y-W-w8yNiKU?si=FX2T2AAXycOGegnf][The Man Who Accidentally Discovered
+Antimatter]].
+
+[fn:13] Imagine you meet seemingly advanced aliens who just landed in a
 fancy space ship. You start communications by writing numbers on a
 board, $1,2,3,\ldots$, and they eventually understand, but smirk and
 act dismissive. Confused, you ask them to explain how they do simple
-numbers, "So tell us what how you would represent $3$." They write on
-the board $3 = S(S(S(0)))$. They explain that $S$ is a /successor/
+numbers, "So tell us how you would represent $3$." They write on the
+board $3 = S(S(S(0)))$. They explain that $S$ is a /successor/
 function that gives you "the next number," starting with $S(0) = 1$
-... this is the basis of Peano established. Soon...
+... the aliens are using Peano's numbering. Soon...

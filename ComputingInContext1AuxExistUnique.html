@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2026-01-17 Sat 23:42 -->
+<!-- 2026-01-22 Thu 12:42 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -291,90 +291,364 @@ pre.example {clear: none; }
 </nav>
 </div>
 </p>
-<section id="outline-container-org0ce0959" class="outline-2">
-<h2 id="org0ce0959">Existence and uniqueness</h2>
-<div class="outline-text-2" id="text-org0ce0959">
+<section id="outline-container-org7f6f53b" class="outline-2">
+<h2 id="org7f6f53b">Existence and uniqueness</h2>
+<div class="outline-text-2" id="text-org7f6f53b">
 <p>
-Apostol is leaning into the foundational <i>Existence and Uniqueness</i>
-property of the real number system. While it might seem like common
-sense—of course \(2 + 3\) is \(5\) &#x2014; in the context of Tom Apostol’s
-rigorous approach, this statement is the first step in defining
-<b><b>Binary Operations</b></b> &#x2014; which we&rsquo;ll explore soon.
+Tom Apostol is being higher-math formal when he speaks of
+<b><b>existence</b></b> and <b><b>uniqueness</b></b> in the context of the real number
+system for calculus. But why do we need so much theory just to add two
+numbers and trust that an answer, a <i>unique</i> answer exists? That&rsquo;s our
+intuitive human side talking, based on years of building up working
+assumptions we&rsquo;ve never had to explain or back up with solid
+facts. Really? Can&rsquo;t we just go with \(2 + 2\) is \(4\) and leave it at
+that? Point taken, but now we&rsquo;re going to start nailing down existence
+and uniqueness formally, and in this short, whirlwind tour we&rsquo;ll gain
+some insight into the higher math way of thinking about things,
+uncovering strange twists, correcting misconceptions. We need to
+challenge assumptions, reject hand-waving. Following our major theme,
+<i>we formalize in order to operationalize</i>, as well as minding the
+<i>logical entailment</i>: This is <i>derived</i> from that; this <i>implies</i>
+that. We&rsquo;ll start by talking about what <b><b>binary operations</b></b> are in a
+higher math way, but just a beginner version scraping the surface,
+leaving a more thorough investigation for later. This will be more of
+a math holiday, but try to follow along, a full development follows&#x2026;
 </p>
 
 <p>
-By starting here, Apostol is establishing the <b><b>Field Axioms</b></b>.
+<b><b>Binary operation &#x2014; the simple definition</b></b>
+</p>
+
+<p>
+The short explanation is surprisingly simple: <font color =
+"#0d3db3">a <i>binary operation</i> is any operation performed on <i>two</i>
+things.</font> That sounds easy enough. Common operations in
+arithmetic are binary. <b><b><a href="https://en.wikipedia.org/wiki/Addition">Addition</a></b></b><label id='fnr.1' for='fnr-in.1.2856921' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.2856921' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+Maybe glance over the Wikipedia link to read up on some of the
+details of addition.
+</span> is a binary operation. But
+wait, in grade school didn&rsquo;t we add whole, big columns, rows of
+numbers? Yes and no. Technically speaking, you added two numbers, got
+an answer, then added the next number to that <i>augend</i>
+answer&#x2014;repeatedly until everything is totalled up.<label id='fnr.2' for='fnr-in.2.572549' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.572549' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+This touches on the <i>recursive</i> nature of math lurking in so
+many places. We&rsquo;ll have <i>lots</i> of fun with recursion later.
+</span>
 </p>
 
 <hr>
 </div>
-<div id="outline-container-orgb948b55" class="outline-3">
-<h3 id="orgb948b55">1. Addition and Multiplication as Functions</h3>
-<div class="outline-text-3" id="text-orgb948b55">
+<div id="outline-container-org1520f12" class="outline-3">
+<h3 id="org1520f12">1. Addition and multiplication as <i>functions</i></h3>
+<div class="outline-text-3" id="text-org1520f12">
 <p>
-In higher mathematics, we view addition (\(+\)) and multiplication (\(\cdot\))
-as <b><b>functions</b></b> that take an ordered pair of real numbers and map
-them to a single result. As mentioned earlier, functions in higher
-math have a more exacting definition which we&rsquo;ll only briefly touch
-here.
+Higher mathematics has a more general, universal view of addition and
+multiplication, i.e., <font color = "#0d3db3">they are
+<b><b>functions</b></b> that take an <i>ordered pair</i> of numbers and maps them to
+a single result</font>.<label id='fnr.3' for='fnr-in.3.1716693' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.1716693' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+Why a pair? Because it&rsquo;s a <span class="underline"><span class="underline">binary</span></span>, two inputs
+operation. And it&rsquo;s ordered because sometimes it matters which is
+first and which is second, not with addition (due to commutativity),
+but in other instances. Read on.
+</span> And as mentioned earlier,
+functions in higher math have a more exacting definition, which
+originates in set theory, and, yes, the definition above is talking in
+terms of set theory. But don&rsquo;t worry, for now we&rsquo;ll just be
+tourists&#x2026;
 </p>
 
 <p>
-Apostol is essentially saying:<label id='fnr.1' for='fnr-in.1.572549' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.572549' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
-Quickly described, a <b><b>binary operation</b></b> is any operation on
-<i>two</i> things. Yes, but in grade school we added a whole column of
-numbers. No, you didn&rsquo;t. Technically, you added two numbers, got an
-answer, then added the next number to that <i>augend</i> answer&#x2014;over and
-over. This touches on the <i>recursive</i> nature of math lurking in so
-many places. We&rsquo;ll have <i>lots</i> more fun with recursion later. (Perhaps
-see the Wikipedia on <b><b><a href="https://en.wikipedia.org/wiki/Addition">Addition</a></b></b> for more detail about why adding is
-a binary operation.)
-</span>, <label id='fnr.2' for='fnr-in.2.4993595' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.4993595' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
-Don&rsquo;t worry about the <i>tuple</i> \((x,y)\). You&rsquo;ve seen pairs
-(tuples) as points plotted on graphs, i.e., the first number
-represents the x-axis and the second number the y-axis. Here the tuple
-refers to the higher-math definition of a function where, as in the
-algebra graph example, a <b><b>function</b></b> <i>pairs</i> a number from the x-axis
-with a number from the y-axis. A binary operation like adding \(3\) and \(2\)
-would be represented as \((3,2)\).
-</span>
+Let&rsquo;s look at an example from the programming world, specifically from
+the programming language <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp</a>. Addition in Lisp looks like this: <code>(+ 2
+2)</code>. What you see is a Lisp <b><b>list</b></b>, really nothing more than things
+listed inside of parentheses. In Lisp <i>the first element of a list is
+considered a function</i>, while the elements after the function are the
+function&rsquo;s input variables, e.g., the list <code>(func a b)</code> has the
+function <code>func</code> taking as input <code>a</code> and <code>b</code>. Again, Lisp programs are
+just lists and only lists, hence, our example <code>(+ 2 2)</code> can be
+considered an entire Lisp program. So to Lisp <code>+</code> is truly a function
+in the higher-math sense. Now, how could we write <code>(+ a b)</code>, i.e.,
+adding two numbers together, as a standard algebra function? <i>In order
+to take two input numbers to add, we would need <b><b>two</b></b> independent
+variables</i>, e.g., \(f(x,y) = x + y\).
+</p>
+
+<p>
+What was your first exposure to functions? Most students first
+encountered the idea of a function graphing line on a Cartesian
+coordinate system plane. Notice, however, that \(f(x,y)\) is not like
+the typical line-plotting function, \(f(x) = y\). Hold that thought,
+we&rsquo;re coming right back&#x2026;
+</p>
+
+<p>
+So now that we know a little Lisp, what would this Lisp code do, <code>(+ 1
+2 3 4)</code>? Yes, it would be just like adding up a column of four numbers
+like you did in grade school, and it should give <code>10</code>.
+</p>
+
+\begin{align*}
+  & 1 \\[-3pt]
+  & 2 \\[-3pt]
+  & 3 \\[-3pt]
+  +& 4 \\
+  \hline
+  &\!\! 10
+\end{align*}
+
+<p>
+Again, let&rsquo;s ask what an algebra function for adding this list of
+numbers would look like. To add up any <i>four</i> numbers let&rsquo;s try
+</p>
+
+\begin{align*}
+g(w,x,y,z) = w + x + y + z
+\end{align*}
+
+<p>
+Good, but now we&rsquo;re held to exactly <i>four</i> independent input
+variables, i.e., the function \(g\) would only work for adding a column
+of <i>four</i> numbers. Don&rsquo;t we really need something more general, more
+flexible that can take a list, a column of numbers of any size and add
+them?  &#x2026; But wait, at this point we seem to be at odds with the rule
+that addition is binary, i.e., that addition can take only two numbers
+at a time.
+</p>
+
+<p>
+If Lisp holds strictly to addition is a binary operation, it would
+need a way to add the first <i>two</i> numbers of a longer list, save that
+<i>augend</i>, then add the next number, update the augend&#x2014;doing this
+over and over until done. However, our Lisp code, <code>(+ 1 2 3 4)</code>, just
+on the face of it, doesn&rsquo;t seem to offer a way out. How is Lisp&rsquo;s <code>+</code>
+function even defined? Obviously, we need some way to repeat, cycle,
+iterate until we have everything added to give a final answer. Indeed,
+this is what <i>recursion</i> is about, probably the biggest concept in
+computing. For our Lisp <b><b>form</b></b><label id='fnr.4' for='fnr-in.4.5738824' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.5738824' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+A <b><b>form</b></b> refers to any valid piece of code (an expression)
+that can be evaluated by the language&rsquo;s evaluator to produce a
+value. We&rsquo;ll get into detail about what an expression in the math
+world is later.
+</span> <code>(+ 1 2 3 4)</code>, consider this
+rewrite: <code>(+ (+ (+ 1 2) 3) 4)</code>. This makes addition binary again. Lisp
+parentheses work just like algebra&rsquo;s&#x2014;work from the deepest nesting
+outward. Behind the scenes Lisp&rsquo;s <code>+</code> function is doing something just
+like the heavily-parenthesized version.<label id='fnr.5' for='fnr-in.5.9481302' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.9481302' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+It looks like we started from the left of the list of elements
+and worked our way two at a time to the right. But we could have
+started from the right and gone left. Perhaps write down how the
+parentheses would have look computing right-to-left.
+</span> We&rsquo;ll see how later&#x2026;
+</p>
+
+<p>
+Back to Apostol who makes our two main points about addition:
 </p>
 <ul class="org-ul">
-<li><b><b>Binary Operation:</b></b> For every pair \((x, y)\) &#x2014; or in regular
-arithmetic \(x + y\) &#x2014; there is a result.</li>
-<li><b><b>Well-defined:</b></b> The result is <b><b>unique</b></b>. You will never perform
-\(x + y\) and get two different answers.</li>
+<li><b><b>Exists:</b></b> For every <i>pair</i> \((x, y)\) of numbers being added, \(x +
+  y\), there is an answer, i.e., <i>a result exists</i>&#x2026;</li>
+<li><b><b>Well-defined:</b></b> &#x2026;and this guaranteed result is <b><b>unique</b></b>, i.e.,
+you will never perform \(x + y\) and get two different answers.</li>
 </ul>
-</div>
-</div>
-<div id="outline-container-org2dc1f56" class="outline-3">
-<h3 id="org2dc1f56">2. The Property of Closure</h3>
-<div class="outline-text-3" id="text-org2dc1f56">
+
 <p>
-This assumption also implies <b><b>closure</b></b>. If \(x\) and \(y\) are real
-numbers, the <i>unique</i> result \(x + y\) is also a member of the set of
-real numbers. This ensures that when we do algebra we never &ldquo;fall out
-of&rdquo; or escape the set of real numbers into something undefined. In
-fancy math talk, <i>the <b><b>binary operation</b></b> of addition is <b><b>closed</b></b>
-in the set of real numbers</i>. Again, it just means when you add
-real numbers, you get a real number, not some surprise non-real
-number. This may seem the worst of hair-splitting, but consider
-\(\mathbb{N}\), the &ldquo;natural&rdquo; counting numbers \(1, 2, 3, 4, \ldots\) Now,
-we cannot say there is a closure on binary operation of subtraction,
-since, e.g., \(3 - 4\) is a <i>negative</i> number, i.e., outside the
-counting numbers, which are always positive.
+All right, so if we take a <i>pair</i> of numbers and add these two
+numbers&#x2014;we get a result, and this result is unique. Again, this
+seems just too obvious to take serious. But higher math needs to be
+exact. This is all for the sake of logical entailment: <font
+color = "#0d3db3">Uniqueness in this sense is tied directly to the
+binary operation of addition being a <i>function</i> and functions only
+allowing <i>one</i> unique answer to a given input.</font>
 </p>
 
 <p>
-<b><b>Comparison with Other Operations</b></b>
+Think back when you were told a <i>vertical</i> line on a graph fails the
+so-called <i>Vertical Line Test</i>. Why? Again, plugging in any \(x\) to a
+function can only result in one, single \(y\). Even if we can envision a
+vertical line, say, at \(x=4\) on the graph, \((4,y)\), \(y\) can be many
+values, your algebra teacher didn&rsquo;t allow this. What? I can draw a
+vertical line&#x2014;but it&rsquo;s not supposed to be there? One typical reason
+given was <i>the <b><b>slope</b></b> of a vertical line cannot be
+ascertained</i>. Remember how slope is &ldquo;rise over run&rdquo;
+\(\frac{\Delta{y}}{\Delta{x}}\). With a vertical line we have the undefined
+situation \(m = \frac{\Delta{y}}{0}\). Pure logical entailment here&#x2026;<label id='fnr.6' for='fnr-in.6.2232248' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.2232248' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+Which came first, &ldquo;a negative times a negative is a positive&rdquo;
+or the Distributive Property of binomials? Consider \(7 \cdot 7 = 49\). We
+could rewrite this as \((9 - 2)(9 - 2) = 49\). But then expanding
+according to the square of differences, \((a+b)^2 = a^2 -2ab + b^2\), we
+have \(81 - 2(18) + (-2 \cdot -2)\) giving \(45 + (-2 \cdot -2)\). Now, to get
+\(49\) we must have \((-2 \cdot -2) = 4\). Is this &ldquo;proof&rdquo; of a negative times
+a negative is a positive? Welcome to the land of logical entailment&#x2026;
+</span>
 </p>
 
+<p>
+Realize, however, that the pair \((x,y)\) we&rsquo;re talking about is <i>not</i>
+meant as an actual <i>point</i> on a Cartesian coordinate system plane to
+be graphed, but as an abstract point in an abstract plane. We&rsquo;ll
+completely dissect this soon, but let&rsquo;s continue here by looking at an
+example in Haskell that might shed some light on this subtle
+difference
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org7161a33"><span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">(</span>x, y<span style="color: #93a8c6;">)</span> <span style="color: #61afef;">|</span> x <span style="color: #61afef;">&lt;-</span> <span style="color: #93a8c6;">[</span>1, 2<span style="color: #93a8c6;">]</span>, y <span style="color: #61afef;">&lt;-</span> <span style="color: #93a8c6;">[</span><span style="color: #98be65;">"red"</span>, <span style="color: #98be65;">"blue"</span><span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>
+</pre>
+</div>
+
+<p>
+When we &ldquo;evaluate&rdquo;<label id='fnr.7' for='fnr-in.7.852288' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.852288' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+Fancy but exact way of saying <i>run</i> the code. Haskell isn&rsquo;t
+<i>running</i> code, it is <i>evaluating expressions</i>. Details later&#x2026;
+</span> this code we get
+</p>
+
+<pre class="example">
+[(1,"red"),(1,"blue"),(2,"red"),(2,"blue")]
+</pre>
+
+
+<p>
+So we seem to have four &ldquo;points&rdquo; in this abstract plane where one axis
+was just two discrete, separate things \(1\) and \(2\), and the other
+(perpendicular?) axis was, again, just two discrete things
+\(\text{red}\) and \(\text{blue}\). Let&rsquo;s see how the Haskell code above
+would be expressed in mathematical set notation<label id='fnr.8' for='fnr-in.8.9214321' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.9214321' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+Don&rsquo;t worry, we&rsquo;ll go into detail about set theory and its set
+notation shorthand soon. Just try to read it.
+</span>
+</p>
+
+\begin{align*}
+\{ (x, y) \mid x \in \{1, 2\}, \; y \in \{\text{red}, \text{blue}\} \}
+\end{align*}
+
+<p>
+In both version we see what is probably our <i>pair</i>, our <i>tuple</i>, and
+indeed it is. Translating into English, <font color =
+"#0d3db3">the <i>set</i> of all possible pairs \((x,y)\) such that the
+first, \(x\), comes from the set \(\{1,2\}\) and the second, \(y\), comes
+from the set \(\{\text{red}, \text{blue}\}\)</font>. In the
+Haskell output above you see every possible <i>combination</i> of the two
+sets is listed as a pair.<label id='fnr.9' for='fnr-in.9.1471703' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.1471703' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+The math symbol for &ldquo;in&rdquo; or &ldquo;of&rdquo; is \(\in\), i.e., \(x \in \{1,2\}\)
+means \(x\) in the set \(\{1,2\}\). Haskell duplicates this visually with
+<code>&lt;-</code>.
+</span> We also see in the code that Haskell
+represents sets in curly brackets \(\{ \;\; \}\) as <i>lists</i>, only that
+Haskell lists are contained in square brackets <code>[ ]</code>.
+</p>
+
+<p>
+But then how can we display a vertical line on a graph? As we will
+soon explore, there are functions (strict) and there are <i>relations</i>
+(looser).<label id='fnr.10' for='fnr-in.10.9670868' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.9670868' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
+Strangely enough, some pre-calculus texts do go into basic set
+theory and the difference between a <i>relation</i> and a
+<i>function</i>. However, at this level they typically hand-wave. The
+exception is Stitz and Zeager&rsquo;s Precalculus which states <i>A
+<b><b>relation</b></b> is a set of points in the plane</i>, then <i>a <b><b>function</b></b> is
+a relation&#x2026;</i> &#x2026;restricted to that set of points that do not map
+some number in the domain to more than one number in the range.
+</span> But we need to get serious about set theory to ease
+into this distinction.
+</p>
+
+<p>
+Notice the mention of <b><b>pair</b></b>. A pair \((x,y)\) is also called a
+<i>tuple</i>. As we&rsquo;ve mentioned, you probably first saw pairs (tuples) of
+numbers as identifying points plotted on graphs, i.e., the first
+number, the <i>x-coordinate</i> represents a place on the x-axis and the
+second number the <i>y-coordinate</i> a place on the y-axis, taken
+together, a point on the two-dimensional plane. But for Apostol the
+tuple refers to the higher-math definition of a function where a
+function <i>pairs</i> together, or <b><b>maps</b></b> one set of numbers to another
+set of numbers. Yes, \(f(x) = x^2\) is a little factory that <i>makes</i>
+squares of numbers; but seen from set theory, <font color =
+"#0d3db3">\(f(x) = x^2\) is taking a number from the <i>set</i> of real
+numbers and <i>mapping</i> (connecting, joining, pointing, pairing, looping
+back to) another number of that same real number set.</font>
+A binary operation, such as adding \(3\) and \(2\) together, would have
+the tuple \((3,2)\), the first and second numbers coming from the set of
+all real numbers \(\mathbb{R}\). That is, addition in the higher math
+world is a binary operation that &ldquo;maps&rdquo; a tuple, \((a,b)\), through
+addition to another real number.
+</p>
+
+\begin{align}
+(a,b) \mapsto a + b
+\end{align}
+
+<p>
+Stare at (1) a bit. Mull over the above wording. But then let&rsquo;s back
+up to plotting points on a plane from algebra. The typical expression
+when graphing was \(f(x) = y\), e.g., \(f(x) = x^2\), or, confusingly, \(y
+= x^2\) for plotting a parabola. Be mindful that we&rsquo;re dealing with an
+x-dimension and a y-dimension of a 2-dimensional plane. Now, how is
+this different from our first stab at an algebra function for adding
+two numbers, i.e., \(g(x,y) = x + y\)? The problem lies with the fact
+that \(f(x) = y\) is <i>not</i> mapping \(x\) <i>and</i> \(y\) to a new unique \(z\). We
+are not doing $z = g(x,y); instead, a function like \(f(x) = x^2\) is
+<i>mapping</i> the \(x\) value to a \(y\) value. This is actually <i>not</i> a
+binary operation, rather, a <b><b>unary</b></b> operation, i.e., a <i>single</i>
+variable is being mapped to a value. Hence, with our new notation
+\(f(x) = x^2\) would be \(f: x \mapsto x^2\). Yes, a Cartesian coordinate
+system is working with pairs, i.e., each point is \((x,y)\), but in
+reality the pairs are actually \((x,f(x))\) since \(y = f(x)\). Recapping,
+in our new notation we will see
+</p>
+
+\begin{align} f &: \mathbb{R} \rightarrow \mathbb{R}, \;where\; x \mapsto x^2 \\
+g &: \mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}, \;where\; (x,y) \mapsto x + y = z \end{align}
+
+<p>
+Again, we&rsquo;ll cover this in depth later, but \(\mathbb{R} \times \mathbb{R} \rightarrow
+\mathbb{R}\) just means we take <i>two</i> numbers from the set of real
+numbers and get a <i>third</i> number from the set of real numbers. On the
+other hand, \(\mathbb{R} \rightarrow \mathbb{R}\) means we take <i>one</i> number from
+the set of real numbers and get a <i>second</i> number.
+</p>
+</div>
+</div>
+<div id="outline-container-org79c4fb7" class="outline-3">
+<h3 id="org79c4fb7">2. The Property of Closure</h3>
+<div class="outline-text-3" id="text-org79c4fb7">
+<p>
+Existence and uniqueness also involve the higher-math concept of
+<b><b>closure</b></b>. For example, if \(x\) and \(y\) are real numbers, the
+<i>unique</i> result \(x + y\) is also a member of the set of real
+numbers. Seems obvious, no? But it turns out we can&rsquo;t just <i>assume</i>
+this.
+</p>
+
+<p>
+Closure ensures that when we do math like addition we never &ldquo;fall out
+of&rdquo; or escape the set of real numbers into some other sort of numbers
+undefined. In higher-math talk we would say, <i>The <b><b>binary operation</b></b>
+of addition is <b><b>closed</b></b> in the set of real numbers</i>. Again, it just
+means when you add real numbers, you get a real number, not some
+surprise non-real number. This may seem like the worst of
+hair-splitting yet, but consider \(\mathbb{N}\), the &ldquo;natural&rdquo; counting
+numbers \(1, 2, 3, 4, \ldots\) Now, we cannot say there is a closure on
+binary operation of subtraction, since, e.g., \(3 - 4\) gives us a
+<i>negative</i> number, i.e., outside the counting numbers, which are
+always positive.<label id='fnr.11' for='fnr-in.11.2061938' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.2061938' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
+We will explore the different types of numbers (natural,
+integer, rational, real, complex) and not just assume real numbers as
+does high school algebra and calculus.
+</span>
+</p>
+</div>
+</div>
+<div id="outline-container-org0c2fec5" class="outline-3">
+<h3 id="org0c2fec5">Comparison with Other Operations</h3>
+<div class="outline-text-3" id="text-org0c2fec5">
 <p>
 To see why uniqueness matters, consider operations that <b><b>don&rsquo;t</b></b>
 always have this property in other contexts:
 </p>
 
-<table id="org9beed48" class="fullwidth">
+<table id="orgf718da5" class="fullwidth">
 
 
 <colgroup>
@@ -416,14 +690,28 @@ always have this property in other contexts:
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div id="outline-container-orgfa898cb" class="outline-3">
-<h3 id="orgfa898cb">3. Why Bother Stating the Obvious?</h3>
-<div class="outline-text-3" id="text-orgfa898cb">
+
 <p>
-It sets the stage for proving everything else. Without the guarantee
-of uniqueness:
+Yes, the square root highlights how uniqueness must be nailed
+down&#x2014;and it&rsquo;s a common mistake to forget that taking a square root
+will produce both a negative and positive possible roots. But then
+we&rsquo;re prejudiced toward the <i>principle</i> root, i.e., the positive root,
+e.g., \(\surd 9 = 3\), while \(\sqrt{9} = \pm3\).<label id='fnr.12' for='fnr-in.12.711221' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.711221' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
+There is a great example of why we should <i>not</i> be
+mathematically prejudiced toward positive roots behind the story of
+how we discovered antimatter. See <a href="https://youtu.be/Y-W-w8yNiKU?si=FX2T2AAXycOGegnf">The Man Who Accidentally Discovered
+Antimatter</a>.
+</span>
+</p>
+</div>
+</div>
+<div id="outline-container-orgf42ba8d" class="outline-3">
+<h3 id="orgf42ba8d">3. Why bother stating such obvious things?</h3>
+<div class="outline-text-3" id="text-orgf42ba8d">
+<p>
+Because it sets the stage for proving everything else. <i>Higher math
+attacks our hazy, prejudiced, inexact assumptions with rigor</i>. Without
+the guarantee of uniqueness:
 </p>
 
 <ul class="org-ul">
@@ -432,31 +720,41 @@ of uniqueness:
 </ul>
 
 <p>
-Later we&rsquo;ll get into the most basic laws of arithmetic, namely
-<b><b>Peano&rsquo;s Axioms</b></b><label id='fnr.3' for='fnr-in.3.2232248' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.2232248' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+Later we&rsquo;ll tackle one the most basic sets of laws in mathematics,
+namely <b><b>Peano&rsquo;s Axioms</b></b><label id='fnr.13' for='fnr-in.13.7408686' class='margin-toggle sidenote-number'><sup class='numeral'>13</sup></label><input type='checkbox' id='fnr-in.13.7408686' class='margin-toggle'><span class='sidenote'><sup class='numeral'>13</sup>
 Imagine you meet seemingly advanced aliens who just landed in a
 fancy space ship. You start communications by writing numbers on a
 board, \(1,2,3,\ldots\), and they eventually understand, but smirk and
 act dismissive. Confused, you ask them to explain how they do simple
-numbers, &ldquo;So tell us what how you would represent \(3\).&rdquo; They write on
-the board \(3 = S(S(S(0)))\). They explain that \(S\) is a <i>successor</i>
+numbers, &ldquo;So tell us how you would represent \(3\).&rdquo; They write on the
+board \(3 = S(S(S(0)))\). They explain that \(S\) is a <i>successor</i>
 function that gives you &ldquo;the next number,&rdquo; starting with \(S(0) = 1\)
-&#x2026; this is the basis of Peano established. Soon&#x2026;
-</span> and how everything builds up from that. As we
-mentioned in the preface, this is all about <i>logical entailment</i>,
-which is invariably what computers need. Mathematics eventually
-explained in ironclad detail exactly why, e.g., addition works &#x2014;
-<i>addition is a logical consequence of how sets interact</i>. Another way
-to say this is, <i>addition is an <b><b>artefact</b></b> of set interaction</i>,
-which is more mysterious. Think about what this could mean. As an AI
-prompt ask:
+&#x2026; the aliens are using Peano&rsquo;s numbering. Soon&#x2026;
+</span> and how everything builds up from
+that. As we mentioned in the preface, this is all about <i>logical
+entailment</i>, which is invariably what computers need. Mathematics
+eventually explained in ironclad detail exactly why, e.g., addition
+works &#x2014; <i>addition is a logical consequence of how sets
+interact</i>. Another way to say this is, <i>addition is an <b><b>artefact</b></b> of
+set interaction</i>, which is definitely more mysterious. Even worse,
+Grok says: <i>Addition is the canonical binary operation satisfying the
+group axioms on the set</i>. This is a long way from just doing
+arithmetic in grade school with pencil and paper. Before we&rsquo;re
+through, we&rsquo;ll understand what all this means. As an assignment, use
+this AI prompt to ask:
 </p>
 
 <blockquote>
 <p>
-Einstein supposedly said &ldquo;Gravity is an artefact of space-time geometry.&rdquo; Can you explain this?
+Einstein supposedly said &ldquo;Gravity is an <b><b>artefact</b></b> of space-time geometry.&rdquo; Can you explain this?
 </p>
 </blockquote>
+
+<p>
+When we get better at abstraction, we&rsquo;re well on our way to
+understanding why math formalism meshes so well with computer
+operationalization.
+</p>
 
 
 <p>
