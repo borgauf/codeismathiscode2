@@ -662,21 +662,24 @@ mathematical and theoretical foundation. Let's start now.
 ** Guide to reading
 
 This site employs the style of book layout and information display
-developed and popularized by the statistician [[https://en.wikipedia.org/wiki/Edward_Tufte][Edward Tufte]], best known
-for his series of books on statistical information display starting
-with [[https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/][The Visual Display of Quantitative Information]]. This is a
-modified [[https://orgmode.org/][org-mode]] version of the [[https://edwardtufte.github.io/tufte-css/][Tufte CSS]], which was developed for
-producing LaTeX books and websites in the Tufte style.
+developed and popularized by the statistician and all-around science
+guy [[https://en.wikipedia.org/wiki/Edward_Tufte][Edward Tufte]], best known for his series of books on statistical
+information display starting with [[https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/][The Visual Display of Quantitative
+Information]]. This is a modified [[https://orgmode.org/][org-mode]] version[fn:31] of the [[https://edwardtufte.github.io/tufte-css/][Tufte
+CSS]], which was developed for producing LaTeX books and websites in the
+Tufte style.
 
 As you see above, we have two columns---left column larger than the
 right column, the right intended to display footnotes as they appear
-in the text immediately to the right as "sidenotes" for quick
-consumption. As you see, we make liberal use of this feature.
+in the text /immediately to the right/ as "sidenotes" for quick
+consumption. As you will see, we make liberal use of this feature.
 
 Along with clarifying sidenotes, we sprinkle in links---mainly to
 Wikipedia. These are strictly YMMV---your mileage may vary. That is,
-you can dive as deep as you'd like. Although math and computer science
-on Wikipedia can go deep, so try not to get too intimidated.
+you can dive as deep as you'd like. Be warned, math and computer
+science on Wikipedia can go deep, so try not to get too
+intimidated. And yet often enough something useful can be gleamed from
+a Wiki article.
 
 A great org-mode feature is being able to embed real working code
 inside an org-mode doc---which is then can be converted into web pages
@@ -847,3 +850,6 @@ practice.
 people. Those who self-motivate, self-educate, and create their own
 future; and those who wait around for events, circumstances, more
 powerful people to tell, force them what to do.
+
+[fn:31] Org-mode is a text management system app of the mighty Emacs
+text editing world.
