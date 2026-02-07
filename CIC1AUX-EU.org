@@ -54,7 +54,7 @@
 #+html_head_extra: <style> .title { display: none; } </style>
 #+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
 
-* Existence and uniqueness
+* Math Holiday: Existence and uniqueness
 
 Tom Apostol is being higher-math formal when he speaks of
 **existence** and **uniqueness** in the context of the real number
@@ -435,11 +435,11 @@ containment below...
 #+end_figure
 
 
-A binary operation, on the other hand, such as adding $3$ and $2$
-together, would have the tuple $(3,2)$ --- the first and second
+A binary operation, on the other hand, such as adding $2$ and $3$
+together, would have the tuple $(2,3)$ --- the first and second
 numbers coming from the quasi-duplicated set of all real numbers
 $\mathbb{R}$ spanning a theoretical plane --- with a result $5$
-seemingly on a third duplicated real number axis.
+seemingly on a third real number axis.
 
 #+begin_figure
 #+CAPTION: $c = a + b$ represented in 3D.
@@ -547,21 +547,22 @@ with rigor/. For example, without the guarantee of uniqueness:
 Remember we said equals, $=$, is more about /identity/ than
 /yields/.
 
-We've scratched a lot of surface here, played the tourist, chatted
-with the local denizens, sampled a lot of odd, new math cuisine. We
-touched on how /relations/ are more general, and, thus, forgiving than
-functions. So why not represent phenomena as just relations?  Later
-when we really dive into relations, but for now we'll say relations
-are just too loose. Modern science is built on Calculus, and Calculus
-is the study of how things change. To define a rate of change (a
-derivative), you need a clear "before" and "after."  If you look at a
-curve that loops back on itself as a relation, and you pick an $x$
-where the curve has two points (two $y$'s), the concept of "slope"
-becomes ambiguous. Which point are we talking about? Which direction
-is "forward"? By restricting ourselves to functions, we ensure that
-for every input, there is a single, unambiguous value, slope, and
-area. This allows us to build the machinery of differentiation and
-integration without constantly hitting logical forks in the road.
+We've scratched a lot of surface here, played the tourist on holiday,
+had some loose conversations with the local denizens, sampled a lot of
+odd, new math cuisine. We touched on how /relations/ are more general,
+and, thus, forgiving than functions. So why not represent phenomena as
+just relations?  Later when we really dive into relations, but for now
+we'll say relations are just too loose. Modern science is built on
+Calculus, and Calculus is the study of how things change. To define a
+rate of change (a derivative), you need a clear "before" and "after."
+If you look at a curve that loops back on itself as a relation, and
+you pick an $x$ where the curve has two points (two $y$'s), the
+concept of "slope" becomes ambiguous. Which point are we talking
+about? Which direction is "forward"? By restricting ourselves to
+functions, we ensure that for every input, there is a single,
+unambiguous value, slope, and area. This allows us to build the
+machinery of differentiation and integration without constantly
+hitting logical forks in the road.
 
 Also later we'll tackle one the most basic laws in mathematics, namely
 **Peano's Axioms**[fn:25] and how everything builds up from that. As

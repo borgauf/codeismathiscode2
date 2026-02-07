@@ -77,18 +77,65 @@
 
 ** Axiomatic mathematics for /operationalization/
 
-Starting typically with middle or high school algebra, math teachers
-begin asking students to "show their work" when solving homework
-problems. Teachers want to see all the /steps/ the student took to
-arrive at the final answers. Why? By listing every step we demonstrate
-more clearly our process of solving a problem. And if we didn't get
-the right answer, we can better find where we took a wrong
-turn. Showing all steps is about moving towards a solution in a
-verifiable way and leaving behind intuition, conditioned instincts,
-hunches, and guesswork. Let's take "show your steps" further by using
-the following foundational **rules** or **[[https://en.wikipedia.org/wiki/Axiom][axioms]]**[fn:1] of
-algebra. Some of these may be familiar, others not, and some will
-seem---odd---as in, Why do we need to worry about this stuff?
+#+begin_quote
+Young man, in mathematics you don't understand things. You just get
+used to them. \\
+--- John von Neumann
+#+end_quote
+
+
+Often with deep math texts the first chapter is devoted to a sort of
+"overture," a 30,000-foot view of what's to come in the rest of the
+book. So it will be with this, our intro chapter where we'll explore
+just how odd, different, /crazy/ so-call higher math can be. The main
+difference between K-12 math and higher math is just how strange and
+philosophical the latter can get. But why do we have to worry about
+higher math in the first place? As we've discussed in the Preface, the
+theory that grew up around the development of digital computers has
+always been rigorous higher-math-based. /It had to be./ And yes, our
+catchphrase, /formalize to operationalize/ is central to everything.
+
+What follows is an admittedly odd sort of dive into how to upgrade
+your understanding of algebra, how to lift it out of the mirky,
+intuitive, seat-of-pants methods you've learned so far and move it
+into more systematic, rule-based procedures. Again, why?  Because,
+ultimately, the whole subject of computability in general and computer
+operation specifically must be grounded in logical entailment. Higher
+math offers this packaging and handling of logic and its
+consequences. How higher math "hangs together" can be a marvel, but
+just as often a frustrating descent into confusion---at least until
+the next plateau, your next eureka moment lands. What follows in this,
+our overture, omnibus intro chapter will seem like a great challenge
+to many; but in the spirit of math text first chapters, /do not
+panic/, do not take this too seriously, do not attempt to rote learn
+or memorize; rather, just go along for the ride. Higher math is all
+about creating elegant, self-contained, self-referential, soup-to-nuts
+explanations that scale, scale, scale. Reach a higher plateau. See
+much farther. Higher math always seeks to /generalize/. Why?  Because
+there is a firmer grasp to be had from developing tight,
+all-encompassing systems of symbolism and generalization over a
+subject. Recall with Einstein's General Relativity that gravity, a
+real-world phenomenon, is actually an /artefact/ of a containing
+mathematical theory! That's an incredible power we humans have gained
+over the universe and reality.[fn:1]
+
+Let us begin gently by exploring that odd-seeming request math
+teachers begin asking of their beginning algebra students when solving
+homework problems: "Show your work." Mysteriously, teachers suddenly
+want to see all the /steps/ their students took to arrive at final
+answers. Why? By listing every step we demonstrate more clearly our
+process of solving a problem. And if we didn't get the right answer,
+we can better find where we took a wrong turn. Showing all steps is
+about moving towards a solution in a verifiable way and leaving behind
+intuition, conditioned instincts, hunches, and guesswork. Let's take
+"show your steps" further by involving the foundational **rules** or
+**[[https://en.wikipedia.org/wiki/Axiom][axioms]]**[fn:2] of algebra as seen from the higher-math
+perspective. Some of these may be familiar, others not, and much will
+seem---odd---as in, Why do I need to worry about this stuff?
+Throughout /Computing in Context/ we emphasize /formalize to
+operationalize/, and this is where we'll start. Below are /properties/
+we can consider axioms. These can be found in this basic form in many
+textbooks. Peruse, then we'll put them to use.
 
 @@html:<font color = "#0d3db3">@@
 **Properties of Arithmetic**
@@ -137,9 +184,9 @@ For any numbers $a$, $b$, $c$, and $d$:
   If $ab = 0$, then $a = 0$ or $b = 0$ or both $a$ and $b = 0$
 @@html:</font>@@
 
-Great, but what's this for? So let's solve an algebra expression for
-$x$, adding in justifications from the properties above for each
-step[fn:2]
+You may have seen some or all of these before and wondered what role it
+actually played. So let's solve an algebra expression for $x$, adding
+in /justifications/ from the properties above for each step[fn:3]
 
 ⌜\\
 𝖟𝕭: Solve $5x - 12 = 3(x + 2)$ for $x$: 
@@ -153,47 +200,47 @@ x &= 9 \quad \quad &&\text{Division property of equality} \\
 ⌟ \\
 
 All right, we've shown our work, step-by-step, but we also explained,
-/justified/ each **rewrite**[fn:3] of each step by attaching one of
+/justified/ each **rewrite**[fn:4] of each step by attaching one of
 the rules above --- /Distributive Law, Addition property of equality/,
 etc., to each line. Now, it's highly doubtful any middle or high
 school algebra teacher discussed algebra in terms of axioms or asked
-you to go into such depth. But as mentioned above, these axioms can be
-the basis of all algebraic operations. Here we begin to take algebra
+you to go into such depth. But as mentioned above, /from these axioms
+we can derive all algebraic operations/. Here we begin to take algebra
 out of conditioned, rote response and **operationalize** it.
 
-So far so strange... Typically, when you first learned algebra you did
-not worry about such formal, systematic methods. Instead, you watched
-and followed what the teacher was doing, picked up on the impromptu
-rules, looked for patterns and clues in the examples, in effect, you
-learned in an instinctive, pattern-recognition way to solve problems
-after much imitation and repetition. You /internalized/ the methods
-without going into any further depth. However, starting at the
-university, you will be required to grasp things at a more systematic
-level. You'll be introduced to the greater world of **[[https://en.wikipedia.org/wiki/Formalism_(philosophy_of_mathematics)][mathematical
-formalism]]**.
+So far so strange... Typically, when you were first learning algebra
+there was no talk about such formal, systematic methods. Instead, you
+watched and followed what the teacher was doing, picked up on, made
+sense of the seemingly impromptu rules, looking for patterns and clues
+in the examples ... in effect, you learned in an instinctive,
+pattern-recognition way to solve problems after much imitation and
+repetition. You /internalized/ the methods without going into any
+further depth. However, starting at the university, you will be
+required to grasp things at a more systematic level. You'll be
+introduced to the greater world of **[[https://en.wikipedia.org/wiki/Formalism_(philosophy_of_mathematics)][mathematical formalism]]**.
 
 With axiomatic mathematics we start with a set of axioms, i.e.,
 givens, rules, laws, statements to be taken as the most basic,
-atomic[fn:4] facts, then employ **[[https://en.wikipedia.org/wiki/Deductive_reasoning][deductive reasoning]]** to /prove/
+atomic[fn:5] facts, then employ **[[https://en.wikipedia.org/wiki/Deductive_reasoning][deductive reasoning]]** to /prove/
 further statements or **[[https://en.wikipedia.org/wiki/Theorem][theorems]]**. Taken together, a set of proven
 theorems becomes the body of a particular branch of math. The
 axiom-to-theorems approach is diametrically opposed to typical K-12
 "muscle-memory" math where methods aren't described as theorems;
-instead, the mantra is "We do enough problems until we catch on." Now,
-however, the goal changes from "get problems solved" to attaining a
-higher, more systematic level of understanding, one where we will
-eventually be able to go out into the world and create new
+instead, the mantra is "Do enough problems until you get the hang of
+it." Now, however, the goal changes from "get problems solved" to
+attaining a higher, more systematic level of understanding, one where
+we will eventually be able to go out into the world and create new
 mathematics. Whether or not you've seen axiomatic systems directly
-discussed, real-world STEM often relies on this formalistic approach
+discussed, real-world STEM often relies on this formalistic approach,
 even when it's not obvious. From now on we'll be cognizant of, mindful
 of the math formalism, mainly to prepare us for what we'll face in
 higher education settings. And hopefully along the way we'll begin to
 see the importance and necessity of axiomatic mathematics.
 
-So real math is bodies of theorems that have been /proven/ through
-axioms. Here's Kenneth Rosen from his /[[https://www.mheducation.com/highered/product/Discrete-Mathematics-and-Its-Applications-Rosen.html][Discrete Mathematics and Its
-Applications]]/ a widely-used college textbook in computer science
-departments where he emphasizes **[[https://en.wikipedia.org/wiki/Mathematical_proof][proof]]** [fn:5]
+So real mathematics is groupings of theorems that have been /proven/
+based on axioms. Here's Kenneth Rosen from his /[[https://www.mheducation.com/highered/product/Discrete-Mathematics-and-Its-Applications-Rosen.html][Discrete Mathematics
+and Its Applications]]/ a widely-used college textbook in computer
+science departments where he emphasizes **[[https://en.wikipedia.org/wiki/Mathematical_proof][proof]]** [fn:6]
 
 #+begin_quote
 To understand mathematics, we must understand what makes up a correct
@@ -202,7 +249,7 @@ mathematical statement is true, we call it a **theorem**. A collection
 of theorems on a topic organize [into] what we know about this topic.
 #+end_quote
 
-Let's take a quick /math holiday/[fn:6] to give an example of how
+Let's take a quick /math holiday/[fn:7] to give an example of how
 proof---in this case the lack thereof---plays an important role in
 real-world math and computers.
 
@@ -210,16 +257,18 @@ real-world math and computers.
 of the most famous "unsolved problems" in mathematics. Also known as
 the $3n + 1$ problem, it is deceptively simple, i.e., a child can
 understand the rules, yet the world’s greatest mathematicians have
-failed to /prove/ it will always terminate and not just keep running.
+failed to /prove/ it will always terminate and not just keep
+running. The /Collatz conjecture/ says...
 
-Starting with any positive integer $n$, if we apply these two steps to
+...starting with any positive integer $n$, if we apply these two steps to
 some number $n$ repeatedly, we should eventually wind up at the number
 $1$:
 
 - If $n$ is even: Divide it by $2$ (\(n/2\)).
 - If $n$ is odd: Multiply it by $3$ and add $1$ (\(3n+1\)).
+@@html:</font>@@
 
-
+⌜\\
 𝖟𝕭: Starting with n = 7
 
 1. $7$ is odd: \((3 \cdot 7)+1=22\)
@@ -238,74 +287,117 @@ $1$:
 14. $8$ is even: \(8/2=4\)
 15. $4$ is even: \(4/2=2\)
 16. $2$ is even: \(2/2=1\) (Target reached)
- @@html:</font>@@
-    
-Running this computation for $7$, we do get to $1$, indeed, in sixteen
-steps. Then we're stuck in a so-called "trivial loop," i.e., at Step
-16 we get $1$, but then by strictly following the recipe we keep
+⌟ \\
+ 
+Running this computation for $7$, we do indeed get to $1$ in sixteen
+steps. But then we're stuck in a so-called "trivial loop," i.e., at
+Step 16 we get $1$ === then by strictly following the recipe we keep
 going: $1$ is odd, hence, multiply by $3$ and add $1$ getting $4$,
 which is even, then divide by $2$, which is $2$, then divide by $2$
-and we're back at $1$ --- over and over. If we've written a program
-for this and our software is not told to break the loop, the reducing
-will go on indefinitely. Knowing if a program ends properly or not is
-a huge issue in the computer world.
+and we're back at $1$ --- over and over. If we've written a program to
+run the Collatz, and our software is not told to break the trivial
+loop, the reducing will go on indefinitely.
 
-Mathematicians have not /proved/ the Collatz conjecture always
-terminates at $1$ for all $n$, therefore, we cannot know for certain
-whether any given number can be reduced to $1$. This is a good example
-of why proving conjectures, statements is crucial. Now, could a
-computer simply keep trying ever bigger numbers? Yes, but that's
-what's known as applying "brute force," i.e., not really
-desirable. With the Collatz conjecture they have applied brute
-force---out to $2.36 \times 10^{21}$, a colossal number. Again, this is a good
-example of a central issue in math and computer science, namely, Is
-there a resolution, a solution to a computation---at least in a
-reasonable amount of time and computing power? In the real world of
-math and computer science we seek provable outcomes. This means we
-need to start with a proof. The question of what is computable and
-what is not began in earnest, at least theoretically, on paper, back
-in the 1930s /long before a single electronic computing device
-actually existed/.
+⥤ /Knowing if a program ends properly or just keep running is a huge
+issue in the computer world./
 
-** Algebra from axioms
+Is something computable? The so-called **[[https://en.wikipedia.org/wiki/Halting_problem][Halting problem]]** is about
+determining whether a piece of software will finish running or
+continue to run forever. However, it has been proven that the halting
+problem is __undecidable__, meaning that /no general way exists that
+solves the halting problem for all possible programs and their
+input/. This demonstrates that we can define some things
+mathematically but not actually compute them. A lot more later.[fn:8]
 
-Tom Apostol in his /[[https://en.wikipedia.org/wiki/Calculus_(Apostol_books)][Calculus...]]/[fn:7] textbook starts with just this
-sort of foundation-laying formalism for calculus[fn:8] when he lays
-out the basics of what we've taken for granted for years, namely,
-simple adding and multiplying
+Mathematicians have not been able to /prove/ the Collatz conjecture
+always terminates at $1$ for all $n$, therefore, we cannot know for
+certain whether any given number can be reduced to $1$, or whether the
+calculations just keep running forever. This is a good example of why
+proving conjectures, statements is crucial. Now, could a computer
+simply keep trying ever bigger numbers? Yes, but that's what's known
+as applying "brute force," i.e., not really desirable. With the
+Collatz conjecture they have indeed applied brute force---out to $2.36
+\times 10^{21}$, a colossal number. However, in the real world of math and
+computer science we seek known, provable outcomes. This means we need
+tools to analyze computations, even prove[fn:9] what a computation
+does. Ironically, the whole question of what is computable and what is
+not began in earnest, at least theoretically, on paper, back in the
+1930s, /long before a single electronic computing device actually
+existed/.[fn:10]
 
-⇲@@html:<font color = "#0d3db3">@@Along with the set $\mathbb{R}$ of
-**real numbers**, we assume the existence of two operations called
-**addition** and **multiplication**, such that for every pair of real
-numbers $x$ and $y$ we can form the **sum** of $x$ and $y$, which is
-another real number denoted by $x + y$, and the **product** of $x$ and
-$y$, denoted by $xy$ or by $x \cdot y$, which is also another real
-number. It is assumed that the sum $x + y$ and the product $xy$ are
-uniquely determined by $x$ and $y$. In other words, given $x$ and $y$,
-there is exactly one real number $x + y$ and exactly one real number
-$xy$. We attach no special meanings to the symbols $+$ and $\cdot$ other
-than those contained in the axioms.  @@html:</font>@@
+** Algebra built from axioms
+
+Tom Apostol in his /[[https://en.wikipedia.org/wiki/Calculus_(Apostol_books)][Calculus...]]/[fn:11] textbook starts with a higher
+math-style, foundation-laying formalism for Calculus,[fn:12]
+essentially laying out the basics of everything we've taken for
+granted for years, e.g., simple adding and multiplying. His language
+is dense and thick, but we'll dissect it piece-by-piece. This is how
+he starts
+
+⇲@@html:<font color = "#0d3db3">&nbsp;@@Along with the set
+$\mathbb{R}$ of **real numbers**, we assume the existence of two
+operations called **addition** and **multiplication**, such that for
+every pair of real numbers $x$ and $y$ we can form the **sum** of $x$
+and $y$, which is another real number denoted by $x + y$, and the
+**product** of $x$ and $y$, denoted by $xy$ or by $x \cdot y$, which is
+also another real number. It is assumed that the sum $x + y$ and the
+product $xy$ are /uniquely/ determined by $x$ and $y$. In other words,
+given $x$ and $y$, there is exactly one real number $x + y$ and
+exactly one real number $xy$. We attach no special meanings to the
+symbols $+$ and $\cdot$ other than those contained in the axioms.
+@@html:</font>@@
 
 ...then he gives the /Properties of Arithmetic/ you saw above, which
-he calls **field axioms**. Hmm. Doesn't this whole business seem
-tedious, over-the-top? Can't we just /do/ adding and subtracting and
-not get so lost in the weeds? It's almost like he's explaining adding
-and subtracting to a robot or a computer. Hold that thought. But then
-Apostol boldly states,
+he calls **field axioms**. In essence, he's putting together a /tool
+bag/ starting with objects such as the real numbers, addition and
+multiplication. Notice, however, he doesn't tell us /how/ to add or
+multiply; instead, we're getting a purely symbolic and, thus, purely
+operational treatment. And when he "attaches no special meaning" to
+the /symbols/ $+$ and $\cdot$, he's all but saying forget what $+$ and $\cdot$
+even are. Indeed, this is about symbolic manipulation and /only/
+symbolic manipulation. We'll take a deeper dive into mathematical
+logic soon, but for now think back on when you were introduced to
+/[[https://en.wikipedia.org/wiki/Syllogism][syllogisms]]/. For example
+
+#+begin_example
+  All men are mortal.
+  All Greeks are men.
+∴ All Greeks are mortal.
+#+end_example
+
+can be generalized by letter symbols as[fn:13]
+
+#+begin_example
+Major premise: All M are P.
+Minor premise: All S are M.
+Conclusion:    All S are P.
+#+end_example
+
+Hmm. Doesn't this whole business seem tedious, over-the-top? Can't we
+just /do/ adding and multiplication and not get so lost in the weeds?
+It's almost like he wants to explain arithmetic to a robot or a
+computer. Hold that thought... Meanwhile, let's take an extended /ex
+situ/ math holiday to figure out how deep the idea of /one unique
+answer/ to addition and multiplication can go. Click on the following
+link: [[file:ComputingInContext1AuxExistUnique.html][Existence and uniqueness]].
+
+...yes, nice, long math holidays can be so refreshing... Back to
+Apostol who boldly states
 
 #+begin_quote
 All the workings of elementary algebra can be **deduced** from these
 six [Properties of Arithmetic] axioms.
 #+end_quote
 
-We said this before, and yes, we're attempting to /deduce/ algebra
-from axioms. But again, why all this formalistic stuff? One way to
-answer this is to try to think about computers and how math might be
-done on them. Computers run **[[https://en.wikipedia.org/wiki/Algorithm][algorithms]]** expressed in computer code
-written in computer programming languages. We'll explore algorithms as
-we go, but suffice it to say, when a computer "figures stuff out" it
-is using carefully constructed, mathematically-based
-algorithms. Here's what [[https://gemini.google.com/app][Google Gemini AI]] said
+To be sure, we're attempting to /deduce/ algebra from axioms---all in
+this highly symbolic, non-intuitive proof way. But again, why all this
+formalistic stuff? One way to answer this is to try to think about
+computers and how math might be done on them. Computers run
+**[[https://en.wikipedia.org/wiki/Algorithm][algorithms]]** expressed in computer code written in computer
+programming languages. We'll explore algorithms as we go, but suffice
+it to say, when a computer computes it uses carefully constructed,
+mathematically-based algorithms for which all the logical consequences
+have been accounted. Here's what [[https://gemini.google.com/app][Google Gemini AI]] had to say
 
 #+begin_quote
 The algorithmic way of thinking is a problem-solving approach focused
@@ -324,17 +416,17 @@ Gemini goes on to list four steps of algorithmic thinking
 - /Abstraction/: Focusing on essential details while ignoring irrelevant ones.
 - /Algorithm Design/: Creating step-by-step instructions to solve the problem. 
 
-Now, here is the million-dollar question: Can we turn the
-/Properties/, the field axioms, or Apostol's theory-heavy explanation
-above of sum and product in the real numbers into lines of computer
-code, into algorithms that can do algebra for us? Something like
-creating a cookbook of recipes, no? Again, hold that thought, because
-it is central to everything we're doing here. /The connection between
+Now, here's the million-dollar question: Can we turn the /Properties/,
+the field axioms, as well as Apostol's theory-heavy explanation above of sum
+and product in the real numbers into lines of computer code, into
+algorithms with which we can do algebra? Something like creating a
+cookbook of recipes, no? Again, hold that thought, because it is
+central to everything we're doing here. /The connection between
 axiomatic math and the algorithm-based computer world is vast and,
 dare we say, magical./ Simply put, it comes down to the question, Can
 we /operationalize/ something so the computer can do it? You learned
-algebra more like a circus animal learns trick, but a computer
-cannot.[fn:9]
+algebra more like a circus animal learns circus tricks, but a computer
+cannot.[fn:14]
 
 Math did not have this level of rigorous formalism until the
 late-1800s when the world of mathematics began asking itself, Can we
@@ -342,58 +434,114 @@ really just /assume/, take for granted the operations we do in
 arithmetic? The answer they came to was no. And so was birthed
 mathematics based on setting up axioms then postulating and proving a
 body of theorems. And throughout modern STEM we see this model of
-establishing basic, given facts, axioms, then using them to build
-theorems, the body of working parts.
+starting with a set of basic, given facts, /axioms/, then using them
+to derive theorems, i.e., a body of working parts.
 
-In the algebra example above where we simplified $5x - 12 = 3(x + 2)$,
-one step was justified, matched with one of the /Properties of
-Equality/ (PoE) arguments. But then some of these PoEs Apostol says
-are technically theorems and, as such, must first be proven. His first
-**Theorem 1.1**, the /Cancellation law for addition/, (compare with
-/Addition property of equality/ above) states[fn:10]
+In the algebra example above where we simplified $5x - 12 = 3(x + 2)$
+to find $x$, each step was justified, matched with one of the
+/Properties of Equality/ (PoE) arguments. But then Apostol counts some
+of these PoEs as theorems themselves and, as such, must first be
+proven. His first **Theorem 1.1**, the /Cancellation law for
+addition/, (compare with /Addition property of equality/ above)
+states[fn:15]
 
 ⇲@@html:<font color = "#0d3db3">@@ If $a + b = a + c$, then $b = c$. In
 particular, this shows that the number $0$ of Axiom 4 is unique.
 @@html:</font>@@
 
-Perhaps you intuitively get what is meant, but you may still wonder
-how this definition, as it was just given, creates, enables the
-cancelling like things on each side of an equation. Also, he ties in
-his Axiom 4 saying the uniqueness of $0$ an issue. Seemingly, Apostol
-isn't that clear. Then comes his proof:[fn:11]
+Perhaps you intuitively get what is meant --- we "lose" the $a$ ---
+but you may still wonder how this definition, as it was just given,
+creates, enables the cancelling of "like things" on each side of an
+equation. Also, he ties in his Axiom 4 saying the uniqueness of $0$ an
+issue. Before we look at his proof let's keep in mind he's only saying
+
+⥤ /If you have a common term added to both sides of an equality, you
+are logically permitted to remove it./
+
+Then comes his proof:[fn:16]
 
 ⇲@@html:<font color = "#0d3db3">@@ Let us assume $a + b = a + c$ is
-true. By Axiom 5 (see /Existence of negatives/ above), there is a
-number such that $y + a = 0$. Since sums are uniquely
-determined,[fn:12] we have $y + (a + b) = y + (a + c)$. Using the
-associative law, we obtain $(y + a) + b = (y + a) + c$ or $0 + b = 0 +
-c$. But by Axiom 4 (see /Existence of identity elements/ above) we
-have $0 + b = b$ and $0 + c = c$, so that $b = c\:$. Notice that this
-theorem shows that there is only one number having the property of $0$
-in Axiom 4. In fact, if $0$ and $0^\prime$ both have this property, then
-$0 + 0^\prime = 0$ and $0 + 0 = 0$. Hence $0 + 0^\prime = 0 + 0$ and, by the
-cancellation law, $0 = 0^\prime$.
-
+true. By Axiom 5 (see /Existence of negatives/ above), there exists a
+number $y$ such that $y + a = 0$. Since sums are uniquely determined,
+we have $y + (a + b) = y + (a + c)$. Using the associative law, we
+obtain $(y + a) + b = (y + a) + c$ or $0 + b = 0 + c$. But by Axiom 4
+(see /Existence of identity elements/ above) we have $0 + b = b$ and
+$0 + c = c$, so that $b = c\:$. Notice that this theorem shows that
+there is only one number having the property of $0$ in Axiom 4. In
+fact, if $0$ and $0^\prime$ both have this property, then $0 + 0^\prime = 0$ and
+$0 + 0 = 0$. Hence $0 + 0^\prime = 0 + 0$ and, by the cancellation law, $0
+= 0^\prime$.
 @@html:</font>@@
 
-Supposedly, the idea of "whatever you do to one side, you have to do
-the same to the other side" or "balancing the equation" has just been
-formally explained and proved---even if it's hard to grasp how. Above
-it was a given, an axiom; but Apostol calls it a theorem and, thus,
-must be proved. Again, when we hear "cancel on both sides" we think
-"just cross things out." But no, that won't do any longer, rather, we
-have to prove we are allowed to do such a rewrite and base our proof
-on axioms. Again, we are /operationalizing/. Why? Because computers
-can't (yet) learn algebra like we do; for the computer algebra must be
-adapted for the realm of computer operations.
+The idea of "crossing/cancelling out" on both sides, or, "whatever you
+do to one side, you have to do the same to the other side" or
+"balancing the equation" has just been formally explained and
+proved---even if at first glance it's hard to grasp how. Again,
+Apostol calls it a theorem, his /Cancellation law for addition/, he
+then proves it, and now we may use it.[fn:17] And so his Theorem 1.1
+ropes together /Axiom 5, Existence of negatives/, /Axiom 2,
+Associativity/, and /Axiom 4, Existence of identity elements/. But
+what's going on with "...only one number having the property of $0$",
+and then in Theorem 1.1 itself, "...this shows that the number $0$ of
+Axiom 4 is unique." Quick unpack follows:
 
-Let's look at this issue from another angle by asking an AI (in this
-case [[https://grok.com/][Grok]]) to explain balancing an equation in an axiomatic-based
-way. Some of this repeats the above discussion; other things will be
-different, i.e., a new perspective, a deeper dive. Peruse the
-following sections and their discussions[fn:13]
+- Suppose (for whatever reasons) there are two zeros: $0$ and a second
+  "rogue" zero $z$.
+- By definition of the identity element: $a + 0 = a$ and $a + z = a$.
+- $\therefore \; a + 0 = a + z$.
+- Applying our newly-minted Theorem 1.1 we may cancel $a$ from
+  both sides...
+- ...resulting in $0 = z$
 
-*** Grok's explanation of equation balancing
+...which is an absurdity, which then proves[fn:18] it is impossible to
+have more than one $0$ in our "system".
+  
+Good. Now, let's look at this issue from another angle by asking an AI
+(in this case [[https://grok.com/][Grok]]) to explain balancing an equation in a similarly
+axiomatic-based way. Some of this repeats the above discussion; other
+things will be different, i.e., a new perspective, a different
+angle. Peruse the following sections and their discussions. New
+and interesting concepts are discussed.
+
+*** Leibniz and the substitution principle
+
+We can narrow down algebra's equation balancing trick by using a
+universal axiom and a principle developed originally by Gottfried
+Wilhelm Leibniz.[fn:19]
+
+@@html:<font color = "#0d3db3">@@
+- **Reflexivity**: For any element \(a\), \(a = a\) or \( \forall x \, (x
+  = x) \).
+- **Substitution Principle**: If \(a = b\), and \(P(x)\) is any
+  property or predicate involving \(x\), then \(P(a)\) holds if and
+  only if \(P(b)\) holds.
+@@html:</font>@@
+
+First, let's nail some facts down about /reflexivity/, namely, that it
+is considered in higher math to be a /logical axiom/, i.e., it is
+/universally/ true, no matter what we're talking about. The opposite
+would be non-logical axioms, i.e., truths that are limited to certain
+situations. For example, $x ⊕ y = y ⊕ x$ or /commutativity/ is not
+/universally/ true throughout mathematics.[fn:20]
+
+In lower math, /equality/ often just means "same value." In math
+logic, $\forall \;x (x = x)$ helps better establish the concept of
+**identity**, which is stronger than just /equivalence/. If we did not
+assume this axiom, we could technically build a weird logical model
+where an object is not the same as itself all the time. For example,
+observing an object $A$ at time t_{1} and observing the object at time t_{2}
+are considered two different things.[fn:21] The $\forall x \, (x = x)$ keeps
+sanity by insisting object $x$ is eternally /identical/ to itself.
+
+From another angle, reflexivity also forces the whole concept of
+equals to exist in the first place. Consider these "weaker" uses of
+the $=$ sign. They all have the /conditional/ "If...then" structure:
+
+- **Symmetry**
+
+They're all presupposing equals. One logical entailment can be
+introduced by the /Empty Club/ analogy.
+
 
 @@html:<font color = "#0d3db3">@@ ⇲ **The Axioms of Equality (redux)**
 
@@ -411,11 +559,13 @@ axioms:
 @@html:</font>@@
 
 Grok's explanation is telling us that balancing an algebra equation
-can be grounded in these so-called /Axioms of Equality/, which we saw
-above. However, the /Substitution Principle/ is new and is supposedly
-key. Whether obvious right now or not, it is what allows us to replace
-equals with equals in expressions, which goes to the heart of
-algebra. How then?
+can be grounded in these so-called /Axioms of Equality/, the first
+three we saw above. However, the /Substitution Principle/ is new and
+is supposedly key. Whether obvious right now or not, it is what allows
+us to replace equals with equals in expressions. Obviously this is
+different from Apostol's approach.
+
+
 
 To start let's interpret a bit, then justify: If $a = b$ then $a$ can
 /replace/ (substitute in for) $b$ (and vice versa) in any expression
@@ -426,15 +576,15 @@ same weight, you can swap them at any time, and the total weight of a
 larger stack won't change. But how are either Apostol's /Theorem 1.1:
 Cancellation law for addition/ or this new /Substitution Principle/
 giving us equation balancing? Let's now reconcile Apostol with the
-/Substitution Principle/.[fn:14] So we'll start again with Apostol's
+/Substitution Principle/.[fn:22] So we'll start again with Apostol's
 Theorem 1.1: @@html:<font color = "#0d3db3">@@If $a + b = a + c$, then
 $b = c$.@@html:</font>@@
 
-1. Given: $a + b = a + c$
+1. Consider it given: $a + b = a + c$, then proceed...
 2. The substitution step: Because the expression $(a + b)$ is
-   identical in value to $(a + c)$, we can "do the same thing" to
-   both. /And so we choose to **add** $(-a)$ to the left of both
-   sides/.
+   identical in value to $(a + c)$, there is "same on both sides",
+   thus, we can "/do/ the same thing" to both. /And so we choose to
+   **add** $(-a)$ to the left of both sides/.
    - Leibniz/Substitution justification: If $x = y$, then $(-a) + x =
      (-a) + y$, or, in our case, $(−a) + (a + b) = (−a) + (a + c)$
 3. Using the Associative properties (Apostol's Axiom 2 above) we regroup:
@@ -446,52 +596,43 @@ $b = c$.@@html:</font>@@
    c$.
 
 In plain language we may "cancel," "get rid of" $a$ by /adding/ its
-opposite $(-a)$. And this axiom-based approach lends itself to
-computers and their algorithmic ways---although as we stated above,
-the whole idea of term rewriting is a big and complex thing.
+negative $(-a)$.
      
 Since Grok is relying on its above-stated /Axioms of Equality/ for
 equation balancing, let's say something about the first three axioms.
 
-The three axioms before the Substitution Principle are making exacting
-points about just what equality is. In higher math the concept of
-equality, of /sameness/ goes much deeper and is more precise and
-nuanced than our everyday intuitive understanding of /equals/---as we
-saw with Leibniz's very theoretical [[https://en.wikipedia.org/wiki/Identity_of_indiscernibles][Indiscernibility of Identicals]]. In
-one formal definition, equality is called an /equivalence relation/ on
-numbers. We'll look into exactly what that could mean, as well as what
-a /relation/ is in the higher math sense soon. Let's take a quick
-holiday to see
+Those three axioms before the /Substitution Principle/ are making
+exacting points about just what equality is. In higher math the
+concept of equality, of /sameness/ goes much deeper and is more
+precise and nuanced than our everyday intuitive understanding of
+/equals/---as we can see with Leibniz's very theoretical
+Indiscernibility of Identicals. In one formal definition, equality is
+called an /equivalence relation/ on numbers.[fn:23]
 
+Grok's answer is compelling us once again to tackle some higher math
+based in set theory and [[https://en.wikipedia.org/wiki/Mathematical_logic][mathematical logic]]. We will weave both sets
+and logic into our presentations as we go.
 
-
-Grok's answer is
-compelling us to tackle some higher math, which is based on **[[https://en.wikipedia.org/wiki/Set_theory][set
-theory]]** and **[[https://en.wikipedia.org/wiki/Mathematical_logic][mathematical logic]]** developed in the latter half of
-the nineteenth century on into the twentieth to be an exhaustively
-thorough and foundational basis for math, upon which all math could
-hopefully be axiomatically built. We will weave both sets and logic
-into our presentations as we go. One part of math logic is
-**[[https://en.wikipedia.org/wiki/First-order_logic][first-order logic]]** or FOL. Again, nothing in depth now, but we'll
-need a quick intro to FOL to understand what's being said about
-/predicates/ in the /Substitution Principle/ above.
+One part of math logic is **[[https://en.wikipedia.org/wiki/First-order_logic][first-order logic]]** or FOL. Again, nothing
+in depth now, but we'll need a quick intro to FOL to understand what's
+being said about /predicates/ in the /Substitution Principle/ above.
 
 Grok's first axiom is **reflexivity**, which might seem
-/vacuous/[fn:15] and unnecessary to the layperson. Of course any given
-thing is the same, /equal/ to itself. But consider this wording of
-reflexivity, i.e., /a relation each thing bears to itself and nothing
-else/. We are stating this explicitly to be thorough. Believe it or
-not, having reflexivity as an axiom is necessary in certain
-situations.
+/vacuous/[fn:24] and unnecessary to the layperson. Of course any given
+thing is the same, /equal/ to itself. But consider how reflexivity is
+/a relation each thing bears to itself and nothing else/. We are
+stating this explicitly to be thorough. Believe it or not, having
+reflexivity as an axiom is necessary in certain situations.
 
 Next, **symmetry** is allowing expressions to swap sides of an
 equation, i.e., what's on the left can go to the right and vice-versa,
-and they're equality is not changed. Again, you were just conditioned
+and their equality is not changed. Again, you were just conditioned
 to accept this, but here it is formally stated.
 
-And now let's take a math holiday to look into FOL so we can
-understand what's going on with predicates and why $\forall x \, (x = x)$ is
-just another version of $a = b$.
+And now let's take an /in situ/ math holiday to look into FOL so we
+can understand what's going on with predicates and why the FOL
+statement $\forall x \, (x = x)$ firms up what we were saying in /Uniqueness
+and existence/ about $=$ in logic beingis just another version of $a = b$.[fn:25]
 
 The **Substitution Principle** introduces the notion of a
 **predicate** $P(x)$. To get started, let's reword the /Substitution
@@ -499,10 +640,9 @@ Principle/ for just functions: If \(a = b\), then for any /function/
 \(f\), \(f(a) = f(b)\). "Doing the same thing" to both sides means
 applying the same function to both. As you might suspect at this point
 the concept of a predicate is something fancier, broader-based than a
-function.
+function. And you're right.
 
-Actually, when Logic is studied we usually begin with **[[https://en.wikipedia.org/wiki/Propositional_logic][Propositional
-Logic]]**, then FOL. But here we'll just touch on FOL
+
 
 @@html:<font color = "#0d3db3">@@
 ⇲ **Algebraic structure: field axioms (redux)**
@@ -555,7 +695,7 @@ The rule isn't arbitrary—it's a consequence of equality being an equivalence r
 The multi-volume set [[https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms][Euclid's Elements]] (EE) from ca. 300 BC Greece is
 generally accepted as being the first example of mathematics built on
 *[[https://en.wikipedia.org/wiki/Axiom][axioms]]* and built up through proven *[[https://en.wikipedia.org/wiki/Theorem][theorems]]* based on those
-axioms[fn:16] ... and EE has been, in one form or another, a part of
+axioms[fn:26] ... and EE has been, in one form or another, a part of
 the Western world's math curricula ever since. It was once a staple of
 high school math, /though often dreaded/, as it was the student's
 first exposure to the strange idea of /proving/ math instead of just
@@ -563,7 +703,7 @@ doing math. Proving something in math requires a deep grasp of a
 topic, which is completely different from the typical style of "when
 you see this, do this" group behavior conditioning. Starting with
 [[https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms][Euclidean Geometry]], the student is asked to see a geometric
-situation[fn:17] and understand why something about it is /necessarily/
+situation[fn:27] and understand why something about it is /necessarily/
 (proven to be) true. The proof of, e.g., the /pons asinorum/ is a
 step-by-step establishing of undeniable facts based on Euclid's
 axioms, his /Postulates/ and /Notions/. Again, this was the beginning
@@ -597,7 +737,7 @@ five, Euclid added another five basic truths, his *Common Notions*
 With these ten axiomatic statements begins much geometry, logic,
 number and set theory. That is to say, great amounts of /[[https://en.wikipedia.org/wiki/Propositional_calculus#Inference_rules][implication]]/,
 "if this then that" can be derived from these ten accepted
-givens.[fn:18] For example, the last notion, N5, seems to say something
+givens.[fn:28] For example, the last notion, N5, seems to say something
 almost silly and trivial. But as [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this treatment]] explains, N5 with its
 odd wording starts whith the basic concept of one thing being /larger/
 than another, i.e., $A>B$. Here's David E. Joyce's, professor of
@@ -612,14 +752,14 @@ such that $A = B + C$.
 
 Again, to the novice this may look like nit-picking, but real math
 comes from having these basic foundational givens---upon which new,
-useful math is solidly, logically built. Higher math[fn:19] is the
+useful math is solidly, logically built. Higher math[fn:29] is the
 realm of axiomatic math where proofs of /theorems/ are the
 staple. Higher math is where the student becomes a real mathematician
 who looks under the hood and learns what makes things really tick.
 
 Let's consider a more serious-looking set of axioms, again, taken from
 course material by Professor Joyce, then a proof of a theorem based,
-i.e., relying on these axioms[fn:20]
+i.e., relying on these axioms[fn:30]
 
 1. Vector addition is /commutative/: $\mathbf{v} + \mathbf{w} = \mathbf{w} + \mathbf{v}$.
 2. Vector addition is /associative/: $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$.
@@ -662,7 +802,7 @@ Next, we can associate the parentheses differently by axiom *2* to get
 
 That equation simplifies by axiom *4* to $0\mathbf{v} + 0 = 0$, and by
 axiom *3*, that further simplifies to $0\mathbf{v} = 0$ which is what
-was to be proved. *Q.E.D.*[fn:21] \\
+was to be proved. *Q.E.D.*[fn:31] \\
 ⌟
 
 Got it? No worries (yet) if you didn't. The point is to understand
@@ -673,12 +813,12 @@ algebra we never needed to /show/ with a proof that an entity times
 zero is zero. So yes, here we have a thorough /proof/ of something
 that we normally would have taken for granted. But again, this is the
 world of higher math where math becomes more of a philosophy than just
-a set of tools.[fn:22]
+a set of tools.[fn:32]
 
 ** Axiomatic Scheme
 
 And now with no further ado we will list out TLS's version of
-"axiomatic givens" starting with /The Ten Commandments/ below[fn:23]
+"axiomatic givens" starting with /The Ten Commandments/ below[fn:33]
 
 - *First Commandment*: When recurring on a list of atoms, ~lat~, ask two
   questions about it ~(null? lat)~ and ~else~; when recurring on a
@@ -723,11 +863,11 @@ But wait there's more. Next are the /The Five Rules/
   be a non-numeric atom.
 
 Not many beginners can take these fifteen would-be axioms and know
-exactly how to write a Scheme program.[fn:24] But then if you've read
+exactly how to write a Scheme program.[fn:34] But then if you've read
 and understood a textbook such as /[[https://cseweb.ucsd.edu/~gill/BWLectSite/Resources/LDGbookCOV.pdf][Lists, Decisions and Graphs...]]/ by
 Edward Bender and S. Gill Williamson, you might catch on that these
 "fake" axioms are attempting is to establish some sort of
-omnibus[fn:25] /list processing/ machinery. In fact Scheme's
+omnibus[fn:35] /list processing/ machinery. In fact Scheme's
 predecessor, *Lisp*, is an acronym for "list processing," because this
 is essentially what Lisp and Scheme do, i.e., they do computing tasks
 with, on lists. Really?! So in Lisp and Scheme we have a complete
@@ -752,7 +892,7 @@ But we have a problem---at least with the math world. That's because
 in higher math there are also **sets**. So what is the difference
 between a list and a set? To the layman they might seem
 interchangeable. /[[https://en.wikipedia.org/wiki/Set_theory][Set theory]]/ is the fundamental starting point of
-higher math, as well as CS's Discrete Math.[fn:26] And so many books
+higher math, as well as CS's Discrete Math.[fn:36] And so many books
 on set theory and discrete math start out with the deceptively simple
 and informal statement
 
@@ -785,18 +925,18 @@ Actually no. We should not call a grocery list a /set of groceries/
 either because even though order doesn't matter, sets allow
 duplicates. They do. In set theory there is the idea of the
 /[[https://en.wikipedia.org/wiki/Cardinality][cardinality]]/ of a set, i.e., what is the count of the /unique/
-elements of the set, /not/ counting duplicates.[fn:27]
+elements of the set, /not/ counting duplicates.[fn:37]
 
 ⌜\\
 𝖟𝕭: The set $A = \{1,1,1,2,2\}$ is /identical/ to set $B = \{1, 2\}$
 because they have the same cardinality, or $|\,A\,| = |\,B\,| =
-2$.[fn:28] \\
+2$.[fn:38] \\
 ⌟\\
 
 This can be explained in a few ways. The simplest is to say the
 members, the elements of a set /belong/ to that set. So for example,
 if I /belong/ to a club, it doesn't make sense to have me
-/belong-belong/ or belong twice to the club.[fn:29] In the example
+/belong-belong/ or belong twice to the club.[fn:39] In the example
 above, $1$ /belongs/ to $A$, so it doesn't need to belong again.
 
 Splitting hairs? Yes, well, set theory is a very fundamental thing in
@@ -820,7 +960,7 @@ example
 
 the set $A$ contains the three possible moods a person might be in;
 while ~week3~ is the name we've told Scheme to call a list containing
-our daily workweek moods.[fn:30] \\
+our daily workweek moods.[fn:40] \\
 
 The order of set $A$ doesn't matter (and we'd ignore, say, a second
 $good$), but the order of the list defined as ~week3~ is important
@@ -838,11 +978,11 @@ could have more than just one mood during a day? How about
 #+end_src
 
 Remember Venn diagrams? An /or/ situation can be shown with a **[[https://en.wikipedia.org/wiki/Union_(set_theory)][union]]**
-of circles.[fn:31] Let's make a formal definition of a union:[fn:32]
+of circles.[fn:41] Let's make a formal definition of a union:[fn:42]
 
 @@html:<font color = "#0d3db3">@@ The union of two sets $A$ and $B$
 (denoted by $A \cup B$) is the set of elements which are in $A$, in $B$,
-*or* in both $A$ and $B$.  @@html:</font>@@[fn:33]
+*or* in both $A$ and $B$.  @@html:</font>@@[fn:43]
 
 Now, for our set $A = \{\text{good, so-so, bad}\}$, if we are using
 each element just once per the day slot of ~week3~ we could imagine
@@ -907,15 +1047,15 @@ overlapping circles trick is beating duplicates. Visually we can see
 this happening, but is there a formal explanation? Short answer: yes.
 
 Now let's look at a formal definition of union in so-called
-**set-builder notation**[fn:34]
+**set-builder notation**[fn:44]
 
 \begin{align}
 A \cup B = \{x : x \in A \lor x \in B  \}
 \end{align}
 
 This expression says the **union** of $A$ and $B$ equals the set of
-elements denoted by $x$ such that an $x$ can be an element from[fn:35]
-$A$ *or* an element from $B$.[fn:36] But wait, *or* doesn't quite
+elements denoted by $x$ such that an $x$ can be an element from[fn:45]
+$A$ *or* an element from $B$.[fn:46] But wait, *or* doesn't quite
 sound right in English if we mean to union-ize two or more things,
 does it?  To bring two or more sets together as one---their unique and
 shared element alike---don't we mean to say, e.g., @@html:<font color
@@ -966,7 +1106,7 @@ S_1 \cup S_2 \cup S_3 = \{5\}
 \end{align*}
 
 i.e., just one circle representing $5$. In fact, we could union
-together an infinite amount of **singleton**[fn:37] sets of the form
+together an infinite amount of **singleton**[fn:47] sets of the form
 $S_n = \{5\}$ and they would produce the singleton set $\{5\}$. Now
 for a bit of abstraction. Consider a **[[https://en.wikipedia.org/wiki/Binary_operation][binary operator]]**, i.e., any
 math that takes two objects and does an operation on them to produce
@@ -983,7 +1123,7 @@ can establish a formal definition of idempotence \\
 @@html:</font>@@
 
 If multiplication is the binary operator on the set of all counting
-numbers $\mathbb{N}$ then what numbers of $\mathbb{N}$[fn:38] can we
+numbers $\mathbb{N}$ then what numbers of $\mathbb{N}$[fn:48] can we
 call idempotent according to the definition? Well, only $0$ and $1$
 are idempotent:
 
@@ -994,7 +1134,7 @@ are idempotent:
 
 All other numbers ($x \gt 1$) give increasingly larger squares of
 themselves, hence, $0$ and $1$ are idempotent, but the binary
-operation of multiplication is not.[fn:39]
+operation of multiplication is not.[fn:49]
 
 Now, let's consider something that came up in a [[https://math.stackexchange.com/][StackExchange
 Mathematics]] discussion [[https://math.stackexchange.com/questions/155475/1-1-1-origin-of-this-convention][here]], which is tackling our issue of duplicates
@@ -1020,7 +1160,7 @@ So by the /idempotency/ of $\lor$ we have (2) the same as $\{ x : x = 1
 Notice we are relying on the **logical-or** binary operator being
 idempotent for all $x$ in the set. Generally, an **unordered n-tuple**
 is a set of the form $\{a_1,a_2,\ldots, a_n\dots\}$, although a **tuple** is
-usually meant to be **ordered**.[fn:40] Again, idempotency of two
+usually meant to be **ordered**.[fn:50] Again, idempotency of two
 identical sets is obvious when seen as Venn diagrams, but now we've
 seen in exact language how they are idempotent.
 
@@ -1088,14 +1228,20 @@ together.
 
 * Footnotes
 
-[fn:1] **axiom**: From the Greek /axíōma/ meaning /for that which
+[fn:1] ...and this power is often jaw-dropping. The ways human
+mathematics /precisely/ coincides with /exactly/ what nature is doing
+is nothing short of supernatural. Prepare to have your mind blown with
+Nobel laureate Eugene Wigner's /[[https://en.wikipedia.org/wiki/The_Unreasonable_Effectiveness_of_Mathematics_in_the_Natural_Sciences][The Unreasonable Effectiveness of
+Mathematics in the Natural Sciences]]/.
+
+[fn:2] **axiom**: From the Greek /axíōma/ meaning /for that which
 commends itself as evident/.
 
-[fn:2]  𝖟𝕭 is the German abbreviation for /zum Beispiel/ meaning "for
+[fn:3]  𝖟𝕭 is the German abbreviation for /zum Beispiel/ meaning "for
 example," a nod to all the German-speaking contributors to higher
 math.
 
-[fn:3] An entire field of higher math is devoted to just this sort of
+[fn:4] An entire field of higher math is devoted to just this sort of
 reducing and substituting. What we see with our algebra problem can be
 considered in a general sense as /directed replacement/ of terms, aka
 **[[https://en.wikipedia.org/wiki/Abstract_rewriting_system][term rewriting]]**. And when something can't be /simplified/ any
@@ -1104,48 +1250,87 @@ rewriting important? For one with **[[https://en.wikipedia.org/wiki/Computer_alg
 must know at an automated algorithmic level how to solve algebra
 problems.
 
-[fn:4] **atomic**: In a philosophical, mathematical context, the term
+[fn:5] **atomic**: In a philosophical, mathematical context, the term
 /atomic/ refers to the most fundamental, indivisible, or simplest
 components within a given system. An atom is the most basic component
 that cannot be broken down, /atomized/ any further.
 
-[fn:5] Lots more proving of things as we go.
+[fn:6] Lots more proving of things as we go.
 
-[fn:6] A /math holiday/ is a euphemism we use meaning to take a
+[fn:7] A /math holiday/ is a euphemism we use meaning to take a
 detour, go down a rabbit hole in order to delve into some math topic
-necessary to advance the discussion.
+necessary to advance the discussion. We will take /in situ/,
+i.e., on the same webpage, and /ex situ/ i.e., jump to another
+webpage, math holidays. Following is an /in situ/ holiday.
 
-[fn:7] Apostol's college-level /Calculus, Volume 1: One-variable
-calculus, with an introduction to linear algebra/ straddles the line
-between a Calculus and a deeper, more theoretical Analysis book.
+[fn:8] This goes to the famous **[[https://en.wikipedia.org/wiki/Entscheidungsproblem][Entscheidungsproblem]]**: In
+mathematics and computer science, the Entscheidungsproblem (German for
+'decision problem' was a challenge posed by David Hilbert and Wilhelm
+Ackermann in 1928. It asks for an algorithm that considers an inputted
+statement and answers "yes" or "no" according to whether it is
+universally valid, i.e., valid in every structure. Such an algorithm
+was proven to be impossible by Alonzo Church and Alan Turing in 1936.
 
-[fn:8] Both algebra and calculus are based in the realm of real
-numbers, which uses the symbol $\mathbb{R}$, hence, Apostol's
+[fn:9] [[https://en.wikipedia.org/wiki/Mathematical_proof][Mathematical proof]]: Knowing whether something is true or false
+is of great importance in computer science. In higher math proving
+things completely takes over from doing calculations as you did in
+Algebra and Calculus. More as we go.
+
+[fn:10] In her /Recursive Functions in Computer Theory/, Rozsa Peter
+nonchalantly states: /One always strives to feed "reasonable" programs
+into the computer/... She and others such as Church and Kleene were
+instrumental in /proving/ mathematically that whatever can be obtained
+by the use of a computer is in the form of a "general recursive
+numeric function." We'll try to get our heads around this as we go...
+
+[fn:11] Apostol's college-level /Calculus, Volume 1: One-variable
+calculus, with an introduction to linear algebra/ a a way station of
+sorts between Calculus and deeper, more theoretical Analysis.
+
+[fn:12] Both algebra and calculus are based in the realm of real
+numbers, which uses the symbol $\mathbb{R}$, thus, Apostol's
 clarification. He also refers to the /set/ of real numbers. That's
-from **set theory**, soon to be explored...
+from **set theory**, and we'll soon take a little math holiday to
+touch on it before going into a thorough treatment thereof...
 
-[fn:9] ...or can it? AI based on neural networks and large language
+[fn:13] ...although the second set of premises and conclusion below
+suddenly seems plug-and-play for any ~M~, ~S~, and ~P~ we may come up
+with, absurdities can arise.
+
+[fn:14] ...or can it? AI based on neural networks and large language
 models, e.g., ChatGPT, Gemini, Grok, seem to be doing just that. But
 is this the final word? Most experts say no, AI must find a way to put
-logic back into the picture.
+logic, i.e., logical entailment back into the picture.
 
-[fn:10] One notorious fact about math is how different authors use
+[fn:15] One notorious fact about math is how different authors use
 different terminology, different strategies to explain a common
 topic. We need to get used to this and learn to contrast and compare.
 
-[fn:11] Again, this is deep end. Be aware that Apostol's /Calculus.../
+[fn:16] Again, this is deep end. Be aware that Apostol's /Calculus.../
 is a text meant for advanced college math students. But yes, in the
 real world we need to build confidence in tackling challenging
 material and gaining access to deeper truths.
 
-[fn:12] ... /sums are uniquely determined/? What does that mean? Refer
-back to his intro about sums and products. Don't panic. More later.
+[fn:17] One additional reason Apostol treats this as a formal theorem
+rather than a property/axiom or just "common sense" is that
+cancellation does /not/ work in all mathematical structures. For
+example, in matrix math there is no general cancellation allowed. But
+with real numbers, yes, this can and has been proven true.
 
-[fn:13] Content starting with a ⇲ symbol and in blue is what Grok has
-told us (with some editing, addendum for clarity). Following in black
-are more discussion and explanations.
+[fn:18] See [[https://en.wikipedia.org/wiki/Reductio_ad_absurdum][Reductio ad absurdum]]., or proving something true by
+assuming it false, then showing it cannot be false after all.
 
-[fn:14] [[https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz][Leibniz]]'s Law (also called **Indiscernibility of Identicals**)
+[fn:19] $\forall x \; (x=x)$ is a higher-math expression: The $\forall$ symbol
+means /for all/. So, /for all/ $x$, $x = x$.
+
+[fn:20] The symbol ⊕ means any operation, e.g., addition, subtraction...
+
+[fn:21] This turns out to be a big deal with computers since the
+/state/ of the internal memory changes. Also, /functional programming/
+is based around state not changing, which is modeled by the math
+function than can have only one output.
+
+[fn:22] [[https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz][Leibniz]]'s Law (also called **[[https://en.wikipedia.org/wiki/Identity_of_indiscernibles][Indiscernibility of Identicals]]**)
 and the Substitution Principle are essentially the same, with
 Leibniz's Law stating that identical things share all properties,
 which enables /substitutio salva veritate/ (Latin for /with truth
@@ -1153,7 +1338,10 @@ unharmed/), allowing one identical term to be swapped for another in a
 statement without changing its truth value, forming the basis for
 logical consistency in reasoning about identity.
 
-[fn:15] In math and logic a **vacuous truth** is a statement that is
+[fn:23] We took a quick look at what a /relation/ is in our /Existence
+and uniqueness/ math holiday.
+
+[fn:24] In math and logic a **vacuous truth** is a statement that is
 true, can't be refuted, but isn't really saying anything. For example,
 the statement /All cell phones in the room are off/ would be vacuously
 true if there were no cell phones in the room to begin with. In logic
@@ -1161,92 +1349,96 @@ vacuousness gets trickier. An example might be /When pigs fly, I'll
 change my socks/. This contains a false premise, i.e., /when pigs fly/,
 making the changing of socks impossible to ascertain.
 
-[fn:16] A *[[https://en.wikipedia.org/wiki/Conjecture][conjecture]]* is a tentative *[[https://en.wikipedia.org/wiki/Proposition][proposition]]* that may evolve to
+[fn:25] Actually, when math logic is studied we usually begin with
+**[[https://en.wikipedia.org/wiki/Propositional_logic][Propositional Logic]]**, then FOL. But here we'll just quickly touch
+on FOL.
+
+[fn:26] A *[[https://en.wikipedia.org/wiki/Conjecture][conjecture]]* is a tentative *[[https://en.wikipedia.org/wiki/Proposition][proposition]]* that may evolve to
 become a theorem if proven true. Conjectures are mathematical
 statements unproven but useful for consideration. Propositions are
 "objects of belief," e.g., if someone believes that the sky is blue,
 the /object/ of their belief is the /proposition/ that the sky is
 blue.
 
-[fn:17] For example the (in)famous /[[https://en.wikipedia.org/wiki/Pons_asinorum][pons asinorum]]/ in /Euclid's
+[fn:27] For example the (in)famous /[[https://en.wikipedia.org/wiki/Pons_asinorum][pons asinorum]]/ in /Euclid's
 Elements/ \\
 [[file:images/Byrne_pons_asinorum.jpg]] \\
 where it is /proven/ that indeed the angles opposite the equal sides
 of an isosceles triangle are themselves equal.
 
-[fn:18] In mathematical logic the idea of /implication/ is very
+[fn:28] In mathematical logic the idea of /implication/ is very
 fundamental. Something /implies/ something else; because $A$, that
 means $B$ as well. Implication goes by many names: /[[https://en.wikipedia.org/wiki/Material_conditional][material
 conditional]]/, [[https://en.wikipedia.org/wiki/Modus_ponens][modus ponens]], [[https://en.wikipedia.org/wiki/Logical_consequence][logical consequence]]. We first see
 implication in programming with the basic /if-then-else/ conditional
 starting with our third chapter.
 
-[fn:19] /Higher math/ in the U.S. typically means those college math
+[fn:29] /Higher math/ in the U.S. typically means those college math
 courses pursued in the junior and senior year of a Bachelors math
 degree, i.e., those courses /after/ Calculus, Differential Equations,
 and Linear Algebra.
 
-[fn:20] These axioms relate to Linear Algebra.
+[fn:30] These axioms relate to Linear Algebra.
 
-[fn:21] ... /quod erat demonstrandum/, meaning "that which was to be
+[fn:31] ... /quod erat demonstrandum/, meaning "that which was to be
 demonstrated".
 
-[fn:22] Go ahead and take a "math holiday" by touring [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this page]] by
+[fn:32] Go ahead and take a "math holiday" by touring [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this page]] by
 Professor Joyce. He is speaking from a quasi-[[https://en.wikipedia.org/wiki/Set_theory][set theory]] standpoint,
 i.e., the basis of modern high math. But remember, Euclid was talking
 strictly about geometric shapes. Set theory had not been invented
 yet...
 
-[fn:23] Do /not/ worry about what all this means. In time we will
+[fn:33] Do /not/ worry about what all this means. In time we will
 explain all the Scheme programming syntax contained here. More
 importantly, just realize how a programming language is actually based
 on rules exactly like high math is built on axioms.
 
-[fn:24] ...if we could, would each program we write technically be a
+[fn:34] ...if we could, would each program we write technically be a
 new *theorem*? More on that later. Specifically, we'll look into
 Douglas Hofstadter's [[https://en.wikipedia.org/wiki/MU_puzzle][MU puzzle]] from his ground-breaking book [[https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach][Gödel,
 Escher, Bach]] (1979).
 
-[fn:25] ...containing or including many items.
+[fn:35] ...containing or including many items.
 
-[fn:26] ...although it may be veiled or only partially explored.
+[fn:36] ...although it may be veiled or only partially explored.
 
-[fn:27] We indicate the cardinality of a set $A$ by surrounding it
+[fn:37] We indicate the cardinality of a set $A$ by surrounding it
 with vertical pipes: $|\,A\,|$ This is similar to the idea of a
 number's /absolute value/ which uses the same vertical bar symbols.
 
-[fn:28] 𝖟𝕭 is German for /zum Beispiel/ or /for example/.
+[fn:38] 𝖟𝕭 is German for /zum Beispiel/ or /for example/.
 
-[fn:29] ...paying double membership fees?
+[fn:39] ...paying double membership fees?
 
-[fn:30]  Notice once again the nested parentheses. To be sure,
+[fn:40]  Notice once again the nested parentheses. To be sure,
 everything in Scheme is a list.
 
-[fn:31] A Venn diagram of two sets /or/-ed, /union/-ed together. \\
+[fn:41] A Venn diagram of two sets /or/-ed, /union/-ed together. \\
 [[file:images/VennUnion.png]] \\
 The lens-shaped center area represents the "overlap," i.e., what the
 two sets represented as circles have in common.
 
-[fn:32] $\cup$ is the symbol for union.
+[fn:42] $\cup$ is the symbol for union.
 
-[fn:33] Could we have said, ...in $A$ *and* in $B$ *and* in both $A$
+[fn:43] Could we have said, ...in $A$ *and* in $B$ *and* in both $A$
 and $B$? Better not. More on why later.
 
-[fn:34] (1) can be expanded for the union of more sets than just
+[fn:44] (1) can be expanded for the union of more sets than just
 two, e.g., $A \cup B \cup C \cup \ldots$.
 
-[fn:35] The symbol $\in$ means "in" or "member of."
+[fn:45] The symbol $\in$ means "in" or "member of."
 
-[fn:36] $\lor$ is the symbol for **[[https://en.wikipedia.org/wiki/Logical_disjunction][logical or]]**, aka **logical
+[fn:46] $\lor$ is the symbol for **[[https://en.wikipedia.org/wiki/Logical_disjunction][logical or]]**, aka **logical
 disjunction**. Take a crack at the Wikipedia article.
 
-[fn:37] As we saw above, a **singleton** (also known as a **unit set**
+[fn:47] As we saw above, a **singleton** (also known as a **unit set**
 or **one-point set**) is a set with exactly one element.
 
-[fn:38] $\mathbb{N}$ is the symbol for the /natural/ numbers, i.e., the
+[fn:48] $\mathbb{N}$ is the symbol for the /natural/ numbers, i.e., the
 positive integers $1$, $2$, $3\ldots$ we use to count things.
 
-[fn:39] In her 2023 layman's book /The Joy of Abstraction/
+[fn:49] In her 2023 layman's book /The Joy of Abstraction/
 mathematician Eugenia Cheng notes how the operation of mixing paint
 colors is basically idempotent. Why? If we add one paint to one other
 paint we always get just one new paint color. That is, there is never
@@ -1254,19 +1446,19 @@ an additive or multiplicative increasing or intensifying, just a new
 color. Now, how can we explain the green on-button above in terms of
 set-theory idempotency?
 
-[fn:40] ...such as, e.g., a pair of /Cartesian coordinates/ $(a,b)$
+[fn:50] ...such as, e.g., a pair of /Cartesian coordinates/ $(a,b)$
 where $a$ is some real number on the /x-axis/ and $b$ is a real number
 on the /y-axis/. Obviously, with a Cartesian coordinate system $(a,b)
 \neq (b,a)$, since they'd be entirely different points on the plane. The
 only exception would be if $a = b$.
 
-[fn:43] Despite containing actual Scheme programs, i.e., real code, TLS
+[fn:53] Βιγ Σξηεμερ: Big Schemer; Λιττλε Σξηεμερ: Little Schemer in
+Greek letters.
+
+[fn:52] Go [[https://en.wikipedia.org/wiki/Formalism_(philosophy_of_mathematics)][here]] to see the Wikipedia discussion about mathematic
+formalism---although it's a bit formal...
+
+[fn:51] Despite containing actual Scheme programs, i.e., real code, TLS
 was written so that a layperson could follow along with no access to
 nor knowledge of computers, e.g., even someone from the nineteenth
 century such as [[https://en.wikipedia.org/wiki/Ada_Lovelace][Ada Lovelace]]!
-
-[fn:42] Go [[https://en.wikipedia.org/wiki/Formalism_(philosophy_of_mathematics)][here]] to see the Wikipedia discussion about mathematic
-formalism---although it's a bit formal...
-
-[fn:41] Βιγ Σξηεμερ: Big Schemer; Λιττλε Σξηεμερ: Little Schemer in
-Greek letters.
