@@ -722,6 +722,11 @@ label.margin-toggle:not(.sidenote-number) {
     display: none;
 }
 
+mjx-labels > mjx-itable {
+    color: green;
+    /* font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; */
+}
+
 .iframe-wrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */

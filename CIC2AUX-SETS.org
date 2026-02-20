@@ -1,0 +1,697 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: ComputingInContext2AuxSets.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+# #+STARTUP: latexpreview
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* A first good look at sets
+
+\\
+#+begin_figure
+#+CAPTION: A nice Venn diagram done in pastels.
+[[file:images/venndiagramofsets1.png]]
+#+end_figure
+
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/codeismathiscode2"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&friedman1995little]]
+:END:
+
+* 
+
+** Sets are the starting line of mathematics
+
+/[[https://en.wikipedia.org/wiki/Set_theory][Set theory]]/ is the fundamental starting point of higher math, as well
+as appearing early in most Discrete Math texts.[fn:1] It may strike
+you as odd or ironic that the entire world of mathematics has decided
+to base itself on such a seemingly unassuming thing as a set. But as
+we gain more knowledge of set theory, the logical entailment will only
+grow and the choice of set theory as a basis will make more and more
+sense.
+
+So many sources start out with this deceptively simple and informal
+statement, or words to this effect
+
+#+begin_quote
+@@html:<font color = "#0d3db3"> <i>@@ A **set** is a collection of
+things ... objects ... stuff. @@html:</font> </i>@@
+#+end_quote
+
+The founder of set theory, Georg Cantor, defined a set with his
+**Axiom of Unrestricted Comprehension**
+
+#+begin_quote
+@@html:<font color = "#0d3db3">@@ A set is a gathering together into a
+whole of definite, distinct objects of our perception or of our
+thought.  @@html:</font>@@
+#+end_quote
+
+Cantor means to[fn:2]
+
+- establish some membership criteria,
+- gather things passing this membership,
+- and call it a set.
+ 
+In math notation we can express this as
+
+\begin{align*}
+\exists S\, \forall x\, (x \in S \iff P(x))
+\end{align*}
+
+Reading this out loud, /there exists ($\exists$) a set $S$, and for all
+($\forall$) $x$'s a particular $x$ is an element of set $S$ if and only if
+that $x$ satisfies the property $P$/. But before we go on, let's get a
+better handle on just what's meant when we say /property/,
+/predicate/, and /statement/.
+
+In the programming language **[[https://en.wikipedia.org/wiki/Prolog][Prolog]]** we express "Kathy is a parent"
+as ~parent(kathy)~. This is now considered a fact, a /statement/ ---
+that is either true or false. ~parent~ itself is a /property/, i.e.,
+the property of being a parent. In the form ~parent(X)~ with variable
+~X~ it is now considered a /predicate/. The predicate ~parent(X)~ is
+not yet true or false until we provide a value for ~X~, then it
+becomes a statement. Bringing this into our discussion of sets, the
+set of ~parent~'s can be expressed as[fn:3]
+
+\begin{align*}
+\exists S\, \forall X\, (X \in S \iff parent(X))
+\end{align*}
+
+In logic a predicate is described as a "verb phrase template" that
+verbalizes a property. In the previous example ~parent~ becomes the
+verb phrase /is a parent/, and so we have ~parent(kathy)~ meaning
+"Kathy is a parent."
+
+Predicates are the namesake of /Predicate Calculus/ or **First-order
+logic** (FOL), which we will dive into later. In effect, FOL is the
+"operating system" or "grammar" on which theories like set theory
+run. FOL provides the "grammar" for reasoning with these key
+components:
+
+- *Terms (Nouns)*: Represent objects. These can be constants
+  (~socrates~), variables (~x~), or functions.
+- *Predicates (Verbs/Adjectives)*: Describe properties or
+  relationships (e.g., $Man(x)$ or $Likes(x, y)$). These are the only
+  components that carry factual meaning.
+- *Connectives (Logical Glue)*: Symbols like $\land$ (and), $\lor$ (or), $\neg$
+  (not), and $\implies$ (implies).
+- *Quantifiers (Scope)*: $\forall$ (Universal - "for all") and $\exists$
+  (Existential - "there exists").
+- *Equality*: A special binary predicate built into FOL---which we
+  discussed in a separate math holiday.
+
+The great takeaway from this is FOL is the logic base---out of which
+set theory is built. A theory has what is called an FOL /signature/
+which is math-talk for a set of symbols. /The signature of set theory
+consists of just one thing: membership $\in$/. This means every
+statement in set theory is built by combining FOL symbols with the $\in$
+symbol. This makes intuitive sense since set theory is all about what
+belongs in a set. From now on be aware that when we have an expression
+like
+
+\begin{align*}
+\exists S\, \forall X\, (X \in S \iff parent(X))
+\end{align*}
+
+/this is actually an FOL expression/ because it is made up of the
+building blocks of FOL listed above. Again, like we saw with Apostol,
+we are formalizing by creating a toolbox.
+
+
+
+
+
+We'll approach sets with a bit more exactness[fn:4]
+
+** Set basics
+
+⇲ @@html:<font color = "#0d3db3">@@ A /set/ is a collection of objects,
+considered as a single object. The objects making up the set are
+called /elements/ or /members/ of the set. If $x$ is an element of a set $A$,
+we write $x \in A$; if not, we write $x \notin A$.[fn:5] The set which has no
+elements is called the empty set and denoted $\emptyset$.  @@html:</font>@@
+
+This definition is /very/ general. In the wild, sets can be found with
+elements
+
+- unordered, i.e., no particular order can be assumed
+- duplicated
+
+...for example,[fn:6]
+
+\begin{align}
+S_{a,b} = \{a,a,b \} = \{a,b\} = \{b,a\} \\
+\end{align}
+
+Analyzing the three versions of \(S_{a,b}\) we can see both of our bullet
+items at play, i.e., /duplicates and order don't matter/, they're all
+the same set \(S_{a,b}\).[fn:7]
+
+But aren't we missing something? We don't seem to have a proper way to
+explain this structural behavior of sets. As it happens, duplicates
+and order are handled by set theory's version of identity and the
+Leibniz Law, the **Axiom of Extensionality**, which states
+
+⇲@@html:<font color = "#0d3db3">@@ If $A$ and $B$ are sets, then $A =
+B$ if and only if every element of $A$ is also an element of $B$, and
+vice versa.  @@html:</font>@@
+
+First, what does the word /extensionality/ mean in this context? One
+quote about sets says
+
+#+begin_quote
+Sets are purely **extensional** entities, defined only by their unique
+members.
+#+end_quote
+
+Actually, this description tells us exactly what the word
+/extensional/ means in this context; however, our deeply ingrained
+sense of English semantics won't allow us to accept it. In everyday
+English, /extension/ usually refers to physical space or time, e.g.,
+extending a deadline or a ladder. In logic and linguistics,
+/extension/ refers to the breadth or scope of a concept, specifically,
+/the collection of all things to which a concept applies/. More
+precisely for us:
+
+⥤ The /extension/ of a concept or term is the set of actual objects
+the term identifies in the world.
+
+⌜\\
+𝖟𝕭: The __extension__ of the word /planet/ can be Mercury, Venus,
+Earth,... \\
+⌟
+
+⥤ The __intension__ (with an 's') of a term is its /internal/ meaning,
+concept, or definition used to determine if something belongs to it.
+
+⌜\\
+𝖟𝕭: The intension of the word /planet/ can be, /a celestial body
+moving in an elliptical orbit around a star/. \\
+⌟
+
+In general, an entity is "extensional" if two of such entities are
+considered identical whenever they have the same /external/ components
+or results, regardless of how they were constructed or described. /And
+so we are calling sets extensional over intensional in order to
+consider only their elements/. Another example
+
+⌜\\
+𝖟𝕭: $\{1,2,3\}$ is the same as $\{ x \in \mathbb{N} \mid x < 4 \}$[fn:8]
+extensionally. The description changed, but the /extension/, i.e., the
+actual elements remain exactly the same. \\
+⌟
+
+In the same vein
+
+⌜\\
+𝖟𝕭: In logic, the statement $2+2=4$ and "The Earth is round" both have
+the /extension/ /True/, even though their meanings are not the same.  \\
+⌟
+
+and
+
+⌜\\
+𝖟𝕭: The /evening star/ and the /morning star/ can both refer to the
+planet Venus. The extensionality of both is therefore Venus. \\
+⌟
+
+Now let's circle back and finally tie in why Cantor used the word
+/comprehension/ in his initial definition.
+
+@@html:<font color = "#0d3db3">@@ In a linguistic and logical sense,
+the /comprehension/ of something refers to the collection of
+properties that define it.
+@@html:</font>@@
+
+- /Intension/: The property or rule (e.g., "being an even number").
+- /Extension/: The actual objects that fit that rule (e.g., $\{2,4,6,\ldots\}$
+
+Cantor’s definition suggested that any property (intension) could
+define a set (extension). Therefore, the principle states that for any
+property $P$, there exists a set containing all objects that
+"comprehend", i.e., satisfy that property.
+
+
+The /Axiom of Extensionality/ gives sets the power to define equality
+or identity very precisely. It nails down why $S$ can be all three
+variations and still equal. In other words, this is how it allows
+duplicates! Again, if two sets, \(A\) and \(B\), share all the same
+elements \(z\), they are the same set, i.e., /nothing but their
+extensionality matters/ Here are two versions presented in higher-math
+notation
+
+\begin{align}
+\forall z (z \in A \iff z \in B) \implies A = B \\
+A = B \iff \forall z (z \in A \iff z \in B) 
+\end{align}
+
+~(2)~ in words: /For all $z$: $z$ is in $A$ if and only if $z$ is in
+$B$, which implies $A$ equals $B$/. This ensures that sets are
+uniquely determined by their elements and nothing else—no hidden
+structure or distinctions beyond membership.
+
+Leibniz Law
+
+
+Then our grocery list is a /set/ of groceries? Now we come to our
+second fork in the road: No, we should not call a grocery list a /set
+of groceries/ either, because even though with sets order doesn't
+matter, /sets allow duplicates/, whereas with a grocery list a
+duplicated item would just seem like a mistake.[fn:9] In set theory
+there is the /[[https://en.wikipedia.org/wiki/Cardinality][cardinality]]/ of a set, i.e., what is the count of the
+/unique/ elements of the set, /not/ counting duplicates.
+
+⌜\\
+𝖟𝕭: The set $A = \{1,1,1,2,2\}$ is /identical/ to set $B = \{1, 2\}$
+because they have the same /cardinality/, or $|\,A\,| = |\,B\,| =
+2$. \\
+⌟\\
+
+This can be explained in a few ways. The simplest is to say the
+members, the elements of a set /belong/ to that set. So for example,
+if I /belong/ to a club, it doesn't make sense to have me
+/belong-belong/ or belong twice to the club.[fn:10] In the example
+above, $1$ /belongs/ to $A$, so it doesn't need to belong again.
+
+Splitting hairs? Yes, well, set theory is a very fundamental thing in
+higher math, thus, very precisely defined based on axioms. For
+example, set theory has the /[[https://en.wikipedia.org/wiki/Axiom_of_extensionality][Axiom of Extensionality]]/ which states
+@@html:<font color = "#0d3db3">@@ two sets are equal if they both have
+the same members@@html:</font>@@. In our example $A$ and $B$ do indeed
+have the same members, namely, $1$ and $2$ ---and it doesn't matter,
+it doesn't count that $A$ repeats these members. Let's look at another
+example
+
+⌜\\
+𝖟𝕭: Given the *set* $A = \{\text{good, so-so, bad}\}$ and a defined
+(named) *list*
+
+#+name: 7f8774e8-5919-413d-8134-dfd3652d7b39
+#+begin_src scheme :eval never :exports code
+(define week3 '(bad so-so so-so so-so good))
+#+end_src
+⌟\\
+
+the set $A$ contains the three possible moods a person might be in;
+while ~week3~ is the name we've told Scheme to call a list containing
+our daily workweek moods.[fn:11] \\
+
+The order of set $A$ doesn't matter (and we'd ignore, say, a second
+$good$), but the order of the list defined as ~week3~ is important
+because we don't want to mix up how we felt on which of the five work
+days. Also, it makes perfect sense for a list to have "repeats" since
+we're evaluating many days in succession, and each day can be one of
+the three choices. But then notice one more thing about a set: When we
+built the list ~week3~ we had to choose for each day ~good~ /or/ ~bad~
+/or/ ~so-so~. Or did we? What would the list ~week3~ look like if we
+could have more than just one mood during a day? How about
+
+#+name: 5e0271e8-a0e4-430f-b594-f11e30c11403
+#+begin_src scheme :eval never :exports code
+(define week3 '(bad bad so-so (good so-so bad) (good so-so)))
+#+end_src
+
+Remember Venn diagrams? An /or/ situation can be shown with a **[[https://en.wikipedia.org/wiki/Union_(set_theory)][union]]**
+of circles.[fn:12] Let's make a formal definition of a union:[fn:13]
+
+@@html:<font color = "#0d3db3">@@ The union of two sets $A$ and $B$
+(denoted by $A \cup B$) is the set of elements which are in $A$, in $B$,
+*or* in both $A$ and $B$.  @@html:</font>@@[fn:14]
+
+Now, for our set $A = \{\text{good, so-so, bad}\}$, if we are using
+each element just once per the day slot of ~week3~ we could imagine
+$A$ as made up of the individual /singleton/ sets, i.e., sets having
+just one element
+
+\begin{align*}
+A_G &= \{\text{good}\} \\
+A_{S} &= \{\text{so-so}\} \\
+A_B &= \{\text{bad}\}
+\end{align*}
+
+and so a union $\{A_G \cup A_{S} \cup A_B \}$ will get us back to our original
+$A = \{\text{good, so-so, bad}\}$. $A_G$, $A_{S}$, and $A_B$ are
+**[[https://en.wikipedia.org/wiki/Disjoint_sets][disjoint sets]]** since they have no elements in common when we
+union-ize them. And so if we made a Venn diagram, there would be no
+overlap between any of them. Why are we couching our daily mood
+choices in the language of set theory? Because we will eventually move
+on to another language, namely, [[https://en.wikipedia.org/wiki/Haskell][Haskell]], where a certain class of data
+types emulate just this sort of **[[https://en.wikipedia.org/wiki/Logical_disjunction][logical or]]**, i.e., the **sum
+type**. While Scheme is usually not directly explained in terms of
+higher math, the Haskell family of languages (Haskell, [[https://en.wikipedia.org/wiki/Standard_ML][Standard ML]],
+[[https://en.wikipedia.org/wiki/OCaml][OCaml]], [[https://en.wikipedia.org/wiki/F_Sharp_(programming_language)][F#]]) are. Again, lots more about data representations of
+disjoint sets, logical conjunction and disjunction when we look into
+Haskell in the future.
+
+⌜\\
+𝖟𝕭: Consider three common alphabets as sets---the Greek, Latin, and
+Cyrillic alphabets
+
+\begin{align*}
+G &= \{Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, Τ, Υ, Φ, Χ, Ψ, Ω\} \\
+L &= \{A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z\} \\
+C &= \{A, Б, В, Г, Д, E, Ё, Ж, З, И, Й, K, Л, М, Н, О, П, Р, С, Т, У, Ф, Х, Ц, Ч, Ш, Ъ, \\
+&  Ы, Ь, Э, Ю, Я\}
+\end{align*}
+
+Now, let's make one big union-ed together set $A$ out of the
+individual sets $G$, $L$, and $C$
+
+\begin{align*}
+A &= \{ Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, Τ, Υ, \\
+& Φ, Χ, Ψ, Ω, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, \\
+& S, T, U,  V, W, X, Y, Z, A, Б, В, Г, Д, E, Ё, Ж, З, И, Й, K, Л, М, Н, \\
+& О, П, Р, С, Т, У, Ф, Х, Ц, Ч, Ш, Ъ, Ы, Ь, Э, Ю, Я\}
+\end{align*}
+
+Below we see a Venn diagram for $A$, i.e., circles in which the
+/three/ sets of alphabetic characters are contained. We can see how
+the intersecting circumference lines also show the what /any two/
+alphabets share, and then in the very center what they /all/ share
+
+#+begin_figure
+#+CAPTION: Three alphabets, their /union/ and /intersections/ (Wikipedia [[https://en.wikipedia.org/wiki/Venn_diagram][Venn diagram]])
+[[file:images/Venn_diagram_gr_la_ru.png]]
+#+end_figure
+⌟\\
+
+Of course for visual purposes not /all/ the letters could be crowded
+into the diagram above, but we can see how the Venn diagram with its
+overlapping circles trick is beating duplicates. Visually we can see
+this happening, but is there a formal explanation? Short answer: yes.
+
+Now let's look at a formal definition of union in so-called
+**set-builder notation**[fn:15]
+
+\begin{align}
+A \cup B = \{x : x \in A \lor x \in B  \}
+\end{align}
+
+This expression says the **union** of $A$ and $B$ equals the set of
+elements denoted by $x$ such that an $x$ can be an element from[fn:16]
+$A$ *or* an element from $B$.[fn:17] But wait, *or* doesn't quite
+sound right in English if we mean to union-ize two or more things,
+does it?  To bring two or more sets together as one---their unique and
+shared element alike---don't we mean to say, e.g., @@html:<font color
+= "#0d3db3">@@ /the union of $A$ and $B$ takes all the elements from
+both $A$ *and* $B$/?@@html:</font>@@ Yes, but set theory prefers to
+look at, e.g., the Venn diagram of the alphabets (Figure 2 above) and
+say, @@html:<font color = "#0d3db3">@@A letter /belongs/ to the union
+of alphabets if it is from the Greek *or* from the Latin *or* from the
+Cyrillic alphabets.@@html:</font>@@ Again, we have the idea of sets
+and /belonging/ to sets.
+
+Now, look at that bulging middle triangle region of Figure 2
+containing the letters all three alphabets have in common. This is the
+**[[https://en.wikipedia.org/wiki/Intersection_(set_theory)][intersection]]** of alphabet sets $G$, $L$, and $C$. In this case we
+would say: @@html:<font color = "#0d3db3">@@A letter /belongs/ to the
+center triangle (the intersection) if it belongs to $G$ /and/ it
+belongs to $L$ /and/ it belongs to $C$@@html:</font>@@. In other
+words, the letter has to belong to all three alphabets. This is more
+precise, something upon which higher math always insists.
+
+@@html:<label for="mn-demo" class="margin-toggle"></label>
+<input type="checkbox" id="mn-demo" class="margin-toggle">
+<span class="marginnote">@@
+[[file:images/On_Off.jpg]]
+\\
+@@html:</span>@@
+
+And with one final piece of the puzzle we can put to rest this whole
+duplicates within sets issue. Let's explore another logic concept that
+we actually encounter every day. In the modern world we're constantly
+turning things on and off, e.g., a light switch with its on-off
+toggle. But occasionally we see /two/ buttons---/one/ for on, /one/
+for off. In the image to the right we have /two/ buttons doing on and
+off instead of one. In such a case pushing the green /on/ button just
+one initial time turns the device on /and any additional pushing is
+disregarded/. This is the same for the red /off/ button. Push once for
+off---and any further pushes mean nothing. Basically, "I heard you the
+first time, you don't have to repeat yourself." This phenomenon has an
+official name: **[[https://en.wikipedia.org/wiki/Idempotence][idempotence]]**, and it crops up in many real-life
+places. For our set theory discussion imagine making a Venn diagram of
+the union of sets $S_1 = \{5\}$ and $S_2 = \{5\}$, i.e., two different
+sets containing the same single element. Wouldn't this union be just
+one single circle containing the element $5$? Indeed it would. And if
+we added another set $S_3 = \{5\}$ to the union, we would still have
+
+\begin{align*}
+S_1 \cup S_2 \cup S_3 = \{5\}
+\end{align*}
+
+i.e., just one circle representing $5$. In fact, we could union
+together an infinite amount of **singleton**[fn:18] sets of the form
+$S_n = \{5\}$ and they would produce the singleton set $\{5\}$. Now
+for a bit of abstraction. Consider a **[[https://en.wikipedia.org/wiki/Binary_operation][binary operator]]**, i.e., any
+math that takes two objects and does an operation on them to produce
+something new. For example, addition is a binary operation, $1 + 1$ is
+$2$, as is multiplication, $3 \cdot 5$ is $15$. Let's then use the
+abstract symbol $\oplus$ to indicate any sort of binary operator. Now we
+can establish a formal definition of idempotence \\
+
+@@html:<font color = "#0d3db3">@@
+- A **binary operation** $\oplus$ is said to be **idempotent** on a set $S$ if
+  $x \oplus x = x \,\,\text{for all}\,\, x \in S$
+- An element $x$ of a set $S$ is said to be **idempotent** under a
+  binary operator $\oplus$ if $x \oplus x = x$
+@@html:</font>@@
+
+If multiplication is the binary operator on the set of all counting
+numbers $\mathbb{N}$ then what numbers of $\mathbb{N}$[fn:19] can we
+call idempotent according to the definition? Well, only $0$ and $1$
+are idempotent:
+
+\begin{align*}
+0 \cdot 0 &= 0 \\
+1 \cdot 1 &= 1
+\end{align*}
+
+All other numbers ($x \gt 1$) give increasingly larger squares of
+themselves, hence, $0$ and $1$ are idempotent, but the binary
+operation of multiplication is not.[fn:20]
+
+Now, let's consider something that came up in a [[https://math.stackexchange.com/][StackExchange
+Mathematics]] discussion [[https://math.stackexchange.com/questions/155475/1-1-1-origin-of-this-convention][here]], which is tackling our issue of duplicates
+in a set by asking, why is $\{1,1\} = \{1\}$? Below we have a slight
+re-wording of the preferred, green-checked answer:
+
+@@html:<font color = "#0d3db3">@@
+An unordered tuple $\{a_1,a_2,a_3,a_4\dots\}$ is defined as \\
+\begin{align*}
+\{x:x=a_1 \lor x=a_2 \lor x=a_3 \lor x=a_4 \lor\dots\}.
+\end{align*}
+By this convention,
+\begin{align}
+\{1,1\} = \{x:x=1 \lor x=1 \}
+\end{align}
+So by the /idempotency/ of $\lor$ we have (2) the same as $\{ x : x = 1
+\}$, hence,
+\begin{align*}
+\{1,1\} = \{1\}
+\end{align*}
+@@html:</font>@@
+
+Notice we are relying on the **logical-or** binary operator being
+idempotent for all $x$ in the set. Generally, an **unordered n-tuple**
+is a set of the form $\{a_1,a_2,\ldots, a_n\dots\}$, although a **tuple** is
+usually meant to be **ordered**.[fn:21] Again, idempotency of two
+identical sets is obvious when seen as Venn diagrams, but now we've
+seen in exact language how they are idempotent.
+
+By the way, **union** and **logical or** are complimentary ideas. Consider
+this expression
+
+\begin{align}
+a \in X \cup Y \iff a \in X \lor a \in Y
+\end{align}
+
+What does that double-arrow in the middle mean? **if and only
+if**. We'll go into $\iff$ in more exact detail later, but for now it
+means @@html:<font color = "#0d3db3">@@the truth of one side of the
+$\iff$ requires the other side to be true also.@@html:</font>@@ So if
+$a$ is an element of the union of $X$ and $Y$ then $a$ must be an
+element of $X$ /or/ it is an element of $Y$ /or/ it is an element of
+/both/ $X$ and $Y$ ---and the other way around as well. Note: we avoid
+writing $X \lor Y$ when considering just the sets without involving the
+elements therein.
+
+** Summing up; data and data structures
+
+We didn't even get off the first page of TLS, but we have laid some of
+the groundwork we'll need to proceed. And we can't emphasize this
+enough: Computer science is a branch of applied mathematics, and we
+need to get the math going alongside, parallel to the computer
+stuff. So expect more new math. Yes, this sort of math takes
+concentrated, deliberate thinking. We're becoming philosophers, i.e.,
+we're going beyond "plug-and-chug" math.
+
+Next, **lists**. While this lesson was an informal introduction to
+lists, we'll learn more about how they are a very simple but important
+data structure in computer **data management** ... but then we're
+using the term data management differently then the greater lay world
+does. So a quick word about the whole concept of **data** and **data structures** before we really dive in ahead. Today the term /data/ is
+mainly understood to be gobs and gobs of stuff held in databases or
+other storage schemes. That's not what we mean by data. For us /data/
+can simply be a number returned from an algorithm. That is to say,
+data is what the programming logic, the /code/ is taking in, working
+on, then giving back to us. Yes, of course, this production of data
+can pool and amass into great piles in vast electronic storage bins,
+but, for instance, this is data
+
+#+name: 6ce99fb1-93d3-4a72-9e01-5d9b96f3c682
+#+begin_src scheme :eval never :exports code
+'(bad bad so-so so-so good)
+#+end_src
+
+i.e., just a simple list surrounded in parentheses and prefaced at the
+beginning by a quotation mark ("'") as is the custom in Scheme (and
+Lisp). That quote at the opening parenthesis indicates this is not
+code, rather, data. What we saw above
+
+#+name: e4667fd4-1f04-4d95-ac36-ee0ee01b44ca
+#+begin_src scheme :eval never :exports code
+(define week3 '((bad bad so-so so-so good))
+#+end_src
+
+is therefore a mixture of both code and data---making it our first
+Scheme program, even if it is just one line long! As we progress we'll
+get into the weeds on just how this mixture of code and data can work
+together.
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] ...however often enough not as fully explored as with higher
+math treatments.
+
+[fn:2] We'll get to why he uses the term "comprehension" after some
+preliminaries. Hint: it's a very theoretical mathematical use of the
+word.
+
+[fn:3] In Prolog a predicate is lower-case and a variable is upper-case.
+
+[fn:4] The following section comes from the very wonderful /[[https://slc.openlogicproject.org/slc-screen.pdf][Sets,
+Logic, Computation An Open Introduction to Metalogic]]/ (SLC)) from the
+amazing [[https://openlogicproject.org/][Open Logic Project]]. We'll add interesting anecdotes along the
+way.
+
+[fn:5] Recall, the math symbol $\in$ means /is in/ (membership) and $\notin$
+means /is not in/.
+
+[fn:6] With ~(1)~ we see the most basic mathematical notation for a
+set, i.e., /all/ the sets' elements listed out in a row, separated by
+commas, enclosed in a set of curly brackets.
+
+[fn:7] Can we say this about words, e.g., are the words /hot/ and
+/hoot/ the same? No. Words are not sets of letters, rather, /lists/ of
+letters. More later.
+
+[fn:8] Read, /$x$ such that $x$ is a natural number $\mathbb{N}$ and
+$x$ is less than $4$/. This is known as the /roster/ method of set
+notation.
+
+[fn:9] No real "information" is contained in, say, listing milk
+twice. Typically, no one would think "That means get /two/ milks."
+
+[fn:10] ...paying double membership fees?
+
+[fn:11]  Notice once again the nested parentheses. To be sure,
+everything in Scheme is a list.
+
+[fn:12] A Venn diagram of two sets /or/-ed, /union/-ed together. \\
+[[file:images/VennUnion.png]] \\
+The lens-shaped center area represents the "overlap," i.e., what the
+two sets represented as circles have in common.
+
+[fn:13] $\cup$ is the symbol for union.
+
+[fn:14] Could we have said, ...in $A$ *and* in $B$ *and* in both $A$
+and $B$? Better not. More on why later.
+
+[fn:15] (1) can be expanded for the union of more sets than just
+two, e.g., $A \cup B \cup C \cup \ldots$.
+
+[fn:16] The symbol $\in$ means "in" or "member of."
+
+[fn:17] $\lor$ is the symbol for **[[https://en.wikipedia.org/wiki/Logical_disjunction][logical or]]**, aka **logical
+disjunction**. Take a crack at the Wikipedia article.
+
+[fn:18] As we saw above, a **singleton** (also known as a **unit set**
+or **one-point set**) is a set with exactly one element.
+
+[fn:19] $\mathbb{N}$ is the symbol for the /natural/ numbers, i.e., the
+positive integers $1$, $2$, $3\ldots$ we use to count things.
+
+[fn:20] In her 2023 layman's book /The Joy of Abstraction/
+mathematician Eugenia Cheng notes how the operation of mixing paint
+colors is basically idempotent. Why? If we add one paint to one other
+paint we always get just one new paint color. That is, there is never
+an additive or multiplicative increasing or intensifying, just a new
+color. Now, how can we explain the green on-button above in terms of
+set-theory idempotency?
+
+[fn:21] ...such as, e.g., a pair of /Cartesian coordinates/ $(a,b)$
+where $a$ is some real number on the /x-axis/ and $b$ is a real number
+on the /y-axis/. Obviously, with a Cartesian coordinate system $(a,b)
+\neq (b,a)$, since they'd be entirely different points on the plane. The
+only exception would be if $a = b$.
+
+[fn:22] We indicate the cardinality of a set $A$ by surrounding it
+with vertical pipes: $|\,A\,|$ This is similar to the idea of a
+number's /absolute value/ which uses the same vertical bar symbols.

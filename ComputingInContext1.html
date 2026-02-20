@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2026-02-13 Fri 23:06 -->
+<!-- 2026-02-19 Thu 22:44 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -291,15 +291,15 @@ pre.example {clear: none; }
 </nav>
 </div>
 </p>
-<section id="outline-container-org81c074c" class="outline-2">
-<h2 id="org81c074c">Computing in Context 1</h2>
-<div class="outline-text-2" id="text-org81c074c">
+<section id="outline-container-orgb80b556" class="outline-2">
+<h2 id="orgb80b556">Computing in Context 1</h2>
+<div class="outline-text-2" id="text-orgb80b556">
 <p>
 <br>
 </p>
-<figure id="org70a3ad1">
+<figure id="org6801955">
 
-<figure id="org964b83c">
+<figure id="org7ef0887">
 <img src="images/BooleBustUCCorkSepia.png" alt="BooleBustUCCorkSepia.png">
 
 <figcaption><span class="figure-number">Figure 1: </span>George Boole bust @ University College Cork.</figcaption>
@@ -307,13 +307,13 @@ pre.example {clear: none; }
 </figure>
 </div>
 </section>
-<section id="outline-container-orgbd236ed" class="outline-2">
-<h2 id="orgbd236ed"></h2>
-<div class="outline-text-2" id="text-orgbd236ed">
+<section id="outline-container-org5108448" class="outline-2">
+<h2 id="org5108448"></h2>
+<div class="outline-text-2" id="text-org5108448">
 </div>
-<div id="outline-container-orgb4feeb7" class="outline-3">
-<h3 id="orgb4feeb7">Axiomatic mathematics for <i>operationalization</i></h3>
-<div class="outline-text-3" id="text-orgb4feeb7">
+<div id="outline-container-orgef31e8a" class="outline-3">
+<h3 id="orgef31e8a">Axiomatic mathematics for <i>operationalization</i></h3>
+<div class="outline-text-3" id="text-orgef31e8a">
 <blockquote>
 <p>
 In mathematics you don&rsquo;t understand things, you just get used to
@@ -323,9 +323,10 @@ them. <br>
 </blockquote>
 
 <p>
-One example of &ldquo;getting used to&rdquo; math might be this highly theoretic
-mathematical logic description of <b><b><a href="https://en.wikipedia.org/wiki/Atomic_formula">atomic expressions</a></b></b> in the
-programming language Standard ML
+One example of not really understanding, rather, &ldquo;getting used to&rdquo;
+math might be this mathematical logic description of
+<b><b><a href="https://en.wikipedia.org/wiki/Atomic_formula">atomic expressions</a></b></b> in the programming language <b><b><a href="https://en.wikipedia.org/wiki/Standard_ML">Standard
+ML</a></b></b>
 </p>
 
 \begin{align*}
@@ -373,13 +374,40 @@ C \vdash \text{atexp} \Rightarrow \tau
 \end{align*}
 
 <p>
-What does all this mean? As it turns out, this is a portion of the
-actual mathematical logic behind the programming language <b><b><a href="https://en.wikipedia.org/wiki/Standard_ML">Standard
-ML</a></b></b>. These logic diagrams come from ML&rsquo;s <i>formal specification</i>
-presented in <i>The Definition of Standard ML</i>. We won&rsquo;t be tackling
-this sort of thing until much later, but as we move along the point
-will be driven home that modern computer technology is wedded to
-higher math and mathematical logic.
+What does all this mean? Well, the first line, \(C \vdash \text{atexp}
+\Rightarrow \tau\), means
+</p>
+
+<p>
+<font color = "#0d3db3">
+⥤ Under the Context \(C\), the <i>atomic expression</i> \(atexp\) is inferred
+to have type \(\tau\).</font>
+</p>
+
+<p>
+You probably learned this in Kindergarten or first grade and just
+forgot it, no?
+</p>
+
+<p>
+These logic diagrams come from ML&rsquo;s <i>formal specification</i> presented
+in <i>The Definition of Standard ML</i> and are a portion of the actual
+mathematical logic behind the programming language Standard ML. You
+are looking at <i><a href="https://en.wikipedia.org/wiki/Sequent_calculus">sequent calculus</a></i> (or <i>natural deduction</i>) notation,
+which is the standard language for formal semantics applications like
+programming languages. Think &ldquo;schematic diagrams&rdquo; for the internal
+workings of a programming language. No worries, we won&rsquo;t be tackling
+this sort of thing until much later. But as we move along, the point
+will be relentlessly driven home that <i>modern computer technology is
+tightly intertwined with higher math and mathematical logic</i>. At this
+stage in the game, just gaze in awe. This is not meant to scare,
+rather, to intrigue you. Again, be amazed, be very amazed. But be
+aware that this very thing is indeed studied in college computer
+science departments. And preparing you for college-level comp-sci is
+what this is all about. But you might counter, I don&rsquo;t necessarily
+want to study comp-sci. To that we say, Yes you do&#x2014;at least the
+basics. <i>Everybody should know the basics of the most important
+technology the human race has ever created</i>. Let&rsquo;s get started.
 </p>
 
 <p>
@@ -394,7 +422,7 @@ downright <i>philosophical</i>. But why do we have to worry about higher
 math in the first place? As we&rsquo;ve discussed in the Preface, the theory
 that grew alongside the development of digital computers has always
 been formal, rigorous higher math. <i>It had to be.</i> And yes, our
-catchphrase, <i>formalize to operationalize</i><label id='fnr.1' for='fnr-in.1.5732047' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.5732047' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+catchphrase, <i>formalize to operationalize</i><label id='fnr.1' for='fnr-in.1.9942927' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.9942927' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
 Accurate would also be <i>formalize to systematize</i>.
 </span> is central to everything
 we&rsquo;ll be doing. We need to move away from intuition, conditioned
@@ -406,42 +434,43 @@ math at a more fundamental level using exacting, formal methods.
 This chapter is admittedly an odd, quirky sort of dive into how to
 upgrade your understanding of algebra, how to lift it out of the
 mirky, intuitive, seat-of-pants methods you&rsquo;ve learned so far and move
-it into more systematic, rule-based procedures. We need to know why,
-not guess-and-test our way along. Again, why?  <i>Because computability
-in general and computer operation specifically must be grounded in
-logical entailment</i>. Higher math is all about packaging and handling
-logic and its consequences. To be sure, experiencing how higher math
-&ldquo;hangs together&rdquo; can be a marvel, though initially it can be a
-frustrating descent into confusion&#x2014;until your next eureka moment
-lands. What follows in this, our intro chapter, will seem challenging;
-but in the spirit of math text first chapters, <i>do not panic</i>, do not
-take this too seriously, do not attempt to rote learn or memorize;
-rather, just go along for the ride: read, re-read, even do your own
-investigations.<label id='fnr.2' for='fnr-in.2.9130669' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.9130669' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+it into more systematic, rule-based procedures. We need to know
+<span class="underline"><span class="underline">why</span></span>, not just guess-and-test our way along. Again, why?  <i>Because
+computability in general and computer operation specifically must be
+grounded in logical entailment</i>. Higher math is all about packaging
+and handling logic and its consequences. To be sure, experiencing how
+higher math &ldquo;hangs together&rdquo; can be a marvel, discovering all the
+interlocking, interconnected logical consequences, though initially it
+can be a frustrating descent into confusion&#x2014;until your next eureka
+moment lands. What follows in this, our intro chapter, will seem
+challenging; but in the spirit of math text first chapters, <i>do not
+panic</i>, do not take this too seriously, do not attempt to rote learn
+or memorize; rather, just go along for the ride: read, re-read, even
+do your own investigations.<label id='fnr.2' for='fnr-in.2.2560097' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.2560097' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
 &#x2026;e.g., try to understand as much as you can of the Wikipedia
 articles linked.
-</span> Above all, don&rsquo;t worry, everything mentioned
-here will be fleshed out, relevance thoroughly established in
-subsequent lessons.
+</span> Above all, don&rsquo;t worry, everything
+mentioned here will be fleshed out, relevance thoroughly established
+in subsequent lessons.
 </p>
 </div>
-</div>
-<div id="outline-container-org856dc83" class="outline-3">
-<h3 id="org856dc83">Show your work!</h3>
-<div class="outline-text-3" id="text-org856dc83">
+<div id="outline-container-org8a6e31b" class="outline-4">
+<h4 id="org8a6e31b">Show your work!</h4>
+<div class="outline-text-4" id="text-org8a6e31b">
 <p>
 Higher math is all about creating elegant, self-contained,
 self-referential, soup-to-nuts groupings of theories that <i>scale</i> and
 can be applied widely. Reach a higher plateau, see much
 farther. Higher math always seeks to <i>generalize</i>, to be maximally
 universal. Why?  Because consistent systems of symbolism and
-generalization offer us deepest understanding of a subject. Recall
-with Einstein&rsquo;s <a href="https://en.wikipedia.org/wiki/General_relativity">General relativity</a> that gravity, an everyday,
-real-world phenomenon, has, through Einstein, become an <i>artefact</i>,
-literally a logical consequence of a mathematical system. Bottom line:
-<i>Einstein gave us a much deeper and expansive understanding of what
-physical reality is.</i> That&rsquo;s an incredible boon, nothing short of a
-superpower we humans have gained over life here in the universe.<label id='fnr.3' for='fnr-in.3.7179767' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.7179767' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+generalization offer us the deepest possible understanding of a
+subject. Recall with Einstein&rsquo;s <a href="https://en.wikipedia.org/wiki/General_relativity">General relativity</a> that gravity, an
+everyday, real-world phenomenon, has, through Einstein, become an
+<i>artefact</i>, literally a logical consequence of a mathematical
+system. Bottom line: <i>Einstein gave us a much deeper and expansive
+understanding of what physical reality is.</i> That&rsquo;s an incredible boon,
+nothing short of a superpower we humans have gained over life here in
+the universe.<label id='fnr.3' for='fnr-in.3.1969820' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.1969820' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
 &#x2026;and this power is often jaw-dropping. The ways human
 mathematics <i>precisely</i> coincides with <i>exactly</i> what nature is doing
 is nothing short of supernatural. Prepare to have your mind blown with
@@ -460,7 +489,7 @@ process of solving a problem? And if we hit a snag or get the wrong
 answer, we can better narrow down where we we&rsquo;re going wrong. This is
 the first inkling of how higher math seeks to systematize. Let&rsquo;s take
 &ldquo;show your steps&rdquo; further by involving the foundational <b><b>rules</b></b> or
-<b><b><a href="https://en.wikipedia.org/wiki/Axiom">axioms</a></b></b><label id='fnr.4' for='fnr-in.4.3653647' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.3653647' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+<b><b><a href="https://en.wikipedia.org/wiki/Axiom">axioms</a></b></b><label id='fnr.4' for='fnr-in.4.9340770' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.9340770' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
 <b><b>axiom</b></b>: From the Greek <i>axíōma</i> meaning <i>for that which
 commends itself as evident</i>.
 </span> of algebra as seen from the higher-math perspective.
@@ -541,7 +570,7 @@ If \(ab = 0\), then \(a = 0\) or \(b = 0\) or both \(a\) and \(b = 0\)</li>
 Again, you may have seen some or all of these before and wondered what
 it all meant. So let us solve a simple algebra expression for \(x\),
 adding in <i>justifications</i> from the properties above for each
-step<label id='fnr.5' for='fnr-in.5.8898497' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.8898497' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+step<label id='fnr.5' for='fnr-in.5.2684712' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.2684712' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
 𝖟𝕭 is the German abbreviation for <i>zum Beispiel</i> meaning &ldquo;for
 example,&rdquo; done in the old-fashioned German <i>Fraktur</i> script, a nod to
 all the German-speaking contributors to higher math.
@@ -565,7 +594,7 @@ x &= 9 \quad \quad &&\text{Division property of equality} \\
 
 <p>
 All right, we&rsquo;ve shown our work, step-by-step, but we also explained,
-<i>justified</i> each <b><b>rewrite</b></b><label id='fnr.6' for='fnr-in.6.9814032' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.9814032' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+<i>justified</i> each <b><b>rewrite</b></b><label id='fnr.6' for='fnr-in.6.2264958' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.2264958' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
 An entire field of higher math is devoted to just this sort of
 reducing and substituting. What we see with our algebra problem can be
 considered in a general sense as <i>directed replacement</i> of terms, aka
@@ -599,7 +628,7 @@ introduced to the greater world of <b><b><a href="https://en.wikipedia.org/wiki/
 <p>
 With axiomatic mathematics we start with a set of axioms, i.e.,
 givens, rules, laws, statements to be taken as the most basic,
-atomic<label id='fnr.7' for='fnr-in.7.7499042' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.7499042' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+atomic<label id='fnr.7' for='fnr-in.7.2590413' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.2590413' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
 <b><b>atomic</b></b>: In a philosophical, mathematical context, the term
 <i>atomic</i> refers to the most fundamental, indivisible, or simplest
 components within a given system. An atom is the most basic component
@@ -607,7 +636,7 @@ that cannot be broken down, <i>atomized</i> any further.
 </span> facts, then employ <b><b><a href="https://en.wikipedia.org/wiki/Deductive_reasoning">deductive reasoning</a></b></b> to <i>prove</i>
 further statements or <b><b><a href="https://en.wikipedia.org/wiki/Theorem">theorems</a></b></b>. Here&rsquo;s Kenneth Rosen from his <i><a href="https://www.mheducation.com/highered/product/Discrete-Mathematics-and-Its-Applications-Rosen.html">Discrete
 Mathematics and Its Applications</a></i> a widely-used college textbook in
-computer science departments where he emphasizes <b><b><a href="https://en.wikipedia.org/wiki/Mathematical_proof">proof</a></b></b> <label id='fnr.8' for='fnr-in.8.7716984' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.7716984' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+computer science departments where he emphasizes <b><b><a href="https://en.wikipedia.org/wiki/Mathematical_proof">proof</a></b></b> <label id='fnr.8' for='fnr-in.8.9728810' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.9728810' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
 Lots more proving of things as we go.
 </span>
 </p>
@@ -635,7 +664,7 @@ education settings.
 </p>
 
 <p>
-Let&rsquo;s take a quick in situ <i>math holiday</i><label id='fnr.9' for='fnr-in.9.4922533' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.4922533' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+Let&rsquo;s take a quick in situ <i>math holiday</i><label id='fnr.9' for='fnr-in.9.2280106' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.2280106' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
 We use <i>math holiday</i> as a euphemism meaning to take a detour,
 go down a rabbit hole in order to explore a separate math topic
 necessary to advance the discussion. We will take <i>in situ</i>, i.e., on
@@ -719,7 +748,7 @@ continue to run forever. However, it has been proven that the halting
 problem is <span class="underline"><span class="underline">undecidable</span></span>, meaning that <i>no general way exists that
 solves the halting problem for all possible programs and their
 input</i>. This demonstrates that we can define some things
-mathematically but not actually compute them. A lot more later.<label id='fnr.10' for='fnr-in.10.2451268' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.2451268' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
+mathematically but not actually compute them. A lot more later.<label id='fnr.10' for='fnr-in.10.2485338' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.2485338' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
 This goes to the famous <b><b><a href="https://en.wikipedia.org/wiki/Entscheidungsproblem">Entscheidungsproblem</a></b></b>: In
 mathematics and computer science, the Entscheidungsproblem (German for
 &rsquo;decision problem&rsquo; was a challenge posed by David Hilbert and Wilhelm
@@ -741,7 +770,7 @@ as applying &ldquo;brute force,&rdquo; i.e., not really desirable. With the
 Collatz conjecture they have indeed applied brute force&#x2014;out to \(2.36
 \times 10^{21}\), a colossal number. However, in the real world of math and
 computer science we seek known, provable outcomes. This means we need
-tools to analyze computations, even prove<label id='fnr.11' for='fnr-in.11.3430431' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.3430431' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
+tools to analyze computations, even prove<label id='fnr.11' for='fnr-in.11.4901389' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.4901389' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
 <a href="https://en.wikipedia.org/wiki/Mathematical_proof">Mathematical proof</a>: Knowing whether something is true or false
 is of great importance in computer science. In higher math proving
 things completely takes over from doing calculations as you did in
@@ -750,7 +779,7 @@ Algebra and Calculus. More as we go.
 does. Ironically, the whole question of what is computable and what is
 not began in earnest, at least theoretically, on paper, back in the
 1930s, <i>long before a single electronic computing device actually
-existed</i>.<label id='fnr.12' for='fnr-in.12.1254855' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.1254855' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
+existed</i>.<label id='fnr.12' for='fnr-in.12.4227411' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.4227411' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
 In her <i>Recursive Functions in Computer Theory</i>, Rozsa Peter
 nonchalantly states: <i>One always strives to feed &ldquo;reasonable&rdquo; programs
 into the computer</i>&#x2026;
@@ -758,12 +787,13 @@ into the computer</i>&#x2026;
 </p>
 </div>
 </div>
-<div id="outline-container-orgb92e7f7" class="outline-3">
-<h3 id="orgb92e7f7">Algebra built from axioms</h3>
-<div class="outline-text-3" id="text-orgb92e7f7">
+</div>
+<div id="outline-container-org58c53b4" class="outline-3">
+<h3 id="org58c53b4">Algebra built from axioms</h3>
+<div class="outline-text-3" id="text-org58c53b4">
 <p>
 Cal Tech math professor <a href="https://en.wikipedia.org/wiki/Tom_M._Apostol">Tom Apostol</a> in his <i><a href="https://en.wikipedia.org/wiki/Calculus_(Apostol_books)">Calculus&#x2026;</a></i> textbook
-starts with higher math-style foundation-laying for Calculus,<label id='fnr.13' for='fnr-in.13.2421807' class='margin-toggle sidenote-number'><sup class='numeral'>13</sup></label><input type='checkbox' id='fnr-in.13.2421807' class='margin-toggle'><span class='sidenote'><sup class='numeral'>13</sup>
+starts with higher math-style foundation-laying for Calculus,<label id='fnr.13' for='fnr-in.13.1709405' class='margin-toggle sidenote-number'><sup class='numeral'>13</sup></label><input type='checkbox' id='fnr-in.13.1709405' class='margin-toggle'><span class='sidenote'><sup class='numeral'>13</sup>
 Both algebra and calculus are based in the realm of real
 numbers, which uses the symbol \(\mathbb{R}\), thus, Apostol&rsquo;s formalism
 assumes the realm of real numbers. He also refers to the <span class="underline">set</span> of real
@@ -773,7 +803,7 @@ take a nice math holiday to touch on all things to do with sets.
 essentially formalizing, abstracting the arithmetic we&rsquo;ve taken for
 granted since grade school, e.g., simple adding and multiplying. His
 language is&#x2014;formal, but we&rsquo;ll dissect it piece-by-piece. This is how
-he starts<label id='fnr.14' for='fnr-in.14.5576084' class='margin-toggle sidenote-number'><sup class='numeral'>14</sup></label><input type='checkbox' id='fnr-in.14.5576084' class='margin-toggle'><span class='sidenote'><sup class='numeral'>14</sup>
+he starts<label id='fnr.14' for='fnr-in.14.5735035' class='margin-toggle sidenote-number'><sup class='numeral'>14</sup></label><input type='checkbox' id='fnr-in.14.5735035' class='margin-toggle'><span class='sidenote'><sup class='numeral'>14</sup>
 Notice below how he only mentions <i>addition</i> and
 <i>multiplication</i>. Why? Could it be that <i>subtraction</i> and <i>division</i>
 can be <i>derived</i> from adding and multiplying?
@@ -796,7 +826,7 @@ symbols \(+\) and \(\cdot\) other than those contained in the axioms.
 </p>
 
 <p>
-&#x2026;then he gives what he calls the <b><b>field axioms</b></b><label id='fnr.15' for='fnr-in.15.131155' class='margin-toggle sidenote-number'><sup class='numeral'>15</sup></label><input type='checkbox' id='fnr-in.15.131155' class='margin-toggle'><span class='sidenote'><sup class='numeral'>15</sup>
+&#x2026;then he gives what he calls the <b><b>field axioms</b></b><label id='fnr.15' for='fnr-in.15.7797821' class='margin-toggle sidenote-number'><sup class='numeral'>15</sup></label><input type='checkbox' id='fnr-in.15.7797821' class='margin-toggle'><span class='sidenote'><sup class='numeral'>15</sup>
 A <b><b><a href="https://en.wikipedia.org/wiki/Field_(mathematics)">field</a></b></b> is like a higher math bag containing, A), a set of
 objects and, B), two binary operations, addition and multiplication,
 which, together, follow, C), these six axioms&#x2026; Don&rsquo;t worry, we&rsquo;ll get
@@ -838,7 +868,7 @@ getting a purely <i>symbolic</i> and theoretic <i>operational</i> treatment. And
 when he says he &ldquo;attaches no special meaning&rdquo; to the <i>symbols</i> \(+\) and
 \(\cdot\), he&rsquo;s all but saying what \(+\) and \(\cdot\) do is secondary to the
 symbolic machinery he has constructed. Why? Because we&rsquo;re in the world
-of <i>symbolic manipulation</i>.<label id='fnr.16' for='fnr-in.16.9036426' class='margin-toggle sidenote-number'><sup class='numeral'>16</sup></label><input type='checkbox' id='fnr-in.16.9036426' class='margin-toggle'><span class='sidenote'><sup class='numeral'>16</sup>
+of <i>symbolic manipulation</i>.<label id='fnr.16' for='fnr-in.16.6193072' class='margin-toggle sidenote-number'><sup class='numeral'>16</sup></label><input type='checkbox' id='fnr-in.16.6193072' class='margin-toggle'><span class='sidenote'><sup class='numeral'>16</sup>
 Some treatments substitute the symbols \(\oplus\) for &ldquo;addition&rdquo; and
 \(\otimes\) for &ldquo;multiplication&rdquo; to indicate a more general, universal <i>binary
 operator</i> status&#x2014;beyond just the real numbers arithmetic we
@@ -865,21 +895,21 @@ think back on when you were introduced to basic <i><a href="https://en.wikipedia
 example
 </p>
 
-<pre class="example" id="org674ae05">
+<pre class="example" id="org24a5f3b">
   All men are mortal.
   All Greeks are men.
 ∴ All Greeks are mortal.
 </pre>
 
 <p>
-can be generalized by letter symbols as<label id='fnr.17' for='fnr-in.17.5558105' class='margin-toggle sidenote-number'><sup class='numeral'>17</sup></label><input type='checkbox' id='fnr-in.17.5558105' class='margin-toggle'><span class='sidenote'><sup class='numeral'>17</sup>
+can be generalized by letter symbols as<label id='fnr.17' for='fnr-in.17.527968' class='margin-toggle sidenote-number'><sup class='numeral'>17</sup></label><input type='checkbox' id='fnr-in.17.527968' class='margin-toggle'><span class='sidenote'><sup class='numeral'>17</sup>
 &#x2026;even though the second set of premises and conclusion below
 suddenly seems automatic for any <code>M</code>, <code>S</code>, and <code>P</code> we may plug in,
 absurdities can obviously arise.
 </span>
 </p>
 
-<pre class="example" id="org9b42efa">
+<pre class="example" id="org38fbff4">
 Major premise: All M are P.
 Minor premise: All S are M.
 Conclusion:    All S are P.
@@ -894,7 +924,7 @@ robot or a computer. Hold that thought. We&rsquo;ll soon look into the great
 leap computing made riding on the back of formal or symbolic
 logic. The rules for manipulating purely symbolic object, e.g.,
 letters of the alphabet, words, have been carried very successfully
-over into computing.<label id='fnr.18' for='fnr-in.18.9542773' class='margin-toggle sidenote-number'><sup class='numeral'>18</sup></label><input type='checkbox' id='fnr-in.18.9542773' class='margin-toggle'><span class='sidenote'><sup class='numeral'>18</sup>
+over into computing.<label id='fnr.18' for='fnr-in.18.2053446' class='margin-toggle sidenote-number'><sup class='numeral'>18</sup></label><input type='checkbox' id='fnr-in.18.2053446' class='margin-toggle'><span class='sidenote'><sup class='numeral'>18</sup>
 Ada Lovelace (1815 - 1852) is considered to be the first
 &ldquo;computer programmer&rdquo; by recognizing that if the fundamental relations
 of objects (such as music, art, or language) could be expressed
@@ -956,7 +986,7 @@ basic and fundamental. In the words of one authority, the PoE are the
 
 <p>
 Apostol&rsquo;s very first theorem, <b><b>Theorem 1.1</b></b>, the <i>Cancellation law
-for addition</i>, states<label id='fnr.19' for='fnr-in.19.4822847' class='margin-toggle sidenote-number'><sup class='numeral'>19</sup></label><input type='checkbox' id='fnr-in.19.4822847' class='margin-toggle'><span class='sidenote'><sup class='numeral'>19</sup>
+for addition</i>, states<label id='fnr.19' for='fnr-in.19.6615312' class='margin-toggle sidenote-number'><sup class='numeral'>19</sup></label><input type='checkbox' id='fnr-in.19.6615312' class='margin-toggle'><span class='sidenote'><sup class='numeral'>19</sup>
 One notorious fact about math is how different authors use
 different terminology, different strategies to explain a common
 topic. We need to get used to this and learn to contrast and compare.
@@ -1003,7 +1033,7 @@ grasp how. Still, it&rsquo;s staring us in the face that \(a\) is on both
 sides of the equation, then we may eliminate it. Again, Apostol calls
 this a theorem, his <i>Cancellation law for addition</i>, he then proves
 it, and <i>finally</i> we have a true license to use both-sides
-cancellation.<label id='fnr.20' for='fnr-in.20.4157754' class='margin-toggle sidenote-number'><sup class='numeral'>20</sup></label><input type='checkbox' id='fnr-in.20.4157754' class='margin-toggle'><span class='sidenote'><sup class='numeral'>20</sup>
+cancellation.<label id='fnr.20' for='fnr-in.20.4979232' class='margin-toggle sidenote-number'><sup class='numeral'>20</sup></label><input type='checkbox' id='fnr-in.20.4979232' class='margin-toggle'><span class='sidenote'><sup class='numeral'>20</sup>
 Apostol is treating this as a theorem rather than an axiom
 because <i>cancellation does <b><b>not</b></b> work in all mathematical
 settings</i>. For example, in matrix math there is no general
@@ -1024,7 +1054,7 @@ unpack of the zero issue follows:
 objects acting as zeros: good \(0\) and a second &ldquo;rogue&rdquo; zero \(z\).</li>
 <li>By definition of the identity element we say \(a + 0 = a\), then
 supposedly \(a + z = a\) is true as well.</li>
-<li>\(\therefore \; a + 0 = a + z\).<label id='fnr.21' for='fnr-in.21.8418507' class='margin-toggle sidenote-number'><sup class='numeral'>21</sup></label><input type='checkbox' id='fnr-in.21.8418507' class='margin-toggle'><span class='sidenote'><sup class='numeral'>21</sup>
+<li>\(\therefore \; a + 0 = a + z\).<label id='fnr.21' for='fnr-in.21.8832075' class='margin-toggle sidenote-number'><sup class='numeral'>21</sup></label><input type='checkbox' id='fnr-in.21.8832075' class='margin-toggle'><span class='sidenote'><sup class='numeral'>21</sup>
 In higher math the symbol &there4; means <i>therefore</i>.
 </span></li>
 <li>Applying our newly-minted Theorem 1.1 we may lose \(a\) from both
@@ -1034,7 +1064,7 @@ sides&#x2026;</li>
 
 <p>
 &#x2026;which is an absurdity <i>unless</i> rogue zero is actually just good
-zero after all, which proves<label id='fnr.22' for='fnr-in.22.8468680' class='margin-toggle sidenote-number'><sup class='numeral'>22</sup></label><input type='checkbox' id='fnr-in.22.8468680' class='margin-toggle'><span class='sidenote'><sup class='numeral'>22</sup>
+zero after all, which proves<label id='fnr.22' for='fnr-in.22.1927524' class='margin-toggle sidenote-number'><sup class='numeral'>22</sup></label><input type='checkbox' id='fnr-in.22.1927524' class='margin-toggle'><span class='sidenote'><sup class='numeral'>22</sup>
 See <a href="https://en.wikipedia.org/wiki/Reductio_ad_absurdum">Reductio ad absurdum</a>., or proving something true by
 assuming it false, then showing it cannot be false after all.
 </span> it is impossible to have more than
@@ -1045,7 +1075,7 @@ both sides</i>. Are we there yet? Short answer, no&#x2026;
 </p>
 
 <p>
-Let&rsquo;s see another version of Apostol&rsquo;s Theorem 1.1:<label id='fnr.23' for='fnr-in.23.7492576' class='margin-toggle sidenote-number'><sup class='numeral'>23</sup></label><input type='checkbox' id='fnr-in.23.7492576' class='margin-toggle'><span class='sidenote'><sup class='numeral'>23</sup>
+Let&rsquo;s see another version of Apostol&rsquo;s Theorem 1.1:<label id='fnr.23' for='fnr-in.23.5379573' class='margin-toggle sidenote-number'><sup class='numeral'>23</sup></label><input type='checkbox' id='fnr-in.23.5379573' class='margin-toggle'><span class='sidenote'><sup class='numeral'>23</sup>
 Instead of Apostol&rsquo;s \(a\) on both sides, we have \(c\). The
 symbol \(\implies\) means <i>implies</i>.
 </span>
@@ -1056,7 +1086,7 @@ a + c = b + c \implies a = b
 \end{align*}
 
 <p>
-Now, here is a step-by-step summary<label id='fnr.24' for='fnr-in.24.150872' class='margin-toggle sidenote-number'><sup class='numeral'>24</sup></label><input type='checkbox' id='fnr-in.24.150872' class='margin-toggle'><span class='sidenote'><sup class='numeral'>24</sup>
+Now, here is a step-by-step summary<label id='fnr.24' for='fnr-in.24.2145573' class='margin-toggle sidenote-number'><sup class='numeral'>24</sup></label><input type='checkbox' id='fnr-in.24.2145573' class='margin-toggle'><span class='sidenote'><sup class='numeral'>24</sup>
 Note with Step 2 \(\exists\) means <i>there exists</i> and \(\mid\) means
 <i>such that</i>: &ldquo;There exists some \(-c\) such that \(c + (-c)\) equals \(0\).&rdquo;
 </span>
@@ -1137,15 +1167,15 @@ field. Some of this repeats the above discussion; other things will be
 different&#x2014;especially the part about <i>equals</i>.
 </p>
 </div>
-<div id="outline-container-org37a2859" class="outline-4">
-<h4 id="org37a2859">Leibniz and the substitution principle</h4>
-<div class="outline-text-4" id="text-org37a2859">
+<div id="outline-container-org3fbc759" class="outline-4">
+<h4 id="org3fbc759">Leibniz and the substitution principle</h4>
+<div class="outline-text-4" id="text-org3fbc759">
 <p>
 Perhaps skim over Jack Lee&rsquo;s (Professor Emeritus University of
 Washington) Calculus axioms <a href="Axioms for Real Number Math Jack Lee.pdf">here</a>, a handout from his 2016 Calculus
 course. He, like Apostol, gives us <i>field axioms</i> on real numbers,
 followed up by many theorems we can assume are deduced/derived from
-these <i>field</i> axioms.<label id='fnr.25' for='fnr-in.25.3869526' class='margin-toggle sidenote-number'><sup class='numeral'>25</sup></label><input type='checkbox' id='fnr-in.25.3869526' class='margin-toggle'><span class='sidenote'><sup class='numeral'>25</sup>
+these <i>field</i> axioms.<label id='fnr.25' for='fnr-in.25.680130' class='margin-toggle sidenote-number'><sup class='numeral'>25</sup></label><input type='checkbox' id='fnr-in.25.680130' class='margin-toggle'><span class='sidenote'><sup class='numeral'>25</sup>
 Lee lists out 34 theorems. Perhaps ask an AI chatbot to <i>prove</i>
 one of Lee&rsquo;s theorems.
 </span> And there you have Calculus! Or at least
@@ -1154,7 +1184,7 @@ how Lee starts off with his Properties of Equality&#x2014;which are not
 exactly the same as the generic Properties of Equality given at the
 beginning of this chapter. The following are the same as Lee&rsquo;s,
 however, we&rsquo;ve reworded them to be more generalized and include logic
-notation<label id='fnr.26' for='fnr-in.26.8158543' class='margin-toggle sidenote-number'><sup class='numeral'>26</sup></label><input type='checkbox' id='fnr-in.26.8158543' class='margin-toggle'><span class='sidenote'><sup class='numeral'>26</sup>
+notation<label id='fnr.26' for='fnr-in.26.8975747' class='margin-toggle sidenote-number'><sup class='numeral'>26</sup></label><input type='checkbox' id='fnr-in.26.8975747' class='margin-toggle'><span class='sidenote'><sup class='numeral'>26</sup>
 Remember what was said about <i>relations</i> in our last ex situ
 Math Holiday. For now that&rsquo;s good enough.
 </span>
@@ -1228,7 +1258,13 @@ Principle</i>? Let&rsquo;s keep going.
 <p>
 In our fancier version of the <i>Substitution Principle</i> above we&rsquo;re
 confronted with the higher-math concepts of <i>property</i> and
-<i>predicate</i>. But with Lee&rsquo;s <i>Substitution</i>, again, he only says
+<i>predicate</i>. Quickly defined, a <i>predicate</i> is a logical expression
+containing one or more variables, e.g., &ldquo;\(x\) is red&rdquo;. It&rsquo;s a template
+that becomes a statement once you plug in a value for \(x\),
+e,g. &ldquo;<i>house</i> is red.&rdquo; A <i>property</i> is what the predicate
+describes. If \(P(x)\) is the predicate &ldquo;\(x\) is red&rdquo; then the
+<span class="underline"><span class="underline">property</span></span> being discussed is &ldquo;redness&rdquo;. But with Lee&rsquo;s
+<i>Substitution</i>, again, he only says
 </p>
 
 <p>
@@ -1254,8 +1290,9 @@ what a proposition or predicate resolves to. Furthermore, Lee&rsquo;s
 wording emphasises <i>interchangeability</i>, i.e., if we know \(a = b\), the
 <i>truth</i> of \(a\) equalling \(b\) in any operation is not dependent on the
 symbols, the labels \(a\) or \(b\). Hence, the notation \(P(a) \iff
-P(b)\)<label id='fnr.27' for='fnr-in.27.9316463' class='margin-toggle sidenote-number'><sup class='numeral'>27</sup></label><input type='checkbox' id='fnr-in.27.9316463' class='margin-toggle'><span class='sidenote'><sup class='numeral'>27</sup>
-The symbol \(\iff\) is shorthand for <i>if and only if</i>.
+P(b)\)<label id='fnr.27' for='fnr-in.27.279791' class='margin-toggle sidenote-number'><sup class='numeral'>27</sup></label><input type='checkbox' id='fnr-in.27.279791' class='margin-toggle'><span class='sidenote'><sup class='numeral'>27</sup>
+The symbol \(\iff\) is shorthand for <i>if and only if</i>. It is
+also known as <i>logical equivalence</i>.
 </span> is the high-math, symbolic way of stating what Lee does
 </p>
 
@@ -1275,7 +1312,7 @@ when applied to \(a\) and \(b\). Basically, <i>if and only if</i> (\(\iff\)) can
 be understood to say, <i>Statement \(P(a)\) is true <span class="underline"><span class="underline">when</span></span> statement
 \(P(b)\) is true</i>. Likewise reversed: <i>Statement \(P(b)\) is true <span class="underline"><span class="underline">when</span></span>
 statement \(P(a)\) is true</i>, i.e., both together at the same
-time.<label id='fnr.28' for='fnr-in.28.1169456' class='margin-toggle sidenote-number'><sup class='numeral'>28</sup></label><input type='checkbox' id='fnr-in.28.1169456' class='margin-toggle'><span class='sidenote'><sup class='numeral'>28</sup>
+time.<label id='fnr.28' for='fnr-in.28.6196646' class='margin-toggle sidenote-number'><sup class='numeral'>28</sup></label><input type='checkbox' id='fnr-in.28.6196646' class='margin-toggle'><span class='sidenote'><sup class='numeral'>28</sup>
 Consider how the <i>if and only if</i> symbol, \(\iff\), is like
 implies, \(\implies\) pointing both ways, i.e., one <i>implies</i> the other.
 </span> Therefore, \(\iff\) <span class="underline"><span class="underline">connects</span></span> truth values, true or false, of
@@ -1358,19 +1395,19 @@ Consider this Scheme program that tests if a number is less than \(10\)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgf57e62c"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">lt-ten?</span> x<span style="color: #93a8c6;">)</span>
+<pre class="src src-scheme" id="org424c714"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">lt-ten?</span> x<span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>&lt; x 10<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span> <span style="color: #687080; font-style: italic;">; </span><span style="color: #687080; font-style: italic;">function "&lt;" tests x against 10</span>
 </pre>
 </div>
 
 <p>
-Now, let&rsquo;s define some numbers<label id='fnr.29' for='fnr-in.29.9398820' class='margin-toggle sidenote-number'><sup class='numeral'>29</sup></label><input type='checkbox' id='fnr-in.29.9398820' class='margin-toggle'><span class='sidenote'><sup class='numeral'>29</sup>
+Now, let&rsquo;s define some numbers<label id='fnr.29' for='fnr-in.29.8341264' class='margin-toggle sidenote-number'><sup class='numeral'>29</sup></label><input type='checkbox' id='fnr-in.29.8341264' class='margin-toggle'><span class='sidenote'><sup class='numeral'>29</sup>
 Scheme has <code>#t</code> for true and <code>#f</code> for false.
 </span>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgfabafe5"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">c</span> 11<span style="color: #8c8c8c;">)</span>
+<pre class="src src-scheme" id="orga0ad84d"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">c</span> 11<span style="color: #8c8c8c;">)</span>
 <span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">d</span> 11<span style="color: #8c8c8c;">)</span>
 <span style="color: #687080; font-style: italic;">; </span><span style="color: #687080; font-style: italic;">we'll compare them
 </span><span style="color: #8c8c8c;">(</span>= c d<span style="color: #8c8c8c;">)</span> <span style="color: #687080; font-style: italic;">; </span><span style="color: #687080; font-style: italic;">does c equal d?</span>
@@ -1383,7 +1420,7 @@ Scheme has <code>#t</code> for true and <code>#f</code> for false.
 
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org6b7e73c"><span style="color: #687080; font-style: italic;">; </span><span style="color: #687080; font-style: italic;">logical equals, not numerical equals!
+<pre class="src src-scheme" id="org7585938"><span style="color: #687080; font-style: italic;">; </span><span style="color: #687080; font-style: italic;">logical equals, not numerical equals!
 </span><span style="color: #8c8c8c;">(</span>eq? <span style="color: #93a8c6;">(</span>lt-ten? c<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">(</span>lt-ten? d<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span> 
 </pre>
 </div>
@@ -1398,13 +1435,13 @@ But the following will fail. Why?
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgd298fa1"><span style="color: #8c8c8c;">(</span>= <span style="color: #93a8c6;">(</span>lt-ten? c<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">(</span>lt-ten? d<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<pre class="src src-scheme" id="orga6d716d"><span style="color: #8c8c8c;">(</span>= <span style="color: #93a8c6;">(</span>lt-ten? c<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">(</span>lt-ten? d<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 </pre>
 </div>
 
 <p>
 Because <code>lt-ten?</code> returns a <i>true</i> or <i>false</i>, not numbers we can
-compare.<label id='fnr.30' for='fnr-in.30.9615669' class='margin-toggle sidenote-number'><sup class='numeral'>30</sup></label><input type='checkbox' id='fnr-in.30.9615669' class='margin-toggle'><span class='sidenote'><sup class='numeral'>30</sup>
+compare.<label id='fnr.30' for='fnr-in.30.6330117' class='margin-toggle sidenote-number'><sup class='numeral'>30</sup></label><input type='checkbox' id='fnr-in.30.6330117' class='margin-toggle'><span class='sidenote'><sup class='numeral'>30</sup>
 As we&rsquo;ll see, Lisp and Scheme have different sorts of <i>equals</i>
 for different occasions.
 </span> <br>
@@ -1421,7 +1458,7 @@ the universal form \(a = b \implies P(a) \iff P(b)\)? Let&rsquo;s try.
 <p>
 ⌜<br>
 𝖟𝕭: <b><b>Determine universal predicate form for \(a = b \implies a^2 =
-b^2\)</b></b> <label id='fnr.31' for='fnr-in.31.4559165' class='margin-toggle sidenote-number'><sup class='numeral'>31</sup></label><input type='checkbox' id='fnr-in.31.4559165' class='margin-toggle'><span class='sidenote'><sup class='numeral'>31</sup>
+b^2\)</b></b> <label id='fnr.31' for='fnr-in.31.2743247' class='margin-toggle sidenote-number'><sup class='numeral'>31</sup></label><input type='checkbox' id='fnr-in.31.2743247' class='margin-toggle'><span class='sidenote'><sup class='numeral'>31</sup>
 Be aware that this is not an example of algebraic equation
 balancing where the function might be, e.g., \(f(x) = x + (-c)\) meant
 to clear out \(c\) from both sides. Rather, this is just the basic idea
@@ -1444,7 +1481,7 @@ to a function like \(x^2\) result in equal output numbers; rather, we
 need to step back and have a predicate that captures the true or false
 of applying our function \(f(x) = x^2\) to some input \(x\). We therefore need
 \(P(x)\) that checks true or false if \(x^2\) is equal to some specific
-value \(k\).<label id='fnr.32' for='fnr-in.32.4219623' class='margin-toggle sidenote-number'><sup class='numeral'>32</sup></label><input type='checkbox' id='fnr-in.32.4219623' class='margin-toggle'><span class='sidenote'><sup class='numeral'>32</sup>
+value \(k\).<label id='fnr.32' for='fnr-in.32.7998015' class='margin-toggle sidenote-number'><sup class='numeral'>32</sup></label><input type='checkbox' id='fnr-in.32.7998015' class='margin-toggle'><span class='sidenote'><sup class='numeral'>32</sup>
 The symbol \(\equiv\) generally means <i>is identical to</i>, <i>is defined
 as</i>, or <i>is congruent to</i>, depending on the mathematical context. It
 signifies a stronger form of equality than the standard equals sign
@@ -1470,7 +1507,7 @@ a = b \implies (a^2 = k) \iff (b^2 = k)
 <p>
 So yes, at this point we have abstracted above the simple function
 version \(a = b \implies a^2 = b^2\). In a sense, \(P_{k}(x)\) is <i>witnessing</i>
-the value of \(f(x) = x^2\) at \(k\).<label id='fnr.33' for='fnr-in.33.8826307' class='margin-toggle sidenote-number'><sup class='numeral'>33</sup></label><input type='checkbox' id='fnr-in.33.8826307' class='margin-toggle'><span class='sidenote'><sup class='numeral'>33</sup>
+the value of \(f(x) = x^2\) at \(k\).<label id='fnr.33' for='fnr-in.33.5184287' class='margin-toggle sidenote-number'><sup class='numeral'>33</sup></label><input type='checkbox' id='fnr-in.33.5184287' class='margin-toggle'><span class='sidenote'><sup class='numeral'>33</sup>
 \(P_{k}(x)\) could be read as <i>the predicate that when testing at
 \(x\) returns \(k\)</i>. Again: The predicate \(P(x) \equiv (x^2 = k)\) defines a
 property that is true precisely when the function \(f(x) = x^2\)
@@ -1486,7 +1523,7 @@ hold. Hence, we have both \(P_{k}(a) \equiv (a^2 = a^2)\) true and \(P_{k}(b) \e
 </p>
 
 <p>
-Let&rsquo;s look at another example
+Let&rsquo;s look at another example just to make sure we&rsquo;ve got it
 </p>
 
 <p>
@@ -1521,7 +1558,7 @@ a = b \implies (3a - 2 = k) \iff (3b - 2 = k)
 \end{align*}
 
 <p>
-Set \(k = 3a - 2\) so that \(P_{k}(x) \equiv (3x − 2 = 3a − 2)\). Then $P<sub>k</sub>(a) is
+Set \(k = 3a - 2\) so that \(P_{k}(x) \equiv (3x − 2 = 3a − 2)\). Then \(P_{k}(a)\) is
 true by reflexivity: \(3a − 2 = 3a − 2\). Now, same as last time, when
 we assume \(a = b\) then P<sub>k</sub>(b) must be true: \(3b − 2 = 3a − 2\). This is,
 of course, \(f(b) = f(a)\). <br>
@@ -1534,7 +1571,7 @@ Here&rsquo;s another quick example using Scheme code to show another
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org2ecab19"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">even?</span> n<span style="color: #93a8c6;">)</span>
+<pre class="src src-scheme" id="org3a5ad7d"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">even?</span> n<span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>= <span style="color: #b0b1a3;">(</span>remainder n 2<span style="color: #b0b1a3;">)</span> 0<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 </pre>
 </div>
@@ -1548,7 +1585,7 @@ i.e., the response will be either <i>true</i> (<code>#t</code>) or <i>false</i> 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgc39a444"><span style="color: #8c8c8c;">(</span>even? 5<span style="color: #8c8c8c;">)</span>
+<pre class="src src-scheme" id="orgf9fa911"><span style="color: #8c8c8c;">(</span>even? 5<span style="color: #8c8c8c;">)</span>
 </pre>
 </div>
 
@@ -1558,7 +1595,7 @@ i.e., the response will be either <i>true</i> (<code>#t</code>) or <i>false</i> 
 
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org6152eeb"><span style="color: #8c8c8c;">(</span>even? 16<span style="color: #8c8c8c;">)</span>
+<pre class="src src-scheme" id="org58e8afb"><span style="color: #8c8c8c;">(</span>even? 16<span style="color: #8c8c8c;">)</span>
 </pre>
 </div>
 
@@ -1609,7 +1646,7 @@ With the code
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgd5e1fa0"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">even?</span> n<span style="color: #93a8c6;">)</span>
+<pre class="src src-scheme" id="org280be46"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">even?</span> n<span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>= <span style="color: #b0b1a3;">(</span>remainder n 2<span style="color: #b0b1a3;">)</span> 0<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 </pre>
 </div>
@@ -1640,7 +1677,7 @@ Scheme code
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org827e783"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">a</span> 10<span style="color: #8c8c8c;">)</span>
+<pre class="src src-scheme" id="org5f5abdf"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">a</span> 10<span style="color: #8c8c8c;">)</span>
 <span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">b</span> 10<span style="color: #8c8c8c;">)</span>
 <span style="color: #8c8c8c;">(</span>= a b<span style="color: #8c8c8c;">)</span>
 </pre>
@@ -1657,7 +1694,7 @@ the \(f(a) = f(b)\) part
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org4fcf868"><span style="color: #8c8c8c;">(</span>= <span style="color: #93a8c6;">(</span>remainder a 2<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">(</span>remainder a 2<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span> 
+<pre class="src src-scheme" id="org8a736e0"><span style="color: #8c8c8c;">(</span>= <span style="color: #93a8c6;">(</span>remainder a 2<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">(</span>remainder a 2<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span> 
 </pre>
 </div>
 
@@ -1672,7 +1709,7 @@ And true to original <i>Substitution Principle</i> based in predicates with \(a 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org4a77dda"><span style="color: #8c8c8c;">(</span>eq? <span style="color: #93a8c6;">(</span>even? a<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">(</span>even? b<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<pre class="src src-scheme" id="orge600183"><span style="color: #8c8c8c;">(</span>eq? <span style="color: #93a8c6;">(</span>even? a<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">(</span>even? b<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 </pre>
 </div>
 
@@ -1836,7 +1873,7 @@ are, <i>seek to create an entire airtight universe</i>. You are correct.
 <p>
 But do we need all four of Lee&rsquo;s <i>Properties of Equality</i>? What about
 just these two? Now we have a <i>universal</i> axiom coupled with a
-principle developed originally by Gottfried Wilhelm Leibniz.<label id='fnr.34' for='fnr-in.34.2238972' class='margin-toggle sidenote-number'><sup class='numeral'>34</sup></label><input type='checkbox' id='fnr-in.34.2238972' class='margin-toggle'><span class='sidenote'><sup class='numeral'>34</sup>
+principle developed originally by Gottfried Wilhelm Leibniz.<label id='fnr.34' for='fnr-in.34.1253142' class='margin-toggle sidenote-number'><sup class='numeral'>34</sup></label><input type='checkbox' id='fnr-in.34.1253142' class='margin-toggle'><span class='sidenote'><sup class='numeral'>34</sup>
 We introduce the higher-math notation \(\forall x \; (x=x)\) where the
 \(\forall\) symbol means <i>for all</i>. Hence, <i>for all</i> \(x\), \(x = x\).
 </span>
@@ -1864,10 +1901,10 @@ considered in higher math to be a <i>logical axiom</i>, i.e., it is
 opposite would be non-logical axioms, i.e., truths that are limited to
 certain situations. For example, \(x ⊕ y = y ⊕ x\) or general
 <i>commutativity</i>, which is <i>not</i> universally true throughout
-mathematics.<label id='fnr.35' for='fnr-in.35.2536340' class='margin-toggle sidenote-number'><sup class='numeral'>35</sup></label><input type='checkbox' id='fnr-in.35.2536340' class='margin-toggle'><span class='sidenote'><sup class='numeral'>35</sup>
+mathematics.<label id='fnr.35' for='fnr-in.35.157428' class='margin-toggle sidenote-number'><sup class='numeral'>35</sup></label><input type='checkbox' id='fnr-in.35.157428' class='margin-toggle'><span class='sidenote'><sup class='numeral'>35</sup>
 Here the symbol ⊕ means any binary operation, e.g., addition,
 subtraction&#x2026;
-</span>,<label id='fnr.36' for='fnr-in.36.2045900' class='margin-toggle sidenote-number'><sup class='numeral'>36</sup></label><input type='checkbox' id='fnr-in.36.2045900' class='margin-toggle'><span class='sidenote'><sup class='numeral'>36</sup>
+</span>,<label id='fnr.36' for='fnr-in.36.4650972' class='margin-toggle sidenote-number'><sup class='numeral'>36</sup></label><input type='checkbox' id='fnr-in.36.4650972' class='margin-toggle'><span class='sidenote'><sup class='numeral'>36</sup>
 Besides the obvious ones, subtraction and division, with
 matrix math commutativity is not always true.
 </span> Now, does this have anything to do with
@@ -1887,7 +1924,7 @@ now use in digital computers, built this out into a foundational truth
 in mathematical logic. His famous reinterpretation of <i>a thing is what
 it is and not something else</i> argued that the equation \(x^{2} = x\) or
 \(x(x-1)=0\) shows us that a thing is only itself and nothing else in a
-very thorough mathematical logic way.<label id='fnr.37' for='fnr-in.37.6238621' class='margin-toggle sidenote-number'><sup class='numeral'>37</sup></label><input type='checkbox' id='fnr-in.37.6238621' class='margin-toggle'><span class='sidenote'><sup class='numeral'>37</sup>
+very thorough mathematical logic way.<label id='fnr.37' for='fnr-in.37.5334502' class='margin-toggle sidenote-number'><sup class='numeral'>37</sup></label><input type='checkbox' id='fnr-in.37.5334502' class='margin-toggle'><span class='sidenote'><sup class='numeral'>37</sup>
 Basically, Boole invokes <i>idempotency</i>. Imagine two buttons,
 one for <i>on</i>, one for <i>off</i>. If you press the <i>on</i> button the device
 turns on, but then pressing it again and again &#x2026; the device is still
@@ -1903,7 +1940,7 @@ this <i>a thing is only itself and nothing else</i> truth, we could
 technically build a weird logical model where an object is not the
 same as itself all the time. For example, observing an object \(A\) at
 time t<sub>1</sub> and observing the object at time t<sub>2</sub> might be considered two
-different objects.<label id='fnr.38' for='fnr-in.38.9863673' class='margin-toggle sidenote-number'><sup class='numeral'>38</sup></label><input type='checkbox' id='fnr-in.38.9863673' class='margin-toggle'><span class='sidenote'><sup class='numeral'>38</sup>
+different objects.<label id='fnr.38' for='fnr-in.38.1797640' class='margin-toggle sidenote-number'><sup class='numeral'>38</sup></label><input type='checkbox' id='fnr-in.38.1797640' class='margin-toggle'><span class='sidenote'><sup class='numeral'>38</sup>
 With computers the <b><b>state</b></b> of the internal memory caused by
 the progress of running programs may change. But then <i>functional
 programming</i> is based around state not changing, which is modeled on
@@ -2040,7 +2077,7 @@ same weight, you can swap them at any time, and the total weight of a
 larger stack won&rsquo;t change. But how are either Apostol&rsquo;s <i>Theorem 1.1:
 Cancellation law for addition</i> or this new <i>Substitution Principle</i>
 giving us equation balancing? Let&rsquo;s now reconcile Apostol with the
-<i>Substitution Principle</i>.<label id='fnr.39' for='fnr-in.39.8269706' class='margin-toggle sidenote-number'><sup class='numeral'>39</sup></label><input type='checkbox' id='fnr-in.39.8269706' class='margin-toggle'><span class='sidenote'><sup class='numeral'>39</sup>
+<i>Substitution Principle</i>.<label id='fnr.39' for='fnr-in.39.268344' class='margin-toggle sidenote-number'><sup class='numeral'>39</sup></label><input type='checkbox' id='fnr-in.39.268344' class='margin-toggle'><span class='sidenote'><sup class='numeral'>39</sup>
 <a href="https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz">Leibniz</a>&rsquo;s Law (also called <b><b><a href="https://en.wikipedia.org/wiki/Identity_of_indiscernibles">Indiscernibility of Identicals</a></b></b>)
 and the Substitution Principle are essentially the same, with
 Leibniz&rsquo;s Law stating that identical things share all properties,
@@ -2089,7 +2126,7 @@ concept of equality, of <i>sameness</i> goes much deeper and is more
 precise and nuanced than our everyday intuitive understanding of
 <i>equals</i>&#x2014;as we can see with Leibniz&rsquo;s very theoretical
 Indiscernibility of Identicals. In one formal definition, equality is
-called an <i>equivalence relation</i> on numbers.<label id='fnr.40' for='fnr-in.40.5828480' class='margin-toggle sidenote-number'><sup class='numeral'>40</sup></label><input type='checkbox' id='fnr-in.40.5828480' class='margin-toggle'><span class='sidenote'><sup class='numeral'>40</sup>
+called an <i>equivalence relation</i> on numbers.<label id='fnr.40' for='fnr-in.40.2974819' class='margin-toggle sidenote-number'><sup class='numeral'>40</sup></label><input type='checkbox' id='fnr-in.40.2974819' class='margin-toggle'><span class='sidenote'><sup class='numeral'>40</sup>
 We took a quick look at what a <i>relation</i> is in our <i>Existence
 and uniqueness</i> math holiday.
 </span>
@@ -2109,7 +2146,7 @@ being said about <i>predicates</i> in the <i>Substitution Principle</i> above.
 
 <p>
 Grok&rsquo;s first axiom is <b><b>reflexivity</b></b>, which might seem
-<i>vacuous</i><label id='fnr.41' for='fnr-in.41.484135' class='margin-toggle sidenote-number'><sup class='numeral'>41</sup></label><input type='checkbox' id='fnr-in.41.484135' class='margin-toggle'><span class='sidenote'><sup class='numeral'>41</sup>
+<i>vacuous</i><label id='fnr.41' for='fnr-in.41.8828085' class='margin-toggle sidenote-number'><sup class='numeral'>41</sup></label><input type='checkbox' id='fnr-in.41.8828085' class='margin-toggle'><span class='sidenote'><sup class='numeral'>41</sup>
 In math and logic a <b><b>vacuous truth</b></b> is a statement that is
 true, can&rsquo;t be refuted, but isn&rsquo;t really saying anything. For example,
 the statement <i>All cell phones in the room are off</i> would be vacuously
@@ -2135,7 +2172,7 @@ to accept this, but here it is formally stated.
 And now let&rsquo;s take an <i>in situ</i> math holiday to look into FOL so we
 can understand what&rsquo;s going on with predicates and why the FOL
 statement \(\forall x \, (x = x)\) firms up what we were saying in <i>Uniqueness
-and existence</i> about \(=\) in logic beingis just another version of \(a = b\).<label id='fnr.42' for='fnr-in.42.1219212' class='margin-toggle sidenote-number'><sup class='numeral'>42</sup></label><input type='checkbox' id='fnr-in.42.1219212' class='margin-toggle'><span class='sidenote'><sup class='numeral'>42</sup>
+and existence</i> about \(=\) in logic beingis just another version of \(a = b\).<label id='fnr.42' for='fnr-in.42.197829' class='margin-toggle sidenote-number'><sup class='numeral'>42</sup></label><input type='checkbox' id='fnr-in.42.197829' class='margin-toggle'><span class='sidenote'><sup class='numeral'>42</sup>
 Actually, when math logic is studied we usually begin with
 <b><b><a href="https://en.wikipedia.org/wiki/Propositional_logic">Propositional Logic</a></b></b>, then FOL. But here we&rsquo;ll just quickly touch
 on FOL.
@@ -2182,9 +2219,9 @@ These axioms define how operations behave, but equality ties them to the &ldquo;
 </p>
 </div>
 </div>
-<div id="outline-container-org263da84" class="outline-4">
-<h4 id="org263da84">Preserving equality through operations</h4>
-<div class="outline-text-4" id="text-org263da84">
+<div id="outline-container-org2febad1" class="outline-4">
+<h4 id="org2febad1">Preserving equality through operations</h4>
+<div class="outline-text-4" id="text-org2febad1">
 <p>
 Starting from an equation \(a = b\), applying the same operation to both sides preserves equality due to substitution and the field axioms. Here&rsquo;s how common operations are justified:
 </p>
@@ -2212,9 +2249,9 @@ More complex operations (e.g., squaring both sides) follow similarly: Define \(f
 </p>
 </div>
 </div>
-<div id="outline-container-orgad07e74" class="outline-4">
-<h4 id="orgad07e74">Why this maintains balance</h4>
-<div class="outline-text-4" id="text-orgad07e74">
+<div id="outline-container-orgc5e67a4" class="outline-4">
+<h4 id="orgc5e67a4">Why this maintains balance</h4>
+<div class="outline-text-4" id="text-orgc5e67a4">
 <p>
 The rule isn&rsquo;t arbitrary—it&rsquo;s a consequence of equality being an equivalence relation and operations being well-defined functions. If you only apply an operation to one side, you&rsquo;re no longer comparing equal expressions; you&rsquo;ve changed one without the other, violating substitution. Axiomatically, this ensures that solving equations (e.g., isolating variables) is logically sound and leads to equivalent statements.
 </font>
@@ -2223,788 +2260,10 @@ The rule isn&rsquo;t arbitrary—it&rsquo;s a consequence of equality being an e
 
 
 
-
-<p>
-The multi-volume set <a href="https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms">Euclid&rsquo;s Elements</a> (EE) from ca. 300 BC Greece is
-generally accepted as being the first example of mathematics built on
-<b><a href="https://en.wikipedia.org/wiki/Axiom">axioms</a></b> and built up through proven <b><a href="https://en.wikipedia.org/wiki/Theorem">theorems</a></b> based on those
-axioms<label id='fnr.43' for='fnr-in.43.2242255' class='margin-toggle sidenote-number'><sup class='numeral'>43</sup></label><input type='checkbox' id='fnr-in.43.2242255' class='margin-toggle'><span class='sidenote'><sup class='numeral'>43</sup>
-A <b><a href="https://en.wikipedia.org/wiki/Conjecture">conjecture</a></b> is a tentative <b><a href="https://en.wikipedia.org/wiki/Proposition">proposition</a></b> that may evolve to
-become a theorem if proven true. Conjectures are mathematical
-statements unproven but useful for consideration. Propositions are
-&ldquo;objects of belief,&rdquo; e.g., if someone believes that the sky is blue,
-the <i>object</i> of their belief is the <i>proposition</i> that the sky is
-blue.
-</span> &#x2026; and EE has been, in one form or another, a part of
-the Western world&rsquo;s math curricula ever since. It was once a staple of
-high school math, <i>though often dreaded</i>, as it was the student&rsquo;s
-first exposure to the strange idea of <i>proving</i> math instead of just
-doing math. Proving something in math requires a deep grasp of a
-topic, which is completely different from the typical style of &ldquo;when
-you see this, do this&rdquo; group behavior conditioning. Starting with
-<a href="https://en.wikipedia.org/wiki/Euclidean_geometry#Axioms">Euclidean Geometry</a>, the student is asked to see a geometric
-situation<label id='fnr.44' for='fnr-in.44.6559345' class='margin-toggle sidenote-number'><sup class='numeral'>44</sup></label><input type='checkbox' id='fnr-in.44.6559345' class='margin-toggle'><span class='sidenote'><sup class='numeral'>44</sup>
-For example the (in)famous <i><a href="https://en.wikipedia.org/wiki/Pons_asinorum">pons asinorum</a></i> in <i>Euclid&rsquo;s
-Elements</i> <br>
-<img src="images/Byrne_pons_asinorum.jpg" alt="Byrne_pons_asinorum.jpg"> <br>
-where it is <i>proven</i> that indeed the angles opposite the equal sides
-of an isosceles triangle are themselves equal.
-</span> and understand why something about it is <i>necessarily</i>
-(proven to be) true. The proof of, e.g., the <i>pons asinorum</i> is a
-step-by-step establishing of undeniable facts based on Euclid&rsquo;s
-axioms, his <i>Postulates</i> and <i>Notions</i>. Again, this was the beginning
-of modern mathematics where a set of axioms could be called on to
-build <i>theorems</i>, i.e., additional true things about the
-situation. 
-</p>
-
-<p>
-Axioms can go by many names, e.g., basic truths, givens, primitives. Here are
-Euclid&rsquo;s <b>Five Postulates</b>
-</p>
-
-
-<dl class="org-dl">
-<dt>P1</dt><dd>A straight line may be drawn between any two points.</dd>
-<dt>P2</dt><dd>Any terminated straight line may be extended indefinitely.</dd>
-<dt>P3</dt><dd>A circle may be drawn with any given point as center and any
-given radius.</dd>
-<dt>P4</dt><dd>All right angles are equal.</dd>
-<dt>P5</dt><dd>Through a given point \(P\) not on a line \(L\), there is one and
-only one line in the plane of \(P\) and \(L\) which does not meet \(L\).</dd>
-</dl>
-
-<p>
-The last postulate is a more modern rewording of the original, meaning
-<i>truly parallel lines may exist that never cross</i>. To these first
-five, Euclid added another five basic truths, his <b>Common Notions</b>
-</p>
-
-<dl class="org-dl">
-<dt>N1</dt><dd>Things which are equal to the same thing are also equal to
-each other.</dd>
-<dt>N2</dt><dd>If equals are added to equals, the wholes (results) are equal.</dd>
-<dt>N3</dt><dd>If equals are subtracted from equals, the remainders are equal.</dd>
-<dt>N4</dt><dd>Things which coincide with one another are equal to one another.</dd>
-<dt>N5</dt><dd>The whole is greater than a part of the whole.</dd>
-</dl>
-
-<p>
-With these ten axiomatic statements begins much geometry, logic,
-number and set theory. That is to say, great amounts of <i><a href="https://en.wikipedia.org/wiki/Propositional_calculus#Inference_rules">implication</a></i>,
-&ldquo;if this then that&rdquo; can be derived from these ten accepted
-givens.<label id='fnr.45' for='fnr-in.45.1000555' class='margin-toggle sidenote-number'><sup class='numeral'>45</sup></label><input type='checkbox' id='fnr-in.45.1000555' class='margin-toggle'><span class='sidenote'><sup class='numeral'>45</sup>
-In mathematical logic the idea of <i>implication</i> is very
-fundamental. Something <i>implies</i> something else; because \(A\), that
-means \(B\) as well. Implication goes by many names: <i><a href="https://en.wikipedia.org/wiki/Material_conditional">material
-conditional</a></i>, <a href="https://en.wikipedia.org/wiki/Modus_ponens">modus ponens</a>, <a href="https://en.wikipedia.org/wiki/Logical_consequence">logical consequence</a>. We first see
-implication in programming with the basic <i>if-then-else</i> conditional
-starting with our third chapter.
-</span> For example, the last notion, N5, seems to say something
-almost silly and trivial. But as <a href="http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html">this treatment</a> explains, N5 with its
-odd wording starts whith the basic concept of one thing being <i>larger</i>
-than another, i.e., \(A>B\). Here&rsquo;s David E. Joyce&rsquo;s, professor of
-mathematics at Clark University, explanation
-</p>
-
-<blockquote>
-<p>
-To say one magnitude \(B\) is a <b>part</b> of another \(A\) could be taken as
-saying that \(A\) is the sum of \(B\) and \(C\) for some third magnitude
-\(C\), the remainder. Symbolically, \(A > B\) means that there is some \(C\)
-such that \(A = B + C\).
-</p>
-</blockquote>
-
-<p>
-Again, to the novice this may look like nit-picking, but real math
-comes from having these basic foundational givens&#x2014;upon which new,
-useful math is solidly, logically built. Higher math<label id='fnr.46' for='fnr-in.46.3412241' class='margin-toggle sidenote-number'><sup class='numeral'>46</sup></label><input type='checkbox' id='fnr-in.46.3412241' class='margin-toggle'><span class='sidenote'><sup class='numeral'>46</sup>
-<i>Higher math</i> in the U.S. typically means those college math
-courses pursued in the junior and senior year of a Bachelors math
-degree, i.e., those courses <i>after</i> Calculus, Differential Equations,
-and Linear Algebra.
-</span> is the
-realm of axiomatic math where proofs of <i>theorems</i> are the
-staple. Higher math is where the student becomes a real mathematician
-who looks under the hood and learns what makes things really tick.
-</p>
-
-<p>
-Let&rsquo;s consider a more serious-looking set of axioms, again, taken from
-course material by Professor Joyce, then a proof of a theorem based,
-i.e., relying on these axioms<label id='fnr.47' for='fnr-in.47.62213' class='margin-toggle sidenote-number'><sup class='numeral'>47</sup></label><input type='checkbox' id='fnr-in.47.62213' class='margin-toggle'><span class='sidenote'><sup class='numeral'>47</sup>
-These axioms relate to Linear Algebra.
-</span>
-</p>
-
-<ol class="org-ol">
-<li>Vector addition is <i>commutative</i>: \(\mathbf{v} + \mathbf{w} = \mathbf{w} + \mathbf{v}\).</li>
-<li>Vector addition is <i>associative</i>: \((\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})\).</li>
-<li>There is a vector, denoted \(\mathbf{0}\) such that \(\mathbf{v} + \mathbf{0} = \mathbf{v} = \mathbf{0} + \mathbf{v}\).</li>
-<li>For each \(\mathbf{v}\), there is another vector \(\mathbf{−v}\) such that \(\mathbf{v} + (\mathbf{−v}) =
-   0\).</li>
-<li>Scalar multiplication <i>distributes</i> over vector addition: \(c(\mathbf{v} + \mathbf{w}) =
-   c\mathbf{v} + c\mathbf{w}\).</li>
-<li>Scalar multiplication <i>distributes</i> over real addition: \((c + d)\mathbf{v} = c\mathbf{v} + d\mathbf{v}\)</li>
-<li>Multiplication and scalar multiplication <i>associate</i>: \(c(d\mathbf{v}) =
-   (cd)\mathbf{v}\).</li>
-<li>The number \(1\) acts as <i>identity</i> for scalar multiplication: \(1\mathbf{v}
-   = \mathbf{v}\).</li>
-</ol>
-
-<p>
-And now we&rsquo;ll prove a very basic theorem relying on these axiom truths
-</p>
-
-<p>
-<font color = "#650d1c">
-Theorem: \(0\mathbf{v} = 0\)
-</font>
-</p>
-
-<p>
-&#x2026;or zero times a vector \(\mathbf{v}\) is zero.
-</p>
-
-<p>
-⌜<br>
-<font color = "#650d1c">Proof: </font> Since \(0 + 0
-= 0\), therefore we can say \((0 + 0)\mathbf{v} = 0\mathbf{v}\). By axiom <b>6</b>, that implies
-\(0\mathbf{v} + 0\mathbf{v} = 0\mathbf{v}\). If we could subtract \(0\mathbf{v}\) from each side, we’d be
-done, but subtraction isn’t yet defined. Still, we can add the
-negation of \(0v\) to each side which should accomplish about the same
-thing. Thus,
-</p>
-
-\begin{align*}
-(0\mathbf{v} + 0\mathbf{v}) + (−0\mathbf{v}) = 0\mathbf{v} + (−0\mathbf{v}).
-\end{align*}
-
-<p>
-Next, we can associate the parentheses differently by axiom <b>2</b> to get
-</p>
-
-\begin{align*}
-0\mathbf{v} + (0\mathbf{v} + (−0\mathbf{v})) = 0\mathbf{v} + (−0\mathbf{v}).
-\end{align*}
-
-<p>
-That equation simplifies by axiom <b>4</b> to \(0\mathbf{v} + 0 = 0\), and by
-axiom <b>3</b>, that further simplifies to \(0\mathbf{v} = 0\) which is what
-was to be proved. <b>Q.E.D.</b><label id='fnr.48' for='fnr-in.48.4647044' class='margin-toggle sidenote-number'><sup class='numeral'>48</sup></label><input type='checkbox' id='fnr-in.48.4647044' class='margin-toggle'><span class='sidenote'><sup class='numeral'>48</sup>
-&#x2026; <i>quod erat demonstrandum</i>, meaning &ldquo;that which was to be
-demonstrated&rdquo;.
-</span> <br>
-⌟
-</p>
-
-<p>
-Got it? No worries (yet) if you didn&rsquo;t. The point is to understand
-that this so-call higher math thing wants to be built exclusively on
-axioms. But yes, this is a strange world for the beginner so used to
-the usual &ldquo;get stuff calculated&rdquo; math. For example, in beginner
-algebra we never needed to <i>show</i> with a proof that an entity times
-zero is zero. So yes, here we have a thorough <i>proof</i> of something
-that we normally would have taken for granted. But again, this is the
-world of higher math where math becomes more of a philosophy than just
-a set of tools.<label id='fnr.49' for='fnr-in.49.8113211' class='margin-toggle sidenote-number'><sup class='numeral'>49</sup></label><input type='checkbox' id='fnr-in.49.8113211' class='margin-toggle'><span class='sidenote'><sup class='numeral'>49</sup>
-Go ahead and take a &ldquo;math holiday&rdquo; by touring <a href="http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html">this page</a> by
-Professor Joyce. He is speaking from a quasi-<a href="https://en.wikipedia.org/wiki/Set_theory">set theory</a> standpoint,
-i.e., the basis of modern high math. But remember, Euclid was talking
-strictly about geometric shapes. Set theory had not been invented
-yet&#x2026;
-</span>
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-org4131ea7" class="outline-3">
-<h3 id="org4131ea7">Axiomatic Scheme</h3>
-<div class="outline-text-3" id="text-org4131ea7">
-<p>
-And now with no further ado we will list out TLS&rsquo;s version of
-&ldquo;axiomatic givens&rdquo; starting with <i>The Ten Commandments</i> below<label id='fnr.50' for='fnr-in.50.5415174' class='margin-toggle sidenote-number'><sup class='numeral'>50</sup></label><input type='checkbox' id='fnr-in.50.5415174' class='margin-toggle'><span class='sidenote'><sup class='numeral'>50</sup>
-Do <i>not</i> worry about what all this means. In time we will
-explain all the Scheme programming syntax contained here. More
-importantly, just realize how a programming language is actually based
-on rules exactly like high math is built on axioms.
-</span>
-</p>
-
-<ul class="org-ul">
-<li><b>First Commandment</b>: When recurring on a list of atoms, <code>lat</code>, ask two
-questions about it <code>(null? lat)</code> and <code>else</code>; when recurring on a
-number, <code>n</code>, ask two questions about it: <code>(zero? n)</code> and <code>else</code>;
-when recurring on a list of S-expressions, <code>l</code>, ask three question
-about it: <code>(null?  l)</code>, <code>(atom? ( car l))</code>, and <code>else</code>.</li>
-<li><b>Second Commandment</b>: Use <code>cons</code> to build lists.</li>
-<li><b>Third Commandment</b>: When building a list, describe the first typical
-element, and then <code>cons</code> it onto the natural recursion.</li>
-<li><b>Fourth Commandment</b>: Always change at least one argument while
-recurring. When recurring on a list of atoms, <code>lat</code>, use <code>(cdr
-  lat)</code>. When recurring on a number, <code>n</code>, use <code>(sub1 n)</code>. And when
-recurring on a list of S-expressions, <code>l</code>, use <code>(car l)</code> and <code>(cdr
-  l)</code> if neither <code>(null? l)</code> nor <code>(atom? (car l))</code> are true. [One
-argument] must be changed to be closer to termination. The changing
-argument must be tested in the termination condition: When using
-<code>cdr</code>, test termination with <code>null?</code> and when using <code>sub1</code>, test
-termination with <code>zero?</code>.</li>
-<li><b>Fifth Commandment</b>: When building a value with \(+\), always use \(0\)
-for the value of the terminating line, for adding \(0\) does not
-change the value of an addition.</li>
-<li><b>Sixth Commandment</b>: Simplify only after the function is correct.</li>
-<li><b>Seventh Commandment</b>: Recur on the <i>subparts</i> that are of the same
-nature: on the sublists of a list; on the subexpressions of an
-arithmetic expression.</li>
-<li><b>Eighth Commandment</b>: Use help functions to abstract from
-representations.</li>
-<li><b>Ninth Commandment</b>: Abstract common patterns with a new function.</li>
-<li><b>Tenth Commandment</b>: Build functions to collect more than one value at
-a time.</li>
-</ul>
-
-<p>
-But wait there&rsquo;s more. Next are the <i>The Five Rules</i>
-</p>
-
-<ul class="org-ul">
-<li><b>The Law of <code>car</code></b>: The primitive <code>car</code> is defined only for nonempty
-lists.</li>
-<li><b>The Law of <code>cdr</code></b>: The primitive <code>cdr</code> is defined only for nonempty
-lists. The <code>cdr</code> of any nonempty list is always another list.</li>
-<li><b>The Law of <code>cons</code></b>: The primitive <code>cons</code> takes two arguments. The
-second argument to <code>cons</code> must be a list. The result is a list.</li>
-<li><b>The Law of <code>null?</code></b>: The primitive <code>null?</code> is defined only for lists.</li>
-<li><b>The Law of <code>eq?</code></b>: The primitive <code>eq?</code> takes two arguments. Each must
-be a non-numeric atom.</li>
-</ul>
-
-<p>
-Not many beginners can take these fifteen would-be axioms and know
-exactly how to write a Scheme program.<label id='fnr.51' for='fnr-in.51.4359388' class='margin-toggle sidenote-number'><sup class='numeral'>51</sup></label><input type='checkbox' id='fnr-in.51.4359388' class='margin-toggle'><span class='sidenote'><sup class='numeral'>51</sup>
-&#x2026;if we could, would each program we write technically be a
-new <b>theorem</b>? More on that later. Specifically, we&rsquo;ll look into
-Douglas Hofstadter&rsquo;s <a href="https://en.wikipedia.org/wiki/MU_puzzle">MU puzzle</a> from his ground-breaking book <a href="https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach">Gödel,
-Escher, Bach</a> (1979).
-</span> But then if you&rsquo;ve read
-and understood a textbook such as <i><a href="https://cseweb.ucsd.edu/~gill/BWLectSite/Resources/LDGbookCOV.pdf">Lists, Decisions and Graphs&#x2026;</a></i> by
-Edward Bender and S. Gill Williamson, you might catch on that these
-&ldquo;fake&rdquo; axioms are attempting is to establish some sort of
-omnibus<label id='fnr.52' for='fnr-in.52.96584' class='margin-toggle sidenote-number'><sup class='numeral'>52</sup></label><input type='checkbox' id='fnr-in.52.96584' class='margin-toggle'><span class='sidenote'><sup class='numeral'>52</sup>
-&#x2026;containing or including many items.
-</span> <i>list processing</i> machinery. In fact Scheme&rsquo;s
-predecessor, <b>Lisp</b>, is an acronym for &ldquo;list processing,&rdquo; because this
-is essentially what Lisp and Scheme do, i.e., they do computing tasks
-with, on lists. Really?! So in Lisp and Scheme we have a complete
-working programming language as just a bunch of lists stored in a
-computer file that some sort of evaluator processes and gives results?
-How does that work? Read on.
-</p>
-</div>
-</div>
-<div id="outline-container-orgd5505dc" class="outline-3">
-<h3 id="orgd5505dc">List basics</h3>
-<div class="outline-text-3" id="text-orgd5505dc">
-<p>
-At this point we take a theoretical look at what a list is, as the
-humble list is the most basic data structure in programming. But then
-we all know in the everyday sense what a list is, right? A grocery
-list is a good example
-</p>
-
-<ul class="org-ul">
-<li>eggs</li>
-<li>milk</li>
-<li>flour</li>
-<li>potatoes</li>
-<li>butter</li>
-</ul>
-
-<p>
-But we have a problem&#x2014;at least with the math world. That&rsquo;s because
-in higher math there are also <b><b>sets</b></b>. So what is the difference
-between a list and a set? To the layman they might seem
-interchangeable. <i><a href="https://en.wikipedia.org/wiki/Set_theory">Set theory</a></i> is the fundamental starting point of
-higher math, as well as CS&rsquo;s Discrete Math.<label id='fnr.53' for='fnr-in.53.7999112' class='margin-toggle sidenote-number'><sup class='numeral'>53</sup></label><input type='checkbox' id='fnr-in.53.7999112' class='margin-toggle'><span class='sidenote'><sup class='numeral'>53</sup>
-&#x2026;although it may be veiled or only partially explored.
-</span> And so many books
-on set theory and discrete math start out with the deceptively simple
-and informal statement
-</p>
-
-<blockquote>
-<p>
-<font color = "#0d3db3"> <i> A <b><b>set</b></b> is collections of
-things &#x2026; objects &#x2026; stuff. </font> </i>
-</p>
-</blockquote>
-
-<p>
-&#x2026;which is kind of what a list is too. But to CS and higher math they
-are two different entities. What&rsquo;s the difference? First, our grocery
-<i>list</i> is not technically a list because, again, in the CS-higher math
-world,<font color = "#0d3db3"> <i>the <b>elements</b> (members) of
-a list have a specific order</i> </font>. But then our grocery
-list above could be in any order, doesn&rsquo;t really matter as long as you
-come home with the those groceries&#x2026;
-</p>
-
-<p>
-Plainly put, lists are defined as a collection of things in a specific
-order. Think of a <i>string</i> of letters like you&rsquo;re reading right now. A
-string of alphanumeric characters can be considered a list because
-<i>the order of the individual alphanumeric characters (and spaces in
-between) is everything</i>. We typically call strings of letters and
-spaces <i>sentences</i> &#x2026; where all the sentences in English are made up
-of differing combinations of the twenty-six letters (times two if we
-have both upper- and lower-case), as well as the ten numerals, all the
-punctuation, and the space character. You can&rsquo;t be placing individual
-characters in any order and still have sensible sentences. So is our
-&ldquo;grocery list&rdquo; really a <i>set</i> of groceries?
-</p>
-
-<p>
-Actually no. We should not call a grocery list a <i>set of groceries</i>
-either because even though order doesn&rsquo;t matter, sets allow
-duplicates. They do. In set theory there is the idea of the
-<i><a href="https://en.wikipedia.org/wiki/Cardinality">cardinality</a></i> of a set, i.e., what is the count of the <i>unique</i>
-elements of the set, <i>not</i> counting duplicates.<label id='fnr.54' for='fnr-in.54.4356180' class='margin-toggle sidenote-number'><sup class='numeral'>54</sup></label><input type='checkbox' id='fnr-in.54.4356180' class='margin-toggle'><span class='sidenote'><sup class='numeral'>54</sup>
-We indicate the cardinality of a set \(A\) by surrounding it
-with vertical pipes: \(|\,A\,|\) This is similar to the idea of a
-number&rsquo;s <i>absolute value</i> which uses the same vertical bar symbols.
-</span>
-</p>
-
-<p>
-⌜<br>
-𝖟𝕭: The set \(A = \{1,1,1,2,2\}\) is <i>identical</i> to set \(B = \{1, 2\}\)
-because they have the same cardinality, or \(|\,A\,| = |\,B\,| =
-2\).<label id='fnr.55' for='fnr-in.55.109329' class='margin-toggle sidenote-number'><sup class='numeral'>55</sup></label><input type='checkbox' id='fnr-in.55.109329' class='margin-toggle'><span class='sidenote'><sup class='numeral'>55</sup>
-𝖟𝕭 is German for <i>zum Beispiel</i> or <i>for example</i>.
-</span> <br>
-⌟<br>
-</p>
-
-<p>
-This can be explained in a few ways. The simplest is to say the
-members, the elements of a set <i>belong</i> to that set. So for example,
-if I <i>belong</i> to a club, it doesn&rsquo;t make sense to have me
-<i>belong-belong</i> or belong twice to the club.<label id='fnr.56' for='fnr-in.56.8272491' class='margin-toggle sidenote-number'><sup class='numeral'>56</sup></label><input type='checkbox' id='fnr-in.56.8272491' class='margin-toggle'><span class='sidenote'><sup class='numeral'>56</sup>
-&#x2026;paying double membership fees?
-</span> In the example
-above, \(1\) <i>belongs</i> to \(A\), so it doesn&rsquo;t need to belong again.
-</p>
-
-<p>
-Splitting hairs? Yes, well, set theory is a very fundamental thing in
-higher math, thus, very precisely defined based on axioms. For
-example, set theory has the <i><a href="https://en.wikipedia.org/wiki/Axiom_of_extensionality">Axiom of Extensionality</a></i> which states
-<font color = "#0d3db3"> two sets are equal if they both have
-the same members</font>. In our example \(A\) and \(B\) do indeed
-have the same members, namely, \(1\) and \(2\) &#x2014;and it doesn&rsquo;t matter,
-it doesn&rsquo;t count that \(A\) repeats these members. Let&rsquo;s look at another
-example
-</p>
-
-<p>
-⌜<br>
-𝖟𝕭: Given the <b>set</b> \(A = \{\text{good, so-so, bad}\}\) and a defined
-(named) <b>list</b>
-</p>
-
-<div class="org-src-container">
-<pre class="src src-scheme" id="org273a8c5"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">week3</span> '<span style="color: #93a8c6;">(</span>bad so-so so-so so-so good<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-</pre>
-</div>
-<p>
-⌟<br>
-</p>
-
-<p>
-the set \(A\) contains the three possible moods a person might be in;
-while <code>week3</code> is the name we&rsquo;ve told Scheme to call a list containing
-our daily workweek moods.<label id='fnr.57' for='fnr-in.57.7911048' class='margin-toggle sidenote-number'><sup class='numeral'>57</sup></label><input type='checkbox' id='fnr-in.57.7911048' class='margin-toggle'><span class='sidenote'><sup class='numeral'>57</sup>
-Notice once again the nested parentheses. To be sure,
-everything in Scheme is a list.
-</span> <br>
-</p>
-
-<p>
-The order of set \(A\) doesn&rsquo;t matter (and we&rsquo;d ignore, say, a second
-\(good\)), but the order of the list defined as <code>week3</code> is important
-because we don&rsquo;t want to mix up how we felt on which of the five work
-days. Also, it makes perfect sense for a list to have &ldquo;repeats&rdquo; since
-we&rsquo;re evaluating many days in succession, and each day can be one of
-the three choices. But then notice one more thing about a set: When we
-built the list <code>week3</code> we had to choose for each day <code>good</code> <i>or</i> <code>bad</code>
-<i>or</i> <code>so-so</code>. Or did we? What would the list <code>week3</code> look like if we
-could have more than just one mood during a day? How about
-</p>
-
-<div class="org-src-container">
-<pre class="src src-scheme" id="org0661377"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">week3</span> '<span style="color: #93a8c6;">(</span>bad bad so-so <span style="color: #b0b1a3;">(</span>good so-so bad<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">(</span>good so-so<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-</pre>
-</div>
-
-<p>
-Remember Venn diagrams? An <i>or</i> situation can be shown with a <b><b><a href="https://en.wikipedia.org/wiki/Union_(set_theory)">union</a></b></b>
-of circles.<label id='fnr.58' for='fnr-in.58.8383844' class='margin-toggle sidenote-number'><sup class='numeral'>58</sup></label><input type='checkbox' id='fnr-in.58.8383844' class='margin-toggle'><span class='sidenote'><sup class='numeral'>58</sup>
-A Venn diagram of two sets <i>or</i>-ed, <i>union</i>-ed together. <br>
-<img src="images/VennUnion.png" alt="VennUnion.png"> <br>
-The lens-shaped center area represents the &ldquo;overlap,&rdquo; i.e., what the
-two sets represented as circles have in common.
-</span> Let&rsquo;s make a formal definition of a union:<label id='fnr.59' for='fnr-in.59.5282335' class='margin-toggle sidenote-number'><sup class='numeral'>59</sup></label><input type='checkbox' id='fnr-in.59.5282335' class='margin-toggle'><span class='sidenote'><sup class='numeral'>59</sup>
-\(\cup\) is the symbol for union.
-</span>
-</p>
-
-<p>
-<font color = "#0d3db3"> The union of two sets \(A\) and \(B\)
-(denoted by \(A \cup B\)) is the set of elements which are in \(A\), in \(B\),
-<b>or</b> in both \(A\) and \(B\).  </font><label id='fnr.60' for='fnr-in.60.9789862' class='margin-toggle sidenote-number'><sup class='numeral'>60</sup></label><input type='checkbox' id='fnr-in.60.9789862' class='margin-toggle'><span class='sidenote'><sup class='numeral'>60</sup>
-Could we have said, &#x2026;in \(A\) <b>and</b> in \(B\) <b>and</b> in both \(A\)
-and \(B\)? Better not. More on why later.
-</span>
-</p>
-
-<p>
-Now, for our set \(A = \{\text{good, so-so, bad}\}\), if we are using
-each element just once per the day slot of <code>week3</code> we could imagine
-\(A\) as made up of the individual <i>singleton</i> sets, i.e., sets having
-just one element
-</p>
-
-\begin{align*}
-A_G &= \{\text{good}\} \\
-A_{S} &= \{\text{so-so}\} \\
-A_B &= \{\text{bad}\}
-\end{align*}
-
-<p>
-and so a union \(\{A_G \cup A_{S} \cup A_B \}\) will get us back to our original
-\(A = \{\text{good, so-so, bad}\}\). \(A_G\), \(A_{S}\), and \(A_B\) are
-<b><b><a href="https://en.wikipedia.org/wiki/Disjoint_sets">disjoint sets</a></b></b> since they have no elements in common when we
-union-ize them. And so if we made a Venn diagram, there would be no
-overlap between any of them. Why are we couching our daily mood
-choices in the language of set theory? Because we will eventually move
-on to another language, namely, <a href="https://en.wikipedia.org/wiki/Haskell">Haskell</a>, where a certain class of data
-types emulate just this sort of <b><b><a href="https://en.wikipedia.org/wiki/Logical_disjunction">logical or</a></b></b>, i.e., the <b><b>sum
-type</b></b>. While Scheme is usually not directly explained in terms of
-higher math, the Haskell family of languages (Haskell, <a href="https://en.wikipedia.org/wiki/Standard_ML">Standard ML</a>,
-<a href="https://en.wikipedia.org/wiki/OCaml">OCaml</a>, <a href="https://en.wikipedia.org/wiki/F_Sharp_(programming_language)">F#</a>) are. Again, lots more about data representations of
-disjoint sets, logical conjunction and disjunction when we look into
-Haskell in the future.
-</p>
-
-<p>
-⌜<br>
-𝖟𝕭: Consider three common alphabets as sets&#x2014;the Greek, Latin, and
-Cyrillic alphabets
-</p>
-
-\begin{align*}
-G &= \{Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, Τ, Υ, Φ, Χ, Ψ, Ω\} \\
-L &= \{A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z\} \\
-C &= \{A, Б, В, Г, Д, E, Ё, Ж, З, И, Й, K, Л, М, Н, О, П, Р, С, Т, У, Ф, Х, Ц, Ч, Ш, Ъ, \\
-&  Ы, Ь, Э, Ю, Я\}
-\end{align*}
-
-<p>
-Now, let&rsquo;s make one big union-ed together set \(A\) out of the
-individual sets \(G\), \(L\), and \(C\)
-</p>
-
-\begin{align*}
-A &= \{ Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, Τ, Υ, \\
-& Φ, Χ, Ψ, Ω, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, \\
-& S, T, U,  V, W, X, Y, Z, A, Б, В, Г, Д, E, Ё, Ж, З, И, Й, K, Л, М, Н, \\
-& О, П, Р, С, Т, У, Ф, Х, Ц, Ч, Ш, Ъ, Ы, Ь, Э, Ю, Я\}
-\end{align*}
-
-<p>
-Below we see a Venn diagram for \(A\), i.e., circles in which the
-<i>three</i> sets of alphabetic characters are contained. We can see how
-the intersecting circumference lines also show the what <i>any two</i>
-alphabets share, and then in the very center what they <i>all</i> share
-</p>
-
-<figure id="org4fe079a">
-
-<figure id="orgba72976">
-<img src="images/Venn_diagram_gr_la_ru.png" alt="Venn_diagram_gr_la_ru.png">
-
-<figcaption><span class="figure-number">Figure 2: </span>Three alphabets, their <i>union</i> and <i>intersections</i> (Wikipedia <a href="https://en.wikipedia.org/wiki/Venn_diagram">Venn diagram</a>)</figcaption>
-</figure>
-</figure>
-<p>
-⌟<br>
-</p>
-
-<p>
-Of course for visual purposes not <i>all</i> the letters could be crowded
-into the diagram above, but we can see how the Venn diagram with its
-overlapping circles trick is beating duplicates. Visually we can see
-this happening, but is there a formal explanation? Short answer: yes.
-</p>
-
-<p>
-Now let&rsquo;s look at a formal definition of union in so-called
-<b><b>set-builder notation</b></b><label id='fnr.61' for='fnr-in.61.454917' class='margin-toggle sidenote-number'><sup class='numeral'>61</sup></label><input type='checkbox' id='fnr-in.61.454917' class='margin-toggle'><span class='sidenote'><sup class='numeral'>61</sup>
-(1) can be expanded for the union of more sets than just
-two, e.g., \(A \cup B \cup C \cup \ldots\).
-</span>
-</p>
-
-\begin{align}
-A \cup B = \{x : x \in A \lor x \in B  \}
-\end{align}
-
-<p>
-This expression says the <b><b>union</b></b> of \(A\) and \(B\) equals the set of
-elements denoted by \(x\) such that an \(x\) can be an element from<label id='fnr.62' for='fnr-in.62.6947144' class='margin-toggle sidenote-number'><sup class='numeral'>62</sup></label><input type='checkbox' id='fnr-in.62.6947144' class='margin-toggle'><span class='sidenote'><sup class='numeral'>62</sup>
-The symbol \(\in\) means &ldquo;in&rdquo; or &ldquo;member of.&rdquo;
-</span>
-\(A\) <b>or</b> an element from \(B\).<label id='fnr.63' for='fnr-in.63.3312433' class='margin-toggle sidenote-number'><sup class='numeral'>63</sup></label><input type='checkbox' id='fnr-in.63.3312433' class='margin-toggle'><span class='sidenote'><sup class='numeral'>63</sup>
-\(\lor\) is the symbol for <b><b><a href="https://en.wikipedia.org/wiki/Logical_disjunction">logical or</a></b></b>, aka <b><b>logical
-disjunction</b></b>. Take a crack at the Wikipedia article.
-</span> But wait, <b>or</b> doesn&rsquo;t quite
-sound right in English if we mean to union-ize two or more things,
-does it?  To bring two or more sets together as one&#x2014;their unique and
-shared element alike&#x2014;don&rsquo;t we mean to say, e.g., <font color
-= "#0d3db3"> <i>the union of \(A\) and \(B\) takes all the elements from
-both \(A\) <b>and</b> \(B\)</i>?</font> Yes, but set theory prefers to
-look at, e.g., the Venn diagram of the alphabets (Figure 2 above) and
-say, <font color = "#0d3db3">A letter <i>belongs</i> to the union
-of alphabets if it is from the Greek <b>or</b> from the Latin <b>or</b> from the
-Cyrillic alphabets.</font> Again, we have the idea of sets
-and <i>belonging</i> to sets.
-</p>
-
-<p>
-Now, look at that bulging middle triangle region of Figure 2
-containing the letters all three alphabets have in common. This is the
-<b><b><a href="https://en.wikipedia.org/wiki/Intersection_(set_theory)">intersection</a></b></b> of alphabet sets \(G\), \(L\), and \(C\). In this case we
-would say: <font color = "#0d3db3">A letter <i>belongs</i> to the
-center triangle (the intersection) if it belongs to \(G\) <i>and</i> it
-belongs to \(L\) <i>and</i> it belongs to \(C\)</font>. In other
-words, the letter has to belong to all three alphabets. This is more
-precise, something upon which higher math always insists.
-</p>
-
-<p>
-<label for="mn-demo" class="margin-toggle"></label>
-<input type="checkbox" id="mn-demo" class="margin-toggle">
-<span class="marginnote">
-<img src="images/On_Off.jpg" alt="On_Off.jpg">
-<br>
-</span>
-</p>
-
-<p>
-And with one final piece of the puzzle we can put to rest this whole
-duplicates within sets issue. Let&rsquo;s explore another logic concept that
-we actually encounter every day. In the modern world we&rsquo;re constantly
-turning things on and off, e.g., a light switch with its on-off
-toggle. But occasionally we see <i>two</i> buttons---<i>one</i> for on, <i>one</i>
-for off. In the image to the right we have <i>two</i> buttons doing on and
-off instead of one. In such a case pushing the green <i>on</i> button just
-one initial time turns the device on <i>and any additional pushing is
-disregarded</i>. This is the same for the red <i>off</i> button. Push once for
-off&#x2014;and any further pushes mean nothing. Basically, &ldquo;I heard you the
-first time, you don&rsquo;t have to repeat yourself.&rdquo; This phenomenon has an
-official name: <b><b><a href="https://en.wikipedia.org/wiki/Idempotence">idempotence</a></b></b>, and it crops up in many real-life
-places. For our set theory discussion imagine making a Venn diagram of
-the union of sets \(S_1 = \{5\}\) and \(S_2 = \{5\}\), i.e., two different
-sets containing the same single element. Wouldn&rsquo;t this union be just
-one single circle containing the element \(5\)? Indeed it would. And if
-we added another set \(S_3 = \{5\}\) to the union, we would still have
-</p>
-
-\begin{align*}
-S_1 \cup S_2 \cup S_3 = \{5\}
-\end{align*}
-
-<p>
-i.e., just one circle representing \(5\). In fact, we could union
-together an infinite amount of <b><b>singleton</b></b><label id='fnr.64' for='fnr-in.64.2785181' class='margin-toggle sidenote-number'><sup class='numeral'>64</sup></label><input type='checkbox' id='fnr-in.64.2785181' class='margin-toggle'><span class='sidenote'><sup class='numeral'>64</sup>
-As we saw above, a <b><b>singleton</b></b> (also known as a <b><b>unit set</b></b>
-or <b><b>one-point set</b></b>) is a set with exactly one element.
-</span> sets of the form
-\(S_n = \{5\}\) and they would produce the singleton set \(\{5\}\). Now
-for a bit of abstraction. Consider a <b><b><a href="https://en.wikipedia.org/wiki/Binary_operation">binary operator</a></b></b>, i.e., any
-math that takes two objects and does an operation on them to produce
-something new. For example, addition is a binary operation, \(1 + 1\) is
-\(2\), as is multiplication, \(3 \cdot 5\) is \(15\). Let&rsquo;s then use the
-abstract symbol \(\oplus\) to indicate any sort of binary operator. Now we
-can establish a formal definition of idempotence <br>
-</p>
-
-<p>
-<font color = "#0d3db3">
-</p>
-<ul class="org-ul">
-<li>A <b><b>binary operation</b></b> \(\oplus\) is said to be <b><b>idempotent</b></b> on a set \(S\) if
-\(x \oplus x = x \,\,\text{for all}\,\, x \in S\)</li>
-<li>An element \(x\) of a set \(S\) is said to be <b><b>idempotent</b></b> under a
-binary operator \(\oplus\) if \(x \oplus x = x\)</li>
-</ul>
-<p>
-</font>
-</p>
-
-<p>
-If multiplication is the binary operator on the set of all counting
-numbers \(\mathbb{N}\) then what numbers of \(\mathbb{N}\)<label id='fnr.65' for='fnr-in.65.8752575' class='margin-toggle sidenote-number'><sup class='numeral'>65</sup></label><input type='checkbox' id='fnr-in.65.8752575' class='margin-toggle'><span class='sidenote'><sup class='numeral'>65</sup>
-\(\mathbb{N}\) is the symbol for the <i>natural</i> numbers, i.e., the
-positive integers \(1\), \(2\), \(3\ldots\) we use to count things.
-</span> can we
-call idempotent according to the definition? Well, only \(0\) and \(1\)
-are idempotent:
-</p>
-
-\begin{align*}
-0 \cdot 0 &= 0 \\
-1 \cdot 1 &= 1
-\end{align*}
-
-<p>
-All other numbers (\(x \gt 1\)) give increasingly larger squares of
-themselves, hence, \(0\) and \(1\) are idempotent, but the binary
-operation of multiplication is not.<label id='fnr.66' for='fnr-in.66.8002984' class='margin-toggle sidenote-number'><sup class='numeral'>66</sup></label><input type='checkbox' id='fnr-in.66.8002984' class='margin-toggle'><span class='sidenote'><sup class='numeral'>66</sup>
-In her 2023 layman&rsquo;s book <i>The Joy of Abstraction</i>
-mathematician Eugenia Cheng notes how the operation of mixing paint
-colors is basically idempotent. Why? If we add one paint to one other
-paint we always get just one new paint color. That is, there is never
-an additive or multiplicative increasing or intensifying, just a new
-color. Now, how can we explain the green on-button above in terms of
-set-theory idempotency?
-</span>
-</p>
-
-<p>
-Now, let&rsquo;s consider something that came up in a <a href="https://math.stackexchange.com/">StackExchange
-Mathematics</a> discussion <a href="https://math.stackexchange.com/questions/155475/1-1-1-origin-of-this-convention">here</a>, which is tackling our issue of duplicates
-in a set by asking, why is \(\{1,1\} = \{1\}\)? Below we have a slight
-re-wording of the preferred, green-checked answer:
-</p>
-
-<p>
-<font color = "#0d3db3">
-An unordered tuple \(\{a_1,a_2,a_3,a_4\dots\}\) is defined as <br>
-</p>
-\begin{align*}
-\{x:x=a_1 \lor x=a_2 \lor x=a_3 \lor x=a_4 \lor\dots\}.
-\end{align*}
-<p>
-By this convention,
-</p>
-\begin{align}
-\{1,1\} = \{x:x=1 \lor x=1 \}
-\end{align}
-<p>
-So by the <i>idempotency</i> of \(\lor\) we have (2) the same as \(\{ x : x = 1
-\}\), hence,
-</p>
-\begin{align*}
-\{1,1\} = \{1\}
-\end{align*}
-<p>
-</font>
-</p>
-
-<p>
-Notice we are relying on the <b><b>logical-or</b></b> binary operator being
-idempotent for all \(x\) in the set. Generally, an <b><b>unordered n-tuple</b></b>
-is a set of the form \(\{a_1,a_2,\ldots, a_n\dots\}\), although a <b><b>tuple</b></b> is
-usually meant to be <b><b>ordered</b></b>.<label id='fnr.67' for='fnr-in.67.9366104' class='margin-toggle sidenote-number'><sup class='numeral'>67</sup></label><input type='checkbox' id='fnr-in.67.9366104' class='margin-toggle'><span class='sidenote'><sup class='numeral'>67</sup>
-&#x2026;such as, e.g., a pair of <i>Cartesian coordinates</i> \((a,b)\)
-where \(a\) is some real number on the <i>x-axis</i> and \(b\) is a real number
-on the <i>y-axis</i>. Obviously, with a Cartesian coordinate system \((a,b)
-\neq (b,a)\), since they&rsquo;d be entirely different points on the plane. The
-only exception would be if \(a = b\).
-</span> Again, idempotency of two
-identical sets is obvious when seen as Venn diagrams, but now we&rsquo;ve
-seen in exact language how they are idempotent.
-</p>
-
-<p>
-By the way, <b><b>union</b></b> and <b><b>logical or</b></b> are complimentary ideas. Consider
-this expression
-</p>
-
-\begin{align}
-a \in X \cup Y \iff a \in X \lor a \in Y
-\end{align}
-
-<p>
-What does that double-arrow in the middle mean? <b><b>if and only
-if</b></b>. We&rsquo;ll go into \(\iff\) in more exact detail later, but for now it
-means <font color = "#0d3db3">the truth of one side of the
-\(\iff\) requires the other side to be true also.</font> So if
-\(a\) is an element of the union of \(X\) and \(Y\) then \(a\) must be an
-element of \(X\) <i>or</i> it is an element of \(Y\) <i>or</i> it is an element of
-<i>both</i> \(X\) and \(Y\) &#x2014;and the other way around as well. Note: we avoid
-writing \(X \lor Y\) when considering just the sets without involving the
-elements therein.
-</p>
-</div>
-</div>
-<div id="outline-container-org2368299" class="outline-3">
-<h3 id="org2368299">Summing up; data and data structures</h3>
-<div class="outline-text-3" id="text-org2368299">
-<p>
-We didn&rsquo;t even get off the first page of TLS, but we have laid some of
-the groundwork we&rsquo;ll need to proceed. And we can&rsquo;t emphasize this
-enough: Computer science is a branch of applied mathematics, and we
-need to get the math going alongside, parallel to the computer
-stuff. So expect more new math. Yes, this sort of math takes
-concentrated, deliberate thinking. We&rsquo;re becoming philosophers, i.e.,
-we&rsquo;re going beyond &ldquo;plug-and-chug&rdquo; math.
-</p>
-
-<p>
-Next, <b><b>lists</b></b>. While this lesson was an informal introduction to
-lists, we&rsquo;ll learn more about how they are a very simple but important
-data structure in computer <b><b>data management</b></b> &#x2026; but then we&rsquo;re
-using the term data management differently then the greater lay world
-does. So a quick word about the whole concept of <b><b>data</b></b> and <b><b>data structures</b></b> before we really dive in ahead. Today the term <i>data</i> is
-mainly understood to be gobs and gobs of stuff held in databases or
-other storage schemes. That&rsquo;s not what we mean by data. For us <i>data</i>
-can simply be a number returned from an algorithm. That is to say,
-data is what the programming logic, the <i>code</i> is taking in, working
-on, then giving back to us. Yes, of course, this production of data
-can pool and amass into great piles in vast electronic storage bins,
-but, for instance, this is data
-</p>
-
-<div class="org-src-container">
-<pre class="src src-scheme" id="orgac16c34">'<span style="color: #8c8c8c;">(</span>bad bad so-so so-so good<span style="color: #8c8c8c;">)</span>
-</pre>
-</div>
-
-<p>
-i.e., just a simple list surrounded in parentheses and prefaced at the
-beginning by a quotation mark (&ldquo;&rsquo;&rdquo;) as is the custom in Scheme (and
-Lisp). That quote at the opening parenthesis indicates this is not
-code, rather, data. What we saw above
-</p>
-
-<div class="org-src-container">
-<pre class="src src-scheme" id="orgd7bd083"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">week3</span> '<span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>bad bad so-so so-so good<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
-</pre>
-</div>
-
-<p>
-is therefore a mixture of both code and data&#x2014;making it our first
-Scheme program, even if it is just one line long! As we progress we&rsquo;ll
-get into the weeds on just how this mixture of code and data can work
-together.
-</p>
-
 <p>
 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
 </p>
+</div>
 </div>
 </div>
 </section>
