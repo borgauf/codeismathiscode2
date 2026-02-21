@@ -92,8 +92,8 @@ statement, or words to this effect
 things ... objects ... stuff. @@html:</font> </i>@@
 #+end_quote
 
-The founder of set theory, Georg Cantor, defined a set with his
-**Axiom of Unrestricted Comprehension**
+The founder of set theory, Georg Cantor, back in 1874 defined a set
+with his **Axiom of Unrestricted Comprehension**
 
 #+begin_quote
 @@html:<font color = "#0d3db3">@@ A set is a gathering together into a
@@ -101,7 +101,7 @@ whole of definite, distinct objects of our perception or of our
 thought.  @@html:</font>@@
 #+end_quote
 
-Cantor means to[fn:2]
+And so Cantor means to[fn:2]
 
 - establish some membership criteria,
 - gather things passing this membership,
@@ -114,19 +114,33 @@ In math notation we can express this as
 \end{align*}
 
 Reading this out loud, /there exists ($\exists$) a set $S$, and for all
-($\forall$) $x$'s a particular $x$ is an element of set $S$ if and only if
-that $x$ satisfies the property $P$/. But before we go on, let's get a
-better handle on just what's meant when we say /property/,
-/predicate/, and /statement/.
+($\forall$) $x$'s a particular $x$ is an element, a member of set $S$ if and
+only if that $x$ satisfies the property $P$/. It says that if we have
+a reasonably descriptive, defining property or criteria, actual things
+passing this criteria can be grouped together and called a set. As it
+turned out, Cantor was too freewheeling with his grasp of sets. His
+definition allows us to create sets out of the absolute void---just
+state a qualifying property, no matter how crazy---and everything in
+the conceivable universe with that property exists as a legitimate
+set. Trouble started when a famous logician Bertrand Russell, using
+this loose definition, came up with a devastating paradox. We'll go
+into **[[https://en.wikipedia.org/wiki/Russell%27s_paradox][Russell's Paradox]]** later, but suffice it to say the math world
+was shocked---and had to go back to the drawing board on many things
+long taken for granted. Whole schools of logic came crashing down. But
+we'll keep going with what is now called . And yet Cantor's theories,
+no matter how prone to failure, are still what we study, the so-called
+**[[https://en.wikipedia.org/wiki/Naive_set_theory][Naive set theory]]**, albeit with minor, behind-the-scenes tweaks. But
+before we go on, let's get a better handle on just what's meant when
+we say /property/, /predicate/, and /statement/.
 
 In the programming language **[[https://en.wikipedia.org/wiki/Prolog][Prolog]]** we express "Kathy is a parent"
-as ~parent(kathy)~. This is now considered a fact, a /statement/ ---
-that is either true or false. ~parent~ itself is a /property/, i.e.,
-the property of being a parent. In the form ~parent(X)~ with variable
-~X~ it is now considered a /predicate/. The predicate ~parent(X)~ is
-not yet true or false until we provide a value for ~X~, then it
-becomes a statement. Bringing this into our discussion of sets, the
-set of ~parent~'s can be expressed as[fn:3]
+as ~parent(kathy)~. This is a /statement/ --- either true or
+false. ~parent~ itself is a /property/, i.e., the idea, the property
+of being a parent. In the form ~parent(X)~ with variable ~X~ it is now
+considered a /predicate/. The predicate ~parent(X)~ is not yet true or
+false until we provide a value for ~X~, then it becomes a
+statement. Bringing this into our discussion of sets, the set of
+~parent~'s can be expressed as[fn:3]
 
 \begin{align*}
 \exists S\, \forall X\, (X \in S \iff parent(X))
@@ -277,6 +291,8 @@ Now let's circle back and finally tie in why Cantor used the word
 the /comprehension/ of something refers to the collection of
 properties that define it.
 @@html:</font>@@
+
+For Cantor that meant
 
 - /Intension/: The property or rule (e.g., "being an even number").
 - /Extension/: The actual objects that fit that rule (e.g., $\{2,4,6,\ldots\}$
@@ -621,8 +637,8 @@ together.
 math treatments.
 
 [fn:2] We'll get to why he uses the term "comprehension" after some
-preliminaries. Hint: it's a very theoretical mathematical use of the
-word.
+preliminaries. Hint: it's a very non-intuitive, theoretical
+mathematical use of the word.
 
 [fn:3] In Prolog a predicate is lower-case and a variable is upper-case.
 

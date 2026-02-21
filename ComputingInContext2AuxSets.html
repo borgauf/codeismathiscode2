@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2026-02-19 Thu 23:18 -->
+<!-- 2026-02-20 Fri 11:25 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -307,13 +307,13 @@ pre.example {clear: none; }
 </figure>
 </div>
 </section>
-<section id="outline-container-org981c191" class="outline-2">
-<h2 id="org981c191"></h2>
-<div class="outline-text-2" id="text-org981c191">
+<section id="outline-container-orgc7b26d8" class="outline-2">
+<h2 id="orgc7b26d8"></h2>
+<div class="outline-text-2" id="text-orgc7b26d8">
 </div>
-<div id="outline-container-org3cb68a9" class="outline-3">
-<h3 id="org3cb68a9">Sets are the starting line of mathematics</h3>
-<div class="outline-text-3" id="text-org3cb68a9">
+<div id="outline-container-orge449b50" class="outline-3">
+<h3 id="orge449b50">Sets are the starting line of mathematics</h3>
+<div class="outline-text-3" id="text-orge449b50">
 <p>
 <i><a href="https://en.wikipedia.org/wiki/Set_theory">Set theory</a></i> is the fundamental starting point of higher math, as well
 as appearing early in most Discrete Math texts.<label id='fnr.1' for='fnr-in.1.9956131' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.9956131' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
@@ -340,8 +340,8 @@ things &#x2026; objects &#x2026; stuff. </font> </i>
 </blockquote>
 
 <p>
-The founder of set theory, Georg Cantor, defined a set with his
-<b><b>Axiom of Unrestricted Comprehension</b></b>
+The founder of set theory, Georg Cantor, back in 1874 defined a set
+with his <b><b>Axiom of Unrestricted Comprehension</b></b>
 </p>
 
 <blockquote>
@@ -353,10 +353,10 @@ thought.  </font>
 </blockquote>
 
 <p>
-Cantor means to<label id='fnr.2' for='fnr-in.2.2535754' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.2535754' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+And so Cantor means to<label id='fnr.2' for='fnr-in.2.2535754' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.2535754' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
 We&rsquo;ll get to why he uses the term &ldquo;comprehension&rdquo; after some
-preliminaries. Hint: it&rsquo;s a very theoretical mathematical use of the
-word.
+preliminaries. Hint: it&rsquo;s a very non-intuitive, theoretical
+mathematical use of the word.
 </span>
 </p>
 
@@ -376,21 +376,35 @@ In math notation we can express this as
 
 <p>
 Reading this out loud, <i>there exists (\(\exists\)) a set \(S\), and for all
-(\(\forall\)) \(x\)&rsquo;s a particular \(x\) is an element of set \(S\) if and only if
-that \(x\) satisfies the property \(P\)</i>. But before we go on, let&rsquo;s get a
-better handle on just what&rsquo;s meant when we say <i>property</i>,
-<i>predicate</i>, and <i>statement</i>.
+(\(\forall\)) \(x\)&rsquo;s a particular \(x\) is an element, a member of set \(S\) if and
+only if that \(x\) satisfies the property \(P\)</i>. It says that if we have
+a reasonably descriptive, defining property or criteria, actual things
+passing this criteria can be grouped together and called a set. As it
+turned out, Cantor was too freewheeling with his grasp of sets. His
+definition allows us to create sets out of the absolute void&#x2014;just
+state a qualifying property, no matter how crazy&#x2014;and everything in
+the conceivable universe with that property exists as a legitimate
+set. Trouble started when a famous logician Bertrand Russell, using
+this loose definition, came up with a devastating paradox. We&rsquo;ll go
+into <b><b><a href="https://en.wikipedia.org/wiki/Russell%27s_paradox">Russell&rsquo;s Paradox</a></b></b> later, but suffice it to say the math world
+was shocked&#x2014;and had to go back to the drawing board on many things
+long taken for granted. Whole schools of logic came crashing down. But
+we&rsquo;ll keep going with what is now called . And yet Cantor&rsquo;s theories,
+no matter how prone to failure, are still what we study, the so-called
+<b><b><a href="https://en.wikipedia.org/wiki/Naive_set_theory">Naive set theory</a></b></b>, albeit with minor, behind-the-scenes tweaks. But
+before we go on, let&rsquo;s get a better handle on just what&rsquo;s meant when
+we say <i>property</i>, <i>predicate</i>, and <i>statement</i>.
 </p>
 
 <p>
 In the programming language <b><b><a href="https://en.wikipedia.org/wiki/Prolog">Prolog</a></b></b> we express &ldquo;Kathy is a parent&rdquo;
-as <code>parent(kathy)</code>. This is now considered a fact, a <i>statement</i> &#x2014;
-that is either true or false. <code>parent</code> itself is a <i>property</i>, i.e.,
-the property of being a parent. In the form <code>parent(X)</code> with variable
-<code>X</code> it is now considered a <i>predicate</i>. The predicate <code>parent(X)</code> is
-not yet true or false until we provide a value for <code>X</code>, then it
-becomes a statement. Bringing this into our discussion of sets, the
-set of <code>parent</code>&rsquo;s can be expressed as<label id='fnr.3' for='fnr-in.3.7036216' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.7036216' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+as <code>parent(kathy)</code>. This is a <i>statement</i> &#x2014; either true or
+false. <code>parent</code> itself is a <i>property</i>, i.e., the idea, the property
+of being a parent. In the form <code>parent(X)</code> with variable <code>X</code> it is now
+considered a <i>predicate</i>. The predicate <code>parent(X)</code> is not yet true or
+false until we provide a value for <code>X</code>, then it becomes a
+statement. Bringing this into our discussion of sets, the set of
+<code>parent</code>&rsquo;s can be expressed as<label id='fnr.3' for='fnr-in.3.5913226' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.5913226' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
 In Prolog a predicate is lower-case and a variable is upper-case.
 </span>
 </p>
@@ -454,7 +468,7 @@ we are formalizing by creating a toolbox.
 
 
 <p>
-We&rsquo;ll approach sets with a bit more exactness<label id='fnr.4' for='fnr-in.4.4390980' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.4390980' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+We&rsquo;ll approach sets with a bit more exactness<label id='fnr.4' for='fnr-in.4.7457167' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.7457167' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
 The following section comes from the very wonderful <i><a href="https://slc.openlogicproject.org/slc-screen.pdf">Sets,
 Logic, Computation An Open Introduction to Metalogic</a></i> (SLC)) from the
 amazing <a href="https://openlogicproject.org/">Open Logic Project</a>. We&rsquo;ll add interesting anecdotes along the
@@ -463,14 +477,14 @@ way.
 </p>
 </div>
 </div>
-<div id="outline-container-org84752f7" class="outline-3">
-<h3 id="org84752f7">Set basics</h3>
-<div class="outline-text-3" id="text-org84752f7">
+<div id="outline-container-orgc0121f7" class="outline-3">
+<h3 id="orgc0121f7">Set basics</h3>
+<div class="outline-text-3" id="text-orgc0121f7">
 <p>
 ⇲ <font color = "#0d3db3"> A <i>set</i> is a collection of objects,
 considered as a single object. The objects making up the set are
 called <i>elements</i> or <i>members</i> of the set. If \(x\) is an element of a set \(A\),
-we write \(x \in A\); if not, we write \(x \notin A\).<label id='fnr.5' for='fnr-in.5.4122366' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.4122366' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+we write \(x \in A\); if not, we write \(x \notin A\).<label id='fnr.5' for='fnr-in.5.4875638' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.4875638' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
 Recall, the math symbol \(\in\) means <i>is in</i> (membership) and \(\notin\)
 means <i>is not in</i>.
 </span> The set which has no
@@ -488,7 +502,7 @@ elements
 </ul>
 
 <p>
-&#x2026;for example,<label id='fnr.6' for='fnr-in.6.6213328' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.6213328' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+&#x2026;for example,<label id='fnr.6' for='fnr-in.6.4030850' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.4030850' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
 With <code>(1)</code> we see the most basic mathematical notation for a
 set, i.e., <i>all</i> the sets&rsquo; elements listed out in a row, separated by
 commas, enclosed in a set of curly brackets.
@@ -502,7 +516,7 @@ S_{a,b} = \{a,a,b \} = \{a,b\} = \{b,a\} \\
 <p>
 Analyzing the three versions of \(S_{a,b}\) we can see both of our bullet
 items at play, i.e., <i>duplicates and order don&rsquo;t matter</i>, they&rsquo;re all
-the same set \(S_{a,b}\).<label id='fnr.7' for='fnr-in.7.4030850' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.4030850' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+the same set \(S_{a,b}\).<label id='fnr.7' for='fnr-in.7.5888636' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.5888636' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
 Can we say this about words, e.g., are the words <i>hot</i> and
 <i>hoot</i> the same? No. Words are not sets of letters, rather, <i>lists</i> of
 letters. More later.
@@ -579,7 +593,7 @@ consider only their elements</i>. Another example
 
 <p>
 ⌜<br>
-𝖟𝕭: \(\{1,2,3\}\) is the same as \(\{ x \in \mathbb{N} \mid x < 4 \}\)<label id='fnr.8' for='fnr-in.8.4007355' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.4007355' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+𝖟𝕭: \(\{1,2,3\}\) is the same as \(\{ x \in \mathbb{N} \mid x < 4 \}\)<label id='fnr.8' for='fnr-in.8.893959' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.893959' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
 Read, <i>\(x\) such that \(x\) is a natural number \(\mathbb{N}\) and
 \(x\) is less than \(4\)</i>. This is known as the <i>roster</i> method of set
 notation.
@@ -621,6 +635,10 @@ Now let&rsquo;s circle back and finally tie in why Cantor used the word
 the <i>comprehension</i> of something refers to the collection of
 properties that define it.
 </font>
+</p>
+
+<p>
+For Cantor that meant
 </p>
 
 <ul class="org-ul">
@@ -668,7 +686,7 @@ Then our grocery list is a <i>set</i> of groceries? Now we come to our
 second fork in the road: No, we should not call a grocery list a <i>set
 of groceries</i> either, because even though with sets order doesn&rsquo;t
 matter, <i>sets allow duplicates</i>, whereas with a grocery list a
-duplicated item would just seem like a mistake.<label id='fnr.9' for='fnr-in.9.893959' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.893959' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+duplicated item would just seem like a mistake.<label id='fnr.9' for='fnr-in.9.7972201' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.7972201' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
 No real &ldquo;information&rdquo; is contained in, say, listing milk
 twice. Typically, no one would think &ldquo;That means get <i>two</i> milks.&rdquo;
 </span> In set theory
@@ -688,7 +706,7 @@ because they have the same <i>cardinality</i>, or \(|\,A\,| = |\,B\,| =
 This can be explained in a few ways. The simplest is to say the
 members, the elements of a set <i>belong</i> to that set. So for example,
 if I <i>belong</i> to a club, it doesn&rsquo;t make sense to have me
-<i>belong-belong</i> or belong twice to the club.<label id='fnr.10' for='fnr-in.10.7972201' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.7972201' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
+<i>belong-belong</i> or belong twice to the club.<label id='fnr.10' for='fnr-in.10.3978722' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.3978722' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
 &#x2026;paying double membership fees?
 </span> In the example
 above, \(1\) <i>belongs</i> to \(A\), so it doesn&rsquo;t need to belong again.
@@ -712,7 +730,7 @@ example
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgd49c6e7"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">week3</span> '<span style="color: #93a8c6;">(</span>bad so-so so-so so-so good<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<pre class="src src-scheme" id="org1def633"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">week3</span> '<span style="color: #93a8c6;">(</span>bad so-so so-so so-so good<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 </pre>
 </div>
 <p>
@@ -722,7 +740,7 @@ example
 <p>
 the set \(A\) contains the three possible moods a person might be in;
 while <code>week3</code> is the name we&rsquo;ve told Scheme to call a list containing
-our daily workweek moods.<label id='fnr.11' for='fnr-in.11.6659724' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.6659724' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
+our daily workweek moods.<label id='fnr.11' for='fnr-in.11.1722809' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.1722809' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
 Notice once again the nested parentheses. To be sure,
 everything in Scheme is a list.
 </span> <br>
@@ -741,18 +759,18 @@ could have more than just one mood during a day? How about
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org06d8357"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">week3</span> '<span style="color: #93a8c6;">(</span>bad bad so-so <span style="color: #b0b1a3;">(</span>good so-so bad<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">(</span>good so-so<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<pre class="src src-scheme" id="org908c1c6"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">week3</span> '<span style="color: #93a8c6;">(</span>bad bad so-so <span style="color: #b0b1a3;">(</span>good so-so bad<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">(</span>good so-so<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 </pre>
 </div>
 
 <p>
 Remember Venn diagrams? An <i>or</i> situation can be shown with a <b><b><a href="https://en.wikipedia.org/wiki/Union_(set_theory)">union</a></b></b>
-of circles.<label id='fnr.12' for='fnr-in.12.3259718' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.3259718' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
+of circles.<label id='fnr.12' for='fnr-in.12.4300700' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.4300700' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
 A Venn diagram of two sets <i>or</i>-ed, <i>union</i>-ed together. <br>
 <img src="images/VennUnion.png" alt="VennUnion.png"> <br>
 The lens-shaped center area represents the &ldquo;overlap,&rdquo; i.e., what the
 two sets represented as circles have in common.
-</span> Let&rsquo;s make a formal definition of a union:<label id='fnr.13' for='fnr-in.13.7667424' class='margin-toggle sidenote-number'><sup class='numeral'>13</sup></label><input type='checkbox' id='fnr-in.13.7667424' class='margin-toggle'><span class='sidenote'><sup class='numeral'>13</sup>
+</span> Let&rsquo;s make a formal definition of a union:<label id='fnr.13' for='fnr-in.13.7314257' class='margin-toggle sidenote-number'><sup class='numeral'>13</sup></label><input type='checkbox' id='fnr-in.13.7314257' class='margin-toggle'><span class='sidenote'><sup class='numeral'>13</sup>
 \(\cup\) is the symbol for union.
 </span>
 </p>
@@ -760,7 +778,7 @@ two sets represented as circles have in common.
 <p>
 <font color = "#0d3db3"> The union of two sets \(A\) and \(B\)
 (denoted by \(A \cup B\)) is the set of elements which are in \(A\), in \(B\),
-<b>or</b> in both \(A\) and \(B\).  </font><label id='fnr.14' for='fnr-in.14.4300700' class='margin-toggle sidenote-number'><sup class='numeral'>14</sup></label><input type='checkbox' id='fnr-in.14.4300700' class='margin-toggle'><span class='sidenote'><sup class='numeral'>14</sup>
+<b>or</b> in both \(A\) and \(B\).  </font><label id='fnr.14' for='fnr-in.14.47737' class='margin-toggle sidenote-number'><sup class='numeral'>14</sup></label><input type='checkbox' id='fnr-in.14.47737' class='margin-toggle'><span class='sidenote'><sup class='numeral'>14</sup>
 Could we have said, &#x2026;in \(A\) <b>and</b> in \(B\) <b>and</b> in both \(A\)
 and \(B\)? Better not. More on why later.
 </span>
@@ -827,9 +845,9 @@ the intersecting circumference lines also show the what <i>any two</i>
 alphabets share, and then in the very center what they <i>all</i> share
 </p>
 
-<figure id="orgf4d1ff3">
+<figure id="orge0e0487">
 
-<figure id="orgf2b533c">
+<figure id="orgb2581f5">
 <img src="images/Venn_diagram_gr_la_ru.png" alt="Venn_diagram_gr_la_ru.png">
 
 <figcaption><span class="figure-number">Figure 2: </span>Three alphabets, their <i>union</i> and <i>intersections</i> (Wikipedia <a href="https://en.wikipedia.org/wiki/Venn_diagram">Venn diagram</a>)</figcaption>
@@ -848,7 +866,7 @@ this happening, but is there a formal explanation? Short answer: yes.
 
 <p>
 Now let&rsquo;s look at a formal definition of union in so-called
-<b><b>set-builder notation</b></b><label id='fnr.15' for='fnr-in.15.2146037' class='margin-toggle sidenote-number'><sup class='numeral'>15</sup></label><input type='checkbox' id='fnr-in.15.2146037' class='margin-toggle'><span class='sidenote'><sup class='numeral'>15</sup>
+<b><b>set-builder notation</b></b><label id='fnr.15' for='fnr-in.15.3577937' class='margin-toggle sidenote-number'><sup class='numeral'>15</sup></label><input type='checkbox' id='fnr-in.15.3577937' class='margin-toggle'><span class='sidenote'><sup class='numeral'>15</sup>
 (1) can be expanded for the union of more sets than just
 two, e.g., \(A \cup B \cup C \cup \ldots\).
 </span>
@@ -860,10 +878,10 @@ A \cup B = \{x : x \in A \lor x \in B  \}
 
 <p>
 This expression says the <b><b>union</b></b> of \(A\) and \(B\) equals the set of
-elements denoted by \(x\) such that an \(x\) can be an element from<label id='fnr.16' for='fnr-in.16.3577937' class='margin-toggle sidenote-number'><sup class='numeral'>16</sup></label><input type='checkbox' id='fnr-in.16.3577937' class='margin-toggle'><span class='sidenote'><sup class='numeral'>16</sup>
+elements denoted by \(x\) such that an \(x\) can be an element from<label id='fnr.16' for='fnr-in.16.6718615' class='margin-toggle sidenote-number'><sup class='numeral'>16</sup></label><input type='checkbox' id='fnr-in.16.6718615' class='margin-toggle'><span class='sidenote'><sup class='numeral'>16</sup>
 The symbol \(\in\) means &ldquo;in&rdquo; or &ldquo;member of.&rdquo;
 </span>
-\(A\) <b>or</b> an element from \(B\).<label id='fnr.17' for='fnr-in.17.3522630' class='margin-toggle sidenote-number'><sup class='numeral'>17</sup></label><input type='checkbox' id='fnr-in.17.3522630' class='margin-toggle'><span class='sidenote'><sup class='numeral'>17</sup>
+\(A\) <b>or</b> an element from \(B\).<label id='fnr.17' for='fnr-in.17.1555251' class='margin-toggle sidenote-number'><sup class='numeral'>17</sup></label><input type='checkbox' id='fnr-in.17.1555251' class='margin-toggle'><span class='sidenote'><sup class='numeral'>17</sup>
 \(\lor\) is the symbol for <b><b><a href="https://en.wikipedia.org/wiki/Logical_disjunction">logical or</a></b></b>, aka <b><b>logical
 disjunction</b></b>. Take a crack at the Wikipedia article.
 </span> But wait, <b>or</b> doesn&rsquo;t quite
@@ -925,7 +943,7 @@ S_1 \cup S_2 \cup S_3 = \{5\}
 
 <p>
 i.e., just one circle representing \(5\). In fact, we could union
-together an infinite amount of <b><b>singleton</b></b><label id='fnr.18' for='fnr-in.18.984248' class='margin-toggle sidenote-number'><sup class='numeral'>18</sup></label><input type='checkbox' id='fnr-in.18.984248' class='margin-toggle'><span class='sidenote'><sup class='numeral'>18</sup>
+together an infinite amount of <b><b>singleton</b></b><label id='fnr.18' for='fnr-in.18.2682680' class='margin-toggle sidenote-number'><sup class='numeral'>18</sup></label><input type='checkbox' id='fnr-in.18.2682680' class='margin-toggle'><span class='sidenote'><sup class='numeral'>18</sup>
 As we saw above, a <b><b>singleton</b></b> (also known as a <b><b>unit set</b></b>
 or <b><b>one-point set</b></b>) is a set with exactly one element.
 </span> sets of the form
@@ -953,7 +971,7 @@ binary operator \(\oplus\) if \(x \oplus x = x\)</li>
 
 <p>
 If multiplication is the binary operator on the set of all counting
-numbers \(\mathbb{N}\) then what numbers of \(\mathbb{N}\)<label id='fnr.19' for='fnr-in.19.4756222' class='margin-toggle sidenote-number'><sup class='numeral'>19</sup></label><input type='checkbox' id='fnr-in.19.4756222' class='margin-toggle'><span class='sidenote'><sup class='numeral'>19</sup>
+numbers \(\mathbb{N}\) then what numbers of \(\mathbb{N}\)<label id='fnr.19' for='fnr-in.19.4856520' class='margin-toggle sidenote-number'><sup class='numeral'>19</sup></label><input type='checkbox' id='fnr-in.19.4856520' class='margin-toggle'><span class='sidenote'><sup class='numeral'>19</sup>
 \(\mathbb{N}\) is the symbol for the <i>natural</i> numbers, i.e., the
 positive integers \(1\), \(2\), \(3\ldots\) we use to count things.
 </span> can we
@@ -969,7 +987,7 @@ are idempotent:
 <p>
 All other numbers (\(x \gt 1\)) give increasingly larger squares of
 themselves, hence, \(0\) and \(1\) are idempotent, but the binary
-operation of multiplication is not.<label id='fnr.20' for='fnr-in.20.4856520' class='margin-toggle sidenote-number'><sup class='numeral'>20</sup></label><input type='checkbox' id='fnr-in.20.4856520' class='margin-toggle'><span class='sidenote'><sup class='numeral'>20</sup>
+operation of multiplication is not.<label id='fnr.20' for='fnr-in.20.7279737' class='margin-toggle sidenote-number'><sup class='numeral'>20</sup></label><input type='checkbox' id='fnr-in.20.7279737' class='margin-toggle'><span class='sidenote'><sup class='numeral'>20</sup>
 In her 2023 layman&rsquo;s book <i>The Joy of Abstraction</i>
 mathematician Eugenia Cheng notes how the operation of mixing paint
 colors is basically idempotent. Why? If we add one paint to one other
@@ -1015,7 +1033,7 @@ So by the <i>idempotency</i> of \(\lor\) we have (2) the same as \(\{ x : x = 1
 Notice we are relying on the <b><b>logical-or</b></b> binary operator being
 idempotent for all \(x\) in the set. Generally, an <b><b>unordered n-tuple</b></b>
 is a set of the form \(\{a_1,a_2,\ldots, a_n\dots\}\), although a <b><b>tuple</b></b> is
-usually meant to be <b><b>ordered</b></b>.<label id='fnr.21' for='fnr-in.21.7949751' class='margin-toggle sidenote-number'><sup class='numeral'>21</sup></label><input type='checkbox' id='fnr-in.21.7949751' class='margin-toggle'><span class='sidenote'><sup class='numeral'>21</sup>
+usually meant to be <b><b>ordered</b></b>.<label id='fnr.21' for='fnr-in.21.7179767' class='margin-toggle sidenote-number'><sup class='numeral'>21</sup></label><input type='checkbox' id='fnr-in.21.7179767' class='margin-toggle'><span class='sidenote'><sup class='numeral'>21</sup>
 &#x2026;such as, e.g., a pair of <i>Cartesian coordinates</i> \((a,b)\)
 where \(a\) is some real number on the <i>x-axis</i> and \(b\) is a real number
 on the <i>y-axis</i>. Obviously, with a Cartesian coordinate system \((a,b)
@@ -1048,9 +1066,9 @@ elements therein.
 </p>
 </div>
 </div>
-<div id="outline-container-org0e5a331" class="outline-3">
-<h3 id="org0e5a331">Summing up; data and data structures</h3>
-<div class="outline-text-3" id="text-org0e5a331">
+<div id="outline-container-org5572505" class="outline-3">
+<h3 id="org5572505">Summing up; data and data structures</h3>
+<div class="outline-text-3" id="text-org5572505">
 <p>
 We didn&rsquo;t even get off the first page of TLS, but we have laid some of
 the groundwork we&rsquo;ll need to proceed. And we can&rsquo;t emphasize this
@@ -1077,7 +1095,7 @@ but, for instance, this is data
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org507ae8f">'<span style="color: #8c8c8c;">(</span>bad bad so-so so-so good<span style="color: #8c8c8c;">)</span>
+<pre class="src src-scheme" id="orgb9d5ff6">'<span style="color: #8c8c8c;">(</span>bad bad so-so so-so good<span style="color: #8c8c8c;">)</span>
 </pre>
 </div>
 
@@ -1089,7 +1107,7 @@ code, rather, data. What we saw above
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgde5bb59"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">week3</span> '<span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>bad bad so-so so-so good<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+<pre class="src src-scheme" id="org0e5a331"><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">week3</span> '<span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>bad bad so-so so-so good<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
 </pre>
 </div>
 

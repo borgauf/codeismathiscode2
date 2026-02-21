@@ -1,0 +1,890 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: ComputingInContextLittleSchemer1.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+# #+STARTUP: latexpreview
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* Computing in Context 2
+
+\\
+#+begin_figure
+#+CAPTION: The Little Schemer putting together a combinator.
+[[file:images/LittleSchemerElephant1.png]]
+#+end_figure
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/codeismathiscode2"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&friedman1995little]]
+:END:
+
+
+* 
+
+* Why /The Little Schemer/?
+
+/[[https://mitpress.mit.edu/9780262560993/the-little-schemer/][The Little Schemer]]/ (TLS), written by computer science professors
+Daniel P. Friedman and Matthias Felleisen, was a revolutionary book
+when it came out in its first edition in 1987 as /The Little Lisper/
+based on the programming language [[https://en.wikipedia.org/wiki/Lisp_(programming_language)][Lisp]]. Subsequent editions switched
+to Lisp's younger sister language Scheme, hence, the renaming. The
+book was so unique because it followed a "[[https://en.wikipedia.org/wiki/Socratic_method][Socratic]]" dialog style of
+question-and-answer in left and right columns throughout the book. TLS
+is appropriate for both the reasonably devoted layperson, as well as
+a comp-sci student. Below is dialog taken from the very first page of
+the first chapter entitled /1. Toys/![fn:1]
+
+#+HTML_HEAD: <style type="text/css">
+#+HTML_HEAD: .styledtab col:nth-of-type(1) { width:  45%; }
+#+HTML_HEAD: .styledtab col:nth-of-type(2) { width: 55%; }
+#+HTML_HEAD: </style>
+
+#+NAME: LSTable2
+#+ATTR_HTML: :class fullwidth
+#+ATTR_HTML: :class styledtab
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Βιγ Σξηεμερ                                        | Λιττλε Σξηεμερ                                                                                                                              |
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? ~atom1~         | Yes, because ~atom1~ is a string of characters beginning with the letter ~a~.                                                               |
+|                                                    |                                                                                                                                             |
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? ~turkey~        | Yes, because ~turkey~ is a string of characters beginning with a letter.                                                                    |
+|                                                    |                                                                                                                                             |
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? ~1492~          | Yes, because ~1492~ is a string of digits.                                                                                                  |
+|                                                    |                                                                                                                                             |
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is an /atom/? ~*abc$~         | Yes, because ~*abc$~ is a string of characters beginning with a letter or special character other than a left ~(~ or right ~)~ parenthesis. |
+|                                                    |                                                                                                                                             |
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is a /list/? ~(atom)~         | Yes, because ~(atom)~ is an atom enclosed by parentheses.                                                                                   |
+|                                                    |                                                                                                                                             |
+|----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| Is it true that this is a list? ~(atom turkey or)~ | Yes, because it is a collection of atoms [separated by spaces and] enclosed by parentheses.                                                 |
+|                                                    |                                                                                                                                             |
+** Axiomatic Scheme
+
+The chatty back-and-forth is teasing out the requisite Scheme language
+syntax where you the reader will hopefully experience a growing mental
+picture of how Scheme works as the conversation continues and the
+pages turn. We are in effect /backing into/ Scheme programming and its
+underlying philosophy---and, indeed, underlying is quite a bit of
+important computer science.[fn:2]
+
+Some things, however, are directly stated. Before the first chapter,
+/1. Toys/, even before the title page, there are listed (jokingly
+named?) /The Ten Commandments/, followed by /The Five Rules/. Again,
+this is a nod to the mathematical formalism of an /axiomatic
+system/. As we've mentioned before, axiomatic systems are frequent in
+the great world of STEM. Peruse the following
+
+
+@@html:<font color = "#0d3db3">@@ ⇲ **The Ten Commandments**
+
+- /First Commandment/: When recurring on a list of atoms, ~lat~, ask two
+  questions about it ~(null? lat)~ and ~else~; when recurring on a
+  number, ~n~, ask two questions about it: ~(zero? n)~ and ~else~;
+  when recurring on a list of S-expressions, ~l~, ask three question
+  about it: ~(null?  l)~, ~(atom? ( car l))~, and ~else~.
+- /Second Commandment/: Use ~cons~ to build lists.
+- /Third Commandment/: When building a list, describe the first typical
+  element, and then ~cons~ it onto the natural recursion.
+- /Fourth Commandment/: Always change at least one argument while
+  recurring. When recurring on a list of atoms, ~lat~, use ~(cdr
+  lat)~. When recurring on a number, ~n~, use ~(sub1 n)~. And when
+  recurring on a list of S-expressions, ~l~, use ~(car l)~ and ~(cdr
+  l)~ if neither ~(null? l)~ nor ~(atom? (car l))~ are true. [One
+  argument] must be changed to be closer to termination. The changing
+  argument must be tested in the termination condition: When using
+  ~cdr~, test termination with ~null?~ and when using ~sub1~, test
+  termination with ~zero?~.
+- /Fifth Commandment/: When building a value with $+$, always use $0$
+  for the value of the terminating line, for adding $0$ does not
+  change the value of an addition.
+- /Sixth Commandment/: Simplify only after the function is correct.
+- /Seventh Commandment/: Recur on the /subparts/ that are of the same
+  nature: on the sublists of a list; on the subexpressions of an
+  arithmetic expression.
+- /Eighth Commandment/: Use help functions to abstract from
+  representations.
+- /Ninth Commandment/: Abstract common patterns with a new function.
+- /Tenth Commandment/: Build functions to collect more than one value at
+  a time.
+@@html:</font>@@
+
+@@html:<font color = "#0d3db3">@@⇲ **The Five Rules**
+
+- /The Law of ~car~/: The primitive ~car~ is defined only for nonempty
+  lists.
+- /The Law of ~cdr~/: The primitive ~cdr~ is defined only for nonempty
+  lists. The ~cdr~ of any nonempty list is always another list.
+- /The Law of ~cons~/: The primitive ~cons~ takes two arguments. The
+  second argument to ~cons~ must be a list. The result is a list.
+- /The Law of ~null?~/: The primitive ~null?~ is defined only for lists.
+- /The Law of ~eq?~/: The primitive ~eq?~ takes two arguments. Each must
+  be a non-numeric atom.
+@@html:</font>@@
+  
+/...when recurring on a list of atoms.../ You probably don't have a
+clue what is being said, so maybe just marvel at the novelty of
+presenting an entire programming language as a set of
+quasi-axioms. But wait, if we have all the supposed /axioms/ of
+Scheme, would each program we write, therefore, be a new /theorem/?
+After all, /everything/ in higher math is either an axiom or a theorem
+proven from the axioms, right? More on that later, specifically, when
+we, (A) start learning about the functional programming world,[fn:3]
+and (B) look into Douglas Hofstadter's [[https://en.wikipedia.org/wiki/MU_puzzle][MU puzzle]] from his
+ground-breaking book [[https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach][Gödel, Escher, Bach]] (1979). You might peruse the
+Wikipedia article to get a head start.
+
+In our two sets of Scheme quasi-axioms above, the word /list/ keeps
+appearing... We've had some exposure to Lisp code, but seriously, how
+can manipulating lists accomplish actual computing? Well, if you've
+read and understood a textbook such as /[[https://cseweb.ucsd.edu/~gill/BWLectSite/Resources/LDGbookCOV.pdf][Lists, Decisions and
+Graphs...]]/ by Bender and Williamson or, as we'll explore now, Rozsa
+Peter's /Recursive Functions in Computer Theory/ (RFICT), you might
+catch on that our Scheme axioms are attempting are to establish some
+sort of /list processing/ machinery. You haven't? That's all right,
+we'll start now. In fact Scheme's predecessor, *Lisp*, is an acronym
+for "list processing." So are we to believe that Lisp and Scheme are
+complete working programming languages based only on lists? How can
+that be?  Read on.
+
+** Lists and their care
+
+The humble list is one of the most basic data structures in
+programming. It's simple, and at least at the start, easy to
+understand. We all have a basic understanding of what a list is in the
+everyday sense. A grocery list is a good example
+
+- eggs
+- milk
+- flour
+- potatoes
+- butter
+
+In higher math /sets/ are very similar to lists, and in everyday
+language they might seem interchangeable. But they are not, and we
+need to find out why.
+
+⥤ **Math holiday**: Let's take an /ex situ/ math holiday to learn some
+basics about sets. Click on the following link: [[file:ComputingInContext2AuxSets.html][A first look at
+sets]]. See you back here soon.
+
+
+Now let's explore how Rozsa Peter mathematically defines lists, then
+we'll practice with Scheme.
+
+*** A theoretical list world according to Aunt Rózsa
+
+To the Hungarian mathematician Rózsa Péter, everything in the
+computing world can be boiled down to /recursive functions/. She along
+with other prominent mathematicians of the early- and mid-twentieth
+century proved this.
+
+In RFICT Péter says, a /list/ is a /finite __set__ of ordered
+elements/. A list is a set where the members, the elements are finite
+in number and arranged in some particular order. That will do for
+now. We can represent a list as
+
+
+\begin{align}
+l = (x_{1},\ldots,x_{n}) \langle \rangle
+\end{align}
+
+Except for parentheses instead of curly brackets, (1) should
+correspond to the literal description of a list above. So what can
+these $x_{i}$ elements be?@@html:<font color = "#0d3db3">@@ /Atoms/ or other /lists/.@@html:</font>@@
+
+
+
+
+*** Sets versus lists
+
+And so many books on set theory and
+discrete math start out with the deceptively simple and informal
+statement
+
+#+begin_quote
+@@html:<font color = "#0d3db3"> <i>@@ A **set** is collections of
+things ... objects ... stuff. @@html:</font> </i>@@
+#+end_quote
+
+...which is kind of what a list is too, no? But to CS and higher math
+they are two different entities. What's the difference? First, our
+grocery /list/ is not technically a list because, again, in the
+CS-higher math world,@@html:<font color = "#0d3db3">@@ /the *elements*
+(members) of a list have a specific order/ @@html:</font>@@. But then
+our grocery list above could be in any order, doesn't really matter as
+long as you come home with the those groceries...
+
+Plainly put, lists are defined as a collection of things in a specific
+order. Think of a /string/ of letters like you're reading right now. A
+string of alphanumeric characters can be considered a list because
+/the order of the individual alphanumeric characters (and spaces in
+between) is everything/. We typically call strings of letters and
+spaces /sentences/ ... where all the sentences in English are made up
+of differing combinations of the twenty-six letters (times two if we
+have both upper- and lower-case), as well as the ten numerals, all the
+punctuation, and the space character. You can't be placing individual
+characters in any order and still have sensible sentences. So is our
+"grocery list" really a /set/ of groceries?
+
+Actually no. We should not call a grocery list a /set of groceries/
+either because even though order doesn't matter, sets allow
+duplicates. They do. In set theory there is the idea of the
+/[[https://en.wikipedia.org/wiki/Cardinality][cardinality]]/ of a set, i.e., what is the count of the /unique/
+elements of the set, /not/ counting duplicates.[fn:4]
+
+⌜\\
+𝖟𝕭: The set $A = \{1,1,1,2,2\}$ is /identical/ to set $B = \{1, 2\}$
+because they have the same cardinality, or $|\,A\,| = |\,B\,| =
+2$.\\
+⌟\\
+
+This can be explained in a few ways. The simplest is to say the
+members, the elements of a set /belong/ to that set. So for example,
+if I /belong/ to a club, it doesn't make sense to have me
+/belong-belong/ or belong twice to the club.[fn:5] In the example
+above, $1$ /belongs/ to $A$, so it doesn't need to belong again.
+
+Splitting hairs? Yes, well, set theory is a very fundamental thing in
+higher math, thus, very precisely defined based on axioms. For
+example, set theory has the /[[https://en.wikipedia.org/wiki/Axiom_of_extensionality][Axiom of Extensionality]]/ which states
+@@html:<font color = "#0d3db3">@@ two sets are equal if they both have
+the same members@@html:</font>@@. In our example $A$ and $B$ do indeed
+have the same members, namely, $1$ and $2$ ---and it doesn't matter,
+it doesn't count that $A$ repeats these members. Let's look at another
+example
+
+⌜\\
+𝖟𝕭: Given the *set* $A = \{\text{good, so-so, bad}\}$ and a defined
+(named) *list*
+
+#+name: 7f8774e8-5919-413d-8134-dfd3652d7b39
+#+begin_src scheme :eval never :exports code
+(define week3 '(bad so-so so-so so-so good))
+#+end_src
+⌟\\
+
+the set $A$ contains the three possible moods a person might be in;
+while ~week3~ is the name we've told Scheme to call a list containing
+our daily workweek moods.[fn:6] \\
+
+The order of set $A$ doesn't matter (and we'd ignore, say, a second
+$good$), but the order of the list defined as ~week3~ is important
+because we don't want to mix up how we felt on which of the five work
+days. Also, it makes perfect sense for a list to have "repeats" since
+we're evaluating many days in succession, and each day can be one of
+the three choices. But then notice one more thing about a set: When we
+built the list ~week3~ we had to choose for each day ~good~ /or/ ~bad~
+/or/ ~so-so~. Or did we? What would the list ~week3~ look like if we
+could have more than just one mood during a day? How about
+
+#+name: 5e0271e8-a0e4-430f-b594-f11e30c11403
+#+begin_src scheme :eval never :exports code
+(define week3 '(bad bad so-so (good so-so bad) (good so-so)))
+#+end_src
+
+Remember Venn diagrams? An /or/ situation can be shown with a **[[https://en.wikipedia.org/wiki/Union_(set_theory)][union]]**
+of circles.[fn:7] Let's make a formal definition of a union:[fn:8]
+
+@@html:<font color = "#0d3db3">@@ The union of two sets $A$ and $B$
+(denoted by $A \cup B$) is the set of elements which are in $A$, in $B$,
+*or* in both $A$ and $B$.  @@html:</font>@@[fn:9]
+
+Now, for our set $A = \{\text{good, so-so, bad}\}$, if we are using
+each element just once per the day slot of ~week3~ we could imagine
+$A$ as made up of the individual /singleton/ sets, i.e., sets having
+just one element
+
+\begin{align*}
+A_G &= \{\text{good}\} \\
+A_{S} &= \{\text{so-so}\} \\
+A_B &= \{\text{bad}\}
+\end{align*}
+
+and so a union $\{A_G \cup A_{S} \cup A_B \}$ will get us back to our original
+$A = \{\text{good, so-so, bad}\}$. $A_G$, $A_{S}$, and $A_B$ are
+**[[https://en.wikipedia.org/wiki/Disjoint_sets][disjoint sets]]** since they have no elements in common when we
+union-ize them. And so if we made a Venn diagram, there would be no
+overlap between any of them. Why are we couching our daily mood
+choices in the language of set theory? Because we will eventually move
+on to another language, namely, [[https://en.wikipedia.org/wiki/Haskell][Haskell]], where a certain class of data
+types emulate just this sort of **[[https://en.wikipedia.org/wiki/Logical_disjunction][logical or]]**, i.e., the **sum
+type**. While Scheme is usually not directly explained in terms of
+higher math, the Haskell family of languages (Haskell, [[https://en.wikipedia.org/wiki/Standard_ML][Standard ML]],
+[[https://en.wikipedia.org/wiki/OCaml][OCaml]], [[https://en.wikipedia.org/wiki/F_Sharp_(programming_language)][F#]]) are. Again, lots more about data representations of
+disjoint sets, logical conjunction and disjunction when we look into
+Haskell in the future.
+
+⌜\\
+𝖟𝕭: Consider three common alphabets as sets---the Greek, Latin, and
+Cyrillic alphabets
+
+\begin{align*}
+G &= \{Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, Τ, Υ, Φ, Χ, Ψ, Ω\} \\
+L &= \{A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z\} \\
+C &= \{A, Б, В, Г, Д, E, Ё, Ж, З, И, Й, K, Л, М, Н, О, П, Р, С, Т, У, Ф, Х, Ц, Ч, Ш, Ъ, \\
+&  Ы, Ь, Э, Ю, Я\}
+\end{align*}
+
+Now, let's make one big union-ed together set $A$ out of the
+individual sets $G$, $L$, and $C$
+
+\begin{align*}
+A &= \{ Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, Τ, Υ, \\
+& Φ, Χ, Ψ, Ω, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, \\
+& S, T, U,  V, W, X, Y, Z, A, Б, В, Г, Д, E, Ё, Ж, З, И, Й, K, Л, М, Н, \\
+& О, П, Р, С, Т, У, Ф, Х, Ц, Ч, Ш, Ъ, Ы, Ь, Э, Ю, Я\}
+\end{align*}
+
+Below we see a Venn diagram for $A$, i.e., circles in which the
+/three/ sets of alphabetic characters are contained. We can see how
+the intersecting circumference lines also show the what /any two/
+alphabets share, and then in the very center what they /all/ share
+
+#+begin_figure
+#+CAPTION: Three alphabets, their /union/ and /intersections/ (Wikipedia [[https://en.wikipedia.org/wiki/Venn_diagram][Venn diagram]])
+[[file:images/Venn_diagram_gr_la_ru.png]]
+#+end_figure
+⌟\\
+
+Of course for visual purposes not /all/ the letters could be crowded
+into the diagram above, but we can see how the Venn diagram with its
+overlapping circles trick is beating duplicates. Visually we can see
+this happening, but is there a formal explanation? Short answer: yes.
+
+Now let's look at a formal definition of union in so-called
+**set-builder notation**[fn:10]
+
+\begin{align}
+A \cup B = \{x : x \in A \lor x \in B  \}
+\end{align}
+
+This expression says the **union** of $A$ and $B$ equals the set of
+elements denoted by $x$ such that an $x$ can be an element from[fn:11]
+$A$ *or* an element from $B$.[fn:12] But wait, *or* doesn't quite
+sound right in English if we mean to union-ize two or more things,
+does it?  To bring two or more sets together as one---their unique and
+shared element alike---don't we mean to say, e.g., @@html:<font color
+= "#0d3db3">@@ /the union of $A$ and $B$ takes all the elements from
+both $A$ *and* $B$/?@@html:</font>@@ Yes, but set theory prefers to
+look at, e.g., the Venn diagram of the alphabets (Figure 2 above) and
+say, @@html:<font color = "#0d3db3">@@A letter /belongs/ to the union
+of alphabets if it is from the Greek *or* from the Latin *or* from the
+Cyrillic alphabets.@@html:</font>@@ Again, we have the idea of sets
+and /belonging/ to sets.
+
+Now, look at that bulging middle triangle region of Figure 2
+containing the letters all three alphabets have in common. This is the
+**[[https://en.wikipedia.org/wiki/Intersection_(set_theory)][intersection]]** of alphabet sets $G$, $L$, and $C$. In this case we
+would say: @@html:<font color = "#0d3db3">@@A letter /belongs/ to the
+center triangle (the intersection) if it belongs to $G$ /and/ it
+belongs to $L$ /and/ it belongs to $C$@@html:</font>@@. In other
+words, the letter has to belong to all three alphabets. This is more
+precise, something upon which higher math always insists.
+
+@@html:<label for="mn-demo" class="margin-toggle"></label>
+<input type="checkbox" id="mn-demo" class="margin-toggle">
+<span class="marginnote">@@
+[[file:images/On_Off.jpg]]
+\\
+@@html:</span>@@
+
+And with one final piece of the puzzle we can put to rest this whole
+duplicates within sets issue. Let's explore another logic concept that
+we actually encounter every day. In the modern world we're constantly
+turning things on and off, e.g., a light switch with its on-off
+toggle. But occasionally we see /two/ buttons---/one/ for on, /one/
+for off. In the image to the right we have /two/ buttons doing on and
+off instead of one. In such a case pushing the green /on/ button just
+one initial time turns the device on /and any additional pushing is
+disregarded/. This is the same for the red /off/ button. Push once for
+off---and any further pushes mean nothing. Basically, "I heard you the
+first time, you don't have to repeat yourself." This phenomenon has an
+official name: **[[https://en.wikipedia.org/wiki/Idempotence][idempotence]]**, and it crops up in many real-life
+places. For our set theory discussion imagine making a Venn diagram of
+the union of sets $S_1 = \{5\}$ and $S_2 = \{5\}$, i.e., two different
+sets containing the same single element. Wouldn't this union be just
+one single circle containing the element $5$? Indeed it would. And if
+we added another set $S_3 = \{5\}$ to the union, we would still have
+
+\begin{align*}
+S_1 \cup S_2 \cup S_3 = \{5\}
+\end{align*}
+
+i.e., just one circle representing $5$. In fact, we could union
+together an infinite amount of **singleton**[fn:13] sets of the form
+$S_n = \{5\}$ and they would produce the singleton set $\{5\}$. Now
+for a bit of abstraction. Consider a **[[https://en.wikipedia.org/wiki/Binary_operation][binary operator]]**, i.e., any
+math that takes two objects and does an operation on them to produce
+something new. For example, addition is a binary operation, $1 + 1$ is
+$2$, as is multiplication, $3 \cdot 5$ is $15$. Let's then use the
+abstract symbol $\oplus$ to indicate any sort of binary operator. Now we
+can establish a formal definition of idempotence \\
+
+@@html:<font color = "#0d3db3">@@
+- A **binary operation** $\oplus$ is said to be **idempotent** on a set $S$ if
+  $x \oplus x = x \,\,\text{for all}\,\, x \in S$
+- An element $x$ of a set $S$ is said to be **idempotent** under a
+  binary operator $\oplus$ if $x \oplus x = x$
+@@html:</font>@@
+
+If multiplication is the binary operator on the set of all counting
+numbers $\mathbb{N}$ then what numbers of $\mathbb{N}$[fn:14] can we
+call idempotent according to the definition? Well, only $0$ and $1$
+are idempotent:
+
+\begin{align*}
+0 \cdot 0 &= 0 \\
+1 \cdot 1 &= 1
+\end{align*}
+
+All other numbers ($x \gt 1$) give increasingly larger squares of
+themselves, hence, $0$ and $1$ are idempotent, but the binary
+operation of multiplication is not.[fn:15]
+
+Now, let's consider something that came up in a [[https://math.stackexchange.com/][StackExchange
+Mathematics]] discussion [[https://math.stackexchange.com/questions/155475/1-1-1-origin-of-this-convention][here]], which is tackling our issue of duplicates
+in a set by asking, why is $\{1,1\} = \{1\}$? Below we have a slight
+re-wording of the preferred, green-checked answer:
+
+@@html:<font color = "#0d3db3">@@
+An unordered tuple $\{a_1,a_2,a_3,a_4\dots\}$ is defined as \\
+\begin{align*}
+\{x:x=a_1 \lor x=a_2 \lor x=a_3 \lor x=a_4 \lor\dots\}.
+\end{align*}
+By this convention,
+\begin{align}
+\{1,1\} = \{x:x=1 \lor x=1 \}
+\end{align}
+So by the /idempotency/ of $\lor$ we have (2) the same as $\{ x : x = 1
+\}$, hence,
+\begin{align*}
+\{1,1\} = \{1\}
+\end{align*}
+@@html:</font>@@
+
+Notice we are relying on the **logical-or** binary operator being
+idempotent for all $x$ in the set. Generally, an **unordered n-tuple**
+is a set of the form $\{a_1,a_2,\ldots, a_n\dots\}$, although a **tuple** is
+usually meant to be **ordered**.[fn:16] Again, idempotency of two
+identical sets is obvious when seen as Venn diagrams, but now we've
+seen in exact language how they are idempotent.
+
+By the way, **union** and **logical or** are complimentary ideas. Consider
+this expression
+
+\begin{align}
+a \in X \cup Y \iff a \in X \lor a \in Y
+\end{align}
+
+What does that double-arrow in the middle mean? **if and only
+if**. We'll go into $\iff$ in more exact detail later, but for now it
+means @@html:<font color = "#0d3db3">@@the truth of one side of the
+$\iff$ requires the other side to be true also.@@html:</font>@@ So if
+$a$ is an element of the union of $X$ and $Y$ then $a$ must be an
+element of $X$ /or/ it is an element of $Y$ /or/ it is an element of
+/both/ $X$ and $Y$ ---and the other way around as well. Note: we avoid
+writing $X \lor Y$ when considering just the sets without involving the
+elements therein.
+
+** Summing up; data and data structures
+
+We didn't even get off the first page of TLS, but we have laid some of
+the groundwork we'll need to proceed. And we can't emphasize this
+enough: Computer science is a branch of applied mathematics, and we
+need to get the math going alongside, parallel to the computer
+stuff. So expect more new math. Yes, this sort of math takes
+concentrated, deliberate thinking. We're becoming philosophers, i.e.,
+we're going beyond "plug-and-chug" math.
+
+Next, **lists**. While this lesson was an informal introduction to
+lists, we'll learn more about how they are a very simple but important
+data structure in computer **data management** ... but then we're
+using the term data management differently then the greater lay world
+does. So a quick word about the whole concept of **data** and **data structures** before we really dive in ahead. Today the term /data/ is
+mainly understood to be gobs and gobs of stuff held in databases or
+other storage schemes. That's not what we mean by data. For us /data/
+can simply be a number returned from an algorithm. That is to say,
+data is what the programming logic, the /code/ is taking in, working
+on, then giving back to us. Yes, of course, this production of data
+can pool and amass into great piles in vast electronic storage bins,
+but, for instance, this is data
+
+#+name: 6ce99fb1-93d3-4a72-9e01-5d9b96f3c682
+#+begin_src scheme :eval never :exports code
+'(bad bad so-so so-so good)
+#+end_src
+
+i.e., just a simple list surrounded in parentheses and prefaced at the
+beginning by a quotation mark ("'") as is the custom in Scheme (and
+Lisp). That quote at the opening parenthesis indicates this is not
+code, rather, data. What we saw above
+
+#+name: e4667fd4-1f04-4d95-ac36-ee0ee01b44ca
+#+begin_src scheme :eval never :exports code
+(define week3 '((bad bad so-so so-so good))
+#+end_src
+
+is therefore a mixture of both code and data---making it our first
+Scheme program, even if it is just one line long! As we progress we'll
+get into the weeds on just how this mixture of code and data can work
+together.
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] Βιγ Σξηεμερ: Big Schemer; Λιττλε Σξηεμερ: Little Schemer in
+Greek letters.
+
+[fn:2] Consider this another way of exploring logical entailment.
+
+[fn:3] The family of Standard ML languages like ML and Haskell, along
+with /combinators/ are all about coding as if we're mathematically
+proving, i.e., "types as propositions; programs as proofs" magic
+performed before our very eyes...
+
+[fn:4] We indicate the cardinality of a set $A$ by surrounding it
+with vertical pipes: $|\,A\,|$ This is similar to the idea of a
+number's /absolute value/ which uses the same vertical bar symbols.
+
+[fn:5] ...paying double membership fees?
+
+[fn:6]  Notice once again the nested parentheses. To be sure,
+everything in Scheme is a list.
+
+[fn:7] A Venn diagram of two sets /or/-ed, /union/-ed together. \\
+[[file:images/VennUnion.png]] \\
+The lens-shaped center area represents the "overlap," i.e., what the
+two sets represented as circles have in common.
+
+[fn:8] $\cup$ is the symbol for union.
+
+[fn:9] Could we have said, ...in $A$ *and* in $B$ *and* in both $A$
+and $B$? Better not. More on why later.
+
+[fn:10] (1) can be expanded for the union of more sets than just
+two, e.g., $A \cup B \cup C \cup \ldots$.
+
+[fn:11] The symbol $\in$ means "in" or "member of."
+
+[fn:12] $\lor$ is the symbol for **[[https://en.wikipedia.org/wiki/Logical_disjunction][logical or]]**, aka **logical
+disjunction**. Take a crack at the Wikipedia article.
+
+[fn:13] As we saw above, a **singleton** (also known as a **unit set**
+or **one-point set**) is a set with exactly one element.
+
+[fn:14] $\mathbb{N}$ is the symbol for the /natural/ numbers, i.e., the
+positive integers $1$, $2$, $3\ldots$ we use to count things.
+
+[fn:15] In her 2023 layman's book /The Joy of Abstraction/
+mathematician Eugenia Cheng notes how the operation of mixing paint
+colors is basically idempotent. Why? If we add one paint to one other
+paint we always get just one new paint color. That is, there is never
+an additive or multiplicative increasing or intensifying, just a new
+color. Now, how can we explain the green on-button above in terms of
+set-theory idempotency?
+
+[fn:16] ...such as, e.g., a pair of /Cartesian coordinates/ $(a,b)$
+where $a$ is some real number on the /x-axis/ and $b$ is a real number
+on the /y-axis/. Obviously, with a Cartesian coordinate system $(a,b)
+\neq (b,a)$, since they'd be entirely different points on the plane. The
+only exception would be if $a = b$.
+
+[fn:68] Βιγ Σξηεμερ: Big Schemer; Λιττλε Σξηεμερ: Little Schemer in
+Greek letters.
+
+[fn:67] Go [[https://en.wikipedia.org/wiki/Formalism_(philosophy_of_mathematics)][here]] to see the Wikipedia discussion about mathematic
+formalism---although it's a bit formal...
+
+[fn:66] Despite containing actual Scheme programs, i.e., real code, TLS
+was written so that a layperson could follow along with no access to
+nor knowledge of computers, e.g., even someone from the nineteenth
+century such as [[https://en.wikipedia.org/wiki/Ada_Lovelace][Ada Lovelace]]!
+
+[fn:65] Go ahead and take a "math holiday" by touring [[http://aleph0.clarku.edu/~djoyce/elements/bookI/cn.html][this page]] by
+Professor Joyce. He is speaking from a quasi-[[https://en.wikipedia.org/wiki/Set_theory][set theory]] standpoint,
+i.e., the basis of modern high math. But remember, Euclid was talking
+strictly about geometric shapes. Set theory had not been invented
+yet...
+
+[fn:64] ... /quod erat demonstrandum/, meaning "that which was to be
+demonstrated".
+
+[fn:63] These axioms relate to Linear Algebra.
+
+[fn:62] /Higher math/ in the U.S. typically means those college math
+courses pursued in the junior and senior year of a Bachelors math
+degree, i.e., those courses /after/ Calculus, Differential Equations,
+and Linear Algebra.
+
+[fn:61] In mathematical logic the idea of /implication/ is very
+fundamental. Something /implies/ something else; because $A$, that
+means $B$ as well. Implication goes by many names: /[[https://en.wikipedia.org/wiki/Material_conditional][material
+conditional]]/, [[https://en.wikipedia.org/wiki/Modus_ponens][modus ponens]], [[https://en.wikipedia.org/wiki/Logical_consequence][logical consequence]]. We first see
+implication in programming with the basic /if-then-else/ conditional
+starting with our third chapter.
+
+[fn:60] For example the (in)famous /[[https://en.wikipedia.org/wiki/Pons_asinorum][pons asinorum]]/ in /Euclid's
+Elements/ \\
+[[file:images/Byrne_pons_asinorum.jpg]] \\
+where it is /proven/ that indeed the angles opposite the equal sides
+of an isosceles triangle are themselves equal.
+
+[fn:59] A *[[https://en.wikipedia.org/wiki/Conjecture][conjecture]]* is a tentative *[[https://en.wikipedia.org/wiki/Proposition][proposition]]* that may evolve to
+become a theorem if proven true. Conjectures are mathematical
+statements unproven but useful for consideration. Propositions are
+"objects of belief," e.g., if someone believes that the sky is blue,
+the /object/ of their belief is the /proposition/ that the sky is
+blue.
+
+[fn:58] Actually, when math logic is studied we usually begin with
+**[[https://en.wikipedia.org/wiki/Propositional_logic][Propositional Logic]]**, then FOL. But here we'll just quickly touch
+on FOL.
+
+[fn:57] In math and logic a **vacuous truth** is a statement that is
+true, can't be refuted, but isn't really saying anything. For example,
+the statement /All cell phones in the room are off/ would be vacuously
+true if there were no cell phones in the room to begin with. In logic
+vacuousness gets trickier. An example might be /When pigs fly, I'll
+change my socks/. This contains a false premise, i.e., /when pigs fly/,
+making the changing of socks impossible to ascertain.
+
+[fn:56] We took a quick look at what a /relation/ is in our /Existence
+and uniqueness/ math holiday.
+
+[fn:55] [[https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz][Leibniz]]'s Law (also called **[[https://en.wikipedia.org/wiki/Identity_of_indiscernibles][Indiscernibility of Identicals]]**)
+and the Substitution Principle are essentially the same, with
+Leibniz's Law stating that identical things share all properties,
+which enables /substitutio salva veritate/ (Latin for /with truth
+unharmed/), allowing one identical term to be swapped for another in a
+statement without changing its truth value, forming the basis for
+logical consistency in reasoning about identity.
+
+[fn:54] With computers the **state** of the internal memory caused by
+the progress of running programs may change. But then /functional
+programming/ is based around state not changing, which is modeled on
+the fact that a true math function can have only one output, not one
+value now and something else later. Functional programming doesn't do
+code that allows a thing in memory, in a running program to change its
+identity as time progresses.
+
+[fn:53] Basically, Boole invokes /idempotency/. Imagine two buttons,
+one for /on/, one for /off/. If you press the /on/ button the device
+turns on, but then pressing it again and again ... the device is still
+just on. That is, /on/ remains itself upon repeated activation,
+query. Idempotency will become obvious when we learn some set
+theory. Soon...
+
+[fn:52] Besides the obvious ones, subtraction and division, with
+matrix math commutativity is not always true.
+
+[fn:51] Here the symbol ⊕ means any binary operation, e.g., addition,
+subtraction...
+
+[fn:50] We introduce the higher-math notation $\forall x \; (x=x)$ where the
+$\forall$ symbol means /for all/. Hence, /for all/ $x$, $x = x$.
+
+[fn:49] $P_{k}(x)$ could be read as /the predicate that when testing at
+$x$ returns $k$/. Again: The predicate \(P(x) \equiv (x^2 = k)\) defines a
+property that is true precisely when the function \(f(x) = x^2\)
+evaluates to the specific value \(k\) at the input \(x\).
+
+[fn:48] The symbol $\equiv$ generally means /is identical to/, /is defined
+as/, or /is congruent to/, depending on the mathematical context. It
+signifies a stronger form of equality than the standard equals sign
+$=$. Also, $\equiv$ implies the relationship is true by definition or for
+all cases (identity), whereas $-$ is often used for specific solutions
+(equations) ... identity ... hold that thought...
+
+[fn:47] Be aware that this is not an example of algebraic equation
+balancing where the function might be, e.g., $f(x) = x + (-c)$ meant
+to clear out $c$ from both sides. Rather, this is just the basic idea
+of the equality axiom using functions being recast into the more
+universal logic version.
+
+[fn:46] As we'll see, Lisp and Scheme have different sorts of /equals/
+for different occasions.
+
+[fn:45] Scheme has ~#t~ for true and ~#f~ for false.
+
+[fn:44] Consider how the /if and only if/ symbol, $\iff$, is like
+implies, $\implies$ pointing both ways, i.e., one /implies/ the other.
+
+[fn:43] The symbol $\iff$ is shorthand for /if and only if/.
+
+[fn:42] Remember what was said about /relations/ in our last ex situ
+Math Holiday. For now that's good enough.
+
+[fn:41] Lee lists out 34 theorems. Perhaps ask an AI chatbot to /prove/
+one of Lee's theorems.
+
+[fn:40] Note with Step 2 $\exists$ means /there exists/ and $\mid$ means
+/such that/: "There exists some $-c$ such that $c + (-c)$ equals $0$."
+
+[fn:39] Instead of Apostol's $a$ on both sides, we have $c$. The
+symbol $\implies$ means /implies/.
+
+[fn:38] See [[https://en.wikipedia.org/wiki/Reductio_ad_absurdum][Reductio ad absurdum]]., or proving something true by
+assuming it false, then showing it cannot be false after all.
+
+[fn:37] In higher math the symbol \therefore means /therefore/.
+
+[fn:36] Apostol is treating this as a theorem rather than an axiom
+because /cancellation does **not** work in all mathematical
+settings/. For example, in matrix math there is no general
+cancellation allowed. But with real numbers, yes, this can and has
+been proven true. Often enough, mathematicians won't claim something
+to be an axiom unless it is truly a universal given across all of
+mathematics. Shortly, we'll see this come up with /reflexivity/.
+
+[fn:35] One notorious fact about math is how different authors use
+different terminology, different strategies to explain a common
+topic. We need to get used to this and learn to contrast and compare.
+
+[fn:34] Ada Lovelace (1815 - 1852) is considered to be the first
+"computer programmer" by recognizing that if the fundamental relations
+of objects (such as music, art, or language) could be expressed
+through numbers, symbols, and formal rules, then a truly computing
+engine might be able to manipulate those symbols and rules to produce
+output far beyond mere arithmetic. Before her insight, calculating
+machines were only expected to perform set operations, and not be
+"programmable."
+
+[fn:33] ...even though the second set of premises and conclusion below
+suddenly seems automatic for any ~M~, ~S~, and ~P~ we may plug in,
+absurdities can obviously arise.
+
+[fn:32] Some treatments substitute the symbols $\oplus$ for "addition" and
+$\otimes$ for "multiplication" to indicate a more general, universal /binary
+operator/ status---beyond just the real numbers arithmetic we
+know. We're about to take a math holiday that better explains addition
+as seen by higher math.
+
+[fn:31] A **[[https://en.wikipedia.org/wiki/Field_(mathematics)][field]]** is like a higher math bag containing, (A), a set of
+objects and, (B), two binary operations, addition and multiplication,
+which, together, follow, C), these six axioms... Don't worry, we'll get
+more details later...
+
+[fn:30] Notice below how he only mentions /addition/ and
+/multiplication/. Why? Could it be that /subtraction/ and /division/
+can be /derived/ from adding and multiplying?
+
+[fn:29] Both algebra and calculus are based in the realm of real
+numbers, which uses the symbol $\mathbb{R}$, thus, Apostol's formalism
+assumes the realm of real numbers. He also refers to the _set_ of real
+numbers. He's speaking the dialect of **set theory**, and we'll soon
+take a nice math holiday to touch on all things to do with sets.
+
+[fn:28] In her /Recursive Functions in Computer Theory/, Rozsa Peter
+nonchalantly states: /One always strives to feed "reasonable" programs
+into the computer/...
+
+[fn:27] [[https://en.wikipedia.org/wiki/Mathematical_proof][Mathematical proof]]: Knowing whether something is true or false
+is of great importance in computer science. In higher math proving
+things completely takes over from doing calculations as you did in
+Algebra and Calculus. More as we go.
+
+[fn:26] This goes to the famous **[[https://en.wikipedia.org/wiki/Entscheidungsproblem][Entscheidungsproblem]]**: In
+mathematics and computer science, the Entscheidungsproblem (German for
+'decision problem') was a challenge posed by David Hilbert and Wilhelm
+Ackermann in 1928. It asks for an algorithm that considers an inputted
+statement and answers "yes" or "no" according to whether it is
+universally valid, i.e., valid in every structure. Such an algorithm
+was proven to be impossible by Alonzo Church and Alan Turing in 1936.
+
+[fn:25] We use /math holiday/ as a euphemism meaning to take a detour,
+go down a rabbit hole in order to explore a separate math topic
+necessary to advance the discussion. We will take /in situ/, i.e., on
+the same webpage, and /ex situ/ i.e., jump to completely different
+webpage, math holidays.
+
+[fn:24] Lots more proving of things as we go.
+
+[fn:23] **atomic**: In a philosophical, mathematical context, the term
+/atomic/ refers to the most fundamental, indivisible, or simplest
+components within a given system. An atom is the most basic component
+that cannot be broken down, /atomized/ any further.
+
+[fn:22] An entire field of higher math is devoted to just this sort of
+reducing and substituting. What we see with our algebra problem can be
+considered in a general sense as /directed replacement/ of terms, aka
+**[[https://en.wikipedia.org/wiki/Abstract_rewriting_system][term rewriting]]**. And when something can't be /simplified/ any
+further, it's considered in **[[https://en.wikipedia.org/wiki/Normal_form_(abstract_rewriting)][normal form]]**. Where is formalized
+rewriting important? For one with **[[https://en.wikipedia.org/wiki/Computer_algebra_system][computer algebra systems]]**, which
+must know at an automated algorithmic level how to solve algebra
+problems.
+
+[fn:21]  𝖟𝕭 is the German abbreviation for /zum Beispiel/ meaning "for
+example," done in the old-fashioned German /Fraktur/ script, a nod to
+all the German-speaking contributors to higher math.
+
+[fn:20] **axiom**: From the Greek /axíōma/ meaning /for that which
+commends itself as evident/.
+
+[fn:19] ...and this power is often jaw-dropping. The ways human
+mathematics /precisely/ coincides with /exactly/ what nature is doing
+is nothing short of supernatural. Prepare to have your mind blown with
+Nobel laureate Eugene Wigner's /[[https://en.wikipedia.org/wiki/The_Unreasonable_Effectiveness_of_Mathematics_in_the_Natural_Sciences][The Unreasonable Effectiveness of
+Mathematics in the Natural Sciences]]/.
+
+[fn:18] ...e.g., try to understand as much as you can of the Wikipedia
+articles linked.
+
+[fn:17] Accurate would also be /formalize to systematize/.
