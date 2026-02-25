@@ -1,26 +1,11 @@
 # # -*- mode: org -*- coding: utf-8 -*-
-#+TITLE: 
+#+TITLE:
 #+AUTHOR:
 #+EMAIL: 
 #+DATE: 
 #+LANGUAGE:  en
 # #+INFOJS_OPT: view:showall ltoc:t mouse:underline
 #+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
-#+HTML_HEAD: <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
-#+HTML_HEAD_EXTRA: <style>
-#+HTML_HEAD_EXTRA: article > div.org-src-container {
-#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
-#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
-#+HTML_HEAD_EXTRA:     clear: none;
-#+HTML_HEAD_EXTRA: }
-#+HTML_HEAD_EXTRA: article > section .org-src-container {
-#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
-#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
-#+HTML_HEAD_EXTRA:     clear: none;
-#+HTML_HEAD_EXTRA: }
-#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
-#+HTML_HEAD_EXTRA: pre.example {clear: none; }
-#+HTML_HEAD_EXTRA: </style>
 #+INCLUDE: "./header.org" :minlevel 1
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
@@ -31,7 +16,7 @@
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [american]
 # Setup tikz package for both LaTeX and HTML export:
-#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackqqqage{tikz}
 #+LATEX_HEADER: \usepackage{commath}
 #+LaTeX_HEADER: \usepackage{pgfplots}
 #+LaTeX_HEADER: \usepackage{sansmath}
@@ -43,24 +28,28 @@
 #+STARTUP: showall
 #+STARTUP: align
 #+STARTUP: indent
-#+STARTUP: shrink
 # This makes MathJax/LaTeX appear in buffer (UTF-8)
 #+STARTUP: entitiespretty
 # #+STARTUP: logdrawer # This makes pictures appear in buffer
 #+STARTUP: inlineimages
-# #+STARTUP: latexpreview
 #+STARTUP: fnadjust
-# #+OPTIONS: html-style:nil
-#+html_head_extra: <style> .title { display: none; } </style>
-#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+#+OPTIONS: html-style:nil
+
+# #+begin_export html
+# <span style="margin-top: -40px; margin-left: 5px; text-align: left; float: left; font-size: 85%" class="cap">Art taken from <a href="https://mastodon.social/@ianh" target="_blank" class="inline">Ian Henderson</a>. See <a href="https://johncarlosbaez.wordpress.com/2022/12/22/dividing-a-square-into-similar-rectangles/" target="_blank" class="inline">this</a> article.</span>
+# #+end_export
+
+
+
 
 
 * 🟄 . . . code is math is code is math is code is math is code is math . . .
 
-# #+begin_export html
-# <img src="./images/DoesntFitThroughTheDoor.png" width="725px" style="padding: 15px 0px 0px 0px" alt="Doesn't fit through the door." class="center">
-# <span class="cap">...new computer doesn't fit through the door in <i>Hidden Figures</i>.</span>
-# #+end_export
+#+begin_export html
+<img src="./images/DoesntFitThroughTheDoor.png" width="725px" style="padding: 15px 0px 0px 0px" alt="Doesn't fit through the door." class="center">
+<span class="cap">...new computer doesn't fit through the door in <i>Hidden Figures</i>.</span>
+#+end_export
 
 **** In the modern era learning <your field here> and learning how to do <your field here> with computers should happen simultaneously. Click on the icon top-left and get started.
 
@@ -71,6 +60,6 @@
 <span class="cap">The Inland Sea aka Lake Superior.</span>
 #+end_export
  
-**** *codeismathiscode* is in Grand Marais, Minnesota, USA, on the coast of the Inland Sea, aka, Lake Superior. @@html:<font color = "#650d1c">@@codeismathiscode@gmail.com@@html:</font>@@
+**** *codeismathiscode* is out of Grand Marais, Minnesota, USA, on the coast of the Inland Sea, aka, Lake Superior. Reach us at @@html:<font color = "#650d1c">@@codeismathiscode@gmail.com@@html:</font>@@
 
 #+INCLUDE: "./footer.org" :minlevel 1
