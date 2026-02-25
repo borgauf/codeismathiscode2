@@ -73,11 +73,11 @@ Tokenization is the process of converting a raw string of text into a sequence o
 ** Common Tokenization Methods
 
 
-| Method | Level | Example: "Unhappiness" |
-| :--- | :--- | :--- |
-| **Word-level** | Each word is a token | ~["Unhappiness"]~ |
-| **Character-level** | Each letter is a token | ~["U", "n", "h", "a", "p", "p", "i", "n", "e", "s", "s"]~ |
-| **Sub-word** | Common chunks are tokens | ~["Un", "happi", "ness"]~ |
+| Method              | Level                    | Example: "Unhappiness"                                    |
+| :---                | :---                     | :---                                                      |
+| **Word-level**      | Each word is a token     | ~["Unhappiness"]~                                         |
+| **Character-level** | Each letter is a token   | ~["U", "n", "h", "a", "p", "p", "i", "n", "e", "s", "s"]~ |
+| **Sub-word**        | Common chunks are tokens | ~["Un", "happi", "ness"]~                                 |
 
 *Note:* Most modern Large Language Models (LLMs) use **Sub-word Tokenization** (like Byte-Pair Encoding) because it efficiently handles rare words and prefixes/suffixes.
 
@@ -116,13 +116,13 @@ In modern AI, we use **Sub-word Tokenization**. This allows the model to underst
 When a modern LLM processes this sentence, it doesn't see three words. It breaks them into pieces based on frequency and logic:
 
 
-| Original Segment | Token Produced | Type |
-| :--- | :--- | :--- |
-| "Token" | ~Token~ | Root Word |
-| "ization" | ~ization~ | Suffix |
-| " is" | ~_is~ | Word (with space) |
-| " amazing" | ~_amazing~ | Word (with space) |
-| "!" | ~!~ | Punctuation |
+| Original Segment | Token Produced | Type              |
+| :---             | :---           | :---              |
+| "Token"          | ~Token~        | Root Word         |
+| "ization"        | ~ization~      | Suffix            |
+| " is"            | ~_is~          | Word (with space) |
+| " amazing"       | ~_amazing~     | Word (with space) |
+| "!"              | ~!~            | Punctuation       |
 
 **Note:** The "_" symbol represents a leading space, which is often treated as part of the token itself.
 
@@ -196,11 +196,11 @@ By repeating this $k$ times (where $k$ is a hyperparameter), the model builds a 
 ** Advantages of BPE
 
 
-| Advantage | Description |
-| :--- | :--- |
+| Advantage                  | Description                                                               |
+| :---                       | :---                                                                      |
 | **No "Out-of-Vocabulary"** | Since it starts with characters, any word can be broken down into pieces. |
-| **Compression** | Common words like "the" become single tokens, while rare words are split. |
-| **Morphological Learning** | It naturally learns that "ing", "ed", and "tion" are meaningful units. |
+| **Compression**            | Common words like "the" become single tokens, while rare words are split. |
+| **Morphological Learning** | It naturally learns that "ing", "ed", and "tion" are meaningful units.    |
 
 #+BEGIN_QUOTE
 **Summary:** BPE allows the machine to "decide" its own alphabet based on the statistical distribution of the data it sees, rather than humans forcing a dictionary upon it.
@@ -241,11 +241,11 @@ Where:
 For the sentence "The animal didn't cross the street because it was too tired":
 
 
-| Token | High Attention To... | Why? |
-| :--- | :--- | :--- |
-| **it** | "animal" | The model identifies the pronoun referent. |
-| **tired** | "animal" | It links the state of being tired to the subject. |
-| **cross** | "street" | It understands the action-object relationship. |
+| Token     | High Attention To... | Why?                                              |
+| :---      | :---                 | :---                                              |
+| **it**    | "animal"             | The model identifies the pronoun referent.        |
+| **tired** | "animal"             | It links the state of being tired to the subject. |
+| **cross** | "street"             | It understands the action-object relationship.    |
 
 ---
 
@@ -295,12 +295,12 @@ Imagine a token is looking at three other tokens, and the raw attention scores (
 - Token C: $0.1$
 
 
-| Token | Raw Score ($z$) | Exponent ($e^z$) | Softmax Output ($\sigma$) |
-| :--- | :--- | :--- | :--- |
-| **A** | $2.0$ | $7.39$ | **~0.66 (66%)** |
-| **B** | $1.0$ | $2.72$ | **~0.24 (24%)** |
-| **C** | $0.1$ | $1.11$ | **~0.10 (10%)** |
-| **Total** | | $11.22$ | **1.00 (100%)** |
+| Token     | Raw Score ($z$) | Exponent ($e^z$) | Softmax Output ($\sigma$) |
+| :---      | :---            | :---             | :---                 |
+| **A**     | $2.0$           | $7.39$           | **~0.66 (66%)**      |
+| **B**     | $1.0$           | $2.72$           | **~0.24 (24%)**      |
+| **C**     | $0.1$           | $1.11$           | **~0.10 (10%)**      |
+| **Total** |                 | $11.22$          | **1.00 (100%)**      |
 
 ---
 
@@ -338,11 +338,11 @@ After the **Attention** layers and **Softmax** have processed the input, the fin
 The way a model chooses from the probability distribution is called a **Decoding Strategy**:
 
 
-| Strategy | Logic | Result |
-| :--- | :--- | :--- |
-| **Greedy Search** | Always pick the token with the highest probability. | Predictable, but can be repetitive. |
-| **Top-K Sampling** | Only consider the top $K$ most likely tokens. | Balances logic and variety. |
-| **Top-P (Nucleus)** | Pick from the smallest set of tokens whose cumulative probability exceeds $P$. | Dynamic and very human-like. |
+| Strategy            | Logic                                                                          | Result                              |
+| :---                | :---                                                                           | :---                                |
+| **Greedy Search**   | Always pick the token with the highest probability.                            | Predictable, but can be repetitive. |
+| **Top-K Sampling**  | Only consider the top $K$ most likely tokens.                                  | Balances logic and variety.         |
+| **Top-P (Nucleus)** | Pick from the smallest set of tokens whose cumulative probability exceeds $P$. | Dynamic and very human-like.        |
 
 ---
 

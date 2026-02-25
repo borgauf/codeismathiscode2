@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-02-25 Wed 10:41 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-org7925b9e" class="outline-2">
+<h2 id="org7925b9e">What is a Token in AI and Machine Learning?</h2>
+<div class="outline-text-2" id="text-org7925b9e">
+<p>
+In the world of AI, models do not &ldquo;read&rdquo; words the way humans do. Instead, they process text by breaking it down into discrete units called <b><b>tokens</b></b>. 
+</p>
+
+<p>
+&mdash;
+</p>
+</div>
+<div id="outline-container-orgee35afe" class="outline-3">
+<h3 id="orgee35afe">How Tokenization Works</h3>
+<div class="outline-text-3" id="text-orgee35afe">
+<p>
+Tokenization is the process of converting a raw string of text into a sequence of integers. This happens in three primary stages:
+</p>
+
+<ol class="org-ol">
+<li><b><b>Splitting:</b></b> The text is divided into pieces. Depending on the algorithm, a token could be a whole word, a part of a word (sub-word), or even a single character.</li>
+<li><b><b>Mapping:</b></b> Each unique token is assigned a specific number (index) from a pre-defined <b><b>vocabulary</b></b>.</li>
+<li><b><b>Encoding:</b></b> The text &ldquo;Hello world&rdquo; might become a sequence of integers like \([15496, 995]\).</li>
+</ol>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-org0ce0959" class="outline-3">
+<h3 id="org0ce0959">Common Tokenization Methods</h3>
+<div class="outline-text-3" id="text-org0ce0959">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Method</td>
+<td class="org-left">Level</td>
+<td class="org-left">Example: &ldquo;Unhappiness&rdquo;</td>
+</tr>
+
+<tr>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Word-level</b></b></td>
+<td class="org-left">Each word is a token</td>
+<td class="org-left"><code>["Unhappiness"]</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Character-level</b></b></td>
+<td class="org-left">Each letter is a token</td>
+<td class="org-left"><code>["U", "n", "h", "a", "p", "p", "i", "n", "e", "s", "s"]</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Sub-word</b></b></td>
+<td class="org-left">Common chunks are tokens</td>
+<td class="org-left"><code>["Un", "happi", "ness"]</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Note:</b> Most modern Large Language Models (LLMs) use <b><b>Sub-word Tokenization</b></b> (like Byte-Pair Encoding) because it efficiently handles rare words and prefixes/suffixes.
+</p>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-org9639605" class="outline-3">
+<h3 id="org9639605">The Mathematical Representation</h3>
+<div class="outline-text-3" id="text-org9639605">
+<p>
+Once text is tokenized, it is converted into a numerical format that the machine can manipulate.
+</p>
+
+<ol class="org-ol">
+<li><b><b>Input Indices:</b></b> A sequence of tokens is represented as a vector \(X\):
+\[X = [t_1, t_2, t_3, \dots, t_n]\]
+where each \(t_i\) is an integer index.</li>
+
+<li><b><b>Embeddings:</b></b> Each token index is then looked up in an <b><b>Embedding Matrix</b></b> \(E\). This transforms the integer into a high-dimensional vector of floating-point numbers:
+\[v_i = E(t_i)\]
+where \(v_i \in \mathbb{R}^d\) and \(d\) is the dimensionality of the model (e.g., \(d = 768\) or \(d = 4096\)).</li>
+</ol>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-org7f6f53b" class="outline-3">
+<h3 id="org7f6f53b">Why Tokens Matter</h3>
+<div class="outline-text-3" id="text-org7f6f53b">
+<ul class="org-ul">
+<li><b><b>Context Window:</b></b> AI models have a limit on how many tokens they can process at once (e.g., 8k, 32k, or 128k tokens).</li>
+<li><b><b>Cost:</b></b> Many API providers (like OpenAI or Anthropic) charge users based on the number of tokens processed, not the number of words.</li>
+<li><b><b>Efficiency:</b></b> On average, \(1000\) tokens is roughly equal to \(750\) English words.</li>
+</ul>
+
+<blockquote>
+<p>
+<b><b>Summary:</b></b> A token is the bridge between human-readable text and the mathematical vectors that a neural network operates on.
+</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="outline-container-orgb948b55" class="outline-2">
+<h2 id="orgb948b55">Practical Example: Sub-word Tokenization</h2>
+<div class="outline-text-2" id="text-orgb948b55">
+<p>
+In modern AI, we use <b><b>Sub-word Tokenization</b></b>. This allows the model to understand the root of a word while also recognizing its suffixes or prefixes.
+</p>
+
+<p>
+&mdash;
+</p>
+</div>
+<div id="outline-container-org9beed48" class="outline-3">
+<h3 id="org9beed48">The Breakdown: &ldquo;Tokenization is amazing!&rdquo;</h3>
+<div class="outline-text-3" id="text-org9beed48">
+<p>
+When a modern LLM processes this sentence, it doesn&rsquo;t see three words. It breaks them into pieces based on frequency and logic:
+</p>
+
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Original Segment</td>
+<td class="org-left">Token Produced</td>
+<td class="org-left">Type</td>
+</tr>
+
+<tr>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+</tr>
+
+<tr>
+<td class="org-left">&ldquo;Token&rdquo;</td>
+<td class="org-left"><code>Token</code></td>
+<td class="org-left">Root Word</td>
+</tr>
+
+<tr>
+<td class="org-left">&ldquo;ization&rdquo;</td>
+<td class="org-left"><code>ization</code></td>
+<td class="org-left">Suffix</td>
+</tr>
+
+<tr>
+<td class="org-left">&ldquo; is&rdquo;</td>
+<td class="org-left"><code>_is</code></td>
+<td class="org-left">Word (with space)</td>
+</tr>
+
+<tr>
+<td class="org-left">&ldquo; amazing&rdquo;</td>
+<td class="org-left"><code>_amazing</code></td>
+<td class="org-left">Word (with space)</td>
+</tr>
+
+<tr>
+<td class="org-left">&ldquo;!&rdquo;</td>
+<td class="org-left"><code>!</code></td>
+<td class="org-left">Punctuation</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b><b>Note:</b></b> The &ldquo;_&rdquo; symbol represents a leading space, which is often treated as part of the token itself.
+</p>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-org2dc1f56" class="outline-3">
+<h3 id="org2dc1f56">Mathematical Mapping to IDs</h3>
+<div class="outline-text-3" id="text-org2dc1f56">
+<p>
+Each of these strings corresponds to a unique integer in the model&rsquo;s vocabulary (\(V\)). Let&rsquo;s assume a simplified vocabulary where:
+</p>
+
+<ul class="org-ul">
+<li>\(t_{345} = \text{"Token"}\)</li>
+<li>\(t_{1201} = \text{"ization"}\)</li>
+<li>\(t_{312} = \text{" is"}\)</li>
+<li>\(t_{4598} = \text{" amazing"}\)</li>
+<li>\(t_{0} = \text{"!"}\)</li>
+</ul>
+
+<p>
+The sentence is converted into a vector \(X\):
+\[X = [345, 1201, 312, 4598, 0]\]
+</p>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-orgde0f8b8" class="outline-3">
+<h3 id="orgde0f8b8">Why this is Efficient</h3>
+<div class="outline-text-3" id="text-orgde0f8b8">
+<ol class="org-ol">
+<li><b><b>Vocabulary Size:</b></b> By using sub-words, the model doesn&rsquo;t need a separate entry for &ldquo;Token,&rdquo; &ldquo;Tokenize,&rdquo; &ldquo;Tokenizing,&rdquo; and &ldquo;Tokenization.&rdquo; It just needs \(Token\) + \(suffix\).</li>
+<li><b><b>Handling Unknowns:</b></b> Even if the model has never seen a specific complex word, it can usually break it down into smaller characters or chunks it <b>does</b> know, preventing the &ldquo;Unknown Word&rdquo; error common in older AI.</li>
+</ol>
+
+<blockquote>
+<p>
+<b><b>Visual Tip:</b></b> If you ever want to see this live, you can visit the <b><b>OpenAI Tokenizer</b></b> web tool. It highlights the text in different colors to show exactly where one token ends and the next begins.
+</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="outline-container-orgfa898cb" class="outline-2">
+<h2 id="orgfa898cb">Byte-Pair Encoding (BPE) Explained</h2>
+<div class="outline-text-2" id="text-orgfa898cb">
+<p>
+Byte-Pair Encoding is an iterative algorithm that starts with individual characters and merges the most frequently occurring adjacent pairs into new, single tokens.
+</p>
+
+<p>
+&mdash;
+</p>
+</div>
+<div id="outline-container-org7161a33" class="outline-3">
+<h3 id="org7161a33">The BPE Algorithm Process</h3>
+<div class="outline-text-3" id="text-org7161a33">
+<p>
+Suppose we have a tiny &ldquo;corpus&rdquo; (dataset) with the words:
+</p>
+<ul class="org-ul">
+<li>&ldquo;low&rdquo;: 5 times</li>
+<li>&ldquo;lower&rdquo;: 2 times</li>
+<li>&ldquo;newest&rdquo;: 6 times</li>
+<li>&ldquo;widest&rdquo;: 3 times</li>
+
+<li><b><b>Step 1: Initialize Vocabulary</b></b>
+Every character is treated as a token:
+\[V = \{l, o, w, e, r, n, s, t, i, d\}\]</li>
+
+<li><b><b>Step 2: Count Adjacent Pairs</b></b>
+The algorithm looks for the pair of tokens that appear next to each other most often. In our example, &ldquo;e&rdquo; and &ldquo;s&rdquo; appear together in both &ldquo;newest&rdquo; and &ldquo;widest&rdquo; (\(6 + 3 = 9\) times).</li>
+
+<li><b><b>Step 3: Merge the Pair</b></b>
+A new token &ldquo;es&rdquo; is created and added to the vocabulary.
+\[V = V \cup \{es\}\]</li>
+
+<li><b><b>Step 4: Repeat</b></b>
+Next, it might find that &ldquo;es&rdquo; and &ldquo;t&rdquo; appear together 9 times. It merges them into &ldquo;est&rdquo;.
+\[V = V \cup \{est\}\]</li>
+</ul>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-org194cf40" class="outline-3">
+<h3 id="org194cf40">The Logic of &ldquo;Greedy&rdquo; Merging</h3>
+<div class="outline-text-3" id="text-org194cf40">
+<p>
+BPE is a <b><b>greedy algorithm</b></b>. It identifies patterns by calculating the frequency \(f\) of pairs \((a, b)\):
+</p>
+
+<p>
+\[ \text{pair}_{next} = \arg\max_{a,b \in V} f(a, b) \]
+</p>
+
+<p>
+By repeating this \(k\) times (where \(k\) is a hyperparameter), the model builds a vocabulary of size \(S\). Large models typically use a vocabulary size \(S \approx 50,000\) to \(100,000\).
+</p>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-org0043671" class="outline-3">
+<h3 id="org0043671">Advantages of BPE</h3>
+<div class="outline-text-3" id="text-org0043671">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Advantage</td>
+<td class="org-left">Description</td>
+</tr>
+
+<tr>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>No &ldquo;Out-of-Vocabulary&rdquo;</b></b></td>
+<td class="org-left">Since it starts with characters, any word can be broken down into pieces.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Compression</b></b></td>
+<td class="org-left">Common words like &ldquo;the&rdquo; become single tokens, while rare words are split.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Morphological Learning</b></b></td>
+<td class="org-left">It naturally learns that &ldquo;ing&rdquo;, &ldquo;ed&rdquo;, and &ldquo;tion&rdquo; are meaningful units.</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>
+<b><b>Summary:</b></b> BPE allows the machine to &ldquo;decide&rdquo; its own alphabet based on the statistical distribution of the data it sees, rather than humans forcing a dictionary upon it.
+</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="outline-container-org0c8fbd7" class="outline-2">
+<h2 id="org0c8fbd7">The Attention Mechanism: Connecting the Tokens</h2>
+<div class="outline-text-2" id="text-org0c8fbd7">
+<p>
+Once a sentence is converted into tokens and then into vectors (embeddings), the model needs to understand how those tokens relate to one another. It does this through <b><b>Self-Attention</b></b>.
+</p>
+
+<p>
+&mdash;
+</p>
+</div>
+<div id="outline-container-orga55bdd4" class="outline-3">
+<h3 id="orga55bdd4">The Goal of Attention</h3>
+<div class="outline-text-3" id="text-orga55bdd4">
+<p>
+In the sentence <i>&ldquo;The bank of the river,&rdquo;</i> the token <b><b>&ldquo;bank&rdquo;</b></b> means something different than in <i>&ldquo;The bank gave a loan.&rdquo;</i> 
+</p>
+
+<p>
+Self-attention allows the model to &ldquo;attend&rdquo; to surrounding tokens to resolve meaning. To calculate this, the model creates three new vectors for every token \(i\):
+</p>
+<ol class="org-ol">
+<li><b><b>Query (\(Q_i\)):</b></b> What am I looking for?</li>
+<li><b><b>Key (\(K_i\)):</b></b> What information do I contain?</li>
+<li><b><b>Value (\(V_i\)):</b></b> What information do I share if I am relevant?</li>
+</ol>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-org1520f12" class="outline-3">
+<h3 id="org1520f12">The Mathematical Formula</h3>
+<div class="outline-text-3" id="text-org1520f12">
+<p>
+The relationship between all tokens in a sequence is calculated using the <b><b>Scaled Dot-Product Attention</b></b> formula:
+</p>
+
+<p>
+\[ \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V \]
+</p>
+
+<p>
+Where:
+</p>
+<ul class="org-ul">
+<li>\(Q, K, V\) are matrices representing the Queries, Keys, and Values of all tokens.</li>
+<li>\(QK^T\) calculates the &ldquo;score&rdquo; or similarity between every token and every other token.</li>
+<li>\(\sqrt{d_k}\) is a scaling factor based on the dimension of the keys to keep gradients stable.</li>
+<li>The <b><b>softmax</b></b> function ensures that the attention scores for a single token sum up to \(1\) (or \(100\%\)).</li>
+</ul>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-orgff52af2" class="outline-3">
+<h3 id="orgff52af2">Visualizing the Relationship (Attention Map)</h3>
+<div class="outline-text-3" id="text-orgff52af2">
+<p>
+For the sentence &ldquo;The animal didn&rsquo;t cross the street because it was too tired&rdquo;:
+</p>
+
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Token</td>
+<td class="org-left">High Attention To&hellip;</td>
+<td class="org-left">Why?</td>
+</tr>
+
+<tr>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>it</b></b></td>
+<td class="org-left">&ldquo;animal&rdquo;</td>
+<td class="org-left">The model identifies the pronoun referent.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>tired</b></b></td>
+<td class="org-left">&ldquo;animal&rdquo;</td>
+<td class="org-left">It links the state of being tired to the subject.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>cross</b></b></td>
+<td class="org-left">&ldquo;street&rdquo;</td>
+<td class="org-left">It understands the action-object relationship.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-org79c4fb7" class="outline-3">
+<h3 id="org79c4fb7">Why &ldquo;Multi-Head&rdquo; Attention?</h3>
+<div class="outline-text-3" id="text-org79c4fb7">
+<p>
+Modern models use <b><b>Multi-Head Attention</b></b>. Instead of one attention calculation, they run several (e.g., 8, 12, or 16) in parallel. 
+</p>
+<ul class="org-ul">
+<li><b><b>Head 1</b></b> might focus on grammar and syntax.</li>
+<li><b><b>Head 2</b></b> might focus on pronoun resolution.</li>
+<li><b><b>Head 3</b></b> might focus on emotional tone.</li>
+</ul>
+
+<blockquote>
+<p>
+<b><b>Summary:</b></b> If tokens are the &ldquo;words,&rdquo; Attention is the &ldquo;logic&rdquo; that weaves them into a coherent context, allowing the model to understand complex relationships rather than just seeing a list of symbols.
+</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="outline-container-orgf718da5" class="outline-2">
+<h2 id="orgf718da5">The Softmax Function: Turning Scores into Probabilities</h2>
+<div class="outline-text-2" id="text-orgf718da5">
+<p>
+In the Attention mechanism, the raw dot-product of \(Q\) and \(K\) produces a set of scores that can be any real number (large positive, zero, or negative). To make these scores useful, we apply <b><b>Softmax</b></b>.
+</p>
+
+<p>
+&mdash;
+</p>
+</div>
+<div id="outline-container-org0b22235" class="outline-3">
+<h3 id="org0b22235">The Mathematical Definition</h3>
+<div class="outline-text-3" id="text-org0b22235">
+<p>
+For a vector of raw scores \(z\) (often called &ldquo;logits&rdquo;), the Softmax value for the $i$-th element is calculated as:
+</p>
+
+<p>
+\[ \sigma(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}} \]
+</p>
+
+<p>
+Where:
+</p>
+<ul class="org-ul">
+<li>\(e^{z_i}\) is the exponential function applied to the input score.</li>
+<li>\(\sum_{j=1}^{K} e^{z_j}\) is the sum of exponents of all scores in the vector.</li>
+<li>\(K\) is the total number of tokens being compared.</li>
+</ul>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-org0c2fec5" class="outline-3">
+<h3 id="org0c2fec5">Why use Softmax?</h3>
+<div class="outline-text-3" id="text-org0c2fec5">
+<ol class="org-ol">
+<li><b><b>Probability Distribution:</b></b> The resulting values are always between \(0\) and \(1\), and they sum exactly to \(1.0\) (or \(100\%\)).</li>
+<li><b><b>Amplification:</b></b> Because it uses the exponential \(e\), it naturally exaggerates the largest score. This helps the model &ldquo;focus&rdquo; its attention on the most relevant token while suppressing noise.</li>
+<li><b><b>Differentiability:</b></b> It is a smooth, continuous function, which allows the model to learn using calculus (backpropagation).</li>
+</ol>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-org8a1512e" class="outline-3">
+<h3 id="org8a1512e">Numerical Example</h3>
+<div class="outline-text-3" id="text-org8a1512e">
+<p>
+Imagine a token is looking at three other tokens, and the raw attention scores (\(QK^T\)) are:
+</p>
+<ul class="org-ul">
+<li>Token A: \(2.0\)</li>
+<li>Token B: \(1.0\)</li>
+<li>Token C: \(0.1\)</li>
+</ul>
+
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Token</td>
+<td class="org-left">Raw Score (\(z\))</td>
+<td class="org-left">Exponent (\(e^z\))</td>
+<td class="org-left">Softmax Output (\(\sigma\))</td>
+</tr>
+
+<tr>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>A</b></b></td>
+<td class="org-left">\(2.0\)</td>
+<td class="org-left">\(7.39\)</td>
+<td class="org-left"><b><b>~0.66 (66%)</b></b></td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>B</b></b></td>
+<td class="org-left">\(1.0\)</td>
+<td class="org-left">\(2.72\)</td>
+<td class="org-left"><b><b>~0.24 (24%)</b></b></td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>C</b></b></td>
+<td class="org-left">\(0.1\)</td>
+<td class="org-left">\(1.11\)</td>
+<td class="org-left"><b><b>~0.10 (10%)</b></b></td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Total</b></b></td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">\(11.22\)</td>
+<td class="org-left"><b><b>1.00 (100%)</b></b></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-orgf42ba8d" class="outline-3">
+<h3 id="orgf42ba8d">The Temperature Parameter (\(T\))</h3>
+<div class="outline-text-3" id="text-orgf42ba8d">
+<p>
+Sometimes, researchers add a &ldquo;Temperature&rdquo; variable to the Softmax:
+\[ \sigma(z)_i = \frac{e^{z_i / T}}{\sum e^{z_j / T}} \]
+</p>
+
+<ul class="org-ul">
+<li><b><b>Low \(T\) (e.g., \(0.1\)):</b></b> Makes the distribution &ldquo;sharper.&rdquo; The model becomes very confident and picks only the top choice.</li>
+<li><b><b>High \(T\) (e.g., \(1.5\)):</b></b> Makes the distribution &ldquo;flatter.&rdquo; The model becomes more creative and likely to pick less probable tokens.</li>
+</ul>
+
+<blockquote>
+<p>
+<b><b>Summary:</b></b> Softmax is the filter that tells the model exactly how much &ldquo;weight&rdquo; to give to each piece of information when calculating the final representation of a token.
+</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="outline-container-org72a3840" class="outline-2">
+<h2 id="org72a3840">Next Token Prediction: The Generative Loop</h2>
+<div class="outline-text-2" id="text-org72a3840">
+<p>
+Large Language Models (LLMs) are essentially sophisticated &ldquo;next-word predictors.&rdquo; They generate text one token at a time, using the previous tokens as the context for the next calculation.
+</p>
+
+<p>
+&mdash;
+</p>
+</div>
+<div id="outline-container-org5c0e423" class="outline-3">
+<h3 id="org5c0e423">The Prediction Pipeline</h3>
+<div class="outline-text-3" id="text-org5c0e423">
+<p>
+After the <b><b>Attention</b></b> layers and <b><b>Softmax</b></b> have processed the input, the final hidden state for the last token is passed through a &ldquo;Linear Header.&rdquo; This maps the high-dimensional vector back into the size of the original vocabulary.
+</p>
+
+<ol class="org-ol">
+<li><b><b>Logits Generation:</b></b> The model produces a vector \(Z\) the size of the entire vocabulary (e.g., 50,257 for GPT-2). Each number represents the &ldquo;likelihood&rdquo; of that specific token being next.</li>
+<li><b><b>Probability Mapping:</b></b> Softmax is applied to \(Z\) to create a probability distribution \(P\):
+\[P(t_{n+1} | t_1, \dots, t_n) = \text{softmax}(Z)\]</li>
+<li><b><b>Sampling:</b></b> The model chooses the next token \(t_{n+1}\) based on these probabilities.</li>
+</ol>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-orgaf542ca" class="outline-3">
+<h3 id="orgaf542ca">Strategy: How to &ldquo;Pick&rdquo; the Next Token</h3>
+<div class="outline-text-3" id="text-orgaf542ca">
+<p>
+The way a model chooses from the probability distribution is called a <b><b>Decoding Strategy</b></b>:
+</p>
+
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Strategy</td>
+<td class="org-left">Logic</td>
+<td class="org-left">Result</td>
+</tr>
+
+<tr>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Greedy Search</b></b></td>
+<td class="org-left">Always pick the token with the highest probability.</td>
+<td class="org-left">Predictable, but can be repetitive.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Top-K Sampling</b></b></td>
+<td class="org-left">Only consider the top \(K\) most likely tokens.</td>
+<td class="org-left">Balances logic and variety.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Top-P (Nucleus)</b></b></td>
+<td class="org-left">Pick from the smallest set of tokens whose cumulative probability exceeds \(P\).</td>
+<td class="org-left">Dynamic and very human-like.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-orgc025086" class="outline-3">
+<h3 id="orgc025086">The Autoregressive Loop</h3>
+<div class="outline-text-3" id="text-orgc025086">
+<p>
+The &ldquo;magic&rdquo; of AI happens because this process is recursive. Once a token is predicted, it is appended to the input, and the whole cycle starts again:
+</p>
+
+<p>
+\[ \text{Step 1: } [\text{The}] \rightarrow \text{cat} \]
+\[ \text{Step 2: } [\text{The, cat}] \rightarrow \text{sat} \]
+\[ \text{Step 3: } [\text{The, cat, sat}] \rightarrow \text{on} \]
+</p>
+
+<p>
+This continues until the model predicts a special <b><b>End of Text (EOS)</b></b> token, signaling that the response is complete.
+</p>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-orge63ca02" class="outline-3">
+<h3 id="orge63ca02">Visualizing the Probabilities</h3>
+<div class="outline-text-3" id="text-orge63ca02">
+<p>
+For the phrase &ldquo;The weather is today&hellip;&rdquo;, the model might see:
+</p>
+
+<ul class="org-ul">
+<li><b><b>&ldquo;sunny&rdquo;</b></b>: \(0.45\)</li>
+<li><b><b>&ldquo;cloudy&rdquo;</b></b>: \(0.25\)</li>
+<li><b><b>&ldquo;beautiful&rdquo;</b></b>: \(0.15\)</li>
+<li><b><b>&ldquo;purple&rdquo;</b></b>: \(0.0001\)</li>
+</ul>
+
+<p>
+The model then &ldquo;rolls the dice&rdquo; (influenced by your <b><b>Temperature</b></b> setting) to select which one to print to your screen.
+</p>
+
+<blockquote>
+<p>
+<b><b>Summary:</b></b> Generative AI is a continuous loop of calculating probabilities and selecting symbols. It doesn&rsquo;t &ldquo;know&rdquo; the whole sentence in advance; it discovers it one token at a time.
+</p>
+</blockquote>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>
