@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-02-24 Tue 23:50 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-org7925b9e" class="outline-2">
+<h2 id="org7925b9e">An Introduction to Computability Theory</h2>
+<div class="outline-text-2" id="text-org7925b9e">
+<p>
+Computability theory, at its core, asks a deceptively simple question
+from the standpoint of foundational mathematics: <i>What can be
+mathematically calculated?</i> Before physical computers existed,
+mathematicians needed a rigorous, axiomatic way to define an
+&ldquo;effective procedure&rdquo; or &ldquo;algorithm.&rdquo;
+</p>
+</div>
+<div id="outline-container-orgee35afe" class="outline-3">
+<h3 id="orgee35afe">The Intuitive Idea vs. Formal Rigor</h3>
+<div class="outline-text-3" id="text-orgee35afe">
+<p>
+Intuitively, a function \(f:\mathbb{N}\to\mathbb{N}\) is computable if there exists a step-by-step, mechanical set of instructions that, given an input \(n\), will eventually halt and yield the correct output \(f(n)\).
+</p>
+
+<p>
+However, to prove that certain mathematical problems are definitively <i>unsolvable</i> (such as Hilbert&rsquo;s famous <i>Entscheidungsproblem</i>), mathematicians in the 1930s like Alan Turing, Alonzo Church, Stephen Kleene, and Rózsa Péter needed to formalize exactly what a &ldquo;mechanical procedure&rdquo; meant.
+</p>
+</div>
+</div>
+<div id="outline-container-org2dc1f56" class="outline-3">
+<h3 id="org2dc1f56">The Foundational Models of Computability</h3>
+<div class="outline-text-3" id="text-org2dc1f56">
+</div>
+<div id="outline-container-org0ce0959" class="outline-4">
+<h4 id="org0ce0959">1. Alan Turing: The Turing Machine (1936)</h4>
+<div class="outline-text-4" id="text-org0ce0959">
+<p>
+Turing conceptualized a theoretical machine with an infinite tape divided into discrete squares, a read/write head, and a finite set of states governed by a transition function. 
+</p>
+
+
+
+<p>
+Despite its primitive nature, a Turing Machine can simulate the logic of any modern algorithm. If a Turing Machine can calculate a function, that function is considered &ldquo;Turing-computable.&rdquo;
+</p>
+</div>
+</div>
+<div id="outline-container-org7f6f53b" class="outline-4">
+<h4 id="org7f6f53b">2. Alonzo Church: The \(\lambda\) Calculus (1936)</h4>
+<div class="outline-text-4" id="text-org7f6f53b">
+<p>
+Church approached the problem purely algebraically, stripping computation down to function abstraction and application. Instead of a physical state machine, computation is the formal mathematical process of variable substitution and reduction.
+</p>
+
+<p>
+Here is a conceptual example of a $&lambda;$-function translated into Haskell, where we define an anonymous function that binds a variable and applies logic:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">The lambda expression \x -&gt; x + 1
+</span><span style="color: #61afef;">addOne</span> <span style="color: #61afef;">::</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span>
+<span style="color: #61afef;">addOne</span> <span style="color: #61afef;">=</span> <span style="color: #61afef;">\</span>x <span style="color: #61afef;">-&gt;</span> x <span style="color: #61afef;">+</span> 1
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9beed48" class="outline-4">
+<h4 id="org9beed48">3. Rózsa Péter and Stephen Kleene: Recursive Functions (1930s)</h4>
+<div class="outline-text-4" id="text-org9beed48">
+<p>
+Péter and Kleene focused on building complex computable functions from simple foundational axioms, relying heavily on induction. They defined <i>General Recursive Functions</i> using three primitive, undeniably computable operations:
+</p>
+<ol class="org-ol">
+<li>The Zero function: \(Z(x)=0\)</li>
+<li>The Successor function: \(S(x)=x+1\)</li>
+<li>Projection functions (selecting an argument from a tuple).</li>
+</ol>
+
+<p>
+From these axioms, they used operations like composition, primitive recursion, and the \(\mu\)-operator (unbounded minimization, which mathematically acts like a <code>while</code> loop searching for a root) to construct all computable functions.
+</p>
+
+<p>
+Here is how we might represent primitive recursion for addition in Scheme, building the concept of addition strictly from a successor function axiom:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Successor function
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">S</span> x<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">(</span>+ x 1<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Addition defined strictly via primitive recursion
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Base case: x + 0 = x
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Recursive case: x + S(y) = S(x + y)
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">add</span> x y<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">if</span> <span style="color: #b0b1a3;">(</span>= y 0<span style="color: #b0b1a3;">)</span>
+      x
+      <span style="color: #b0b1a3;">(</span>S <span style="color: #97b098;">(</span>add x <span style="color: #aebed8;">(</span>- y 1<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgde0f8b8" class="outline-3">
+<h3 id="orgde0f8b8">The Church-Turing Thesis</h3>
+<div class="outline-text-3" id="text-orgde0f8b8">
+<p>
+The miraculous discovery of foundational mathematics in the 20th century was that all these entirely distinct formalisms are perfectly equivalent in theoretical power.
+</p>
+
+<p>
+A function is computable by a Turing Machine \(\iff\) it is expressible in \(\lambda\)-calculus \(\iff\) it is a general recursive function.
+</p>
+
+<p>
+This proven mathematical equivalence led to the <i>Church-Turing Thesis</i>: the widely accepted philosophical assertion that our intuitive concept of &ldquo;computability&rdquo; is perfectly, wholly captured by these formal models.
+</p>
+</div>
+</div>
+<div id="outline-container-org7161a33" class="outline-3">
+<h3 id="org7161a33">The Limits of Math: The Halting Problem</h3>
+<div class="outline-text-3" id="text-org7161a33">
+<p>
+Why formalize all of this? So we can discover the absolute limits of mathematical logic.
+</p>
+
+<p>
+The Halting Problem asks: Does there exist a universal program \(H\) that takes the source code of any program \(P\) and its input \(I\), and successfully computes whether \(P\) will eventually halt on \(I\), or loop forever?
+</p>
+
+<p>
+Turing proved that \(H\) cannot exist. If it did, you could construct a paradoxical program:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">A hypothetical paradox if 'halts' were a computable function
+</span><span style="color: #61afef;">paradox</span> <span style="color: #61afef;">::</span> <span style="color: #61afef;">Program</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">IO</span> <span style="color: #8c8c8c;">()</span>
+<span style="color: #61afef;">paradox</span> p <span style="color: #61afef;">=</span> <span style="color: #c678dd; font-weight: bold;">do</span>
+    <span style="color: #c678dd; font-weight: bold;">if</span> halts p p
+        <span style="color: #c678dd; font-weight: bold;">then</span> loopForever
+        <span style="color: #c678dd; font-weight: bold;">else</span> return <span style="color: #8c8c8c;">()</span>
+</code></pre>
+</div>
+
+<p>
+If <code>paradox</code> halts, it loops forever. If it loops forever, it halts. Thus, the general function <code>halts</code> cannot be computable. Because of this, we know there are well-defined mathematical truths that are permanently beyond the reach of algorithm and computation!
+</p>
+</div>
+</div>
+<div id="outline-container-org194cf40" class="outline-3">
+<h3 id="org194cf40">Connecting Computability to Foundational Axioms</h3>
+<div class="outline-text-3" id="text-org194cf40">
+<p>
+To understand how computability theory grounds itself in higher mathematics, we have to look at how Rózsa Péter and Stephen Kleene built the theory of <b>Recursive Functions</b>. Instead of relying on a mechanical metaphor like the Turing Machine, they asked: <i>How can we mathematically define computable functions using only the most basic, undeniable axioms of arithmetic?</i>
+</p>
+</div>
+<div id="outline-container-org0043671" class="outline-4">
+<h4 id="org0043671">The Bedrock: Peano Axioms</h4>
+<div class="outline-text-4" id="text-org0043671">
+<p>
+The foundation of recursive function theory is the standard axiomatization of the natural numbers \(\mathbb{N}\), specifically the Peano Axioms. In Peano arithmetic, everything is constructed from two fundamental concepts:
+</p>
+<ol class="org-ol">
+<li>The existence of a base element: \(0\).</li>
+<li>The existence of a successor function: \(S(n)\), which gives the &ldquo;next&rdquo; natural number.</li>
+</ol>
+
+<p>
+Kleene and Péter took these foundational objects and elevated them to the axioms of computation. 
+</p>
+</div>
+</div>
+<div id="outline-container-org1520f12" class="outline-4">
+<h4 id="org1520f12">Primitive Recursion: Building from the Ground Up</h4>
+<div class="outline-text-4" id="text-org1520f12">
+<p>
+A <b>Primitive Recursive Function</b> is built strictly from three initial axiomatic functions, mirroring the foundations of set theory and Peano arithmetic:
+</p>
+
+<ol class="org-ol">
+<li><b>The Zero Function:</b> \(Z(x)=0\)</li>
+<li><b>The Successor Function:</b> \(S(x)=x+1\)</li>
+<li><b>Projection Functions:</b> \(P_{i}^{n}(x_1,\dots,x_n)=x_i\) (which fundamentally allow us to ignore variables or permute them).</li>
+</ol>
+
+<p>
+From these three axioms, you can generate more complex functions using only two operations: <b>Composition</b> (chaining functions together) and <b>Primitive Recursion</b> (defining a function&rsquo;s value at \(S(y)\) based on its value at \(y\)).
+</p>
+
+<p>
+Because primitive recursion essentially acts as a bounded, strictly finite <code>for</code> loop, any function built this way is guaranteed to halt. Here is how we build addition and then multiplication using only these axioms in Scheme:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">The Axiomatic Initial Functions
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">Z</span> x<span style="color: #93a8c6;">)</span> 0<span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">S</span> x<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">(</span>+ x 1<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">P1-2</span> x y<span style="color: #93a8c6;">)</span> x<span style="color: #8c8c8c;">)</span> <span style="color: #687080; font-style: italic;">; </span><span style="color: #687080; font-style: italic;">Projection P^2_1
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">P2-2</span> x y<span style="color: #93a8c6;">)</span> y<span style="color: #8c8c8c;">)</span> <span style="color: #687080; font-style: italic;">; </span><span style="color: #687080; font-style: italic;">Projection P^2_2
+</span>
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Addition: 
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">add(x, 0) = P^1_1(x) = x
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">add(x, S(y)) = S(add(x, y))
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">add</span> x y<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">if</span> <span style="color: #b0b1a3;">(</span>= y 0<span style="color: #b0b1a3;">)</span>
+      x
+      <span style="color: #b0b1a3;">(</span>S <span style="color: #97b098;">(</span>add x <span style="color: #aebed8;">(</span>- y 1<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Multiplication:
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">mult(x, 0) = Z(x) = 0
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">mult(x, S(y)) = add(x, mult(x, y))
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">mult</span> x y<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">if</span> <span style="color: #b0b1a3;">(</span>= y 0<span style="color: #b0b1a3;">)</span>
+      <span style="color: #b0b1a3;">(</span>Z x<span style="color: #b0b1a3;">)</span>
+      <span style="color: #b0b1a3;">(</span>add x <span style="color: #97b098;">(</span>mult x <span style="color: #aebed8;">(</span>- y 1<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+
+<p>
+and in Haskell
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">HASKELL IMPLEMENTATION
+</span>
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">The Axiomatic Initial Functions
+</span><span style="color: #61afef;">z</span> <span style="color: #61afef;">::</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span>
+<span style="color: #61afef;">z</span> <span style="color: #c678dd; font-weight: bold;">_</span> <span style="color: #61afef;">=</span> 0
+
+<span style="color: #61afef;">s</span> <span style="color: #61afef;">::</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span>
+<span style="color: #61afef;">s</span> x <span style="color: #61afef;">=</span> x <span style="color: #61afef;">+</span> 1
+
+<span style="color: #61afef;">p1_2</span> <span style="color: #61afef;">::</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span>
+<span style="color: #61afef;">p1_2</span> x <span style="color: #c678dd; font-weight: bold;">_</span> <span style="color: #61afef;">=</span> x
+
+<span style="color: #61afef;">p2_2</span> <span style="color: #61afef;">::</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span>
+<span style="color: #61afef;">p2_2</span> <span style="color: #c678dd; font-weight: bold;">_</span> y <span style="color: #61afef;">=</span> y
+
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">Addition:
+</span><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">add(x, 0) = P^1_1(x) = x
+</span><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">add(x, S(y)) = S(add(x, y))
+</span><span style="color: #61afef;">add</span> <span style="color: #61afef;">::</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span>
+<span style="color: #61afef;">add</span> x 0 <span style="color: #61afef;">=</span> x
+<span style="color: #61afef;">add</span> x y <span style="color: #61afef;">=</span> s <span style="color: #8c8c8c;">(</span>add x <span style="color: #93a8c6;">(</span>y <span style="color: #61afef;">-</span> 1<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">Multiplication:
+</span><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">mult(x, 0) = Z(x) = 0
+</span><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">mult(x, S(y)) = add(x, mult(x, y))
+</span><span style="color: #61afef;">mult</span> <span style="color: #61afef;">::</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span>
+<span style="color: #61afef;">mult</span> x 0 <span style="color: #61afef;">=</span> z x
+<span style="color: #61afef;">mult</span> x y <span style="color: #61afef;">=</span> add x <span style="color: #8c8c8c;">(</span>mult x <span style="color: #93a8c6;">(</span>y <span style="color: #61afef;">-</span> 1<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org79c4fb7" class="outline-4">
+<h4 id="org79c4fb7">Breaking the Bounds: The \(\mu\)-Operator</h4>
+<div class="outline-text-4" id="text-org79c4fb7">
+<p>
+For a time, mathematicians wondered if <b>all</b> computable functions were primitive recursive. However, functions like the Ackermann function grow faster than any primitive recursive function can capture. More importantly, primitive recursion cannot express a procedure that searches indefinitely without a predetermined bound.
+</p>
+
+<p>
+To capture the entirety of what is mathematically computable, Kleene introduced unbounded minimization: the <b>\(\mu\)-operator</b>.
+</p>
+
+<p>
+Given a function \(f(x, y)\), the \(\mu\)-operator searches for the
+smallest \(y\) such that \(f(x, y)=0\). We write this formally as: \[\mu y
+[f(x, y) = 0]\]
+</p>
+
+<p>
+[Image illustrating unbounded minimization search mapping inputs to the lowest root in a mathematical function]
+</p>
+
+<p>
+This is the mathematical equivalent of a <code>while</code> loop. It evaluates \(f(x, 0)\), then \(f(x, 1)\), then \(f(x, 2)\), and so on, until it hits \(0\). 
+</p>
+
+<p>
+<b>Here is the profound catch that links to the limits of mathematics:</b> If no such \(y\) exists, the \(\mu\)-operator searches forever. The introduction of the \(\mu\)-operator elevates primitive recursive functions to <b>General Recursive Functions</b> (also known as \(\mu\)-recursive functions), but it destroys the guarantee of termination. It introduces <b>partial functions</b> into our foundational logic—functions that are well-defined in their construction but undefined for certain inputs because they loop infinitely. This is the exact algebraic origin of the Halting Problem!
+</p>
+
+<p>
+Here is the \(\mu\)-operator modeled in Haskell. Notice how it inherently risks an infinite loop if a root does not exist:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">The mu-operator takes a function f(x, y) and an input x.
+</span><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">It searches for the smallest y starting from 0.
+</span><span style="color: #61afef;">mu</span> <span style="color: #61afef;">::</span> <span style="color: #8c8c8c;">(</span><span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span><span style="color: #8c8c8c;">)</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span>
+<span style="color: #61afef;">mu</span> f x <span style="color: #61afef;">=</span> search 0
+  <span style="color: #c678dd; font-weight: bold;">where</span>
+    search y
+      <span style="color: #61afef;">|</span> f x y <span style="color: #61afef;">==</span> 0 <span style="color: #61afef;">=</span> y
+      <span style="color: #61afef;">|</span> otherwise  <span style="color: #61afef;">=</span> search <span style="color: #8c8c8c;">(</span>y <span style="color: #61afef;">+</span> 1<span style="color: #8c8c8c;">)</span>
+
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">Example: Finding integer division (x / 2) by searching for y where 2*y - x = 0
+</span><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">(Assumes x is even for this simple partial function)
+</span><span style="color: #61afef;">f_div2</span> <span style="color: #61afef;">::</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Integer</span>
+<span style="color: #61afef;">f_div2</span> x y <span style="color: #61afef;">=</span> abs <span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">(</span>2 <span style="color: #61afef;">*</span> y<span style="color: #93a8c6;">)</span> <span style="color: #61afef;">-</span> x<span style="color: #8c8c8c;">)</span> 
+
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">mu f_div2 10  =&gt; returns 5
+</span><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">mu f_div2 11  =&gt; LOOPS FOREVER (partial function)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf718da5" class="outline-4">
+<h4 id="orgf718da5">The \(\lambda\)-Calculus Equivalent: Church Numerals</h4>
+<div class="outline-text-4" id="text-orgf718da5">
+<p>
+Alonzo Church bypassed the Peano axioms entirely by encoding the axioms of arithmetic directly into function abstractions. In the $&lambda;$-calculus, numbers do not exist as primitive objects. Instead, a number \(n\) is defined by <i>how many times</i> a function is applied to an argument. These are called <b>Church Numerals</b>:
+</p>
+
+<ul class="org-ul">
+<li>\(0 \equiv \lambda f. \lambda x. x\) (Apply the function \(f\) zero times to \(x\))</li>
+<li>\(1 \equiv \lambda f. \lambda x. f x\) (Apply \(f\) one time to \(x\))</li>
+<li>\(2 \equiv \lambda f. \lambda x. f (f x)\)</li>
+</ul>
+
+<p>
+To get general recursion (the equivalent of the $&mu;$-operator) in
+\(\lambda\)-calculus, Church utilized <b>Fixed-Point Combinators</b> (like
+the Y-combinator), which allow a function to self-replicate and pass
+itself as an argument, enabling infinite loops without naming the
+function.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0b22235" class="outline-3">
+<h3 id="org0b22235">Combinators, the Y-Combinator, and Theorem Provers</h3>
+<div class="outline-text-3" id="text-org0b22235">
+<p>
+To move from the mechanical intuition of Turing to the pure, algebraic abstraction of Church, we must look at how computation can exist purely as the substitution of symbols. This brings us to combinatory logic, the Y-Combinator, and how modern type theory deals with the inherent danger of infinite recursion.
+</p>
+</div>
+<div id="outline-container-org8a1512e" class="outline-4">
+<h4 id="org8a1512e">Introduction to Combinators</h4>
+<div class="outline-text-4" id="text-org8a1512e">
+<p>
+In the \(\lambda\)-calculus, a <b>combinator</b> is strictly defined as a lambda expression with absolutely <b>no free variables</b>. Every variable used in the body of the function must be bound by a \(\lambda\) in the function&rsquo;s parameter list. 
+</p>
+
+<p>
+Combinators act as pure, self-contained mathematical building blocks. They depend on zero outside context or global state. 
+</p>
+
+<p>
+Historically, Moses Schönfinkel and Haskell Curry developed <b>Combinatory Logic</b> independently of Church, proving that you do not even need variables to perform universal computation—you only need a few primitive combinators. The most famous set is the SKI combinator calculus, built from three fundamental functions:
+</p>
+
+<ol class="org-ol">
+<li><b>The Identity Combinator (I):</b> Returns its argument.
+\(I = \lambda x. x\)</li>
+<li><b>The Constant Combinator (K):</b> Takes two arguments, returns the first, and discards the second.
+\(K = \lambda x. \lambda y. x\)</li>
+<li><b>The Substitution Combinator (S):</b> Applies one function to another, passing a shared argument to both.
+\(S = \lambda x. \lambda y. \lambda z. x z (y z)\)</li>
+</ol>
+
+<p>
+Remarkably, any computable function can be expressed purely as a tree of S and K combinators!
+</p>
+
+
+
+<p>
+Here are the SKI combinators expressed in Haskell:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">The SKI Combinators in Haskell
+</span>
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">I: Identity
+</span><span style="color: #61afef;">i</span> <span style="color: #61afef;">::</span> a <span style="color: #61afef;">-&gt;</span> a
+<span style="color: #61afef;">i</span> x <span style="color: #61afef;">=</span> x
+
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">K: Constant (similar to Haskell's built-in 'const')
+</span><span style="color: #61afef;">k</span> <span style="color: #61afef;">::</span> a <span style="color: #61afef;">-&gt;</span> b <span style="color: #61afef;">-&gt;</span> a
+<span style="color: #61afef;">k</span> x y <span style="color: #61afef;">=</span> x
+
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">S: Substitution
+</span><span style="color: #61afef;">s</span> <span style="color: #61afef;">::</span> <span style="color: #8c8c8c;">(</span>a <span style="color: #61afef;">-&gt;</span> b <span style="color: #61afef;">-&gt;</span> c<span style="color: #8c8c8c;">)</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #8c8c8c;">(</span>a <span style="color: #61afef;">-&gt;</span> b<span style="color: #8c8c8c;">)</span> <span style="color: #61afef;">-&gt;</span> a <span style="color: #61afef;">-&gt;</span> c
+<span style="color: #61afef;">s</span> x y z <span style="color: #61afef;">=</span> <span style="color: #8c8c8c;">(</span>x z<span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">(</span>y z<span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org72a3840" class="outline-4">
+<h4 id="org72a3840">The Y-Combinator: Achieving General Recursion</h4>
+<div class="outline-text-4" id="text-org72a3840">
+<p>
+In our previous discussion, we saw that primitive recursion halts, while the \(\mu\)-operator introduces the potential for infinite loops (general recursion). In the pure \(\lambda\)-calculus, anonymous functions have no names, so they cannot call themselves. How, then, do we achieve general recursion?
+</p>
+
+<p>
+We use a <b>Fixed-Point Combinator</b>. In mathematics, a fixed point of a function \(f\) is a value \(x\) such that \(f(x) = x\). A fixed-point combinator is a higher-order function \(Y\) that finds the fixed point of <b>any</b> function passed to it.
+</p>
+
+<p>
+Mathematically:
+\(Y f = f (Y f)\)
+</p>
+
+<p>
+By repeatedly expanding \(Y f\) into \(f (f (Y f))\), we achieve unbounded recursion without ever explicitly naming the function! 
+</p>
+
+<p>
+The most famous of these is the <b>Y-Combinator</b>, discovered by Haskell Curry:
+\[Y = \lambda f. (\lambda x. f (x x)) (\lambda x. f (x x))\]
+</p>
+
+
+
+<p>
+If we want to write a recursive function like factorial in Scheme without using <code>define</code> to give it a name, we use the Y-Combinator to pass the function into itself. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">The strict-evaluation Y-Combinator (often called the Z-Combinator in Scheme 
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">to prevent infinite expansion before application due to applicative order)
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">Y</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">lambda</span> <span style="color: #b0b1a3;">(</span>f<span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span><span style="color: #c678dd; font-weight: bold;">lambda</span> <span style="color: #aebed8;">(</span>x<span style="color: #aebed8;">)</span> <span style="color: #aebed8;">(</span>x x<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+     <span style="color: #97b098;">(</span><span style="color: #c678dd; font-weight: bold;">lambda</span> <span style="color: #aebed8;">(</span>x<span style="color: #aebed8;">)</span>
+       <span style="color: #aebed8;">(</span>f <span style="color: #b0b0b3;">(</span><span style="color: #c678dd; font-weight: bold;">lambda</span> <span style="color: #90a890;">(</span>v<span style="color: #90a890;">)</span> <span style="color: #90a890;">(</span><span style="color: #a2b6da;">(</span>x x<span style="color: #a2b6da;">)</span> v<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">A "pseudo-recursive" factorial function that does not call itself by name.
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Instead, it expects a function 'recur' to be passed to it.
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">proto-factorial</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">lambda</span> <span style="color: #b0b1a3;">(</span>recur<span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #c678dd; font-weight: bold;">lambda</span> <span style="color: #97b098;">(</span>n<span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #c678dd; font-weight: bold;">if</span> <span style="color: #aebed8;">(</span>= n 0<span style="color: #aebed8;">)</span>
+          1
+          <span style="color: #aebed8;">(</span>* n <span style="color: #b0b0b3;">(</span>recur <span style="color: #90a890;">(</span>- n 1<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">We achieve actual recursion by applying the Y-combinator!
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">factorial</span> <span style="color: #93a8c6;">(</span>Y proto-factorial<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">(factorial 5) =&gt; 120</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5c0e423" class="outline-4">
+<h4 id="org5c0e423">Theorem Provers and the Halting Guarantee</h4>
+<div class="outline-text-4" id="text-org5c0e423">
+<p>
+This brings us to a beautiful intersection of computability theory and modern foundational mathematics: formal theorem proving. 
+</p>
+
+<p>
+In the Curry-Howard correspondence, mathematical proofs are equivalent to computer programs, and mathematical propositions (theorems) are equivalent to types. If you can write a program that evaluates to a specific type, you have proven the corresponding theorem.
+</p>
+
+<p>
+However, the Y-combinator and the \(\mu\)-operator introduce a catastrophic problem for logic: <b>infinite loops</b>. 
+</p>
+
+<p>
+If a system allows unbounded, non-terminating recursion, you can write a function that loops forever and assign it the type <code>False</code> (a mathematical contradiction). This means an infinitely looping program effectively acts as a &ldquo;proof&rdquo; of anything, destroying the consistency of the entire logical system! 
+</p>
+
+<p>
+Because of this, modern proof assistants and theorem provers like Coq, Lean 4, Agda, and Isabelle strictly forbid general recursion by default. 
+</p>
+
+<p>
+To maintain logical soundness, these systems require all functions to be *total*—meaning they are mathematically guaranteed to halt on all valid inputs. They achieve this by enforcing rules very similar to the Peano/Primitive Recursion axioms we explored earlier:
+</p>
+
+<ol class="org-ol">
+<li><b>Structural Recursion:</b> A recursive call is only valid if it operates on a strictly smaller, structurally &ldquo;sub-component&rdquo; of the original input. For example, stripping one layer of \(S(x)\) off a Peano number.</li>
+<li><b>Well-Founded Relations:</b> If a function is not trivially structurally recursive, the mathematician must supply a mathematically rigorous proof that the inputs decrease according to some well-founded relation (a sequence that cannot decrease infinitely).</li>
+</ol>
+
+<p>
+By essentially banning the \(\mu\)-operator and the unbounded Y-Combinator, theorem provers sacrifice Turing-completeness at the programmatic level to gain absolute, bulletproof certainty at the logical level.
+</p>
+</div>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

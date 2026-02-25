@@ -1,0 +1,3559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-02-22 Sun 11:37 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-orgee35afe" class="outline-2">
+<h2 id="orgee35afe">Generating a concrete axiom from a schema</h2>
+<div class="outline-text-2" id="text-orgee35afe">
+</div>
+<div id="outline-container-org0ce0959" class="outline-3">
+<h3 id="org0ce0959">Generating a Concrete Axiom from a Schema</h3>
+<div class="outline-text-3" id="text-org0ce0959">
+<p>
+In Zermelo-Fraenkel set theory (ZFC), we cannot just form a set out of <i>any</i> property (as that leads to Russell&rsquo;s Paradox). Instead, we take an existing set \(A\) and &ldquo;separate&rdquo; elements from it using a property \(P(x)\).
+</p>
+
+<p>
+The formal Axiom Schema of Separation looks like this:
+</p>
+
+<p>
+\[\forall A\, \exists S\, \forall x\, (x \in S \iff (x \in A \land P(x)))\]
+</p>
+
+<p>
+Here, \(P(x)\) is our metavariable. It sits completely outside the First-Order language, simply holding space for any valid formula we might want to insert.
+</p>
+</div>
+<div id="outline-container-org9639605" class="outline-4">
+<h4 id="org9639605">Step 1: Defining a Concrete Property</h4>
+<div class="outline-text-4" id="text-org9639605">
+<p>
+Let us replace \(P(x)\) with the mathematical concept: &ldquo;x is an empty set&rdquo; (meaning \(x\) has no elements).
+</p>
+
+<p>
+Because we are working strictly in ZFC, our signature \(\Delta\) only contains \(\{\in\}\). We cannot use an &ldquo;is_empty&rdquo; relation. We must build the concept of &ldquo;x is empty&rdquo; using strictly logical symbols and \(\in\).
+</p>
+
+<p>
+The formal FOL translation of &ldquo;x has no elements&rdquo; is:
+\[P(x) \equiv \forall y\, \lnot(y \in x)\]
+</p>
+</div>
+</div>
+<div id="outline-container-org7f6f53b" class="outline-4">
+<h4 id="org7f6f53b">Step 2: Mechanical Substitution</h4>
+<div class="outline-text-4" id="text-org7f6f53b">
+<p>
+Now, we drop our newly constructed formula directly into the placeholder \(P(x)\) in the original schema.
+</p>
+
+<p>
+\[\forall A\, \exists S\, \forall x\, (x \in S \iff (x \in A \land \forall y\, \lnot(y \in x)))\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgb948b55" class="outline-4">
+<h4 id="orgb948b55">Conclusion</h4>
+<div class="outline-text-4" id="text-orgb948b55">
+<p>
+We have successfully instantiated a single, concrete axiom from the infinite schema! 
+</p>
+
+<p>
+This specific axiom states: &ldquo;For any set \(A\), there exists a set \(S\) that contains exactly the empty sets that are elements of \(A\).&rdquo; 
+</p>
+
+<p>
+Notice the final result: The metavariable \(P(x)\) has vanished. The entire statement is built exclusively from the universal grammatical components of FOL (variables, \(\forall, \exists, \lnot, \land, \iff\)) and our single non-logical signature symbol (\(\in\)).
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-org9beed48" class="outline-2">
+<h2 id="org9beed48">Epistemology versus Metaphysics</h2>
+<div class="outline-text-2" id="text-org9beed48">
+</div>
+<div id="outline-container-org2dc1f56" class="outline-3">
+<h3 id="org2dc1f56">Epistemology vs Metaphysics in Truth</h3>
+<div class="outline-text-3" id="text-org2dc1f56">
+</div>
+<div id="outline-container-orgde0f8b8" class="outline-4">
+<h4 id="orgde0f8b8">Epistemological Categories (How we know)</h4>
+<div class="outline-text-4" id="text-orgde0f8b8">
+<ul class="org-ul">
+<li><b>A Priori</b>: Known independently of sensory experience or empirical evidence.</li>
+<li><b>A Posteriori</b>: Known strictly through empirical observation and sensory experience.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfa898cb" class="outline-4">
+<h4 id="orgfa898cb">Metaphysical Categories (The nature of the fact)</h4>
+<div class="outline-text-4" id="text-orgfa898cb">
+<ul class="org-ul">
+<li><b>Necessary</b>: Must be true in all possible worlds. Cannot logically be false.</li>
+<li><b>Contingent</b>: True in reality, but could logically have been false.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7161a33" class="outline-4">
+<h4 id="org7161a33">Table of Distinctions</h4>
+<div class="outline-text-4" id="text-org7161a33">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Concept</th>
+<th scope="col" class="org-left">Definition</th>
+<th scope="col" class="org-left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>A Priori</b> Truth</td>
+<td class="org-left">Knowable independently of empirical experience or sensory evidence.</td>
+<td class="org-left">&ldquo;All bachelors are unmarried.&rdquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>A Posteriori</b> Truth</td>
+<td class="org-left">Knowable only through empirical observation and sensory experience.</td>
+<td class="org-left">&ldquo;Mercury is not Mars.&rdquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Necessary</b> Truth</td>
+<td class="org-left">A proposition that must be true in all possible worlds; it cannot be false.</td>
+<td class="org-left">\(5 + 7 = 12\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Contingent</b> Truth</td>
+<td class="org-left">A proposition that is true, but could logically have been false.</td>
+<td class="org-left">&ldquo;The author wrote a book.&rdquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Logical</b> Truth</td>
+<td class="org-left">True purely by virtue of its logical structure and logical constants.</td>
+<td class="org-left">\(P \lor \neg P\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org194cf40" class="outline-4">
+<h4 id="org194cf40">The Kripkean Insight</h4>
+<div class="outline-text-4" id="text-org194cf40">
+<p>
+Identities between rigid designators are necessary. \(Hesperus = Phosphorus\) is necessarily true because an object is always identical to itself. However, discovering this identity requires empirical science, making it a necessary <i>a posteriori</i> truth. Mathematical truths are necessary, but require axioms beyond pure formal logic, separating them from strict <i>logical</i> truths.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-org0043671" class="outline-2">
+<h2 id="org0043671">Sets, Comprehensions, Haskell</h2>
+<div class="outline-text-2" id="text-org0043671">
+</div>
+<div id="outline-container-org0c8fbd7" class="outline-3">
+<h3 id="org0c8fbd7">Unrestricted to Specification</h3>
+<div class="outline-text-3" id="text-org0c8fbd7">
+<p>
+In functional programming, the shift from Unrestricted Comprehension to the Axiom of Specification maps directly to the distinction between defining sets as characteristic functions versus constructing them via list (or collection) operations. 
+</p>
+</div>
+<div id="outline-container-orgff52af2" class="outline-4">
+<h4 id="orgff52af2">Unrestricted Comprehension: Sets as Characteristic Functions</h4>
+<div class="outline-text-4" id="text-orgff52af2">
+<p>
+Naive set theory defines a set purely by a predicate \(\varphi(x)\). In Haskell, the most direct translation of this is representing a set as a characteristic function—a function that takes an element and returns <code>True</code> if it is in the set, and <code>False</code> otherwise.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #c678dd; font-weight: bold;">type</span> <span style="color: #61afef;">Set</span> a <span style="color: #61afef;">=</span> a <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Bool</span>
+
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">The set of all even numbers, defined purely by the property
+</span><span style="color: #61afef;">evens</span> <span style="color: #61afef;">::</span> <span style="color: #61afef;">Set</span> <span style="color: #61afef;">Integer</span>
+<span style="color: #61afef;">evens</span> x <span style="color: #61afef;">=</span> x <span style="color: #61afef;">`mod`</span> 2 <span style="color: #61afef;">==</span> 0
+</code></pre>
+</div>
+
+<p>
+Under this model, you do not need a pre-existing collection. You simply state the predicate. However, just as Unrestricted Comprehension leads to Russell&rsquo;s Paradox, allowing unrestricted recursive definitions in a Turing-complete language like Haskell leads to non-termination, or \(\bot\) (bottom). 
+</p>
+
+<p>
+If we try to construct a set that contains itself if and only if it doesn&rsquo;t contain itself, we get a computation that never resolves:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">The computational equivalent of a logical paradox
+</span><span style="color: #61afef;">russell</span> <span style="color: #61afef;">::</span> <span style="color: #61afef;">Bool</span>
+<span style="color: #61afef;">russell</span> <span style="color: #61afef;">=</span> not russell
+</code></pre>
+</div>
+
+<p>
+Through the Curry-Howard correspondence (propositions as types), general recursion represents an inconsistency in the logical system. You can prove any type is inhabited by throwing an infinite loop at it.
+</p>
+</div>
+</div>
+<div id="outline-container-org0b22235" class="outline-4">
+<h4 id="org0b22235">The Axiom of Specification: The <code>filter</code> Function</h4>
+<div class="outline-text-4" id="text-org0b22235">
+<p>
+Zermelo&rsquo;s Axiom Schema of Specification fixes the paradox by demanding a bounding set \(A\): 
+\(\forall A \exists y \forall x (x \in y \leftrightarrow (x \in A \land \varphi(x)))\)
+</p>
+
+<p>
+The exact operational equivalent of this in Haskell is the standard <code>filter</code> function.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #61afef;">filter</span> <span style="color: #61afef;">::</span> <span style="color: #8c8c8c;">(</span>a <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Bool</span><span style="color: #8c8c8c;">)</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #8c8c8c;">[</span>a<span style="color: #8c8c8c;">]</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #8c8c8c;">[</span>a<span style="color: #8c8c8c;">]</span>
+</code></pre>
+</div>
+
+<p>
+Look at how perfectly the type signature aligns with the axiom:
+</p>
+<ol class="org-ol">
+<li><code>[a]</code> (the second argument) is your pre-existing bounding set \(A\).</li>
+<li><code>(a -&gt; Bool)</code> is your property or predicate \(\varphi(x)\).</li>
+<li>The return value <code>[a]</code> is your newly specified subset \(y\).</li>
+</ol>
+
+<p>
+You cannot apply <code>filter</code> to the abstract &ldquo;universe&rdquo; of all possible values; you are forced by the type system and the function definition to provide a concrete, existing collection to carve your subset out of.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">A bounding set (A)
+</span><span style="color: #61afef;">universeOfDiscourse</span> <span style="color: #61afef;">::</span> <span style="color: #8c8c8c;">[</span><span style="color: #61afef;">Integer</span><span style="color: #8c8c8c;">]</span>
+<span style="color: #61afef;">universeOfDiscourse</span> <span style="color: #61afef;">=</span> <span style="color: #8c8c8c;">[</span>1<span style="color: #61afef;">..</span>10<span style="color: #8c8c8c;">]</span>
+
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">Specification: carving 'y' out of 'A' using the predicate
+</span><span style="color: #61afef;">specifiedSet</span> <span style="color: #61afef;">::</span> <span style="color: #8c8c8c;">[</span><span style="color: #61afef;">Integer</span><span style="color: #8c8c8c;">]</span>
+<span style="color: #61afef;">specifiedSet</span> <span style="color: #61afef;">=</span> filter <span style="color: #8c8c8c;">(</span><span style="color: #61afef;">\</span>x <span style="color: #61afef;">-&gt;</span> x <span style="color: #61afef;">`mod`</span> 2 <span style="color: #61afef;">==</span> 0<span style="color: #8c8c8c;">)</span> universeOfDiscourse
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0c2fec5" class="outline-4">
+<h4 id="org0c2fec5">Bounding by Types</h4>
+<div class="outline-text-4" id="text-org0c2fec5">
+<p>
+In modern theorem provers and in strongly typed functional programming, the concept of the &ldquo;bounding set&rdquo; is often handled by the type system itself. You don&rsquo;t ask &ldquo;is \(x\) in the universal set?&rdquo;, you ask &ldquo;is \(x\) of type \(T\)?&rdquo;. 
+</p>
+
+<p>
+To express the Axiom of Specification precisely at the type level, you have to use Dependent Types or Refinement Types, which allow you to attach a logical predicate directly to a type, effectively formalizing \(\{ x : A \mid \varphi(x) \}\).
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-org8a1512e" class="outline-2">
+<h2 id="org8a1512e">More predicate calculus</h2>
+<div class="outline-text-2" id="text-org8a1512e">
+</div>
+<div id="outline-container-orgf42ba8d" class="outline-3">
+<h3 id="orgf42ba8d">Prolog Syntax Fundamentals</h3>
+<div class="outline-text-3" id="text-orgf42ba8d">
+</div>
+<div id="outline-container-org72a3840" class="outline-4">
+<h4 id="org72a3840">Variables vs. Atoms</h4>
+<div class="outline-text-4" id="text-org72a3840">
+<p>
+In Prolog, the casing of the first letter is the primary way to distinguish between variables and constants:
+</p>
+<ul class="org-ul">
+<li><b>Variables</b>: Must start with an <b><b>Uppercase letter</b></b> (e.g., <code>X</code>, <code>Parent</code>, <code>My_Variable</code>) or an <b><b>underscore</b></b> (<code>_</code>).</li>
+<li><b>Atoms (Constants)</b>: Must start with a <b><b>lowercase letter</b></b> (e.g., <code>parent</code>, <code>bob</code>, <code>apple</code>).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc025086" class="outline-4">
+<h4 id="orgc025086">The Unification Process</h4>
+<div class="outline-text-4" id="text-orgc025086">
+<p>
+Unification is a two-way matching process where Prolog attempts to make two terms identical. 
+</p>
+<ul class="org-ul">
+<li>If a variable is uninstantiated, it can unify with any atom or structure.</li>
+<li>Once instantiated, that variable carries its value throughout that specific search path.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-prolog"><code><span style="color: #61afef;">parent</span><span style="color: #8c8c8c;">(</span>bob, charlie<span style="color: #8c8c8c;">)</span>.  <span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">A Fact using atoms
+</span><span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">Query: ?- parent(bob, X). 
+</span><span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">Result: X = charlie (X unifies with the atom charlie).</span>
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge63ca02" class="outline-3">
+<h3 id="orge63ca02">First-Order Logic (Predicate Calculus)</h3>
+<div class="outline-text-3" id="text-orge63ca02">
+</div>
+<div id="outline-container-org819e6b8" class="outline-4">
+<h4 id="org819e6b8">The Framework</h4>
+<div class="outline-text-4" id="text-org819e6b8">
+<p>
+First-order logic (FOL), also known as predicate calculus or quantificational logic, is a formal system used to describe relations between objects. It serves as the foundation for theories like set theory or arithmetic.
+</p>
+</div>
+</div>
+<div id="outline-container-org496e461" class="outline-4">
+<h4 id="org496e461">Building Blocks of FOL</h4>
+<div class="outline-text-4" id="text-org496e461">
+<p>
+FOL provides the &ldquo;grammar&rdquo; for reasoning through several key components:
+</p>
+<ul class="org-ul">
+<li><b>Terms (Nouns)</b>: Represent objects. These can be constants (<code>socrates</code>), variables (<code>x</code>), or functions.</li>
+<li><b>Predicates (Verbs/Adjectives)</b>: Describe properties or relationships (e.g., \(Man(x)\) or \(Likes(x, y)\)). These are the only components that carry factual meaning.</li>
+<li><b>Connectives (Logical Glue)</b>: Symbols like \(\land\) (and), \(\lor\) (or), \(\neg\) (not), and \(\implies\) (implies).</li>
+<li><b>Quantifiers (Scope)</b>: \(\forall\) (Universal - &ldquo;for all&rdquo;) and \(\exists\) (Existential - &ldquo;there exists&rdquo;).</li>
+<li><b>Equality</b>: A special binary predicate built into FOL.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd9cd98a" class="outline-4">
+<h4 id="orgd9cd98a">From Propositional to Predicate Logic</h4>
+<div class="outline-text-4" id="text-orgd9cd98a">
+<p>
+While propositional logic deals with whole statements (\(P \land Q\)), predicate logic allows us to &ldquo;look inside&rdquo; to see the properties of specific objects. This allows for deductions like: &ldquo;If all humans are mortal and Socrates is human, then Socrates is mortal&rdquo;.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb22ef7e" class="outline-3">
+<h3 id="orgb22ef7e">Syllogisms as Computational Proofs</h3>
+<div class="outline-text-3" id="text-orgb22ef7e">
+<p>
+Prolog is a declarative language where the program itself acts as a proof. 
+</p>
+</div>
+<div id="outline-container-org0c96d26" class="outline-4">
+<h4 id="org0c96d26">The Socrates Syllogism</h4>
+<div class="outline-text-4" id="text-org0c96d26">
+</div>
+<div id="outline-container-org8b8830a" class="outline-5">
+<h5 id="org8b8830a">Logical Translation</h5>
+<div class="outline-text-5" id="text-org8b8830a">
+<ol class="org-ol">
+<li>\(\forall x (Man(x) \implies Mortal(x))\) (Universal Rule)</li>
+<li>\(Man(socrates)\) (Ground Fact)</li>
+<li>\(\therefore Mortal(socrates)\) (Conclusion)</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org648c2f4" class="outline-5">
+<h5 id="org648c2f4">Prolog Implementation</h5>
+<div class="outline-text-5" id="text-org648c2f4">
+<div class="org-src-container">
+<pre class="src src-prolog"><code><span style="color: #61afef;">man</span><span style="color: #8c8c8c;">(</span>socrates<span style="color: #8c8c8c;">)</span>.        <span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">Fact: Socrates is a man.
+</span>
+<span style="color: #61afef;">mortal</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span> :-          <span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">Rule: X is mortal IF X is a man.
+</span>    man<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>.           <span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">(The :- symbol represents implication).</span>
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org530237a" class="outline-3">
+<h3 id="org530237a">Set Theory and List Manipulation</h3>
+<div class="outline-text-3" id="text-org530237a">
+<p>
+Set theory can be viewed as FOL with a single binary relation: \(\in\) (membership). In Prolog, sets are typically represented as <b><b>Lists</b></b>.
+</p>
+</div>
+<div id="outline-container-org651f861" class="outline-4">
+<h4 id="org651f861">Prolog List Notation</h4>
+<div class="outline-text-4" id="text-org651f861">
+<ul class="org-ul">
+<li>Elements are enclosed in square brackets and separated by commas: <code>[a, b, c]</code>.</li>
+<li><b>Head/Tail Notation</b>: <code>[H|T]</code> separates the first element (<code>H</code>) from the rest of the list (<code>T</code>).</li>
+<li>The tail (<code>T</code>) is always a list itself, even if it is the empty list ~~.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6ee8555" class="outline-4">
+<h4 id="org6ee8555">Common Set Operations</h4>
+<div class="outline-text-4" id="text-org6ee8555">
+</div>
+<div id="outline-container-org94dc380" class="outline-5">
+<h5 id="org94dc380">Subset Axiom</h5>
+<div class="outline-text-5" id="text-org94dc380">
+<p>
+Definition: \(A \subseteq B \iff \forall x (x \in A \implies x \in B)\)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-prolog"><code><span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">The empty set is a subset of any list.
+</span><span style="color: #61afef;">subset</span><span style="color: #8c8c8c;">(</span>, <span style="color: #61afef;">_</span><span style="color: #8c8c8c;">)</span>.
+
+<span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">[Head|Tail] is a subset of L if Head is in L AND Tail is a subset of L.
+</span><span style="color: #61afef;">subset</span><span style="color: #8c8c8c;">(</span><span style="color: #93a8c6; font-weight: bold;">[</span><span style="color: #61afef;">Head</span><span style="color: #c678dd; font-weight: bold;">|</span><span style="color: #61afef;">Tail</span><span style="color: #93a8c6; font-weight: bold;">]</span>, <span style="color: #61afef;">L</span><span style="color: #8c8c8c;">)</span> :-
+    member<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">Head</span>, <span style="color: #61afef;">L</span><span style="color: #8c8c8c;">)</span>,  <span style="color: #687080; font-style: italic;">% </span><span style="color: #61afef; font-style: italic;">member/2</span><span style="color: #687080; font-style: italic;"> is often a built-in predicate
+</span>    subset<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">Tail</span>, <span style="color: #61afef;">L</span><span style="color: #8c8c8c;">)</span>.
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org38570f5" class="outline-3">
+<h3 id="org38570f5">Recursion in Prolog</h3>
+<div class="outline-text-3" id="text-org38570f5">
+<p>
+Recursion is the primary control mechanism in Prolog. It occurs when a predicate refers to itself in its own definition.
+</p>
+</div>
+<div id="outline-container-org7e0b801" class="outline-4">
+<h4 id="org7e0b801">Two Parts of Recursive Definitions</h4>
+<div class="outline-text-4" id="text-org7e0b801">
+<p>
+Every recursive definition requires:
+</p>
+<ol class="org-ol">
+<li><b>Boundary Condition (Base Case)</b>: A simple case known to be true that ends the recursion.</li>
+<li><b>Recursive Case</b>: A rule that simplifies the problem (often by removing one layer of complexity) and calls itself.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgc36236b" class="outline-4">
+<h4 id="orgc36236b">Example: Appending Lists</h4>
+<div class="outline-text-4" id="text-orgc36236b">
+<p>
+The <code>append(List1, List2, Result)</code> predicate joins two lists.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-prolog"><code><span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">Base Case: Appending an empty list to any list L results in L.
+</span><span style="color: #61afef;">append</span><span style="color: #8c8c8c;">(</span>, <span style="color: #61afef;">L</span>, <span style="color: #61afef;">L</span><span style="color: #8c8c8c;">)</span>.
+
+<span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">Recursive Case: Appending [H|T] to L results in [H|R] if T appended to L is R.
+</span><span style="color: #61afef;">append</span><span style="color: #8c8c8c;">(</span><span style="color: #93a8c6; font-weight: bold;">[</span><span style="color: #61afef;">H</span><span style="color: #c678dd; font-weight: bold;">|</span><span style="color: #61afef;">T</span><span style="color: #93a8c6; font-weight: bold;">]</span>, <span style="color: #61afef;">L</span>, <span style="color: #93a8c6; font-weight: bold;">[</span><span style="color: #61afef;">H</span><span style="color: #c678dd; font-weight: bold;">|</span><span style="color: #61afef;">R</span><span style="color: #93a8c6; font-weight: bold;">]</span><span style="color: #8c8c8c;">)</span> :- 
+    append<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">T</span>, <span style="color: #61afef;">L</span>, <span style="color: #61afef;">R</span><span style="color: #8c8c8c;">)</span>.
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb7d0ae3" class="outline-4">
+<h4 id="orgb7d0ae3">Example: Finding the Last Element</h4>
+<div class="outline-text-4" id="text-orgb7d0ae3">
+<div class="org-src-container">
+<pre class="src src-prolog"><code><span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">Base Case: The last element of a single-element list is that element.
+</span><span style="color: #61afef;">last</span><span style="color: #8c8c8c;">(</span><span style="color: #93a8c6; font-weight: bold;">[</span><span style="color: #61afef;">X</span><span style="color: #93a8c6; font-weight: bold;">]</span>, <span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>.
+
+<span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">Recursive Case: The last element of [H|T] is the last element of the tail T.
+</span><span style="color: #61afef;">last</span><span style="color: #8c8c8c;">(</span><span style="color: #93a8c6; font-weight: bold;">[</span><span style="color: #61afef;">_</span><span style="color: #c678dd; font-weight: bold;">|</span><span style="color: #61afef;">T</span><span style="color: #93a8c6; font-weight: bold;">]</span>, <span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span> :- 
+    last<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">T</span>, <span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>.
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-orgf4316c4" class="outline-2">
+<h2 id="orgf4316c4">Prolog and predicate calculus</h2>
+<div class="outline-text-2" id="text-orgf4316c4">
+</div>
+<div id="outline-container-org288531e" class="outline-3">
+<h3 id="org288531e">Prolog Syntax Fundamentals</h3>
+<div class="outline-text-3" id="text-org288531e">
+</div>
+<div id="outline-container-orgca4550f" class="outline-4">
+<h4 id="orgca4550f">Variables vs. Atoms</h4>
+<div class="outline-text-4" id="text-orgca4550f">
+<p>
+In Prolog, the casing of the first letter determines the type of the term:
+</p>
+<ul class="org-ul">
+<li><b>Variables</b>: Must start with an <b><b>Uppercase letter</b></b> (e.g., <code>X</code>, <code>Parent</code>) or an <b><b>underscore</b></b> (<code>_</code>).</li>
+<li><b>Atoms</b>: Must start with a <b><b>lowercase letter</b></b> (e.g., <code>bob</code>, <code>parent</code>).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge449b50" class="outline-4">
+<h4 id="orge449b50">The Unification Process</h4>
+<div class="outline-text-4" id="text-orge449b50">
+<p>
+Unification is how Prolog matches variables to data. 
+</p>
+<div class="org-src-container">
+<pre class="src src-prolog"><code><span style="color: #61afef;">parent</span><span style="color: #8c8c8c;">(</span>bob, charlie<span style="color: #8c8c8c;">)</span>.  <span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">A Fact
+</span><span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">Query: ?- parent(bob, X).
+</span><span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">Result: X = charlie.</span>
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdf201f6" class="outline-3">
+<h3 id="orgdf201f6">First-Order Logic (Predicate Calculus)</h3>
+<div class="outline-text-3" id="text-orgdf201f6">
+</div>
+<div id="outline-container-org0037182" class="outline-4">
+<h4 id="org0037182">The Building Blocks</h4>
+<div class="outline-text-4" id="text-org0037182">
+<p>
+FOL (Predicate Calculus) is composed of:
+</p>
+<ol class="org-ol">
+<li><b>Terms</b>: Nouns (Constants like <code>socrates</code> or Variables like <code>x</code>).</li>
+<li><b>Predicates</b>: Verbs/Adjectives (Properties like <code>Man(x)</code> or Relations like <code>Parent(x, y)</code>).</li>
+<li><b>Connectives</b>: Logical glue (<code>∧</code>, <code>∨</code>, <code>¬</code>, <code>⇒</code>).</li>
+<li><b>Quantifiers</b>: Scope (<code>∀</code> for &ldquo;all&rdquo;, <code>∃</code> for &ldquo;exists&rdquo;).</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org0fa2dbb" class="outline-4">
+<h4 id="org0fa2dbb">The &ldquo;Predicate&rdquo; in Predicate Calculus</h4>
+<div class="outline-text-4" id="text-org0fa2dbb">
+<p>
+Predicates are the <b>atomic formulas</b>. They are the only components that carry factual meaning.
+</p>
+<ul class="org-ul">
+<li><b>Propositional Logic</b>: Deals with whole statements (\(P \land Q\)).</li>
+<li><b>Predicate Logic</b>: Looks inside the statement (\(P(x) \land Q(x)\)).</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org049cd7c" class="outline-3">
+<h3 id="org049cd7c">Implementing Theories</h3>
+<div class="outline-text-3" id="text-org049cd7c">
+</div>
+<div id="outline-container-org9c1da07" class="outline-4">
+<h4 id="org9c1da07">Set Theory in Prolog</h4>
+<div class="outline-text-4" id="text-org9c1da07">
+<p>
+Set theory is a theory of the membership predicate (\(\in\)). In Prolog, we use lists to represent sets.
+</p>
+</div>
+<div id="outline-container-org9f6b9d4" class="outline-5">
+<h5 id="org9f6b9d4">Subset Axiom</h5>
+<div class="outline-text-5" id="text-org9f6b9d4">
+<p>
+Definition: \(A \subseteq B \iff \forall x (x \in A \implies x \in B)\)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-prolog"><code><span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">The empty set is a subset of everything
+</span><span style="color: #61afef;">subset</span><span style="color: #8c8c8c;">(</span><span style="color: #93a8c6; font-weight: bold;">[]</span>, <span style="color: #61afef;">_</span><span style="color: #8c8c8c;">)</span>.
+
+<span style="color: #687080; font-style: italic;">% </span><span style="color: #687080; font-style: italic;">[Head|Tail] is a subset of L if Head is in L AND Tail is a subset of L
+</span><span style="color: #61afef;">subset</span><span style="color: #8c8c8c;">(</span><span style="color: #93a8c6; font-weight: bold;">[</span><span style="color: #61afef;">Head</span><span style="color: #c678dd; font-weight: bold;">|</span><span style="color: #61afef;">Tail</span><span style="color: #93a8c6; font-weight: bold;">]</span>, <span style="color: #61afef;">L</span><span style="color: #8c8c8c;">)</span> :-
+    member<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">Head</span>, <span style="color: #61afef;">L</span><span style="color: #8c8c8c;">)</span>,
+    subset<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">Tail</span>, <span style="color: #61afef;">L</span><span style="color: #8c8c8c;">)</span>.
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4d96662" class="outline-4">
+<h4 id="org4d96662">Classic Syllogisms</h4>
+<div class="outline-text-4" id="text-org4d96662">
+<p>
+Translating the Socrates syllogism into a computational proof.
+</p>
+</div>
+<div id="outline-container-org4a63c07" class="outline-5">
+<h5 id="org4a63c07">Logical Form</h5>
+<div class="outline-text-5" id="text-org4a63c07">
+<ul class="org-ul">
+<li>\(\forall x (Man(x) \implies Mortal(x))\)</li>
+<li>\(Man(socrates)\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1def633" class="outline-5">
+<h5 id="org1def633">Prolog Code</h5>
+<div class="outline-text-5" id="text-org1def633">
+<div class="org-src-container">
+<pre class="src src-prolog"><code><span style="color: #61afef;">man</span><span style="color: #8c8c8c;">(</span>socrates<span style="color: #8c8c8c;">)</span>.
+
+<span style="color: #61afef;">mortal</span><span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span> :- 
+    man<span style="color: #8c8c8c;">(</span><span style="color: #61afef;">X</span><span style="color: #8c8c8c;">)</span>.
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org2ed5839" class="outline-3">
+<h3 id="org2ed5839">Summary Table: Logic to Prolog</h3>
+<div class="outline-text-3" id="text-org2ed5839">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Logic Component</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Prolog Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Predicate</td>
+<td class="org-left">\(P(x)\)</td>
+<td class="org-left"><code>p(X).</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Implication</td>
+<td class="org-left">\(\implies\)</td>
+<td class="org-left"><code>:-</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Conjunction</td>
+<td class="org-left">\(\land\)</td>
+<td class="org-left"><code>,</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Disjunction</td>
+<td class="org-left">\(\lor\)</td>
+<td class="org-left"><code>;</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Universal</td>
+<td class="org-left">\(\forall\)</td>
+<td class="org-left">(Implicit in Rules)</td>
+</tr>
+
+<tr>
+<td class="org-left">Existential</td>
+<td class="org-left">\(\exists\)</td>
+<td class="org-left">(Implicit in Queries)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="outline-container-org06d8357" class="outline-2">
+<h2 id="org06d8357">Equivalence relevant to extentionality</h2>
+<div class="outline-text-2" id="text-org06d8357">
+<p>
+Don&rsquo;t forget that in logic two statements are <i>equivalent</i> if they
+have the same truth value, (e.g., truth table outcomes) under every
+interpretation. For example, \(\lnot P \land Q\) and \(P \implies Q\) are
+logically equivalent since they have the same truth tables.
+</p>
+</div>
+<div id="outline-container-orgef04619" class="outline-3">
+<h3 id="orgef04619">Truth Table: \(\lnot P \lor Q\)</h3>
+<div class="outline-text-3" id="text-orgef04619">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(P\)</th>
+<th scope="col" class="org-left">\(Q\)</th>
+<th scope="col" class="org-left">\(\lnot P\)</th>
+<th scope="col" class="org-left">\(\lnot P \lor Q\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+</tr>
+
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+</tr>
+
+<tr>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+</tr>
+
+<tr>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org908c1c6" class="outline-3">
+<h3 id="org908c1c6">Truth Table: \( P \implies Q \)</h3>
+<div class="outline-text-3" id="text-org908c1c6">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\( P \)</th>
+<th scope="col" class="org-left">\( Q \)</th>
+<th scope="col" class="org-left">\( P \implies Q \)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+</tr>
+
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+</tr>
+
+<tr>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+</tr>
+
+<tr>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Notice that the final columns in both are identical. In classical
+logic, material implication is defined precisely as this disjunction.
+</p>
+</div>
+</div>
+</section>
+<section id="outline-container-orgac43560" class="outline-2">
+<h2 id="orgac43560">Formalizing irreducibility</h2>
+<div class="outline-text-2" id="text-orgac43560">
+</div>
+<div id="outline-container-org4fa171c" class="outline-3">
+<h3 id="org4fa171c">Formalizing Irreducibility in a Theorem Prover</h3>
+<div class="outline-text-3" id="text-org4fa171c">
+<p>
+When bridging the abstraction of Bartosz Milewski&rsquo;s <i>Category Theory
+for Programmers</i> with the rigid logic of a theorem prover, we
+inevitably run into the Curry-Howard isomorphism. This is the profound
+idea that types are propositions, and programs are proofs.
+</p>
+
+<p>
+If we want to formalize our previous assertion, that primes necessitate
+multiplication, we can look at how a theorem prover actually defines a
+prime (or irreducible) element.
+</p>
+</div>
+<div id="outline-container-orgf77f551" class="outline-4">
+<h4 id="orgf77f551">The Definition in Lean 4</h4>
+<div class="outline-text-4" id="text-orgf77f551">
+<p>
+Let&rsquo;s look at how we would define an irreducible natural number in
+Lean 4, a dependently typed language and theorem prover that uses
+syntax quite similar to Haskell.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lean"><code>def Irreducible (p : ℕ) : Prop :=
+  p ≠ 1 ∧ ∀ a b : ℕ, p = a * b → a = 1 ∨ b = 1
+</code></pre>
+</div>
+
+<p>
+Notice the structural dependence in the math parts. The proposition \(
+\text{Irreducible}(p) \) is defined by quantifying over all possible factors \( a \) and \( b \), and checking their multiplicative product
+\( a \times b \). Without the multiplication operator defined in the
+algebra of natural numbers, the theorem prover literally cannot
+formulate the proposition.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org8258019" class="outline-3">
+<h3 id="org8258019">The Categorical View: Types as Prime Numbers</h3>
+<div class="outline-text-3" id="text-org8258019">
+<p>
+Milewski&rsquo;s work shows how algebraic operations map cleanly onto types
+in languages like Haskell:
+</p>
+
+<ul class="org-ul">
+<li><b>Addition</b> maps to Coproducts (Sum types, like <code>Either a b</code>).</li>
+<li><b>Multiplication</b> maps to Products (Tuple types, like <code>(a, b)</code>).</li>
+<li>The number 1 maps to the Unit type (a type with only one value, <code>()</code>).</li>
+</ul>
+
+<p>
+We can ask the same question in type theory: <i>What is a prime type?</i>
+</p>
+
+<p>
+A &ldquo;prime type&rdquo; is a type that has a prime number of inhabitants. For
+example, a type with exactly 3 states is prime.
+</p>
+
+<p>
+If we try to factor this type into a Product Type (multiplication), we
+can&rsquo;t do it without a trivial unit type. We cannot create a tuple \(
+(A, B) \) that yields exactly 3 possible combinations, unless \( A \)
+has 3 states and \( B \) has 1 state.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">A prime type (3 inhabitants)
+</span><span style="color: #c678dd; font-weight: bold;">data</span> <span style="color: #61afef;">TrafficLight</span> <span style="color: #61afef;">=</span> <span style="color: #61afef;">Red</span> <span style="color: #61afef;">|</span> <span style="color: #61afef;">Yellow</span> <span style="color: #61afef;">|</span> <span style="color: #61afef;">Green</span>
+
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">We cannot represent TrafficLight as a product of smaller types!
+</span><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">It is irreducible.</span>
+</code></pre>
+</div>
+
+<p>
+Just as in our integral domains, if your programming language does not support Product types (tuples or records), the concept of an &ldquo;irreducible type&rdquo; is structurally meaningless. The architecture of primes is simply a shadow cast by the existence of multiplication!
+</p>
+</div>
+</div>
+</section>
+<section id="outline-container-org491c8cd" class="outline-2">
+<h2 id="org491c8cd">Primes make for multiplication</h2>
+<div class="outline-text-2" id="text-org491c8cd">
+<p>
+That quote makes perfect sense, and it strikes at the very heart of
+number theory and how mathematical structures are built.
+</p>
+
+<p>
+To say that prime numbers &ldquo;necessitate&rdquo; multiplication is to recognize
+that primes are entirely defined by, and only exist because of, the
+multiplicative structure of numbers. Without multiplication, the
+concept of a prime number completely dissolves.
+</p>
+
+<p>
+Here is a breakdown of why this statement is mathematically profound
+and true.
+</p>
+</div>
+<div id="outline-container-org5b32323" class="outline-3">
+<h3 id="org5b32323">The Definitional Dependence</h3>
+<div class="outline-text-3" id="text-org5b32323">
+<p>
+Look at the standard definition of a prime number: <i>A whole number
+greater than \( 1 \) whose only divisors are \( 1 \) and itself.</i>
+&ldquo;Divisors&rdquo; are simply the inverses of multiplication. A prime is
+defined strictly by what <b>cannot</b> be multiplied together to produce
+it. If you strip the operation of multiplication away from our
+mathematical ruleset, you also strip away division and
+factoring. Without those concepts, you have no mechanism to
+distinguish a prime number from a composite number.
+</p>
+</div>
+</div>
+<div id="outline-container-org60e9411" class="outline-3">
+<h3 id="org60e9411">The Additive Universe vs. The Multiplicative Universe</h3>
+<div class="outline-text-3" id="text-org60e9411">
+<p>
+Imagine a mathematical universe where only addition exists—much like a
+simple recursive system where you only have the number \( 0 \) and a
+&ldquo;successor&rdquo; function to generate the next number.
+</p>
+
+<p>
+In a purely additive system, every whole number is built exactly the
+same way: by adding \( 1 \)s together.
+</p>
+
+<ul class="org-ul">
+<li>\( 3 \) is \( 1 + 1 + 1 \)</li>
+<li>\( 4 \) is \( 1 + 1 + 1 + 1 \)</li>
+</ul>
+
+<p>
+In this additive group, the number \( 1 \) is the sole, universal
+&ldquo;building block.&rdquo; No other number is special, because every number is
+just a predictable chain of \( 1 \)s.
+</p>
+
+<p>
+However, the moment you introduce multiplication to create a ring
+structure, you change the rules of how numbers can be constructed. You
+can now build the number \( 12 \) not just by adding \( 1 \)s, but by
+multiplying \( 3 \times 4 \). Multiplication creates &ldquo;shortcuts&rdquo; to
+higher numbers.
+</p>
+</div>
+</div>
+<div id="outline-container-orgac01944" class="outline-3">
+<h3 id="orgac01944">The &ldquo;Atoms&rdquo; of Arithmetic</h3>
+<div class="outline-text-3" id="text-orgac01944">
+<p>
+Because multiplication creates these composite shortcuts, we are
+forced to ask: <i>What are the foundational building blocks of these
+shortcuts?</i> This is where primes become necessary. The Fundamental
+Theorem of Arithmetic dictates that every integer greater than \( 1 \)
+is either a prime itself or can be uniquely represented as a product
+of primes, up to the order of the factors:
+</p>
+
+<p>
+\( n = p_1^{a_1} \cdot p_2^{a_2} \cdot \dots \cdot p_k^{a_k} \)
+</p>
+
+<p>
+Primes are the irreducible elements—the &ldquo;atoms&rdquo;—of a multiplicative
+system. While the additive system only needs a single atom (the number
+\( 1 \)) to build infinity, the multiplicative system requires an
+infinite number of distinct atomic primes to build the exact same
+infinity of integers.
+</p>
+</div>
+</div>
+<div id="outline-container-org9e9c835" class="outline-3">
+<h3 id="org9e9c835">Summary</h3>
+<div class="outline-text-3" id="text-org9e9c835">
+<p>
+The quote is essentially saying that primes are an artifact of the
+multiplication operation. They are not inherent to the sheer existence
+of numbers themselves, but rather they emerge inevitably the moment
+you decide that numbers can be multiplied.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf2b533c" class="outline-3">
+<h3 id="orgf2b533c">Executable Prime Sieve in Haskell</h3>
+<div class="outline-text-3" id="text-orgf2b533c">
+<p>
+We can use <code>org-babel</code> to evaluate our Sieve of Eratosthenes directly
+within this document.  This demonstrates how the multiplicative filter
+recursively strips away composite numbers, leaving only the
+irreducible primes.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">Generate an infinite list of primes
+</span><span style="color: #61afef;">primes</span> <span style="color: #61afef;">::</span> <span style="color: #8c8c8c;">[</span><span style="color: #61afef;">Integer</span><span style="color: #8c8c8c;">]</span>
+<span style="color: #61afef;">primes</span> <span style="color: #61afef;">=</span> sieve <span style="color: #8c8c8c;">[</span>2<span style="color: #61afef;">..</span><span style="color: #8c8c8c;">]</span>
+  <span style="color: #c678dd; font-weight: bold;">where</span>
+    <span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">The sieve function filters out all multiplicative composites
+</span>    sieve <span style="color: #8c8c8c;">(</span>p<span style="color: #61afef;">:</span>xs<span style="color: #8c8c8c;">)</span> <span style="color: #61afef;">=</span> p <span style="color: #61afef;">:</span> sieve <span style="color: #8c8c8c;">[</span>x <span style="color: #61afef;">|</span> x <span style="color: #61afef;">&lt;-</span> xs, x <span style="color: #61afef;">`mod`</span> p <span style="color: #61afef;">/=</span> 0<span style="color: #8c8c8c;">]</span>
+
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">Print the first 20 primes to verify the lazy evaluation
+</span><span style="color: #61afef;">main</span> <span style="color: #61afef;">::</span> <span style="color: #61afef;">IO</span> <span style="color: #8c8c8c;">()</span>
+<span style="color: #61afef;">main</span> <span style="color: #61afef;">=</span> print <span style="color: #61afef;">$</span> take 20 primes
+</code></pre>
+</div>
+
+<pre class="example" id="org05f9cc3">
+Loaded GHCi configuration from /home/galaxybeing/.ghci
+[1 of 1] Compiling MyLib            ( src/MyLib.hs, interpreted )
+Ok, one module loaded.
+&lt;interactive&gt;:3:1-6: error: [GHC-88464]
+    Variable not in scope: primes :: [Integer]
+&lt;interactive&gt;:4:10-14: error: [GHC-88464]
+    Variable not in scope: sieve :: [a0] -&gt; t
+&lt;interactive&gt;:5:3-7: error: [GHC-58481]
+    parse error on input ‘where’
+&lt;interactive&gt;:7:5-58: warning: [GHC-62161] [-Wincomplete-patterns]
+    Pattern match(es) are non-exhaustive
+    In an equation for ‘sieve’: Patterns of type ‘[a]’ not matched: []
+&lt;interactive&gt;:10:1-4: error: [GHC-88464]
+    Variable not in scope: main :: IO ()
+    Suggested fix: Perhaps use ‘min’ (imported from Prelude)
+</pre>
+</div>
+</div>
+<div id="outline-container-orgf4d1ff3" class="outline-3">
+<h3 id="orgf4d1ff3">Note on Lazy Evaluation</h3>
+<div class="outline-text-3" id="text-orgf4d1ff3">
+<p>
+Because Haskell is lazily evaluated, the infinite lists <code>[2..]</code> and
+<code>primes</code> do not cause an infinite loop. The computation only unfolds
+as far as the <code>take 20</code> command demands.
+</p>
+</div>
+</div>
+</section>
+<section id="outline-container-orgb2581f5" class="outline-2">
+<h2 id="orgb2581f5">Sets are exactly defined&hellip;</h2>
+<div class="outline-text-2" id="text-orgb2581f5">
+<p>
+In standard set theory, sets are defined as collections of <b>distinct</b>
+objects—meaning they inherently do not contain duplicates or
+multiplicity. An element is either a member of the set or it isn&rsquo;t;
+there&rsquo;s no notion of &ldquo;counting&rdquo; how many times it appears. This is a
+foundational aspect of what a set is, rather than something that needs
+a separate axiom to enforce (though it&rsquo;s reinforced by the axiom of
+extensionality, as discussed previously).
+</p>
+
+<p>
+The notation \(\{a_1, \dots, a_n\}\) is simply a way to describe &ldquo;the
+set containing exactly these objects as elements.&rdquo; If any of the
+\(a_i\) are the same (e.g., if \(a_1 = a_2\)), the set automatically
+treats them as a single element. For example:
+</p>
+
+<ul class="org-ul">
+<li>\(\{1, 1, 2\} = \{1, 2\}\)</li>
+<li>\(\{apple, apple, orange\} = \{apple, orange\}\)</li>
+</ul>
+
+<p>
+This deduplication happens because the set&rsquo;s identity is determined solely by its membership, per extensionality: two sets are equal if they have the same elements, ignoring order or repetition in how they&rsquo;re listed. The notation doesn&rsquo;t assume the \(a_i\) are all unique to begin with—it just results in a set with unique elements regardless.
+</p>
+
+<p>
+If duplicates were somehow allowed, it would contradict extensionality, as \(\{1, 1, 2\}\) and \(\{1, 2\}\) would have the same members and thus be the same set. (Collections that do allow duplicates or order are called multisets or lists, but those aren&rsquo;t sets.)
+</p>
+
+<p>
+The text you&rsquo;re referencing (&ldquo;Sets, Logic, Computation&rdquo;) aligns with this on pages 1–2: sets are collections of distinct objects, and the notation \(\{a_1, \dots, a_n\}\) denotes a finite set where duplicates are ignored, ensuring uniqueness of elements.
+</p>
+</div>
+</section>
+<section id="outline-container-orge0e0487" class="outline-2">
+<h2 id="orge0e0487">Extensionality and Leibniz&rsquo;s Law</h2>
+<div class="outline-text-2" id="text-orge0e0487">
+<p>
+The core similarity between the <b>Axiom of Extensionality</b> in set theory and <b>Leibniz’s Law</b> (specifically the <i>Identity of Indiscernibles</i>) is that both principles assert that <b><b>identity is determined entirely by attributes</b></b>. They reject the idea of a &ldquo;hidden essence&rdquo; or &ldquo;bare particularity&rdquo; that makes an object unique independent of its characteristics.
+</p>
+</div>
+<div id="outline-container-org79d85d1" class="outline-3">
+<h3 id="org79d85d1">1. Formal Definitions</h3>
+<div class="outline-text-3" id="text-org79d85d1">
+<p>
+To see the similarity, we must look at their logical structures.
+</p>
+</div>
+<div id="outline-container-org86c1bc6" class="outline-4">
+<h4 id="org86c1bc6">Leibniz&rsquo;s Law (The Identity of Indiscernible)</h4>
+<div class="outline-text-4" id="text-org86c1bc6">
+<p>
+This principle states that if two objects, \(x\) and \(y\), share all the same properties (\(P\)), they are arguably the same object.
+</p>
+
+<p>
+\[
+\forall P \ (P(x) \iff P(y)) \implies x = y
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-orge57af97" class="outline-4">
+<h4 id="orge57af97">The Axiom of Extensionality</h4>
+<div class="outline-text-4" id="text-orge57af97">
+<p>
+This axiom states that if two sets, \(A\) and \(B\), share all the same elements (\(z\)), they are the same set.
+</p>
+
+<p>
+\[
+\forall z \ (z \in A \iff z \in B) \implies A = B
+\]
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc8c7c33" class="outline-3">
+<h3 id="orgc8c7c33">2. The Connection: Extensionality is a &ldquo;Restricted&rdquo; Leibniz’s Law</h3>
+<div class="outline-text-3" id="text-orgc8c7c33">
+<p>
+The most helpful way to view the relationship is that the Axiom of Extensionality is essentially Leibniz’s Law applied to a universe where <b>the only relevant property is &ldquo;containment.&rdquo;</b>
+</p>
+
+<ul class="org-ul">
+<li><b>In broad metaphysics (Leibniz&rsquo;s world):</b> An object has infinite properties: color, location, mass, history, etc. If <i>all</i> of these are identical, the objects are identical.</li>
+<li><b>In Zermelo-Fraenkel (ZF) set theory:</b> Objects (sets) have no color, no location, and no mass. They have only one intrinsic property: <b><b>having members</b></b>. Therefore, if you satisfy the property of &ldquo;containing the same members,&rdquo; you satisfy <i>all</i> properties relevant to that universe, and thus you are identical.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1d483d0" class="outline-3">
+<h3 id="org1d483d0">3. Elaborated Examples</h3>
+<div class="outline-text-3" id="text-org1d483d0">
+</div>
+<div id="outline-container-orgbea751c" class="outline-4">
+<h4 id="orgbea751c">Example A: Set Theory (The Collapse of Representation)</h4>
+<div class="outline-text-4" id="text-orgbea751c">
+<p>
+In set theory, how you describe a set (its &ldquo;intension&rdquo;) is irrelevant; only what it contains (its &ldquo;extension&rdquo;) matters.
+</p>
+
+<ul class="org-ul">
+<li><b>Set A:</b> The set of all even prime numbers.</li>
+<li><b>Set B:</b> The set of all positive integers \(x\) such that \(x^2 - 4x + 4 = 0\).</li>
+</ul>
+
+<p>
+<b>Analysis:</b>
+</p>
+<ol class="org-ol">
+<li>Set A contains only \(\{2\}\).</li>
+<li>Solving for Set B: \((x-2)^2 = 0 \implies x=2\). So Set B is \(\{2\}\).</li>
+<li><b>Conclusion:</b> Even though the <i>descriptions</i> (properties of definition) differ completely, the <i>elements</i> are identical. Therefore, by Extensionality, \(A = B\).</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org17cae38" class="outline-4">
+<h4 id="org17cae38">Example B: Leibniz&rsquo;s Law (The Challenge of Indiscernibles)</h4>
+<div class="outline-text-4" id="text-org17cae38">
+<p>
+Leibniz&rsquo;s Law is often used to distinguish objects that appear similar.
+</p>
+
+<ul class="org-ul">
+<li><b>Object X:</b> The Morning Star (Phosphorus).</li>
+<li><b>Object Y:</b> The Evening Star (Hesperus).</li>
+</ul>
+
+<p>
+<b>Analysis:</b>
+If we can find <i>any</i> property that X has and Y does not, they are distinct. However, astronomers discovered that both X and Y occupy the same celestial coordinates at specific times predicted by the orbit of Venus. They share every physical property (mass, radius, orbital path).
+</p>
+<ul class="org-ul">
+<li><b>Conclusion:</b> Because they share all properties, they are the same object (Venus).</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org8bbe013" class="outline-3">
+<h3 id="org8bbe013">4. Where They Diverge: Intensionality vs. Extensionality</h3>
+<div class="outline-text-3" id="text-org8bbe013">
+<p>
+This distinction is critical in logic and programming.
+</p>
+</div>
+<div id="outline-container-org72340b8" class="outline-4">
+<h4 id="org72340b8">Extensional Contexts (Set Theory)</h4>
+<div class="outline-text-4" id="text-org72340b8">
+<p>
+We treat functions or sets as black boxes. If inputs mapped to outputs are identical, the functions are identical.
+</p>
+<ul class="org-ul">
+<li>\(f(x) = 2x + 2\)</li>
+<li>\(g(x) = 2(x + 1)\)</li>
+<li>In set theory, \(f = g\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org31501e3" class="outline-4">
+<h4 id="org31501e3">Intensional Contexts (Computation/Leibniz)</h4>
+<div class="outline-text-4" id="text-org31501e3">
+<p>
+Here, the <i>way</i> something is constructed matters.
+</p>
+<ul class="org-ul">
+<li>Using the functions above: \(f\) involves one multiplication and one addition. \(g\) involves one addition and one multiplication.</li>
+<li>In an intensional system (like some type theories or when analyzing algorithm efficiency), \(f \neq g\) because they have different computational &ldquo;properties&rdquo; (operation order), even if they are extensionally equivalent.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org976864b" class="outline-3">
+<h3 id="org976864b">Summary Table</h3>
+<div class="outline-text-3" id="text-org976864b">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Feature</th>
+<th scope="col" class="org-left">Axiom of Extensionality</th>
+<th scope="col" class="org-left">Identity of Indiscernibles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>Domain</b></td>
+<td class="org-left">Sets (Abstract mathematical objects)</td>
+<td class="org-left">Universal (Physical objects, logic, metaphysics)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Criteria</b></td>
+<td class="org-left">Membership (\(z \in A\))</td>
+<td class="org-left">Any Predicate (\(P(x)\))</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Core Assertion</b></td>
+<td class="org-left">Same members = Same set</td>
+<td class="org-left">Same properties = Same object</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Status</b></td>
+<td class="org-left">Axiomatic (True by definition in ZF)</td>
+<td class="org-left">Debatable (e.g., Two electrons in a magnetic field)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="outline-container-org0a55420" class="outline-2">
+<h2 id="org0a55420">Kuratowski tuples from sets</h2>
+<div class="outline-text-2" id="text-org0a55420">
+</div>
+<div id="outline-container-org7648beb" class="outline-3">
+<h3 id="org7648beb">1. The Challenge</h3>
+<div class="outline-text-3" id="text-org7648beb">
+<p>
+You have two objects, \(a\) and \(b\). You want to package them so you can distinguish &ldquo;First&rdquo; from &ldquo;Second.&rdquo;
+But you only have <b><b>Sets</b></b>, and sets are blind to order:
+\[\{a, b\} = \{b, a\}\]
+</p>
+
+<p>
+If you look into the bag \(\{a, b\}\), you just see two things. You have no way of knowing which one was put in first.
+</p>
+</div>
+</div>
+<div id="outline-container-org5bfa658" class="outline-3">
+<h3 id="org5bfa658">2. Why &ldquo;Obvious&rdquo; Solutions Fail</h3>
+<div class="outline-text-3" id="text-org5bfa658">
+</div>
+<div id="outline-container-orgd237ecc" class="outline-4">
+<h4 id="orgd237ecc">Attempt 1: Just put them in bags?</h4>
+<div class="outline-text-4" id="text-orgd237ecc">
+<p>
+Suppose we try: \(Pair = \{ \{a\}, \{b\} \}\)
+</p>
+<ul class="org-ul">
+<li><b>Fail</b>: Since the outer container is a set, \(\{ \{a\}, \{b\} \} = \{ \{b\}, \{a\} \}\).</li>
+<li>We still don&rsquo;t know if \(\{a\}\) came first or \(\{b\}\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6efda25" class="outline-4">
+<h4 id="org6efda25">Attempt 2: Mark one?</h4>
+<div class="outline-text-4" id="text-org6efda25">
+<p>
+Suppose we try: \(Pair = \{ a, \{b\} \}\)
+</p>
+<ul class="org-ul">
+<li><b>Fail</b>: This works for \((1, 2) \to \{1, \{2\}\}\). But it breaks if the elements are sets themselves.</li>
+<li>If \(a = \{2\}\) and \(b = 2\), then \(\{ \{2\}, \{2\} \} = \{ \{2\} \}\). We lost information.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4c5d452" class="outline-3">
+<h3 id="org4c5d452">3. Kuratowski&rsquo;s Solution</h3>
+<div class="outline-text-3" id="text-org4c5d452">
+<p>
+The definition is:
+\[(a, b) = \{ \{a\}, \{a, b\} \}\]
+</p>
+
+<p>
+Let&rsquo;s unpack this with a concrete example.
+Let \(a = 1\) (First)
+Let \(b = 2\) (Second)
+</p>
+
+<p>
+The pair \((1, 2)\) becomes the set \(P = \{ \{1\}, \{1, 2\} \}\).
+</p>
+</div>
+<div id="outline-container-org964b83c" class="outline-4">
+<h4 id="org964b83c">How to Read the Order (The Decoding Algorithm)</h4>
+<div class="outline-text-4" id="text-org964b83c">
+<p>
+Imagine you are given the set \(P\) and asked to find the &ldquo;first&rdquo; coordinate.
+</p>
+
+<ol class="org-ol">
+<li><b>Look at the elements of P</b>:
+<ul class="org-ul">
+<li>Item X: \(\{1\}\)  (A set with 1 element)</li>
+<li>Item Y: \(\{1, 2\}\) (A set with 2 elements)</li>
+</ul></li>
+
+<li><b>Identify the Intersection</b>:
+<ul class="org-ul">
+<li>What is inside <b>both</b> Item X and Item Y?</li>
+<li>The number \(1\) is in both.</li>
+<li>Therefore, <b><b>1 is the first coordinate</b></b>.</li>
+</ul></li>
+
+<li><b>Identify the Remainder</b>:
+<ul class="org-ul">
+<li>Look at the bigger set (Item Y).</li>
+<li>Take away the first coordinate (\(1\)).</li>
+<li>What is left? \(2\).</li>
+<li>Therefore, <b><b>2 is the second coordinate</b></b>.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org70a3ad1" class="outline-3">
+<h3 id="org70a3ad1">4. The &ldquo;Fingerprint&rdquo; of Order</h3>
+<div class="outline-text-3" id="text-org70a3ad1">
+<p>
+The cleverness is in the asymmetry.
+</p>
+<ul class="org-ul">
+<li>The element \(a\) appears <b><b>twice</b></b> (in the singleton and the doubleton).</li>
+<li>The element \(b\) appears <b><b>once</b></b> (only in the doubleton).</li>
+</ul>
+
+<p>
+This &ldquo;frequency count&rdquo; is how the set structure encodes the order.
+</p>
+</div>
+<div id="outline-container-org81c074c" class="outline-4">
+<h4 id="org81c074c">Verification (a != b)</h4>
+<div class="outline-text-4" id="text-org81c074c">
+<p>
+\[(a, b) = \{ \{a\}, \{a, b\} \}\]
+\[(b, a) = \{ \{b\}, \{b, a\} \}\]
+Since \(\{a\} \neq \{b\}\), the two resulting sets are totally different. The order is preserved.
+</p>
+</div>
+</div>
+<div id="outline-container-org52569d6" class="outline-4">
+<h4 id="org52569d6">Edge Case (a = b)</h4>
+<div class="outline-text-4" id="text-org52569d6">
+<p>
+If \(a = 1\) and \(b = 1\):
+\[(1, 1) = \{ \{1\}, \{1, 1\} \}\]
+Since \(\{1, 1\}\) is just \(\{1\}\):
+\[= \{ \{1\}, \{1\} \}\]
+Since sets ignore duplicates:
+\[= \{ \{1\} \}\]
+This is distinct from any pair where \(a \neq b\). It represents the pair \((1, 1)\) uniquely.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-orgd2ce4f6" class="outline-2">
+<h2 id="orgd2ce4f6">Ordered tuples in set theory</h2>
+<div class="outline-text-2" id="text-orgd2ce4f6">
+</div>
+<div id="outline-container-orgb7be17e" class="outline-3">
+<h3 id="orgb7be17e">1. The Problem: Sets are Unordered</h3>
+<div class="outline-text-3" id="text-orgb7be17e">
+<p>
+In pure set theory, the collection \(\{a, b\}\) is identical to \(\{b, a\}\).
+This is a problem if we want to represent coordinates \((x, y)\) or a list \((1, 2, 3)\), where position matters.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbbba6e1" class="outline-3">
+<h3 id="orgbbba6e1">2. The Solution: Kuratowski&rsquo;s Definition</h3>
+<div class="outline-text-3" id="text-orgbbba6e1">
+<p>
+To define an ordered pair \((a, b)\) using only unordered sets, Kazimierz Kuratowski (1921) proposed a clever definition that is now the standard:
+</p>
+
+<p>
+\[(a, b) = \{ \{a\}, \{a, b\} \}\]
+</p>
+</div>
+<div id="outline-container-org3592cc8" class="outline-4">
+<h4 id="org3592cc8">Why this works</h4>
+<div class="outline-text-4" id="text-org3592cc8">
+<p>
+It distinguishes the &ldquo;first&rdquo; element from the &ldquo;second&rdquo; by nesting depth.
+</p>
+<ul class="org-ul">
+<li>The element \(a\) appears in <b>both</b> sets: \(\{a\}\) and \(\{a, b\}\).</li>
+<li>The element \(b\) appears in <b>only one</b> set: \(\{a, b\}\).</li>
+</ul>
+
+<p>
+We can now prove that if \((a, b) = (c, d)\), then \(a = c\) and \(b = d\). The structure forces order.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc7eb2b3" class="outline-3">
+<h3 id="orgc7eb2b3">3. From Pairs to n-Tuples</h3>
+<div class="outline-text-3" id="text-orgc7eb2b3">
+<p>
+Once we have a pair, we can define a tuple of any length recursively. An \(n\)-tuple is just a pair where the first element is an \((n-1)\)-tuple.
+</p>
+
+<p>
+\[(x, y, z) = ((x, y), z)\]
+</p>
+
+<p>
+This means a triplet is actually nested pairs:
+\[(x, y, z) \rightarrow \{ \{ (x,y) \}, \{ (x,y), z \} \}\]
+</p>
+</div>
+</div>
+<div id="outline-container-org5622f79" class="outline-3">
+<h3 id="org5622f79">4. Is a List a Tuple?</h3>
+<div class="outline-text-3" id="text-org5622f79">
+</div>
+<div id="outline-container-orge391aae" class="outline-4">
+<h4 id="orge391aae">Yes, a list is a tuple</h4>
+<div class="outline-text-4" id="text-orge391aae">
+<p>
+In Computer Science (and specifically Scheme), a list is a <b><b>Linked List</b></b>, which is physically implemented exactly like the recursive tuple definition above.
+</p>
+
+<ul class="org-ul">
+<li><b>Math Tuple</b>: \((a, b, c) = (a, (b, c))\) (Right-associative grouping)</li>
+<li><b>Scheme List</b>: <code>(cons 'a (cons 'b (cons 'c '())))</code></li>
+</ul>
+
+<p>
+The Scheme list <code>(a b c)</code> is literally the ordered triple \(\langle a, b, c \rangle\), realized through a chain of pairs (cons cells).
+</p>
+</div>
+</div>
+<div id="outline-container-orgfa95acf" class="outline-4">
+<h4 id="orgfa95acf">The Slight Difference</h4>
+<div class="outline-text-4" id="text-orgfa95acf">
+<ul class="org-ul">
+<li><b>Tuples</b> (in math/Python) are usually considered &ldquo;fixed width&rdquo; or immutable.</li>
+<li><b>Lists</b> (in Scheme) are considered &ldquo;growable&rdquo; or recursive structures terminating in a specific marker (nil/null).</li>
+</ul>
+
+<p>
+But structurally? They are identical. A list is just a tuple defined recursively.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-org7d8b5ad" class="outline-2">
+<h2 id="org7d8b5ad">Peter lists lore 1</h2>
+<div class="outline-text-2" id="text-org7d8b5ad">
+</div>
+<div id="outline-container-orgb4feeb7" class="outline-3">
+<h3 id="orgb4feeb7">Overview</h3>
+<div class="outline-text-3" id="text-orgb4feeb7">
+<p>
+Péter&rsquo;s definition is recursive because the term being defined (<b>List</b>) appears inside its own definition. It describes a <b><b>tree structure</b></b> where:
+</p>
+<ul class="org-ul">
+<li><b>Recursive Step</b>: A list can contain a list.</li>
+<li><b>Base Case</b>: A list can contain an atom (which is <b>not</b> a list).</li>
+</ul>
+
+<p>
+This allows for arbitrary nesting. A list isn&rsquo;t just a flat row of items; it is a container that can hold other containers, which can hold other containers, until you eventually hit rock bottom (the atoms).
+</p>
+</div>
+</div>
+<div id="outline-container-org24e3cbd" class="outline-3">
+<h3 id="org24e3cbd">1. The Recursive Mathematical Model</h3>
+<div class="outline-text-3" id="text-org24e3cbd">
+<p>
+To model this mathematically, we cannot define the set of all lists \(\mathcal{L}\) in one simple step. We must define it inductively (building it up layer by layer).
+</p>
+
+<p>
+Let \(\mathcal{A}\) be the set of <b>Atoms</b> (e.g., integers, symbols).
+Let \(\mathcal{L}\) be the set of <b>Lists</b>.
+</p>
+
+<p>
+We define \(\mathcal{L}\) as the <b>smallest set</b> satisfying these two axioms:
+</p>
+
+<ol class="org-ol">
+<li><b>The Empty List</b>: The empty sequence \(\langle \rangle\) is in \(\mathcal{L}\).</li>
+<li><b>The Construction Rule</b>: If \(x_1, x_2, \dots, x_n\) are elements where each \(x_i\) is either in \(\mathcal{A}\) (an atom) OR in \(\mathcal{L}\) (an existing list), then the ordered tuple \(\langle x_1, x_2, \dots, x_n \rangle\) is in \(\mathcal{L}\).</li>
+</ol>
+
+<p>
+\[L = \{ \langle x_1, \dots, x_n \rangle \mid n \ge 0 \land \forall i, (x_i \in A \lor x_i \in L) \}\]
+</p>
+
+<p>
+This effectively says: &ldquo;A list is an ordered sequence of things, where each thing is either an atom or a list.&rdquo;
+</p>
+</div>
+</div>
+<div id="outline-container-org84752f7" class="outline-3">
+<h3 id="org84752f7">2. Unpacking the &ldquo;Rank&rdquo; of a List</h3>
+<div class="outline-text-3" id="text-org84752f7">
+<p>
+This definition creates a hierarchy. You can imagine the set of lists \(\mathcal{L}\) being built in stages (often called &ldquo;ranks&rdquo; in set theory):
+</p>
+
+<ul class="org-ul">
+<li><b>Rank 0 (Simple Lists)</b>: Lists containing <b>only</b> atoms.
+<ul class="org-ul">
+<li>Example: \(\langle 1, 2, 3 \rangle\)</li>
+</ul></li>
+<li><b>Rank 1 (Nested Lists)</b>: Lists containing atoms and Rank 0 lists.
+<ul class="org-ul">
+<li>Example: \(\langle 1, \langle 2, 3 \rangle, 4 \rangle\)</li>
+</ul></li>
+<li><b>Rank k+1</b>: Lists containing elements from any Rank up to \(k\).</li>
+</ul>
+
+<p>
+The &ldquo;recursion&rdquo; is the ability to reference a lower rank inside a higher rank.
+</p>
+</div>
+</div>
+<div id="outline-container-org08be966" class="outline-3">
+<h3 id="org08be966">3. A Concrete Example</h3>
+<div class="outline-text-3" id="text-org08be966">
+<p>
+Let&rsquo;s trace the recursive definition for the list \(M = \langle 1, \langle 2, 3 \rangle \rangle\).
+</p>
+
+<ol class="org-ol">
+<li>Is \(2\) an atom? Yes (\(2 \in \mathcal{A}\)).</li>
+<li>Is \(3\) an atom? Yes (\(3 \in \mathcal{A}\)).</li>
+<li>Since \(2, 3 \in \mathcal{A}\), the tuple \(\langle 2, 3 \rangle\) is a valid List (Rank 0).</li>
+<li>Now look at \(M\).
+<ul class="org-ul">
+<li>Element 1: \(1\) (\(\in \mathcal{A}\)).</li>
+<li>Element 2: \(\langle 2, 3 \rangle\) (\(\in \mathcal{L}\), as proven in step 3).</li>
+</ul></li>
+<li>Since all elements are in \(\mathcal{A} \cup \mathcal{L}\), \(M\) is a valid List.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgc0121f7" class="outline-3">
+<h3 id="orgc0121f7">4. Connection to Scheme</h3>
+<div class="outline-text-3" id="text-orgc0121f7">
+<p>
+In your earlier Scheme context, this is exactly why <code>pair?</code> (or <code>cons</code>) works the way it does. The function to count the &ldquo;leaves&rdquo; of this tree (the atoms) must handle both cases of the definition:
+</p>
+
+<p>
+\[count(x) = \begin{cases} 1 & \text{if } x \in \text{Atom} \\ \sum count(e_i) & \text{if } x \in \text{List} \end{cases}\]
+</p>
+
+<p>
+This mirrors Péter&rsquo;s view: you cannot process the structure without acknowledging that the &ldquo;parts&rdquo; might be as complex as the &ldquo;whole.&rdquo;
+</p>
+</div>
+</div>
+</section>
+<section id="outline-container-org507ae8f" class="outline-2">
+<h2 id="org507ae8f">Scheme implementation of math sets</h2>
+<div class="outline-text-2" id="text-org507ae8f">
+</div>
+<div id="outline-container-orgde717ef" class="outline-3">
+<h3 id="orgde717ef">1. Theory of Representation</h3>
+<div class="outline-text-3" id="text-orgde717ef">
+<p>
+To represent a mathematical set \(S\) using a Scheme list \(L\), we must enforce the <b><b>invariance of uniqueness</b></b>.
+</p>
+<ul class="org-ul">
+<li><b>Math</b>: \(\{a, a\} = \{a\}\).</li>
+<li><b>Scheme</b>: <code>(list 'a 'a)</code> is distinct from <code>(list 'a)</code>.</li>
+<li><b>Solution</b>: Our constructor (<code>adjoin-set</code>) must filter duplicates to maintain the set property.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb9d5ff6" class="outline-3">
+<h3 id="orgb9d5ff6">2. Core Operations</h3>
+<div class="outline-text-3" id="text-orgb9d5ff6">
+</div>
+<div id="outline-container-orgce49449" class="outline-4">
+<h4 id="orgce49449">Membership (\(x \in S\))</h4>
+<div class="outline-text-4" id="text-orgce49449">
+<p>
+In Set Theory, determining membership is an atomic lookup. In Scheme lists, it is a linear scan (\(O(n)\)).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">element-of-set?</span> x set<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">cond</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>null? set<span style="color: #97b098;">)</span> false<span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>equal? x <span style="color: #aebed8;">(</span>car set<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span> true<span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #c678dd; font-weight: bold;">else</span> <span style="color: #97b098;">(</span>element-of-set? x <span style="color: #aebed8;">(</span>cdr set<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org981c191" class="outline-4">
+<h4 id="org981c191">Adjunction (\(S' = S \cup \{x\}\))</h4>
+<div class="outline-text-4" id="text-org981c191">
+<p>
+To add an element \(x\) to a set \(S\), we must check if \(x \in S\) first. This prevents the list from growing with duplicates.
+</p>
+<ul class="org-ul">
+<li><b>Complexity</b>: \(O(n)\) because of the call to <code>element-of-set?</code>.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">adjoin-set</span> x set<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">if</span> <span style="color: #b0b1a3;">(</span>element-of-set? x set<span style="color: #b0b1a3;">)</span>
+      set
+      <span style="color: #b0b1a3;">(</span>cons x set<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5572505" class="outline-3">
+<h3 id="org5572505">3. Set Algebra</h3>
+<div class="outline-text-3" id="text-org5572505">
+</div>
+<div id="outline-container-orgaebbf5c" class="outline-4">
+<h4 id="orgaebbf5c">Intersection (\(A \cap B\))</h4>
+<div class="outline-text-4" id="text-orgaebbf5c">
+<p>
+The intersection is the set of elements in \(A\) that are also in \(B\).
+</p>
+<ul class="org-ul">
+<li><b>Complexity</b>: \(O(n^2)\). For every element in set1, we scan set2.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">intersection-set</span> set1 set2<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">cond</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>null? set1<span style="color: #97b098;">)</span> '<span style="color: #97b098;">()</span><span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>element-of-set? <span style="color: #aebed8;">(</span>car set1<span style="color: #aebed8;">)</span> set2<span style="color: #97b098;">)</span>
+         <span style="color: #97b098;">(</span>cons <span style="color: #aebed8;">(</span>car set1<span style="color: #aebed8;">)</span>
+               <span style="color: #aebed8;">(</span>intersection-set <span style="color: #b0b0b3;">(</span>cdr set1<span style="color: #b0b0b3;">)</span> set2<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #c678dd; font-weight: bold;">else</span> <span style="color: #97b098;">(</span>intersection-set <span style="color: #aebed8;">(</span>cdr set1<span style="color: #aebed8;">)</span> set2<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb8357f7" class="outline-4">
+<h4 id="orgb8357f7">Union (\(A \cup B\))</h4>
+<div class="outline-text-4" id="text-orgb8357f7">
+<p>
+The union is all elements of \(A\) and all elements of \(B\), combined without duplicates.
+</p>
+<ul class="org-ul">
+<li><b>Implementation Note</b>: We recurse down set1. If an element is <b>not</b> in set2, we cons it to the result. Finally, we append set2 (which already contains unique elements).</li>
+<li><b>Complexity</b>: \(O(n^2)\).</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">union-set</span> set1 set2<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">cond</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>null? set1<span style="color: #97b098;">)</span> set2<span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>element-of-set? <span style="color: #aebed8;">(</span>car set1<span style="color: #aebed8;">)</span> set2<span style="color: #97b098;">)</span>
+         <span style="color: #97b098;">(</span>union-set <span style="color: #aebed8;">(</span>cdr set1<span style="color: #aebed8;">)</span> set2<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #c678dd; font-weight: bold;">else</span> <span style="color: #97b098;">(</span>cons <span style="color: #aebed8;">(</span>car set1<span style="color: #aebed8;">)</span>
+                    <span style="color: #aebed8;">(</span>union-set <span style="color: #b0b0b3;">(</span>cdr set1<span style="color: #b0b0b3;">)</span> set2<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org01a0463" class="outline-3">
+<h3 id="org01a0463">4. Optimization Theory: Ordered Lists</h3>
+<div class="outline-text-3" id="text-org01a0463">
+<p>
+If we change our representation to require that elements are listed in <b>ascending order</b>, we can improve performance drastically.
+</p>
+</div>
+<div id="outline-container-org4d21a24" class="outline-4">
+<h4 id="org4d21a24">Complexity Shift</h4>
+<div class="outline-text-4" id="text-org4d21a24">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operation</th>
+<th scope="col" class="org-left">Unordered List</th>
+<th scope="col" class="org-left">Ordered List</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">element-of-set?</td>
+<td class="org-left">\(O(n)\)</td>
+<td class="org-left">\(O(n)\) (avg \(n/2\))</td>
+</tr>
+
+<tr>
+<td class="org-left">intersection-set</td>
+<td class="org-left">\(O(n^2)\)</td>
+<td class="org-left">\(O(n)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">union-set</td>
+<td class="org-left">\(O(n^2)\)</td>
+<td class="org-left">\(O(n)\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org91dc848" class="outline-4">
+<h4 id="org91dc848">Ordered Intersection Logic</h4>
+<div class="outline-text-4" id="text-org91dc848">
+<p>
+Since both sets are sorted, we can compare the heads (cars) of the lists.
+</p>
+<ol class="org-ol">
+<li>If \(x1 = x2\), include element and advance both.</li>
+<li>If \(x1 < x2\), advance set1 (catch up).</li>
+<li>If \(x2 < x1\), advance set2.</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">intersection-set-ordered</span> set1 set2<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">if</span> <span style="color: #b0b1a3;">(</span><span style="color: #c678dd; font-weight: bold;">or</span> <span style="color: #97b098;">(</span>null? set1<span style="color: #97b098;">)</span> <span style="color: #97b098;">(</span>null? set2<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+      '<span style="color: #b0b1a3;">()</span>
+      <span style="color: #b0b1a3;">(</span><span style="color: #c678dd; font-weight: bold;">let</span> <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>x1 <span style="color: #b0b0b3;">(</span>car set1<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span> <span style="color: #aebed8;">(</span>x2 <span style="color: #b0b0b3;">(</span>car set2<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+        <span style="color: #97b098;">(</span><span style="color: #c678dd; font-weight: bold;">cond</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>= x1 x2<span style="color: #b0b0b3;">)</span>
+               <span style="color: #b0b0b3;">(</span>cons x1
+                     <span style="color: #90a890;">(</span>intersection-set-ordered <span style="color: #a2b6da;">(</span>cdr set1<span style="color: #a2b6da;">)</span>
+                                               <span style="color: #a2b6da;">(</span>cdr set2<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+              <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>&lt; x1 x2<span style="color: #b0b0b3;">)</span>
+               <span style="color: #b0b0b3;">(</span>intersection-set-ordered <span style="color: #90a890;">(</span>cdr set1<span style="color: #90a890;">)</span> set2<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+              <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>&lt; x2 x1<span style="color: #b0b0b3;">)</span>
+               <span style="color: #b0b0b3;">(</span>intersection-set-ordered set1 <span style="color: #90a890;">(</span>cdr set2<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-org6490140" class="outline-2">
+<h2 id="org6490140">Sets versus lists</h2>
+<div class="outline-text-2" id="text-org6490140">
+</div>
+<div id="outline-container-orga15ac7f" class="outline-3">
+<h3 id="orga15ac7f">Overview</h3>
+<div class="outline-text-3" id="text-orga15ac7f">
+<p>
+At first glance, sets and lists might look like siblings—they both hold &ldquo;stuff.&rdquo; However, in the world of mathematical foundations and functional programming, they are governed by entirely different sets of laws. One is an abstract collection defined by membership, while the other is a concrete, sequential data structure defined by its construction.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf6943ce" class="outline-3">
+<h3 id="orgf6943ce">1. Mathematical Sets</h3>
+<div class="outline-text-3" id="text-orgf6943ce">
+<p>
+In standard Zermelo-Fraenkel (ZF) set theory, a set is an <b>unordered</b> collection of <b>distinct</b> objects.
+</p>
+</div>
+<div id="outline-container-org3c8171c" class="outline-4">
+<h4 id="org3c8171c">Properties</h4>
+<div class="outline-text-4" id="text-org3c8171c">
+<ul class="org-ul">
+<li><b>Unordered</b>: The set \(\{1, 2, 3\}\) is identical to \(\{3, 2, 1\}\). There is no &ldquo;first&rdquo; element.</li>
+<li><b>Uniqueness</b>: Elements cannot be repeated. The collection \(\{a, a, b\}\) is simply the set \(\{a, b\}\).</li>
+<li><b>Extensionality</b>: Two sets are equal if and only if they have the same members.</li>
+<li><b>Membership</b>: The fundamental relationship is \(\in\) (membership). You don&rsquo;t &ldquo;index&rdquo; into a set; you simply ask if an object belongs to it.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org293f620" class="outline-4">
+<h4 id="org293f620">Example (Von Neumann Ordinals)</h4>
+<div class="outline-text-4" id="text-org293f620">
+<p>
+In the Von Neumann construction, the number \(2\) is defined as the set of all preceding ordinals:
+\[2 = \{0, 1\} = \{\emptyset, \{\emptyset\}\}\]
+It doesn&rsquo;t matter how you write those elements; the set is defined solely by its contents.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4c88a01" class="outline-3">
+<h3 id="org4c88a01">2. Scheme Lists</h3>
+<div class="outline-text-3" id="text-org4c88a01">
+<p>
+In Scheme (and most Lisp dialects), a list is a <b>sequential data structure</b> built out of <b>cons cells</b>.
+</p>
+</div>
+<div id="outline-container-orgc315c0d" class="outline-4">
+<h4 id="orgc315c0d">Properties</h4>
+<div class="outline-text-4" id="text-orgc315c0d">
+<ul class="org-ul">
+<li><b>Ordered</b>: The list <code>(1 2 3)</code> is fundamentally different from <code>(3 2 1)</code>. Order is preserved because the list is a chain of pointers.</li>
+<li><b>Multiplicity</b>: Elements can be repeated. <code>(a a b)</code> is a valid list with a length of 3.</li>
+<li><b>Inductive Definition</b>: A list is either:
+<ol class="org-ol">
+<li>The empty list <code>'()</code>, or</li>
+<li>A pair (cons cell) whose <code>car</code> is an element and whose <code>cdr</code> is a list.</li>
+</ol></li>
+<li><b>Access by Position</b>: Unlike sets, lists are navigated via <code>car</code> (the head) and <code>cdr</code> (the tail).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org95d7a4f" class="outline-4">
+<h4 id="org95d7a4f">Code Example</h4>
+<div class="outline-text-4" id="text-org95d7a4f">
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">my-list</span> '<span style="color: #93a8c6;">(</span>1 2 2 3<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">(car my-list) -&gt; 1
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">(cdr my-list) -&gt; (2 2 3)</span>
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8135de1" class="outline-3">
+<h3 id="org8135de1">3. Key Theoretical Differences</h3>
+<div class="outline-text-3" id="text-org8135de1">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Feature</th>
+<th scope="col" class="org-left">Mathematical Set</th>
+<th scope="col" class="org-left">Scheme List</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b><b>Identity</b></b></td>
+<td class="org-left">Defined by elements (Extensionality)</td>
+<td class="org-left">Defined by structure and order</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Duplicates</b></b></td>
+<td class="org-left">Not allowed (idempotent)</td>
+<td class="org-left">Allowed and distinct</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Order</b></b></td>
+<td class="org-left">Irrelevant</td>
+<td class="org-left">Primary characteristic</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Axiomatics</b></b></td>
+<td class="org-left">ZF Axioms (Pairing, Power Set, etc)</td>
+<td class="org-left">Algebra of Cons Cells (S-expressions)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Infinity</b></b></td>
+<td class="org-left">Can be truly infinite (e.g., \(\mathbb{R}\))</td>
+<td class="org-left">Usually finite (unless using Streams)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-org18d96bc" class="outline-4">
+<h4 id="org18d96bc">The &ldquo;Axiom of Choice&rdquo; vs. &ldquo;List-Ref&rdquo;</h4>
+<div class="outline-text-4" id="text-org18d96bc">
+<p>
+In set theory, if you have a collection of non-empty sets, the <b>Axiom of Choice</b> allows you to &ldquo;pick&rdquo; an element from each, even if you don&rsquo;t have a specific rule for how to pick them.
+</p>
+
+<p>
+In Scheme, you don&rsquo;t need an axiom to &ldquo;pick&rdquo; because the list is ordered. You use <code>list-ref</code>. However, finding an element in a list is an \(O(n)\) operation—you must traverse the &ldquo;links&rdquo; of the chain. In a pure mathematical set, we often treat membership as a logical primitive \(P(x)\), ignoring the &ldquo;cost&rdquo; of finding it.
+</p>
+</div>
+</div>
+<div id="outline-container-org7886b5a" class="outline-4">
+<h4 id="org7886b5a">Symbolic Differentiation Perspective</h4>
+<div class="outline-text-4" id="text-org7886b5a">
+<p>
+If you were writing a symbolic differentiator in Scheme, you would represent an expression like \(x + x\) as a list: <code>(+ x x)</code>.
+</p>
+<ul class="org-ul">
+<li>If you treated this as a <b>set</b>, \(\{+, x, x\}\) would collapse into \(\{+, x\}\), and your expression would lose its meaning.</li>
+<li>The <b>list</b> structure preserves the fact that the operator <code>+</code> is being applied to two distinct instances of the variable <code>x</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcc66f23" class="outline-3">
+<h3 id="orgcc66f23">4. Implementing Sets in Scheme</h3>
+<div class="outline-text-3" id="text-orgcc66f23">
+<p>
+Since lists allow duplicates and sets do not, we must enforce set semantics via functions.
+</p>
+</div>
+<div id="outline-container-orge6492eb" class="outline-4">
+<h4 id="orge6492eb">Membership (element-of-set?)</h4>
+<div class="outline-text-4" id="text-orge6492eb">
+<p>
+We scan the list. This is \(O(n)\), whereas in mathematical theory, membership is instantaneous.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">element-of-set?</span> x set<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">cond</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>null? set<span style="color: #97b098;">)</span> false<span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>equal? x <span style="color: #aebed8;">(</span>car set<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span> true<span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #c678dd; font-weight: bold;">else</span> <span style="color: #97b098;">(</span>element-of-set? x <span style="color: #aebed8;">(</span>cdr set<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5b5fe17" class="outline-4">
+<h4 id="org5b5fe17">Adjunction (adjoin-set)</h4>
+<div class="outline-text-4" id="text-org5b5fe17">
+<p>
+We only add the element if it is not already present. This preserves the <b>Uniqueness</b> property of sets.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">adjoin-set</span> x set<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">if</span> <span style="color: #b0b1a3;">(</span>element-of-set? x set<span style="color: #b0b1a3;">)</span>
+      set
+      <span style="color: #b0b1a3;">(</span>cons x set<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1f5b488" class="outline-4">
+<h4 id="org1f5b488">Intersection (intersection-set)</h4>
+<div class="outline-text-4" id="text-org1f5b488">
+<p>
+The intersection of set1 and set2 is the set of elements in set1 that are also in set2.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">intersection-set</span> set1 set2<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">cond</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>null? set1<span style="color: #97b098;">)</span> '<span style="color: #97b098;">()</span><span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>element-of-set? <span style="color: #aebed8;">(</span>car set1<span style="color: #aebed8;">)</span> set2<span style="color: #97b098;">)</span>
+         <span style="color: #97b098;">(</span>cons <span style="color: #aebed8;">(</span>car set1<span style="color: #aebed8;">)</span>
+               <span style="color: #aebed8;">(</span>intersection-set <span style="color: #b0b0b3;">(</span>cdr set1<span style="color: #b0b0b3;">)</span> set2<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #c678dd; font-weight: bold;">else</span> <span style="color: #97b098;">(</span>intersection-set <span style="color: #aebed8;">(</span>cdr set1<span style="color: #aebed8;">)</span> set2<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-orgb67cfc2" class="outline-2">
+<h2 id="orgb67cfc2">Some ML logic</h2>
+<div class="outline-text-2" id="text-orgb67cfc2">
+<p>
+Atomic Expressions in Standard ML
+</p>
+
+\begin{align*}
+C \vdash \text{atexp} \Rightarrow \tau
+\end{align*}
+</div>
+<div id="outline-container-orgb750b96" class="outline-3">
+<h3 id="orgb750b96">(1) Special Constants</h3>
+<div class="outline-text-3" id="text-orgb750b96">
+<p>
+\[
+   \frac{
+   }{
+     C \vdash \text{scon} \Rightarrow \text{type}(\text{scon})
+   }
+   \]
+</p>
+</div>
+</div>
+<div id="outline-container-org65bc268" class="outline-3">
+<h3 id="org65bc268">(2) Value Identifiers</h3>
+<div class="outline-text-3" id="text-org65bc268">
+<p>
+\[
+   \frac{
+     C(\text{longvid}) = (\sigma, is) \quad \sigma \succ \tau
+   }{
+     C \vdash \text{longvid} \Rightarrow \tau
+   }
+   \]
+</p>
+</div>
+</div>
+<div id="outline-container-orgfcdabc2" class="outline-3">
+<h3 id="orgfcdabc2">(3) Records</h3>
+<div class="outline-text-3" id="text-orgfcdabc2">
+<p>
+\[
+   \frac{
+     \langle C \vdash \text{exprow} \Rightarrow \rho \rangle
+   }{
+     C \vdash \{ \langle \text{exprow} \rangle \} \Rightarrow \{\} \langle + \rho \rangle \text{ in Type}
+   }
+   \]
+</p>
+</div>
+</div>
+<div id="outline-container-orgc9af7d7" class="outline-3">
+<h3 id="orgc9af7d7">(4) Let Expressions</h3>
+<div class="outline-text-3" id="text-orgc9af7d7">
+<p>
+\[
+   \frac{
+     C \vdash \text{dec} \Rightarrow E \quad C \oplus E \vdash \text{exp} \Rightarrow \tau \quad \text{tynames}\ \tau \subseteq T \text{ of } C
+   }{
+     C \vdash \text{let}\ \text{dec}\ \text{in}\ \text{exp}\ \text{end} \Rightarrow \tau
+   }
+   \]
+</p>
+</div>
+</div>
+<div id="outline-container-org5445f5b" class="outline-3">
+<h3 id="org5445f5b">(5) Parenthesized Expressions</h3>
+<div class="outline-text-3" id="text-org5445f5b">
+<p>
+\[
+   \frac{
+     C \vdash \text{exp} \Rightarrow \tau
+   }{
+     C \vdash (\text{exp}) \Rightarrow \tau
+   }
+   \]
+</p>
+</div>
+</div>
+</section>
+<section id="outline-container-org44acc09" class="outline-2">
+<h2 id="org44acc09">Converting function application to predicate logic</h2>
+<div class="outline-text-2" id="text-org44acc09">
+</div>
+<div id="outline-container-orgf30939b" class="outline-3">
+<h3 id="orgf30939b">Function equals to Predicate Logic iff</h3>
+<div class="outline-text-3" id="text-orgf30939b">
+<p>
+To convert the algebraic functional form (\(f(a)=f(b)\)) into the strict logical predicate form (\(P(a) \iff P(b)\)), we must turn the <b>calculation</b> \(x^2\) into a <b>True/False statement</b>.
+</p>
+</div>
+<div id="outline-container-org259b20e" class="outline-4">
+<h4 id="org259b20e">1. The Setup</h4>
+<div class="outline-text-4" id="text-org259b20e">
+<ul class="org-ul">
+<li><b>Assumption:</b> \[ a = b \]</li>
+<li><b>Function:</b> \[ f(x) = x^2 \]</li>
+<li><b>Target Conclusion:</b> \[ a^2 = b^2 \]</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org60da5b2" class="outline-4">
+<h4 id="org60da5b2">2. Defining the Predicate \(P(x)\)</h4>
+<div class="outline-text-4" id="text-org60da5b2">
+<p>
+To bridge the gap, we must define a property \(P\) that checks if a number&rsquo;s square is equal to a specific value. Since we want to prove the result equals \(b^2\), we fix \(b^2\) as our target.
+</p>
+
+<p>
+Define the predicate \(P(x)\) as:
+</p>
+
+<p>
+\[ P(x) \iff (x^2 = b^2) \]
+</p>
+
+<p>
+<i>(In English: &ldquo;\(P(x)\) is true if and only if the square of \(x\) is equal to \(b^2\).&rdquo; Note that \(b\) is treated as a fixed constant in this definition.)</i>
+</p>
+</div>
+</div>
+<div id="outline-container-org3d7406a" class="outline-4">
+<h4 id="org3d7406a">3. The Logical Execution</h4>
+<div class="outline-text-4" id="text-org3d7406a">
+<p>
+Now we apply the Substitution Principle (\(a=b \implies P(a) \iff P(b)\)) using our custom predicate.
+</p>
+</div>
+<div id="outline-container-org75a6fe5" class="outline-5">
+<h5 id="org75a6fe5">Step A: Evaluate \(P(b)\)</h5>
+<div class="outline-text-5" id="text-org75a6fe5">
+<p>
+Plug \(b\) into our definition:
+\[ P(b) \iff (b^2 = b^2) \]
+Since any number is equal to itself (Reflexivity), this statement is <b>True</b>.
+</p>
+</div>
+</div>
+<div id="outline-container-org9f48080" class="outline-5">
+<h5 id="org9f48080">Step B: Apply Substitution</h5>
+<div class="outline-text-5" id="text-org9f48080">
+<p>
+Since \(a = b\), the Substitution Principle states that \(P(a)\) must have the same truth value as \(P(b)\).
+\[ P(b) \text{ is True} \implies P(a) \text{ is True} \]
+</p>
+</div>
+</div>
+<div id="outline-container-orgd31bf4f" class="outline-5">
+<h5 id="orgd31bf4f">Step C: Unpack \(P(a)\)</h5>
+<div class="outline-text-5" id="text-orgd31bf4f">
+<p>
+Now look at what \(P(a)\) actually means according to our definition:
+\[ P(a) \iff (a^2 = b^2) \]
+</p>
+
+<p>
+<b>Conclusion:</b> Since \(P(a)\) is True, it must be the case that \[ a^2 = b^2 \].
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org375df87" class="outline-4">
+<h4 id="org375df87">Summary Table</h4>
+<div class="outline-text-4" id="text-org375df87">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Concept</th>
+<th scope="col" class="org-left">Algebraic Form</th>
+<th scope="col" class="org-left">Logical Predicate Form</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>The Input</b></td>
+<td class="org-left">\(a\)</td>
+<td class="org-left">\(a\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>The &ldquo;Machine&rdquo;</b></td>
+<td class="org-left">\(f(x) = x^2\)</td>
+<td class="org-left">\(P(x) \equiv (x^2 = b^2)\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>The Operation</b></td>
+<td class="org-left">Calculate \(a^2\)</td>
+<td class="org-left">Check: Is \(P(a)\) True?</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>The Guarantee</b></td>
+<td class="org-left">The <i>values</i> are equal</td>
+<td class="org-left">The <i>truth values</i> are identical</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-org0313799" class="outline-2">
+<h2 id="org0313799">Haskell function equality</h2>
+<div class="outline-text-2" id="text-org0313799">
+</div>
+<div id="outline-container-org41926bf" class="outline-3">
+<h3 id="org41926bf">Haskell, Logic, and the Problem of Function Equality</h3>
+<div class="outline-text-3" id="text-org41926bf">
+<p>
+The refusal of Haskell to allow <code>f == g</code> is a direct consequence of upholding the strict logical definitions of <b>Leibniz&rsquo;s Law</b> and the <b>Substitution Principle</b>.
+</p>
+</div>
+<div id="outline-container-orgb5d4a0e" class="outline-4">
+<h4 id="orgb5d4a0e">The Core Conflict: Math vs. Computation</h4>
+<div class="outline-text-4" id="text-orgb5d4a0e">
+<p>
+In the world of logic (and Haskell), there are two competing ways to define if two functions are &ldquo;equal&rdquo;.
+</p>
+</div>
+<div id="outline-container-org2e631b9" class="outline-5">
+<h5 id="org2e631b9">1. Extensional Equality (The Mathematical/Leibniz View)</h5>
+<div class="outline-text-5" id="text-org2e631b9">
+<p>
+In set theory and logic, two functions \(f\) and \(g\) are equal if and only if they produce the same result for every possible input.
+</p>
+
+<p>
+\[ f = g \iff \forall x, f(x) = g(x) \]
+</p>
+
+<p>
+This is known as <b>Extensionality</b>. It focuses on the behavior (the extension), not the internal implementation.
+</p>
+
+<ul class="org-ul">
+<li><b>Function A:</b> <code>f x = x + x</code></li>
+<li><b>Function B:</b> <code>g x = 2 * x</code></li>
+</ul>
+
+<p>
+Mathematically, \(f = g\). If we follow <b>Leibniz&rsquo;s Law</b>, substituting \(f\) for \(g\) in any valid mathematical expression should not change the truth value of that expression.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf339d5d" class="outline-5">
+<h5 id="orgf339d5d">2. The Haskell Problem: The Halting Problem</h5>
+<div class="outline-text-5" id="text-orgf339d5d">
+<p>
+Why does Haskell complain if you try to derive <code>Eq</code> for a function type?
+</p>
+
+<p>
+To implement <code>==</code> for functions in a way that respects the mathematical definition above, the compiler would have to check the output of \(f(x)\) and \(g(x)\) for <b>every single possible input</b> \(x\).
+</p>
+
+<ol class="org-ol">
+<li><b>Infinite Domains:</b> If the input type is <code>Integer</code>, the computer must check an infinite number of cases. It would never finish.</li>
+<li><b>Rice&rsquo;s Theorem (The Halting Problem):</b> Even with a finite domain, the computer cannot determine if \(f(x)\) will ever return a value or if it will loop forever.
+<ul class="org-ul">
+<li>It is mathematically proven (<b>Rice&rsquo;s Theorem</b>) that determining any non-trivial property of a function&rsquo;s behavior (including &ldquo;is it equal to this other function?&rdquo;) is <b>undecidable</b>.</li>
+</ul></li>
+</ol>
+
+<p>
+Because Haskell cannot guarantee it can check <b>Extensional Equality</b> (the math kind), it refuses to provide an <code>==</code> operator at all.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org1345e6f" class="outline-4">
+<h4 id="org1345e6f">Why not just check if they are the &ldquo;same code&rdquo;?</h4>
+<div class="outline-text-4" id="text-org1345e6f">
+<p>
+You might ask: <i>Why doesn&rsquo;t Haskell just check if <code>f</code> and <code>g</code> point to the same memory address or have the same source code?</i>
+</p>
+
+<p>
+This is called <b>Intensional Equality</b> (identity of definition or implementation). Languages like Lisp/Scheme (via <code>eq?</code>) or Java (via <code>==</code>) often allow this.
+</p>
+
+<p>
+Haskell avoids this because it breaks <b>Referential Transparency</b> (The Substitution Principle).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code>  <span style="color: #c678dd; font-weight: bold;">let</span> f <span style="color: #61afef;">=</span> <span style="color: #61afef;">\</span>x <span style="color: #61afef;">-&gt;</span> x <span style="color: #61afef;">+</span> 1
+  <span style="color: #c678dd; font-weight: bold;">let</span> g <span style="color: #61afef;">=</span> <span style="color: #61afef;">\</span>x <span style="color: #61afef;">-&gt;</span> 1 <span style="color: #61afef;">+</span> x
+</code></pre>
+</div>
+
+<ul class="org-ul">
+<li><b>Mathematically:</b> These are identical (\(f = g\)).</li>
+<li><b>Intensionally (in memory):</b> These are different code objects.</li>
+</ul>
+
+<p>
+If Haskell allowed <code>f == g</code> to return <code>False</code> just because they were defined differently, it would break the promise that &ldquo;equals can be substituted for equals.&rdquo; It would force you to care about <b>how</b> the function was written, rather than <b>what</b> it calculates.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb04f825" class="outline-4">
+<h4 id="orgb04f825">Summary</h4>
+<div class="outline-text-4" id="text-orgb04f825">
+<p>
+Haskell&rsquo;s missing <code>Eq</code> instance for functions is the language designers making a principled stand:
+</p>
+
+<blockquote>
+<p>
+&ldquo;We cannot implement <b><b>Leibniz&rsquo;s Law</b></b> (true mathematical equality) for functions because of the Halting Problem. We refuse to implement <b><b>Pointer Equality</b></b> (cheap equality) because it violates the Substitution Principle.&rdquo;
+</p>
+</blockquote>
+
+<p>
+Because it can&rsquo;t do the &ldquo;correct&rdquo; logical thing, it chooses to do nothing.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-org8dfee0a" class="outline-2">
+<h2 id="org8dfee0a">Physics problem: ball thrown into air</h2>
+<div class="outline-text-2" id="text-org8dfee0a">
+</div>
+<div id="outline-container-org2c8b4f1" class="outline-3">
+<h3 id="org2c8b4f1">Deriving the height–time equation from Newton’s Laws</h3>
+<div class="outline-text-3" id="text-org2c8b4f1">
+<p>
+We’ll derive the equation of motion step by step and show how the familiar 
+quadratic form 
+</p>
+
+\begin{align*}
+h(t) = -16t^2 + 40t + 5
+\end{align*}
+
+<p>
+arises directly from Newton’s Second Law.
+</p>
+</div>
+<div id="outline-container-org5fa8ea5" class="outline-4">
+<h4 id="org5fa8ea5">Step 1. Newton’s Second Law</h4>
+<div class="outline-text-4" id="text-org5fa8ea5">
+\begin{align*}
+F = ma
+\end{align*}
+
+<p>
+where
+</p>
+<ul class="org-ul">
+<li>\( F \): net force acting on the object,</li>
+<li>\( m \): mass of the object,</li>
+<li>\( a \): acceleration.</li>
+</ul>
+
+<p>
+After the ball leaves your hand, the only force acting on it (ignoring air resistance)
+is gravity.
+</p>
+</div>
+</div>
+<div id="outline-container-orgebfd51c" class="outline-4">
+<h4 id="orgebfd51c">Step 2. Gravity as a constant acceleration</h4>
+<div class="outline-text-4" id="text-orgebfd51c">
+<p>
+Gravity near Earth’s surface produces a constant acceleration:
+</p>
+
+\begin{align*}
+a = -g
+\end{align*}
+
+<p>
+where \( g = 32\, \text{ft/s}^2 \).
+</p>
+
+<p>
+The negative sign indicates that gravity acts downward. So:
+</p>
+
+\begin{align*}
+a = -32 \text{ ft/s}^2
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org66bed1d" class="outline-4">
+<h4 id="org66bed1d">Step 3. Relate acceleration to velocity</h4>
+<div class="outline-text-4" id="text-org66bed1d">
+<p>
+Acceleration is the rate of change of velocity:
+</p>
+
+\begin{align*}
+a = \frac{dv}{dt}
+\end{align*}
+
+<p>
+Substitute \( a = -32 \):
+</p>
+
+\begin{align*}
+\frac{dv}{dt} = -32
+\end{align*}
+
+<p>
+Integrate both sides:
+</p>
+
+\begin{align*}
+v(t) = -32t + C_1
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org0970ed4" class="outline-4">
+<h4 id="org0970ed4">Step 4. Apply initial conditions for velocity</h4>
+<div class="outline-text-4" id="text-org0970ed4">
+<p>
+If the initial upward velocity is \( v_0 = 40 \text{ ft/s} \), then:
+</p>
+
+\begin{align*}
+v(0) = 40 = -32(0) + C_1 \Rightarrow C_1 = 40
+\end{align*}
+
+<p>
+So:
+</p>
+
+\begin{align*}
+v(t) = -32t + 40
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org85ab081" class="outline-4">
+<h4 id="org85ab081">Step 5. Relate velocity to position (height)</h4>
+<div class="outline-text-4" id="text-org85ab081">
+<p>
+Velocity is the rate of change of height:
+</p>
+
+\begin{align*}
+v = \frac{dh}{dt}
+\end{align*}
+
+<p>
+Substitute \( v(t) \):
+</p>
+
+\begin{align*}
+\frac{dh}{dt} = -32t + 40
+\end{align*}
+
+<p>
+Integrate again:
+</p>
+
+\begin{align*}
+h(t) = -16t^2 + 40t + C_2
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org225b935" class="outline-4">
+<h4 id="org225b935">Step 6. Apply the initial height</h4>
+<div class="outline-text-4" id="text-org225b935">
+<p>
+If the ball is released from \( h(0) = 5 \) ft:
+</p>
+
+\begin{align*}
+5 = -16(0)^2 + 40(0) + C_2 \Rightarrow C_2 = 5
+\end{align*}
+</div>
+</div>
+<div id="outline-container-orgd43fc94" class="outline-4">
+<h4 id="orgd43fc94">Step 7. Final equation of motion</h4>
+<div class="outline-text-4" id="text-orgd43fc94">
+\begin{align*}
+\boxed{h(t) = -16t^2 + 40t + 5}
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org26bb722" class="outline-4">
+<h4 id="org26bb722">Step 8. Physical interpretation of each term</h4>
+<div class="outline-text-4" id="text-org26bb722">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Term</th>
+<th scope="col" class="org-left">Meaning</th>
+<th scope="col" class="org-left">Origin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\( -16t^2 \)</td>
+<td class="org-left">downward pull of gravity</td>
+<td class="org-left">acceleration \( a = -32 \)</td>
+</tr>
+
+<tr>
+<td class="org-left">\( +40t \)</td>
+<td class="org-left">initial upward velocity contribution</td>
+<td class="org-left">force of the throw</td>
+</tr>
+
+<tr>
+<td class="org-left">\( +5 \)</td>
+<td class="org-left">initial height above ground</td>
+<td class="org-left">starting position</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org0e605d2" class="outline-4">
+<h4 id="org0e605d2">Step 9. Finding the maximum height (the vertex)</h4>
+<div class="outline-text-4" id="text-org0e605d2">
+<p>
+The vertex of the parabola gives the time and height at the ball’s
+highest point. The general quadratic form is:
+</p>
+
+\begin{align*}
+h(t) = at^2 + bt + c
+\end{align*}
+
+<p>
+Here \( a = -16 \), \( b = 40 \), and \( c = 5 \).
+</p>
+</div>
+<div id="outline-container-org8d4c2f8" class="outline-5">
+<h5 id="org8d4c2f8">(a) Time of maximum height</h5>
+<div class="outline-text-5" id="text-org8d4c2f8">
+<p>
+The vertex occurs when:
+</p>
+
+\begin{align*}
+t_{\text{max}} = -\frac{b}{2a}
+\end{align*}
+
+<p>
+Compute:
+</p>
+
+\begin{align*}
+t_{\text{max}} = -\frac{40}{2(-16)} = \frac{40}{32} = 1.25 \text{ seconds.}
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org6655ac7" class="outline-5">
+<h5 id="org6655ac7">(b) Maximum height</h5>
+<div class="outline-text-5" id="text-org6655ac7">
+<p>
+Substitute \( t = 1.25 \) into \( h(t) \):
+</p>
+
+\begin{align*}
+h(1.25) = -16(1.25)^2 + 40(1.25) + 5
+         = -16(1.5625) + 50 + 5
+         = -25 + 55
+         = 30 \text{ ft.}
+\end{align*}
+
+<p>
+So the ball reaches its peak 1.25 seconds after being thrown, at a
+height of 30 feet.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org9fb1fbd" class="outline-4">
+<h4 id="org9fb1fbd">Step 10. Finding when the ball hits the ground</h4>
+<div class="outline-text-4" id="text-org9fb1fbd">
+<p>
+The ball hits the ground when \( h(t) = 0 \):
+</p>
+
+\begin{align*}
+-16t^2 + 40t + 5 = 0
+\end{align*}
+
+<p>
+Divide both sides by \(-1\):
+</p>
+
+\begin{align*}
+16t^2 - 40t - 5 = 0
+\end{align*}
+
+<p>
+Use the quadratic formula:
+</p>
+
+\begin{align*}
+t = \frac{40 \pm \sqrt{(-40)^2 - 4(16)(-5)}}{2(16)}
+  = \frac{40 \pm \sqrt{1600 + 320}}{32}
+  = \frac{40 \pm \sqrt{1920}}{32}
+  = \frac{40 \pm 43.82}{32}
+\end{align*}
+
+<p>
+So:
+</p>
+
+\begin{align*}
+t_1 \approx -0.12 \text{ s} \quad \text{and} \quad t_2 \approx 2.62 \text{ s.}
+\end{align*}
+
+<p>
+The negative time is not physical; we discard \( t_1 \).  
+Thus, the ball strikes the ground at \( t = 2.62 \) seconds after launch.
+</p>
+</div>
+</div>
+<div id="outline-container-org64c8bb7" class="outline-4">
+<h4 id="org64c8bb7">Step 11. Impact velocity</h4>
+<div class="outline-text-4" id="text-org64c8bb7">
+<p>
+To find the velocity when it hits the ground, substitute \( t = 2.62 \) into \( v(t) = -32t + 40 \):
+</p>
+
+\begin{align*}
+v(2.62) = -32(2.62) + 40 = -83.84 + 40 = -43.84 \text{ ft/s.}
+\end{align*}
+
+<p>
+So the ball hits the ground moving downward at approximately \( 43.8 \text{ ft/s} \).
+</p>
+</div>
+</div>
+<div id="outline-container-org30a4d89" class="outline-4">
+<h4 id="org30a4d89">Step 12. Summary of full motion</h4>
+<div class="outline-text-4" id="text-org30a4d89">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Quantity</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Value</th>
+<th scope="col" class="org-left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Acceleration</td>
+<td class="org-left">\( a \)</td>
+<td class="org-left">\( -32 \text{ ft/s}^2 \)</td>
+<td class="org-left">Gravity (downward)</td>
+</tr>
+
+<tr>
+<td class="org-left">Initial velocity</td>
+<td class="org-left">\( v_0 \)</td>
+<td class="org-left">\( 40 \text{ ft/s} \)</td>
+<td class="org-left">Upward throw speed</td>
+</tr>
+
+<tr>
+<td class="org-left">Initial height</td>
+<td class="org-left">\( h_0 \)</td>
+<td class="org-left">\( 5 \text{ ft} \)</td>
+<td class="org-left">Release height</td>
+</tr>
+
+<tr>
+<td class="org-left">Time to max height</td>
+<td class="org-left">\( t_{\text{max}} \)</td>
+<td class="org-left">\( 1.25 \text{ s} \)</td>
+<td class="org-left">At highest point</td>
+</tr>
+
+<tr>
+<td class="org-left">Maximum height</td>
+<td class="org-left">\( h_{\text{max}} \)</td>
+<td class="org-left">\( 30 \text{ ft} \)</td>
+<td class="org-left">Peak of trajectory</td>
+</tr>
+
+<tr>
+<td class="org-left">Time of impact</td>
+<td class="org-left">\( t_{\text{ground}} \)</td>
+<td class="org-left">\( 2.62 \text{ s} \)</td>
+<td class="org-left">Ball hits ground</td>
+</tr>
+
+<tr>
+<td class="org-left">Impact velocity</td>
+<td class="org-left">\( v_{\text{impact}} \)</td>
+<td class="org-left">\( -43.8 \text{ ft/s} \)</td>
+<td class="org-left">Downward speed at ground</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org5ab56b1" class="outline-4">
+<h4 id="org5ab56b1">Step 13. Final system of motion</h4>
+<div class="outline-text-4" id="text-org5ab56b1">
+<p>
+Together, the ball’s motion is fully described by:
+</p>
+
+\begin{align*}
+\begin{cases}
+h(t) = -16t^2 + 40t + 5 \\
+v(t) = -32t + 40
+\end{cases}
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org4dcf870" class="outline-4">
+<h4 id="org4dcf870">Step 14. Optional: Verify energy conservation</h4>
+<div class="outline-text-4" id="text-org4dcf870">
+<p>
+To check energy consistency, compare <b>kinetic energy (KE)</b> and <b>potential energy (PE)</b> at various points.
+</p>
+
+<p>
+For a ball of mass \( m \) (in slugs), we have:
+</p>
+
+\begin{align*}
+\text{Total Energy } = \text{KE} + \text{PE} = \frac{1}{2}mv^2 + mgh
+\end{align*}
+
+<p>
+Here \( g = 32 \text{ ft/s}^2 \).
+</p>
+</div>
+<div id="outline-container-org160238c" class="outline-5">
+<h5 id="org160238c">(a) At launch \((t = 0)\)</h5>
+<div class="outline-text-5" id="text-org160238c">
+\begin{align*}
+v = 40, \quad h = 5
+\end{align*}
+
+\begin{align*}
+E_0 = \frac{1}{2}m(40)^2 + m(32)(5)
+     = (800 + 160)m
+     = 960m
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org5b806d2" class="outline-5">
+<h5 id="org5b806d2">(b) At maximum height \((t = 1.25)\)</h5>
+<div class="outline-text-5" id="text-org5b806d2">
+<p>
+At the top, \( v = 0 \) and \( h = 30 \):
+</p>
+
+\begin{align*}
+E_{\text{top}} = \frac{1}{2}m(0)^2 + m(32)(30)
+                = 960m
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org7a582ff" class="outline-5">
+<h5 id="org7a582ff">(c) At impact (back at ground level, \( h = 0 \))</h5>
+<div class="outline-text-5" id="text-org7a582ff">
+<p>
+Velocity at \( t = 2.62 \): \( v = -43.84 \) ft/s  
+</p>
+
+\begin{align*}
+E_{\text{ground}} = \frac{1}{2}m(43.84)^2 + m(32)(0)
+                  \approx (960)m
+\end{align*}
+
+<p>
+Thus,
+</p>
+
+\begin{align*}
+E_0 = E_{\text{top}} = E_{\text{ground}} = 960m
+\end{align*}
+
+<p>
+confirming <b><b>conservation of mechanical energy</b></b> (no loss or gain — only transformation between kinetic and potential energy).
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org100b653" class="outline-4">
+<h4 id="org100b653">Step 15. Interpretation</h4>
+<div class="outline-text-4" id="text-org100b653">
+<ul class="org-ul">
+<li>The ball trades <b>kinetic energy</b> (speed) for <b>potential energy</b> (height) as it rises.</li>
+<li>At the top, all kinetic energy is converted into potential energy.</li>
+<li>On the way down, potential energy transforms back into kinetic energy.</li>
+<li>The total energy remains constant — a perfect physical consistency check.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-org37cd64c" class="outline-2">
+<h2 id="org37cd64c">Quadratic as a product of linear factors</h2>
+<div class="outline-text-2" id="text-org37cd64c">
+<p>
+The equation \(y = ax^2 + bx + c\) is not linear because the variable
+\(x\) appears with a power of \(2\), i.e., it’s a quadratic equation.
+</p>
+
+<p>
+When you pair it with \(y = 0\), you indeed have a system of two
+equations, but it is not a linear system because one of those
+equations is non-linear. Specifically,
+</p>
+
+\begin{align*}
+y &= ax^2 + bx + c \\
+y &= 0
+\end{align*}
+
+\begin{cases}
+y = ax^2 + bx + c \\
+y = 0
+\end{cases}
+
+<p>
+describes the intersection points between a parabola and the x-axis.  
+</p>
+
+<p>
+Solving this system means finding all \(x\) values that satisfy both
+equations, which comes from substituting \(y = 0\) into the quadratic,
+giving  \(0 = ax^2 + bx + c\).
+</p>
+
+<p>
+When we factor this (if possible) as \(a(x - r_{1})(x - r_{2}) = 0\), we
+get the linear factors \((x - r_{1})\) and \((x - r_{2})\) — each
+representing a line (degree 1 equation in \(x\)).
+</p>
+
+<ul class="org-ul">
+<li>We start with a non-linear system (the parabola and the x-axis).</li>
+<li>But solving for the roots involves factoring the quadratic into
+linear factors, which allows us to solve simple linear equations
+\((x - r_{1}) = 0\) or \((x - r_{2}) = 0\).</li>
+</ul>
+</div>
+</section>
+<section id="outline-container-org6017210" class="outline-2">
+<h2 id="org6017210">Reflexivity, identity matrix, diagonal line</h2>
+<div class="outline-text-2" id="text-org6017210">
+</div>
+</section>
+<section id="outline-container-org36242ad" class="outline-2">
+<h2 id="org36242ad">Boole&rsquo;s Indentity</h2>
+<div class="outline-text-2" id="text-org36242ad">
+<p>
+In George Boole&rsquo;s algebraic approach to logic, as detailed in his
+works like <b>The Mathematical Analysis of Logic</b> (1847) and <b>The Laws
+of Thought</b> (1854), he reinterpreted classical logical principles
+through symbols and operations that behave like algebra but represent
+classes or propositions. The equation \(x^2 = x\), equivalently
+factored as \(x(x-1) = 0\), is central to this system and directly
+ties to Aristotle&rsquo;s Law of Identity (often stated as &ldquo;A is A&rdquo; or
+&ldquo;everything is what it is and not something else&rdquo;).
+</p>
+</div>
+<div id="outline-container-org3f83322" class="outline-3">
+<h3 id="org3f83322">Connection to the Law of Identity</h3>
+<div class="outline-text-3" id="text-org3f83322">
+<p>
+Boole&rsquo;s system treats variables like \(x\) as representing classes of objects within a &ldquo;universe of discourse&rdquo; (all conceivable things under consideration). The operation of multiplication (e.g., \(xy\)) corresponds to logical intersection or conjunction—selecting elements that belong to both classes \(x\) and \(y\). Applying this to the same class twice gives \(x \cdot x = x^2\), which means intersecting a class with itself.
+</p>
+
+<ul class="org-ul">
+<li>The equation \(x^2 = x\) captures the idea that a class intersected with itself yields exactly the same class—no more, no less. This is idempotence in logical terms: repeating the selection or affirmation of a class doesn&rsquo;t alter it.</li>
+<li>This mirrors the Law of Identity because it algebraically expresses self-equality or self-consistency: a thing (or class) is identical to itself. Performing the &ldquo;act&rdquo; of identifying or selecting \(x\) multiple times always results in \(x\), just as &ldquo;A is A&rdquo; asserts unchanging self-identity.</li>
+<li>The factored form \(x(x-1) = 0\) further restricts solutions to \(x = 0\) (nothing, or false) or \(x = 1\) (everything in the class, or true), enforcing a binary logic where partial or intermediate values aren&rsquo;t allowed. This binary constraint aligns with absolute identity—something either fully is itself (1) or isn&rsquo;t (0), with no ambiguity.</li>
+</ul>
+
+<p>
+In essence, Boole transformed the philosophical principle of identity into a mathematical axiom that governs how symbols behave in his algebra, making logic computable and operational.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf945b5f" class="outline-3">
+<h3 id="orgf945b5f">Relation to Reflexivity</h3>
+<div class="outline-text-3" id="text-orgf945b5f">
+<p>
+Reflexivity typically refers to properties in relations (e.g.,
+equality is reflexive because \(a = a\)) or systems where an element
+relates to itself. While Boole&rsquo;s equation isn&rsquo;t explicitly about
+relations, it embodies a reflexive quality in the context of classes
+or propositions:
+</p>
+
+<ul class="org-ul">
+<li>\(x^2 = x\) implies a self-referential consistency: the class \(x\) &ldquo;relates&rdquo; to itself through intersection without change, akin to reflexivity in set theory (e.g., \(X \cap X = X\)).</li>
+<li>Boole saw this as a &ldquo;law of thought&rdquo; fundamental to reasoning, often calling it the &ldquo;index law&rdquo; or &ldquo;law of duality.&rdquo; It ensures that logical operations are stable and self-consistent, reflecting the reflexive nature of identity in Aristotle&rsquo;s sense—nothing can be both itself and not itself.</li>
+</ul>
+
+<p>
+This isn&rsquo;t a direct mapping to modern relational reflexivity (as in binary relations), but it provides the foundational algebraic property that enables such concepts in Boolean logic.
+</p>
+</div>
+</div>
+<div id="outline-container-org262d4f4" class="outline-3">
+<h3 id="org262d4f4">Elective Symbols</h3>
+<div class="outline-text-3" id="text-org262d4f4">
+<p>
+Boole introduced &ldquo;elective symbols&rdquo; (also called &ldquo;selective&rdquo; or
+&ldquo;elective operators&rdquo;) to describe these variables like \(x, y,
+z\). The term &ldquo;elective&rdquo; comes from the idea of &ldquo;election&rdquo; or
+selection:
+</p>
+
+<ul class="org-ul">
+<li>An elective symbol \(x\) acts as an operator that &ldquo;elects&rdquo; or selects a subset from the universe of discourse—picking out all individuals or elements that satisfy the property \(x\).</li>
+<li>For example, if the universe is all animals, \(x\) might elect all &ldquo;white&rdquo; animals. Then \(x^2\) means electing &ldquo;white&rdquo; from the already elected &ldquo;white,&rdquo; which should still just be &ldquo;white&rdquo; (hence \(x^2 = x\)).</li>
+<li>These symbols are &ldquo;elective&rdquo; because they perform an act of choice or filtration, and their algebraic behavior (like idempotence) derives from logical necessities. Boole emphasized that elective symbols inherently satisfy \(x^2 = x\) as a fundamental law, derived from the nature of thought and classification.</li>
+<li>In his words (from sources like <i>The Laws of Thought</i>), this law means &ldquo;that the result of a given act of election twice performed is the same as if performed but once.&rdquo; It&rsquo;s not arbitrary but a reflection of how the mind categorizes and identifies.</li>
+</ul>
+
+<p>
+This framework laid the groundwork for modern Boolean algebra, digital circuits, and computer logic, where 0 and 1 represent false/true, and operations like AND/OR exhibit the same idempotent properties.
+</p>
+</div>
+</div>
+</section>
+<section id="outline-container-orgcc567fb" class="outline-2">
+<h2 id="orgcc567fb">Substitution principle</h2>
+<div class="outline-text-2" id="text-orgcc567fb">
+</div>
+<div id="outline-container-orgb2aae9d" class="outline-3">
+<h3 id="orgb2aae9d">Leibniz&rsquo;s Law</h3>
+<div class="outline-text-3" id="text-orgb2aae9d">
+<p>
+The <b><b>Substitution Principle</b></b> (often formally called the <b><b>Indiscernibility of Identicals</b></b> or <b><b>Leibniz&rsquo;s Law</b></b>) is the engine that actually drives algebra.
+</p>
+
+<p>
+While <b><b>Reflexivity</b></b> (\(\forall x (x=x)\)) tells you that an object is technically identical to itself, <b><b>Substitutivity</b></b> tells you that you can <i>do</i> something with that fact. It is the rule that turns equality into a usable tool.
+</p>
+
+<p>
+Here is the breakdown of why it is the &ldquo;second half&rdquo; of the definition and how it powers the &ldquo;cancelling out&rdquo; process.
+</p>
+</div>
+</div>
+<div id="outline-container-org533c50e" class="outline-3">
+<h3 id="org533c50e">1. The Formal Definition (Leibniz&rsquo;s Law)</h3>
+<div class="outline-text-3" id="text-org533c50e">
+<p>
+The principle states:
+</p>
+
+<p>
+<i>If two things are identical, then they must share every single
+property.</i>
+</p>
+
+<p>
+Formally, for any formula \(\phi\) with a free variable \(z\):
+</p>
+
+<p>
+\[ x = y \implies (\phi(x) \leftrightarrow \phi(y)) \]
+</p>
+
+<p>
+In plain English: &ldquo;If \(x\) is equal to \(y\), then any statement that is
+true about \(x\) must also be true about \(y\).&rdquo;
+</p>
+
+<p>
+This is why it is called an <b><b>Elimination Rule</b></b>: You use it to &ldquo;eliminate&rdquo; the equals sign and replace it with a new truth about the world.
+</p>
+</div>
+</div>
+<div id="outline-container-org8843c7d" class="outline-3">
+<h3 id="org8843c7d">2. Why it is the &ldquo;Engine&rdquo; of Algebra</h3>
+<div class="outline-text-3" id="text-org8843c7d">
+<p>
+Every time you solve an equation, you are applying the Substitution Principle over and over again. You just do it so fast you don&rsquo;t notice.
+</p>
+
+<p>
+Think of an algebraic derivation not as a continuous flow, but as a series of <b><b>snapshots</b></b>. To get from one snapshot to the next, you must use the Substitution Principle to &ldquo;swap out&rdquo; a part of the picture.
+</p>
+</div>
+<div id="outline-container-orgff53ab8" class="outline-4">
+<h4 id="orgff53ab8">The &ldquo;Find and Replace&rdquo; Function</h4>
+<div class="outline-text-4" id="text-orgff53ab8">
+<p>
+Imagine you have the equation:
+\[ x + (2 + 3) = 10 \]
+</p>
+
+<ol class="org-ol">
+<li><b><b>Fact:</b></b> We know from arithmetic that \(2 + 3 = 5\).</li>
+<li><b><b>Substitution:</b></b> Because \(2+3\) and \(5\) are identical, the Substitution Principle allows us to delete &ldquo;2 + 3&rdquo; from the equation and paste in &ldquo;5&rdquo; without breaking the truth of the statement.</li>
+<li><b><b>Result:</b></b> \(x + 5 = 10\).</li>
+</ol>
+
+<p>
+Without this principle, knowing that \(2+3=5\) would be useless. You would know they are equal, but you wouldn&rsquo;t have permission to <i>use</i> that fact inside another equation.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org7702441" class="outline-3">
+<h3 id="org7702441">3. How it Powers &ldquo;Cancelling Out&rdquo;</h3>
+<div class="outline-text-3" id="text-org7702441">
+<p>
+Let&rsquo;s look at the cancellation proof (\(a + c = b + c \implies a = b\)) specifically through the lens of Substitution.
+</p>
+
+<p>
+When we say &ldquo;cancel \(c\) from both sides,&rdquo; we are actually running a specific &ldquo;property&rdquo; through the Substitution Principle.
+</p>
+</div>
+<div id="outline-container-orgce358c1" class="outline-4">
+<h4 id="orgce358c1">The Setup</h4>
+<div class="outline-text-4" id="text-orgce358c1">
+<ul class="org-ul">
+<li>We start with the premise: <b>\(a + c = b + c\)</b></li>
+<li>We want to prove: <b>\(a = b\)</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org25cc984" class="outline-4">
+<h4 id="org25cc984">The Substitution Steps</h4>
+<div class="outline-text-4" id="text-org25cc984">
+<ol class="org-ol">
+<li><b><b>Define a Property:</b></b> Let \(\phi(z)\) be the property &ldquo;z + (-c) = a&rdquo;.
+(Note: This is a property constructed to help us isolate \(a\).)</li>
+<li><b><b>Apply to Left Side:</b></b> We know logically that \((a + c) + (-c) = a\).
+So, \(\phi(a+c)\) is <b><b>True</b></b>.</li>
+<li><b><b>The Pivot (Substitution):</b></b> Since our premise says \(a+c\) is identical to \(b+c\), we can substitute \(b+c\) into our property.
+Since \(\phi(a+c)\) is true, then \(\phi(b+c)\) <b><b>must also be true</b></b>.</li>
+<li><b><b>Result:</b></b> Therefore, \((b + c) + (-c) = a\).</li>
+<li><b><b>Simplify (More Substitution):</b></b>
+<ul class="org-ul">
+<li>\((b+c)+(-c)\) simplifies to \(b + (c + -c)\) (Associativity).</li>
+<li>\(b + 0\) (Inverse).</li>
+<li>\(b\) (Identity).</li>
+<li>We substitute &ldquo;b&rdquo; for that whole mess on the left.</li>
+</ul></li>
+<li><b><b>Final Truth:</b></b> \(b = a\).</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaed2590" class="outline-3">
+<h3 id="orgaed2590">Summary</h3>
+<div class="outline-text-3" id="text-orgaed2590">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Concept</td>
+<td class="org-left">Logical Role</td>
+</tr>
+
+<tr>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Reflexivity (\(x=x\))</b></td>
+<td class="org-left">Establishes that the concept of identity exists. It creates the &ldquo;equals sign.&rdquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Substitutivity (\(x=y \to P(x) \leftrightarrow P(y)\))</b></td>
+<td class="org-left">Gives the equals sign <b>power</b>. It allows you to transport truth from one object to another.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+In algebra, &ldquo;cancelling&rdquo; is really just <b><b>substituting a complex expression (\(a+c\)) with a simpler one (\(b+c\)) inside a larger function</b></b>.
+</p>
+</div>
+</div>
+</section>
+<section id="outline-container-orga65c73f" class="outline-2">
+<h2 id="orga65c73f">Why not relations?</h2>
+<div class="outline-text-2" id="text-orga65c73f">
+</div>
+<div id="outline-container-org631bfca" class="outline-3">
+<h3 id="org631bfca">Why Math Prefers Functions Over Relations</h3>
+<div class="outline-text-3" id="text-org631bfca">
+<p>
+You have identified one of the most significant trade-offs in
+mathematics. Relations are indeed more general—they can describe any
+shape, curve, or scatter of points. Functions are restrictive—they
+essentially &ldquo;break&rdquo; if a line goes vertical.
+</p>
+
+<p>
+So why do we force the universe into the straitjacket of functions?
+</p>
+
+<p>
+The answer lies in the primary goal of science: <b><b>Prediction</b></b>.
+</p>
+
+<p>
+Here is why functions dominate our mathematical modeling, despite their limitations.
+</p>
+</div>
+<div id="outline-container-org463d4b5" class="outline-4">
+<h4 id="org463d4b5">1. The &ldquo;Reality&rdquo; of Causality (Determinism)</h4>
+<div class="outline-text-4" id="text-org463d4b5">
+<p>
+In science, we usually want to know what happens next.
+</p>
+
+<ul class="org-ul">
+<li><b>The Function Model:</b> &ldquo;If I do \(X\), then \(Y\) happens.&rdquo;</li>
+<li><b>The Relation Model:</b> &ldquo;If I do \(X\), then \(Y\), \(Z\), or maybe \(Q\) happens.&rdquo;</li>
+</ul>
+
+<p>
+Most classical physical phenomena are <b><b>deterministic</b></b>.
+</p>
+
+<ul class="org-ul">
+<li>If you know the exact time (\(t\)), a planet can only be in <b>one</b> location (\(x\)).</li>
+<li>If you know the specific temperature, a gas has a specific pressure.</li>
+</ul>
+
+<p>
+If a mathematical model failed the Vertical Line Test in these contexts, it would imply that a planet is in two places at once, or a gas has two different pressures simultaneously. The restriction of the function (one output per input) mirrors the restriction of physical reality (one state per moment).
+</p>
+</div>
+</div>
+<div id="outline-container-org406fa16" class="outline-4">
+<h4 id="org406fa16">2. The Definition of &ldquo;Change&rdquo; (Calculus)</h4>
+<div class="outline-text-4" id="text-org406fa16">
+<p>
+Modern science is built on Calculus, and Calculus is the study of how things change. To define a rate of change (a derivative), you need a clear &ldquo;before&rdquo; and &ldquo;after.&rdquo;
+</p>
+
+<p>
+If you look at a curve that loops back on itself (a relation), and you pick an $x$-value where the curve has two points, the concept of &ldquo;slope&rdquo; becomes ambiguous. Which point are we talking about? Which direction is &ldquo;forward&rdquo;?
+</p>
+
+<p>
+By restricting ourselves to functions, we ensure that for every input, there is a single, unambiguous value, slope, and area. This allows us to build the machinery of differentiation and integration without constantly hitting logical forks in the road.
+</p>
+</div>
+</div>
+<div id="outline-container-org0b91ca2" class="outline-4">
+<h4 id="org0b91ca2">3. The &ldquo;Infinite Slope&rdquo; Problem</h4>
+<div class="outline-text-4" id="text-org0b91ca2">
+<p>
+You mentioned the vertical line. The reason functions &ldquo;ban&rdquo; vertical lines is that a vertical line represents a breakdown of the input-output relationship.
+</p>
+
+<ul class="org-ul">
+<li><b>Mathematically:</b> The slope is <b>undefined</b> (division by zero).</li>
+<li><b>Physically:</b> A vertical line on a position-time graph would mean an object moved infinite distance in zero time (teleportation).</li>
+</ul>
+
+<p>
+Since teleportation and infinite speeds are generally impossible in classical physics, the &ldquo;failure&rdquo; of the Vertical Line Test is actually a useful &ldquo;error message&rdquo;—it tells us our model has done something physically impossible.
+</p>
+</div>
+</div>
+<div id="outline-container-org581a722" class="outline-4">
+<h4 id="org581a722">4. The Loophole: Parametric Equations</h4>
+<div class="outline-text-4" id="text-org581a722">
+<p>
+This is the most important part. Mathematicians <b>do</b> study shapes that fail the Vertical Line Test (circles, ellipses, spirals), but we cheat. We turn them into functions anyway.
+</p>
+
+<p>
+Instead of describing a circle as a relation between \(x\) and \(y\) (\(x^2 + y^2 = 1\)), we introduce a third variable, usually <b>time</b> (\(t\)). We break the relation into <b>two separate functions</b>:
+</p>
+
+<ol class="org-ol">
+<li>\(x(t) = \cos(t)\)</li>
+<li>\(y(t) = \sin(t)\)</li>
+</ol>
+
+<p>
+Both of these <i>are</i> functions. They both pass the Vertical Line Test with respect to \(t\). By doing this, we get the best of both worlds: we can draw the complex loops and curves of relations, but we can analyze them using the rigorous, deterministic tools of functions.
+</p>
+</div>
+</div>
+<div id="outline-container-orgecaf29b" class="outline-4">
+<h4 id="orgecaf29b">Summary</h4>
+<div class="outline-text-4" id="text-orgecaf29b">
+<p>
+We use functions because science is the business of predicting outcomes.
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Type</th>
+<th scope="col" class="org-left">Analogy</th>
+<th scope="col" class="org-left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>Relation</b></td>
+<td class="org-left">A Map</td>
+<td class="org-left">Shows where things are relative to each other.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Function</b></td>
+<td class="org-left">A Machine</td>
+<td class="org-left">You put something in, you get a specific result out.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Since we usually want to use math to build machines or predict the future, we prefer the tool that guarantees a single answer.
+</p>
+</div>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

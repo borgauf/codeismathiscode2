@@ -1,0 +1,107 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: ChatWithGemini20260223SymbolicSystem.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+# #+STARTUP: latexpreview
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+
+* What is meant by a "symbolic system"?
+
+In its simplest form, a **symbolic system** is a collection of signs,
+characters, or objects (symbols) that represent something else,
+governed by a specific set of rules.
+
+Think of it as a bridge between a physical mark and a mental
+concept. A "1" is just a squiggle on a page, but within the symbolic
+system of mathematics, it represents the concept of unity or a single
+unit.
+
+---
+
+** Core Components of a Symbolic System
+To function, a symbolic system generally requires three things:
+
+1. **The Symbols (The Tokens):** These are the physical or abstract marks (letters, numbers, musical notes, or even traffic light colors).
+2. **The Referents (The Meaning):** What the symbol stands for (an idea, a quantity, or an action).
+3. **The Syntax (The Rules):** The logic that dictates how symbols can be combined. In English, "The cat sat" follows the rules; "Sat cat the" does not.
+
+---
+
+** Common Examples Across Disciplines
+Symbolic systems are the foundation of how humans process and share information.
+
+
+| Field | Example | How it Works |
+| :--- | :--- | :--- |
+| **Linguistics** | Written Language | Letters form words, which represent objects and actions. |
+| **Mathematics** | Algebra | Symbols like $x$ and $y$ represent unknown values, and operators like $+$ and $=$ dictate relationships. |
+| **Computing** | Programming Code | Text-based symbols (like `if`, `else`, `print`) are translated into logic gates that tell a computer what to do. |
+| **Sociology** | Cultural Symbols | A wedding ring (object) symbolizes commitment (abstract concept) within a social framework. |
+
+---
+
+** Why the Term Matters in "Symbolic AI"
+In the world of Artificial Intelligence, you’ll often hear about **Symbolic AI** (also known as "Good Old-Fashioned AI" or GOFAI). 
+
+This approach is based on the **Physical Symbol System Hypothesis**, which argues that intelligence consists of the ability to manipulate symbols. Unlike modern Neural Networks (which learn patterns from data), Symbolic AI uses explicit logic—like a flow chart—to "reason" through problems.
+
+#+BEGIN_QUOTE
+**Key Distinction:** While a Neural Network might "feel" its way to an answer by looking at millions of pixels, a Symbolic System "calculates" its way to an answer by following strict logical rules (e.g., /If it is a bird, then it has feathers/).
+#+END_QUOTE
+
+---
+
+** The Power of Symbolic Systems
+- **Abstraction:** They allow us to think about things that aren't physically present.
+- **Communication:** They provide a shared "code" so two people can understand the same concept.
+- **Computation:** By turning ideas into symbols, we can perform operations on them (like adding numbers or logic-checking an argument).

@@ -1,0 +1,2230 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: Math202602.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+# #+STARTUP: latexpreview
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+
+* Generating a concrete axiom from a schema
+:PROPERTIES:
+:ID:       94944686-0a7f-4fb9-8d94-e21b77509152
+:END:
+
+** Generating a Concrete Axiom from a Schema
+:PROPERTIES:
+:ID:       8f536407-5cb1-4083-acc0-67b2b6aa5c5d
+:END:
+In Zermelo-Fraenkel set theory (ZFC), we cannot just form a set out of /any/ property (as that leads to Russell's Paradox). Instead, we take an existing set $A$ and "separate" elements from it using a property $P(x)$.
+
+The formal Axiom Schema of Separation looks like this:
+
+$$\forall A\, \exists S\, \forall x\, (x \in S \iff (x \in A \land P(x)))$$
+
+Here, $P(x)$ is our metavariable. It sits completely outside the First-Order language, simply holding space for any valid formula we might want to insert.
+
+*** Step 1: Defining a Concrete Property
+:PROPERTIES:
+:ID:       e1ed37ac-ed41-4f50-af4c-bf97ff5c0fe6
+:END:
+Let us replace $P(x)$ with the mathematical concept: "x is an empty set" (meaning $x$ has no elements).
+
+Because we are working strictly in ZFC, our signature $\Delta$ only contains $\{\in\}$. We cannot use an "is_empty" relation. We must build the concept of "x is empty" using strictly logical symbols and $\in$.
+
+The formal FOL translation of "x has no elements" is:
+$$P(x) \equiv \forall y\, \lnot(y \in x)$$
+
+*** Step 2: Mechanical Substitution
+:PROPERTIES:
+:ID:       1007eeac-8506-4e13-8201-6701bcce4a87
+:END:
+Now, we drop our newly constructed formula directly into the placeholder $P(x)$ in the original schema.
+
+$$\forall A\, \exists S\, \forall x\, (x \in S \iff (x \in A \land \forall y\, \lnot(y \in x)))$$
+
+*** Conclusion
+:PROPERTIES:
+:ID:       97fa3242-1ed8-400f-824a-8490c01b630c
+:END:
+We have successfully instantiated a single, concrete axiom from the infinite schema! 
+
+This specific axiom states: "For any set $A$, there exists a set $S$ that contains exactly the empty sets that are elements of $A$." 
+
+Notice the final result: The metavariable $P(x)$ has vanished. The entire statement is built exclusively from the universal grammatical components of FOL (variables, $\forall, \exists, \lnot, \land, \iff$) and our single non-logical signature symbol ($\in$).
+
+
+* Epistemology versus Metaphysics
+:PROPERTIES:
+:ID:       12e308be-b57d-487c-8608-47ae31f58bdb
+:END:
+
+** Epistemology vs Metaphysics in Truth
+:PROPERTIES:
+:ID:       fbe44c07-8603-46f0-8d54-4a6eb9e95fdd
+:END:
+
+*** Epistemological Categories (How we know)
+:PROPERTIES:
+:ID:       83f28da6-d12d-4a6c-af4f-f1ae4bc7a1d4
+:END:
+- *A Priori*: Known independently of sensory experience or empirical evidence.
+- *A Posteriori*: Known strictly through empirical observation and sensory experience.
+
+*** Metaphysical Categories (The nature of the fact)
+:PROPERTIES:
+:ID:       f078a2a5-becc-4ec3-9559-41b064a75c88
+:END:
+- *Necessary*: Must be true in all possible worlds. Cannot logically be false.
+- *Contingent*: True in reality, but could logically have been false.
+
+*** Table of Distinctions
+:PROPERTIES:
+:ID:       f3bc8cbe-c269-4d24-ae6b-7b8c362eb3fa
+:END:
+| Concept                        | Definition                                                                        | Example                                 |
+|--------------------------------+-----------------------------------------------------------------------------------+-----------------------------------------|
+| *A Priori* Truth               | Knowable independently of empirical experience or sensory evidence.               | "All bachelors are unmarried."          |
+| *A Posteriori* Truth           | Knowable only through empirical observation and sensory experience.               | "Mercury is not Mars."                  |
+| *Necessary* Truth              | A proposition that must be true in all possible worlds; it cannot be false.       | $5 + 7 = 12$                            |
+| *Contingent* Truth             | A proposition that is true, but could logically have been false.                  | "The author wrote a book."              |
+| *Logical* Truth                | True purely by virtue of its logical structure and logical constants.             | $P \lor \neg P$                         |
+
+*** The Kripkean Insight
+:PROPERTIES:
+:ID:       65f7386d-5911-427d-ab69-38f7c472a874
+:END:
+Identities between rigid designators are necessary. $Hesperus = Phosphorus$ is necessarily true because an object is always identical to itself. However, discovering this identity requires empirical science, making it a necessary /a posteriori/ truth. Mathematical truths are necessary, but require axioms beyond pure formal logic, separating them from strict /logical/ truths.
+
+
+* Sets, Comprehensions, Haskell
+:PROPERTIES:
+:ID:       38ccac28-fcc4-4db0-8343-d3e824811026
+:END:
+
+** Unrestricted to Specification
+:PROPERTIES:
+:ID:       d864f86e-0eb9-4be7-85a3-f70c240d43d9
+:END:
+
+In functional programming, the shift from Unrestricted Comprehension to the Axiom of Specification maps directly to the distinction between defining sets as characteristic functions versus constructing them via list (or collection) operations. 
+
+*** Unrestricted Comprehension: Sets as Characteristic Functions
+:PROPERTIES:
+:ID:       bf09e9f1-d9d4-403a-a878-daef5b382fad
+:END:
+
+Naive set theory defines a set purely by a predicate $\varphi(x)$. In Haskell, the most direct translation of this is representing a set as a characteristic function—a function that takes an element and returns =True= if it is in the set, and =False= otherwise.
+
+#+begin_src haskell
+type Set a = a -> Bool
+
+-- The set of all even numbers, defined purely by the property
+evens :: Set Integer
+evens x = x `mod` 2 == 0
+#+end_src
+
+Under this model, you do not need a pre-existing collection. You simply state the predicate. However, just as Unrestricted Comprehension leads to Russell's Paradox, allowing unrestricted recursive definitions in a Turing-complete language like Haskell leads to non-termination, or $\bot$ (bottom). 
+
+If we try to construct a set that contains itself if and only if it doesn't contain itself, we get a computation that never resolves:
+
+#+begin_src haskell
+-- The computational equivalent of a logical paradox
+russell :: Bool
+russell = not russell
+#+end_src
+
+Through the Curry-Howard correspondence (propositions as types), general recursion represents an inconsistency in the logical system. You can prove any type is inhabited by throwing an infinite loop at it.
+
+*** The Axiom of Specification: The =filter= Function
+:PROPERTIES:
+:ID:       0440a2b2-7b2e-4291-a0be-073fabc94dc2
+:END:
+
+Zermelo's Axiom Schema of Specification fixes the paradox by demanding a bounding set $A$: 
+$\forall A \exists y \forall x (x \in y \leftrightarrow (x \in A \land \varphi(x)))$
+
+The exact operational equivalent of this in Haskell is the standard =filter= function.
+
+#+begin_src haskell
+filter :: (a -> Bool) -> [a] -> [a]
+#+end_src
+
+Look at how perfectly the type signature aligns with the axiom:
+1. =[a]= (the second argument) is your pre-existing bounding set $A$.
+2. =(a -> Bool)= is your property or predicate $\varphi(x)$.
+3. The return value =[a]= is your newly specified subset $y$.
+
+You cannot apply =filter= to the abstract "universe" of all possible values; you are forced by the type system and the function definition to provide a concrete, existing collection to carve your subset out of.
+
+#+begin_src haskell
+-- A bounding set (A)
+universeOfDiscourse :: [Integer]
+universeOfDiscourse = [1..10]
+
+-- Specification: carving 'y' out of 'A' using the predicate
+specifiedSet :: [Integer]
+specifiedSet = filter (\x -> x `mod` 2 == 0) universeOfDiscourse
+#+end_src
+
+*** Bounding by Types
+:PROPERTIES:
+:ID:       9328a765-4810-47af-85e8-b7c664bb3a55
+:END:
+
+In modern theorem provers and in strongly typed functional programming, the concept of the "bounding set" is often handled by the type system itself. You don't ask "is $x$ in the universal set?", you ask "is $x$ of type $T$?". 
+
+To express the Axiom of Specification precisely at the type level, you have to use Dependent Types or Refinement Types, which allow you to attach a logical predicate directly to a type, effectively formalizing $\{ x : A \mid \varphi(x) \}$.
+
+
+* More predicate calculus
+:PROPERTIES:
+:ID:       e633979f-dd42-444f-8da0-bd093a5b2457
+:END:
+
+** Prolog Syntax Fundamentals
+:PROPERTIES:
+:ID:       2de9cbbd-d375-40fd-8860-6f2f89b70ff8
+:END:
+*** Variables vs. Atoms
+:PROPERTIES:
+:ID:       60c1dd2c-ebfa-4863-8538-5dc64261ff7f
+:END:
+In Prolog, the casing of the first letter is the primary way to distinguish between variables and constants:
+- *Variables*: Must start with an **Uppercase letter** (e.g., ~X~, ~Parent~, ~My_Variable~) or an **underscore** (~_~).
+- *Atoms (Constants)*: Must start with a **lowercase letter** (e.g., ~parent~, ~bob~, ~apple~).
+
+*** The Unification Process
+:PROPERTIES:
+:ID:       aa8b7de6-bdb2-430d-9b88-408fefc59b6e
+:END:
+Unification is a two-way matching process where Prolog attempts to make two terms identical. 
+- If a variable is uninstantiated, it can unify with any atom or structure.
+- Once instantiated, that variable carries its value throughout that specific search path.
+
+#+BEGIN_SRC prolog
+parent(bob, charlie).  % A Fact using atoms
+% Query: ?- parent(bob, X). 
+% Result: X = charlie (X unifies with the atom charlie).
+#+END_SRC
+
+** First-Order Logic (Predicate Calculus)
+:PROPERTIES:
+:ID:       73f73eb9-a0e1-4701-85d0-e95776507d8c
+:END:
+*** The Framework
+:PROPERTIES:
+:ID:       647c7cbe-a3a2-4476-a0b6-efe54231ac6c
+:END:
+First-order logic (FOL), also known as predicate calculus or quantificational logic, is a formal system used to describe relations between objects. It serves as the foundation for theories like set theory or arithmetic.
+
+*** Building Blocks of FOL
+:PROPERTIES:
+:ID:       3b03e1f5-c0b4-4ff9-9cd8-efb9bfd6ec27
+:END:
+FOL provides the "grammar" for reasoning through several key components:
+- *Terms (Nouns)*: Represent objects. These can be constants (~socrates~), variables (~x~), or functions.
+- *Predicates (Verbs/Adjectives)*: Describe properties or relationships (e.g., $Man(x)$ or $Likes(x, y)$). These are the only components that carry factual meaning.
+- *Connectives (Logical Glue)*: Symbols like $\land$ (and), $\lor$ (or), $\neg$ (not), and $\implies$ (implies).
+- *Quantifiers (Scope)*: $\forall$ (Universal - "for all") and $\exists$ (Existential - "there exists").
+- *Equality*: A special binary predicate built into FOL.
+
+*** From Propositional to Predicate Logic
+:PROPERTIES:
+:ID:       c82c1413-d1ff-4def-96d0-a15ce197b324
+:END:
+While propositional logic deals with whole statements ($P \land Q$), predicate logic allows us to "look inside" to see the properties of specific objects. This allows for deductions like: "If all humans are mortal and Socrates is human, then Socrates is mortal".
+
+** Syllogisms as Computational Proofs
+:PROPERTIES:
+:ID:       d42f7acb-8a86-416a-82d9-adfd12abfe1c
+:END:
+Prolog is a declarative language where the program itself acts as a proof. 
+
+*** The Socrates Syllogism
+:PROPERTIES:
+:ID:       0ef6be95-68dc-41da-a88b-f8ea63b78913
+:END:
+**** Logical Translation
+:PROPERTIES:
+:ID:       bcc3d47b-752e-44b9-a905-477e128092be
+:END:
+1. $\forall x (Man(x) \implies Mortal(x))$ (Universal Rule)
+2. $Man(socrates)$ (Ground Fact)
+3. $\therefore Mortal(socrates)$ (Conclusion)
+
+**** Prolog Implementation
+:PROPERTIES:
+:ID:       32ac1689-cdba-42ec-aa43-307dd8b88150
+:END:
+#+BEGIN_SRC prolog
+man(socrates).        % Fact: Socrates is a man.
+
+mortal(X) :-          % Rule: X is mortal IF X is a man.
+    man(X).           % (The :- symbol represents implication).
+#+END_SRC
+
+** Set Theory and List Manipulation
+:PROPERTIES:
+:ID:       406b878e-ea16-4cc7-a63d-436dea0a96af
+:END:
+Set theory can be viewed as FOL with a single binary relation: $\in$ (membership). In Prolog, sets are typically represented as **Lists**.
+
+*** Prolog List Notation
+:PROPERTIES:
+:ID:       68e23c70-4264-4e5a-84f7-4e5b8e6cdb17
+:END:
+- Elements are enclosed in square brackets and separated by commas: ~[a, b, c]~.
+- *Head/Tail Notation*: ~[H|T]~ separates the first element (~H~) from the rest of the list (~T~).
+- The tail (~T~) is always a list itself, even if it is the empty list ~~.
+
+*** Common Set Operations
+:PROPERTIES:
+:ID:       db463b8c-68ad-41c0-8001-8f1e76338bc7
+:END:
+**** Subset Axiom
+:PROPERTIES:
+:ID:       2fc404e4-72d2-404e-9fbd-81196c1eb00f
+:END:
+Definition: $A \subseteq B \iff \forall x (x \in A \implies x \in B)$
+
+#+BEGIN_SRC prolog
+% The empty set is a subset of any list.
+subset(, _).
+
+% [Head|Tail] is a subset of L if Head is in L AND Tail is a subset of L.
+subset([Head|Tail], L) :-
+    member(Head, L),  % member/2 is often a built-in predicate
+    subset(Tail, L).
+#+END_SRC
+
+** Recursion in Prolog
+:PROPERTIES:
+:ID:       adea4583-90c1-432a-ab93-fb45ad34619f
+:END:
+Recursion is the primary control mechanism in Prolog. It occurs when a predicate refers to itself in its own definition.
+
+*** Two Parts of Recursive Definitions
+:PROPERTIES:
+:ID:       15640fe3-f26b-4391-bc88-06536a8bd604
+:END:
+Every recursive definition requires:
+1. *Boundary Condition (Base Case)*: A simple case known to be true that ends the recursion.
+2. *Recursive Case*: A rule that simplifies the problem (often by removing one layer of complexity) and calls itself.
+
+*** Example: Appending Lists
+:PROPERTIES:
+:ID:       af47051b-c1df-48e1-a35a-c11a92b97ae4
+:END:
+The ~append(List1, List2, Result)~ predicate joins two lists.
+
+#+BEGIN_SRC prolog
+% Base Case: Appending an empty list to any list L results in L.
+append(, L, L).
+
+% Recursive Case: Appending [H|T] to L results in [H|R] if T appended to L is R.
+append([H|T], L, [H|R]) :- 
+    append(T, L, R).
+#+END_SRC
+
+*** Example: Finding the Last Element
+:PROPERTIES:
+:ID:       4ca6f2f0-0818-40ea-867e-8af428d69746
+:END:
+#+BEGIN_SRC prolog
+% Base Case: The last element of a single-element list is that element.
+last([X], X).
+
+% Recursive Case: The last element of [H|T] is the last element of the tail T.
+last([_|T], X) :- 
+    last(T, X).
+#+END_SRC
+
+
+* Prolog and predicate calculus
+:PROPERTIES:
+:ID:       27c0e98d-cae4-4dfc-993f-30cc06be560b
+:END:
+
+** Prolog Syntax Fundamentals
+:PROPERTIES:
+:ID:       8d0e931f-bd32-4894-b5f1-994aec9977a4
+:END:
+*** Variables vs. Atoms
+:PROPERTIES:
+:ID:       723c6feb-f55f-4c9a-b538-4d9f5c73e6e5
+:END:
+In Prolog, the casing of the first letter determines the type of the term:
+- *Variables*: Must start with an **Uppercase letter** (e.g., ~X~, ~Parent~) or an **underscore** (~_~).
+- *Atoms*: Must start with a **lowercase letter** (e.g., ~bob~, ~parent~).
+
+*** The Unification Process
+:PROPERTIES:
+:ID:       6befed71-02a2-48c5-8572-84f0072927a8
+:END:
+Unification is how Prolog matches variables to data. 
+#+BEGIN_SRC prolog
+parent(bob, charlie).  % A Fact
+% Query: ?- parent(bob, X).
+% Result: X = charlie.
+#+END_SRC
+
+** First-Order Logic (Predicate Calculus)
+:PROPERTIES:
+:ID:       aead7c68-7a26-459a-9fd6-9da551efc024
+:END:
+*** The Building Blocks
+:PROPERTIES:
+:ID:       d5130a24-5b15-4e06-9d8c-18c3e41e3a26
+:END:
+FOL (Predicate Calculus) is composed of:
+1. *Terms*: Nouns (Constants like ~socrates~ or Variables like ~x~).
+2. *Predicates*: Verbs/Adjectives (Properties like ~Man(x)~ or Relations like ~Parent(x, y)~).
+3. *Connectives*: Logical glue (~∧~, ~∨~, ~¬~, ~⇒~).
+4. *Quantifiers*: Scope (~∀~ for "all", ~∃~ for "exists").
+
+*** The "Predicate" in Predicate Calculus
+:PROPERTIES:
+:ID:       dbe381e3-a077-4e20-ad22-43ad093aa5c5
+:END:
+Predicates are the *atomic formulas*. They are the only components that carry factual meaning.
+- *Propositional Logic*: Deals with whole statements ($P \land Q$).
+- *Predicate Logic*: Looks inside the statement ($P(x) \land Q(x)$).
+
+** Implementing Theories
+:PROPERTIES:
+:ID:       da66252d-c547-4c1c-b0e8-9b01e3cd1886
+:END:
+*** Set Theory in Prolog
+:PROPERTIES:
+:ID:       6b34b9e0-f0b0-4d8e-8cb3-70274a70d826
+:END:
+Set theory is a theory of the membership predicate ($\in$). In Prolog, we use lists to represent sets.
+
+**** Subset Axiom
+:PROPERTIES:
+:ID:       3ed5c41f-20fa-4955-9fc7-b1dc99e9b25e
+:END:
+Definition: $A \subseteq B \iff \forall x (x \in A \implies x \in B)$
+
+#+BEGIN_SRC prolog
+% The empty set is a subset of everything
+subset([], _).
+
+% [Head|Tail] is a subset of L if Head is in L AND Tail is a subset of L
+subset([Head|Tail], L) :-
+    member(Head, L),
+    subset(Tail, L).
+#+END_SRC
+
+*** Classic Syllogisms
+:PROPERTIES:
+:ID:       3fe630c6-6112-4392-b1b9-26af736754d2
+:END:
+Translating the Socrates syllogism into a computational proof.
+
+**** Logical Form
+:PROPERTIES:
+:ID:       6f9dd1d8-5b5e-4149-b27a-255287f6aadc
+:END:
+- $\forall x (Man(x) \implies Mortal(x))$
+- $Man(socrates)$
+
+**** Prolog Code
+:PROPERTIES:
+:ID:       20753269-d16b-40f7-ab84-7297597e3c07
+:END:
+#+BEGIN_SRC prolog
+man(socrates).
+
+mortal(X) :- 
+    man(X).
+#+END_SRC
+
+** Summary Table: Logic to Prolog
+:PROPERTIES:
+:ID:       ba4d006e-e536-4a56-9d1b-f9be1e2919f5
+:END:
+
+| Logic Component | Symbol | Prolog Syntax |
+|-----------------+--------+---------------|
+| Predicate       | $P(x)$ | ~p(X).~       |
+| Implication     | $\implies$ | ~:-~          |
+| Conjunction     | $\land$ | ~,~           |
+| Disjunction     | $\lor$  | ~;~           |
+| Universal       | $\forall$ | (Implicit in Rules) |
+| Existential     | $\exists$ | (Implicit in Queries) |
+
+
+* Equivalence relevant to extentionality
+:PROPERTIES:
+:ID:       13b19cc5-15c8-4068-b429-cec621426a32
+:END:
+
+Don't forget that in logic two statements are /equivalent/ if they
+have the same truth value, (e.g., truth table outcomes) under every
+interpretation. For example, $\lnot P \land Q$ and $P \implies Q$ are
+logically equivalent since they have the same truth tables.
+
+** Truth Table: $\lnot P \lor Q$
+:PROPERTIES:
+:ID:       a558f622-4d30-4085-b607-eca89d45175b
+:END:
+
+| $P$ | $Q$ | $\lnot P$ | $\lnot P \lor Q$ |
+|-----+-----+-----------+------------------|
+| T   | T   | F         | T                |
+| T   | F   | F         | F                |
+| F   | T   | T         | T                |
+| F   | F   | T         | T                |
+
+** Truth Table: \( P \implies Q \)
+:PROPERTIES:
+:ID:       3743d547-de9a-48af-bbf2-6f2b5399f599
+:END:
+
+| \( P \) | \( Q \) | \( P \implies Q \) |
+|---------+---------+--------------------|
+| T       | T       | T                  |
+| T       | F       | F                  |
+| F       | T       | T                  |
+| F       | F       | T                  |
+
+Notice that the final columns in both are identical. In classical
+logic, material implication is defined precisely as this disjunction.
+
+* Formalizing irreducibility
+:PROPERTIES:
+:ID:       3798f0ea-86c0-4481-b20f-68b977895f87
+:END:
+
+** Formalizing Irreducibility in a Theorem Prover
+:PROPERTIES:
+:ID:       e88258da-18ef-4a5f-aa8e-26c518cb51c7
+:END:
+
+When bridging the abstraction of Bartosz Milewski's /Category Theory
+for Programmers/ with the rigid logic of a theorem prover, we
+inevitably run into the Curry-Howard isomorphism. This is the profound
+idea that types are propositions, and programs are proofs.
+
+If we want to formalize our previous assertion, that primes necessitate
+multiplication, we can look at how a theorem prover actually defines a
+prime (or irreducible) element.
+
+*** The Definition in Lean 4
+:PROPERTIES:
+:ID:       c815352e-6dc4-4e08-aebf-8ca09b64e710
+:END:
+
+Let's look at how we would define an irreducible natural number in
+Lean 4, a dependently typed language and theorem prover that uses
+syntax quite similar to Haskell.
+
+#+BEGIN_SRC lean
+def Irreducible (p : ℕ) : Prop :=
+  p ≠ 1 ∧ ∀ a b : ℕ, p = a * b → a = 1 ∨ b = 1
+#+END_SRC
+
+Notice the structural dependence in the math parts. The proposition \(
+\text{Irreducible}(p) \) is defined by quantifying over all possible factors \( a \) and \( b \), and checking their multiplicative product
+\( a \times b \). Without the multiplication operator defined in the
+algebra of natural numbers, the theorem prover literally cannot
+formulate the proposition.
+
+** The Categorical View: Types as Prime Numbers
+:PROPERTIES:
+:ID:       a3480333-27e2-4320-b87f-666064c5589b
+:END:
+
+Milewski's work shows how algebraic operations map cleanly onto types
+in languages like Haskell:
+
+- *Addition* maps to Coproducts (Sum types, like =Either a b=).
+- *Multiplication* maps to Products (Tuple types, like =(a, b)=).
+- The number 1 maps to the Unit type (a type with only one value, =()=).
+
+We can ask the same question in type theory: /What is a prime type?/
+
+A "prime type" is a type that has a prime number of inhabitants. For
+example, a type with exactly 3 states is prime.
+
+If we try to factor this type into a Product Type (multiplication), we
+can't do it without a trivial unit type. We cannot create a tuple \(
+(A, B) \) that yields exactly 3 possible combinations, unless \( A \)
+has 3 states and \( B \) has 1 state.
+
+#+BEGIN_SRC haskell
+-- A prime type (3 inhabitants)
+data TrafficLight = Red | Yellow | Green
+
+-- We cannot represent TrafficLight as a product of smaller types!
+-- It is irreducible.
+#+END_SRC
+
+Just as in our integral domains, if your programming language does not support Product types (tuples or records), the concept of an "irreducible type" is structurally meaningless. The architecture of primes is simply a shadow cast by the existence of multiplication!
+
+
+
+
+* Primes make for multiplication
+:PROPERTIES:
+:ID:       3e92331d-bf73-4822-b077-67c225517a16
+:END:
+
+That quote makes perfect sense, and it strikes at the very heart of
+number theory and how mathematical structures are built.
+
+To say that prime numbers "necessitate" multiplication is to recognize
+that primes are entirely defined by, and only exist because of, the
+multiplicative structure of numbers. Without multiplication, the
+concept of a prime number completely dissolves.
+
+Here is a breakdown of why this statement is mathematically profound
+and true.
+
+** The Definitional Dependence
+:PROPERTIES:
+:ID:       e2134daa-5da4-4da8-a4c0-8210f0a35fe5
+:END:
+Look at the standard definition of a prime number: /A whole number
+greater than \( 1 \) whose only divisors are \( 1 \) and itself./
+"Divisors" are simply the inverses of multiplication. A prime is
+defined strictly by what *cannot* be multiplied together to produce
+it. If you strip the operation of multiplication away from our
+mathematical ruleset, you also strip away division and
+factoring. Without those concepts, you have no mechanism to
+distinguish a prime number from a composite number.
+
+** The Additive Universe vs. The Multiplicative Universe
+:PROPERTIES:
+:ID:       a6b0855c-bda9-4298-bf68-7f2d54319595
+:END:
+Imagine a mathematical universe where only addition exists—much like a
+simple recursive system where you only have the number \( 0 \) and a
+"successor" function to generate the next number.
+
+In a purely additive system, every whole number is built exactly the
+same way: by adding \( 1 \)s together.
+
+- \( 3 \) is \( 1 + 1 + 1 \)
+- \( 4 \) is \( 1 + 1 + 1 + 1 \)
+
+In this additive group, the number \( 1 \) is the sole, universal
+"building block." No other number is special, because every number is
+just a predictable chain of \( 1 \)s.
+
+However, the moment you introduce multiplication to create a ring
+structure, you change the rules of how numbers can be constructed. You
+can now build the number \( 12 \) not just by adding \( 1 \)s, but by
+multiplying \( 3 \times 4 \). Multiplication creates "shortcuts" to
+higher numbers.
+
+** The "Atoms" of Arithmetic
+:PROPERTIES:
+:ID:       36ea759a-a08d-4e06-ab17-a3473f796d9d
+:END:
+Because multiplication creates these composite shortcuts, we are
+forced to ask: /What are the foundational building blocks of these
+shortcuts?/ This is where primes become necessary. The Fundamental
+Theorem of Arithmetic dictates that every integer greater than \( 1 \)
+is either a prime itself or can be uniquely represented as a product
+of primes, up to the order of the factors:
+
+\( n = p_1^{a_1} \cdot p_2^{a_2} \cdot \dots \cdot p_k^{a_k} \)
+
+Primes are the irreducible elements—the "atoms"—of a multiplicative
+system. While the additive system only needs a single atom (the number
+\( 1 \)) to build infinity, the multiplicative system requires an
+infinite number of distinct atomic primes to build the exact same
+infinity of integers.
+
+** Summary
+:PROPERTIES:
+:ID:       3d36d5e1-e7e7-4a2b-bd5e-34502ee5073c
+:END:
+The quote is essentially saying that primes are an artifact of the
+multiplication operation. They are not inherent to the sheer existence
+of numbers themselves, but rather they emerge inevitably the moment
+you decide that numbers can be multiplied.
+
+** Executable Prime Sieve in Haskell
+:PROPERTIES:
+:ID:       8769c37c-f5ed-4bf8-8192-3efe0b5fe0fb
+:END:
+
+We can use =org-babel= to evaluate our Sieve of Eratosthenes directly
+within this document.  This demonstrates how the multiplicative filter
+recursively strips away composite numbers, leaving only the
+irreducible primes.
+
+#+BEGIN_SRC haskell :results output :exports both
+-- Generate an infinite list of primes
+primes :: [Integer]
+primes = sieve [2..]
+  where
+    -- The sieve function filters out all multiplicative composites
+    sieve (p:xs) = p : sieve [x | x <- xs, x `mod` p /= 0]
+
+-- Print the first 20 primes to verify the lazy evaluation
+main :: IO ()
+main = print $ take 20 primes
+#+END_SRC
+
+#+RESULTS:
+: [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71]
+
+** Note on Lazy Evaluation
+:PROPERTIES:
+:ID:       233d6f5d-3487-470b-b8ba-b650b295ba98
+:END:
+Because Haskell is lazily evaluated, the infinite lists =[2..]= and
+=primes= do not cause an infinite loop. The computation only unfolds
+as far as the =take 20= command demands.
+
+
+* Sets are exactly defined...
+:PROPERTIES:
+:ID:       188144e7-694b-4362-afc2-dcc0fddae9d3
+:END:
+
+In standard set theory, sets are defined as collections of *distinct*
+objects—meaning they inherently do not contain duplicates or
+multiplicity. An element is either a member of the set or it isn't;
+there's no notion of "counting" how many times it appears. This is a
+foundational aspect of what a set is, rather than something that needs
+a separate axiom to enforce (though it's reinforced by the axiom of
+extensionality, as discussed previously).
+
+The notation \(\{a_1, \dots, a_n\}\) is simply a way to describe "the
+set containing exactly these objects as elements." If any of the
+\(a_i\) are the same (e.g., if \(a_1 = a_2\)), the set automatically
+treats them as a single element. For example:
+
+- \(\{1, 1, 2\} = \{1, 2\}\)
+- \(\{apple, apple, orange\} = \{apple, orange\}\)
+
+This deduplication happens because the set's identity is determined solely by its membership, per extensionality: two sets are equal if they have the same elements, ignoring order or repetition in how they're listed. The notation doesn't assume the \(a_i\) are all unique to begin with—it just results in a set with unique elements regardless.
+
+If duplicates were somehow allowed, it would contradict extensionality, as \(\{1, 1, 2\}\) and \(\{1, 2\}\) would have the same members and thus be the same set. (Collections that do allow duplicates or order are called multisets or lists, but those aren't sets.)
+
+The text you're referencing ("Sets, Logic, Computation") aligns with this on pages 1–2: sets are collections of distinct objects, and the notation \(\{a_1, \dots, a_n\}\) denotes a finite set where duplicates are ignored, ensuring uniqueness of elements.
+
+* Extensionality and Leibniz's Law
+:PROPERTIES:
+:ID:       59a8e044-1552-42da-9916-74f2b9acc75f
+:END:
+
+The core similarity between the *Axiom of Extensionality* in set theory and *Leibniz’s Law* (specifically the /Identity of Indiscernibles/) is that both principles assert that **identity is determined entirely by attributes**. They reject the idea of a "hidden essence" or "bare particularity" that makes an object unique independent of its characteristics.
+
+** 1. Formal Definitions
+:PROPERTIES:
+:ID:       47993e87-3cea-4027-8fc7-7c47c68bde0d
+:END:
+
+To see the similarity, we must look at their logical structures.
+
+*** Leibniz's Law (The Identity of Indiscernible)
+:PROPERTIES:
+:ID:       d7c52767-702a-461b-afa3-65a1a54266dc
+:END:
+This principle states that if two objects, \(x\) and \(y\), share all the same properties (\(P\)), they are arguably the same object.
+
+\[
+\forall P \ (P(x) \iff P(y)) \implies x = y
+\]
+
+*** The Axiom of Extensionality
+:PROPERTIES:
+:ID:       4b9b488c-2226-4baa-bb6f-77dc4f7b9266
+:END:
+This axiom states that if two sets, \(A\) and \(B\), share all the same elements (\(z\)), they are the same set.
+
+\[
+\forall z \ (z \in A \iff z \in B) \implies A = B
+\]
+
+** 2. The Connection: Extensionality is a "Restricted" Leibniz’s Law
+:PROPERTIES:
+:ID:       97a3eae4-30a4-4c0e-bca7-ff92fad63b15
+:END:
+
+The most helpful way to view the relationship is that the Axiom of Extensionality is essentially Leibniz’s Law applied to a universe where *the only relevant property is "containment."*
+
+- *In broad metaphysics (Leibniz's world):* An object has infinite properties: color, location, mass, history, etc. If /all/ of these are identical, the objects are identical.
+- *In Zermelo-Fraenkel (ZF) set theory:* Objects (sets) have no color, no location, and no mass. They have only one intrinsic property: **having members**. Therefore, if you satisfy the property of "containing the same members," you satisfy /all/ properties relevant to that universe, and thus you are identical.
+
+** 3. Elaborated Examples
+:PROPERTIES:
+:ID:       0a503870-1a3f-42c5-b106-c9c23031642c
+:END:
+
+*** Example A: Set Theory (The Collapse of Representation)
+:PROPERTIES:
+:ID:       eeaa86d6-266e-45af-9503-05386249ee27
+:END:
+In set theory, how you describe a set (its "intension") is irrelevant; only what it contains (its "extension") matters.
+
+- *Set A:* The set of all even prime numbers.
+- *Set B:* The set of all positive integers \(x\) such that \(x^2 - 4x + 4 = 0\).
+
+*Analysis:*
+1. Set A contains only \(\{2\}\).
+2. Solving for Set B: \((x-2)^2 = 0 \implies x=2\). So Set B is \(\{2\}\).
+3. *Conclusion:* Even though the /descriptions/ (properties of definition) differ completely, the /elements/ are identical. Therefore, by Extensionality, \(A = B\).
+
+*** Example B: Leibniz's Law (The Challenge of Indiscernibles)
+:PROPERTIES:
+:ID:       6b781bd5-a16a-438f-b530-548617dc59f9
+:END:
+Leibniz's Law is often used to distinguish objects that appear similar.
+
+- *Object X:* The Morning Star (Phosphorus).
+- *Object Y:* The Evening Star (Hesperus).
+
+*Analysis:*
+If we can find /any/ property that X has and Y does not, they are distinct. However, astronomers discovered that both X and Y occupy the same celestial coordinates at specific times predicted by the orbit of Venus. They share every physical property (mass, radius, orbital path).
+- *Conclusion:* Because they share all properties, they are the same object (Venus).
+
+** 4. Where They Diverge: Intensionality vs. Extensionality
+:PROPERTIES:
+:ID:       24b2c03b-6bd8-4526-a93d-2742e37c7a97
+:END:
+
+This distinction is critical in logic and programming.
+
+*** Extensional Contexts (Set Theory)
+:PROPERTIES:
+:ID:       e2c6fa9c-e3eb-419d-b996-bbec47f4c9c7
+:END:
+We treat functions or sets as black boxes. If inputs mapped to outputs are identical, the functions are identical.
+- \(f(x) = 2x + 2\)
+- \(g(x) = 2(x + 1)\)
+- In set theory, \(f = g\).
+
+*** Intensional Contexts (Computation/Leibniz)
+:PROPERTIES:
+:ID:       c5e3bc27-53fd-409b-8990-9b3ca9d90e57
+:END:
+Here, the /way/ something is constructed matters.
+- Using the functions above: \(f\) involves one multiplication and one addition. \(g\) involves one addition and one multiplication.
+- In an intensional system (like some type theories or when analyzing algorithm efficiency), \(f \neq g\) because they have different computational "properties" (operation order), even if they are extensionally equivalent.
+
+** Summary Table
+:PROPERTIES:
+:ID:       2252bae9-2729-493d-8bfd-fdc283e9d962
+:END:
+
+| Feature          | Axiom of Extensionality              | Identity of Indiscernibles                          |
+|------------------+--------------------------------------+-----------------------------------------------------|
+| *Domain* | Sets (Abstract mathematical objects) | Universal (Physical objects, logic, metaphysics)    |
+| *Criteria* | Membership (\(z \in A\))             | Any Predicate (\(P(x)\))                            |
+| *Core Assertion* | Same members = Same set              | Same properties = Same object                       |
+| *Status* | Axiomatic (True by definition in ZF) | Debatable (e.g., Two electrons in a magnetic field) |
+
+
+
+* Kuratowski tuples from sets
+:PROPERTIES:
+:ID:       c95d67eb-f55d-4c99-ae4b-498335516103
+:END:
+
+** 1. The Challenge
+:PROPERTIES:
+:ID:       cdc51644-200f-4755-a989-d04cec28d4aa
+:END:
+You have two objects, $a$ and $b$. You want to package them so you can distinguish "First" from "Second."
+But you only have **Sets**, and sets are blind to order:
+$$\{a, b\} = \{b, a\}$$
+
+If you look into the bag $\{a, b\}$, you just see two things. You have no way of knowing which one was put in first.
+
+** 2. Why "Obvious" Solutions Fail
+:PROPERTIES:
+:ID:       7b9e61f1-dc20-4224-b3dc-7b29a5d70348
+:END:
+*** Attempt 1: Just put them in bags?
+:PROPERTIES:
+:ID:       d9f1d140-a34b-43d2-86a1-d63b83612532
+:END:
+Suppose we try: $Pair = \{ \{a\}, \{b\} \}$
+- *Fail*: Since the outer container is a set, $\{ \{a\}, \{b\} \} = \{ \{b\}, \{a\} \}$.
+- We still don't know if $\{a\}$ came first or $\{b\}$.
+
+*** Attempt 2: Mark one?
+:PROPERTIES:
+:ID:       45a07f0d-3fa0-4cc3-aeba-83586d47ae49
+:END:
+Suppose we try: $Pair = \{ a, \{b\} \}$
+- *Fail*: This works for $(1, 2) \to \{1, \{2\}\}$. But it breaks if the elements are sets themselves.
+- If $a = \{2\}$ and $b = 2$, then $\{ \{2\}, \{2\} \} = \{ \{2\} \}$. We lost information.
+
+** 3. Kuratowski's Solution
+:PROPERTIES:
+:ID:       025fc2e2-24c6-4edf-916a-23370d209061
+:END:
+The definition is:
+$$(a, b) = \{ \{a\}, \{a, b\} \}$$
+
+Let's unpack this with a concrete example.
+Let $a = 1$ (First)
+Let $b = 2$ (Second)
+
+The pair $(1, 2)$ becomes the set $P = \{ \{1\}, \{1, 2\} \}$.
+
+*** How to Read the Order (The Decoding Algorithm)
+:PROPERTIES:
+:ID:       1c650240-d2ef-4396-82c8-2da7f46abf1f
+:END:
+Imagine you are given the set $P$ and asked to find the "first" coordinate.
+
+1. *Look at the elements of P*:
+   - Item X: $\{1\}$  (A set with 1 element)
+   - Item Y: $\{1, 2\}$ (A set with 2 elements)
+
+2. *Identify the Intersection*:
+   - What is inside *both* Item X and Item Y?
+   - The number $1$ is in both.
+   - Therefore, **1 is the first coordinate**.
+
+3. *Identify the Remainder*:
+   - Look at the bigger set (Item Y).
+   - Take away the first coordinate ($1$).
+   - What is left? $2$.
+   - Therefore, **2 is the second coordinate**.
+
+** 4. The "Fingerprint" of Order
+:PROPERTIES:
+:ID:       c4ee0363-4d65-442b-9ee2-9c0a1c0a2346
+:END:
+The cleverness is in the asymmetry.
+- The element $a$ appears **twice** (in the singleton and the doubleton).
+- The element $b$ appears **once** (only in the doubleton).
+
+This "frequency count" is how the set structure encodes the order.
+
+*** Verification (a != b)
+:PROPERTIES:
+:ID:       0cfcc08b-b8db-4433-b949-5961064e0501
+:END:
+$$(a, b) = \{ \{a\}, \{a, b\} \}$$
+$$(b, a) = \{ \{b\}, \{b, a\} \}$$
+Since $\{a\} \neq \{b\}$, the two resulting sets are totally different. The order is preserved.
+
+*** Edge Case (a = b)
+:PROPERTIES:
+:ID:       ff54f38f-8d10-4512-9df0-58e4338384cb
+:END:
+If $a = 1$ and $b = 1$:
+$$(1, 1) = \{ \{1\}, \{1, 1\} \}$$
+Since $\{1, 1\}$ is just $\{1\}$:
+$$= \{ \{1\}, \{1\} \}$$
+Since sets ignore duplicates:
+$$= \{ \{1\} \}$$
+This is distinct from any pair where $a \neq b$. It represents the pair $(1, 1)$ uniquely.
+
+
+* Ordered tuples in set theory
+:PROPERTIES:
+:ID:       38fa99f2-44b6-469f-9005-eac4d13c5300
+:END:
+
+** 1. The Problem: Sets are Unordered
+:PROPERTIES:
+:ID:       99406bb6-857c-4bb8-90cf-59d040fb7562
+:END:
+
+In pure set theory, the collection $\{a, b\}$ is identical to $\{b, a\}$.
+This is a problem if we want to represent coordinates $(x, y)$ or a list $(1, 2, 3)$, where position matters.
+
+** 2. The Solution: Kuratowski's Definition
+:PROPERTIES:
+:ID:       4fa8d165-7049-4fa7-85f1-1b607ea179fe
+:END:
+
+To define an ordered pair $(a, b)$ using only unordered sets, Kazimierz Kuratowski (1921) proposed a clever definition that is now the standard:
+
+$$(a, b) = \{ \{a\}, \{a, b\} \}$$
+
+*** Why this works
+:PROPERTIES:
+:ID:       6f7befe7-fde2-41e1-97a7-642a52d8778a
+:END:
+
+It distinguishes the "first" element from the "second" by nesting depth.
+- The element $a$ appears in *both* sets: $\{a\}$ and $\{a, b\}$.
+- The element $b$ appears in *only one* set: $\{a, b\}$.
+
+We can now prove that if $(a, b) = (c, d)$, then $a = c$ and $b = d$. The structure forces order.
+
+** 3. From Pairs to n-Tuples
+:PROPERTIES:
+:ID:       538fab5c-deae-49bd-96ec-4463fdb8cd37
+:END:
+
+Once we have a pair, we can define a tuple of any length recursively. An \(n\)-tuple is just a pair where the first element is an \((n-1)\)-tuple.
+
+$$(x, y, z) = ((x, y), z)$$
+
+This means a triplet is actually nested pairs:
+$$(x, y, z) \rightarrow \{ \{ (x,y) \}, \{ (x,y), z \} \}$$
+
+** 4. Is a List a Tuple?
+:PROPERTIES:
+:ID:       533ca017-c14d-4243-a646-b29f20ece101
+:END:
+
+*** Yes, a list is a tuple
+:PROPERTIES:
+:ID:       f6fd6393-15d8-4b37-bb39-942848dd29d4
+:END:
+
+In Computer Science (and specifically Scheme), a list is a **Linked List**, which is physically implemented exactly like the recursive tuple definition above.
+
+- *Math Tuple*: $(a, b, c) = (a, (b, c))$ (Right-associative grouping)
+- *Scheme List*: =(cons 'a (cons 'b (cons 'c '())))=
+
+The Scheme list =(a b c)= is literally the ordered triple $\langle a, b, c \rangle$, realized through a chain of pairs (cons cells).
+
+*** The Slight Difference
+:PROPERTIES:
+:ID:       206ab4b8-a196-43e2-8e6d-4f69ccef6954
+:END:
+
+- *Tuples* (in math/Python) are usually considered "fixed width" or immutable.
+- *Lists* (in Scheme) are considered "growable" or recursive structures terminating in a specific marker (nil/null).
+
+But structurally? They are identical. A list is just a tuple defined recursively.
+
+* Peter lists lore 1
+:PROPERTIES:
+:ID:       a7470928-93a0-4eed-9f99-194a7bca188a
+:END:
+
+** Overview
+:PROPERTIES:
+:ID:       888af3c1-e9bf-4833-99d3-a5adc88aba9e
+:END:
+Péter's definition is recursive because the term being defined (*List*) appears inside its own definition. It describes a **tree structure** where:
+- *Recursive Step*: A list can contain a list.
+- *Base Case*: A list can contain an atom (which is *not* a list).
+
+This allows for arbitrary nesting. A list isn't just a flat row of items; it is a container that can hold other containers, which can hold other containers, until you eventually hit rock bottom (the atoms).
+
+** 1. The Recursive Mathematical Model
+:PROPERTIES:
+:ID:       6bb29827-6a39-428f-8a45-952b51be2f7c
+:END:
+To model this mathematically, we cannot define the set of all lists $\mathcal{L}$ in one simple step. We must define it inductively (building it up layer by layer).
+
+Let $\mathcal{A}$ be the set of *Atoms* (e.g., integers, symbols).
+Let $\mathcal{L}$ be the set of *Lists*.
+
+We define $\mathcal{L}$ as the *smallest set* satisfying these two axioms:
+
+1. *The Empty List*: The empty sequence $\langle \rangle$ is in $\mathcal{L}$.
+2. *The Construction Rule*: If $x_1, x_2, \dots, x_n$ are elements where each $x_i$ is either in $\mathcal{A}$ (an atom) OR in $\mathcal{L}$ (an existing list), then the ordered tuple $\langle x_1, x_2, \dots, x_n \rangle$ is in $\mathcal{L}$.
+
+$$L = \{ \langle x_1, \dots, x_n \rangle \mid n \ge 0 \land \forall i, (x_i \in A \lor x_i \in L) \}$$
+
+This effectively says: "A list is an ordered sequence of things, where each thing is either an atom or a list."
+
+** 2. Unpacking the "Rank" of a List
+:PROPERTIES:
+:ID:       b6cb3368-4008-4f43-8fb7-00efb8ccefe2
+:END:
+This definition creates a hierarchy. You can imagine the set of lists $\mathcal{L}$ being built in stages (often called "ranks" in set theory):
+
+- *Rank 0 (Simple Lists)*: Lists containing *only* atoms.
+  - Example: $\langle 1, 2, 3 \rangle$
+- *Rank 1 (Nested Lists)*: Lists containing atoms and Rank 0 lists.
+  - Example: $\langle 1, \langle 2, 3 \rangle, 4 \rangle$
+- *Rank k+1*: Lists containing elements from any Rank up to $k$.
+
+The "recursion" is the ability to reference a lower rank inside a higher rank.
+
+** 3. A Concrete Example
+:PROPERTIES:
+:ID:       1f7253c5-45cb-4a12-8fcd-429f2aed75de
+:END:
+Let's trace the recursive definition for the list $M = \langle 1, \langle 2, 3 \rangle \rangle$.
+
+1. Is $2$ an atom? Yes ($2 \in \mathcal{A}$).
+2. Is $3$ an atom? Yes ($3 \in \mathcal{A}$).
+3. Since $2, 3 \in \mathcal{A}$, the tuple $\langle 2, 3 \rangle$ is a valid List (Rank 0).
+4. Now look at $M$.
+   - Element 1: $1$ ($\in \mathcal{A}$).
+   - Element 2: $\langle 2, 3 \rangle$ ($\in \mathcal{L}$, as proven in step 3).
+5. Since all elements are in $\mathcal{A} \cup \mathcal{L}$, $M$ is a valid List.
+
+** 4. Connection to Scheme
+:PROPERTIES:
+:ID:       edb2301f-9aba-4ec5-b068-ee36850dd2f4
+:END:
+In your earlier Scheme context, this is exactly why =pair?= (or =cons=) works the way it does. The function to count the "leaves" of this tree (the atoms) must handle both cases of the definition:
+
+$$count(x) = \begin{cases} 1 & \text{if } x \in \text{Atom} \\ \sum count(e_i) & \text{if } x \in \text{List} \end{cases}$$
+
+This mirrors Péter's view: you cannot process the structure without acknowledging that the "parts" might be as complex as the "whole."
+
+
+* Scheme implementation of math sets
+:PROPERTIES:
+:ID:       984366af-c5eb-49da-9cb1-fb24d9d8747c
+:END:
+
+** 1. Theory of Representation
+:PROPERTIES:
+:ID:       4775b533-8a25-4f1e-a25c-f2820da7ab56
+:END:
+To represent a mathematical set $S$ using a Scheme list $L$, we must enforce the **invariance of uniqueness**.
+- *Math*: $\{a, a\} = \{a\}$.
+- *Scheme*: =(list 'a 'a)= is distinct from =(list 'a)=.
+- *Solution*: Our constructor (=adjoin-set=) must filter duplicates to maintain the set property.
+
+** 2. Core Operations
+:PROPERTIES:
+:ID:       7779900d-6ce8-4466-93b4-cec6ad135f86
+:END:
+
+*** Membership ($x \in S$)
+:PROPERTIES:
+:ID:       5fe40a5c-b23e-487a-b14e-281647ce7174
+:END:
+In Set Theory, determining membership is an atomic lookup. In Scheme lists, it is a linear scan ($O(n)$).
+
+#+BEGIN_SRC scheme
+(define (element-of-set? x set)
+  (cond ((null? set) false)
+        ((equal? x (car set)) true)
+        (else (element-of-set? x (cdr set)))))
+#+END_SRC
+
+*** Adjunction ($S' = S \cup \{x\}$)
+:PROPERTIES:
+:ID:       a4ff0d91-fee4-44cb-90a8-185c9f497b07
+:END:
+To add an element $x$ to a set $S$, we must check if $x \in S$ first. This prevents the list from growing with duplicates.
+- *Complexity*: $O(n)$ because of the call to =element-of-set?=.
+
+#+BEGIN_SRC scheme
+(define (adjoin-set x set)
+  (if (element-of-set? x set)
+      set
+      (cons x set)))
+#+END_SRC
+
+** 3. Set Algebra
+:PROPERTIES:
+:ID:       9d0dbb3a-07f2-43c1-8e48-d6e3360b2878
+:END:
+
+*** Intersection ($A \cap B$)
+:PROPERTIES:
+:ID:       12f21584-5326-4afc-8261-1715a7b47f95
+:END:
+The intersection is the set of elements in $A$ that are also in $B$.
+- *Complexity*: $O(n^2)$. For every element in set1, we scan set2.
+
+#+BEGIN_SRC scheme
+(define (intersection-set set1 set2)
+  (cond ((null? set1) '())
+        ((element-of-set? (car set1) set2)
+         (cons (car set1)
+               (intersection-set (cdr set1) set2)))
+        (else (intersection-set (cdr set1) set2))))
+#+END_SRC
+
+*** Union ($A \cup B$)
+:PROPERTIES:
+:ID:       e107aaa3-1ac9-4098-a023-c793708ee889
+:END:
+The union is all elements of $A$ and all elements of $B$, combined without duplicates.
+- *Implementation Note*: We recurse down set1. If an element is *not* in set2, we cons it to the result. Finally, we append set2 (which already contains unique elements).
+- *Complexity*: $O(n^2)$.
+
+#+BEGIN_SRC scheme
+(define (union-set set1 set2)
+  (cond ((null? set1) set2)
+        ((element-of-set? (car set1) set2)
+         (union-set (cdr set1) set2))
+        (else (cons (car set1)
+                    (union-set (cdr set1) set2)))))
+#+END_SRC
+
+** 4. Optimization Theory: Ordered Lists
+:PROPERTIES:
+:ID:       cef2434e-57c0-41c4-983c-b75bec9ad08c
+:END:
+If we change our representation to require that elements are listed in *ascending order*, we can improve performance drastically.
+
+*** Complexity Shift
+:PROPERTIES:
+:ID:       1fd58201-67f4-4726-ba42-a0b21695e148
+:END:
+| Operation | Unordered List | Ordered List |
+|-----------+----------------+--------------|
+| element-of-set? | $O(n)$ | $O(n)$ (avg $n/2$) |
+| intersection-set | $O(n^2)$ | $O(n)$ |
+| union-set | $O(n^2)$ | $O(n)$ |
+
+*** Ordered Intersection Logic
+:PROPERTIES:
+:ID:       c5051a7f-1341-4706-9b69-a4492b1edf95
+:END:
+Since both sets are sorted, we can compare the heads (cars) of the lists.
+1. If $x1 = x2$, include element and advance both.
+2. If $x1 < x2$, advance set1 (catch up).
+3. If $x2 < x1$, advance set2.
+
+#+BEGIN_SRC scheme
+(define (intersection-set-ordered set1 set2)
+  (if (or (null? set1) (null? set2))
+      '()
+      (let ((x1 (car set1)) (x2 (car set2)))
+        (cond ((= x1 x2)
+               (cons x1
+                     (intersection-set-ordered (cdr set1)
+                                               (cdr set2))))
+              ((< x1 x2)
+               (intersection-set-ordered (cdr set1) set2))
+              ((< x2 x1)
+               (intersection-set-ordered set1 (cdr set2)))))))
+#+END_SRC
+
+* Sets versus lists
+:PROPERTIES:
+:ID:       77f4b3cf-2341-4459-9136-b38769374ffb
+:END:
+
+** Overview
+:PROPERTIES:
+:ID:       45ddb009-9c49-404a-a5bf-68ac16a28c38
+:END:
+At first glance, sets and lists might look like siblings—they both hold "stuff." However, in the world of mathematical foundations and functional programming, they are governed by entirely different sets of laws. One is an abstract collection defined by membership, while the other is a concrete, sequential data structure defined by its construction.
+
+** 1. Mathematical Sets
+:PROPERTIES:
+:ID:       0c5ae7d1-7e75-47f1-a1ac-9403781cd4aa
+:END:
+In standard Zermelo-Fraenkel (ZF) set theory, a set is an *unordered* collection of *distinct* objects.
+
+*** Properties
+:PROPERTIES:
+:ID:       3a74962f-cfda-4840-8148-1996ea2e0b3a
+:END:
+- *Unordered*: The set $\{1, 2, 3\}$ is identical to $\{3, 2, 1\}$. There is no "first" element.
+- *Uniqueness*: Elements cannot be repeated. The collection $\{a, a, b\}$ is simply the set $\{a, b\}$.
+- *Extensionality*: Two sets are equal if and only if they have the same members.
+- *Membership*: The fundamental relationship is $\in$ (membership). You don't "index" into a set; you simply ask if an object belongs to it.
+
+*** Example (Von Neumann Ordinals)
+:PROPERTIES:
+:ID:       41c1f93b-3e31-4b36-9b49-991f1843888f
+:END:
+In the Von Neumann construction, the number $2$ is defined as the set of all preceding ordinals:
+$$2 = \{0, 1\} = \{\emptyset, \{\emptyset\}\}$$
+It doesn't matter how you write those elements; the set is defined solely by its contents.
+
+** 2. Scheme Lists
+:PROPERTIES:
+:ID:       3c858090-8751-407b-82b5-f29ab6fc81a4
+:END:
+In Scheme (and most Lisp dialects), a list is a *sequential data structure* built out of *cons cells*.
+
+*** Properties
+:PROPERTIES:
+:ID:       9787c70b-9682-420a-aa5b-a48fd4f629cb
+:END:
+- *Ordered*: The list =(1 2 3)= is fundamentally different from =(3 2 1)=. Order is preserved because the list is a chain of pointers.
+- *Multiplicity*: Elements can be repeated. =(a a b)= is a valid list with a length of 3.
+- *Inductive Definition*: A list is either:
+  1. The empty list ='()=, or
+  2. A pair (cons cell) whose =car= is an element and whose =cdr= is a list.
+- *Access by Position*: Unlike sets, lists are navigated via =car= (the head) and =cdr= (the tail).
+
+*** Code Example
+:PROPERTIES:
+:ID:       67fe1d12-7f4d-4538-a63f-d1822e84cc6b
+:END:
+#+BEGIN_SRC scheme
+(define my-list '(1 2 2 3))
+;; (car my-list) -> 1
+;; (cdr my-list) -> (2 2 3)
+#+END_SRC
+
+** 3. Key Theoretical Differences
+:PROPERTIES:
+:ID:       fd3b4304-aff7-41be-b459-ab0f0debf1ce
+:END:
+
+| Feature        | Mathematical Set                    | Scheme List                            |
+|----------------+-------------------------------------+----------------------------------------|
+| **Identity** | Defined by elements (Extensionality) | Defined by structure and order         |
+| **Duplicates** | Not allowed (idempotent)            | Allowed and distinct                   |
+| **Order** | Irrelevant                          | Primary characteristic                 |
+| **Axiomatics** | ZF Axioms (Pairing, Power Set, etc) | Algebra of Cons Cells (S-expressions)  |
+| **Infinity** | Can be truly infinite (e.g., $\mathbb{R}$) | Usually finite (unless using Streams)  |
+
+*** The "Axiom of Choice" vs. "List-Ref"
+:PROPERTIES:
+:ID:       66ee3402-5e6a-4c28-bad1-aaef75f9d8eb
+:END:
+In set theory, if you have a collection of non-empty sets, the *Axiom of Choice* allows you to "pick" an element from each, even if you don't have a specific rule for how to pick them.
+
+In Scheme, you don't need an axiom to "pick" because the list is ordered. You use =list-ref=. However, finding an element in a list is an $O(n)$ operation—you must traverse the "links" of the chain. In a pure mathematical set, we often treat membership as a logical primitive $P(x)$, ignoring the "cost" of finding it.
+
+*** Symbolic Differentiation Perspective
+:PROPERTIES:
+:ID:       6c87e35c-bac5-4a99-97fd-5290f5aca12e
+:END:
+If you were writing a symbolic differentiator in Scheme, you would represent an expression like $x + x$ as a list: =(+ x x)=.
+- If you treated this as a *set*, $\{+, x, x\}$ would collapse into $\{+, x\}$, and your expression would lose its meaning.
+- The *list* structure preserves the fact that the operator =+= is being applied to two distinct instances of the variable =x=.
+
+** 4. Implementing Sets in Scheme
+:PROPERTIES:
+:ID:       1da95d1e-f396-4f58-999c-bd33abdda8ff
+:END:
+Since lists allow duplicates and sets do not, we must enforce set semantics via functions.
+
+*** Membership (element-of-set?)
+:PROPERTIES:
+:ID:       f14365f5-d6bb-4d30-ae2e-15711cf64289
+:END:
+We scan the list. This is $O(n)$, whereas in mathematical theory, membership is instantaneous.
+
+#+BEGIN_SRC scheme
+(define (element-of-set? x set)
+  (cond ((null? set) false)
+        ((equal? x (car set)) true)
+        (else (element-of-set? x (cdr set)))))
+#+END_SRC
+
+*** Adjunction (adjoin-set)
+:PROPERTIES:
+:ID:       d857f3f3-aff1-47e8-8a73-7cd6a4df7b44
+:END:
+We only add the element if it is not already present. This preserves the *Uniqueness* property of sets.
+
+#+BEGIN_SRC scheme
+(define (adjoin-set x set)
+  (if (element-of-set? x set)
+      set
+      (cons x set)))
+#+END_SRC
+
+*** Intersection (intersection-set)
+:PROPERTIES:
+:ID:       dfc156fa-46ab-4684-8eb1-6757e676699a
+:END:
+The intersection of set1 and set2 is the set of elements in set1 that are also in set2.
+
+#+BEGIN_SRC scheme
+(define (intersection-set set1 set2)
+  (cond ((null? set1) '())
+        ((element-of-set? (car set1) set2)
+         (cons (car set1)
+               (intersection-set (cdr set1) set2)))
+        (else (intersection-set (cdr set1) set2))))
+#+END_SRC
+
+
+* Some ML logic
+:PROPERTIES:
+:ID:       ff41a214-f766-473e-a63d-f7da6f57fb4e
+:END:
+
+Atomic Expressions in Standard ML
+
+\begin{align*}
+C \vdash \text{atexp} \Rightarrow \tau
+\end{align*}
+
+
+** (1) Special Constants
+:PROPERTIES:
+:ID:       89d26ef9-0add-492c-afb6-665640f3f846
+:END:
+   \[
+   \frac{
+   }{
+     C \vdash \text{scon} \Rightarrow \text{type}(\text{scon})
+   }
+   \]
+
+** (2) Value Identifiers
+:PROPERTIES:
+:ID:       688bc6fe-f7d0-473d-84d9-6ed64c18fe81
+:END:
+   \[
+   \frac{
+     C(\text{longvid}) = (\sigma, is) \quad \sigma \succ \tau
+   }{
+     C \vdash \text{longvid} \Rightarrow \tau
+   }
+   \]
+
+** (3) Records
+:PROPERTIES:
+:ID:       1aa2871f-a586-41a6-8cde-3f4b664006d1
+:END:
+   \[
+   \frac{
+     \langle C \vdash \text{exprow} \Rightarrow \rho \rangle
+   }{
+     C \vdash \{ \langle \text{exprow} \rangle \} \Rightarrow \{\} \langle + \rho \rangle \text{ in Type}
+   }
+   \]
+
+** (4) Let Expressions
+:PROPERTIES:
+:ID:       3b60e252-51fe-4550-8d7e-7e96ed2e4bc7
+:END:
+   \[
+   \frac{
+     C \vdash \text{dec} \Rightarrow E \quad C \oplus E \vdash \text{exp} \Rightarrow \tau \quad \text{tynames}\ \tau \subseteq T \text{ of } C
+   }{
+     C \vdash \text{let}\ \text{dec}\ \text{in}\ \text{exp}\ \text{end} \Rightarrow \tau
+   }
+   \]
+
+** (5) Parenthesized Expressions
+:PROPERTIES:
+:ID:       689f89d7-f9ba-4ae8-b32b-11639f291a19
+:END:
+   \[
+   \frac{
+     C \vdash \text{exp} \Rightarrow \tau
+   }{
+     C \vdash (\text{exp}) \Rightarrow \tau
+   }
+   \]
+
+
+* Converting function application to predicate logic
+:PROPERTIES:
+:ID:       625ff904-c460-4d7e-a40a-d0661c32db5e
+:END:
+
+** Function equals to Predicate Logic iff
+:PROPERTIES:
+:ID:       dbda89da-c752-4948-8daa-7dd5fd028aee
+:END:
+
+To convert the algebraic functional form ($f(a)=f(b)$) into the strict logical predicate form ($P(a) \iff P(b)$), we must turn the *calculation* $x^2$ into a *True/False statement*.
+
+*** 1. The Setup
+:PROPERTIES:
+:ID:       f7868366-74ea-4ac9-8940-84ee7e9d0ee4
+:END:
+- *Assumption:* $$ a = b $$
+- *Function:* $$ f(x) = x^2 $$
+- *Target Conclusion:* $$ a^2 = b^2 $$
+
+*** 2. Defining the Predicate $P(x)$
+:PROPERTIES:
+:ID:       202de757-36c8-491c-82e6-d4f6048952e4
+:END:
+To bridge the gap, we must define a property $P$ that checks if a number's square is equal to a specific value. Since we want to prove the result equals $b^2$, we fix $b^2$ as our target.
+
+Define the predicate $P(x)$ as:
+
+$$ P(x) \iff (x^2 = b^2) $$
+
+/(In English: "$P(x)$ is true if and only if the square of $x$ is equal to $b^2$." Note that $b$ is treated as a fixed constant in this definition.)/
+
+*** 3. The Logical Execution
+:PROPERTIES:
+:ID:       30701aee-9166-4a2e-89ae-93ff2446d0bf
+:END:
+Now we apply the Substitution Principle ($a=b \implies P(a) \iff P(b)$) using our custom predicate.
+
+**** Step A: Evaluate $P(b)$
+:PROPERTIES:
+:ID:       c90ab79d-dd02-4d29-b60d-acbb4cc560ad
+:END:
+Plug $b$ into our definition:
+$$ P(b) \iff (b^2 = b^2) $$
+Since any number is equal to itself (Reflexivity), this statement is *True*.
+
+**** Step B: Apply Substitution
+:PROPERTIES:
+:ID:       594a4e0a-b2c8-4339-b122-fddc445ed187
+:END:
+Since $a = b$, the Substitution Principle states that $P(a)$ must have the same truth value as $P(b)$.
+$$ P(b) \text{ is True} \implies P(a) \text{ is True} $$
+
+**** Step C: Unpack $P(a)$
+:PROPERTIES:
+:ID:       5df14dc1-497f-4645-ad48-7a0dae51b74b
+:END:
+Now look at what $P(a)$ actually means according to our definition:
+$$ P(a) \iff (a^2 = b^2) $$
+
+*Conclusion:* Since $P(a)$ is True, it must be the case that $$ a^2 = b^2 $$.
+
+*** Summary Table
+:PROPERTIES:
+:ID:       a1d0f883-e8b4-4661-91d3-b978d92a91ea
+:END:
+
+| Concept           | Algebraic Form         | Logical Predicate Form      |
+|-------------------+------------------------+-----------------------------|
+| *The Input* | $a$                    | $a$                         |
+| *The "Machine"* | $f(x) = x^2$           | $P(x) \equiv (x^2 = b^2)$   |
+| *The Operation* | Calculate $a^2$        | Check: Is $P(a)$ True?      |
+| *The Guarantee* | The /values/ are equal | The /truth values/ are identical |
+
+
+* Haskell function equality
+:PROPERTIES:
+:ID:       051b0e1e-b771-4b69-be94-b8e09bc034bb
+:END:
+
+** Haskell, Logic, and the Problem of Function Equality
+:PROPERTIES:
+:ID:       83f23043-064a-4a70-ae1f-24e5316356d0
+:END:
+
+The refusal of Haskell to allow ~f == g~ is a direct consequence of upholding the strict logical definitions of *Leibniz's Law* and the *Substitution Principle*.
+
+*** The Core Conflict: Math vs. Computation
+:PROPERTIES:
+:ID:       c53ea40f-1e36-4272-bd70-edab2e96e8df
+:END:
+In the world of logic (and Haskell), there are two competing ways to define if two functions are "equal".
+
+**** 1. Extensional Equality (The Mathematical/Leibniz View)
+:PROPERTIES:
+:ID:       ed8d4867-48f8-40c7-ab20-a3df09e982dc
+:END:
+In set theory and logic, two functions $f$ and $g$ are equal if and only if they produce the same result for every possible input.
+
+$$ f = g \iff \forall x, f(x) = g(x) $$
+
+This is known as *Extensionality*. It focuses on the behavior (the extension), not the internal implementation.
+
+- *Function A:* ~f x = x + x~
+- *Function B:* ~g x = 2 * x~
+
+Mathematically, $f = g$. If we follow *Leibniz's Law*, substituting $f$ for $g$ in any valid mathematical expression should not change the truth value of that expression.
+
+**** 2. The Haskell Problem: The Halting Problem
+:PROPERTIES:
+:ID:       4d458bed-72b5-4982-abae-9f5925141d17
+:END:
+Why does Haskell complain if you try to derive ~Eq~ for a function type?
+
+To implement ~==~ for functions in a way that respects the mathematical definition above, the compiler would have to check the output of $f(x)$ and $g(x)$ for *every single possible input* $x$.
+
+1. *Infinite Domains:* If the input type is ~Integer~, the computer must check an infinite number of cases. It would never finish.
+2. *Rice's Theorem (The Halting Problem):* Even with a finite domain, the computer cannot determine if $f(x)$ will ever return a value or if it will loop forever.
+   - It is mathematically proven (*Rice's Theorem*) that determining any non-trivial property of a function's behavior (including "is it equal to this other function?") is *undecidable*.
+
+Because Haskell cannot guarantee it can check *Extensional Equality* (the math kind), it refuses to provide an ~==~ operator at all.
+
+*** Why not just check if they are the "same code"?
+:PROPERTIES:
+:ID:       c1843d0f-fdd5-4a86-a61b-28b1011c36c0
+:END:
+You might ask: /Why doesn't Haskell just check if ~f~ and ~g~ point to the same memory address or have the same source code?/
+
+This is called *Intensional Equality* (identity of definition or implementation). Languages like Lisp/Scheme (via ~eq?~) or Java (via ~==~) often allow this.
+
+Haskell avoids this because it breaks *Referential Transparency* (The Substitution Principle).
+
+#+BEGIN_SRC haskell
+  let f = \x -> x + 1
+  let g = \x -> 1 + x
+#+END_SRC
+
+- *Mathematically:* These are identical ($f = g$).
+- *Intensionally (in memory):* These are different code objects.
+
+If Haskell allowed ~f == g~ to return ~False~ just because they were defined differently, it would break the promise that "equals can be substituted for equals." It would force you to care about *how* the function was written, rather than *what* it calculates.
+
+*** Summary
+:PROPERTIES:
+:ID:       522251a1-983a-440f-be27-c3a7771a9fc4
+:END:
+Haskell's missing ~Eq~ instance for functions is the language designers making a principled stand:
+
+#+BEGIN_QUOTE
+"We cannot implement **Leibniz's Law** (true mathematical equality) for functions because of the Halting Problem. We refuse to implement **Pointer Equality** (cheap equality) because it violates the Substitution Principle."
+#+END_QUOTE
+
+Because it can't do the "correct" logical thing, it chooses to do nothing.
+
+
+* Physics problem: ball thrown into air
+:PROPERTIES:
+:ID:       0cc69d72-8e9e-46f2-a0f6-50a349b790f5
+:END:
+
+** Deriving the height–time equation from Newton’s Laws
+:PROPERTIES:
+:ID:       8f8d37c7-9a3f-48a4-b9e8-654e8f93575a
+:END:
+We’ll derive the equation of motion step by step and show how the familiar 
+quadratic form 
+
+\begin{align*}
+h(t) = -16t^2 + 40t + 5
+\end{align*}
+
+arises directly from Newton’s Second Law.
+
+*** Step 1. Newton’s Second Law
+:PROPERTIES:
+:ID:       15124d72-da91-439c-b0a8-1762cd21b49e
+:END:
+
+\begin{align*}
+F = ma
+\end{align*}
+
+where
+- \( F \): net force acting on the object,
+- \( m \): mass of the object,
+- \( a \): acceleration.
+
+After the ball leaves your hand, the only force acting on it (ignoring air resistance)
+is gravity.
+
+*** Step 2. Gravity as a constant acceleration
+:PROPERTIES:
+:ID:       3518fe4e-4025-4c3a-bada-04decccebd9e
+:END:
+Gravity near Earth’s surface produces a constant acceleration:
+
+\begin{align*}
+a = -g
+\end{align*}
+
+where \( g = 32\, \text{ft/s}^2 \).
+
+The negative sign indicates that gravity acts downward. So:
+
+\begin{align*}
+a = -32 \text{ ft/s}^2
+\end{align*}
+
+*** Step 3. Relate acceleration to velocity
+:PROPERTIES:
+:ID:       775434b5-9ca6-4657-b36e-c2d2e6019286
+:END:
+Acceleration is the rate of change of velocity:
+
+\begin{align*}
+a = \frac{dv}{dt}
+\end{align*}
+
+Substitute \( a = -32 \):
+
+\begin{align*}
+\frac{dv}{dt} = -32
+\end{align*}
+
+Integrate both sides:
+
+\begin{align*}
+v(t) = -32t + C_1
+\end{align*}
+
+*** Step 4. Apply initial conditions for velocity
+:PROPERTIES:
+:ID:       88837504-9704-4394-be55-e405246f6930
+:END:
+
+If the initial upward velocity is \( v_0 = 40 \text{ ft/s} \), then:
+
+\begin{align*}
+v(0) = 40 = -32(0) + C_1 \Rightarrow C_1 = 40
+\end{align*}
+
+So:
+
+\begin{align*}
+v(t) = -32t + 40
+\end{align*}
+
+*** Step 5. Relate velocity to position (height)
+:PROPERTIES:
+:ID:       545e889c-e34e-4d9e-8d1e-919a70f88940
+:END:
+
+Velocity is the rate of change of height:
+
+\begin{align*}
+v = \frac{dh}{dt}
+\end{align*}
+
+Substitute \( v(t) \):
+
+\begin{align*}
+\frac{dh}{dt} = -32t + 40
+\end{align*}
+
+Integrate again:
+
+\begin{align*}
+h(t) = -16t^2 + 40t + C_2
+\end{align*}
+
+*** Step 6. Apply the initial height
+:PROPERTIES:
+:ID:       896ef8b1-646b-430b-9081-05b301e77bb7
+:END:
+
+If the ball is released from \( h(0) = 5 \) ft:
+
+\begin{align*}
+5 = -16(0)^2 + 40(0) + C_2 \Rightarrow C_2 = 5
+\end{align*}
+
+*** Step 7. Final equation of motion
+:PROPERTIES:
+:ID:       4eab8479-85aa-46f8-8a8d-94025c9a78ae
+:END:
+
+
+\begin{align*}
+\boxed{h(t) = -16t^2 + 40t + 5}
+\end{align*}
+
+*** Step 8. Physical interpretation of each term
+:PROPERTIES:
+:ID:       4cccd79d-16e3-49de-8ae4-d76e567e17ff
+:END:
+| Term          | Meaning                              | Origin                          |
+|----------------|--------------------------------------|---------------------------------|
+| \( -16t^2 \)   | downward pull of gravity             | acceleration \( a = -32 \)      |
+| \( +40t \)     | initial upward velocity contribution | force of the throw              |
+| \( +5 \)       | initial height above ground          | starting position               |
+
+*** Step 9. Finding the maximum height (the vertex)
+:PROPERTIES:
+:ID:       f5d38a54-0ab7-497b-b520-8dd70bed742f
+:END:
+
+The vertex of the parabola gives the time and height at the ball’s
+highest point. The general quadratic form is:
+
+\begin{align*}
+h(t) = at^2 + bt + c
+\end{align*}
+
+Here \( a = -16 \), \( b = 40 \), and \( c = 5 \).
+
+**** (a) Time of maximum height
+:PROPERTIES:
+:ID:       c4bea491-07a1-4311-80c3-59917c3e2f84
+:END:
+
+The vertex occurs when:
+
+\begin{align*}
+t_{\text{max}} = -\frac{b}{2a}
+\end{align*}
+
+Compute:
+
+\begin{align*}
+t_{\text{max}} = -\frac{40}{2(-16)} = \frac{40}{32} = 1.25 \text{ seconds.}
+\end{align*}
+
+**** (b) Maximum height
+:PROPERTIES:
+:ID:       ef2cae0e-96f5-4900-90ef-8f8273f4decf
+:END:
+
+Substitute \( t = 1.25 \) into \( h(t) \):
+
+\begin{align*}
+h(1.25) = -16(1.25)^2 + 40(1.25) + 5
+         = -16(1.5625) + 50 + 5
+         = -25 + 55
+         = 30 \text{ ft.}
+\end{align*}
+
+So the ball reaches its peak 1.25 seconds after being thrown, at a
+height of 30 feet.
+
+*** Step 10. Finding when the ball hits the ground
+:PROPERTIES:
+:ID:       026cb2ea-a920-4959-ac7e-ae86c87cecc5
+:END:
+
+The ball hits the ground when \( h(t) = 0 \):
+
+\begin{align*}
+-16t^2 + 40t + 5 = 0
+\end{align*}
+
+Divide both sides by $-1$:
+
+\begin{align*}
+16t^2 - 40t - 5 = 0
+\end{align*}
+
+Use the quadratic formula:
+
+\begin{align*}
+t = \frac{40 \pm \sqrt{(-40)^2 - 4(16)(-5)}}{2(16)}
+  = \frac{40 \pm \sqrt{1600 + 320}}{32}
+  = \frac{40 \pm \sqrt{1920}}{32}
+  = \frac{40 \pm 43.82}{32}
+\end{align*}
+
+So:
+
+\begin{align*}
+t_1 \approx -0.12 \text{ s} \quad \text{and} \quad t_2 \approx 2.62 \text{ s.}
+\end{align*}
+
+The negative time is not physical; we discard \( t_1 \).  
+Thus, the ball strikes the ground at \( t = 2.62 \) seconds after launch.
+
+*** Step 11. Impact velocity
+:PROPERTIES:
+:ID:       4c00c19d-74cc-4d5d-9f54-f3a5bbc40e93
+:END:
+
+To find the velocity when it hits the ground, substitute \( t = 2.62 \) into \( v(t) = -32t + 40 \):
+
+\begin{align*}
+v(2.62) = -32(2.62) + 40 = -83.84 + 40 = -43.84 \text{ ft/s.}
+\end{align*}
+
+So the ball hits the ground moving downward at approximately \( 43.8 \text{ ft/s} \).
+
+*** Step 12. Summary of full motion
+:PROPERTIES:
+:ID:       55a410fa-a534-4f38-851b-5df10cf47d52
+:END:
+| Quantity | Symbol | Value | Meaning |
+|-----------|---------|--------|----------|
+| Acceleration | \( a \) | \( -32 \text{ ft/s}^2 \) | Gravity (downward) |
+| Initial velocity | \( v_0 \) | \( 40 \text{ ft/s} \) | Upward throw speed |
+| Initial height | \( h_0 \) | \( 5 \text{ ft} \) | Release height |
+| Time to max height | \( t_{\text{max}} \) | \( 1.25 \text{ s} \) | At highest point |
+| Maximum height | \( h_{\text{max}} \) | \( 30 \text{ ft} \) | Peak of trajectory |
+| Time of impact | \( t_{\text{ground}} \) | \( 2.62 \text{ s} \) | Ball hits ground |
+| Impact velocity | \( v_{\text{impact}} \) | \( -43.8 \text{ ft/s} \) | Downward speed at ground |
+
+*** Step 13. Final system of motion
+:PROPERTIES:
+:ID:       21bb392e-f305-4881-bba8-24810371e1ab
+:END:
+Together, the ball’s motion is fully described by:
+
+\begin{align*}
+\begin{cases}
+h(t) = -16t^2 + 40t + 5 \\
+v(t) = -32t + 40
+\end{cases}
+\end{align*}
+
+*** Step 14. Optional: Verify energy conservation
+:PROPERTIES:
+:ID:       8b595d4d-1a59-4a67-8d14-9653040c0cae
+:END:
+To check energy consistency, compare *kinetic energy (KE)* and *potential energy (PE)* at various points.
+
+For a ball of mass \( m \) (in slugs), we have:
+
+\begin{align*}
+\text{Total Energy } = \text{KE} + \text{PE} = \frac{1}{2}mv^2 + mgh
+\end{align*}
+
+Here \( g = 32 \text{ ft/s}^2 \).
+
+**** (a) At launch \((t = 0)\)
+:PROPERTIES:
+:ID:       42304eb3-f4c7-4796-8e37-572ecd7d92c8
+:END:
+\begin{align*}
+v = 40, \quad h = 5
+\end{align*}
+
+\begin{align*}
+E_0 = \frac{1}{2}m(40)^2 + m(32)(5)
+     = (800 + 160)m
+     = 960m
+\end{align*}
+
+**** (b) At maximum height \((t = 1.25)\)
+:PROPERTIES:
+:ID:       0f396a44-4de1-4932-a86e-93503b2b35ae
+:END:
+At the top, \( v = 0 \) and \( h = 30 \):
+
+\begin{align*}
+E_{\text{top}} = \frac{1}{2}m(0)^2 + m(32)(30)
+                = 960m
+\end{align*}
+
+**** (c) At impact (back at ground level, \( h = 0 \))
+:PROPERTIES:
+:ID:       c9d6c619-7143-4ad8-84c2-31239e1bf6e0
+:END:
+Velocity at \( t = 2.62 \): \( v = -43.84 \) ft/s  
+
+\begin{align*}
+E_{\text{ground}} = \frac{1}{2}m(43.84)^2 + m(32)(0)
+                  \approx (960)m
+\end{align*}
+
+Thus,
+
+\begin{align*}
+E_0 = E_{\text{top}} = E_{\text{ground}} = 960m
+\end{align*}
+
+confirming **conservation of mechanical energy** (no loss or gain — only transformation between kinetic and potential energy).
+
+*** Step 15. Interpretation
+:PROPERTIES:
+:ID:       4ff2b182-d69c-4874-9232-bdd6c98efc6c
+:END:
+- The ball trades *kinetic energy* (speed) for *potential energy* (height) as it rises.  
+- At the top, all kinetic energy is converted into potential energy.  
+- On the way down, potential energy transforms back into kinetic energy.  
+- The total energy remains constant — a perfect physical consistency check.
+
+
+* Quadratic as a product of linear factors
+:PROPERTIES:
+:ID:       a02e183b-075a-4eb0-9c6c-c7c11063e79a
+:END:
+
+The equation $y = ax^2 + bx + c$ is not linear because the variable
+$x$ appears with a power of $2$, i.e., it’s a quadratic equation.
+
+When you pair it with $y = 0$, you indeed have a system of two
+equations, but it is not a linear system because one of those
+equations is non-linear. Specifically,
+
+\begin{align*}
+y &= ax^2 + bx + c \\
+y &= 0
+\end{align*}
+
+\begin{cases}
+y = ax^2 + bx + c \\
+y = 0
+\end{cases}
+
+describes the intersection points between a parabola and the x-axis.  
+
+Solving this system means finding all $x$ values that satisfy both
+equations, which comes from substituting $y = 0$ into the quadratic,
+giving  $0 = ax^2 + bx + c$.
+
+When we factor this (if possible) as $a(x - r_{1})(x - r_{2}) = 0$, we
+get the linear factors $(x - r_{1})$ and $(x - r_{2})$ — each
+representing a line (degree 1 equation in $x$).
+
+- We start with a non-linear system (the parabola and the x-axis).
+- But solving for the roots involves factoring the quadratic into
+  linear factors, which allows us to solve simple linear equations
+  $(x - r_{1}) = 0$ or $(x - r_{2}) = 0$.
+
+
+* Reflexivity, identity matrix, diagonal line
+:PROPERTIES:
+:ID:       6accde46-1703-470c-8caa-e70d05a3a683
+:END:
+
+* Boole's Indentity
+:PROPERTIES:
+:ID:       8edd9601-081b-42a8-b943-6b3477d98155
+:END:
+
+In George Boole's algebraic approach to logic, as detailed in his
+works like *The Mathematical Analysis of Logic* (1847) and *The Laws
+of Thought* (1854), he reinterpreted classical logical principles
+through symbols and operations that behave like algebra but represent
+classes or propositions. The equation \(x^2 = x\), equivalently
+factored as \(x(x-1) = 0\), is central to this system and directly
+ties to Aristotle's Law of Identity (often stated as "A is A" or
+"everything is what it is and not something else").
+
+** Connection to the Law of Identity
+:PROPERTIES:
+:ID:       7531961a-c8d7-4ab8-829d-be4168e10134
+:END:
+
+Boole's system treats variables like \(x\) as representing classes of objects within a "universe of discourse" (all conceivable things under consideration). The operation of multiplication (e.g., \(xy\)) corresponds to logical intersection or conjunction—selecting elements that belong to both classes \(x\) and \(y\). Applying this to the same class twice gives \(x \cdot x = x^2\), which means intersecting a class with itself.
+
+- The equation \(x^2 = x\) captures the idea that a class intersected with itself yields exactly the same class—no more, no less. This is idempotence in logical terms: repeating the selection or affirmation of a class doesn't alter it.
+- This mirrors the Law of Identity because it algebraically expresses self-equality or self-consistency: a thing (or class) is identical to itself. Performing the "act" of identifying or selecting \(x\) multiple times always results in \(x\), just as "A is A" asserts unchanging self-identity.
+- The factored form \(x(x-1) = 0\) further restricts solutions to \(x = 0\) (nothing, or false) or \(x = 1\) (everything in the class, or true), enforcing a binary logic where partial or intermediate values aren't allowed. This binary constraint aligns with absolute identity—something either fully is itself (1) or isn't (0), with no ambiguity.
+
+In essence, Boole transformed the philosophical principle of identity into a mathematical axiom that governs how symbols behave in his algebra, making logic computable and operational.
+
+** Relation to Reflexivity
+:PROPERTIES:
+:ID:       8a3ef225-a415-4501-895a-c7dc4d3c2141
+:END:
+
+Reflexivity typically refers to properties in relations (e.g.,
+equality is reflexive because \(a = a\)) or systems where an element
+relates to itself. While Boole's equation isn't explicitly about
+relations, it embodies a reflexive quality in the context of classes
+or propositions:
+
+- \(x^2 = x\) implies a self-referential consistency: the class \(x\) "relates" to itself through intersection without change, akin to reflexivity in set theory (e.g., \(X \cap X = X\)).
+- Boole saw this as a "law of thought" fundamental to reasoning, often calling it the "index law" or "law of duality." It ensures that logical operations are stable and self-consistent, reflecting the reflexive nature of identity in Aristotle's sense—nothing can be both itself and not itself.
+
+This isn't a direct mapping to modern relational reflexivity (as in binary relations), but it provides the foundational algebraic property that enables such concepts in Boolean logic.
+
+** Elective Symbols
+:PROPERTIES:
+:ID:       3921bf2c-9a40-4ca1-a099-9530ff15532c
+:END:
+
+Boole introduced "elective symbols" (also called "selective" or
+"elective operators") to describe these variables like \(x, y,
+z\). The term "elective" comes from the idea of "election" or
+selection:
+
+- An elective symbol \(x\) acts as an operator that "elects" or selects a subset from the universe of discourse—picking out all individuals or elements that satisfy the property \(x\).
+- For example, if the universe is all animals, \(x\) might elect all "white" animals. Then \(x^2\) means electing "white" from the already elected "white," which should still just be "white" (hence \(x^2 = x\)).
+- These symbols are "elective" because they perform an act of choice or filtration, and their algebraic behavior (like idempotence) derives from logical necessities. Boole emphasized that elective symbols inherently satisfy \(x^2 = x\) as a fundamental law, derived from the nature of thought and classification.
+- In his words (from sources like /The Laws of Thought/), this law means "that the result of a given act of election twice performed is the same as if performed but once." It's not arbitrary but a reflection of how the mind categorizes and identifies.
+
+This framework laid the groundwork for modern Boolean algebra, digital circuits, and computer logic, where 0 and 1 represent false/true, and operations like AND/OR exhibit the same idempotent properties.
+
+* Substitution principle
+:PROPERTIES:
+:ID:       81d2b647-e387-4bed-a571-8a8e62d10e14
+:END:
+
+** Leibniz's Law
+:PROPERTIES:
+:ID:       eccd6304-100d-4e9a-b6dd-ea0e1e5ae12f
+:END:
+
+The **Substitution Principle** (often formally called the **Indiscernibility of Identicals** or **Leibniz's Law**) is the engine that actually drives algebra.
+
+While **Reflexivity** ($\forall x (x=x)$) tells you that an object is technically identical to itself, **Substitutivity** tells you that you can /do/ something with that fact. It is the rule that turns equality into a usable tool.
+
+Here is the breakdown of why it is the "second half" of the definition and how it powers the "cancelling out" process.
+
+** 1. The Formal Definition (Leibniz's Law)
+:PROPERTIES:
+:ID:       40e101d8-b0da-45f5-bdfa-44d6381829aa
+:END:
+The principle states:
+
+/If two things are identical, then they must share every single
+property./
+
+Formally, for any formula $\phi$ with a free variable $z$:
+
+\[ x = y \implies (\phi(x) \leftrightarrow \phi(y)) \]
+
+In plain English: "If $x$ is equal to $y$, then any statement that is
+true about $x$ must also be true about $y$."
+
+This is why it is called an **Elimination Rule**: You use it to "eliminate" the equals sign and replace it with a new truth about the world.
+
+** 2. Why it is the "Engine" of Algebra
+:PROPERTIES:
+:ID:       69f26dfb-d6b5-4946-a98a-08701e79b92c
+:END:
+Every time you solve an equation, you are applying the Substitution Principle over and over again. You just do it so fast you don't notice.
+
+Think of an algebraic derivation not as a continuous flow, but as a series of **snapshots**. To get from one snapshot to the next, you must use the Substitution Principle to "swap out" a part of the picture.
+
+*** The "Find and Replace" Function
+:PROPERTIES:
+:ID:       a62fb6a7-a33e-4234-b963-fdadf7d00021
+:END:
+Imagine you have the equation:
+\[ x + (2 + 3) = 10 \]
+
+1. **Fact:** We know from arithmetic that $2 + 3 = 5$.
+2. **Substitution:** Because $2+3$ and $5$ are identical, the Substitution Principle allows us to delete "2 + 3" from the equation and paste in "5" without breaking the truth of the statement.
+3. **Result:** $x + 5 = 10$.
+
+Without this principle, knowing that $2+3=5$ would be useless. You would know they are equal, but you wouldn't have permission to /use/ that fact inside another equation.
+
+** 3. How it Powers "Cancelling Out"
+:PROPERTIES:
+:ID:       9943f0de-f287-45ef-9f2f-d20dd0608cee
+:END:
+Let's look at the cancellation proof ($a + c = b + c \implies a = b$) specifically through the lens of Substitution.
+
+When we say "cancel $c$ from both sides," we are actually running a specific "property" through the Substitution Principle.
+
+*** The Setup
+:PROPERTIES:
+:ID:       411bf7a1-baf8-475c-b5b1-e6ea1663b232
+:END:
+- We start with the premise: *$a + c = b + c$*
+- We want to prove: *$a = b$*
+
+*** The Substitution Steps
+:PROPERTIES:
+:ID:       d840242e-a80a-4f90-941b-b491cf730d7a
+:END:
+1. **Define a Property:** Let $\phi(z)$ be the property "z + (-c) = a".
+   (Note: This is a property constructed to help us isolate $a$.)
+2. **Apply to Left Side:** We know logically that $(a + c) + (-c) = a$.
+   So, $\phi(a+c)$ is **True**.
+3. **The Pivot (Substitution):** Since our premise says $a+c$ is identical to $b+c$, we can substitute $b+c$ into our property.
+   Since $\phi(a+c)$ is true, then $\phi(b+c)$ **must also be true**.
+4. **Result:** Therefore, $(b + c) + (-c) = a$.
+5. **Simplify (More Substitution):**
+   - $(b+c)+(-c)$ simplifies to $b + (c + -c)$ (Associativity).
+   - $b + 0$ (Inverse).
+   - $b$ (Identity).
+   - We substitute "b" for that whole mess on the left.
+6. **Final Truth:** $b = a$.
+
+** Summary
+:PROPERTIES:
+:ID:       0a33571b-f836-4db3-8694-a9b48b700df9
+:END:
+
+| Concept | Logical Role |
+| :--- | :--- |
+| *Reflexivity ($x=x$)* | Establishes that the concept of identity exists. It creates the "equals sign." |
+| *Substitutivity ($x=y \to P(x) \leftrightarrow P(y)$)* | Gives the equals sign *power*. It allows you to transport truth from one object to another. |
+
+In algebra, "cancelling" is really just **substituting a complex expression ($a+c$) with a simpler one ($b+c$) inside a larger function**.
+
+
+* Why not relations?
+:PROPERTIES:
+:ID:       d3c4ac99-f048-4188-92fd-5a06686e9295
+:END:
+
+** Why Math Prefers Functions Over Relations
+:PROPERTIES:
+:ID:       ed19bc0d-117b-447e-8643-62e4d84ca9bc
+:END:
+
+You have identified one of the most significant trade-offs in
+mathematics. Relations are indeed more general—they can describe any
+shape, curve, or scatter of points. Functions are restrictive—they
+essentially "break" if a line goes vertical.
+
+So why do we force the universe into the straitjacket of functions?
+
+The answer lies in the primary goal of science: **Prediction**.
+
+Here is why functions dominate our mathematical modeling, despite their limitations.
+
+*** 1. The "Reality" of Causality (Determinism)
+:PROPERTIES:
+:ID:       3b1d2835-555c-45be-8aba-54ec6c39287c
+:END:
+In science, we usually want to know what happens next.
+
+- *The Function Model:* "If I do $X$, then $Y$ happens."
+- *The Relation Model:* "If I do $X$, then $Y$, $Z$, or maybe $Q$ happens."
+
+Most classical physical phenomena are **deterministic**.
+
+- If you know the exact time ($t$), a planet can only be in *one* location ($x$).
+- If you know the specific temperature, a gas has a specific pressure.
+
+If a mathematical model failed the Vertical Line Test in these contexts, it would imply that a planet is in two places at once, or a gas has two different pressures simultaneously. The restriction of the function (one output per input) mirrors the restriction of physical reality (one state per moment).
+
+*** 2. The Definition of "Change" (Calculus)
+:PROPERTIES:
+:ID:       e39d79ee-62f9-4784-b960-688d6e348261
+:END:
+Modern science is built on Calculus, and Calculus is the study of how things change. To define a rate of change (a derivative), you need a clear "before" and "after."
+
+If you look at a curve that loops back on itself (a relation), and you pick an $x$-value where the curve has two points, the concept of "slope" becomes ambiguous. Which point are we talking about? Which direction is "forward"?
+
+By restricting ourselves to functions, we ensure that for every input, there is a single, unambiguous value, slope, and area. This allows us to build the machinery of differentiation and integration without constantly hitting logical forks in the road.
+
+*** 3. The "Infinite Slope" Problem
+:PROPERTIES:
+:ID:       7d9b4945-630d-4adb-a583-72a82c4b74a5
+:END:
+You mentioned the vertical line. The reason functions "ban" vertical lines is that a vertical line represents a breakdown of the input-output relationship.
+
+- *Mathematically:* The slope is *undefined* (division by zero).
+- *Physically:* A vertical line on a position-time graph would mean an object moved infinite distance in zero time (teleportation).
+
+Since teleportation and infinite speeds are generally impossible in classical physics, the "failure" of the Vertical Line Test is actually a useful "error message"—it tells us our model has done something physically impossible.
+
+*** 4. The Loophole: Parametric Equations
+:PROPERTIES:
+:ID:       efa6aa75-0b9e-4ac9-ad34-debb65402ebe
+:END:
+This is the most important part. Mathematicians *do* study shapes that fail the Vertical Line Test (circles, ellipses, spirals), but we cheat. We turn them into functions anyway.
+
+Instead of describing a circle as a relation between $x$ and $y$ ($x^2 + y^2 = 1$), we introduce a third variable, usually *time* ($t$). We break the relation into *two separate functions*:
+
+1. $x(t) = \cos(t)$
+2. $y(t) = \sin(t)$
+
+Both of these /are/ functions. They both pass the Vertical Line Test with respect to $t$. By doing this, we get the best of both worlds: we can draw the complex loops and curves of relations, but we can analyze them using the rigorous, deterministic tools of functions.
+
+*** Summary
+:PROPERTIES:
+:ID:       44d1f712-131f-42ec-bd11-d5c55251fa5f
+:END:
+We use functions because science is the business of predicting outcomes.
+
+| Type | Analogy | Purpose |
+|------+---------+---------|
+| *Relation* | A Map | Shows where things are relative to each other. |
+| *Function* | A Machine | You put something in, you get a specific result out. |
+
+Since we usually want to use math to build machines or predict the future, we prefer the tool that guarantees a single answer.
