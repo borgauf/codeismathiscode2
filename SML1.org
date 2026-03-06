@@ -179,7 +179,20 @@ pow (3,2)
 ⥤ The result of evaluating something produces a value.
 @@html:</font>@@
 
+Every value is an expression, but not every expression is a value. So
+certain expressions that are values always evaluate to themselves.
 
+#+name: f2199dbb-9457-45c8-9dda-8cbfa471273c
+#+begin_src sml :session *sml* :results output :exports both
+47;
+true;
+use;
+#+end_src
+
+#+RESULTS: f2199dbb-9457-45c8-9dda-8cbfa471273c
+: val it = 47 : int
+: val it = true : bool
+: val it = fn : string -> unit
 
 
 
