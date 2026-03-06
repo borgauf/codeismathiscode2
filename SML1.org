@@ -1,0 +1,187 @@
+#+TITLE: 
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2026-03-04T23:15:10Z UTC 
+#+LANGUAGE:  en 
+#+EXPORT_FILE_NAME: SML1.html
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Bibliography ---
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+# --- Document Content Starts Here ---
+#+INCLUDE: /home/galaxybeing/Dropbox/org/codeismathiscode2/header.org :minlevel 1
+
+
+* Programming Languages UW
+:PROPERTIES:
+:TIME:     2020-03-22T19:47:16
+:ID:       0d2b1aaa-acdf-433b-ad0f-d3200246160c
+:EDGES:
+:END:
+
+** Not exported                                                   :noexport:
+
+#+begin_src sml :eval never :exports code :tangle sml1.sml :noweb yes
+
+
+
+
+#+end_src
+
+
+
+** Week 2 Section 1
+
+*** Testing  :noexport:
+
+#+BEGIN_SRC sml :session *sml* :results output
+val addOne = fn n => n + 1;
+#+END_SRC
+
+#+RESULTS:
+: val it = "stdIn" : string
+
+
+An exponentiation, power-of function
+
+#+begin_src sml :session *sml* :results output
+fun pow base 0 = 1
+  | pow base exp = base * pow base (exp - 1);
+
+val result1 = pow 2 3;
+val result2 = pow 5 4;
+#+end_src
+
+#+RESULTS:
+: val result1 = 8 : int
+
+#+begin_src sml :results output :session *sml*
+fun pow2 (base : int) 0 : int = 1
+  | pow2 (base : int) (exp : int) : int = base * pow2 base (exp - 1);
+
+val result = pow2 2 3;
+#+end_src
+
+#+RESULTS:
+: val result = 8 : int
+
+#+begin_src sml :results output :session *sml*
+fun pow4 (x : int) (y : int) =
+    if y = 0
+    then 1
+    else x * pow4 x (y-1); (* <-- Add this if typing directly in the REPL *)
+#+end_src
+
+
+
+#+begin_src sml :session *sml* :results output
+fun factorial 0 = 1
+  | factorial n = n * factorial (n - 1);
+
+val result = factorial 5;
+#+end_src
+
+#+RESULTS:
+: val result = 120 : int
+
+#+name: 9d952c5d-b1c8-4698-bba0-74c616af03f4
+#+begin_src sml :session *sml* :results output verbatim :exports both
+val myNumbers = [1, 2, 3, 4, 5];
+
+val incrementedNumbers = List.map (fn n => n + 1) myNumbers;
+#+end_src
+
+#+RESULTS: 9d952c5d-b1c8-4698-bba0-74c616af03f4
+: val myNumbers = [1,2,3,4,5] : int list
+: 
+: [autoloading]
+: [library $SMLNJ-BASIS/basis.cm is stable]
+: [library $SMLNJ-BASIS/(basis.cm):basis-common.cm is stable]
+: [autoloading done]
+: val incrementedNumbers = [2,3,4,5,6] : int list
+
+#+name: f4251bed-aa87-4d7a-bd53-368b78cab7a0
+#+begin_src sml :session *sml* :results output verbatim :exports both
+incrementedNumbers;
+#+end_src
+
+#+RESULTS: f4251bed-aa87-4d7a-bd53-368b78cab7a0
+: val it = [2,3,4,5,6] : int list
+
+
+
+#+begin_src sml :session *sml* :results output :exports both :var multiplier=10
+val baseNumbers = [1, 2, 3];
+val scaledNumbers = List.map (fn n => n * multiplier) baseNumbers;
+#+end_src
+
+#+RESULTS:
+: val multiplier = 10 : int
+: val baseNumbers = [1,2,3] : int list
+: val scaledNumbers = [10,20,30] : int list
+
+
+#+name: my-table
+| 1 | 2 |
+| 3 | 4 |
+
+#+begin_src sml :session *sml* :results output :exports both :var data=my-table
+val flatData = List.concat data;
+#+end_src
+
+#+RESULTS:
+: val data = [[1,2],[3,4]] : int list list
+: val flatData = [1,2,3,4] : int list
+
+*** SML Basics
+
+This is a /sequence of bindings/
+
+#+begin_src sml :session *sml* :results output :exports both
+val x = 34; (* simplest expression is an integer constant *)
+val y = 17; (* variable binding *)
+val z = (x + y) + (y + 2);
+(* dynamic environment: x --> 34, y --> 17 ==> z --> 70 *)
+val abs_of_z = if z < 0 then 0 - z else z;
+#+end_src
+
+#+RESULTS:
+: val x = 34 : int
+: val y = 17 : int
+: val z = 70 : int
+: val abs_of_z = 70 : int
+
+#+name: e01aa86c-2ded-470f-a720-1baab7954197
+#+begin_src sml :session *sml* :results output :exports both
+fun pow (x:int, y:int) = (* correct only for y >= 0 *)
+if y=0
+then 1
+else x * pow(x,y-1)
+#+end_src
+
+#+RESULTS: e01aa86c-2ded-470f-a720-1baab7954197
+: val pow = fn : int * int -> int
+
+#+name: 3e2d0ac8-f8af-457e-aaef-3f30b0db127c
+#+begin_src sml :session *sml* :results output :exports both
+pow (3,2)
+#+end_src
+
+#+RESULTS: 3e2d0ac8-f8af-457e-aaef-3f30b0db127c
+: val it = 9 : int
+
+@@html:<font color = "#0d3db3">@@
+⥤ The result of evaluating something produces a value.
+@@html:</font>@@
+
+
+
+
+
+
+

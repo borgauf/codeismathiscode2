@@ -619,15 +619,15 @@ Propositional logic cannot express arithmetic laws.
 
 **** Expressive Power Comparison
 
-| Feature                     | Propositional Logic | First-Order Logic |
-|-----------------------------+---------------------+-------------------|
-| Logical connectives         | Yes                 | Yes               |
-| Variables                   | No                  | Yes               |
-| Predicates                  | No                  | Yes               |
-| Quantifiers                 | No                  | Yes               |
-| Relations                   | No                  | Yes               |
-| Arithmetic expressible      | No                  | Yes               |
-| Talks about individuals     | No                  | Yes               |
+| Feature                 | Propositional Logic | First-Order Logic |
+|-------------------------+---------------------+-------------------|
+| Logical connectives     | Yes                 | Yes               |
+| Variables               | No                  | Yes               |
+| Predicates              | No                  | Yes               |
+| Quantifiers             | No                  | Yes               |
+| Relations               | No                  | Yes               |
+| Arithmetic expressible  | No                  | Yes               |
+| Talks about individuals | No                  | Yes               |
 
 **** Cost of Extra Power
 
@@ -780,11 +780,11 @@ A first-order language is created by:
 
 Comparison:
 
-| Natural Language | First-Order Logic |
-|------------------+------------------|
-| Words            | Symbols          |
-| Grammar rules    | Formation rules  |
-| Contextual meaning | Interpretation |
+| Natural Language   | First-Order Logic |
+|--------------------+-------------------|
+| Words              | Symbols           |
+| Grammar rules      | Formation rules   |
+| Contextual meaning | Interpretation    |
 
 First-order logic removes ambiguity by enforcing precise structure and meaning.
 

@@ -1,0 +1,128 @@
+#+TITLE: 
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2026-03-03T21:48:39Z UTC 
+#+LANGUAGE:  en 
+#+EXPORT_FILE_NAME: ComputingInContext1Multiplication.html
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Bibliography ---
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+# --- Document Content Starts Here ---
+#+INCLUDE: /home/galaxybeing/Dropbox/org/codeismathiscode2/header.org :minlevel 1
+
+* The Root of the Convention: Repeated Addition
+
+When we are first introduced to arithmetic, multiplication is defined intuitively as repeated addition. In the expression $M \times N$, $M$ is traditionally the multiplier (the "how many times") and $N$ is the multiplicand (the "what is being added").
+
+- *Positive Multiplier:* $3 \times (-4)$ is easily understood as adding negative four, three times: $(-4) + (-4) + (-4) = -12$. Here, $3$ easily acts as the multiplier.
+- *Negative Multiplier:* $(-3) \times 4$ defies this intuitive model. You cannot physically or conceptually add the number four "negative three times."
+
+To make sense of $(-3) \times 4$ using basic mental models, we subconsciously lean on the commutative property and swap their roles, treating $4$ as the multiplier and $-3$ as the multiplicand: $(-3) + (-3) + (-3) + (-3) = -12$. 
+
+** The Formal Justification: Axiomatic Consistency
+
+While repeated addition is helpful for early intuition, it breaks down beyond the natural numbers. In foundational mathematics, the justification for how negative numbers multiply doesn't rely on "multipliers" or "multiplicands" at all. Instead, as seen in rigorous treatments of the real number system, it relies purely on preserving the structural field axioms of arithmetic---specifically, the *Distributive Law* and the properties of *additive inverses*.
+
+To keep the algebraic structure of numbers consistent, we require that multiplication distributes over addition for /all/ numbers, regardless of their sign.
+
+If we want to evaluate $a \times (-b)$ where $a$ and $b$ are positive, we can look at it through the lens of adding to zero:
+
+$$a \times (b + (-b)) = a \times 0 = 0$$
+
+By applying the distributive field axiom, we expand the left side:
+
+$$(a \times b) + (a \times (-b)) = 0$$
+
+For this equation to hold true, the term $a \times (-b)$ must be the exact additive inverse of the positive quantity $(a \times b)$. Therefore:
+
+$$a \times (-b) = -(a \times b)$$
+
+Because of the commutative axiom ($x \times y = y \times x$), it strictly does not matter whether the negative value is in the first or second position. The field axioms guarantee the result is exactly the same.
+
+** The Takeaway
+
+The concepts of "multiplier" and "multiplicand" are essentially cognitive training wheels. We cast the positive number as the multiplier because it allows us to cling to the repeated addition model. However, algebraically, the operations are justified purely by the need to maintain consistent structural field axioms, rendering the distinction between multiplier and multiplicand formally irrelevant.
+
+** Foundational Field Axioms Applied
+
+Below is a breakdown of the specific field axioms used in the algebraic justification, reflecting the presentation in standard foundational texts such as Apostol's Calculus. The columns have been widened for improved readability.
+
+| <25>                      | <35>                                             | <55>                                                                                    |
+| Axiom / Property          | Formal Statement                                 | Role in the Proof                                                                       |
+|---------------------------+--------------------------------------------------+-----------------------------------------------------------------------------------------|
+| Additive Identity         | $x + 0 = x$                                      | Establishes that adding zero leaves a value unchanged.                                  |
+| Additive Inverses         | $x + (-x) = 0$                                   | Provides the definition of the negative term $(-b)$ and justifies the final conclusion. |
+| Distributive Law          | $x \times (y + z) = (x \times y) + (x \times z)$ | Allows the expansion of $a \times (b + (-b))$ into $(a \times b) + (a \times (-b))$.    |
+| Commutativity of $\times$ | $x \times y = y \times x$                        | Demonstrates that the order of the multiplier and multiplicand is irrelevant.           |
+| Property of Zero          | $x \times 0 = 0$                                 | A derived theorem showing that scaling zero by $a$ yields zero.                         |
+
+** Constructing Integer Multiplication in Haskell
+
+To observe how the asymmetry of the "multiplier" and "multiplicand" is handled computationally, we must start at the very foundation: the Peano axioms. By constructing integers from natural numbers, we can see exactly where the concept of repeated addition is formally encoded, and how it is subsequently abstracted away.
+
+*** The Asymmetry in Natural Numbers
+
+First, we define the natural numbers ($\mathbb{N}$) inductively. In this structure, addition and multiplication are defined via recursion on the *first* argument.
+
+#+BEGIN_SRC haskell
+data Nat = Z | S Nat deriving (Show, Eq)
+
+-- Addition: Recursion on the first argument
+addNat :: Nat -> Nat -> Nat
+addNat Z     y = y
+addNat (S x) y = S (addNat x y)
+
+-- Multiplication: Repeated addition
+mulNat :: Nat -> Nat -> Nat
+mulNat Z     y = Z
+mulNat (S x) y = addNat y (mulNat x y)
+#+END_SRC
+
+Here, the foundational asymmetry is explicitly codified in =mulNat=. The first argument (=x=) dictates the depth of the recursion—it is the computational *multiplier* (the "how many times"). The second argument (=y=) is passed along purely as data to be accumulated—it is the *multiplicand*. 
+
+To compute $3 \times 4$, the program recursively unpacks the $3$ down to zero, adding $4$ at each step.
+
+*** Constructing the Integers
+
+To move from $\mathbb{N}$ to $\mathbb{Z}$, we define an integer as an equivalence class of pairs of natural numbers. We can represent this computationally as a data type containing two =Nat= values, representing the difference $(a - b)$.
+
+$$\mathbb{Z} = \{ (a, b) \mid a, b \in \mathbb{N} \}$$
+
+#+BEGIN_SRC haskell
+-- Represents the integer (pos - neg)
+data Int' = Diff Nat Nat deriving (Show, Eq)
+#+END_SRC
+
+For example, the integer $-3$ could be represented as =Diff Z (S (S (S Z)))=, meaning $0 - 3$. 
+
+*** Integer Multiplication: Resolving the Asymmetry
+
+How do we multiply two integers defined this way? We rely on the distributive property over our differences:
+
+$$(a - b) \times (c - d) = (a \times c + b \times d) - (a \times d + b \times c)$$
+
+We translate this algebraic expansion directly into Haskell, relying on our previously defined =addNat= and =mulNat=:
+
+#+BEGIN_SRC haskell
+mulInt :: Int' -> Int' -> Int'
+mulInt (Diff a b) (Diff c d) = 
+  Diff (addNat (mulNat a c) (mulNat b d)) 
+       (addNat (mulNat a d) (mulNat b c))
+#+END_SRC
+
+*** The Disappearance of the Multiplier
+
+Notice what happens at the =Int'= level: the conceptual asymmetry vanishes. 
+
+When we evaluate =mulInt=, there is no longer a single "multiplier" driving a recursive loop of "repeated addition." Instead, the operation maps the structural components of both integers through the distributive law. The signs of the integers (whether the "positive" or "negative" =Nat= in the =Diff= is larger) are automatically resolved by the cross-multiplication.
+
+If we multiply a negative by a positive—say, $(0 - 3) \times (4 - 0)$—the formula yields:
+$$(0 \times 4 + 3 \times 0) - (0 \times 0 + 3 \times 4) = 0 - 12 = -12$$
+
+The computational burden of the "multiplier" has been cleanly delegated down to the natural numbers (=mulNat=). At the integer level, the multiplication is entirely symmetric and algebraic. The "multiplier" and "multiplicand" roles exist only in $\mathbb{N}$; in $\mathbb{Z}$, they are replaced by structural distribution.

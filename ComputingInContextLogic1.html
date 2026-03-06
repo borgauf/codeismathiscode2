@@ -1,0 +1,3293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-03-04 Wed 16:26 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-orgff52af2" class="outline-2">
+<h2 id="orgff52af2">Logic</h2>
+<div class="outline-text-2" id="text-orgff52af2">
+<p>
+According to a 2016 survey, the undergrad major with the highest
+admission rates to law schools is Philosophy with 83% of applicants
+accepted. <i>Formal logic</i> is a core, standard component of most
+undergraduate philosophy major curricula in the USA.
+</p>
+
+<p>
+Abraham Lincoln famously mastered the first six books of <a href="https://en.wikipedia.org/wiki/Euclid%27s_Elements">Euclid’s
+Elements</a> to improve his logic and legal reasoning, famously stating he
+could not be a lawyer without understanding what was really meant by
+&ldquo;to demonstrate.&rdquo; He used Euclidean geometry to structure his
+arguments, including in the Lincoln-Douglas debates, and to define
+&ldquo;self-evident&rdquo; truths.
+</p>
+
+<p>
+&hellip;however we won&rsquo;t dwell very long on the usual form of logic as
+taught in philosophy departments. Instead, we approach logic from a
+<i>mathematical</i> and <i>computer science</i> standpoint.
+</p>
+</div>
+<div id="outline-container-orgf718da5" class="outline-3">
+<h3 id="orgf718da5">Philosophical versus mathematical logic</h3>
+<div class="outline-text-3" id="text-orgf718da5">
+<p>
+Philosophy&rsquo;s approach to logic keys on actual statements in human
+language. On the other hand, mathematical logic is concerned with the
+mechanics of logic as applied to formalizing math. In that sense
+mathematical logic can be considered <a href="https://en.wikipedia.org/wiki/Metamathematics">metamathematics</a>.<label id='fnr.1' for='fnr-in.1.8196407' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.8196407' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+Anything with the prefix <i>meta-</i> in front of it attempts to go
+one layer, one step above something and observe it as a whole. It can
+be said the starting point of all things meta is
+<b><b><a href="https://en.wikipedia.org/wiki/Metaphysics">metaphysics</a></b></b>. Perhaps see <a href="https://youtu.be/psSyM1zp82k?si=GMcmUObxJdv74UzQ">this video</a> about metamathematics. As
+Stephen Wolfram said, with metamathematics &ldquo;&hellip;we make lots of
+mathematics <i>computational</i> .&rdquo; Again, <i>formalize to operationalize</i>. A
+great deal of what <b><b>codeismathiscode</b></b> is aiming at can be called
+metamathematics.
+</span> Here&rsquo;s one
+take
+</p>
+
+<blockquote>
+<p>
+Rather than treating logic as a philosophical exercise in human
+argumentation, <b><b>mathematical logic</b></b> treats logical frameworks
+themselves as mathematical objects to be analyzed and manipulated. It
+abstracts the intuitive processes of mathematical deduction into
+formal, mechanical systems so that we can prove theorems <i>about</i> the
+systems themselves, i.e., metamathematics.
+</p>
+</blockquote>
+
+<p>
+This may sound vague at this point, but we&rsquo;ll soon have plenty of
+examples to back up our explanations. We&rsquo;ll begin with a discussion of
+<b><b>statements</b></b>, common to both philosophical and mathematical logic,
+and a common starting point in treatments of logic.
+</p>
+</div>
+</div>
+<div id="outline-container-org0c2fec5" class="outline-3">
+<h3 id="org0c2fec5">Logic begins with statements</h3>
+<div class="outline-text-3" id="text-org0c2fec5">
+<p>
+What does it mean for an expression&mdash;verbal or mathematical&mdash;to be a
+<i>statement</i>? Let&rsquo;s first look at categories of verbal expressions that
+are <span class="underline"><span class="underline"><i>not</i></span></span> true statements, i.e., they cannot be resolved into true
+or false:<label id='fnr.2' for='fnr-in.2.711221' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.711221' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+(<a href="#citeproc_bib_item_1">Bansal 2012</a>)
+</span>
+</p>
+
+<ul class="org-ul">
+<li><i>Imperative</i>; e.g., &ldquo;Do what I tell you!&rdquo;</li>
+<li><i>Interrogative</i>; e.g., &ldquo;What would you like to do?&rdquo;</li>
+<li><i>Exclamatory</i>; e.g., &ldquo;Merry Christmas!&rdquo;</li>
+</ul>
+
+<p>
+It might not be clear if our <i>imperative</i> and an <i>exclamatory</i>
+sentence examples are very different from one another, but <span class="underline"><span class="underline">all</span></span> the
+examples above have one thing in common: <i>They cannot be resolved as
+true or false</i>. And don&rsquo;t mentally suppose, don&rsquo;t tack on a
+<i>response</i>, such as &ldquo;Yes, it is true I will do what you tell me.&rdquo; <span class="underline"><span class="underline">We
+mean the initial sentences only</span></span>.
+</p>
+
+<p>
+But what about &ldquo;Merry Christmas!&rdquo; you might ask. It would seem either
+true, it is a merry Christmas, or it isn&rsquo;t. In reality an exclamatory
+remark such as &ldquo;Merry Christmas!&rdquo; is just well-wishing, an exclamation
+like &ldquo;Hello!&rdquo; or &ldquo;Good luck!&rdquo; These are called <i>performative
+utterances</i> by linguists, i.e., expressions that perform an action
+such as a greeting just by being spoken. They&rsquo;re rhetorical and not
+meant for analyzing yes or no.
+</p>
+
+<p>
+But what if you do in fact <i>respond</i> with the statement, the
+<i>proposition</i>, what if you <i>state</i>, you <i>propose</i> &ldquo;It <i>is</i> a merry
+Christmas.&rdquo; Is this not in statement form and can be resolved true
+or false? Not exactly. We&rsquo;re caught again, because <i>logic frowns
+on statements that are subjective, vague, or unsubstantiated opinion</i>.
+</p>
+
+<p>
+Let&rsquo;s break down &ldquo;It is a merry Christmas!&rdquo; into &ldquo;is merry&rdquo; and
+&ldquo;Christmas.&rdquo; For &ldquo;is merry&rdquo; to work, to be able to plug in this year&rsquo;s
+Christmas, merriness must be strictly defined over all
+Christmases. More to the point, <i>we must be able to look at the
+universe of all Christmases and cleanly divide them into the set of
+those that are absolutely, unquestionably <b><b>merry</b></b> and those that are
+definitely not</i>. Can we realistically do that? No, the concept of merry
+as applied to Christmases is a subjective thing. Bottom line: If a
+sentence&rsquo;s truth value fluctuates depending on the observer&rsquo;s mood,
+opinion, or strictness, it is too ambiguous to be a real statement,
+even though it&rsquo;s structured as one.
+</p>
+
+<p>
+Let&rsquo;s get back to the other examples of <i>imperative</i> and
+<i>interrogative</i>. Being ordered by someone to do something has no true
+or false. Being asked a question&mdash;the question itself, not the
+response&mdash;has no true or false resolution. Now let&rsquo;s look at
+sentences that can be resolved as true or false
+</p>
+
+<ul class="org-ul">
+<li><i>The sky is blue.</i> &hellip;might be, might not be; needs validation.</li>
+<li>\(2 + 3 = 4 + 1\) &hellip;yes, this states equivalence.</li>
+<li><i>It is raining <b><b>and</b></b> I forgot my umbrella.</i> &hellip; <b><b>two</b></b> things
+can be either true or false.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5c0e423" class="outline-3">
+<h3 id="org5c0e423">The Connection Between Logic and Symbolism</h3>
+<div class="outline-text-3" id="text-org5c0e423">
+<p>
+The next important part of logic is its symbolism. Consider this<label id='fnr.3' for='fnr-in.3.7408686' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.7408686' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+(<a href="#citeproc_bib_item_4">Lemmon 1978</a>)
+</span>
+</p>
+
+\begin{align}
+x^2 - y^2 = (x + y)(x - y)
+\end{align}
+
+<p>
+Now, let&rsquo;s describe <code>(1)</code>, i.e., the <i>factorization of the difference
+of two squares</i><label id='fnr.4' for='fnr-in.4.9115149' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.9115149' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+&hellip;even this much verbiage seems cumbersome.
+</span> fully, completely in English prose
+</p>
+
+<blockquote>
+<p>
+The result of subtracting the square of one number from the square of
+a second gives the same number as is obtained by adding the two
+numbers, subtracting the first from the second, and then multiplying
+the results of these two calculations.
+</p>
+</blockquote>
+
+<p>
+Before the 16th century, much of mathematics was &ldquo;rhetorical,&rdquo; i.e.,
+written out entirely in prose. For another example, an algebra problem
+might read:
+</p>
+
+<blockquote>
+<p>
+The square of the unknown quantity, augmented by three times that same
+quantity, yields ten.
+</p>
+</blockquote>
+
+<p>
+With modern <b><b>symbolism</b></b>, this exact same thought is compressed into
+a clear, visual statement:
+</p>
+
+<p>
+\[x^2 + 3x = 10\]
+</p>
+
+<p>
+⌜<br>
+𝖟𝕭: <b><b>Pronouns as algebraic variables</b></b>
+</p>
+
+<p>
+A great many students hit a wall when they first encounter beginning
+algebra. When they first learned basic arithmetic, addition came in
+the form of a column of numbers, i.e., numbers stacked on top of each
+other
+</p>
+
+\begin{align*}
+  & 1 \\[-3pt]
+  & 2 \\[-3pt]
+  & 3 \\[-3pt]
+  +& 4 \\
+  \hline
+  &\!\! 10
+\end{align*}
+
+<p>
+with one plus sign next to the last number above the line. then as rows
+with plus signs interspersed between the numbers
+</p>
+
+<p>
+\[1 + 2 + 3 + 4 = 10\]
+</p>
+
+<p>
+They were more than likely <i>conditioned</i> to add numbers together upon
+these visual cues. But when they were confronted with something like
+the Pythagoras Theorem
+</p>
+
+\begin{align*}
+a^2 + b^2 = c^2 
+\end{align*}
+
+<p>
+they could not fathom what the small letters had to do with addition,
+which has always been with numbers. Where did the numbers go? How do
+you add letters? And so years of methods amounting to nothing more
+than conditioning fail because the skill of thinking abstractly has
+never been adequately developed amidst all the watch-and-imitate group
+go-along.<label id='fnr.5' for='fnr-in.5.362816' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.362816' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+&hellip;which brings up the question, Why is early math education so
+seemingly afraid of teaching abstraction? Possibly because abstraction
+is difficult to teach to a classroom of more than some five
+children. The gift of abstract thinking must be given
+person-to-person.
+</span> What if we explain how an algebra &ldquo;letter variable&rdquo; is
+like a pronoun? Compare these two sentences
+</p>
+
+<p>
+<b><b>John goes to the store.</b></b> <br>
+<b><b>He goes to the store.</b></b> <br>
+</p>
+
+<p>
+Now the pronoun <i>he</i> is just like an algebra variable that can be
+substituted for various male names. Let&rsquo;s write the sentences in a
+quasi-algebra style with \(X\) for <i>he</i>
+</p>
+
+\begin{align*}
+X &\text{ goes to the store.} \\
+X &= \text{John}, \\
+John &\text{ goes to the store.}
+\end{align*}
+
+<p>
+⌟ <br>
+</p>
+
+<p>
+Here is a quote from John Gries (<a href="#citeproc_bib_item_2">Gries and Schneider 2013</a>)
+</p>
+
+<p>
+⥤<font color = "#0d3db3"> Mathematics provides methods for
+reasoning: for manipulating expressions, for proving properties from
+and about expressions, and for obtaining new results from known
+ones. This reasoning can be done without knowing or caring what the
+symbols being manipulated mean.  </font>
+</p>
+
+
+
+<p>
+This shift from words to symbols provides three massive advantages to
+human reasoning:
+</p>
+
+<ol class="org-ol">
+<li><b>Absolute Precision:</b> Natural language is inherently ambiguous and
+context-dependent. Even seemingly well-formed declarative
+statements such as <i>Carrie hasn&rsquo;t slept a wink</i> are
+ambiguous. Again, words and phrases so often get lost in vagueness:
+<i>a wink</i> is idiomatic, context and entailment are missing as
+well. Basically, there is no way to ascertain exactly what &ldquo;not
+sleeping a wink&rdquo; really means. Mathematical symbols possess
+strictly defined, universal meanings, leaving no room for
+misinterpretation.</li>
+<li><b>Cognitive Compression:</b> By condensing long verbal descriptions
+into short visual markers, we can better hold and process more
+complex structures in our working memory.</li>
+<li><b>Mechanical Manipulation:</b> Symbols allow for rule-based,
+step-by-step calculation. Once a real-world problem is translated
+into a symbolic expression, we can solve it by following rigid
+syntactic rules (e.g., subtracting a symbol from both sides)
+without needing to constantly hold the original real-world meaning
+of the symbols in your head.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgaf542ca" class="outline-3">
+<h3 id="orgaf542ca">A Basic Description of Symbolism in Mathematics</h3>
+<div class="outline-text-3" id="text-orgaf542ca">
+<p>
+At its core, symbolism in mathematics is the use of a specialized,
+highly structured visual language to represent abstract concepts,
+quantities, operations, and relationships.
+</p>
+
+<p>
+You can think of mathematical symbolism as both an <i>abstraction</i>
+shorthand as well as an engine: it compresses complex ideas into
+readable forms, and it lends itself more easily to a tool bag of
+mechanical rules for solving problems.
+</p>
+</div>
+<div id="outline-container-orgc025086" class="outline-4">
+<h4 id="orgc025086">Mathematical Symbolism as a Mechanical Crank</h4>
+<div class="outline-text-4" id="text-orgc025086">
+<p>
+This is the exact goal of formalism in mathematics: to build a system
+where, once the initial conditions (axioms) are fed into the machine,
+the rules of symbol manipulation guarantee a correct result without
+requiring human intuition or interpretation along the way. The
+machinery working on just symbols by definitive rules abstracts the
+process away from guesswork and subjective interpretations.
+</p>
+
+<p>
+Here are two clear examples of how mathematical symbolism provides
+these rigorous, mechanical rules.
+</p>
+</div>
+<div id="outline-container-orge63ca02" class="outline-5">
+<h5 id="orge63ca02">1. The Algebraic Machine: Field Axioms</h5>
+<div class="outline-text-5" id="text-orge63ca02">
+<p>
+Let&rsquo;s once again look at &ldquo;do the same thing to both sides&rdquo; of an
+equation. What you were actually doing was operating a mechanical
+system defined by the Field Axioms for real numbers.
+</p>
+
+<p>
+Consider a fundamental rule like the Cancellation Law for Addition: if
+we know that \(x + y = x + z\), we instinctively know that \(y = z\). But
+<i>how</i> does the symbolic machine prove this mechanically, without
+relying on our intuition about quantities?
+</p>
+
+<p>
+The machine restricts us to only using established axioms (like the
+existence of an additive inverse, associativity, and the additive
+identity). The &ldquo;crank&rdquo; turns step-by-step:
+</p>
+
+<ol class="org-ol">
+<li><b>Start with the premise:</b>
+\[x + y = x + z\]</li>
+<li><b>Apply the existence of an additive inverse (adding \(-x\) to both sides):</b>
+\[-x + (x + y) = -x + (x + z)\]</li>
+<li><b>Apply the Associative Law for addition (shifting the parentheses):</b>
+\[(-x + x) + y = (-x + x) + z\]</li>
+<li><b>Apply the Additive Inverse axiom (\(-x + x\) becomes \(0\)):</b>
+\[0 + y = 0 + z\]</li>
+<li><b>Apply the Additive Identity axiom (\(0 + a\) becomes \(a\)):</b>
+\[y = z\]</li>
+</ol>
+
+<p>
+At no point in this process do you need to think about what \(x\), \(y\),
+or \(z\) represent. They could be fractions, negative numbers, or
+complex numbers. The symbols and the rigid axioms dictate the legal
+&ldquo;moves,&rdquo; much like the rules of chess dictate how pieces move on a
+board.
+</p>
+</div>
+</div>
+<div id="outline-container-org819e6b8" class="outline-5">
+<h5 id="org819e6b8">2. The Logical Machine: Propositional Calculus</h5>
+<div class="outline-text-5" id="text-org819e6b8">
+<p>
+If algebra is a machine for numbers, Propositional Calculus is a
+machine for truth. It abstracts logic so completely that determining
+the validity of an argument is reduced to an algorithm.
+</p>
+
+<p>
+Suppose you have a complex set of conditions:
+</p>
+<ul class="org-ul">
+<li>&ldquo;If the system is secure (\(S\)), then the network is encrypted (\(E\)).&rdquo;</li>
+<li>&ldquo;The network is not encrypted (\(\neg E\)).&rdquo;</li>
+<li>&ldquo;Therefore, the system is not secure (\(\neg S\)).&rdquo;</li>
+</ul>
+
+<p>
+Instead of wrestling with the linguistic meaning of these sentences,
+we feed them into the symbolic machine as a single compound statement:
+\[((S \rightarrow E) \land \neg E) \rightarrow \neg S\]
+</p>
+
+<p>
+Because the symbols have strictly defined mechanical operations, we
+can turn the crank using a Truth Table. The machine exhaustively
+computes every possible state of \(S\) and \(E\):
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-center">
+
+<col  class="org-center">
+
+<col  class="org-center">
+
+<col  class="org-center">
+
+<col  class="org-center">
+
+<col  class="org-center">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-center">\(S\)</th>
+<th scope="col" class="org-center">\(E\)</th>
+<th scope="col" class="org-center">\(S \rightarrow E\)</th>
+<th scope="col" class="org-center">\((S \rightarrow E) \land \neg E\)</th>
+<th scope="col" class="org-center">\(\neg S\)</th>
+<th scope="col" class="org-center">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-center">T</td>
+<td class="org-center">T</td>
+<td class="org-center">T</td>
+<td class="org-center">F</td>
+<td class="org-center">F</td>
+<td class="org-center">T</td>
+</tr>
+
+<tr>
+<td class="org-center">T</td>
+<td class="org-center">F</td>
+<td class="org-center">F</td>
+<td class="org-center">F</td>
+<td class="org-center">F</td>
+<td class="org-center">T</td>
+</tr>
+
+<tr>
+<td class="org-center">F</td>
+<td class="org-center">T</td>
+<td class="org-center">T</td>
+<td class="org-center">F</td>
+<td class="org-center">T</td>
+<td class="org-center">T</td>
+</tr>
+
+<tr>
+<td class="org-center">F</td>
+<td class="org-center">F</td>
+<td class="org-center">T</td>
+<td class="org-center">T</td>
+<td class="org-center">T</td>
+<td class="org-center">T</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+Because the final column is entirely true, the machine mechanically
+guarantees that this argument is a tautology (always valid). You do
+not need to understand what &ldquo;secure&rdquo; or &ldquo;encrypted&rdquo; means; the
+syntactic manipulation of \(\rightarrow\), \(\land\), and \(\neg\) does all the work.
+</p>
+</div>
+</div>
+<div id="outline-container-org496e461" class="outline-5">
+<h5 id="org496e461">The Ultimate Crank: Formal Verification</h5>
+<div class="outline-text-5" id="text-org496e461">
+<p>
+When you scale this concept up, you get modern formal verification. By
+strictly defining mathematical foundations (such as the
+Zermelo-Fraenkel axioms for set theory) entirely in symbolic logic, we
+can build software that turns the crank millions of times per
+second. This ensures that massive, complex proofs are structurally
+flawless.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd9cd98a" class="outline-3">
+<h3 id="orgd9cd98a">Building the Crank: Unification in Scheme</h3>
+<div class="outline-text-3" id="text-orgd9cd98a">
+<p>
+To see how a mathematical &ldquo;machine&rdquo; actually cranks in software, we
+can look at a unification algorithm. Unification is the algorithmic
+heart of automated theorem proving, logic programming, and type
+inference systems (like the Hindley-Milner system used in languages
+like Standard ML and Haskell).
+</p>
+
+<p>
+At its core, unification is a mechanical rule for solving symbolic
+equations. If you give the machine two symbolic expressions, it tries
+to find a substitution of variables that makes the two expressions
+perfectly identical.
+</p>
+
+<p>
+For example, if we have expression \(A\): \(P(x, c)\) and expression \(B\):
+\(P(a, y)\), the unifier mechanically deduces the substitution \(\sigma = \{x
+\mapsto a, y \mapsto c\}\) to make both expressions \(P(a, c)\).
+</p>
+
+
+
+<p>
+Here is how we can build this fundamental mechanical crank in Scheme.
+</p>
+</div>
+<div id="outline-container-org0c96d26" class="outline-4">
+<h4 id="org0c96d26">1. Defining the Environment and Variables</h4>
+<div class="outline-text-4" id="text-org0c96d26">
+<p>
+First, we need a way to distinguish variables (the parts of the
+machine that can change) from constants, and a way to store our
+substitutions (the environment). We will represent variables as
+symbols starting with a question mark (e.g., <code>?x</code>).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Check if a symbol is a variable (starts with '?')
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">variable?</span> x<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">and</span> <span style="color: #b0b1a3;">(</span>symbol? x<span style="color: #b0b1a3;">)</span> 
+       <span style="color: #b0b1a3;">(</span>char=? <span style="color: #97b098;">(</span>string-ref <span style="color: #aebed8;">(</span>symbol-&gt;string x<span style="color: #aebed8;">)</span> 0<span style="color: #97b098;">)</span> #\?<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">An environment is an association list of (variable . value) bindings.
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">empty-env</span> '<span style="color: #93a8c6;">()</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Look up a variable in the current environment
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">lookup</span> var env<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>assq var env<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Add a new binding to the environment
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">extend-env</span> var val env<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>cons <span style="color: #b0b1a3;">(</span>cons var val<span style="color: #b0b1a3;">)</span> env<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org50a2617" class="outline-4">
+<h4 id="org50a2617">2. The Unification Algorithm</h4>
+<div class="outline-text-4" id="text-org50a2617">
+<p>
+The <code>unify</code> procedure is the crank itself. It takes two expressions
+and an environment, and applies strict structural rules to see if they
+can be matched.
+</p>
+
+<p>
+The mechanical rules are:
+</p>
+<ol class="org-ol">
+<li>If we&rsquo;ve already failed, keep failing.</li>
+<li>If the expressions are exactly the same, do nothing (return the
+current environment).</li>
+<li>If the first expression is a variable, try to bind it.</li>
+<li>If the second expression is a variable, try to bind it.</li>
+<li>If both are compound expressions (pairs/lists), recursively turn
+the crank on their first elements (<code>car</code>), and then take that
+updated environment and turn the crank on the rest of the elements
+(<code>cdr</code>).</li>
+<li>Otherwise, the structures clash, and unification fails.</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">unify</span> expr1 expr2 env<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">cond</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>eq? env 'failed<span style="color: #97b098;">)</span> 'failed<span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>eqv? expr1 expr2<span style="color: #97b098;">)</span> env<span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>variable? expr1<span style="color: #97b098;">)</span> <span style="color: #97b098;">(</span>unify-var expr1 expr2 env<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>variable? expr2<span style="color: #97b098;">)</span> <span style="color: #97b098;">(</span>unify-var expr2 expr1 env<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span><span style="color: #c678dd; font-weight: bold;">and</span> <span style="color: #aebed8;">(</span>pair? expr1<span style="color: #aebed8;">)</span> <span style="color: #aebed8;">(</span>pair? expr2<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+         <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Mechanically traverse the tree structure
+</span>         <span style="color: #97b098;">(</span>unify <span style="color: #aebed8;">(</span>cdr expr1<span style="color: #aebed8;">)</span> <span style="color: #aebed8;">(</span>cdr expr2<span style="color: #aebed8;">)</span>
+                <span style="color: #aebed8;">(</span>unify <span style="color: #b0b0b3;">(</span>car expr1<span style="color: #b0b0b3;">)</span> <span style="color: #b0b0b3;">(</span>car expr2<span style="color: #b0b0b3;">)</span> env<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #c678dd; font-weight: bold;">else</span> 'failed<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org648c2f4" class="outline-4">
+<h4 id="org648c2f4">3. Handling Variable Binding</h4>
+<div class="outline-text-4" id="text-org648c2f4">
+<p>
+When the machine encounters a variable, it must check if that variable
+is already bound to something else in our environment. If it is, we
+must recursively unify the new value with the old binding to ensure
+consistency.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">unify-var</span> var val env<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>binding <span style="color: #aebed8;">(</span>lookup var env<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #c678dd; font-weight: bold;">cond</span> 
+      <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">If the variable is already bound, unify the bound value with the new value
+</span>      <span style="color: #97b098;">(</span>binding <span style="color: #aebed8;">(</span>unify <span style="color: #b0b0b3;">(</span>cdr binding<span style="color: #b0b0b3;">)</span> val env<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+      <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Optional: Add an "occurs check" here to prevent infinite loops (e.g., unifying ?x with (f ?x))
+</span>      <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">If unbound, add the new binding to the environment
+</span>      <span style="color: #97b098;">(</span><span style="color: #c678dd; font-weight: bold;">else</span> <span style="color: #aebed8;">(</span>extend-env var val env<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org651f861" class="outline-4">
+<h4 id="org651f861">4. Turning the Crank</h4>
+<div class="outline-text-4" id="text-org651f861">
+<p>
+Now we can feed symbolic logic into our machine. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Let's unify (f ?x c) with (f a ?y)
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">We expect the machine to deduce: ?x = a, and ?y = c
+</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">env1</span> <span style="color: #93a8c6;">(</span>unify '<span style="color: #b0b1a3;">(</span>f ?x c<span style="color: #b0b1a3;">)</span> '<span style="color: #b0b1a3;">(</span>f a ?y<span style="color: #b0b1a3;">)</span> empty-env<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Result: ((?y . c) (?x . a))
+</span>
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Let's try to unify something impossible: (f ?x b) with (f a c)
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">We expect the machine to halt and fail because the constant 'b' cannot unify with 'c'.
+</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">env2</span> <span style="color: #93a8c6;">(</span>unify '<span style="color: #b0b1a3;">(</span>f ?x b<span style="color: #b0b1a3;">)</span> '<span style="color: #b0b1a3;">(</span>f a c<span style="color: #b0b1a3;">)</span> empty-env<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Result: failed</span>
+</code></pre>
+</div>
+
+<p>
+This short Scheme script is a localized version of exactly what formal
+verification tools and type inference engines are doing under the
+hood. It strictly separates the syntactic form of the symbols from any
+real-world meaning, relying entirely on recursive structural rules to
+find logical truth.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org6ee8555" class="outline-3">
+<h3 id="org6ee8555">Building the Engine: A Miniature Proof System in Scheme</h3>
+<div class="outline-text-3" id="text-org6ee8555">
+<p>
+To handle logical implications (\(P \rightarrow Q\)), our unifier must evolve from
+a simple equation-solver into a search engine. We need to implement
+<b>backward chaining</b>.
+</p>
+
+<p>
+In formal logic, if we want to prove a conclusion \(Q\), and we have a
+rule stating \(P_1 \land P_2 \dots \rightarrow Q\), we can work backward: we unify our
+goal with \(Q\), and if successful, we set \(P_1, P_2, \dots\) as our new
+sub-goals.
+</p>
+
+<p>
+\[\frac{\Gamma \vdash P_1 \quad \Gamma \vdash P_2}{\Gamma \vdash Q}\text{where } (P_1
+\land P_2 \rightarrow Q) \in \Gamma\]
+</p>
+
+
+
+<p>
+Here is how we build this mechanical proof engine in Scheme,
+effectively creating a microscopic version of Prolog.
+</p>
+</div>
+<div id="outline-container-orgbec9ad4" class="outline-4">
+<h4 id="orgbec9ad4">1. The Knowledge Base (Axioms and Theorems)</h4>
+<div class="outline-text-4" id="text-orgbec9ad4">
+<p>
+First, we need a database of logical statements. We will represent
+both facts (things known to be true) and rules (implications) as
+lists.
+</p>
+<ul class="org-ul">
+<li>The first element is the <b>consequent</b> (the conclusion, \(Q\)).</li>
+<li>The remaining elements are the <b>antecedents</b> (the premises, \(P_1, P_2\)).</li>
+<li>A fact is simply a rule with no premises.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Our logical database (Gamma)
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #61afef;">*database*</span>
+  '<span style="color: #93a8c6;">(</span>
+    <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Facts: These require no proof.
+</span>    <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>human socrates<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>               
+    <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>human hypatia<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>                
+    <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>mortal fido<span style="color: #97b098;">)</span> <span style="color: #97b098;">(</span>dog fido<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>       <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Fido is mortal if Fido is a dog.
+</span>    <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>dog fido<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+
+    <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Rule: For all x, if x is human, then x is mortal.
+</span>    <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">In logic: &#8704;x (Human(x) &#8594; Mortal(x))
+</span>    <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>mortal ?x<span style="color: #97b098;">)</span> <span style="color: #97b098;">(</span>human ?x<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>         
+   <span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org38570f5" class="outline-4">
+<h4 id="org38570f5">2. The Core Proof Engine</h4>
+<div class="outline-text-4" id="text-org38570f5">
+<p>
+Our engine needs two mutually recursive procedures:
+</p>
+<ol class="org-ol">
+<li><code>prove</code>: Tries to prove a single goal by searching the database for
+a matching rule.</li>
+<li><code>prove-all</code>: Tries to prove a list of sub-goals (a logical
+conjunction, \(P_1 \land P_2\)).</li>
+</ol>
+
+<p>
+Because a goal might be provable in multiple ways (e.g., there are
+many humans), our engine cannot just return a single environment. It
+must return a <b>list</b> of all valid environments (successful
+substitutions). If the list is empty, the proof failed.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Prove a single goal against a list of rules
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">prove</span> goal env rules<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">if</span> <span style="color: #b0b1a3;">(</span>null? rules<span style="color: #b0b1a3;">)</span>
+      '<span style="color: #b0b1a3;">()</span> <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Base case: No rules left, proof branch fails.
+</span>      <span style="color: #b0b1a3;">(</span><span style="color: #c678dd; font-weight: bold;">let*</span> <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>rule <span style="color: #b0b0b3;">(</span>car rules<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+             <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Note: In a production system, we must "standardize apart" (rename)
+</span>             <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">the variables in the rule here to prevent variable collisions.
+</span>             <span style="color: #aebed8;">(</span>head <span style="color: #b0b0b3;">(</span>car rule<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+             <span style="color: #aebed8;">(</span>body <span style="color: #b0b0b3;">(</span>cdr rule<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+             <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Turn the unification crank!
+</span>             <span style="color: #aebed8;">(</span>new-env <span style="color: #b0b0b3;">(</span>unify goal head env<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+        
+        <span style="color: #97b098;">(</span><span style="color: #c678dd; font-weight: bold;">if</span> <span style="color: #aebed8;">(</span>eq? new-env 'failed<span style="color: #aebed8;">)</span>
+            <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">If unification fails, backtrack and try the next rule.
+</span>            <span style="color: #aebed8;">(</span>prove goal env <span style="color: #b0b0b3;">(</span>cdr rules<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+            <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">If it unifies, we must prove all antecedents (the body) in the new environment.
+</span>            <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">We append these results with the results of trying remaining rules (nondeterminism).
+</span>            <span style="color: #aebed8;">(</span>append <span style="color: #b0b0b3;">(</span>prove-all body new-env *database*<span style="color: #b0b0b3;">)</span>
+                    <span style="color: #b0b0b3;">(</span>prove goal env <span style="color: #90a890;">(</span>cdr rules<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Prove a conjunction of goals
+</span><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">define</span> <span style="color: #93a8c6;">(</span><span style="color: #61afef;">prove-all</span> goals env rules<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #c678dd; font-weight: bold;">cond</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>eq? env 'failed<span style="color: #97b098;">)</span> '<span style="color: #97b098;">()</span><span style="color: #b0b1a3;">)</span>
+        <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">If there are no more sub-goals, we succeeded! Return the environment.
+</span>        <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>null? goals<span style="color: #97b098;">)</span> <span style="color: #97b098;">(</span>list env<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span> 
+        <span style="color: #b0b1a3;">(</span><span style="color: #c678dd; font-weight: bold;">else</span>
+         <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Prove the first goal, which returns a list of possible environments.
+</span>         <span style="color: #97b098;">(</span><span style="color: #c678dd; font-weight: bold;">let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>possible-envs <span style="color: #90a890;">(</span>prove <span style="color: #a2b6da;">(</span>car goals<span style="color: #a2b6da;">)</span> env rules<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+           <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">For each successful environment, try to prove the rest of the goals.
+</span>           <span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">We map over the environments and flatten the resulting lists.
+</span>           <span style="color: #aebed8;">(</span>apply append
+                  <span style="color: #b0b0b3;">(</span><span style="color: #c678dd; font-weight: bold;">map</span> <span style="color: #90a890;">(</span><span style="color: #c678dd; font-weight: bold;">lambda</span> <span style="color: #a2b6da;">(</span>e<span style="color: #a2b6da;">)</span> <span style="color: #a2b6da;">(</span>prove-all <span style="color: #9cb6ad;">(</span>cdr goals<span style="color: #9cb6ad;">)</span> e rules<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
+                       possible-envs<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org37a066c" class="outline-4">
+<h4 id="org37a066c">3. Running the Machine</h4>
+<div class="outline-text-4" id="text-org37a066c">
+<p>
+Now we can ask the machine questions by feeding it a goal and an empty
+environment. The machine mechanically applies the rules of unification
+and backward chaining to find logical truths.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><code><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Query 1: Is Socrates mortal?
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Goal: (mortal socrates)
+</span><span style="color: #8c8c8c;">(</span>prove '<span style="color: #93a8c6;">(</span>mortal socrates<span style="color: #93a8c6;">)</span> empty-env *database*<span style="color: #8c8c8c;">)</span>
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Engine unifies (mortal socrates) with the rule (mortal ?x).
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Binds ?x = socrates.
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">New sub-goal: (human socrates).
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Unifies with fact: (human socrates). Success!
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Result: (())  -&gt; A list containing the empty environment (it is true without needing new variables).
+</span>
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Query 2: Who is mortal?
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Goal: (mortal ?who)
+</span><span style="color: #8c8c8c;">(</span>prove '<span style="color: #93a8c6;">(</span>mortal ?who<span style="color: #93a8c6;">)</span> empty-env *database*<span style="color: #8c8c8c;">)</span>
+<span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Engine finds the dog rule: binds ?who = fido, checks (dog fido) -&gt; Success.
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Engine finds the human rule: binds ?x = ?who.
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Sub-goal (human ?who) matches 'socrates' and 'hypatia'.
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">Result: (((?who . fido)) ((?who . socrates) (?x . socrates)) ((?who . hypatia) (?x . hypatia)))
+</span><span style="color: #687080; font-style: italic;">;; </span><span style="color: #687080; font-style: italic;">It mechanically deduces all three mortal entities in our universe!</span>
+</code></pre>
+</div>
+
+<p>
+This miniature engine demonstrates exactly how mathematical symbolism
+operates as a machine. It knows absolutely nothing about biology,
+ancient Greece, or mortality. It only knows syntactic pattern matching
+(<code>unify</code>) and the structural rule of implication elimination
+(<code>prove</code>).
+</p>
+
+
+
+
+
+
+<p>
+<font color = "#0d3db3"> Formalism: Mathematics is a game of
+symbols played according to strict rules. The &ldquo;meaning&rdquo; of the symbol
+is less important than its consistent behavior within the formal
+system.  </font>
+</p>
+</div>
+<div id="outline-container-orga4ab287" class="outline-5">
+<h5 id="orga4ab287">The basic components of mathematical symbolism</h5>
+<div class="outline-text-5" id="text-orga4ab287">
+<p>
+Mathematical symbols generally fall into a few primary categories,
+functioning much like the parts of speech in a natural language:
+</p>
+
+<ul class="org-ul">
+<li><b>Entities (Nouns):</b> Symbols that represent objects, specific values,
+or generalized quantities.
+<ul class="org-ul">
+<li>Constants: \(0\), \(1\), \(\pi\), \(e\)</li>
+<li>Variables (unknowns or placeholders): \(x\), \(y\), \(z\), \(n\)</li>
+<li>Collections: \(\mathbb{R}\) (the set of real numbers), \(\mathbb{Z}\)
+(the set of integers)</li>
+</ul></li>
+
+<li><b>Operations (Verbs):</b> Symbols that instruct you on how to manipulate
+or combine entities.
+<ul class="org-ul">
+<li>Basic arithmetic: \(+\), \(-\), \(\times\), \(\div\)</li>
+<li>Advanced calculus and algebra: \(\sum\) (summation), \(\int\) (integration),
+\(\sqrt{x}\) (square root)</li>
+</ul></li>
+
+<li><b>Relations (Comparisons):</b> Symbols that compare entities to form
+complete mathematical sentences, known as equations or inequalities.
+<ul class="org-ul">
+<li>Equality and magnitude: \(=\), \(\neq\), \(<\), \(\ge\)</li>
+<li>Set theory and logic: \(\in\) (is an element of), \(\subset\) (is a subset of)</li>
+</ul></li>
+
+<li><b>Grouping (Punctuation):</b> Symbols that dictate the structure and the
+order in which operations should be executed.
+<ul class="org-ul">
+<li>Parentheses and brackets: \((\), \()\), \([\), \(]\), \(\{\), \(\}\)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc36236b" class="outline-4">
+<h4 id="orgc36236b">1. The Eradication of Ambiguity</h4>
+<div class="outline-text-4" id="text-orgc36236b">
+<p>
+Symbolism in logic will typically Natural language is inherently ambiguous, context-dependent, and prone
+to polysemy. Symbolism strips away this linguistic baggage. By
+defining a strict alphabet (e.g., variables, connectives, quantifiers)
+and a precise grammar for well-formed formulas, symbolic logic ensures
+that every statement has exactly one structural interpretation.
+</p>
+
+<p>
+Instead of arguing about the nuances of the words &ldquo;if&rdquo; and &ldquo;then,&rdquo; symbolism reduces the relationship to a material conditional:
+\[P \rightarrow Q\]
+</p>
+
+<p>
+This allows mathematicians and logicians to analyze the validity of arguments without being distracted by the specific meaning of the propositions involved.
+</p>
+</div>
+</div>
+<div id="outline-container-org39af42c" class="outline-4">
+<h4 id="org39af42c">2. Reasoning as Mechanical Computation</h4>
+<div class="outline-text-4" id="text-org39af42c">
+<p>
+Perhaps the most powerful consequence of symbolism is that it turns reasoning into computation. Once propositions and logical rules are fully symbolized, deducing a conclusion becomes a matter of syntactic string manipulation according to formal rules of inference.
+</p>
+
+<p>
+For example, Modus Ponens is simply a rule for transforming symbols, regardless of what they mean:
+\[P \rightarrow Q, P \vdash Q\]
+</p>
+
+<p>
+This symbolic mechanization is what makes it possible to formalize mathematics&mdash;such as encoding the foundations of mathematics in the Zermelo-Fraenkel axioms&mdash;and makes it possible for computers to verify proofs. Without a purely symbolic representation, formal verification systems and theorem provers could not computationally check the structural correctness of an argument.
+</p>
+</div>
+</div>
+<div id="outline-container-org9c54a6f" class="outline-4">
+<h4 id="org9c54a6f">3. The Decoupling of Syntax and Semantics</h4>
+<div class="outline-text-4" id="text-org9c54a6f">
+<p>
+Symbolism forces a strict and necessary boundary between syntax (the symbols and the rules for manipulating them) and semantics (the &ldquo;meaning&rdquo; or truth value assigned to those symbols).
+</p>
+
+<ul class="org-ul">
+<li><b>Syntax (Provability, \(\vdash\)):</b> A purely structural exercise. Can we derive formula \(B\) from formula \(A\) using only the allowed rules of symbol manipulation?</li>
+<li><b>Semantics (Truth, \(\vDash\)):</b> An interpretive exercise. If the premises are true in a given model, is the conclusion necessarily true?</li>
+</ul>
+
+<p>
+The triumph of modern symbolic logic, famously established by theorems like Gödel&rsquo;s Completeness Theorem for first-order logic, is demonstrating precisely how these symbolic derivations align perfectly with semantic truth.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb7d0ae3" class="outline-4">
+<h4 id="orgb7d0ae3">4. The Bridge to Computation and Types</h4>
+<div class="outline-text-4" id="text-orgb7d0ae3">
+<p>
+Because symbolic logic relies on the strict, rule-based manipulation of abstract symbols, it shares a deep mathematical structure with computer science. This connection is formalized in principles like the Curry-Howard correspondence.
+</p>
+
+<p>
+When logic is fully symbolized, the structural rules of logical deduction correspond exactly to the typing rules in functional programming languages. A logical proposition acts as a type, and the symbolic proof of that proposition is computationally identical to a functional program inhabiting that type. The symbols do not just represent truth; they represent computable processes.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf4316c4" class="outline-3">
+<h3 id="orgf4316c4">Natural Deduction and the Curry-Howard Isomorphism</h3>
+<div class="outline-text-3" id="text-orgf4316c4">
+<p>
+To see how symbolic logic maps directly into functional programming, we can examine the Curry-Howard correspondence. This principle reveals that formal logical systems (like natural deduction) and computational calculi (like the typed lambda calculus) are structurally identical.
+</p>
+
+<p>
+Under this isomorphism:
+</p>
+<ul class="org-ul">
+<li><b>Propositions</b> in logic correspond to <b>Types</b> in programming.</li>
+<li><b>Proofs</b> in logic correspond to <b>Programs</b> (or functions) in programming.</li>
+<li><b>Simplification of proofs</b> corresponds to <b>Evaluation of programs</b>.</li>
+</ul>
+</div>
+<div id="outline-container-orgca4550f" class="outline-4">
+<h4 id="orgca4550f">Example: Conjunction and Product Types</h4>
+<div class="outline-text-4" id="text-orgca4550f">
+<p>
+In natural deduction, the introduction rule for logical conjunction (\(\land\)) states that if you have a proof of \(P\) and a proof of \(Q\), you can construct a proof of \(P \land Q\):
+</p>
+
+<p>
+\[\frac{\Gamma \vdash P \quad \Gamma \vdash Q}{\Gamma \vdash P \land Q}\land\text{-intro}\]
+</p>
+
+<p>
+In a functional language like Haskell, this corresponds exactly to constructing a tuple (a product type). If you have a value of type <code>p</code> and a value of type <code>q</code>, you can construct a value of type <code>(p, q)</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #61afef;">constructConjunction</span> <span style="color: #61afef;">::</span> p <span style="color: #61afef;">-&gt;</span> q <span style="color: #61afef;">-&gt;</span> <span style="color: #8c8c8c;">(</span>p, q<span style="color: #8c8c8c;">)</span>
+<span style="color: #61afef;">constructConjunction</span> pProof qProof <span style="color: #61afef;">=</span> <span style="color: #8c8c8c;">(</span>pProof, qProof<span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3cb68a9" class="outline-4">
+<h4 id="org3cb68a9">Example: Implication and Function Types</h4>
+<div class="outline-text-4" id="text-org3cb68a9">
+<p>
+The rule for implication introduction (\(\rightarrow\)) states that if assuming \(P\) allows you to prove \(Q\), then you have a proof of \(P \rightarrow Q\):
+</p>
+
+<p>
+\[\frac{\Gamma, P \vdash Q}{\Gamma \vdash P \rightarrow Q}\rightarrow\text{-intro}\]
+</p>
+
+<p>
+In Haskell, this is simply the definition of a function. The proposition \(P \rightarrow Q\) becomes the function type <code>p -&gt; q</code>. The proof is the lambda abstraction (the function body) that transforms a value of type <code>p</code> into a value of type <code>q</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-orge449b50" class="outline-4">
+<h4 id="orge449b50">Example: Modus Ponens and Function Application</h4>
+<div class="outline-text-4" id="text-orge449b50">
+<p>
+Modus Ponens (implication elimination) states that if you know \(P \rightarrow Q\) and you know \(P\), you can deduce \(Q\):
+</p>
+
+<p>
+\[\frac{\Gamma \vdash P \rightarrow Q \quad \Gamma \vdash P}{\Gamma \vdash Q}\rightarrow\text{-elim}\]
+</p>
+
+<p>
+Computationally, this is function application. If you have a function from <code>p</code> to <code>q</code>, and a value of type <code>p</code>, applying the function yields a value of type <code>q</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #61afef;">modusPonens</span> <span style="color: #61afef;">::</span> <span style="color: #8c8c8c;">(</span>p <span style="color: #61afef;">-&gt;</span> q<span style="color: #8c8c8c;">)</span> <span style="color: #61afef;">-&gt;</span> p <span style="color: #61afef;">-&gt;</span> q
+<span style="color: #61afef;">modusPonens</span> impliesProof pProof <span style="color: #61afef;">=</span> impliesProof pProof
+<span style="color: #687080; font-style: italic;">-- </span><span style="color: #687080; font-style: italic;">Or simply: modusPonens f x = f x</span>
+</code></pre>
+</div>
+
+<p>
+This mapping extends to more complex systems. For instance, universal quantification (\(\forall\)) corresponds to dependent types in theorem provers, allowing the type system to express and verify intricate mathematical theorems mechanically.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0037182" class="outline-3">
+<h3 id="org0037182">Logic as symbolism</h3>
+<div class="outline-text-3" id="text-org0037182">
+<p>
+Reasoning is the domain of logic. We mention AI because in
+today&rsquo;s world AI is still concerned with the application of
+logic.<label id='fnr.6' for='fnr-in.6.4875638' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.4875638' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+As it turns out today&rsquo;s AI such as ChatGPT, Gemini, and Grok,
+all are <i>Large Language Models</i> that use <span class="underline"><span class="underline">no</span></span> actual logic reasoning
+at all! Which is a weakness. But efforts are underway to create
+hybrids that can reason logically. See <a href="ChatWithGemini20260223.html">A little chat with Gemini 3 Pro</a>.
+</span>
+</p>
+
+
+<p>
+[variables as pronouns analogy.]
+</p>
+</div>
+</div>
+<div id="outline-container-org0fa2dbb" class="outline-3">
+<h3 id="org0fa2dbb">Building Languages Using Logic</h3>
+<div class="outline-text-3" id="text-org0fa2dbb">
+<p>
+(<a href="#citeproc_bib_item_3">Leary and Kristiansen 2015</a>)
+</p>
+
+<p>
+The natural progression of mathematical logic goes from
+<b><b>Propositional Logic</b></b> to <b><b>First-Order Logic</b></b> (FOL). FOL offers an
+abstract <span class="underline"><span class="underline">language</span></span> structure for a particular theory, such as our
+topic, set theory. However, FOL is not meant to construct any sort of
+natural language like English. And yet when we work with sets we&rsquo;re
+speaking the language&mdash;using syntax, creating the semantics and
+meaning&mdash;FOL provides for set theory.
+</p>
+
+<p>
+We&rsquo;ll go over a bare minimum on this math holiday, leaving our main
+discussion of logic for later. Logic is the math of math, and we&rsquo;ll
+do our best to sort it out properly.
+</p>
+
+<p>
+Most math texts gloss over the connection of set theory with the FOL
+underpinnings, probably thinking it&rsquo;s not that critical. They try to
+cruise through set theory without the &ldquo;messy details&rdquo; of the whys and
+hows, no doubt to avoid getting too bogged down, too lost in the
+weeds. But then situations appear that really should be backed up by a
+deeper understanding &mdash; but then the hand-waving starts. We&rsquo;re very
+against hand-waving, because it always comes back to haunt us in the
+end.
+</p>
+
+<p>
+First, we&rsquo;ll explore what a <i>formal language</i> is in this abstract
+mathematical sense. What exactly is FOL facilitating? This should be
+answered next.
+</p>
+</div>
+<div id="outline-container-org9c1da07" class="outline-4">
+<h4 id="org9c1da07">Beginner Synopsis of Formal Language Theory</h4>
+<div class="outline-text-4" id="text-org9c1da07">
+<p>
+In everyday life, a spoken, written, printed language like English is,
+from a strictly logical standpoint, &ldquo;messy,&rdquo; full of contextual
+nuances, hidden logical entailment, exceptions, paradoxes, ironical
+twisting&hellip; And yet we often intend to juggle words and sentences
+toward being logical and precise.
+</p>
+
+<p>
+Just a simple, innocuous phrase like &ldquo;how many?&rdquo; is fraught. In
+everyday usage &ldquo;how many?&rdquo; is a request for a count, a total. But the
+word <i>how</i> is typically a request to <i>elaborate on, explain a
+process</i>, such as, &ldquo;how did you do that?&rdquo;  or &ldquo;how did you get here?&rdquo;
+And so a literal interpretation of &ldquo;how many?&rdquo; is, &ldquo;how did the state
+of many come to be?&rdquo; But no, in English that would be, &ldquo;how then so
+many?&rdquo; As you can now imagine, all the twists and turns, all the
+layers of logical entailment in regular spoken language quickly become
+unmanageably large.<label id='fnr.7' for='fnr-in.7.5888636' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.5888636' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+&hellip;so if everyday English is so crazy, how then is LLM (large
+language model) AI (e.g., ChatGPT) able to hold a decent, albeit
+sometimes wooden conversation with us?  Hold that thought&hellip;
+</span>
+</p>
+
+<p>
+We&rsquo;ve internalized our everyday language since early
+childhood. Phrases and sentences just flow out. We&rsquo;re adept at literal
+and figurative turns of speech. Creative tweaking and torquing our
+languages is our main sport. Consider poetry. One of the &ldquo;densest&rdquo;
+poets ever was Emily Dickinson
+</p>
+
+<div class='verse'><blockquote>
+<p class="verse">
+A Dew sufficed itself &mdash;<br>
+And satisfied a Leaf &mdash;<br>
+And felt &rsquo;how vast a Destiny&rsquo; &mdash;<br>
+&rsquo;How trivial is Life&rsquo;!<br>
+</p>
+</blockquote></div>
+
+<p>
+When we start Kindergarden we watch and
+listen and interact with this back-and-forth of language. But how
+should a computer learn?  For the longest time the answer was, We
+<i>program</i> a computer. How?  With programs written in programming
+languages. But programming languages, even the &ldquo;friendliest,&rdquo; are
+typically far from actual human language.
+</p>
+
+<p>
+In mathematics and computer science, what is known as a <b><b>formal
+language</b></b> strips all of the confusion, all the mess away. The goal of
+human speech is to convey meaning. But a formal language in the logic
+and computer science world is not about qualitative, subjective
+understanding; it is purely about <i>structure, rules,</i> and <i>pattern
+matching</i>. Thus, a formal language does not intend to describe what
+things <i>mean</i>. It only cares about how symbols are allowed to be
+<i>arranged</i>. Again, we have in higher math&rsquo;s formal language theory a
+methodology compatible with the computer. Once again it&rsquo;s formalize to operationalize.
+</p>
+</div>
+<div id="outline-container-org5dc7041" class="outline-5">
+<h5 id="org5dc7041">1. The Alphabet (The Raw Material)</h5>
+<div class="outline-text-5" id="text-org5dc7041">
+<p>
+Every formal language starts with a strictly defined set of allowable symbols. This is just an inventory of characters.
+</p>
+
+<ul class="org-ul">
+<li>In basic arithmetic, the alphabet might be: \(\{0, 1, 2, +, =, (, )\}\)</li>
+<li>In standard set theory, it might be the universal logical symbols plus exactly one relation symbol: \(\{\forall, \exists, \land, \lor, \lnot, (, ), x, y, \in\}\)</li>
+<li>In a computational environment, it is often just the standard ASCII or Unicode character set.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd15c569" class="outline-5">
+<h5 id="orgd15c569">2. Strings / Words (The Combinations)</h5>
+<div class="outline-text-5" id="text-orgd15c569">
+<p>
+A &ldquo;string&rdquo; (sometimes called a &ldquo;word&rdquo;) is simply any finite sequence of symbols taken from the alphabet and smashed together. At this stage, there are no rules.
+</p>
+
+<ul class="org-ul">
+<li>String A: \(\forall x\, (x \in y)\)</li>
+<li>String B: \() \forall \forall \in x y \land\)</li>
+<li>String C: <code>(define (square x) (* x x))</code></li>
+<li>String D: <code>)) define ( ( *</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9f6b9d4" class="outline-5">
+<h5 id="org9f6b9d4">3. The Formal Language (The Rules)</h5>
+<div class="outline-text-5" id="text-org9f6b9d4">
+<p>
+This is the main event. A formal language is not a loose concept; it is literally defined as <b>a specific set of strings</b> that obey a strict set of grammatical rules (often called a formal grammar, syntax, or formation rules). 
+</p>
+
+<p>
+If a string follows the rules, it is &ldquo;in the language&rdquo; (it is a Well-Formed Formula, or valid syntax). If it breaks even one rule, it is &ldquo;not in the language.&rdquo;
+</p>
+
+<ul class="org-ul">
+<li>String A and String C follow the structural rules of their respective domains. They belong to the formal language.</li>
+<li>String B and String D have mismatched parentheses and operators in the wrong places. They are structurally invalid and are rejected from the language.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4d96662" class="outline-5">
+<h5 id="org4d96662">1. What Is a Formal Language?</h5>
+<div class="outline-text-5" id="text-org4d96662">
+<p>
+A <b>formal language</b> is a precisely defined set of strings built from a
+fixed collection of symbols following a given set of rules. At its
+core a formal language is always just a set of strings.
+</p>
+</div>
+</div>
+<div id="outline-container-org4a63c07" class="outline-5">
+<h5 id="org4a63c07">2. Alphabet and Strings</h5>
+<div class="outline-text-5" id="text-org4a63c07">
+<p>
+Like a natural language everything starts with an <b><b>alphabet</b></b>. An
+alphabet (usually written \(\Sigma\)) is a finite set of symbols.
+</p>
+
+<p>
+Example:
+</p>
+
+<ul class="org-ul">
+<li>\(\Sigma = \{0,1\}\)</li>
+<li>\(\Sigma = \{a,b,c\}\)</li>
+<li>\(\Sigma = \{(,)\}\)</li>
+</ul>
+
+<p>
+A <b>string</b> is a finite sequence of symbols from the alphabet.
+</p>
+
+<p>
+Examples over \(\Sigma = \{a,b\}\):
+</p>
+
+<ul class="org-ul">
+<li>\(a\)</li>
+<li>\(ab\)</li>
+<li>\(aab\)</li>
+<li>\(abba\)</li>
+</ul>
+
+<p>
+The empty string is written:
+</p>
+
+<ul class="org-ul">
+<li>\(\epsilon\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd49c6e7" class="outline-5">
+<h5 id="orgd49c6e7">3. A Language Is a Set of Strings</h5>
+<div class="outline-text-5" id="text-orgd49c6e7">
+<p>
+Once you have all possible strings over \(\Sigma\), a formal language is just
+some subset of them.
+</p>
+
+<p>
+Example:
+</p>
+
+<p>
+If \(\Sigma = \{0,1\}\), then all possible strings include:
+</p>
+
+<ul class="org-ul">
+<li>\(\epsilon\)</li>
+<li>\(0\)</li>
+<li>\(1\)</li>
+<li>\(00\)</li>
+<li>\(01\)</li>
+<li>\(10\)</li>
+<li>\(11\)</li>
+<li>\(000\)</li>
+<li>\(\dots\)</li>
+</ul>
+
+<p>
+Now define a language:
+</p>
+
+<p>
+\(L =\) “all strings with an even number of $0$s”
+</p>
+
+<p>
+That is a formal language.
+</p>
+
+<p>
+Another example:
+</p>
+
+<p>
+\(L = \{ a^n b^n \mid n \ge 0 \}\)
+</p>
+
+<p>
+This means:
+</p>
+
+<ul class="org-ul">
+<li>\(\epsilon\)</li>
+<li>\(ab\)</li>
+<li>\(aabb\)</li>
+<li>\(aaabbb\)</li>
+<li>\(\dots\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org43f758c" class="outline-5">
+<h5 id="org43f758c">4. How Do We Describe Languages?</h5>
+<div class="outline-text-5" id="text-org43f758c">
+<p>
+There are three major ways.
+</p>
+</div>
+<div id="outline-container-org1def633" class="outline-6">
+<h6 id="org1def633">(1) By Listing Them</h6>
+<div class="outline-text-6" id="text-org1def633">
+<p>
+Possible only for small finite languages.
+</p>
+
+<p>
+Example:
+</p>
+
+<p>
+\(L = \{a, ab, abb\}\)
+</p>
+</div>
+</div>
+<div id="outline-container-org2ed5839" class="outline-6">
+<h6 id="org2ed5839">(2) By Rules (Grammars)</h6>
+<div class="outline-text-6" id="text-org2ed5839">
+<p>
+A grammar tells you how to generate strings.
+</p>
+
+<p>
+Example rules:
+</p>
+
+<p>
+\(S \to aSb\)  
+\(S \to \epsilon\)
+</p>
+
+<p>
+This generates:
+</p>
+
+<ul class="org-ul">
+<li>\(\epsilon\)</li>
+<li>\(ab\)</li>
+<li>\(aabb\)</li>
+<li>\(aaabbb\)</li>
+<li>\(\dots\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org06d8357" class="outline-6">
+<h6 id="org06d8357">(3) By Machines (Automata)</h6>
+<div class="outline-text-6" id="text-org06d8357">
+<p>
+A machine reads a string and decides whether to accept it.
+</p>
+
+<p>
+Examples:
+</p>
+
+<ul class="org-ul">
+<li>Finite automata</li>
+<li>Pushdown automata</li>
+<li>Turing machines</li>
+</ul>
+
+<p>
+A deep result:
+</p>
+
+<p>
+Grammars, machines, and logical definitions often describe the same classes
+of languages.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgef04619" class="outline-5">
+<h5 id="orgef04619">5. Syntax vs Meaning</h5>
+<div class="outline-text-5" id="text-orgef04619">
+<p>
+Formal language theory studies:
+</p>
+
+<ul class="org-ul">
+<li>Syntax (structure)</li>
+</ul>
+
+<p>
+It does <b>not</b> study:
+</p>
+
+<ul class="org-ul">
+<li>Meaning (semantics)</li>
+</ul>
+
+<p>
+Example:
+</p>
+
+<p>
+The string:
+</p>
+
+<p>
+\(aabbb\)
+</p>
+
+<p>
+Formal language theory asks:
+</p>
+
+<p>
+Is it in the set?
+</p>
+
+<p>
+It does not ask:
+</p>
+
+<p>
+What does it mean?
+</p>
+</div>
+</div>
+<div id="outline-container-org908c1c6" class="outline-5">
+<h5 id="org908c1c6">6. The Chomsky Hierarchy</h5>
+<div class="outline-text-5" id="text-org908c1c6">
+<p>
+Languages fall into types depending on structural complexity.
+</p>
+
+<p>
+From simplest to most powerful:
+</p>
+
+<ol class="org-ol">
+<li>Regular languages  
+<ul class="org-ul">
+<li>Recognized by finite automata</li>
+<li>No memory</li>
+</ul></li>
+
+<li>Context-free languages  
+<ul class="org-ul">
+<li>Recognized by pushdown automata</li>
+<li>Have stack memory</li>
+<li>Handle nested structure</li>
+</ul></li>
+
+<li>Context-sensitive languages</li>
+
+<li>Recursively enumerable languages  
+<ul class="org-ul">
+<li>Recognized by Turing machines</li>
+</ul></li>
+</ol>
+
+<p>
+Each level allows more complex patterns.
+</p>
+</div>
+</div>
+<div id="outline-container-orgac43560" class="outline-5">
+<h5 id="orgac43560">7. Connecting Formal Languages to First-Order Logic</h5>
+<div class="outline-text-5" id="text-orgac43560">
+<p>
+First-order logic itself is a formal language.
+</p>
+
+<p>
+To define it formally, we specify:
+</p>
+</div>
+<div id="outline-container-org4fa171c" class="outline-6">
+<h6 id="org4fa171c">Alphabet of First-Order Logic</h6>
+<div class="outline-text-6" id="text-org4fa171c">
+<p>
+Example alphabet:
+</p>
+
+<ul class="org-ul">
+<li>Logical symbols: \(\forall, \exists, \neg, \land, \lor, \rightarrow, =\)</li>
+<li>Variables: \(x, y, z, x_1, x_2, \dots\)</li>
+<li>Parentheses: \((,)\)</li>
+<li>Predicate symbols: \(P, Q, R, \dots\)</li>
+<li>Function symbols: \(f, g, \dots\)</li>
+<li>Constant symbols: \(a, b, c, \dots\)</li>
+</ul>
+
+<p>
+This collection of symbols forms an alphabet \(\Sigma_{FOL}\).
+</p>
+</div>
+</div>
+<div id="outline-container-orgf77f551" class="outline-6">
+<h6 id="orgf77f551">Strings</h6>
+<div class="outline-text-6" id="text-orgf77f551">
+<p>
+Any finite sequence of these symbols is a string.
+</p>
+
+<p>
+Example of a string:
+</p>
+
+<p>
+\(\forall x ( P(x) \rightarrow Q(x) )\)
+</p>
+
+<p>
+But not every string is <b>well-formed</b>.
+</p>
+</div>
+</div>
+<div id="outline-container-org13b1d79" class="outline-6">
+<h6 id="org13b1d79">Well-Formed Formulas (WFFs)</h6>
+<div class="outline-text-6" id="text-org13b1d79">
+<p>
+We define formation rules inductively:
+</p>
+
+<ol class="org-ol">
+<li>If \(P\) is an $n$-ary predicate and \(t_1, \dots, t_n\) are terms,
+then \(P(t_1, \dots, t_n)\) is a formula.</li>
+
+<li>If \(\varphi\) and \(\psi\) are formulas, then:
+<ul class="org-ul">
+<li>\(\neg \varphi\)</li>
+<li>\((\varphi \land \psi)\)</li>
+<li>\((\varphi \rightarrow \psi)\)</li>
+</ul></li>
+
+<li>If \(\varphi\) is a formula and \(x\) a variable:
+<ul class="org-ul">
+<li>\(\forall x \varphi\)</li>
+<li>\(\exists x \varphi\)</li>
+</ul></li>
+</ol>
+
+<p>
+The <b>formal language of first-order logic</b> is the set of all strings
+generated by these formation rules.
+</p>
+
+<p>
+Thus:
+</p>
+
+<p>
+First-order logic = a formally defined language of well-formed formulas.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org8258019" class="outline-5">
+<h5 id="org8258019">8. Peano Arithmetic as a Formal Language</h5>
+<div class="outline-text-5" id="text-org8258019">
+<p>
+Peano Arithmetic (PA) is a specific first-order language plus axioms.
+</p>
+</div>
+<div id="outline-container-org491c8cd" class="outline-6">
+<h6 id="org491c8cd">Alphabet of PA</h6>
+<div class="outline-text-6" id="text-org491c8cd">
+<p>
+It includes:
+</p>
+
+<ul class="org-ul">
+<li>Constant symbol: \(0\)</li>
+<li>Function symbols:
+<ul class="org-ul">
+<li>\(S\) (successor)</li>
+<li>\(+\) (addition)</li>
+<li>\(\cdot\) (multiplication)</li>
+</ul></li>
+<li>Equality symbol: \(=\)</li>
+<li>Logical symbols:
+<ul class="org-ul">
+<li>\(\forall, \exists, \neg, \land, \lor, \rightarrow\)</li>
+</ul></li>
+<li>Variables: \(x, y, z, \dots\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5b32323" class="outline-6">
+<h6 id="org5b32323">Terms</h6>
+<div class="outline-text-6" id="text-org5b32323">
+<p>
+Defined inductively:
+</p>
+
+<ul class="org-ul">
+<li>\(0\) is a term.</li>
+<li>If \(t\) is a term, then \(S(t)\) is a term.</li>
+<li>If \(t_1, t_2\) are terms:
+<ul class="org-ul">
+<li>\((t_1 + t_2)\)</li>
+<li>\((t_1 \cdot t_2)\)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org60e9411" class="outline-6">
+<h6 id="org60e9411">Formulas</h6>
+<div class="outline-text-6" id="text-org60e9411">
+<p>
+If \(t_1\) and \(t_2\) are terms:
+</p>
+
+<ul class="org-ul">
+<li>\(t_1 = t_2\) is a formula.</li>
+</ul>
+
+<p>
+From these, more complex formulas are built using logical symbols.
+</p>
+
+<p>
+Example formulas:
+</p>
+
+<ul class="org-ul">
+<li>\(\forall x (x + 0 = x)\)</li>
+<li>\(\forall x \forall y (x + S(y) = S(x + y))\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgac01944" class="outline-6">
+<h6 id="orgac01944">Axioms of PA</h6>
+<div class="outline-text-6" id="text-orgac01944">
+<p>
+Examples:
+</p>
+
+<ol class="org-ol">
+<li>\(\forall x \neg (S(x) = 0)\)</li>
+<li>\(\forall x \forall y (S(x) = S(y) \rightarrow x = y)\)</li>
+<li>Induction schema:
+If \(\varphi(0)\) and
+\(\forall x (\varphi(x) \rightarrow \varphi(S(x)))\),
+then \(\forall x \varphi(x)\).</li>
+</ol>
+
+<p>
+Thus:
+</p>
+
+<p>
+Peano Arithmetic is:
+</p>
+
+<ul class="org-ul">
+<li>A formal language (its symbols and formation rules)</li>
+<li>Plus a set of axioms (special formulas inside that language)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org9e9c835" class="outline-5">
+<h5 id="org9e9c835">9. Big Picture</h5>
+<div class="outline-text-5" id="text-org9e9c835">
+<p>
+A formal language is:
+</p>
+
+<ul class="org-ul">
+<li>An alphabet \(\Sigma\)</li>
+<li>A set of formation rules</li>
+<li>A resulting set of strings</li>
+</ul>
+
+<p>
+First-order logic is a formal language.
+</p>
+
+<p>
+Peano arithmetic is:
+</p>
+
+<p>
+A particular first-order formal language designed to describe natural numbers.
+</p>
+
+<p>
+Meaning (semantics) comes later, when we interpret:
+</p>
+
+<ul class="org-ul">
+<li>\(0\) as the number zero</li>
+<li>\(S\) as the successor function</li>
+<li>\(+\) as addition</li>
+</ul>
+
+<p>
+But syntactically, it is just symbol manipulation.
+</p>
+
+<p>
+This separation between:
+</p>
+
+<ul class="org-ul">
+<li>Syntax (formal language)</li>
+<li>Semantics (interpretation)</li>
+</ul>
+
+<p>
+is one of the deepest ideas in modern logic.
+```
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org53652d1" class="outline-4">
+<h4 id="org53652d1">Main Differences Between Propositional Logic and First-Order Logic</h4>
+<div class="outline-text-4" id="text-org53652d1">
+<p>
+The main differences concern <b>what they can talk about</b> and how much internal
+structure their statements have.
+</p>
+</div>
+<div id="outline-container-orgb2581f5" class="outline-5">
+<h5 id="orgb2581f5">Propositional Logic</h5>
+<div class="outline-text-5" id="text-orgb2581f5">
+</div>
+<div id="outline-container-org05f9cc3" class="outline-6">
+<h6 id="org05f9cc3">Basic Idea</h6>
+<div class="outline-text-6" id="text-org05f9cc3">
+<p>
+Propositional logic treats whole statements as indivisible atoms.
+</p>
+
+<p>
+Examples:
+</p>
+
+<ul class="org-ul">
+<li>\(P\) : “It is raining.”</li>
+<li>\(Q\) : “The ground is wet.”</li>
+</ul>
+
+<p>
+You can form compound statements:
+</p>
+
+<ul class="org-ul">
+<li>\(P \land Q\)</li>
+<li>\(P \rightarrow Q\)</li>
+<li>\(\neg P\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf2b533c" class="outline-6">
+<h6 id="orgf2b533c">Key Features</h6>
+<div class="outline-text-6" id="text-orgf2b533c">
+<ul class="org-ul">
+<li>Atomic units are whole propositions.</li>
+<li>Logical connectives:
+<ul class="org-ul">
+<li>\(\neg\) (not)</li>
+<li>\(\land\) (and)</li>
+<li>\(\lor\) (or)</li>
+<li>\(\rightarrow\) (implies)</li>
+<li>\(\leftrightarrow\) (if and only if)</li>
+</ul></li>
+<li>No variables</li>
+<li>No quantifiers</li>
+<li>No internal structure inside propositions</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf4d1ff3" class="outline-6">
+<h6 id="orgf4d1ff3">Limitation</h6>
+<div class="outline-text-6" id="text-orgf4d1ff3">
+<p>
+It cannot express statements like:
+</p>
+
+<p>
+“All humans are mortal.”
+</p>
+
+<p>
+Because propositional logic cannot refer to objects inside statements.
+It only sees complete statements as black boxes.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge0e0487" class="outline-5">
+<h5 id="orge0e0487">First-Order Logic (FOL)</h5>
+<div class="outline-text-5" id="text-orge0e0487">
+<p>
+First-order logic extends propositional logic by allowing us to talk about:
+</p>
+
+<ul class="org-ul">
+<li>Objects</li>
+<li>Properties of objects</li>
+<li>Relations between objects</li>
+<li>Quantification over objects</li>
+</ul>
+</div>
+<div id="outline-container-org1d483d0" class="outline-6">
+<h6 id="org1d483d0">New Components in First-Order Logic</h6>
+<div class="outline-text-6" id="text-org1d483d0">
+</div>
+<div id="outline-container-org79d85d1" class="outline-7">
+<h7 id="org79d85d1">1. Variables</h7>
+<div class="outline-text-7" id="text-org79d85d1">
+<p>
+Symbols like:
+</p>
+
+<ul class="org-ul">
+<li>\(x\)</li>
+<li>\(y\)</li>
+<li>\(z\)</li>
+</ul>
+
+<p>
+These range over objects in a domain.
+</p>
+</div>
+</div>
+<div id="outline-container-org86c1bc6" class="outline-7">
+<h7 id="org86c1bc6">2. Predicates</h7>
+<div class="outline-text-7" id="text-org86c1bc6">
+<p>
+Instead of atomic propositions like \(P\), we have predicates applied to terms:
+</p>
+
+<ul class="org-ul">
+<li>\(\mathrm{Human}(x)\)</li>
+<li>\(\mathrm{Loves}(x,y)\)</li>
+</ul>
+
+<p>
+Predicates express properties and relations.
+</p>
+</div>
+</div>
+<div id="outline-container-orge57af97" class="outline-7">
+<h7 id="orge57af97">3. Quantifiers</h7>
+<div class="outline-text-7" id="text-orge57af97">
+<p>
+This is the major expansion.
+</p>
+
+<ul class="org-ul">
+<li>Universal quantifier:
+<ul class="org-ul">
+<li>\(\forall x\)</li>
+</ul></li>
+<li>Existential quantifier:
+<ul class="org-ul">
+<li>\(\exists x\)</li>
+</ul></li>
+</ul>
+
+<p>
+Now we can express:
+</p>
+
+<ul class="org-ul">
+<li>\(\forall x \, (\mathrm{Human}(x) \rightarrow \mathrm{Mortal}(x))\)</li>
+</ul>
+
+<p>
+This was impossible in propositional logic.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc8c7c33" class="outline-7">
+<h7 id="orgc8c7c33">4. Functions (optional but common)</h7>
+<div class="outline-text-7" id="text-orgc8c7c33">
+<p>
+Example:
+</p>
+
+<ul class="org-ul">
+<li>\(\mathrm{Father}(x)\)</li>
+</ul>
+
+<p>
+Which allows nested structure:
+</p>
+
+<ul class="org-ul">
+<li>\(\mathrm{Human}(\mathrm{Father}(x))\)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org976864b" class="outline-5">
+<h5 id="org976864b">What Extra Abilities Does First-Order Logic Bring?</h5>
+<div class="outline-text-5" id="text-org976864b">
+</div>
+<div id="outline-container-orgbea751c" class="outline-6">
+<h6 id="orgbea751c">Ability 1: Talk About Individuals</h6>
+<div class="outline-text-6" id="text-orgbea751c">
+<p>
+Propositional logic:
+</p>
+
+<ul class="org-ul">
+<li>\(P\) : “Socrates is mortal.”</li>
+</ul>
+
+<p>
+First-order logic:
+</p>
+
+<ul class="org-ul">
+<li>\(\mathrm{Mortal}(\mathrm{Socrates})\)</li>
+</ul>
+
+<p>
+Now the internal structure is visible.
+</p>
+</div>
+</div>
+<div id="outline-container-org17cae38" class="outline-6">
+<h6 id="org17cae38">Ability 2: Express General Laws</h6>
+<div class="outline-text-6" id="text-org17cae38">
+<p>
+Propositional logic must list cases:
+</p>
+
+<ul class="org-ul">
+<li>\(P_1 \land P_2 \land P_3 \land \dots\)</li>
+</ul>
+
+<p>
+First-order logic expresses them compactly:
+</p>
+
+<ul class="org-ul">
+<li>\(\forall x \, (\mathrm{Human}(x) \rightarrow \mathrm{Mortal}(x))\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8bbe013" class="outline-6">
+<h6 id="org8bbe013">Ability 3: Express Existence</h6>
+<div class="outline-text-6" id="text-org8bbe013">
+<p>
+Propositional logic cannot naturally express:
+</p>
+
+<p>
+“There exists someone who loves everyone.”
+</p>
+
+<p>
+First-order logic:
+</p>
+
+<ul class="org-ul">
+<li>\(\exists x \, \forall y \, \mathrm{Loves}(x,y)\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org72340b8" class="outline-6">
+<h6 id="org72340b8">Ability 4: Express Relations</h6>
+<div class="outline-text-6" id="text-org72340b8">
+<p>
+Propositional logic cannot express:
+</p>
+
+<p>
+“Everyone loves someone.”
+</p>
+
+<p>
+First-order logic:
+</p>
+
+<ul class="org-ul">
+<li>\(\forall x \, \exists y \, \mathrm{Loves}(x,y)\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org31501e3" class="outline-6">
+<h6 id="org31501e3">Ability 5: Express Mathematical Structure</h6>
+<div class="outline-text-6" id="text-org31501e3">
+<p>
+Arithmetic needs quantification:
+</p>
+
+<ul class="org-ul">
+<li>\(\forall x \, (x + 0 = x)\)</li>
+</ul>
+
+<p>
+Propositional logic cannot express arithmetic laws.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0a55420" class="outline-5">
+<h5 id="org0a55420">Expressive Power Comparison</h5>
+<div class="outline-text-5" id="text-org0a55420">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Feature</th>
+<th scope="col" class="org-left">Propositional Logic</th>
+<th scope="col" class="org-left">First-Order Logic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Logical connectives</td>
+<td class="org-left">Yes</td>
+<td class="org-left">Yes</td>
+</tr>
+
+<tr>
+<td class="org-left">Variables</td>
+<td class="org-left">No</td>
+<td class="org-left">Yes</td>
+</tr>
+
+<tr>
+<td class="org-left">Predicates</td>
+<td class="org-left">No</td>
+<td class="org-left">Yes</td>
+</tr>
+
+<tr>
+<td class="org-left">Quantifiers</td>
+<td class="org-left">No</td>
+<td class="org-left">Yes</td>
+</tr>
+
+<tr>
+<td class="org-left">Relations</td>
+<td class="org-left">No</td>
+<td class="org-left">Yes</td>
+</tr>
+
+<tr>
+<td class="org-left">Arithmetic expressible</td>
+<td class="org-left">No</td>
+<td class="org-left">Yes</td>
+</tr>
+
+<tr>
+<td class="org-left">Talks about individuals</td>
+<td class="org-left">No</td>
+<td class="org-left">Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org7648beb" class="outline-5">
+<h5 id="org7648beb">Cost of Extra Power</h5>
+<div class="outline-text-5" id="text-org7648beb">
+<p>
+The extra expressive power comes with trade-offs:
+</p>
+
+<ul class="org-ul">
+<li>Propositional logic is decidable (truth tables always work).</li>
+<li>First-order logic is not decidable in general.</li>
+<li>First-order reasoning is more complex.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5bfa658" class="outline-5">
+<h5 id="org5bfa658">Conceptual Summary</h5>
+<div class="outline-text-5" id="text-org5bfa658">
+<ul class="org-ul">
+<li>Propositional logic talks about whole facts.</li>
+<li>First-order logic talks about objects inside facts.</li>
+</ul>
+
+<p>
+Propositional logic says:
+</p>
+
+<p>
+“This statement is true.”
+</p>
+
+<p>
+First-order logic says:
+</p>
+
+<p>
+“For every object in the universe, this property holds.”
+```
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd237ecc" class="outline-4">
+<h4 id="orgd237ecc">FOL Components</h4>
+<div class="outline-text-4" id="text-orgd237ecc">
+<p>
+Back to FOL&hellip;
+</p>
+
+<p>
+A first-order language is created by specifying:
+</p>
+
+<ol class="org-ol">
+<li>Its symbols (vocabulary)</li>
+<li>Rules for forming expressions (syntax)</li>
+<li>Rules for assigning meaning (semantics)</li>
+</ol>
+
+<p>
+Together, these define a complete formal language.
+</p>
+</div>
+<div id="outline-container-org6efda25" class="outline-5">
+<h5 id="org6efda25">1. Vocabulary (Alphabet of the Language)</h5>
+<div class="outline-text-5" id="text-org6efda25">
+<p>
+To construct a first-order language, we first define its symbols.
+</p>
+</div>
+<div id="outline-container-org4c5d452" class="outline-6">
+<h6 id="org4c5d452">A. Logical Symbols (Built-In)</h6>
+<div class="outline-text-6" id="text-org4c5d452">
+<p>
+These are common to all first-order languages:
+</p>
+
+<ul class="org-ul">
+<li>Quantifiers:
+<ul class="org-ul">
+<li>\(\forall\) (for all)</li>
+<li>\(\exists\)  (there exists)</li>
+</ul></li>
+
+<li>Logical connectives:
+<ul class="org-ul">
+<li>\(\lnot\)  (not)</li>
+<li>\(\land\)  (and)</li>
+<li>\(\lor\)  (or)</li>
+<li>\(\implies\)  (implies)</li>
+<li>\(\iff\)  (if and only if)</li>
+</ul></li>
+
+<li>Variables:
+<ul class="org-ul">
+<li>\(x\), \(y\), \(z\), &hellip;</li>
+</ul></li>
+
+<li>Equality (optional but common):
+<ul class="org-ul">
+<li>\(=\)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org964b83c" class="outline-6">
+<h6 id="org964b83c">B. Non-Logical Symbols (Domain-Specific)</h6>
+<div class="outline-text-6" id="text-org964b83c">
+<p>
+These depend on what the language is about.
+</p>
+
+<ol class="org-ol">
+<li>Constant symbols (name specific objects)
+<ul class="org-ul">
+<li>\(a\), \(b\), \(john\)</li>
+</ul></li>
+
+<li>Function symbols (map objects to objects)
+<ul class="org-ul">
+<li>\(father(x)\)</li>
+<li>\(plus(x, y)\)</li>
+</ul></li>
+
+<li>Predicate symbols (properties or relations)
+<ul class="org-ul">
+<li><code>Human(x)</code></li>
+<li><code>Loves(x, y)</code></li>
+<li><code>Prime(x)</code></li>
+</ul></li>
+</ol>
+
+<p>
+The choice of these symbols determines what the language can express.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org70a3ad1" class="outline-5">
+<h5 id="org70a3ad1">2. Syntax: Building Well-Formed Formulas</h5>
+<div class="outline-text-5" id="text-org70a3ad1">
+<p>
+Syntax specifies how symbols may be combined.
+</p>
+</div>
+<div id="outline-container-org81c074c" class="outline-6">
+<h6 id="org81c074c">Step 1: Terms</h6>
+<div class="outline-text-6" id="text-org81c074c">
+<p>
+Terms refer to objects.
+</p>
+
+<p>
+A term can be:
+</p>
+<ul class="org-ul">
+<li>A variable (\(x\))</li>
+<li>A constant (\(john\))</li>
+<li>A function applied to terms (\(father(x)\), \(plus(x, y)\))</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org52569d6" class="outline-6">
+<h6 id="org52569d6">Step 2: Atomic Formulas</h6>
+<div class="outline-text-6" id="text-org52569d6">
+<p>
+An atomic formula is a predicate applied to terms.
+</p>
+
+<p>
+Examples:
+</p>
+<ul class="org-ul">
+<li><code>Human(x)</code></li>
+<li><code>Loves(john, mary)</code></li>
+<li><code>Prime(7)</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd2ce4f6" class="outline-6">
+<h6 id="orgd2ce4f6">Step 3: Complex Formulas</h6>
+<div class="outline-text-6" id="text-orgd2ce4f6">
+<p>
+Formulas can be combined using logical connectives and quantifiers.
+</p>
+
+<p>
+Examples:
+</p>
+<ul class="org-ul">
+<li>\(\lnot Human(x)\)</li>
+<li>\(Human(x) \land Mortal(x)\)</li>
+<li>\(\forall x (Human(x) \implies Mortal(x))\)</li>
+<li>\(\exists x | Loves(x, mary)\)</li>
+</ul>
+
+<p>
+These formation rules define what counts as a grammatically correct
+sentence.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb7be17e" class="outline-5">
+<h5 id="orgb7be17e">3. Semantics: Giving Meaning</h5>
+<div class="outline-text-5" id="text-orgb7be17e">
+<p>
+Syntax defines structure.
+Semantics defines meaning.
+</p>
+
+<p>
+To interpret a first-order language, we specify:
+</p>
+
+<ol class="org-ol">
+<li>A domain of discourse (the set of objects being discussed)</li>
+<li>An interpretation that assigns:
+<ul class="org-ul">
+<li>Each constant → an object in the domain</li>
+<li>Each function → a mapping over the domain</li>
+<li>Each predicate → a relation over the domain</li>
+</ul></li>
+</ol>
+</div>
+<div id="outline-container-orgbbba6e1" class="outline-6">
+<h6 id="orgbbba6e1">Example interpretation:</h6>
+<div class="outline-text-6" id="text-orgbbba6e1">
+<p>
+Domain: all people
+</p>
+
+<p>
+Human(x): &ldquo;x is a person&rdquo;
+Mortal(x): &ldquo;x eventually dies&rdquo;
+</p>
+
+<p>
+Then the sentence:
+</p>
+
+<p>
+∀x (Human(x) → Mortal(x))
+</p>
+
+<p>
+means:
+</p>
+
+<p>
+For every object in the domain,
+if it is human, then it is mortal.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3592cc8" class="outline-5">
+<h5 id="org3592cc8">4. How This Creates a Language</h5>
+<div class="outline-text-5" id="text-org3592cc8">
+<p>
+A first-order language is created by:
+</p>
+
+<ol class="org-ol">
+<li>Defining a vocabulary</li>
+<li>Defining formation rules (syntax)</li>
+<li>Defining interpretation rules (semantics)</li>
+</ol>
+
+<p>
+Comparison:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Natural Language</th>
+<th scope="col" class="org-left">First-Order Logic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Words</td>
+<td class="org-left">Symbols</td>
+</tr>
+
+<tr>
+<td class="org-left">Grammar rules</td>
+<td class="org-left">Formation rules</td>
+</tr>
+
+<tr>
+<td class="org-left">Contextual meaning</td>
+<td class="org-left">Interpretation</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+First-order logic removes ambiguity by enforcing precise structure and meaning.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc7eb2b3" class="outline-5">
+<h5 id="orgc7eb2b3">5. Example: Constructing a Simple Language</h5>
+<div class="outline-text-5" id="text-orgc7eb2b3">
+<p>
+Suppose we want a language about family relationships.
+</p>
+</div>
+<div id="outline-container-org5622f79" class="outline-6">
+<h6 id="org5622f79">Vocabulary</h6>
+<div class="outline-text-6" id="text-org5622f79">
+<ul class="org-ul">
+<li>Constant: john</li>
+<li>Predicate: Parent(x, y)</li>
+<li>Predicate: Male(x)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge391aae" class="outline-6">
+<h6 id="orge391aae">Sentence</h6>
+<div class="outline-text-6" id="text-orge391aae">
+<p>
+∀x (Parent(john, x) → Male(john))
+</p>
+
+<p>
+Meaning:
+</p>
+
+<p>
+For every x,
+if john is a parent of x,
+then john is male.
+</p>
+
+<p>
+This is a complete sentence in a first-order language.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfa95acf" class="outline-5">
+<h5 id="orgfa95acf">6. Why This Matters</h5>
+<div class="outline-text-5" id="text-orgfa95acf">
+<p>
+First-order logic is used to construct:
+</p>
+
+<ul class="org-ul">
+<li>Mathematical theories</li>
+<li>Knowledge representation systems</li>
+<li>Database query systems</li>
+<li>Programming language semantics</li>
+<li>Artificial intelligence reasoning systems</li>
+</ul>
+
+<p>
+It provides the structural foundation for precise formal reasoning.
+</p>
+</div>
+</div>
+<div id="outline-container-org7d8b5ad" class="outline-5">
+<h5 id="org7d8b5ad">Summary</h5>
+<div class="outline-text-5" id="text-org7d8b5ad">
+<p>
+First-order logic creates a language by providing:
+</p>
+
+<ol class="org-ol">
+<li>Symbols (vocabulary)</li>
+<li>Grammar rules (syntax)</li>
+<li>Interpretation rules (semantics)</li>
+</ol>
+
+<p>
+The result is a precise, unambiguous formal language capable of expressing structured reasoning about objects and their relationships.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb8357f7" class="outline-4">
+<h4 id="orgb8357f7">Building the Language of Set Theory Using First-Order Logic</h4>
+<div class="outline-text-4" id="text-orgb8357f7">
+</div>
+<div id="outline-container-orgb4feeb7" class="outline-5">
+<h5 id="orgb4feeb7">Overview</h5>
+<div class="outline-text-5" id="text-orgb4feeb7">
+<p>
+Here we walk through how first-order logic (FOL) is used to build the
+<b>language of set theory</b>, step by step, with detailed examples.
+</p>
+
+<p>
+Set theory (specifically Zermelo–Fraenkel set theory, ZF) is formulated
+entirely inside a first-order language. What makes it powerful is that
+<b>everything is a set</b> — numbers, functions, relations, ordered pairs —
+all are defined using only sets.
+</p>
+
+<p>
+We will follow these five steps:
+</p>
+
+<ol class="org-ol">
+<li>Specify the vocabulary</li>
+<li>Define terms</li>
+<li>Define atomic formulas</li>
+<li>Build complex formulas</li>
+<li>Provide semantics (interpretation)</li>
+</ol>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-org24e3cbd" class="outline-5">
+<h5 id="org24e3cbd">Step 1: Specify the Vocabulary</h5>
+<div class="outline-text-5" id="text-org24e3cbd">
+<p>
+A first-order language consists of logical symbols plus non-logical symbols.
+</p>
+</div>
+<div id="outline-container-org84752f7" class="outline-6">
+<h6 id="org84752f7">Logical Symbols (standard in all FOL)</h6>
+<div class="outline-text-6" id="text-org84752f7">
+<ul class="org-ul">
+<li>Quantifiers: ∀, ∃</li>
+<li>Connectives: ¬, ∧, ∨, →, ↔</li>
+<li>Variables: x, y, z, x₁, x₂, &hellip;</li>
+<li>Equality: =</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org08be966" class="outline-6">
+<h6 id="org08be966">Non-Logical Symbols for Set Theory</h6>
+<div class="outline-text-6" id="text-org08be966">
+<p>
+In standard ZF set theory, the language is extremely minimal.
+</p>
+
+<p>
+It contains only:
+</p>
+
+<ul class="org-ul">
+<li>One binary predicate symbol: ∈  (membership)</li>
+</ul>
+
+<p>
+That’s it.
+</p>
+
+<p>
+There are:
+</p>
+<ul class="org-ul">
+<li>No constant symbols</li>
+<li>No function symbols</li>
+<li>No additional predicates</li>
+</ul>
+
+<p>
+Everything must be expressed using:
+  =
+  ∈
+  logical symbols
+</p>
+
+<p>
+This simplicity is one of the remarkable features of set theory.
+</p>
+
+<hr>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc0121f7" class="outline-5">
+<h5 id="orgc0121f7">Step 2: Define Terms</h5>
+<div class="outline-text-5" id="text-orgc0121f7">
+<p>
+In this language, terms are very simple.
+</p>
+
+<p>
+Since there are:
+</p>
+<ul class="org-ul">
+<li>no constants</li>
+<li>no function symbols</li>
+</ul>
+
+<p>
+The only terms are:
+</p>
+
+<ul class="org-ul">
+<li>Variables</li>
+</ul>
+
+<p>
+Examples of terms:
+</p>
+<ul class="org-ul">
+<li>x</li>
+<li>y</li>
+<li>z</li>
+<li>x₁</li>
+</ul>
+
+<p>
+That means every object referred to in the language is a variable.
+Objects only gain meaning once interpreted in a model.
+</p>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-org507ae8f" class="outline-5">
+<h5 id="org507ae8f">Step 3: Atomic Formulas</h5>
+<div class="outline-text-5" id="text-org507ae8f">
+<p>
+Atomic formulas are the simplest meaningful statements.
+</p>
+
+<p>
+Because the only non-logical symbol is ∈,
+the only atomic formulas are:
+</p>
+
+<ol class="org-ol">
+<li>x ∈ y</li>
+<li>x = y</li>
+</ol>
+
+<p>
+Examples:
+</p>
+
+<ul class="org-ul">
+<li>x ∈ y</li>
+<li>y ∈ z</li>
+<li>x = y</li>
+<li>x ∈ x</li>
+</ul>
+
+<p>
+Even something like:
+</p>
+
+<p>
+&ldquo;x is a subset of y&rdquo;
+</p>
+
+<p>
+is not primitive. It must be defined using ∈:
+</p>
+
+<p>
+x ⊆ y  is shorthand for:
+</p>
+
+<p>
+∀z (z ∈ x → z ∈ y)
+</p>
+
+<p>
+So subset is not a new symbol —
+it is a defined abbreviation inside the language.
+</p>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-orgde717ef" class="outline-5">
+<h5 id="orgde717ef">Step 4: Build Complex Formulas</h5>
+<div class="outline-text-5" id="text-orgde717ef">
+<p>
+Now we use logical connectives and quantifiers
+to build meaningful mathematical statements.
+</p>
+
+<p>
+Here are important examples.
+</p>
+
+<hr>
+</div>
+<div id="outline-container-orgb9d5ff6" class="outline-6">
+<h6 id="orgb9d5ff6">Example 1: The Empty Set</h6>
+<div class="outline-text-6" id="text-orgb9d5ff6">
+<p>
+We want to say:
+</p>
+
+<p>
+There exists a set with no elements.
+</p>
+
+<p>
+Formal version:
+</p>
+
+<p>
+∃x ∀y ¬(y ∈ x)
+</p>
+
+<p>
+This says:
+</p>
+
+<p>
+There exists x such that
+for every y,
+y is not an element of x.
+</p>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-orgde5bb59" class="outline-6">
+<h6 id="orgde5bb59">Example 2: Subset Relation</h6>
+<div class="outline-text-6" id="text-orgde5bb59">
+<p>
+Define:
+</p>
+
+<p>
+x ⊆ y
+</p>
+
+<p>
+as:
+</p>
+
+<p>
+∀z (z ∈ x → z ∈ y)
+</p>
+
+<p>
+Now we can express:
+</p>
+
+<p>
+x = y  iff  x ⊆ y ∧ y ⊆ x
+</p>
+
+<p>
+Which expands fully to:
+</p>
+
+<p>
+∀z (z ∈ x ↔ z ∈ y)
+</p>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-orgce49449" class="outline-6">
+<h6 id="orgce49449">Example 3: Pairing Axiom</h6>
+<div class="outline-text-6" id="text-orgce49449">
+<p>
+Informally:
+</p>
+
+<p>
+For any x and y,
+there exists a set containing exactly x and y.
+</p>
+
+<p>
+Formal version:
+</p>
+
+<p>
+∀x ∀y ∃z ∀w (w ∈ z ↔ (w = x ∨ w = y))
+</p>
+
+<p>
+This expresses the existence of {x, y}.
+</p>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-org0e5a331" class="outline-6">
+<h6 id="org0e5a331">Example 4: Union Axiom</h6>
+<div class="outline-text-6" id="text-org0e5a331">
+<p>
+Informally:
+</p>
+
+<p>
+For any set x,
+there exists a set containing all elements of elements of x.
+</p>
+
+<p>
+Formal version:
+</p>
+
+<p>
+∀x ∃u ∀z (z ∈ u ↔ ∃y (y ∈ x ∧ z ∈ y))
+</p>
+
+<p>
+This defines ⋃x.
+</p>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-org981c191" class="outline-6">
+<h6 id="org981c191">Example 5: Defining Ordered Pairs</h6>
+<div class="outline-text-6" id="text-org981c191">
+<p>
+Ordered pairs are not primitive.
+They are defined using sets.
+</p>
+
+<p>
+Kuratowski definition:
+</p>
+
+<p>
+(x, y) = {{x}, {x, y}}
+</p>
+
+<p>
+Each part of this definition must itself
+be built using earlier axioms (pairing, union, etc.).
+</p>
+
+<p>
+So even ordered pairs reduce to pure membership structure.
+</p>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-org5572505" class="outline-6">
+<h6 id="org5572505">Example 6: Defining Natural Numbers</h6>
+<div class="outline-text-6" id="text-org5572505">
+<p>
+In set theory:
+</p>
+
+<p>
+0 = ∅
+1 = {∅}
+2 = {∅, {∅}}
+3 = {∅, {∅}, {∅, {∅}}}
+&hellip;
+</p>
+
+<p>
+Each number is defined as:
+</p>
+
+<p>
+n = {0, 1, &hellip;, n-1}
+</p>
+
+<p>
+So arithmetic is encoded entirely using sets.
+</p>
+
+<hr>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc7b26d8" class="outline-5">
+<h5 id="orgc7b26d8">Step 5: Semantics (Interpretation)</h5>
+<div class="outline-text-5" id="text-orgc7b26d8">
+<p>
+To interpret this language, we specify:
+</p>
+
+<ol class="org-ol">
+<li>A domain</li>
+<li>An interpretation of ∈</li>
+</ol>
+
+<p>
+In set theory, a model consists of:
+</p>
+
+<ul class="org-ul">
+<li>A collection M of objects</li>
+<li>A binary relation E on M</li>
+</ul>
+
+<p>
+The formula:
+</p>
+
+<p>
+x ∈ y
+</p>
+
+<p>
+means:
+</p>
+
+<p>
+x is related to y by E.
+</p>
+
+<p>
+If the structure satisfies all axioms of ZF,
+it is called a <b>model of set theory</b>.
+</p>
+
+<p>
+Inside the intended model:
+</p>
+
+<ul class="org-ul">
+<li>The domain is the cumulative hierarchy of sets</li>
+<li>∈ is actual set membership</li>
+</ul>
+
+<p>
+But other, nonstandard models also exist.
+</p>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-orgaebbf5c" class="outline-5">
+<h5 id="orgaebbf5c">What Makes This Powerful?</h5>
+<div class="outline-text-5" id="text-orgaebbf5c">
+<p>
+With only:
+</p>
+
+<p>
+∈
+=
+logical symbols
+</p>
+
+<p>
+we can define:
+</p>
+
+<ul class="org-ul">
+<li>subsets</li>
+<li>unions</li>
+<li>intersections</li>
+<li>ordered pairs</li>
+<li>relations</li>
+<li>functions</li>
+<li>natural numbers</li>
+<li>real numbers</li>
+<li>metric spaces</li>
+<li>groups</li>
+<li>topological spaces</li>
+</ul>
+
+<p>
+All of modern mathematics can be formalized
+inside this tiny first-order language.
+</p>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-org99d8dc0" class="outline-5">
+<h5 id="org99d8dc0">Big Picture Summary</h5>
+<div class="outline-text-5" id="text-org99d8dc0">
+<p>
+When first-order logic is applied to set theory:
+</p>
+
+<ol class="org-ol">
+<li>The vocabulary is reduced to a single primitive relation (∈).</li>
+<li>Terms are only variables.</li>
+<li>Atomic formulas are membership or equality statements.</li>
+<li>All mathematics is built using quantified combinations of those.</li>
+<li>Meaning is given by a model consisting of a domain and a membership relation.</li>
+</ol>
+
+<p>
+This shows how an entire mathematical universe
+can be constructed from a minimal first-order language.
+</p>
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-org01a0463" class="outline-2">
+<h2 id="org01a0463">References</h2>
+<div class="outline-text-2" id="text-org01a0463">
+<p>
+<font color = "#0d3db3">
+</p>
+
+<p>
+</font>
+</p>
+
+
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Bansal, Bindu. 2012. <i>Symbolic Logic and Logic Processing</i>. Laxmi Publications.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Gries, David, and Fred B Schneider. 2013. <i>A Logical Approach to Discrete Math</i>. Springer Science &#38; Business Media.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Leary, Christopher C, and Lars Kristiansen. 2015. <i>A Friendly Introduction to Mathematical Logic</i>. Lulu. com.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Lemmon, Edward John. 1978. <i>Beginning Logic</i>. Vol. 10. Hackett Publishing.</div>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

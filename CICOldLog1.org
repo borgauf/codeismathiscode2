@@ -184,7 +184,7 @@ Intuitively, “If P then Q” means that Q must be true whenever P is true. Bec
 The conditional statement P → Q means that Q is true whenever P is true. It says nothing about the truth value of Q when P is false. Using this as a guide, we define the conditional statement P → Q to be false only when P is true and Q is false, that is, only when the hypothesis is true and the conclusion is false. In all other cases, P → Q is true. This is summarized in Table 1.1, which is called a *truth table* for the conditional statement P → Q. (In Table 1.1, T stands for “true” and F stands for “false.”)
 
 | P | Q | P → Q |
-|---|----|-------|
+|---+---+-------|
 | T | T | T     |
 | T | F | F     |
 | F | T | T     |

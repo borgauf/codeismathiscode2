@@ -1,44 +1,24 @@
-# # -*- mode: org -*- coding: utf-8 -*-
-#+TITLE: Haskell Road; Getting Started
-#+AUTHOR:
+#+TITLE: 
+#+AUTHOR: 
 #+EMAIL: 
-#+DATE: 
-#+LANGUAGE:  en
-# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
-#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
-#+INCLUDE: "./header.org" :minlevel 1
-#+EXPORT_SELECT_TAGS: export
-#+EXPORT_EXCLUDE_TAGS: noexport
+#+DATE: 2026-03-01T17:25:50Z UTC 
+#+LANGUAGE:  en 
 #+EXPORT_FILE_NAME: HaskellInDepth1.html
-#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
-#+OPTIONS: tex:t
-#+OPTIONS: html-postamble:nil
-#+LATEX_CLASS: article
-#+LATEX_CLASS_OPTIONS: [american]
-# Setup tikz package for both LaTeX and HTML export:
-#+LATEX_HEADER: \usepackqqqage{tikz}
-#+LATEX_HEADER: \usepackage{commath}
-#+LaTeX_HEADER: \usepackage{pgfplots}
-#+LaTeX_HEADER: \usepackage{sansmath}
-#+LaTeX_HEADER: \usepackage{mathtools}
-#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
-#
-#+PROPERTY: header-args:latex+ :exports results :fit yes
-#
-#+STARTUP: showall
-#+STARTUP: align
-#+STARTUP: indent
-#+STARTUP: shrink
-# This makes MathJax/LaTeX appear in buffer (UTF-8)
-#+STARTUP: entitiespretty
-# #+STARTUP: logdrawer # This makes pictures appear in buffer
-#+STARTUP: inlineimages
-#+STARTUP: fnadjust
-# #+OPTIONS: html-style:nil
-#+html_head_extra: <style> .title { display: none; } </style>
-#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Bibliography ---
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+# --- Document Content Starts Here ---
+#+INCLUDE: /home/galaxybeing/Dropbox/org/codeismathiscode2/header.org :minlevel 1
 
-* Getting started
+
+
+* HID 1
 
 ** Bibliography :noexport:
 :PROPERTIES:
@@ -51,8 +31,12 @@
 
 ** Not exported :noexport:
 
-#+begin_src haskell :eval never :exports code :tangle hid1.hs :noweb yes
+#+name: hid1
+#+begin_src haskell :eval never :exports code :tangle ./src/hid1.hs :noweb yes
 module HID1 where
+
+
+<<b6704bd1-e127-407b-965f-310eef24d63e>>
 
 #+end_src
 
@@ -63,6 +47,40 @@ module HID1 where
 
 
 * 
+
+** Manipulating a radar antenna with type classes
+
+#+name: b6704bd1-e127-407b-965f-310eef24d63e
+#+begin_src haskell :eval never :exports code
+data Direction = North | East | South | West
+  deriving (Eq, Enum, Bounded, Show)
+data Turn = TNone | TLeft | TRight | TAround
+  deriving (Eq, Enum, Bounded, Show)
+#+end_src
+
+#+name: 29960dc2-072f-409c-bdb2-d2f1f976da2e
+#+begin_src haskell :results verbatim :exports both
+:i succ
+#+end_src
+
+#+RESULTS: 29960dc2-072f-409c-bdb2-d2f1f976da2e
+: type Enum :: * -> Constraint
+: class Enum a where
+:   succ :: a -> a
+:   ...
+:   	-- Defined in ‘GHC.Enum’
+
+#+name: ad8c198c-752a-4b55-a87b-229509ca00a1
+#+begin_src haskell :results verbatim :exports both
+succ North
+#+end_src
+
+#+RESULTS: ad8c198c-752a-4b55-a87b-229509ca00a1
+: East
+
+
+
+
 
 
 #+INCLUDE: "./footer.org" :minlevel 1

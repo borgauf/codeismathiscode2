@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-02-26 Thu 13:01 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-org0ce0959" class="outline-2">
+<h2 id="org0ce0959">First-order languagues</h2>
+<div class="outline-text-2" id="text-org0ce0959">
+<p>
+(<a href="#citeproc_bib_item_1">Leary and Kristiansen 2015</a>)
+</p>
+</div>
+<div id="outline-container-org9639605" class="outline-3">
+<h3 id="org9639605">The Two Alphabets of a Formal Language</h3>
+<div class="outline-text-3" id="text-org9639605">
+<p>
+When you read a formal sentence like \(\forall x (x + 0 = x)\), you are actually reading a mixture of two distinct sets of symbols. A first-order language is strictly divided into <b>Logical Symbols</b> and <b>Non-Logical Symbols</b> (the signature).
+</p>
+</div>
+<div id="outline-container-org7f6f53b" class="outline-5">
+<h5 id="org7f6f53b">1. Logical Symbols (The Universal Engine)</h5>
+<div class="outline-text-5" id="text-org7f6f53b">
+<p>
+These symbols are built into first-order logic itself. They are identical across every single first-order theory, whether you are studying algebra, set theory, or geometry. You never have to define them in your signature because they come &ldquo;pre-installed.&rdquo;
+</p>
+
+<p>
+The logical alphabet includes:
+</p>
+<ul class="org-ul">
+<li>Variables: An infinite supply of symbols representing arbitrary elements in your domain: \(x, y, z, v_1, v_2, \dots\)</li>
+<li>Quantifiers: \(\forall\) (For all), \(\exists\) (Exists).</li>
+<li>Propositional Connectives: \(\land, \lor, \neg, \rightarrow,
+  \leftrightarrow\).</li>
+<li>Equality: \(=\). (In first-order logic with equality, this is considered a fixed logical symbol with standard rules, not a custom relation).</li>
+<li>Punctuation: Parentheses \((, )\) and commas.</li>
+</ul>
+
+<p>
+Because variables are merely placeholders bound by the pre-installed quantifiers, they are part of this universal logical scaffolding.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb948b55" class="outline-5">
+<h5 id="orgb948b55">2. Non-Logical Symbols (The Signature \(\mathcal{L}\))</h5>
+<div class="outline-text-5" id="text-orgb948b55">
+<p>
+This is the custom vocabulary you choose for the specific mathematical structure you want to talk about. This is your signature \(\mathcal{L}\). 
+</p>
+
+<p>
+For elementary algebra, you define:
+\[\mathcal{L} = \{0, 1, +, \cdot, -, <\}\]
+</p>
+
+<p>
+If you were doing graph theory instead, you would throw away the algebra signature and define a new one with just one binary relation for edges: \(\mathcal{L}_{graph} = \{E\}\). The logical symbols (including variables) would remain exactly the same.
+</p>
+</div>
+</div>
+<div id="outline-container-org9beed48" class="outline-4">
+<h4 id="org9beed48">Why the Separation Matters: Semantics and Models</h4>
+<div class="outline-text-4" id="text-org9beed48">
+<p>
+This strict boundary between logical variables and the non-logical signature is crucial when we assign meaning to the symbols (a process called interpretation or building a &ldquo;model&rdquo;).
+</p>
+
+<ul class="org-ul">
+<li>The meaning of logical symbols is fixed. \(\land\) always means AND. \(\forall x\) always means &ldquo;for every element \(x\) in the domain.&rdquo;</li>
+<li>The meaning of non-logical symbols is entirely flexible. In one model, the symbol \(+\) might mean standard addition of real numbers. In another model, \(+\) might mean addition of polynomials.</li>
+</ul>
+
+<p>
+Variables do not need an interpretation defined by the signature because they are just temporary pronouns that the logic uses to point to elements within the domain you are studying.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0c8fbd7" class="outline-3">
+<h3 id="org0c8fbd7">Translating Theorems into First-Order Logic</h3>
+<div class="outline-text-3" id="text-org0c8fbd7">
+</div>
+<div id="outline-container-org2dc1f56" class="outline-4">
+<h4 id="org2dc1f56">The Theorem: Dense Linear Order</h4>
+<div class="outline-text-4" id="text-org2dc1f56">
+<p>
+In English, a fundamental property of the real (and rational) numbers is: 
+</p>
+
+<blockquote>
+<p>
+&ldquo;Between any two distinct real numbers, there is another real number.&rdquo;
+</p>
+</blockquote>
+
+<p>
+This property is formally known as a <i>dense linear order</i>. To translate this into our formal first-order language using the signature \(\mathcal{L} = \{0, 1, +, \cdot, -, <\}\), we must break the English sentence down into its logical and non-logical components.
+</p>
+</div>
+</div>
+<div id="outline-container-org194cf40" class="outline-4">
+<h4 id="org194cf40">Step-by-Step Translation</h4>
+<div class="outline-text-4" id="text-org194cf40">
+</div>
+<div id="outline-container-orgde0f8b8" class="outline-5">
+<h5 id="orgde0f8b8">1. &ldquo;Any two distinct numbers&rdquo;</h5>
+<div class="outline-text-5" id="text-orgde0f8b8">
+<p>
+The word &ldquo;any&rdquo; signals a universal quantification over our domain. We need to pick two variables, say \(x\) and \(y\). The word &ldquo;distinct&rdquo; implies a relationship between them. Since we are dealing with ordered fields, saying two numbers are distinct and putting them in order means one must be strictly less than the other. 
+</p>
+<ul class="org-ul">
+<li>Translation: \(\forall x \forall y (x < y \rightarrow ...)\)</li>
+<li>Read as: &ldquo;For all \(x\) and all \(y\), if \(x\) is strictly less than \(y\), then&hellip;&rdquo;</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfa898cb" class="outline-5">
+<h5 id="orgfa898cb">2. &ldquo;There is another number&rdquo;</h5>
+<div class="outline-text-5" id="text-orgfa898cb">
+<p>
+&ldquo;There is&rdquo; signals existential quantification. We need a new variable, say \(z\), representing this number that exists &ldquo;between&rdquo; them.
+</p>
+<ul class="org-ul">
+<li>Translation: \(\exists z (...)\)</li>
+<li>Read as: &ldquo;&hellip;there exists a \(z\) such that&hellip;&rdquo;</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7161a33" class="outline-5">
+<h5 id="org7161a33">3. &ldquo;Between&rdquo;</h5>
+<div class="outline-text-5" id="text-org7161a33">
+<p>
+How do we express &ldquo;between&rdquo; using only our available relation symbol \(<\)? To say \(z\) is between \(x\) and \(y\) (given \(x < y\)), we must assert that \(z\) is strictly greater than \(x\) AND strictly less than \(y\). We construct this using our binary relation \(<\) and the logical conjunction \(\land\).
+</p>
+<ul class="org-ul">
+<li>Translation: \((x < z \land z < y)\)</li>
+<li>Read as: &ldquo;&hellip;\(x\) is strictly less than \(z\), AND \(z\) is strictly less than \(y\).&rdquo;</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org0043671" class="outline-4">
+<h4 id="org0043671">The Final Formal Sentence</h4>
+<div class="outline-text-4" id="text-org0043671">
+<p>
+By combining these translated fragments, we construct the complete, well-formed formula in first-order logic. Notice that we rely entirely on the universal logical quantifiers (\(\forall, \exists\)), connectives (\(\rightarrow, \land\)), variables (\(x, y, z\)), and exactly one non-logical relation symbol from our signature (\(<\)).
+</p>
+
+<p>
+\[\forall x \forall y (x < y \rightarrow \exists z (x < z \land z < y))\]
+</p>
+
+<p>
+This formula is now a rigorous string of symbols that a formal system can parse, manipulate, and use in mechanical proofs.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga55bdd4" class="outline-3">
+<h3 id="orga55bdd4">Non-Logical Components of the Language of Elementary Algebra</h3>
+<div class="outline-text-3" id="text-orga55bdd4">
+<p>
+To formally define the &ldquo;language of elementary algebra&rdquo; (often associated with the theory of real closed fields or ordered fields), we must specify its signature, denoted as \(\mathcal{L}\). This signature consists strictly of the non-logical symbols, as the logical symbols (variables, quantifiers, logical connectives, and equality) are universally provided by first-order logic.
+</p>
+
+<p>
+Below are the non-logical components categorized by their type and arity.
+</p>
+</div>
+<div id="outline-container-org1520f12" class="outline-4">
+<h4 id="org1520f12">Constant Symbols</h4>
+<div class="outline-text-4" id="text-org1520f12">
+<p>
+Constant symbols represent specific, fixed elements in the domain. They act as functions of arity 0.
+</p>
+
+<dl class="org-dl">
+<dt>\(0\)</dt><dd>The additive identity.</dd>
+<dt>\(1\)</dt><dd>The multiplicative identity.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgff52af2" class="outline-4">
+<h4 id="orgff52af2">Function Symbols</h4>
+<div class="outline-text-4" id="text-orgff52af2">
+<p>
+Function symbols represent operations that take a specific number of arguments (their <i>arity</i>) and map them to an element within the domain.
+</p>
+
+<dl class="org-dl">
+<dt>\(+\)</dt><dd>A binary (arity 2) function symbol representing addition.</dd>
+<dt>\(\cdot\)</dt><dd>A binary (arity 2) function symbol representing multiplication.</dd>
+<dt>\(-\)</dt><dd>A unary (arity 1) function symbol representing the additive inverse (negation). Alternatively, this can be defined as a binary symbol for subtraction, though the unary approach is standard when formally defining fields.</dd>
+</dl>
+
+<blockquote>
+<p>
+<b>Note on Division:</b> Division is intentionally omitted from the standard signature. In first-order logic, function symbols must be total (defined for all inputs in the domain). Since division by \(0\) is undefined, division cannot be a function symbol and is instead expressed via logical formulas.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org79c4fb7" class="outline-4">
+<h4 id="org79c4fb7">Relation Symbols</h4>
+<div class="outline-text-4" id="text-org79c4fb7">
+<p>
+Relation symbols (or predicate symbols) represent properties or comparisons between elements that evaluate to either true or false.
+</p>
+
+<dl class="org-dl">
+<dt>\(<\)</dt><dd>A binary (arity 2) relation symbol representing &ldquo;strictly less than&rdquo;.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgf718da5" class="outline-4">
+<h4 id="orgf718da5">The Formal Signature</h4>
+<div class="outline-text-4" id="text-orgf718da5">
+<p>
+Bringing these components together, the language of elementary algebra is built upon the following non-logical signature:
+</p>
+
+<p>
+\[\mathcal{L} = \{0, 1, +, \cdot, -, <\}\]
+</p>
+
+<p>
+Any well-formed formula in elementary algebra is constructed strictly from these non-logical symbols combined with the standard logical apparatus of first-order logic.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0b22235" class="outline-3">
+<h3 id="org0b22235">How Axioms are Constructed</h3>
+<div class="outline-text-3" id="text-org0b22235">
+<p>
+In first-order logic, axioms are simply well-formed formulas (wffs)
+that we declare to be universally true within our theory. Constructing
+these formulas is a strictly hierarchical process that bridges the
+non-logical signature (our custom vocabulary) with the logical
+framework (the universal grammar).
+</p>
+
+<p>
+The construction happens in three distinct stages:
+</p>
+</div>
+<div id="outline-container-org0c2fec5" class="outline-4">
+<h4 id="org0c2fec5">1. Building Terms (The &ldquo;Nouns&rdquo;)</h4>
+<div class="outline-text-4" id="text-org0c2fec5">
+<p>
+Terms represent the objects in our domain (e.g., numbers). They are built exclusively from:
+</p>
+<ul class="org-ul">
+<li>Variables: Logical symbols like \(x, y, z\).</li>
+<li>Constant Symbols: Non-logical symbols like \(0\) and \(1\).</li>
+<li>Function Symbols: Non-logical symbols applied to other terms. For example, if \(x\) and \(y\) are terms, then \(+(x, y)\) is a term. In standard mathematical notation (infix), we write this as \(x + y\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8a1512e" class="outline-4">
+<h4 id="org8a1512e">2. Building Atomic Formulas (The &ldquo;Simple Sentences&rdquo;)</h4>
+<div class="outline-text-4" id="text-org8a1512e">
+<p>
+Atomic formulas are the most basic true/false statements. They are created by taking terms and comparing them using relation symbols:
+</p>
+<ul class="org-ul">
+<li>Equality: The universal logical symbol \(=\). For example, \(x + 0 = x\).</li>
+<li>Relation Symbols: Non-logical symbols like \(<\). For example, \(0 < 1\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf42ba8d" class="outline-4">
+<h4 id="orgf42ba8d">3. Building Complex Formulas (The &ldquo;Compound Sentences&rdquo;)</h4>
+<div class="outline-text-4" id="text-orgf42ba8d">
+<p>
+Finally, we use the universal logical connectives and quantifiers to chain atomic formulas together into complex axioms:
+</p>
+<ul class="org-ul">
+<li>Connectives: \(\land\) (AND), \(\lor\) (OR), \(\neg\) (NOT), \(\rightarrow\) (IMPLIES).</li>
+<li>Quantifiers: \(\forall\) (FOR ALL) and \(\exists\) (EXISTS), which bind the variables.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org72a3840" class="outline-4">
+<h4 id="org72a3840">Examples of Field Axioms</h4>
+<div class="outline-text-4" id="text-org72a3840">
+<p>
+Using our non-logical signature \(\mathcal{L} = \{0, 1, +, \cdot, -, <\}\) alongside the standard logical symbols, we can formally construct the axioms of elementary algebra (specifically, the axioms of ordered fields). 
+</p>
+
+<p>
+Here are a few key examples showing how the logical and non-logical parts interact:
+</p>
+</div>
+<div id="outline-container-org5c0e423" class="outline-5">
+<h5 id="org5c0e423">Associativity of Addition</h5>
+<div class="outline-text-5" id="text-org5c0e423">
+<p>
+This axiom states that the grouping of addition does not matter. It uses variables, the non-logical function symbol \(+\), the logical equality symbol \(=\), and the universal quantifier \(\forall\).
+</p>
+
+<p>
+\[\forall x \forall y \forall z (x + (y + z) = (x + y) + z)\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgaf542ca" class="outline-5">
+<h5 id="orgaf542ca">Distributivity of Multiplication over Addition</h5>
+<div class="outline-text-5" id="text-orgaf542ca">
+<p>
+This axiom demonstrates the interaction between two different non-logical function symbols (\(+\) and \(\cdot\)). 
+</p>
+
+<p>
+\[\forall x \forall y \forall z (x \cdot (y + z) = (x \cdot y) + (x \cdot z))\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgc025086" class="outline-5">
+<h5 id="orgc025086">Existence of Multiplicative Inverses</h5>
+<div class="outline-text-5" id="text-orgc025086">
+<p>
+This is a more complex formula. It states that every non-zero element has a reciprocal. Notice how it uses the logical negation symbol \(\neg\), the implication arrow \(\rightarrow\), and the existential quantifier \(\exists\), alongside our non-logical constant \(0\) and \(1\).
+</p>
+
+<p>
+\[\forall x (\neg(x = 0) \rightarrow \exists y (x \cdot y = 1))\]
+</p>
+</div>
+</div>
+<div id="outline-container-orge63ca02" class="outline-5">
+<h5 id="orge63ca02">Compatibility of Addition and Order</h5>
+<div class="outline-text-5" id="text-orge63ca02">
+<p>
+Because our signature includes the relation symbol \(<\), we can define how operations interact with the ordering of the field. This axiom states that adding the same value to both sides preserves strict inequality.
+</p>
+
+<p>
+\[\forall x \forall y \forall z (x < y \rightarrow x + z < y + z)\]
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org819e6b8" class="outline-3">
+<h3 id="org819e6b8">Now the language for set theory</h3>
+<div class="outline-text-3" id="text-org819e6b8">
+<p>
+You have hit on one of the most elegant and, frankly, astonishing
+features of modern mathematics. In formal set theory (like
+Zermelo-Fraenkel, or ZFC), almost the entirety of
+mathematics&mdash;numbers, functions, geometry, calculus&mdash;can be built
+from a language containing only a single non-logical symbol: \(\in\)
+(membership).
+</p>
+
+<p>
+To understand how this works, we have to separate the <b>logical framework</b> from the <b>set-theoretic language</b>, and then look at how mathematicians use &ldquo;abbreviations&rdquo; to build up complexity.
+</p>
+
+<p>
+Here is exactly how and why this is done.
+</p>
+</div>
+<div id="outline-container-org496e461" class="outline-4">
+<h4 id="org496e461">1. The Underlying Toolkit (First-Order Logic)</h4>
+<div class="outline-text-4" id="text-org496e461">
+<p>
+When we say the language of set theory is just \(L_{ST} = \{\in\}\), we mean \(\in\) is the only <b>domain-specific</b> relation. We are still allowed to use the standard, built-in machinery of First-Order Logic (FOL). This includes:
+</p>
+<ul class="org-ul">
+<li><b>Variables:</b> \(x, y, z, A, B, \dots\) (which all represent sets, since in pure set theory, <b>everything</b> is a set).</li>
+<li><b>Logical connectives:</b> \(\land\) (and), \(\lor\) (or), \(\neg\) (not), \(\rightarrow\) (implies), \(\leftrightarrow\) (if and only if).</li>
+<li><b>Quantifiers:</b> \(\forall\) (for all), \(\exists\) (there exists).</li>
+<li><b>Equality:</b> \(=\) (This is usually considered a standard logical symbol rather than a set-theoretic one).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd9cd98a" class="outline-4">
+<h4 id="orgd9cd98a">2. How to Define New Relations (Like \(\subseteq\))</h4>
+<div class="outline-text-4" id="text-orgd9cd98a">
+<p>
+Rather than adding \(\subseteq\) (subset) as a fundamental rule of the universe, we define it purely as a shorthand&mdash;a macro&mdash;using our existing logical toolkit and \(\in\).
+</p>
+
+<p>
+Conceptually, &ldquo;\(x\) is a subset of \(y\)&rdquo; means &ldquo;every element inside \(x\) is also inside \(y\).&rdquo; Formally, we define the string of symbols \(x \subseteq y\) to mean the following:
+\[x \subseteq y \iff \forall z (z \in x \rightarrow z \in y)\]
+</p>
+
+<p>
+Whenever you see \(A \subseteq B\) in a proof, the formal system just reads it as an abbreviation for \(\forall z (z \in A \rightarrow z \in B)\). We do not need a special symbol for it in the foundational language; we just invent a symbol to save ourselves the headache of writing out quantifiers every time.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb22ef7e" class="outline-4">
+<h4 id="orgb22ef7e">3. How to Define Constants (Like \(\emptyset\))</h4>
+<div class="outline-text-4" id="text-orgb22ef7e">
+<p>
+Constant symbols, like the empty set (\(\emptyset\)), are a bit trickier because they claim a specific object <b>exists</b>. 
+</p>
+
+<p>
+First, we use an axiom to declare that a set with no elements exists. In ZFC, this is the Axiom of Empty Set (or it can be derived from the Axiom of Infinity and Specification):
+\[\exists x \forall y \neg(y \in x)\]
+</p>
+
+<p>
+Because the Axiom of Extensionality states that sets are completely determined by their elements, we know this empty set is unique. Once we prove it uniquely exists, we can introduce the symbol \(\emptyset\) as a definitional abbreviation. Whenever we write a formula like \(z = \emptyset\), it is formal shorthand for:
+\[\forall y \neg(y \in z)\]
+</p>
+
+<p>
+Every time you see \(\emptyset\) in a mathematical text, it can be systematically unpacked into a longer statement using only \(\in\), \(\neg\), \(\forall\), and variables.
+</p>
+</div>
+</div>
+<div id="outline-container-org0c96d26" class="outline-4">
+<h4 id="org0c96d26">Why Restrict the Language to Just \(\in\)?</h4>
+<div class="outline-text-4" id="text-org0c96d26">
+<p>
+Mathematicians and logicians insist on this minimal signature for a few highly pragmatic reasons:
+</p>
+
+<ul class="org-ul">
+<li><b>Metamathematical Simplicity:</b> Logicians don&rsquo;t just use set theory; they prove theorems <b>about</b> set theory (like Gödel&rsquo;s Incompleteness Theorems). To prove things about a formal language, you often use induction on the complexity of the formulas. If your language only has one relation (\(\in\)), your base case for the induction is incredibly short. If you had 50 primitive symbols (like \(\subseteq, \cup, \cap, \emptyset, \mathbb{R}\), etc.), every metamathematical proof would have 50 base cases to check.</li>
+<li><b>Occam&rsquo;s Razor:</b> If a symbol can be defined perfectly in terms of another, adding it to the foundational language is redundant. Mathematics strives for the absolute minimum number of assumptions and primitives.</li>
+<li><b>Preventing Axiom Bloat:</b> If you introduce \(\subseteq\) as a primitive, undefined symbol in your language, you then have to introduce new axioms to explain to the system how \(\subseteq\) interacts with \(\in\). By making \(\subseteq\) an abbreviation, its relationship to \(\in\) is logically guaranteed by its definition.</li>
+</ul>
+
+<p>
+In short, \(\in\) is the fundamental &ldquo;atom&rdquo; of set theory. Everything else&mdash;from subsets and unions to the real numbers and topological spaces&mdash;is just a highly complex molecule built out of \(\in\) and logical operators.
+</p>
+</div>
+</div>
+<div id="outline-container-org8b8830a" class="outline-4">
+<h4 id="org8b8830a">Building Complex Mathematics from just \(\in\)</h4>
+<div class="outline-text-4" id="text-org8b8830a">
+<p>
+To build higher-level mathematical structures like pairs and functions from nothing but sets and the membership relation (\(\in\)), we have to layer definitions step-by-step. We start with basic grouping and work our way up to the strict definition of a function.
+</p>
+</div>
+</div>
+<div id="outline-container-org50a2617" class="outline-4">
+<h4 id="org50a2617">1. The Unordered Pair: \(\{x, y\}\)</h4>
+<div class="outline-text-4" id="text-org50a2617">
+<p>
+In set theory, if we have two sets \(x\) and \(y\), we want to be able to form a new set containing exactly those two elements. The <b>Axiom of Pairing</b> guarantees this set exists. 
+</p>
+
+<p>
+Formally, we define the unordered pair \(z = \{x, y\}\) as an abbreviation for:
+\[\forall w (w \in z \leftrightarrow (w = x \lor w = y))\]
+</p>
+
+<p>
+This means a set \(z\) is the pair \(\{x, y\}\) if and only if the only things belonging to \(z\) are \(x\) and \(y\). Note that order doesn&rsquo;t matter here: \(\{x, y\}\) is exactly the same set as \(\{y, x\}\).
+</p>
+</div>
+</div>
+<div id="outline-container-org3f63f7f" class="outline-4">
+<h4 id="org3f63f7f">2. The Ordered Pair: \((x, y)\)</h4>
+<div class="outline-text-4" id="text-org3f63f7f">
+<p>
+To define functions, sequences, and geometry, we need a concept of order&mdash;we need to distinguish the &ldquo;first&rdquo; element from the &ldquo;second&rdquo;. Since our only mathematical tool is \(\in\) (which has no inherent sense of order), we use a brilliant trick popularized by Kazimierz Kuratowski. 
+</p>
+
+<p>
+We define the ordered pair \((x, y)\) as a specific nested set:
+\[(x, y) = \{\{x\}, \{x, y\}\}\]
+</p>
+
+<p>
+Why does this work? It encodes both the elements and their order:
+</p>
+<ul class="org-ul">
+<li>The element that appears in <b>both</b> inner sets (or is the sole element of the singleton set, if \(x=y\)) is the first element, \(x\).</li>
+<li>The element that appears in only <b>one</b> inner set is the second element, \(y\).</li>
+</ul>
+
+<p>
+Thanks to this structural asymmetry, \((x, y) = (a, b)\) if and only if \(x = a\) and \(y = b\). We have successfully conjured &ldquo;order&rdquo; out of unordered sets!
+</p>
+</div>
+</div>
+<div id="outline-container-org648c2f4" class="outline-4">
+<h4 id="org648c2f4">3. Relations</h4>
+<div class="outline-text-4" id="text-org648c2f4">
+<p>
+Now that we have ordered pairs, we can talk about relationships between things. In set theory, a <b>relation</b> \(R\) is simply a set of ordered pairs. 
+</p>
+
+<p>
+If we want to relate elements of a set \(A\) to elements of a set \(B\), we first look at the <b>Cartesian product</b> \(A \times B\), which is the set of all possible ordered pairs \((x, y)\) where \(x \in A\) and \(y \in B\). 
+</p>
+
+<p>
+A relation \(R\) is defined just as a subset of this Cartesian product:
+\[R \subseteq A \times B\]
+</p>
+
+<p>
+(And remember from before, \(\subseteq\) is just an abbreviation using \(\in\)!). If the ordered pair \((x, y) \in R\), we say \(x\) is related to \(y\).
+</p>
+</div>
+</div>
+<div id="outline-container-org530237a" class="outline-4">
+<h4 id="org530237a">4. Functions</h4>
+<div class="outline-text-4" id="text-org530237a">
+<p>
+In standard mathematics, a function \(f\) from \(A\) to \(B\) is conceptualized as a rule or machine that assigns exactly one output in \(B\) to each input in \(A\). 
+</p>
+
+<p>
+In purely set-theoretic terms, however, a function is not a machine or an action; it is a static <b>set of ordered pairs</b> (a specific type of relation). We formally define a function \(f: A \to B\) as a set \(f\) satisfying three conditions:
+</p>
+
+<ol class="org-ol">
+<li><b><b>Domain and Codomain:</b></b> \(f\) is a relation between \(A\) and \(B\), meaning \(f \subseteq A \times B\).</li>
+<li><b><b>Existence (Every input has an output):</b></b> \[\forall x (x \in A \rightarrow \exists y (y \in B \land (x, y) \in f))\]</li>
+<li><b>*Uniqueness (Every input has *only one</b> output):** \[\forall x \forall y_1 \forall y_2 (((x, y_1) \in f \land (x, y_2) \in f) \rightarrow y_1 = y_2)\]</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org651f861" class="outline-4">
+<h4 id="org651f861">Summary</h4>
+<div class="outline-text-4" id="text-org651f861">
+<p>
+Whenever you write down a classic function like \(f(x) = x^2\) mapping real numbers to real numbers, under the hood of formal mathematics, \(f\) is actually a massive infinite set of Kuratowski ordered pairs \(\{\{x\}, \{x, x^2\}\}\). Those pairs, the real numbers themselves, and the rules governing them are all built entirely out of the empty set, the \(\in\) relation, and logical axioms. The vast complexity of modern mathematics is just a towering, beautifully constructed hierarchy of logical abbreviations!
+</p>
+</div>
+</div>
+<div id="outline-container-org6ee8555" class="outline-4">
+<h4 id="org6ee8555">Constructing the Natural Numbers from Sets</h4>
+<div class="outline-text-4" id="text-org6ee8555">
+<p>
+To build arithmetic from set theory, we need a way to represent the numbers \(0, 1, 2, 3, \dots\) using nothing but sets. The standard approach in Zermelo-Fraenkel set theory (ZFC) was developed by John von Neumann. His brilliantly simple idea was this: define each number as the set of all the numbers that come before it.
+</p>
+
+<p>
+Here is how we build the natural numbers out of thin air (or rather, out of the empty set).
+</p>
+</div>
+<div id="outline-container-org8948797" class="outline-5">
+<h5 id="org8948797">1. Starting with Zero</h5>
+<div class="outline-text-5" id="text-org8948797">
+<p>
+Since we only have sets, the simplest set is the empty set, \(\emptyset\). It has absolutely nothing in it. This perfectly captures the concept of zero. So, we make our first definition:
+\[0 = \emptyset\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgbec9ad4" class="outline-5">
+<h5 id="orgbec9ad4">2. The Successor Function</h5>
+<div class="outline-text-5" id="text-orgbec9ad4">
+<p>
+To get to the next number, we need a &ldquo;successor&rdquo; operation. If we have a set representing a number \(n\), we define its successor, denoted \(S(n)\), as:
+\[S(n) = n \cup \{n\}\]
+</p>
+
+<p>
+Remember, \(\cup\) (union) is just a logical shorthand using \(\in\). Taking the union of \(n\) and \(\{n\}\) means we are taking the elements already inside \(n\), and throwing in \(n\) itself as a brand new element. 
+</p>
+</div>
+</div>
+<div id="outline-container-org94dc380" class="outline-5">
+<h5 id="org94dc380">3. Building 1, 2, and 3</h5>
+<div class="outline-text-5" id="text-org94dc380">
+<p>
+Let&rsquo;s apply the successor function to see what the numbers actually look like as pure sets.
+</p>
+
+<ul class="org-ul">
+<li><b><b>The number 1:</b></b>
+\[1 = S(0) = 0 \cup \{0\}\]
+Substituting our definition of \(0\):
+\[1 = \emptyset \cup \{\emptyset\} = \{\emptyset\} = \{0\}\]
+So, \(1\) is a set containing exactly one element: the number \(0\).</li>
+
+<li><b><b>The number 2:</b></b>
+\[2 = S(1) = 1 \cup \{1\}\]
+\[2 = \{0\} \cup \{1\} = \{0, 1\}\]
+If we unpack this completely into empty sets, it looks like this:
+\[2 = \{\emptyset, \{\emptyset\}\}\]
+Notice that \(2\) is a set containing exactly two elements: \(0\) and \(1\).</li>
+
+<li><b><b>The number 3:</b></b>
+\[3 = S(2) = 2 \cup \{2\}\]
+\[3 = \{0, 1\} \cup \{2\} = \{0, 1, 2\}\]
+Unpacked, this becomes a heavily nested structure:
+\[3 = \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}\]</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org38570f5" class="outline-5">
+<h5 id="org38570f5">4. The Pattern and the Set of All Natural Numbers</h5>
+<div class="outline-text-5" id="text-org38570f5">
+<p>
+The beauty of the von Neumann ordinals is that every number \(n\) <b>is</b> precisely a set containing \(n\) elements. Specifically, \(n\) is the set of all natural numbers less than \(n\):
+\[n = \{0, 1, 2, \dots, n-1\}\]
+</p>
+
+<p>
+Furthermore, the standard ordering of numbers (\(<\) and \(>\)) is perfectly mirrored by the \(\in\) relation!
+\[x < y \iff x \in y\]
+For example, \(1 < 3\) is true because \(1 \in \{0, 1, 2\}\). 
+</p>
+</div>
+</div>
+<div id="outline-container-org7e0b801" class="outline-5">
+<h5 id="org7e0b801">5. The Axiom of Infinity</h5>
+<div class="outline-text-5" id="text-org7e0b801">
+<p>
+We can keep applying the successor function forever to get individual finite numbers. But if we want to talk about <b>all</b> natural numbers at once&mdash;the infinite set \(\mathbb{N}\) (often denoted \(\omega\) in set theory)&mdash;we hit a wall. None of our basic logical rules or basic set operations guarantee that an infinite set exists. 
+</p>
+
+<p>
+We have to explicitly declare it as a rule of the universe. This is the <b>Axiom of Infinity</b>, which essentially states:
+\[\exists I (\emptyset \in I \land \forall x (x \in I \rightarrow x \cup \{x\} \in I))\]
+</p>
+
+<p>
+This axiom simply says: &ldquo;There exists a set \(I\) that contains \(0\), and whenever it contains a number \(x\), it also contains \(S(x)\).&rdquo; The smallest such set is our set of natural numbers, \(\omega\). 
+</p>
+
+<p>
+From just \(\in\) and \(\emptyset\), we have constructed the entire sequence of counting numbers and guaranteed their existence as a completed infinite collection!
+</p>
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-org37a066c" class="outline-2">
+<h2 id="org37a066c">References</h2>
+<div class="outline-text-2" id="text-org37a066c">
+<p>
+<br>
+</p>
+
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Leary, Christopher C, and Lars Kristiansen. 2015. <i>A Friendly Introduction to Mathematical Logic</i>. Lulu. com.</div>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

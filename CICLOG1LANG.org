@@ -1,0 +1,439 @@
+# # -*- mode: org -*- coding: utf-8 -*-
+#+TITLE: 
+#+AUTHOR:
+#+EMAIL: 
+#+DATE: 
+#+LANGUAGE:  en
+# #+INFOJS_OPT: view:showall ltoc:t mouse:underline
+#+HTML_HEAD: <link rel="stylesheet" href="./tufte.css" type="text/css">
+#+HTML_HEAD: <link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: article > div.org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-content-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: article > section .org-src-container {
+#+HTML_HEAD_EXTRA:     width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     max-width: var(--ox-tufte-src-code-width);
+#+HTML_HEAD_EXTRA:     clear: none;
+#+HTML_HEAD_EXTRA: }
+#+HTML_HEAD_EXTRA: div.org-src-container > pre { clear: none; }
+#+HTML_HEAD_EXTRA: pre.example {clear: none; }
+#+HTML_HEAD_EXTRA: </style>
+#+INCLUDE: "./header.org" :minlevel 1
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+EXPORT_FILE_NAME: ComputingInContextLogicLanguage.html
+#+OPTIONS: H:15 num:nil toc:nil \n:nil @:t ::t |:t _:{} *:t ^:{} prop:nil
+#+OPTIONS: tex:t
+#+OPTIONS: html-postamble:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [american]
+# Setup tikz package for both LaTeX and HTML export:
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{commath}
+#+LaTeX_HEADER: \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{sansmath}
+#+LaTeX_HEADER: \usepackage{mathtools}
+#+PROPERTY: header-args:latex+ :packages '(("" "tikz"))
+#
+#+PROPERTY: header-args:latex+ :exports results :fit yes
+#
+#+STARTUP: showall
+#+STARTUP: align
+#+STARTUP: indent
+#+STARTUP: shrink
+# This makes MathJax/LaTeX appear in buffer (UTF-8)
+#+STARTUP: entitiespretty
+# #+STARTUP: logdrawer # This makes pictures appear in buffer
+#+STARTUP: inlineimages
+# #+STARTUP: latexpreview
+#+STARTUP: fnadjust
+# #+OPTIONS: html-style:nil
+#+html_head_extra: <style> .title { display: none; } </style>
+#+html_head_extra: <style> caption.t-bottom { caption-side: bottom; } </style>
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+
+* First-order languagues
+
+[[cite:&leary2015friendly]]
+
+** The Two Alphabets of a Formal Language
+
+When you read a formal sentence like $\forall x (x + 0 = x)$, you are actually reading a mixture of two distinct sets of symbols. A first-order language is strictly divided into *Logical Symbols* and *Non-Logical Symbols* (the signature).
+
+**** 1. Logical Symbols (The Universal Engine)
+These symbols are built into first-order logic itself. They are identical across every single first-order theory, whether you are studying algebra, set theory, or geometry. You never have to define them in your signature because they come "pre-installed."
+
+The logical alphabet includes:
+- Variables: An infinite supply of symbols representing arbitrary elements in your domain: $x, y, z, v_1, v_2, \dots$
+- Quantifiers: $\forall$ (For all), $\exists$ (Exists).
+- Propositional Connectives: $\land, \lor, \neg, \rightarrow,
+  \leftrightarrow$.
+- Equality: $=$. (In first-order logic with equality, this is considered a fixed logical symbol with standard rules, not a custom relation).
+- Punctuation: Parentheses $(, )$ and commas.
+
+Because variables are merely placeholders bound by the pre-installed quantifiers, they are part of this universal logical scaffolding.
+
+**** 2. Non-Logical Symbols (The Signature $\mathcal{L}$)
+This is the custom vocabulary you choose for the specific mathematical structure you want to talk about. This is your signature $\mathcal{L}$. 
+
+For elementary algebra, you define:
+$$\mathcal{L} = \{0, 1, +, \cdot, -, <\}$$
+
+If you were doing graph theory instead, you would throw away the algebra signature and define a new one with just one binary relation for edges: $\mathcal{L}_{graph} = \{E\}$. The logical symbols (including variables) would remain exactly the same.
+
+*** Why the Separation Matters: Semantics and Models
+
+This strict boundary between logical variables and the non-logical signature is crucial when we assign meaning to the symbols (a process called interpretation or building a "model").
+
+- The meaning of logical symbols is fixed. $\land$ always means AND. $\forall x$ always means "for every element $x$ in the domain."
+- The meaning of non-logical symbols is entirely flexible. In one model, the symbol $+$ might mean standard addition of real numbers. In another model, $+$ might mean addition of polynomials. 
+
+Variables do not need an interpretation defined by the signature because they are just temporary pronouns that the logic uses to point to elements within the domain you are studying.
+
+
+
+**  Translating Theorems into First-Order Logic
+
+*** The Theorem: Dense Linear Order
+
+In English, a fundamental property of the real (and rational) numbers is: 
+
+#+BEGIN_QUOTE
+"Between any two distinct real numbers, there is another real number."
+#+END_QUOTE
+
+This property is formally known as a /dense linear order/. To translate this into our formal first-order language using the signature $\mathcal{L} = \{0, 1, +, \cdot, -, <\}$, we must break the English sentence down into its logical and non-logical components.
+
+*** Step-by-Step Translation
+
+**** 1. "Any two distinct numbers"
+The word "any" signals a universal quantification over our domain. We need to pick two variables, say $x$ and $y$. The word "distinct" implies a relationship between them. Since we are dealing with ordered fields, saying two numbers are distinct and putting them in order means one must be strictly less than the other. 
+- Translation: $\forall x \forall y (x < y \rightarrow ...)$
+- Read as: "For all $x$ and all $y$, if $x$ is strictly less than $y$, then..."
+
+**** 2. "There is another number"
+"There is" signals existential quantification. We need a new variable, say $z$, representing this number that exists "between" them.
+- Translation: $\exists z (...)$
+- Read as: "...there exists a $z$ such that..."
+
+**** 3. "Between"
+How do we express "between" using only our available relation symbol $<$? To say $z$ is between $x$ and $y$ (given $x < y$), we must assert that $z$ is strictly greater than $x$ AND strictly less than $y$. We construct this using our binary relation $<$ and the logical conjunction $\land$.
+- Translation: $(x < z \land z < y)$
+- Read as: "...$x$ is strictly less than $z$, AND $z$ is strictly less than $y$."
+
+*** The Final Formal Sentence
+
+By combining these translated fragments, we construct the complete, well-formed formula in first-order logic. Notice that we rely entirely on the universal logical quantifiers ($\forall, \exists$), connectives ($\rightarrow, \land$), variables ($x, y, z$), and exactly one non-logical relation symbol from our signature ($<$).
+
+$$\forall x \forall y (x < y \rightarrow \exists z (x < z \land z < y))$$
+
+This formula is now a rigorous string of symbols that a formal system can parse, manipulate, and use in mechanical proofs.
+
+
+** Non-Logical Components of the Language of Elementary Algebra
+
+To formally define the "language of elementary algebra" (often associated with the theory of real closed fields or ordered fields), we must specify its signature, denoted as $\mathcal{L}$. This signature consists strictly of the non-logical symbols, as the logical symbols (variables, quantifiers, logical connectives, and equality) are universally provided by first-order logic.
+
+Below are the non-logical components categorized by their type and arity.
+
+*** Constant Symbols
+Constant symbols represent specific, fixed elements in the domain. They act as functions of arity 0.
+
+- $0$ :: The additive identity.
+- $1$ :: The multiplicative identity.
+
+*** Function Symbols
+Function symbols represent operations that take a specific number of arguments (their /arity/) and map them to an element within the domain.
+
+- $+$ :: A binary (arity 2) function symbol representing addition.
+- $\cdot$ :: A binary (arity 2) function symbol representing multiplication.
+- $-$ :: A unary (arity 1) function symbol representing the additive inverse (negation). Alternatively, this can be defined as a binary symbol for subtraction, though the unary approach is standard when formally defining fields.
+
+#+BEGIN_QUOTE
+*Note on Division:* Division is intentionally omitted from the standard signature. In first-order logic, function symbols must be total (defined for all inputs in the domain). Since division by $0$ is undefined, division cannot be a function symbol and is instead expressed via logical formulas.
+#+END_QUOTE
+
+*** Relation Symbols
+Relation symbols (or predicate symbols) represent properties or comparisons between elements that evaluate to either true or false.
+
+- $<$ :: A binary (arity 2) relation symbol representing "strictly less than".
+
+*** The Formal Signature
+Bringing these components together, the language of elementary algebra is built upon the following non-logical signature:
+
+$$\mathcal{L} = \{0, 1, +, \cdot, -, <\}$$
+
+Any well-formed formula in elementary algebra is constructed strictly from these non-logical symbols combined with the standard logical apparatus of first-order logic.
+
+** How Axioms are Constructed
+
+In first-order logic, axioms are simply well-formed formulas (wffs)
+that we declare to be universally true within our theory. Constructing
+these formulas is a strictly hierarchical process that bridges the
+non-logical signature (our custom vocabulary) with the logical
+framework (the universal grammar).
+
+The construction happens in three distinct stages:
+
+*** 1. Building Terms (The "Nouns")
+Terms represent the objects in our domain (e.g., numbers). They are built exclusively from:
+- Variables: Logical symbols like $x, y, z$.
+- Constant Symbols: Non-logical symbols like $0$ and $1$.
+- Function Symbols: Non-logical symbols applied to other terms. For example, if $x$ and $y$ are terms, then $+(x, y)$ is a term. In standard mathematical notation (infix), we write this as $x + y$.
+
+*** 2. Building Atomic Formulas (The "Simple Sentences")
+Atomic formulas are the most basic true/false statements. They are created by taking terms and comparing them using relation symbols:
+- Equality: The universal logical symbol $=$. For example, $x + 0 = x$.
+- Relation Symbols: Non-logical symbols like $<$. For example, $0 < 1$.
+
+*** 3. Building Complex Formulas (The "Compound Sentences")
+Finally, we use the universal logical connectives and quantifiers to chain atomic formulas together into complex axioms:
+- Connectives: $\land$ (AND), $\lor$ (OR), $\neg$ (NOT), $\rightarrow$ (IMPLIES).
+- Quantifiers: $\forall$ (FOR ALL) and $\exists$ (EXISTS), which bind the variables.
+
+*** Examples of Field Axioms
+
+Using our non-logical signature $\mathcal{L} = \{0, 1, +, \cdot, -, <\}$ alongside the standard logical symbols, we can formally construct the axioms of elementary algebra (specifically, the axioms of ordered fields). 
+
+Here are a few key examples showing how the logical and non-logical parts interact:
+
+**** Associativity of Addition
+This axiom states that the grouping of addition does not matter. It uses variables, the non-logical function symbol $+$, the logical equality symbol $=$, and the universal quantifier $\forall$.
+
+$$\forall x \forall y \forall z (x + (y + z) = (x + y) + z)$$
+
+**** Distributivity of Multiplication over Addition
+This axiom demonstrates the interaction between two different non-logical function symbols ($+$ and $\cdot$). 
+
+$$\forall x \forall y \forall z (x \cdot (y + z) = (x \cdot y) + (x \cdot z))$$
+
+**** Existence of Multiplicative Inverses
+This is a more complex formula. It states that every non-zero element has a reciprocal. Notice how it uses the logical negation symbol $\neg$, the implication arrow $\rightarrow$, and the existential quantifier $\exists$, alongside our non-logical constant $0$ and $1$.
+
+$$\forall x (\neg(x = 0) \rightarrow \exists y (x \cdot y = 1))$$
+
+**** Compatibility of Addition and Order
+Because our signature includes the relation symbol $<$, we can define how operations interact with the ordering of the field. This axiom states that adding the same value to both sides preserves strict inequality.
+
+$$\forall x \forall y \forall z (x < y \rightarrow x + z < y + z)$$
+
+
+
+
+
+** Now the language for set theory
+You have hit on one of the most elegant and, frankly, astonishing
+features of modern mathematics. In formal set theory (like
+Zermelo-Fraenkel, or ZFC), almost the entirety of
+mathematics---numbers, functions, geometry, calculus---can be built
+from a language containing only a single non-logical symbol: $\in$
+(membership).
+
+To understand how this works, we have to separate the *logical framework* from the *set-theoretic language*, and then look at how mathematicians use "abbreviations" to build up complexity.
+
+Here is exactly how and why this is done.
+
+*** 1. The Underlying Toolkit (First-Order Logic)
+:PROPERTIES:
+:ID:       253d0471-0423-425d-918f-18c95d030b46
+:END:
+When we say the language of set theory is just $L_{ST} = \{\in\}$, we mean $\in$ is the only *domain-specific* relation. We are still allowed to use the standard, built-in machinery of First-Order Logic (FOL). This includes:
+- *Variables:* $x, y, z, A, B, \dots$ (which all represent sets, since in pure set theory, *everything* is a set).
+- *Logical connectives:* $\land$ (and), $\lor$ (or), $\neg$ (not), $\rightarrow$ (implies), $\leftrightarrow$ (if and only if).
+- *Quantifiers:* $\forall$ (for all), $\exists$ (there exists).
+- *Equality:* $=$ (This is usually considered a standard logical symbol rather than a set-theoretic one).
+
+*** 2. How to Define New Relations (Like $\subseteq$)
+:PROPERTIES:
+:ID:       8b56ab23-689d-44b9-b457-4fb8120f32d2
+:END:
+Rather than adding $\subseteq$ (subset) as a fundamental rule of the universe, we define it purely as a shorthand---a macro---using our existing logical toolkit and $\in$.
+
+Conceptually, "$x$ is a subset of $y$" means "every element inside $x$ is also inside $y$." Formally, we define the string of symbols $x \subseteq y$ to mean the following:
+$$x \subseteq y \iff \forall z (z \in x \rightarrow z \in y)$$
+
+Whenever you see $A \subseteq B$ in a proof, the formal system just reads it as an abbreviation for $\forall z (z \in A \rightarrow z \in B)$. We do not need a special symbol for it in the foundational language; we just invent a symbol to save ourselves the headache of writing out quantifiers every time.
+
+*** 3. How to Define Constants (Like $\emptyset$)
+:PROPERTIES:
+:ID:       87294fe2-d84d-46eb-a31f-7e5e22673a68
+:END:
+Constant symbols, like the empty set ($\emptyset$), are a bit trickier because they claim a specific object *exists*. 
+
+First, we use an axiom to declare that a set with no elements exists. In ZFC, this is the Axiom of Empty Set (or it can be derived from the Axiom of Infinity and Specification):
+$$\exists x \forall y \neg(y \in x)$$
+
+Because the Axiom of Extensionality states that sets are completely determined by their elements, we know this empty set is unique. Once we prove it uniquely exists, we can introduce the symbol $\emptyset$ as a definitional abbreviation. Whenever we write a formula like $z = \emptyset$, it is formal shorthand for:
+$$\forall y \neg(y \in z)$$
+
+Every time you see $\emptyset$ in a mathematical text, it can be systematically unpacked into a longer statement using only $\in$, $\neg$, $\forall$, and variables.
+
+*** Why Restrict the Language to Just $\in$?
+:PROPERTIES:
+:ID:       6faa21b2-b473-4251-866b-1d19167ed235
+:END:
+
+Mathematicians and logicians insist on this minimal signature for a few highly pragmatic reasons:
+
+- *Metamathematical Simplicity:* Logicians don't just use set theory; they prove theorems *about* set theory (like Gödel's Incompleteness Theorems). To prove things about a formal language, you often use induction on the complexity of the formulas. If your language only has one relation ($\in$), your base case for the induction is incredibly short. If you had 50 primitive symbols (like $\subseteq, \cup, \cap, \emptyset, \mathbb{R}$, etc.), every metamathematical proof would have 50 base cases to check. 
+- *Occam's Razor:* If a symbol can be defined perfectly in terms of another, adding it to the foundational language is redundant. Mathematics strives for the absolute minimum number of assumptions and primitives.
+- *Preventing Axiom Bloat:* If you introduce $\subseteq$ as a primitive, undefined symbol in your language, you then have to introduce new axioms to explain to the system how $\subseteq$ interacts with $\in$. By making $\subseteq$ an abbreviation, its relationship to $\in$ is logically guaranteed by its definition. 
+
+In short, $\in$ is the fundamental "atom" of set theory. Everything else---from subsets and unions to the real numbers and topological spaces---is just a highly complex molecule built out of $\in$ and logical operators.
+
+*** Building Complex Mathematics from just $\in$
+:PROPERTIES:
+:ID:       15047359-a00b-4b11-bf40-56d8f40288c5
+:END:
+
+To build higher-level mathematical structures like pairs and functions from nothing but sets and the membership relation ($\in$), we have to layer definitions step-by-step. We start with basic grouping and work our way up to the strict definition of a function.
+
+*** 1. The Unordered Pair: $\{x, y\}$
+:PROPERTIES:
+:ID:       fa68b9c1-509c-4ed9-bbd5-934b55b3c845
+:END:
+
+In set theory, if we have two sets $x$ and $y$, we want to be able to form a new set containing exactly those two elements. The *Axiom of Pairing* guarantees this set exists. 
+
+Formally, we define the unordered pair $z = \{x, y\}$ as an abbreviation for:
+$$\forall w (w \in z \leftrightarrow (w = x \lor w = y))$$
+
+This means a set $z$ is the pair $\{x, y\}$ if and only if the only things belonging to $z$ are $x$ and $y$. Note that order doesn't matter here: $\{x, y\}$ is exactly the same set as $\{y, x\}$.
+
+*** 2. The Ordered Pair: $(x, y)$
+:PROPERTIES:
+:ID:       b1eff90b-c940-46ea-bd5b-e6a5c8fef809
+:END:
+
+To define functions, sequences, and geometry, we need a concept of order---we need to distinguish the "first" element from the "second". Since our only mathematical tool is $\in$ (which has no inherent sense of order), we use a brilliant trick popularized by Kazimierz Kuratowski. 
+
+We define the ordered pair $(x, y)$ as a specific nested set:
+$$(x, y) = \{\{x\}, \{x, y\}\}$$
+
+Why does this work? It encodes both the elements and their order:
+- The element that appears in *both* inner sets (or is the sole element of the singleton set, if $x=y$) is the first element, $x$.
+- The element that appears in only *one* inner set is the second element, $y$.
+
+Thanks to this structural asymmetry, $(x, y) = (a, b)$ if and only if $x = a$ and $y = b$. We have successfully conjured "order" out of unordered sets!
+
+*** 3. Relations
+:PROPERTIES:
+:ID:       d7365cc9-673e-4d75-9820-48a3d518a709
+:END:
+
+Now that we have ordered pairs, we can talk about relationships between things. In set theory, a *relation* $R$ is simply a set of ordered pairs. 
+
+If we want to relate elements of a set $A$ to elements of a set $B$, we first look at the *Cartesian product* $A \times B$, which is the set of all possible ordered pairs $(x, y)$ where $x \in A$ and $y \in B$. 
+
+A relation $R$ is defined just as a subset of this Cartesian product:
+$$R \subseteq A \times B$$
+
+(And remember from before, $\subseteq$ is just an abbreviation using $\in$!). If the ordered pair $(x, y) \in R$, we say $x$ is related to $y$.
+
+*** 4. Functions
+:PROPERTIES:
+:ID:       2f9acede-5f18-45ee-b7f8-c6aedbd9770a
+:END:
+
+In standard mathematics, a function $f$ from $A$ to $B$ is conceptualized as a rule or machine that assigns exactly one output in $B$ to each input in $A$. 
+
+In purely set-theoretic terms, however, a function is not a machine or an action; it is a static *set of ordered pairs* (a specific type of relation). We formally define a function $f: A \to B$ as a set $f$ satisfying three conditions:
+
+1. **Domain and Codomain:** $f$ is a relation between $A$ and $B$, meaning $f \subseteq A \times B$.
+2. **Existence (Every input has an output):** $$\forall x (x \in A \rightarrow \exists y (y \in B \land (x, y) \in f))$$
+3. **Uniqueness (Every input has *only one* output):** $$\forall x \forall y_1 \forall y_2 (((x, y_1) \in f \land (x, y_2) \in f) \rightarrow y_1 = y_2)$$
+
+*** Summary
+:PROPERTIES:
+:ID:       ab9b4455-4efe-475f-a8f6-4c2aa7262208
+:END:
+
+Whenever you write down a classic function like $f(x) = x^2$ mapping real numbers to real numbers, under the hood of formal mathematics, $f$ is actually a massive infinite set of Kuratowski ordered pairs $\{\{x\}, \{x, x^2\}\}$. Those pairs, the real numbers themselves, and the rules governing them are all built entirely out of the empty set, the $\in$ relation, and logical axioms. The vast complexity of modern mathematics is just a towering, beautifully constructed hierarchy of logical abbreviations!
+
+*** Constructing the Natural Numbers from Sets
+:PROPERTIES:
+:ID:       a0436c00-0c61-40f4-9f7a-19073a91d05b
+:END:
+
+To build arithmetic from set theory, we need a way to represent the numbers $0, 1, 2, 3, \dots$ using nothing but sets. The standard approach in Zermelo-Fraenkel set theory (ZFC) was developed by John von Neumann. His brilliantly simple idea was this: define each number as the set of all the numbers that come before it.
+
+Here is how we build the natural numbers out of thin air (or rather, out of the empty set).
+
+**** 1. Starting with Zero
+:PROPERTIES:
+:ID:       99c09a45-0e9e-4168-bd1a-a438020a0891
+:END:
+Since we only have sets, the simplest set is the empty set, $\emptyset$. It has absolutely nothing in it. This perfectly captures the concept of zero. So, we make our first definition:
+$$0 = \emptyset$$
+
+**** 2. The Successor Function
+:PROPERTIES:
+:ID:       b9d52104-b015-47d8-98ad-bff919608dee
+:END:
+To get to the next number, we need a "successor" operation. If we have a set representing a number $n$, we define its successor, denoted $S(n)$, as:
+$$S(n) = n \cup \{n\}$$
+
+Remember, $\cup$ (union) is just a logical shorthand using $\in$. Taking the union of $n$ and $\{n\}$ means we are taking the elements already inside $n$, and throwing in $n$ itself as a brand new element. 
+
+**** 3. Building 1, 2, and 3
+:PROPERTIES:
+:ID:       4c714063-b7f5-474e-a319-79bd00db96f9
+:END:
+Let's apply the successor function to see what the numbers actually look like as pure sets.
+
+- **The number 1:**
+  $$1 = S(0) = 0 \cup \{0\}$$
+  Substituting our definition of $0$:
+  $$1 = \emptyset \cup \{\emptyset\} = \{\emptyset\} = \{0\}$$
+  So, $1$ is a set containing exactly one element: the number $0$.
+
+- **The number 2:**
+  $$2 = S(1) = 1 \cup \{1\}$$
+  $$2 = \{0\} \cup \{1\} = \{0, 1\}$$
+  If we unpack this completely into empty sets, it looks like this:
+  $$2 = \{\emptyset, \{\emptyset\}\}$$
+  Notice that $2$ is a set containing exactly two elements: $0$ and $1$.
+
+- **The number 3:**
+  $$3 = S(2) = 2 \cup \{2\}$$
+  $$3 = \{0, 1\} \cup \{2\} = \{0, 1, 2\}$$
+  Unpacked, this becomes a heavily nested structure:
+  $$3 = \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}$$
+
+
+
+**** 4. The Pattern and the Set of All Natural Numbers
+:PROPERTIES:
+:ID:       4cc5a596-f703-4556-a3d8-ddb4340ab502
+:END:
+The beauty of the von Neumann ordinals is that every number $n$ *is* precisely a set containing $n$ elements. Specifically, $n$ is the set of all natural numbers less than $n$:
+$$n = \{0, 1, 2, \dots, n-1\}$$
+
+Furthermore, the standard ordering of numbers ($<$ and $>$) is perfectly mirrored by the $\in$ relation!
+$$x < y \iff x \in y$$
+For example, $1 < 3$ is true because $1 \in \{0, 1, 2\}$. 
+
+**** 5. The Axiom of Infinity
+:PROPERTIES:
+:ID:       7a6bae87-54a9-4462-9e6b-ec6e2069a7f8
+:END:
+We can keep applying the successor function forever to get individual finite numbers. But if we want to talk about *all* natural numbers at once---the infinite set $\mathbb{N}$ (often denoted $\omega$ in set theory)---we hit a wall. None of our basic logical rules or basic set operations guarantee that an infinite set exists. 
+
+We have to explicitly declare it as a rule of the universe. This is the *Axiom of Infinity*, which essentially states:
+$$\exists I (\emptyset \in I \land \forall x (x \in I \rightarrow x \cup \{x\} \in I))$$
+
+This axiom simply says: "There exists a set $I$ that contains $0$, and whenever it contains a number $x$, it also contains $S(x)$." The smallest such set is our set of natural numbers, $\omega$. 
+
+From just $\in$ and $\emptyset$, we have constructed the entire sequence of counting numbers and guaranteed their existence as a completed infinite collection!
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+
+
+* References
+\\
+bibliography:/home/galaxybeing/Dropbox/org/biblio/ref.bib

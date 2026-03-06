@@ -1,0 +1,94 @@
+#+TITLE: 
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2026-03-02T16:11:26Z UTC 
+#+LANGUAGE:  en 
+#+EXPORT_FILE_NAME: ComputingInContextLogic1Definition.html
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Bibliography ---
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+# --- Document Content Starts Here ---
+#+INCLUDE: /home/galaxybeing/Dropbox/org/codeismathiscode2/header.org :minlevel 1
+
+* A Foundational Definition of Mathematical Logic
+
+At its core, *mathematical logic is the formal, systematic study of
+mathematical reasoning and truth.* Rather than treating logic as a
+philosophical exercise in human argumentation, mathematical logic
+treats logical frameworks themselves as mathematical objects to be
+rigorously analyzed. It abstracts the intuitive processes of
+mathematical deduction into formal, mechanical systems so that we can
+prove theorems /about/ the systems themselves (metamathematics).
+
+To fully grasp this, it is helpful to break logic down into the two
+distinct realms it bridges:
+
+** 1. Syntax (The Realm of Form)
+
+Syntax deals exclusively with symbols and the mechanical rules for
+manipulating them, devoid of any "meaning." A formal syntactic system
+consists of:
+
+- *An Alphabet:* A defined set of symbols (e.g., variables $x, y, z$,
+  logical connectives $\land, \lor, \neg, \rightarrow$, and
+  quantifiers $\forall, \exists$).
+- *A Formal Language:* A strict set of grammatical rules that dictate
+  which strings of symbols form "well-formed formulas" (WFFs),
+  typically denoted by lowercase Greek letters like $\phi$ and $\psi$.
+- *A Deductive System:* A chosen set of starting formulas (axioms) and
+  mechanical rules of inference (like /modus ponens/: $\phi, \phi
+  \rightarrow \psi \vdash \psi$) used to derive new formulas
+  (theorems) from existing ones.
+
+** 2. Semantics (The Realm of Meaning)
+
+Semantics assigns meaning and truth values to the otherwise
+meaningless symbols of the syntax.
+
+- *Structures/Models:* A domain of discourse (like the set of natural
+  numbers $\mathbb{N}$) equipped with specific relations, functions,
+  and constants (e.g., a structure $\mathcal{M} = \langle \mathbb{N},
+  +, \times, 0, 1, \leq \rangle$).
+- *Truth:* A precise definition of what it means for a well-formed
+  formula to be "true" within a given model, denoted by the
+  satisfaction relation $\mathcal{M} \vDash \phi$.
+
+** The Bridge: Soundness and Completeness
+
+The primary goal of introductory mathematical logic is to study the
+relationship between syntax (what can be /proved/, denoted by
+$\vdash$) and semantics (what is /true/, denoted by $\vDash$).
+
+- *Soundness:* If a formula can be proved using the syntactic
+  deductive system, it must be true in all valid models. The system
+  does not prove falsehoods. Formally: If $\vdash \phi$, then $\vDash
+  \phi$.
+- *Completeness:* If a formula is true in all valid models, there must
+  exist a syntactic proof for it. The system is powerful enough to
+  prove all universal truths. Formally: If $\vDash \phi$, then $\vdash
+  \phi$.
+
+** The Four Pillars
+
+As the field expanded, this foundational study of formal systems grew
+into four distinct, highly interconnected sub-disciplines:
+
+1. *Model Theory:* The study of mathematical structures (groups,
+   fields, graphs) through the lens of the formal languages used to
+   describe them.
+2. *Proof Theory:* The study of formal proofs themselves as
+   mathematical objects, often focusing on their structure, length,
+   and the consistency of deductive systems.
+3. *Set Theory:* The study of collections of objects and the infinite,
+   serving as the foundational language and ontology for nearly all of
+   modern mathematics (e.g., the $ZFC$ axioms).
+4. *Computability Theory (Recursion Theory):* The study of which
+   mathematical problems can be solved (and which formulas can be
+   decided) by an algorithm or a mechanical process, formalizing
+   concepts like Turing machines and recursive functions.

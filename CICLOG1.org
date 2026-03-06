@@ -1,0 +1,1799 @@
+# -*- mode: org -*- coding: utf-8 -*-
+#+TITLE:
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2026-02-26T21:36:16
+#+EXPORT_FILE_NAME: ComputingInContextLogic1.html
+
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+
+# --- Bibliography ---
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+
+# --- Document Content Starts Here ---
+#+INCLUDE: "/home/galaxybeing/Dropbox/org/codeismathiscode2/header.org" :minlevel 1
+
+
+* Logic
+
+According to a 2016 survey, the undergrad major with the highest
+admission rates to law schools is Philosophy with 83% of applicants
+accepted. /Formal logic/ is a core, standard component of most
+undergraduate philosophy major curricula in the USA.
+
+Abraham Lincoln famously mastered the first six books of [[https://en.wikipedia.org/wiki/Euclid%27s_Elements][Euclid’s
+Elements]] to improve his logic and legal reasoning, famously stating he
+could not be a lawyer without understanding what was really meant by
+"to demonstrate." He used Euclidean geometry to structure his
+arguments, including in the Lincoln-Douglas debates, and to define
+"self-evident" truths.
+
+...however we won't dwell very long on the usual form of logic as
+taught in philosophy departments. Instead, we approach logic from a
+/mathematical/ and /computer science/ standpoint.
+
+** Philosophical versus mathematical logic
+
+Philosophy's approach to logic keys on actual statements in human
+language. On the other hand, mathematical logic is concerned with the
+mechanics of logic as applied to formalizing math. In that sense
+mathematical logic can be considered [[https://en.wikipedia.org/wiki/Metamathematics][metamathematics]].[fn:1] Here's one
+take
+
+#+begin_quote
+Rather than treating logic as a philosophical exercise in human
+argumentation, **mathematical logic** treats logical frameworks
+themselves as mathematical objects to be analyzed and manipulated. It
+abstracts the intuitive processes of mathematical deduction into
+formal, mechanical systems so that we can prove theorems /about/ the
+systems themselves, i.e., metamathematics.
+#+end_quote
+
+This may sound vague at this point, but we'll soon have plenty of
+examples to back up our explanations. We'll begin with a discussion of
+**statements**, common to both philosophical and mathematical logic,
+and a common starting point in treatments of logic.
+
+** Logic begins with statements
+
+What does it mean for an expression---verbal or mathematical---to be a
+/statement/? Let's first look at categories of verbal expressions that
+are __/not/__ true statements, i.e., they cannot be resolved into true
+or false:[fn:2]
+
+- /Imperative/; e.g., "Do what I tell you!"
+- /Interrogative/; e.g., "What would you like to do?"
+- /Exclamatory/; e.g., "Merry Christmas!"
+
+It might not be clear if our /imperative/ and an /exclamatory/
+sentence examples are very different from one another, but __all__ the
+examples above have one thing in common: /They cannot be resolved as
+true or false/. And don't mentally suppose, don't tack on a
+/response/, such as "Yes, it is true I will do what you tell me." __We
+mean the initial sentences only__.
+
+But what about "Merry Christmas!" you might ask. It would seem either
+true, it is a merry Christmas, or it isn't. In reality an exclamatory
+remark such as "Merry Christmas!" is just well-wishing, an exclamation
+like "Hello!" or "Good luck!" These are called /performative
+utterances/ by linguists, i.e., expressions that perform an action
+such as a greeting just by being spoken. They're rhetorical and not
+meant for analyzing yes or no.
+
+But what if you do in fact /respond/ with the statement, the
+/proposition/, what if you /state/, you /propose/ "It /is/ a merry
+Christmas." Is this not in statement form and can be resolved true
+or false? Not exactly. We're caught again, because /logic frowns
+on statements that are subjective, vague, or unsubstantiated opinion/.
+
+Let's break down "It is a merry Christmas!" into "is merry" and
+"Christmas." For "is merry" to work, to be able to plug in this year's
+Christmas, merriness must be strictly defined over all
+Christmases. More to the point, /we must be able to look at the
+universe of all Christmases and cleanly divide them into the set of
+those that are absolutely, unquestionably **merry** and those that are
+definitely not/. Can we realistically do that? No, the concept of merry
+as applied to Christmases is a subjective thing. Bottom line: If a
+sentence's truth value fluctuates depending on the observer's mood,
+opinion, or strictness, it is too ambiguous to be a real statement,
+even though it's structured as one.
+
+Let's get back to the other examples of /imperative/ and
+/interrogative/. Being ordered by someone to do something has no true
+or false. Being asked a question---the question itself, not the
+response---has no true or false resolution. Now let's look at
+sentences that can be resolved as true or false
+
+- /The sky is blue./ ...might be, might not be; needs validation.
+- $2 + 3 = 4 + 1$ ...yes, this states equivalence.
+- /It is raining **and** I forgot my umbrella./ ... **two** things
+  can be either true or false.
+
+** The Connection Between Logic and Symbolism
+
+The next important part of logic is its symbolism. Consider this[fn:3]
+
+\begin{align}
+x^2 - y^2 = (x + y)(x - y)
+\end{align}
+
+Now, let's describe ~(1)~, i.e., the /factorization of the difference
+of two squares/[fn:4] fully, completely in English prose
+
+#+begin_quote
+The result of subtracting the square of one number from the square of
+a second gives the same number as is obtained by adding the two
+numbers, subtracting the first from the second, and then multiplying
+the results of these two calculations.
+#+end_quote
+
+Before the 16th century, much of mathematics was "rhetorical," i.e.,
+written out entirely in prose. For another example, an algebra problem
+might read:
+
+#+begin_quote
+The square of the unknown quantity, augmented by three times that same
+quantity, yields ten.
+#+end_quote
+
+With modern **symbolism**, this exact same thought is compressed into
+a clear, visual statement:
+
+$$x^2 + 3x = 10$$
+
+⌜\\
+𝖟𝕭: **Pronouns as algebraic variables**
+
+A great many students hit a wall when they first encounter beginning
+algebra. When they first learned basic arithmetic, addition came in
+the form of a column of numbers, i.e., numbers stacked on top of each
+other
+
+\begin{align*}
+  & 1 \\[-3pt]
+  & 2 \\[-3pt]
+  & 3 \\[-3pt]
+  +& 4 \\
+  \hline
+  &\!\! 10
+\end{align*}
+
+with one plus sign next to the last number above the line. then as rows
+with plus signs interspersed between the numbers
+
+$$1 + 2 + 3 + 4 = 10$$
+
+They were more than likely /conditioned/ to add numbers together upon
+these visual cues. But when they were confronted with something like
+the Pythagoras Theorem
+
+\begin{align*}
+a^2 + b^2 = c^2 
+\end{align*}
+
+they could not fathom what the small letters had to do with addition,
+which has always been with numbers. Where did the numbers go? How do
+you add letters? And so years of methods amounting to nothing more
+than conditioning fail because the skill of thinking abstractly has
+never been adequately developed amidst all the watch-and-imitate group
+go-along.[fn:5] What if we explain how an algebra "letter variable" is
+like a pronoun? Compare these two sentences
+
+**John goes to the store.** \\
+**He goes to the store.** \\
+
+Now the pronoun /he/ is just like an algebra variable that can be
+substituted for various male names. Let's write the sentences in a
+quasi-algebra style with $X$ for /he/
+
+\begin{align*}
+X &\text{ goes to the store.} \\
+X &= \text{John}, \\
+John &\text{ goes to the store.}
+\end{align*}
+
+⌟ \\
+
+Here is a quote from John Gries [[cite:&gries2013logical]]
+
+⥤@@html:<font color = "#0d3db3">@@ Mathematics provides methods for
+reasoning: for manipulating expressions, for proving properties from
+and about expressions, and for obtaining new results from known
+ones. This reasoning can be done without knowing or caring what the
+symbols being manipulated mean.  @@html:</font>@@
+
+
+
+This shift from words to symbols provides three massive advantages to
+human reasoning:
+
+1. *Absolute Precision:* Natural language is inherently ambiguous and
+   context-dependent. Even seemingly well-formed declarative
+   statements such as /Carrie hasn't slept a wink/ are
+   ambiguous. Again, words and phrases so often get lost in vagueness:
+   /a wink/ is idiomatic, context and entailment are missing as
+   well. Basically, there is no way to ascertain exactly what "not
+   sleeping a wink" really means. Mathematical symbols possess
+   strictly defined, universal meanings, leaving no room for
+   misinterpretation.
+2. *Cognitive Compression:* By condensing long verbal descriptions
+   into short visual markers, we can better hold and process more
+   complex structures in our working memory.
+3. *Mechanical Manipulation:* Symbols allow for rule-based,
+   step-by-step calculation. Once a real-world problem is translated
+   into a symbolic expression, we can solve it by following rigid
+   syntactic rules (e.g., subtracting a symbol from both sides)
+   without needing to constantly hold the original real-world meaning
+   of the symbols in your head.
+
+** A Basic Description of Symbolism in Mathematics
+
+At its core, symbolism in mathematics is the use of a specialized,
+highly structured visual language to represent abstract concepts,
+quantities, operations, and relationships.
+
+You can think of mathematical symbolism as both an /abstraction/
+shorthand as well as an engine: it compresses complex ideas into
+readable forms, and it lends itself more easily to a tool bag of
+mechanical rules for solving problems.
+
+*** Mathematical Symbolism as a Mechanical Crank
+
+This is the exact goal of formalism in mathematics: to build a system
+where, once the initial conditions (axioms) are fed into the machine,
+the rules of symbol manipulation guarantee a correct result without
+requiring human intuition or interpretation along the way. The
+machinery working on just symbols by definitive rules abstracts the
+process away from guesswork and subjective interpretations.
+
+Here are two clear examples of how mathematical symbolism provides
+these rigorous, mechanical rules.
+
+**** 1. The Algebraic Machine: Field Axioms
+
+Let's once again look at "do the same thing to both sides" of an
+equation. What you were actually doing was operating a mechanical
+system defined by the Field Axioms for real numbers.
+
+Consider a fundamental rule like the Cancellation Law for Addition: if
+we know that $x + y = x + z$, we instinctively know that $y = z$. But
+/how/ does the symbolic machine prove this mechanically, without
+relying on our intuition about quantities?
+
+The machine restricts us to only using established axioms (like the
+existence of an additive inverse, associativity, and the additive
+identity). The "crank" turns step-by-step:
+
+1. *Start with the premise:*
+   $$x + y = x + z$$
+2. *Apply the existence of an additive inverse (adding $-x$ to both sides):*
+   $$-x + (x + y) = -x + (x + z)$$
+3. *Apply the Associative Law for addition (shifting the parentheses):*
+   $$(-x + x) + y = (-x + x) + z$$
+4. *Apply the Additive Inverse axiom ($-x + x$ becomes $0$):*
+   $$0 + y = 0 + z$$
+5. *Apply the Additive Identity axiom ($0 + a$ becomes $a$):*
+   $$y = z$$
+
+At no point in this process do you need to think about what $x$, $y$,
+or $z$ represent. They could be fractions, negative numbers, or
+complex numbers. The symbols and the rigid axioms dictate the legal
+"moves," much like the rules of chess dictate how pieces move on a
+board.
+
+**** 2. The Logical Machine: Propositional Calculus
+
+If algebra is a machine for numbers, Propositional Calculus is a
+machine for truth. It abstracts logic so completely that determining
+the validity of an argument is reduced to an algorithm.
+
+Suppose you have a complex set of conditions:
+- "If the system is secure ($S$), then the network is encrypted ($E$)."
+- "The network is not encrypted ($\neg E$)."
+- "Therefore, the system is not secure ($\neg S$)."
+
+Instead of wrestling with the linguistic meaning of these sentences,
+we feed them into the symbolic machine as a single compound statement:
+$$((S \rightarrow E) \land \neg E) \rightarrow \neg S$$
+
+Because the symbols have strictly defined mechanical operations, we
+can turn the crank using a Truth Table. The machine exhaustively
+computes every possible state of $S$ and $E$:
+
+| $S$ | $E$ | $S \rightarrow E$ | $(S \rightarrow E) \land \neg E$ | $\neg S$ | Result |
+|-----+-----+---------+-----------------+-------+--------|
+| <c> | <c> |   <c>   |       <c>       |  <c>  |  <c>   |
+|  T  |  T  |    T    |        F        |   F   |   T    |
+|  T  |  F  |    F    |        F        |   F   |   T    |
+|  F  |  T  |    T    |        F        |   T   |   T    |
+|  F  |  F  |    T    |        T        |   T   |   T    |
+
+
+Because the final column is entirely true, the machine mechanically
+guarantees that this argument is a tautology (always valid). You do
+not need to understand what "secure" or "encrypted" means; the
+syntactic manipulation of $\rightarrow$, $\land$, and $\neg$ does all the work.
+
+**** The Ultimate Crank: Formal Verification
+
+When you scale this concept up, you get modern formal verification. By
+strictly defining mathematical foundations (such as the
+Zermelo-Fraenkel axioms for set theory) entirely in symbolic logic, we
+can build software that turns the crank millions of times per
+second. This ensures that massive, complex proofs are structurally
+flawless.
+
+** Building the Crank: Unification in Scheme
+
+To see how a mathematical "machine" actually cranks in software, we
+can look at a unification algorithm. Unification is the algorithmic
+heart of automated theorem proving, logic programming, and type
+inference systems (like the Hindley-Milner system used in languages
+like Standard ML and Haskell).
+
+At its core, unification is a mechanical rule for solving symbolic
+equations. If you give the machine two symbolic expressions, it tries
+to find a substitution of variables that makes the two expressions
+perfectly identical.
+
+For example, if we have expression $A$: $P(x, c)$ and expression $B$:
+$P(a, y)$, the unifier mechanically deduces the substitution $\sigma = \{x
+\mapsto a, y \mapsto c\}$ to make both expressions $P(a, c)$.
+
+
+
+Here is how we can build this fundamental mechanical crank in Scheme.
+
+*** 1. Defining the Environment and Variables
+
+First, we need a way to distinguish variables (the parts of the
+machine that can change) from constants, and a way to store our
+substitutions (the environment). We will represent variables as
+symbols starting with a question mark (e.g., =?x=).
+
+#+begin_src scheme
+;; Check if a symbol is a variable (starts with '?')
+(define (variable? x)
+  (and (symbol? x) 
+       (char=? (string-ref (symbol->string x) 0) #\?)))
+
+;; An environment is an association list of (variable . value) bindings.
+(define empty-env '())
+
+;; Look up a variable in the current environment
+(define (lookup var env)
+  (assq var env))
+
+;; Add a new binding to the environment
+(define (extend-env var val env)
+  (cons (cons var val) env))
+#+end_src
+
+*** 2. The Unification Algorithm
+
+The =unify= procedure is the crank itself. It takes two expressions
+and an environment, and applies strict structural rules to see if they
+can be matched.
+
+The mechanical rules are:
+1. If we've already failed, keep failing.
+2. If the expressions are exactly the same, do nothing (return the
+   current environment).
+3. If the first expression is a variable, try to bind it.
+4. If the second expression is a variable, try to bind it.
+5. If both are compound expressions (pairs/lists), recursively turn
+   the crank on their first elements (=car=), and then take that
+   updated environment and turn the crank on the rest of the elements
+   (=cdr=).
+6. Otherwise, the structures clash, and unification fails.
+
+#+begin_src scheme
+(define (unify expr1 expr2 env)
+  (cond ((eq? env 'failed) 'failed)
+        ((eqv? expr1 expr2) env)
+        ((variable? expr1) (unify-var expr1 expr2 env))
+        ((variable? expr2) (unify-var expr2 expr1 env))
+        ((and (pair? expr1) (pair? expr2))
+         ;; Mechanically traverse the tree structure
+         (unify (cdr expr1) (cdr expr2)
+                (unify (car expr1) (car expr2) env)))
+        (else 'failed)))
+#+end_src
+
+*** 3. Handling Variable Binding
+
+When the machine encounters a variable, it must check if that variable
+is already bound to something else in our environment. If it is, we
+must recursively unify the new value with the old binding to ensure
+consistency.
+
+#+begin_src scheme
+(define (unify-var var val env)
+  (let ((binding (lookup var env)))
+    (cond 
+      ;; If the variable is already bound, unify the bound value with the new value
+      (binding (unify (cdr binding) val env))
+      ;; Optional: Add an "occurs check" here to prevent infinite loops (e.g., unifying ?x with (f ?x))
+      ;; If unbound, add the new binding to the environment
+      (else (extend-env var val env)))))
+#+end_src
+
+*** 4. Turning the Crank
+
+Now we can feed symbolic logic into our machine. 
+
+#+begin_src scheme
+;; Let's unify (f ?x c) with (f a ?y)
+;; We expect the machine to deduce: ?x = a, and ?y = c
+
+(define env1 (unify '(f ?x c) '(f a ?y) empty-env))
+;; Result: ((?y . c) (?x . a))
+
+;; Let's try to unify something impossible: (f ?x b) with (f a c)
+;; We expect the machine to halt and fail because the constant 'b' cannot unify with 'c'.
+
+(define env2 (unify '(f ?x b) '(f a c) empty-env))
+;; Result: failed
+#+end_src
+
+This short Scheme script is a localized version of exactly what formal
+verification tools and type inference engines are doing under the
+hood. It strictly separates the syntactic form of the symbols from any
+real-world meaning, relying entirely on recursive structural rules to
+find logical truth.
+
+** Building the Engine: A Miniature Proof System in Scheme
+
+To handle logical implications ($P \rightarrow Q$), our unifier must evolve from
+a simple equation-solver into a search engine. We need to implement
+*backward chaining*.
+
+In formal logic, if we want to prove a conclusion $Q$, and we have a
+rule stating $P_1 \land P_2 \dots \rightarrow Q$, we can work backward: we unify our
+goal with $Q$, and if successful, we set $P_1, P_2, \dots$ as our new
+sub-goals.
+
+$$\frac{\Gamma \vdash P_1 \quad \Gamma \vdash P_2}{\Gamma \vdash Q}\text{where } (P_1
+\land P_2 \rightarrow Q) \in \Gamma$$
+
+
+
+Here is how we build this mechanical proof engine in Scheme,
+effectively creating a microscopic version of Prolog.
+
+*** 1. The Knowledge Base (Axioms and Theorems)
+
+First, we need a database of logical statements. We will represent
+both facts (things known to be true) and rules (implications) as
+lists.
+- The first element is the *consequent* (the conclusion, $Q$).
+- The remaining elements are the *antecedents* (the premises, $P_1, P_2$).
+- A fact is simply a rule with no premises.
+
+#+begin_src scheme
+;; Our logical database (Gamma)
+(define *database*
+  '(
+    ;; Facts: These require no proof.
+    ((human socrates))               
+    ((human hypatia))                
+    ((mortal fido) (dog fido))       ;; Fido is mortal if Fido is a dog.
+    ((dog fido))
+
+    ;; Rule: For all x, if x is human, then x is mortal.
+    ;; In logic: ∀x (Human(x) → Mortal(x))
+    ((mortal ?x) (human ?x))         
+   ))
+#+end_src
+
+*** 2. The Core Proof Engine
+
+Our engine needs two mutually recursive procedures:
+1. =prove=: Tries to prove a single goal by searching the database for
+   a matching rule.
+2. =prove-all=: Tries to prove a list of sub-goals (a logical
+   conjunction, $P_1 \land P_2$).
+
+Because a goal might be provable in multiple ways (e.g., there are
+many humans), our engine cannot just return a single environment. It
+must return a *list* of all valid environments (successful
+substitutions). If the list is empty, the proof failed.
+
+#+begin_src scheme
+;; Prove a single goal against a list of rules
+(define (prove goal env rules)
+  (if (null? rules)
+      '() ;; Base case: No rules left, proof branch fails.
+      (let* ((rule (car rules))
+             ;; Note: In a production system, we must "standardize apart" (rename)
+             ;; the variables in the rule here to prevent variable collisions.
+             (head (car rule))
+             (body (cdr rule))
+             ;; Turn the unification crank!
+             (new-env (unify goal head env)))
+        
+        (if (eq? new-env 'failed)
+            ;; If unification fails, backtrack and try the next rule.
+            (prove goal env (cdr rules))
+            ;; If it unifies, we must prove all antecedents (the body) in the new environment.
+            ;; We append these results with the results of trying remaining rules (nondeterminism).
+            (append (prove-all body new-env *database*)
+                    (prove goal env (cdr rules)))))))
+
+;; Prove a conjunction of goals
+(define (prove-all goals env rules)
+  (cond ((eq? env 'failed) '())
+        ;; If there are no more sub-goals, we succeeded! Return the environment.
+        ((null? goals) (list env)) 
+        (else
+         ;; Prove the first goal, which returns a list of possible environments.
+         (let ((possible-envs (prove (car goals) env rules)))
+           ;; For each successful environment, try to prove the rest of the goals.
+           ;; We map over the environments and flatten the resulting lists.
+           (apply append
+                  (map (lambda (e) (prove-all (cdr goals) e rules))
+                       possible-envs))))))
+#+end_src
+
+*** 3. Running the Machine
+
+Now we can ask the machine questions by feeding it a goal and an empty
+environment. The machine mechanically applies the rules of unification
+and backward chaining to find logical truths.
+
+#+begin_src scheme
+;; Query 1: Is Socrates mortal?
+;; Goal: (mortal socrates)
+(prove '(mortal socrates) empty-env *database*)
+;; Engine unifies (mortal socrates) with the rule (mortal ?x).
+;; Binds ?x = socrates.
+;; New sub-goal: (human socrates).
+;; Unifies with fact: (human socrates). Success!
+;; Result: (())  -> A list containing the empty environment (it is true without needing new variables).
+
+;; Query 2: Who is mortal?
+;; Goal: (mortal ?who)
+(prove '(mortal ?who) empty-env *database*)
+;; Engine finds the dog rule: binds ?who = fido, checks (dog fido) -> Success.
+;; Engine finds the human rule: binds ?x = ?who.
+;; Sub-goal (human ?who) matches 'socrates' and 'hypatia'.
+;; Result: (((?who . fido)) ((?who . socrates) (?x . socrates)) ((?who . hypatia) (?x . hypatia)))
+;; It mechanically deduces all three mortal entities in our universe!
+#+end_src
+
+This miniature engine demonstrates exactly how mathematical symbolism
+operates as a machine. It knows absolutely nothing about biology,
+ancient Greece, or mortality. It only knows syntactic pattern matching
+(=unify=) and the structural rule of implication elimination
+(=prove=).
+
+
+
+
+
+
+@@html:<font color = "#0d3db3">@@ Formalism: Mathematics is a game of
+symbols played according to strict rules. The "meaning" of the symbol
+is less important than its consistent behavior within the formal
+system.  @@html:</font>@@
+
+**** The basic components of mathematical symbolism
+
+Mathematical symbols generally fall into a few primary categories,
+functioning much like the parts of speech in a natural language:
+
+- *Entities (Nouns):* Symbols that represent objects, specific values,
+  or generalized quantities.
+  - Constants: $0$, $1$, $\pi$, $e$
+  - Variables (unknowns or placeholders): $x$, $y$, $z$, $n$
+  - Collections: $\mathbb{R}$ (the set of real numbers), $\mathbb{Z}$
+    (the set of integers)
+
+- *Operations (Verbs):* Symbols that instruct you on how to manipulate
+  or combine entities.
+  - Basic arithmetic: $+$, $-$, $\times$, $\div$
+  - Advanced calculus and algebra: $\sum$ (summation), $\int$ (integration),
+    $\sqrt{x}$ (square root)
+
+- *Relations (Comparisons):* Symbols that compare entities to form
+  complete mathematical sentences, known as equations or inequalities.
+  - Equality and magnitude: $=$, $\neq$, $<$, $\ge$
+  - Set theory and logic: $\in$ (is an element of), $\subset$ (is a subset of)
+
+- *Grouping (Punctuation):* Symbols that dictate the structure and the
+  order in which operations should be executed.
+  - Parentheses and brackets: $($, $)$, $[$, $]$, $\{$, $\}$
+
+*** 1. The Eradication of Ambiguity
+
+Symbolism in logic will typically Natural language is inherently ambiguous, context-dependent, and prone
+to polysemy. Symbolism strips away this linguistic baggage. By
+defining a strict alphabet (e.g., variables, connectives, quantifiers)
+and a precise grammar for well-formed formulas, symbolic logic ensures
+that every statement has exactly one structural interpretation.
+
+Instead of arguing about the nuances of the words "if" and "then," symbolism reduces the relationship to a material conditional:
+$$P \rightarrow Q$$
+
+This allows mathematicians and logicians to analyze the validity of arguments without being distracted by the specific meaning of the propositions involved.
+
+*** 2. Reasoning as Mechanical Computation
+Perhaps the most powerful consequence of symbolism is that it turns reasoning into computation. Once propositions and logical rules are fully symbolized, deducing a conclusion becomes a matter of syntactic string manipulation according to formal rules of inference.
+
+For example, Modus Ponens is simply a rule for transforming symbols, regardless of what they mean:
+$$P \rightarrow Q, P \vdash Q$$
+
+This symbolic mechanization is what makes it possible to formalize mathematics---such as encoding the foundations of mathematics in the Zermelo-Fraenkel axioms---and makes it possible for computers to verify proofs. Without a purely symbolic representation, formal verification systems and theorem provers could not computationally check the structural correctness of an argument.
+
+*** 3. The Decoupling of Syntax and Semantics
+Symbolism forces a strict and necessary boundary between syntax (the symbols and the rules for manipulating them) and semantics (the "meaning" or truth value assigned to those symbols).
+
+- *Syntax (Provability, $\vdash$):* A purely structural exercise. Can we derive formula $B$ from formula $A$ using only the allowed rules of symbol manipulation?
+- *Semantics (Truth, $\vDash$):* An interpretive exercise. If the premises are true in a given model, is the conclusion necessarily true?
+
+The triumph of modern symbolic logic, famously established by theorems like Gödel's Completeness Theorem for first-order logic, is demonstrating precisely how these symbolic derivations align perfectly with semantic truth.
+
+*** 4. The Bridge to Computation and Types
+Because symbolic logic relies on the strict, rule-based manipulation of abstract symbols, it shares a deep mathematical structure with computer science. This connection is formalized in principles like the Curry-Howard correspondence.
+
+When logic is fully symbolized, the structural rules of logical deduction correspond exactly to the typing rules in functional programming languages. A logical proposition acts as a type, and the symbolic proof of that proposition is computationally identical to a functional program inhabiting that type. The symbols do not just represent truth; they represent computable processes.
+
+** Natural Deduction and the Curry-Howard Isomorphism
+
+To see how symbolic logic maps directly into functional programming, we can examine the Curry-Howard correspondence. This principle reveals that formal logical systems (like natural deduction) and computational calculi (like the typed lambda calculus) are structurally identical.
+
+Under this isomorphism:
+- *Propositions* in logic correspond to *Types* in programming.
+- *Proofs* in logic correspond to *Programs* (or functions) in programming.
+- *Simplification of proofs* corresponds to *Evaluation of programs*.
+
+*** Example: Conjunction and Product Types
+In natural deduction, the introduction rule for logical conjunction ($\land$) states that if you have a proof of $P$ and a proof of $Q$, you can construct a proof of $P \land Q$:
+
+$$\frac{\Gamma \vdash P \quad \Gamma \vdash Q}{\Gamma \vdash P \land Q}\land\text{-intro}$$
+
+In a functional language like Haskell, this corresponds exactly to constructing a tuple (a product type). If you have a value of type =p= and a value of type =q=, you can construct a value of type =(p, q)=:
+
+#+begin_src haskell
+constructConjunction :: p -> q -> (p, q)
+constructConjunction pProof qProof = (pProof, qProof)
+#+end_src
+
+*** Example: Implication and Function Types
+The rule for implication introduction ($\rightarrow$) states that if assuming $P$ allows you to prove $Q$, then you have a proof of $P \rightarrow Q$:
+
+$$\frac{\Gamma, P \vdash Q}{\Gamma \vdash P \rightarrow Q}\rightarrow\text{-intro}$$
+
+In Haskell, this is simply the definition of a function. The proposition $P \rightarrow Q$ becomes the function type =p -> q=. The proof is the lambda abstraction (the function body) that transforms a value of type =p= into a value of type =q=.
+
+*** Example: Modus Ponens and Function Application
+Modus Ponens (implication elimination) states that if you know $P \rightarrow Q$ and you know $P$, you can deduce $Q$:
+
+$$\frac{\Gamma \vdash P \rightarrow Q \quad \Gamma \vdash P}{\Gamma \vdash Q}\rightarrow\text{-elim}$$
+
+Computationally, this is function application. If you have a function from =p= to =q=, and a value of type =p=, applying the function yields a value of type =q=.
+
+#+begin_src haskell
+modusPonens :: (p -> q) -> p -> q
+modusPonens impliesProof pProof = impliesProof pProof
+-- Or simply: modusPonens f x = f x
+#+end_src
+
+This mapping extends to more complex systems. For instance, universal quantification ($\forall$) corresponds to dependent types in theorem provers, allowing the type system to express and verify intricate mathematical theorems mechanically.
+
+
+
+** Logic as symbolism
+
+
+
+
+
+Reasoning is the domain of logic. We mention AI because in
+today's world AI is still concerned with the application of
+logic.[fn:6]
+
+
+[variables as pronouns analogy.]
+
+** Building Languages Using Logic
+
+[[cite:&leary2015friendly]]
+
+The natural progression of mathematical logic goes from
+**Propositional Logic** to **First-Order Logic** (FOL). FOL offers an
+abstract __language__ structure for a particular theory, such as our
+topic, set theory. However, FOL is not meant to construct any sort of
+natural language like English. And yet when we work with sets we're
+speaking the language---using syntax, creating the semantics and
+meaning---FOL provides for set theory.
+
+We'll go over a bare minimum on this math holiday, leaving our main
+discussion of logic for later. Logic is the math of math, and we'll
+do our best to sort it out properly.
+
+Most math texts gloss over the connection of set theory with the FOL
+underpinnings, probably thinking it's not that critical. They try to
+cruise through set theory without the "messy details" of the whys and
+hows, no doubt to avoid getting too bogged down, too lost in the
+weeds. But then situations appear that really should be backed up by a
+deeper understanding --- but then the hand-waving starts. We're very
+against hand-waving, because it always comes back to haunt us in the
+end.
+
+First, we'll explore what a /formal language/ is in this abstract
+mathematical sense. What exactly is FOL facilitating? This should be
+answered next.
+
+*** Beginner Synopsis of Formal Language Theory
+
+In everyday life, a spoken, written, printed language like English is,
+from a strictly logical standpoint, "messy," full of contextual
+nuances, hidden logical entailment, exceptions, paradoxes, ironical
+twisting... And yet we often intend to juggle words and sentences
+toward being logical and precise.
+
+Just a simple, innocuous phrase like "how many?" is fraught. In
+everyday usage "how many?" is a request for a count, a total. But the
+word /how/ is typically a request to /elaborate on, explain a
+process/, such as, "how did you do that?"  or "how did you get here?"
+And so a literal interpretation of "how many?" is, "how did the state
+of many come to be?" But no, in English that would be, "how then so
+many?" As you can now imagine, all the twists and turns, all the
+layers of logical entailment in regular spoken language quickly become
+unmanageably large.[fn:7]
+
+We've internalized our everyday language since early
+childhood. Phrases and sentences just flow out. We're adept at literal
+and figurative turns of speech. Creative tweaking and torquing our
+languages is our main sport. Consider poetry. One of the "densest"
+poets ever was Emily Dickinson
+
+#+begin_verse
+A Dew sufficed itself ---
+And satisfied a Leaf ---
+And felt 'how vast a Destiny' ---
+'How trivial is Life'!
+#+end_verse
+
+When we start Kindergarden we watch and
+listen and interact with this back-and-forth of language. But how
+should a computer learn?  For the longest time the answer was, We
+/program/ a computer. How?  With programs written in programming
+languages. But programming languages, even the "friendliest," are
+typically far from actual human language.
+
+In mathematics and computer science, what is known as a **formal
+language** strips all of the confusion, all the mess away. The goal of
+human speech is to convey meaning. But a formal language in the logic
+and computer science world is not about qualitative, subjective
+understanding; it is purely about /structure, rules,/ and /pattern
+matching/. Thus, a formal language does not intend to describe what
+things /mean/. It only cares about how symbols are allowed to be
+/arranged/. Again, we have in higher math's formal language theory a
+methodology compatible with the computer. Once again it's formalize to operationalize.
+
+**** 1. The Alphabet (The Raw Material)
+
+Every formal language starts with a strictly defined set of allowable symbols. This is just an inventory of characters.
+
+- In basic arithmetic, the alphabet might be: $\{0, 1, 2, +, =, (, )\}$
+- In standard set theory, it might be the universal logical symbols plus exactly one relation symbol: $\{\forall, \exists, \land, \lor, \lnot, (, ), x, y, \in\}$
+- In a computational environment, it is often just the standard ASCII or Unicode character set.
+
+**** 2. Strings / Words (The Combinations)
+A "string" (sometimes called a "word") is simply any finite sequence of symbols taken from the alphabet and smashed together. At this stage, there are no rules.
+
+- String A: $\forall x\, (x \in y)$
+- String B: $) \forall \forall \in x y \land$
+- String C: =(define (square x) (* x x))=
+- String D: =)) define ( ( *=
+
+**** 3. The Formal Language (The Rules)
+This is the main event. A formal language is not a loose concept; it is literally defined as *a specific set of strings* that obey a strict set of grammatical rules (often called a formal grammar, syntax, or formation rules). 
+
+If a string follows the rules, it is "in the language" (it is a Well-Formed Formula, or valid syntax). If it breaks even one rule, it is "not in the language."
+
+- String A and String C follow the structural rules of their respective domains. They belong to the formal language.
+- String B and String D have mismatched parentheses and operators in the wrong places. They are structurally invalid and are rejected from the language.
+
+**** 1. What Is a Formal Language?
+
+A *formal language* is a precisely defined set of strings built from a
+fixed collection of symbols following a given set of rules. At its
+core a formal language is always just a set of strings.
+
+**** 2. Alphabet and Strings
+
+Like a natural language everything starts with an **alphabet**. An
+alphabet (usually written $\Sigma$) is a finite set of symbols.
+
+Example:
+
+- $\Sigma = \{0,1\}$
+- $\Sigma = \{a,b,c\}$
+- $\Sigma = \{(,)\}$
+
+A *string* is a finite sequence of symbols from the alphabet.
+
+Examples over $\Sigma = \{a,b\}$:
+
+- $a$
+- $ab$
+- $aab$
+- $abba$
+
+The empty string is written:
+
+- $\epsilon$
+
+**** 3. A Language Is a Set of Strings
+
+Once you have all possible strings over $\Sigma$, a formal language is just
+some subset of them.
+
+Example:
+
+If $\Sigma = \{0,1\}$, then all possible strings include:
+
+- $\epsilon$
+- $0$
+- $1$
+- $00$
+- $01$
+- $10$
+- $11$
+- $000$
+- $\dots$
+
+Now define a language:
+
+$L =$ “all strings with an even number of $0$s”
+
+That is a formal language.
+
+Another example:
+
+$L = \{ a^n b^n \mid n \ge 0 \}$
+
+This means:
+
+- $\epsilon$
+- $ab$
+- $aabb$
+- $aaabbb$
+- $\dots$
+
+**** 4. How Do We Describe Languages?
+
+There are three major ways.
+
+***** (1) By Listing Them
+
+Possible only for small finite languages.
+
+Example:
+
+$L = \{a, ab, abb\}$
+
+***** (2) By Rules (Grammars)
+
+A grammar tells you how to generate strings.
+
+Example rules:
+
+$S \to aSb$  
+$S \to \epsilon$
+
+This generates:
+
+- $\epsilon$
+- $ab$
+- $aabb$
+- $aaabbb$
+- $\dots$
+
+***** (3) By Machines (Automata)
+
+A machine reads a string and decides whether to accept it.
+
+Examples:
+
+- Finite automata
+- Pushdown automata
+- Turing machines
+
+A deep result:
+
+Grammars, machines, and logical definitions often describe the same classes
+of languages.
+
+**** 5. Syntax vs Meaning
+
+Formal language theory studies:
+
+- Syntax (structure)
+
+It does *not* study:
+
+- Meaning (semantics)
+
+Example:
+
+The string:
+
+$aabbb$
+
+Formal language theory asks:
+
+Is it in the set?
+
+It does not ask:
+
+What does it mean?
+
+**** 6. The Chomsky Hierarchy
+
+Languages fall into types depending on structural complexity.
+
+From simplest to most powerful:
+
+1. Regular languages  
+   - Recognized by finite automata  
+   - No memory  
+
+2. Context-free languages  
+   - Recognized by pushdown automata  
+   - Have stack memory  
+   - Handle nested structure  
+
+3. Context-sensitive languages  
+
+4. Recursively enumerable languages  
+   - Recognized by Turing machines  
+
+Each level allows more complex patterns.
+
+**** 7. Connecting Formal Languages to First-Order Logic
+
+First-order logic itself is a formal language.
+
+To define it formally, we specify:
+
+***** Alphabet of First-Order Logic
+
+Example alphabet:
+
+- Logical symbols: $\forall, \exists, \neg, \land, \lor, \rightarrow, =$  
+- Variables: $x, y, z, x_1, x_2, \dots$  
+- Parentheses: $(,)$  
+- Predicate symbols: $P, Q, R, \dots$  
+- Function symbols: $f, g, \dots$  
+- Constant symbols: $a, b, c, \dots$
+
+This collection of symbols forms an alphabet $\Sigma_{FOL}$.
+
+***** Strings
+
+Any finite sequence of these symbols is a string.
+
+Example of a string:
+
+$\forall x ( P(x) \rightarrow Q(x) )$
+
+But not every string is *well-formed*.
+
+***** Well-Formed Formulas (WFFs)
+
+We define formation rules inductively:
+
+1. If $P$ is an $n$-ary predicate and $t_1, \dots, t_n$ are terms,
+   then $P(t_1, \dots, t_n)$ is a formula.
+
+2. If $\varphi$ and $\psi$ are formulas, then:
+   - $\neg \varphi$
+   - $(\varphi \land \psi)$
+   - $(\varphi \rightarrow \psi)$
+
+3. If $\varphi$ is a formula and $x$ a variable:
+   - $\forall x \varphi$
+   - $\exists x \varphi$
+
+The *formal language of first-order logic* is the set of all strings
+generated by these formation rules.
+
+Thus:
+
+First-order logic = a formally defined language of well-formed formulas.
+
+**** 8. Peano Arithmetic as a Formal Language
+
+Peano Arithmetic (PA) is a specific first-order language plus axioms.
+
+***** Alphabet of PA
+
+It includes:
+
+- Constant symbol: $0$
+- Function symbols:
+  - $S$ (successor)
+  - $+$ (addition)
+  - $\cdot$ (multiplication)
+- Equality symbol: $=$
+- Logical symbols:
+  - $\forall, \exists, \neg, \land, \lor, \rightarrow$
+- Variables: $x, y, z, \dots$
+
+***** Terms
+
+Defined inductively:
+
+- $0$ is a term.
+- If $t$ is a term, then $S(t)$ is a term.
+- If $t_1, t_2$ are terms:
+  - $(t_1 + t_2)$
+  - $(t_1 \cdot t_2)$
+
+***** Formulas
+
+If $t_1$ and $t_2$ are terms:
+
+- $t_1 = t_2$ is a formula.
+
+From these, more complex formulas are built using logical symbols.
+
+Example formulas:
+
+- $\forall x (x + 0 = x)$
+- $\forall x \forall y (x + S(y) = S(x + y))$
+
+***** Axioms of PA
+
+Examples:
+
+1. $\forall x \neg (S(x) = 0)$
+2. $\forall x \forall y (S(x) = S(y) \rightarrow x = y)$
+3. Induction schema:
+   If $\varphi(0)$ and
+   $\forall x (\varphi(x) \rightarrow \varphi(S(x)))$,
+   then $\forall x \varphi(x)$.
+
+Thus:
+
+Peano Arithmetic is:
+
+- A formal language (its symbols and formation rules)
+- Plus a set of axioms (special formulas inside that language)
+
+**** 9. Big Picture
+
+A formal language is:
+
+- An alphabet $\Sigma$
+- A set of formation rules
+- A resulting set of strings
+
+First-order logic is a formal language.
+
+Peano arithmetic is:
+
+A particular first-order formal language designed to describe natural numbers.
+
+Meaning (semantics) comes later, when we interpret:
+
+- $0$ as the number zero
+- $S$ as the successor function
+- $+$ as addition
+
+But syntactically, it is just symbol manipulation.
+
+This separation between:
+
+- Syntax (formal language)
+- Semantics (interpretation)
+
+is one of the deepest ideas in modern logic.
+```
+
+
+*** Main Differences Between Propositional Logic and First-Order Logic
+
+The main differences concern *what they can talk about* and how much internal
+structure their statements have.
+
+**** Propositional Logic
+
+***** Basic Idea
+
+Propositional logic treats whole statements as indivisible atoms.
+
+Examples:
+
+- $P$ : “It is raining.”
+- $Q$ : “The ground is wet.”
+
+You can form compound statements:
+
+- $P \land Q$
+- $P \rightarrow Q$
+- $\neg P$
+
+***** Key Features
+
+- Atomic units are whole propositions.
+- Logical connectives:
+  - $\neg$ (not)
+  - $\land$ (and)
+  - $\lor$ (or)
+  - $\rightarrow$ (implies)
+  - $\leftrightarrow$ (if and only if)
+- No variables
+- No quantifiers
+- No internal structure inside propositions
+
+***** Limitation
+
+It cannot express statements like:
+
+“All humans are mortal.”
+
+Because propositional logic cannot refer to objects inside statements.
+It only sees complete statements as black boxes.
+
+**** First-Order Logic (FOL)
+
+First-order logic extends propositional logic by allowing us to talk about:
+
+- Objects
+- Properties of objects
+- Relations between objects
+- Quantification over objects
+
+***** New Components in First-Order Logic
+
+****** 1. Variables
+
+Symbols like:
+
+- $x$
+- $y$
+- $z$
+
+These range over objects in a domain.
+
+****** 2. Predicates
+
+Instead of atomic propositions like $P$, we have predicates applied to terms:
+
+- $\mathrm{Human}(x)$
+- $\mathrm{Loves}(x,y)$
+
+Predicates express properties and relations.
+
+****** 3. Quantifiers
+
+This is the major expansion.
+
+- Universal quantifier:
+  - $\forall x$
+- Existential quantifier:
+  - $\exists x$
+
+Now we can express:
+
+- $\forall x \, (\mathrm{Human}(x) \rightarrow \mathrm{Mortal}(x))$
+
+This was impossible in propositional logic.
+
+****** 4. Functions (optional but common)
+
+Example:
+
+- $\mathrm{Father}(x)$
+
+Which allows nested structure:
+
+- $\mathrm{Human}(\mathrm{Father}(x))$
+
+**** What Extra Abilities Does First-Order Logic Bring?
+
+***** Ability 1: Talk About Individuals
+
+Propositional logic:
+
+- $P$ : “Socrates is mortal.”
+
+First-order logic:
+
+- $\mathrm{Mortal}(\mathrm{Socrates})$
+
+Now the internal structure is visible.
+
+***** Ability 2: Express General Laws
+
+Propositional logic must list cases:
+
+- $P_1 \land P_2 \land P_3 \land \dots$
+
+First-order logic expresses them compactly:
+
+- $\forall x \, (\mathrm{Human}(x) \rightarrow \mathrm{Mortal}(x))$
+
+***** Ability 3: Express Existence
+
+Propositional logic cannot naturally express:
+
+“There exists someone who loves everyone.”
+
+First-order logic:
+
+- $\exists x \, \forall y \, \mathrm{Loves}(x,y)$
+
+***** Ability 4: Express Relations
+
+Propositional logic cannot express:
+
+“Everyone loves someone.”
+
+First-order logic:
+
+- $\forall x \, \exists y \, \mathrm{Loves}(x,y)$
+
+***** Ability 5: Express Mathematical Structure
+
+Arithmetic needs quantification:
+
+- $\forall x \, (x + 0 = x)$
+
+Propositional logic cannot express arithmetic laws.
+
+**** Expressive Power Comparison
+
+| Feature                 | Propositional Logic | First-Order Logic |
+|-------------------------+---------------------+-------------------|
+| Logical connectives     | Yes                 | Yes               |
+| Variables               | No                  | Yes               |
+| Predicates              | No                  | Yes               |
+| Quantifiers             | No                  | Yes               |
+| Relations               | No                  | Yes               |
+| Arithmetic expressible  | No                  | Yes               |
+| Talks about individuals | No                  | Yes               |
+
+**** Cost of Extra Power
+
+The extra expressive power comes with trade-offs:
+
+- Propositional logic is decidable (truth tables always work).
+- First-order logic is not decidable in general.
+- First-order reasoning is more complex.
+
+**** Conceptual Summary
+
+- Propositional logic talks about whole facts.
+- First-order logic talks about objects inside facts.
+
+Propositional logic says:
+
+“This statement is true.”
+
+First-order logic says:
+
+“For every object in the universe, this property holds.”
+```
+
+*** FOL Components
+
+Back to FOL...
+
+A first-order language is created by specifying:
+
+1. Its symbols (vocabulary)
+2. Rules for forming expressions (syntax)
+3. Rules for assigning meaning (semantics)
+
+Together, these define a complete formal language.
+
+**** 1. Vocabulary (Alphabet of the Language)
+
+To construct a first-order language, we first define its symbols.
+
+***** A. Logical Symbols (Built-In)
+
+These are common to all first-order languages:
+
+- Quantifiers:
+  - $\forall$ (for all)
+  - $\exists$  (there exists)
+
+- Logical connectives:
+  - $\lnot$  (not)
+  - $\land$  (and)
+  - $\lor$  (or)
+  - $\implies$  (implies)
+  - $\iff$  (if and only if)
+
+- Variables:
+  - $x$, $y$, $z$, ...
+
+- Equality (optional but common):
+  - $=$
+
+***** B. Non-Logical Symbols (Domain-Specific)
+
+These depend on what the language is about.
+
+1. Constant symbols (name specific objects)
+   - $a$, $b$, $john$
+
+2. Function symbols (map objects to objects)
+   - $father(x)$
+   - $plus(x, y)$
+
+3. Predicate symbols (properties or relations)
+   - ~Human(x)~
+   - ~Loves(x, y)~
+   - ~Prime(x)~
+
+The choice of these symbols determines what the language can express.
+
+**** 2. Syntax: Building Well-Formed Formulas
+
+Syntax specifies how symbols may be combined.
+
+***** Step 1: Terms
+
+Terms refer to objects.
+
+A term can be:
+- A variable ($x$)
+- A constant ($john$)
+- A function applied to terms ($father(x)$, $plus(x, y)$)
+
+***** Step 2: Atomic Formulas
+
+An atomic formula is a predicate applied to terms.
+
+Examples:
+- ~Human(x)~
+- ~Loves(john, mary)~
+- ~Prime(7)~
+
+***** Step 3: Complex Formulas
+
+Formulas can be combined using logical connectives and quantifiers.
+
+Examples:
+- $\lnot Human(x)$
+- $Human(x) \land Mortal(x)$
+- $\forall x (Human(x) \implies Mortal(x))$
+- $\exists x | Loves(x, mary)$
+
+These formation rules define what counts as a grammatically correct
+sentence.
+
+**** 3. Semantics: Giving Meaning
+
+Syntax defines structure.
+Semantics defines meaning.
+
+To interpret a first-order language, we specify:
+
+1. A domain of discourse (the set of objects being discussed)
+2. An interpretation that assigns:
+   - Each constant → an object in the domain
+   - Each function → a mapping over the domain
+   - Each predicate → a relation over the domain
+
+***** Example interpretation:
+
+Domain: all people
+
+Human(x): "x is a person"
+Mortal(x): "x eventually dies"
+
+Then the sentence:
+
+  ∀x (Human(x) → Mortal(x))
+
+means:
+
+  For every object in the domain,
+  if it is human, then it is mortal.
+
+**** 4. How This Creates a Language
+
+A first-order language is created by:
+
+1. Defining a vocabulary
+2. Defining formation rules (syntax)
+3. Defining interpretation rules (semantics)
+
+Comparison:
+
+| Natural Language   | First-Order Logic |
+|--------------------+-------------------|
+| Words              | Symbols           |
+| Grammar rules      | Formation rules   |
+| Contextual meaning | Interpretation    |
+
+First-order logic removes ambiguity by enforcing precise structure and meaning.
+
+**** 5. Example: Constructing a Simple Language
+
+Suppose we want a language about family relationships.
+
+***** Vocabulary
+
+- Constant: john
+- Predicate: Parent(x, y)
+- Predicate: Male(x)
+
+***** Sentence
+
+  ∀x (Parent(john, x) → Male(john))
+
+Meaning:
+
+  For every x,
+  if john is a parent of x,
+  then john is male.
+
+This is a complete sentence in a first-order language.
+
+**** 6. Why This Matters
+
+First-order logic is used to construct:
+
+- Mathematical theories
+- Knowledge representation systems
+- Database query systems
+- Programming language semantics
+- Artificial intelligence reasoning systems
+
+It provides the structural foundation for precise formal reasoning.
+
+**** Summary
+
+First-order logic creates a language by providing:
+
+1. Symbols (vocabulary)
+2. Grammar rules (syntax)
+3. Interpretation rules (semantics)
+
+The result is a precise, unambiguous formal language capable of expressing structured reasoning about objects and their relationships.
+
+
+
+*** Building the Language of Set Theory Using First-Order Logic
+
+**** Overview
+
+Here we walk through how first-order logic (FOL) is used to build the
+*language of set theory*, step by step, with detailed examples.
+
+Set theory (specifically Zermelo–Fraenkel set theory, ZF) is formulated
+entirely inside a first-order language. What makes it powerful is that
+*everything is a set* — numbers, functions, relations, ordered pairs —
+all are defined using only sets.
+
+We will follow these five steps:
+
+1. Specify the vocabulary
+2. Define terms
+3. Define atomic formulas
+4. Build complex formulas
+5. Provide semantics (interpretation)
+
+---------------------------------------------------------------------
+
+**** Step 1: Specify the Vocabulary
+
+A first-order language consists of logical symbols plus non-logical symbols.
+
+***** Logical Symbols (standard in all FOL)
+
+- Quantifiers: ∀, ∃
+- Connectives: ¬, ∧, ∨, →, ↔
+- Variables: x, y, z, x₁, x₂, ...
+- Equality: =
+
+***** Non-Logical Symbols for Set Theory
+
+In standard ZF set theory, the language is extremely minimal.
+
+It contains only:
+
+- One binary predicate symbol: ∈  (membership)
+
+That’s it.
+
+There are:
+- No constant symbols
+- No function symbols
+- No additional predicates
+
+Everything must be expressed using:
+  =
+  ∈
+  logical symbols
+
+This simplicity is one of the remarkable features of set theory.
+
+---------------------------------------------------------------------
+
+**** Step 2: Define Terms
+
+In this language, terms are very simple.
+
+Since there are:
+- no constants
+- no function symbols
+
+The only terms are:
+
+- Variables
+
+Examples of terms:
+- x
+- y
+- z
+- x₁
+
+That means every object referred to in the language is a variable.
+Objects only gain meaning once interpreted in a model.
+
+---------------------------------------------------------------------
+
+**** Step 3: Atomic Formulas
+
+Atomic formulas are the simplest meaningful statements.
+
+Because the only non-logical symbol is ∈,
+the only atomic formulas are:
+
+1. x ∈ y
+2. x = y
+
+Examples:
+
+- x ∈ y
+- y ∈ z
+- x = y
+- x ∈ x
+
+Even something like:
+
+  "x is a subset of y"
+
+is not primitive. It must be defined using ∈:
+
+  x ⊆ y  is shorthand for:
+
+  ∀z (z ∈ x → z ∈ y)
+
+So subset is not a new symbol —
+it is a defined abbreviation inside the language.
+
+---------------------------------------------------------------------
+
+**** Step 4: Build Complex Formulas
+
+Now we use logical connectives and quantifiers
+to build meaningful mathematical statements.
+
+Here are important examples.
+
+--------------------------------------------------
+***** Example 1: The Empty Set
+
+We want to say:
+
+  There exists a set with no elements.
+
+Formal version:
+
+  ∃x ∀y ¬(y ∈ x)
+
+This says:
+
+  There exists x such that
+  for every y,
+  y is not an element of x.
+
+--------------------------------------------------
+***** Example 2: Subset Relation
+
+Define:
+
+  x ⊆ y
+
+as:
+
+  ∀z (z ∈ x → z ∈ y)
+
+Now we can express:
+
+  x = y  iff  x ⊆ y ∧ y ⊆ x
+
+Which expands fully to:
+
+  ∀z (z ∈ x ↔ z ∈ y)
+
+--------------------------------------------------
+***** Example 3: Pairing Axiom
+
+Informally:
+
+  For any x and y,
+  there exists a set containing exactly x and y.
+
+Formal version:
+
+  ∀x ∀y ∃z ∀w (w ∈ z ↔ (w = x ∨ w = y))
+
+This expresses the existence of {x, y}.
+
+--------------------------------------------------
+***** Example 4: Union Axiom
+
+Informally:
+
+  For any set x,
+  there exists a set containing all elements of elements of x.
+
+Formal version:
+
+  ∀x ∃u ∀z (z ∈ u ↔ ∃y (y ∈ x ∧ z ∈ y))
+
+This defines ⋃x.
+
+--------------------------------------------------
+***** Example 5: Defining Ordered Pairs
+
+Ordered pairs are not primitive.
+They are defined using sets.
+
+Kuratowski definition:
+
+  (x, y) = {{x}, {x, y}}
+
+Each part of this definition must itself
+be built using earlier axioms (pairing, union, etc.).
+
+So even ordered pairs reduce to pure membership structure.
+
+--------------------------------------------------
+***** Example 6: Defining Natural Numbers
+
+In set theory:
+
+0 = ∅
+1 = {∅}
+2 = {∅, {∅}}
+3 = {∅, {∅}, {∅, {∅}}}
+...
+
+Each number is defined as:
+
+  n = {0, 1, ..., n-1}
+
+So arithmetic is encoded entirely using sets.
+
+---------------------------------------------------------------------
+
+**** Step 5: Semantics (Interpretation)
+
+To interpret this language, we specify:
+
+1. A domain
+2. An interpretation of ∈
+
+In set theory, a model consists of:
+
+- A collection M of objects
+- A binary relation E on M
+
+The formula:
+
+  x ∈ y
+
+means:
+
+  x is related to y by E.
+
+If the structure satisfies all axioms of ZF,
+it is called a *model of set theory*.
+
+Inside the intended model:
+
+- The domain is the cumulative hierarchy of sets
+- ∈ is actual set membership
+
+But other, nonstandard models also exist.
+
+---------------------------------------------------------------------
+
+**** What Makes This Powerful?
+
+With only:
+
+  ∈
+  =
+  logical symbols
+
+we can define:
+
+- subsets
+- unions
+- intersections
+- ordered pairs
+- relations
+- functions
+- natural numbers
+- real numbers
+- metric spaces
+- groups
+- topological spaces
+
+All of modern mathematics can be formalized
+inside this tiny first-order language.
+
+---------------------------------------------------------------------
+
+**** Big Picture Summary
+
+When first-order logic is applied to set theory:
+
+1. The vocabulary is reduced to a single primitive relation (∈).
+2. Terms are only variables.
+3. Atomic formulas are membership or equality statements.
+4. All mathematics is built using quantified combinations of those.
+5. Meaning is given by a model consisting of a domain and a membership relation.
+
+This shows how an entire mathematical universe
+can be constructed from a minimal first-order language.
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+
+* References
+@@html:<font color = "#0d3db3">@@
+
+@@html:</font>@@
+
+bibliography:/home/galaxybeing/Dropbox/org/biblio/ref.bib
+
+* Footnotes
+
+[fn:1] Anything with the prefix /meta-/ in front of it attempts to go
+one layer, one step above something and observe it as a whole. It can
+be said the starting point of all things meta is
+**[[https://en.wikipedia.org/wiki/Metaphysics][metaphysics]]**. Perhaps see [[https://youtu.be/psSyM1zp82k?si=GMcmUObxJdv74UzQ][this video]] about metamathematics. As
+Stephen Wolfram said, with metamathematics "...we make lots of
+mathematics /computational/ ." Again, /formalize to operationalize/. A
+great deal of what **codeismathiscode** is aiming at can be called
+metamathematics.
+
+[fn:2] [[cite:&bansal2012symbolic]]
+
+[fn:3] [[cite:&lemmon1978beginning]]
+
+[fn:4] ...even this much verbiage seems cumbersome.
+
+[fn:5] ...which brings up the question, Why is early math education so
+seemingly afraid of teaching abstraction? Possibly because abstraction
+is difficult to teach to a classroom of more than some five
+children. The gift of abstract thinking must be given
+person-to-person.
+
+[fn:6] As it turns out today's AI such as ChatGPT, Gemini, and Grok,
+all are /Large Language Models/ that use __no__ actual logic reasoning
+at all! Which is a weakness. But efforts are underway to create
+hybrids that can reason logically. See [[file:ChatWithGemini20260223.html][A little chat with Gemini 3 Pro]].
+
+[fn:7] ...so if everyday English is so crazy, how then is LLM (large
+language model) AI (e.g., ChatGPT) able to hold a decent, albeit
+sometimes wooden conversation with us?  Hold that thought...
