@@ -35,6 +35,109 @@
 
 
 
+
+
+** Testing                                                       :noexport:
+
+#+BEGIN_SRC sml :session *sml* :results output
+val addOne = fn n => n + 1;
+#+END_SRC
+
+#+RESULTS:
+: val it = "stdIn" : string
+
+
+An exponentiation, power-of function
+
+#+begin_src sml :session *sml* :results output
+fun pow base 0 = 1
+  | pow base exp = base * pow base (exp - 1);
+
+val result1 = pow 2 3;
+val result2 = pow 5 4;
+#+end_src
+
+#+RESULTS:
+: val result1 = 8 : int
+
+#+begin_src sml :results output :session *sml*
+fun pow2 (base : int) 0 : int = 1
+  | pow2 (base : int) (exp : int) : int = base * pow2 base (exp - 1);
+
+val result = pow2 2 3;
+#+end_src
+
+#+RESULTS:
+: val result = 8 : int
+
+#+begin_src sml :results output :session *sml*
+fun pow4 (x : int) (y : int) =
+    if y = 0
+    then 1
+    else x * pow4 x (y-1); (* <-- Add this if typing directly in the REPL *)
+#+end_src
+
+
+
+#+begin_src sml :session *sml* :results output
+fun factorial 0 = 1
+  | factorial n = n * factorial (n - 1);
+
+val result = factorial 5;
+#+end_src
+
+#+RESULTS:
+: val result = 120 : int
+
+#+name: 9d952c5d-b1c8-4698-bba0-74c616af03f4
+#+begin_src sml :session *sml* :results output verbatim :exports both
+val myNumbers = [1, 2, 3, 4, 5];
+
+val incrementedNumbers = List.map (fn n => n + 1) myNumbers;
+#+end_src
+
+#+RESULTS: 9d952c5d-b1c8-4698-bba0-74c616af03f4
+: val myNumbers = [1,2,3,4,5] : int list
+: 
+: [autoloading]
+: [library $SMLNJ-BASIS/basis.cm is stable]
+: [library $SMLNJ-BASIS/(basis.cm):basis-common.cm is stable]
+: [autoloading done]
+: val incrementedNumbers = [2,3,4,5,6] : int list
+
+#+name: f4251bed-aa87-4d7a-bd53-368b78cab7a0
+#+begin_src sml :session *sml* :results output verbatim :exports both
+incrementedNumbers;
+#+end_src
+
+#+RESULTS: f4251bed-aa87-4d7a-bd53-368b78cab7a0
+: val it = [2,3,4,5,6] : int list
+
+
+
+#+begin_src sml :session *sml* :results output :exports both :var multiplier=10
+val baseNumbers = [1, 2, 3];
+val scaledNumbers = List.map (fn n => n * multiplier) baseNumbers;
+#+end_src
+
+#+RESULTS:
+: val multiplier = 10 : int
+: val baseNumbers = [1,2,3] : int list
+: val scaledNumbers = [10,20,30] : int list
+
+
+#+name: my-table
+| 1 | 2 |
+| 3 | 4 |
+
+#+begin_src sml :session *sml* :results output :exports both :var data=my-table
+val flatData = List.concat data;
+#+end_src
+
+#+RESULTS:
+: val data = [[1,2],[3,4]] : int list list
+: val flatData = [1,2,3,4] : int list
+
 ** Expressions versus commands: the conceptual shift
 
 *** The imperative model (C/C++): controlling the machine
@@ -43,14 +146,14 @@ C and its sister language C++ (C/C++) are modeled heavily on the
 physical architecture of the computer (specifically, the von Neumann
 architecture). When you program in C/C++ you are effectively issuing
 step-by-step commands to directly change the state of the computer's
-live memory.
+memory.
 
-- **Variables as memory boxes:** In C/C++, a variable is a named
-  location, a /box/ in memory.
-- **Commands as mutations:** For example, a line of code such as =x =
-  x + 1;= is a command.[fn:1] It means: "Go to the memory location
-  named =x=, read the current value, add ~1~ to it, and overwrite the
-  contents of that exact same box with the new value."
+- **Variables as memory boxes:** In C/C++, a variable is a named box
+  in memory.
+- **Commands as mutations:** A statement like =x = x + 1;= is a
+  command.[fn:1] It means: "Go to the memory box named =x=, read the
+  current value, add ~1~ to it, and overwrite the contents of that
+  exact same box with the new value."
 
 #+BEGIN_SRC c
 int x = 5;
@@ -61,8 +164,8 @@ x = x + 1;
 
 The execution of a C/C++ program is a timeline of state changes. To
 understand what the program is doing at, say, line 50, you have to
-mentally track the current state of all the mutations[fn:2] carried out from
-lines 1 through 49.
+mentally track the current state of all the mutated "boxes" from lines
+1 through 49.[fn:2]
 
 *** The functional model (ML family): reducing expressions
 
@@ -74,66 +177,50 @@ running an SML program is much like simplifying an algebraic equation.
 - **Variables as definitions:** In SML, a variable is not a box in
   memory; it is a mathematical definition. If you write =x = 5=, you
   are /binding/ ~5~ to ~x~. You are stating a truth: "In this scope,
-  =x= is exactly and forever ~5~..."
-- *Evaluation as Substitution:* ...then if you have a function =f y =
-  y + 1= and you evaluate =f x=, the program simply substitutes =x=
-  with 5, evaluating =5 + 1= to =6=. /No memory locations change
-  state./ Consider this ML code
+  =x= is exactly and forever ~5~."
+- *Evaluation as Substitution:* If you have a function =f y = y + 1=
+  and you evaluate =f x=, the program simply substitutes =x= with 5,
+  evaluating =5 + 1= to =6=.
 
 #+name: fa965987-b1b3-4f20-87f2-5a6edbb61b75
-#+begin_src sml :session *sml* :results output :exports both
+#+begin_src sml :session *sml* :results output verbatim :exports both
 let
   val x = 5
   fun f y = y + 1
 in
-  print ("x = " ^ Int.toString x ^ "\n" ^ "f x = "
-         ^ Int.toString (f x) ^ "\n")
-        (* this is just a print statement *)
+  print ("f x = " ^ Int.toString (f x) ^ "\n" ^ "x = " ^ Int.toString x ^ "\n")
 end
 #+end_src
 
 #+RESULTS: fa965987-b1b3-4f20-87f2-5a6edbb61b75
-: x = 5
 : f x = 6
+: x = 5
 : val it = () : unit
 
-The number ~5~ did not mutate into, become ~6~. The original value of
-~x~ was not destroyed or mutated. Instead, a brand new value (=6=) was
-produced as the result of evaluating the function ~f~ with the value
-of ~x~ as its argument. This is "pure functional statelessness." This
-is immutability. Because values never change once defined, an
-expression evaluated with the same inputs will always yield the exact
-same result, with no hidden dependencies on an external, ever-changing
-memory states.[fn:4]
+The number ~5~ did not /become/ 6. The original value was not destroyed
+or mutated. Instead, a brand new value (=6=) was produced as the
+result of the expression. This is "pure functional
+statelessness"—immutability. Because values never change once defined,
+an expression evaluated with the same inputs will always yield the
+exact same result, with no hidden dependencies on an external,
+shifting timeline of memory states.
 
 *** The Compiler's Magic Trick
+If Haskell programs are just pure, stateless mathematical equations,
+how does the computer actually do the work?
 
-If SML programs are just the computer version of mathematical
-equations, how does the computer actually do the work?
+This is where the compiler and the runtime system come in. The Haskell compiler takes your pure, stateless mathematical logic and translates it into the highly stateful, messy, imperative machine code required by the CPU. 
 
-This is where the compiler and the runtime system come in. The SML
-compiler takes the pure, stateless mathematical logic of the code and
-translates it into the highly stateful, messy, imperative machine code
-required by the CPU. /But all of this is abstracted away so we don't
-have to bother with it/.
+- When you evaluate an expression to a new value, the Haskell runtime silently allocates new memory for that value behind the scenes.
+- When old values are no longer needed for any further equations, the runtime's "garbage collector" silently reclaims that memory.
 
-- When we bind a variable name with a value or evaluate an expression
-  to a new value, the SML /executive runtime/ allocates new memory
-  behind the scenes---as opposed to C/C++ where all memory management
-  is coded by the programmer.
-- Then when old values are no longer needed, the runtime's "garbage
-  collector" silently reclaims that memory.
+In C, /you/ manage the state. In Haskell, you work in a pure mathematical domain, and the /runtime system/ handles the dirty work of managing the physical state of the hardware. 
 
-In C, the programmer manages the state. In SML, you work in a pure
-mathematical domain, and the /runtime system/ handles the dirty work
-of managing the physical state of the hardware.
+You have hit the absolute bullseye. Yes, to all of your questions. 
 
-In SML, =fun f y = y + 1= is nothing more than convenient syntactic
-sugar for =val f = fn y => y + 1=. Underneath the hood, *all functions
-in SML are just anonymous lambda functions bound to variable names.*
+In SML, =fun f y = y + 1= is nothing more than convenient syntactic sugar for =val f = fn y => y + 1=. Underneath the hood, *all functions in SML are just anonymous lambda functions bound to variable names.*
 
-Here is why this design choice is so profound, what its purpose is,
-and how it forms the direct bridge to mathematical logic.
+Here is why this design choice is so profound, what its purpose is, and how it forms the direct bridge to mathematical logic.
 
 *** 1. The Purpose: Complete Uniformity
 If you define =val x = 5=, you are binding the integer value =5= to the name =x=. 
@@ -220,7 +307,7 @@ syntactic construct that can be evaluated to produce a **value**.
 
 This means programs in SML are made up of expressions that are
 evaluated to give values. What is an expression? Simply put, any
-section of code that can be evaluated to produce a value.[fn:5]
+section of code that can be evaluated to produce a value.[fn:4]
 
 SML expressions are related to [[https://en.wikipedia.org/wiki/Expression_(mathematics)][mathematical expressions]]. Consider this
 math equation
@@ -239,7 +326,7 @@ automatically an expression because it resolves to itself.
 @@html:<font color = "#0d3db3">@@⥤ To /evaluate/ an expression means
 to find a value equivalent to the expression.  @@html:</font>@@
 
-In math this is /reducing to simplest form/.[fn:6] For our $7x - 5 =
+In math this is /reducing to simplest form/.[fn:5] For our $7x - 5 =
 2$ example, by plugging in $x = 1$ to the expression $7x - 5$, it
 evaluates to $2$. But can't we then say the equation as a whole
 evaluates to the Boolean value of true? Yes and no. In just the form
@@ -313,7 +400,7 @@ val result = (1 + 2) * (Int.max(5, 10));
 : val result = 30 : int
 
 Here, ~(1 + 2)~ is an expression, ~Int.max(5, 10)~ is an
-expression,[fn:7], while the times operator ~*~ /composes/ them into a
+expression,[fn:6], while the times operator ~*~ /composes/ them into a
 larger expression. Then this value is bound to the variable phrase
 ~result~ /However, the entire line ~val result = (1 + 2) * (Int.max(5,
 10));~ itself is a **declaration** that contains expressions/. Let's
@@ -403,12 +490,12 @@ aren't nesting instructions; you are building a tree of definitions.
 *** 4. Comparison Table
 
 
-| Feature | Imperative Statement | SML Expression      |
-|---------+----------------------+---------------------|
-| Goal    | Change state/action  | Produce a value     |
-| Result  | ~void~ or ~unit~     | A specific type     |
+| Feature | Imperative Statement | SML Expression |
+|---------+----------------------+----------------|
+| Goal    | Change state/action  | Produce a value |
+| Result  | ~void~ or ~unit~      | A specific type |
 | Context | Control Flow         | Data Transformation |
-| AST     | Sequential Nodes     | Functional Tree     |
+| AST     | Sequential Nodes     | Functional Tree |
 
 *** 5. The "Everything is an Expression" Rule
 
@@ -485,7 +572,7 @@ val function_result = getR (); (* Now evaluates to 20 *)
 
 $\mathfrak{Fazit}$: Don't bother with reference/dereference updating
 unless you absolutely must. Normal variable immutability is a
-/feature/ of functional programming.[fn:8]
+/feature/ of functional programming.[fn:7]
 
 In functional programming everything is based on functions We'll look
 at
@@ -563,7 +650,7 @@ Here is a breakdown of how the math maps to the code:
 
 
 
-Because of this Cartesian product, a function with the signature =int * int -> int= actually only takes *one* argument. That single argument just happens to be a 2-tuple (a pair) containing two integers.[fn:9]
+Because of this Cartesian product, a function with the signature =int * int -> int= actually only takes *one* argument. That single argument just happens to be a 2-tuple (a pair) containing two integers.[fn:8]
 
 For example, an addition function with this signature would look like this:
 
@@ -632,21 +719,18 @@ $0 = 1$. Crazy.
 [fn:3] Standard ML is the original functional language based on type
 theory. After SML came Ocaml, Haskell, and F#.
 
-[fn:4] Later we'll learn how "same inputs always produce same outputs"
-is exactly how mathematical functions behave.
-
-[fn:5] In the Lisp family, a **form** is any part of the code that
+[fn:4] In the Lisp family, a **form** is any part of the code that
 can, taken by itself, produce a value.
 
-[fn:6] ...also called **normal form** in higher math.
+[fn:5] ...also called **normal form** in higher math.
 
-[fn:7] ~Int.max(a, b)~ is a built-in SML function that takes a tuple
+[fn:6] ~Int.max(a, b)~ is a built-in SML function that takes a tuple
 of two arguments and returns the one with the greater value.
 
-[fn:8] $\mathfrak{Fazit}$ (fah-**tzeet**, i.e., Mozart z) is German
+[fn:7] $\mathfrak{Fazit}$ (fah-**tzeet**, i.e., Mozart z) is German
 for /bottom line/ or /all in all/, a nod to all the German
 contributions to math.
 
-[fn:9] Technically, SML functions only ever take one argument at a
+[fn:8] Technically, SML functions only ever take one argument at a
 time. It only seems to take multiple arguments by packaging them
 inside a tuple. Read on about /currying/...

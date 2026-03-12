@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-03-11 Wed 21:57 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-org288531e" class="outline-2">
+<h2 id="org288531e">Connecting SML and \(\lambda\)-calculus</h2>
+<div class="outline-text-2" id="text-org288531e">
+</div>
+<div id="outline-container-orgf4316c4" class="outline-3">
+<h3 id="orgf4316c4">Inner product example</h3>
+<div class="outline-text-3" id="text-orgf4316c4">
+</div>
+<div id="outline-container-org819e6b8" class="outline-4">
+<h4 id="org819e6b8">What is an Inner Product?</h4>
+<div class="outline-text-4" id="text-org819e6b8">
+<p>
+In linear algebra, an inner product is a function that takes two
+vectors from a vector space and associates them with a single scalar
+quantity (like a real number). Instead of a single formula, an inner
+product is defined axiomatically.
+</p>
+
+<p>
+For a real vector space, a function denoted as \(\langle \vec{u},
+\vec{v} \rangle\) is an inner product if it satisfies the following
+axioms for all vectors \(\vec{u}, \vec{v}, \vec{w}\) and any scalar \(c\):
+</p>
+
+<ol class="org-ol">
+<li><b>Symmetry:</b> \(\langle \vec{u}, \vec{v} \rangle = \langle \vec{v}, \vec{u} \rangle\)</li>
+<li><b>Linearity in the first argument:</b> - \(\langle \vec{u} + \vec{v}, \vec{w} \rangle = \langle \vec{u}, \vec{w} \rangle + \langle \vec{v}, \vec{w} \rangle\)
+<ul class="org-ul">
+<li>\(\langle c\vec{u}, \vec{v} \rangle = c\langle \vec{u}, \vec{v} \rangle\)</li>
+</ul></li>
+<li><b>Positive-definiteness:</b> \(\langle \vec{u}, \vec{u} \rangle \geq 0\), and \(\langle \vec{u}, \vec{u} \rangle = 0 \iff \vec{u} = \vec{0}\)</li>
+</ol>
+
+<p>
+Any operation that satisfies these strict rules is an inner
+product. The standard dot product satisfies these rules, but so do
+many other operations (such as integrating the product of two
+functions).
+</p>
+</div>
+</div>
+<div id="outline-container-org496e461" class="outline-4">
+<h4 id="org496e461">Example: Inner Product in 3D Space (The Dot Product)</h4>
+<div class="outline-text-4" id="text-org496e461">
+<p>
+When working with standard vectors in 3D space (\(\mathbb{R}^3\)), the
+standard inner product <i>is</i> the dot product. You calculate it by
+multiplying the corresponding components of the vectors and summing
+the results.
+</p>
+
+<p>
+Let&rsquo;s take two vectors, \(\vec{a}\) and \(\vec{b}\):
+</p>
+<ul class="org-ul">
+<li>\(\vec{a} = (2, -1, 3)\)</li>
+<li>\(\vec{b} = (4, 5, -2)\)</li>
+</ul>
+
+<p>
+The standard inner product (dot product) \(\langle \vec{a}, \vec{b}
+\rangle\) or \(\vec{a} \cdot \vec{b}\) is calculated as:
+</p>
+
+\begin{align*}
+\vec{a} \cdot \vec{b} &= (2)(4) + (-1)(5) + (3)(-2) \\
+\vec{a} \cdot \vec{b} &= 8 - 5 - 6 \\
+\vec{a} \cdot \vec{b} &= -3
+\end{align*}
+
+<p>
+The resulting scalar is <b>-3</b>. Geometrically, because the result is negative, it tells us that the angle between these two vectors in 3D space is obtuse (greater than 90 degrees).
+</p>
+</div>
+</div>
+<div id="outline-container-org0c96d26" class="outline-4">
+<h4 id="org0c96d26">Example: A Simple Physics Problem</h4>
+<div class="outline-text-4" id="text-org0c96d26">
+<p>
+In physics, the concept of <b>Work</b> is defined as the inner product (dot product) of the Force vector (\(\vec{F}\)) and the Displacement vector (\(\vec{d}\)). 
+</p>
+
+<p>
+\[W = \vec{F} \cdot \vec{d}\]
+</p>
+
+<p>
+Imagine a child pulling a sled up a 30-degree incline. Let&rsquo;s set up a simple 2D coordinate system where the x-axis runs parallel to the surface of the incline.
+</p>
+
+<ol class="org-ol">
+<li><b>Displacement</b> (\(\vec{d}\)): The sled moves 10 meters directly up the incline. In our coordinate system, the displacement vector only has an x-component.
+<ul class="org-ul">
+<li>\(\vec{d} = (10, 0)\)</li>
+</ul></li>
+<li><b>Force</b> (\(\vec{F}\)): The child pulls on a rope attached to the sled with a force of 20 Newtons. The rope is angled 15 degrees <i>above</i> the incline. To find the vector components of this force, we use trigonometry:
+<ul class="org-ul">
+<li>\(F_x = 20 \cos(15^\circ) \approx 19.32\) N</li>
+<li>\(F_y = 20 \sin(15^\circ) \approx 5.18\) N</li>
+<li>\(\vec{F} = (19.32, 5.18)\)</li>
+</ul></li>
+</ol>
+
+<p>
+To find the work done by the child on the sled, we calculate the inner product of the two vectors:
+</p>
+
+<p>
+\[W = \langle \vec{F}, \vec{d} \rangle = (19.32)(10) + (5.18)(0)\]
+\[W = 193.2 + 0\]
+\[W = 193.2 \text{ Joules}\]
+</p>
+
+<p>
+Only the component of the force that points in the same direction as
+the displacement actually contributes to doing work on the sled, which
+is exactly the physical property the inner product isolates.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml" id="orgb22ef7e"><code><span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Function composition operator</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #8c8c8c;">(</span>f <span style="color: #c678dd; font-weight: bold;">o</span> g<span style="color: #8c8c8c;">)</span> x = f <span style="color: #8c8c8c;">(</span>g x<span style="color: #8c8c8c;">)</span>
+
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Core functions</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">multiply</span> <span style="color: #8c8c8c;">(</span>x, y<span style="color: #8c8c8c;">)</span> = x * y
+<span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">add</span> <span style="color: #8c8c8c;">(</span>x, y<span style="color: #8c8c8c;">)</span> = x + y
+<span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">foldl</span> f acc <span style="color: #8c8c8c;">[]</span>      = acc
+  | foldl f acc <span style="color: #8c8c8c;">(</span>x::xs<span style="color: #8c8c8c;">)</span> = foldl f <span style="color: #8c8c8c;">(</span>f <span style="color: #93a8c6;">(</span>acc, x<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span> xs
+
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Inner product via function composition</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">sum</span>    = foldl add 0
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">dotProd</span> = sum <span style="color: #c678dd; font-weight: bold;">o</span> <span style="color: #8c8c8c;">(</span>map multiply<span style="color: #8c8c8c;">)</span> <span style="color: #c678dd; font-weight: bold;">o</span> ListPair.zip
+
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Compute &lt;&lt;1,2,3&gt;, &lt;6,5,4&gt;&gt;</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">result</span> = dotProd <span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">[</span>1,2,3<span style="color: #93a8c6;">]</span>, <span style="color: #93a8c6;">[</span>6,5,4<span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #8c8c8c;">()</span> = print <span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"Inner product: "</span> ^ Int.toString result ^ <span style="color: #98be65;">"\n"</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+
+<pre class="example">
+Inner product: 28
+val o = fn : ('a -&gt; 'b) * ('c -&gt; 'a) -&gt; 'c -&gt; 'b
+val multiply = fn : int * int -&gt; int
+val add = fn : int * int -&gt; int
+val foldl = fn : ('a * 'b -&gt; 'a) -&gt; 'a -&gt; 'b list -&gt; 'a
+val sum = fn : int list -&gt; int
+val dotProd = fn : int list * int list -&gt; int
+val result = 28 : int
+</pre>
+</div>
+</div>
+<div id="outline-container-org8b8830a" class="outline-4">
+<h4 id="org8b8830a">Is This an Accurate Generalization of Functional Programming?</h4>
+<div class="outline-text-4" id="text-org8b8830a">
+<dl class="org-dl">
+<dt><b><b>Composition</b></b></dt><dd>\( f \circ g \) (in SML: <code>f o g</code>).  Combines two
+functions so that <code>(f ∘ g) x = f (g x)</code>.</dd>
+
+<dt><b><b>Application</b></b></dt><dd>The explicit higher-order applicator \( \lambda
+  f.\lambda a.(f\ a) \).  This is the <b>apply</b> operator treated as a
+first-class function: it takes a function <code>f</code> and an argument <code>a</code>
+and returns <code>f a</code>.  For example, <code>map</code> distributes a function over
+every element of a data structure (e.g., a list).</dd>
+
+<dt><b><b>Abstraction</b></b></dt><dd>Lambda / anonymous functions written as <code>fn x =&gt;
+  ...</code> in SML).</dd>
+</dl>
+
+<p>
+These three correspond directly to the fundamental operations of the
+(typed) lambda calculus, which is the theoretical bedrock of ML.
+</p>
+
+<p>
+<b><b>Examples in Standard ML</b></b>
+</p>
+</div>
+<div id="outline-container-org3f63f7f" class="outline-5">
+<h5 id="org3f63f7f">Composition</h5>
+<div class="outline-text-5" id="text-org3f63f7f">
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">add1</span> = <span style="color: #c678dd; font-weight: bold;">fn</span> x =&gt; x + 1;
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">double</span> = <span style="color: #c678dd; font-weight: bold;">fn</span> x =&gt; 2 * x;
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">doubleThenAdd1</span> = add1 <span style="color: #c678dd; font-weight: bold;">o</span> double;   <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">f &#8728; g</span><span style="color: #687080; font-style: italic;"> *)</span>
+doubleThenAdd1 5;                     <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">&#8594; 11</span><span style="color: #687080; font-style: italic;"> *)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org530237a" class="outline-5">
+<h5 id="org530237a">Application (the applicator λf.λa.(f a))</h5>
+<div class="outline-text-5" id="text-org530237a">
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">apply</span> f a = f a;                  <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">explicit &#955;f.&#955;a.(f a)</span><span style="color: #687080; font-style: italic;"> *)</span>
+apply double 7;                       <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">&#8594; 14</span><span style="color: #687080; font-style: italic;"> *)</span>
+
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">The "mapping to a list" spirit of generalized application</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">map</span> f <span style="color: #8c8c8c;">[]</span> = <span style="color: #8c8c8c;">[]</span>
+  | map f <span style="color: #8c8c8c;">(</span>x::xs<span style="color: #8c8c8c;">)</span> = <span style="color: #8c8c8c;">(</span>f x<span style="color: #8c8c8c;">)</span> :: map f xs;
+map <span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">fn</span> n =&gt; n * n<span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">[</span>1, 2, 3<span style="color: #8c8c8c;">]</span>;        <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">&#8594; [1, 4, 9]</span><span style="color: #687080; font-style: italic;"> *)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6ee8555" class="outline-5">
+<h5 id="org6ee8555">Abstraction</h5>
+<div class="outline-text-5" id="text-org6ee8555">
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">fn</span> x =&gt; x * x<span style="color: #8c8c8c;">)</span> 5;                    <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">&#8594; 25</span><span style="color: #687080; font-style: italic;"> *)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8948797" class="outline-5">
+<h5 id="org8948797">What else?</h5>
+<div class="outline-text-5" id="text-org8948797">
+<p>
+While the three operations suffice <b>in pure theory</b> to express any
+computable function (the lambda calculus is Turing-complete), they do
+not represent the full paradigm of functional programming in
+ML. Several core features and idioms are missing:
+</p>
+</div>
+<div id="outline-container-org94dc380" class="outline-6">
+<h6 id="org94dc380">Recursion</h6>
+<div class="outline-text-6" id="text-org94dc380">
+<p>
+Pure lambda calculus encodes recursion only via complex fixed-point
+combinators (e.g., the Y combinator built from the three
+primitives). Real ML provides explicit recursion for practicality.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">factorial</span> 0 = 1
+  | factorial n = n * factorial <span style="color: #8c8c8c;">(</span>n - 1<span style="color: #8c8c8c;">)</span>;
+factorial 5;  <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">&#8594; 120</span><span style="color: #687080; font-style: italic;"> *)</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7e0b801" class="outline-6">
+<h6 id="org7e0b801">Algebraic Data Types and Pattern Matching</h6>
+<div class="outline-text-6" id="text-org7e0b801">
+<p>
+You cannot meaningfully process structured data (lists, trees,
+options, etc.) with only composition, application, and
+abstraction. ML&rsquo;s expressive power comes from its rich type system and
+pattern matching.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #c678dd; font-weight: bold;">datatype</span> 'a <span style="font-weight: bold;">tree</span> = Empty
+                 | Node <span style="color: #c678dd; font-weight: bold;">of</span> 'a * 'a tree * 'a tree;
+
+<span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">inorder</span> Empty = <span style="color: #8c8c8c;">[]</span>
+  | inorder <span style="color: #8c8c8c;">(</span>Node<span style="color: #93a8c6;">(</span>v, left, right<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span> =
+    inorder left @ <span style="color: #8c8c8c;">[</span>v<span style="color: #8c8c8c;">]</span> @ inorder right;
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org37a066c" class="outline-6">
+<h6 id="org37a066c">Idiomatic Higher-Order Library Functions</h6>
+<div class="outline-text-6" id="text-org37a066c">
+<p>
+While <code>map</code>, <code>foldl</code>, <code>filter</code>, etc., can be <b>derived</b> from the three
+   primitives + recursion, the real day-to-day vocabulary of FP
+   consists of these library combinators (not raw λf.λa.(f a)
+   applications).
+</p>
+</div>
+</div>
+<div id="outline-container-orga4ab287" class="outline-6">
+<h6 id="orga4ab287">Immutability, Purity, Strong Static Typing, and Modules</h6>
+<div class="outline-text-6" id="text-orga4ab287">
+<p>
+Referential transparency, Hindley-Milner type inference, and the
+   module system (signatures, structures, functors) are central to ML
+   but lie outside the three basic operations.
+</p>
+
+<p>
+<b><b>Conclusion</b></b> The three notions — composition, the explicit
+application operator \( \lambda f.\lambda a.(f\ a) \), and lambda
+abstraction — beautifully summarize the <b>theoretical core</b> of how
+functions are defined and combined in the lambda calculus. The class
+notes likely present them this way to give students a clean, minimal
+starting point and to contrast the declarative FP style with
+imperative programming.
+</p>
+
+<p>
+However, saying functional programming &ldquo;can be summed up by&rdquo; only
+these three is inaccurate. Practical functional programming in ML (and
+similar languages) is about recursive functions over immutable
+algebraic data types, extensive use of higher-order library
+combinators, strong static typing, and writing programs by composing
+meaningful, reusable abstractions.
+</p>
+
+<p>
+The lambda-calculus primitives are the engine — but the full ML
+paradigm supplies the bodywork that makes the vehicle actually usable
+and productive.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb7d0ae3" class="outline-4">
+<h4 id="orgb7d0ae3">Do These Three Variations Cover <b>Every Possible</b> Function Evaluation in SML?</h4>
+<div class="outline-text-4" id="text-orgb7d0ae3">
+<p>
+<b><b>Short Answer</b></b>
+<b><b>No — not true.</b></b>
+</p>
+
+<p>
+They describe the <b>core mechanisms</b> for defining and combining pure
+functions in the lambda-calculus foundation of SML, but they do
+<b><b>not</b></b> cover every kind of function evaluation that actually occurs
+in Standard ML (or any practical lambda-calculus-based language).
+</p>
+
+<p>
+<b><b>Why the Three Operations Are Not Sufficient</b></b>
+</p>
+
+<ol class="org-ol">
+<li><b>The Three Are Not Even All Primitive in Pure Lambda Calculus</b>
+<ul class="org-ul">
+<li>Pure (typed) lambda calculus only needs <b>two</b> syntactic forms:
+<ul class="org-ul">
+<li>Abstraction: <code>λx.M</code> (your <code>\f</code>)</li>
+<li>Application: <code>M N</code></li>
+</ul></li>
+<li>Composition <code>f ∘ g</code> is <b>derived</b>: <code>λx. f (g x)</code></li>
+<li>The explicit applicator <code>λf.λa.(f a)</code> is also <b>derived</b> — it is
+just the identity function applied in a curried way.</li>
+<li>So even in the theoretical core, calling these “three variations”
+that sum up <b>everything</b> is a pedagogical simplification, not the
+full formal story.</li>
+</ul></li>
+
+<li><p>
+<b>SML Evaluation Includes Many More Reduction Rules</b> SML’s
+operational semantics (call-by-value) define function evaluation
+far beyond simple β-reduction of abstractions and
+applications. Examples of evaluation steps <b>not</b> covered by the
+three operations:
+</p>
+
+<p>
+<b><b><b>Recursion (explicit fixed-point)</b></b></b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">fact</span> 0 = 1
+  | fact n = n * fact <span style="color: #8c8c8c;">(</span>n-1<span style="color: #8c8c8c;">)</span>;
+fact 5;  <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">the recursive call is *not* a plain composition or &#955;f.&#955;a.(f a)</span><span style="color: #687080; font-style: italic;"> *)</span>
+</code></pre>
+</div>
+
+<p>
+In pure lambda calculus you would need the Y combinator (built from
+the primitives in a very convoluted way). SML treats <code>fun</code>
+recursion as a primitive evaluation rule.
+</p>
+
+<p>
+<b><b><b>Pattern Matching on Algebraic Data Types</b></b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">length</span> <span style="color: #8c8c8c;">[]</span> = 0
+  | length <span style="color: #8c8c8c;">(</span>x::xs<span style="color: #8c8c8c;">)</span> = 1 + length xs;
+</code></pre>
+</div>
+
+<p>
+The <code>::</code> constructor and the <code>|</code> clauses trigger <b>case analysis</b>
+during evaluation — this is not simple function application or
+composition; it is a separate reduction rule in SML’s semantics.
+</p>
+
+<p>
+<b><b><b>Let-bindings, Sequencing, and Local Definitions</b></b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #c678dd; font-weight: bold;">let</span> <span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = 42
+    <span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">f</span> y = x + y
+<span style="color: #c678dd; font-weight: bold;">in</span> f 10 <span style="color: #c678dd; font-weight: bold;">end</span>
+</code></pre>
+</div>
+
+<p>
+The <code>let</code> binding and the scope resolution are extra evaluation
+steps.
+</p>
+
+<p>
+<b><b><b>Built-in Primitives and Overloaded Operators</b></b></b>
+</p>
+
+<ul class="org-ul">
+<li><code>+</code>, <code>@</code> (list append), <code>ref</code>, <code>!</code>, exceptions, I/O, etc.</li>
+<li>These are not pure λ-applications; they are hard-wired into the
+language runtime.</li>
+</ul></li>
+
+<li><p>
+<b>Higher-Order Library Functions Are Derived, Not Primitive</b>
+</p>
+
+<p>
+<code>map</code>, <code>foldl</code>, <code>filter</code> etc. can be <b>implemented</b> using
+abstraction + application + recursion, but the actual evaluation of
+<code>map f xs</code> in the SML compiler/runtime uses optimized,
+non-pure-lambda rules (and pattern matching).
+</p></li>
+</ol>
+
+<p>
+<b>*When the Claim *Would</b> Be True**
+</p>
+
+<ul class="org-ul">
+<li>If we were talking about the <b>pure untyped lambda calculus</b> with
+only β-reduction (and perhaps η), then yes — every term is
+ultimately built from abstraction and application, and every
+reduction step is β-reduction.</li>
+<li>The notes are almost certainly using the three as a <b>teaching
+device</b> to show students how functions are created, combined, and
+invoked declaratively, before introducing the full ML machinery.</li>
+</ul>
+
+<p>
+<b><b>Conclusion</b></b>
+</p>
+
+<p>
+The three variations (composition, explicit applicator
+<code>λf.λa.(f a)</code>, and abstraction) beautifully capture the <b>declarative
+spirit</b> and the mathematical essence of how you <b>build</b> and <b>invoke</b>
+pure functions. But they do <b><b>not</b></b> describe “every possible type of
+function evaluation” that actually happens when you run an SML
+program. Real SML evaluation also involves recursion unfolding,
+pattern matching, let-binding, constructor application, and primitive
+operations — none of which reduce to just those three forms.
+</p>
+
+<p>
+If the notes later introduce these extra constructs (which they almost
+certainly do), they are showing how the lambda core is <b>extended</b> into
+a usable programming language. The three are the engine — but the full
+language adds the gearbox, steering wheel, and wheels.  ```
+</p>
+</div>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

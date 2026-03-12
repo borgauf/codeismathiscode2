@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2026-03-06 Fri 10:01 -->
+<!-- 2026-03-09 Mon 10:51 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -227,6 +227,38 @@ pre.example {clear: none; }
 </style>
 <style> .title { display: none; } </style>
 <style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <article id="content" class="content">
@@ -278,19 +310,474 @@ pre.example {clear: none; }
 </nav>
 </div>
 </p>
-<section id="outline-container-org819e6b8" class="outline-2">
-<h2 id="org819e6b8">Programming Languages UW</h2>
-<div class="outline-text-2" id="text-org819e6b8">
+<section id="outline-container-orgd9cd98a" class="outline-2">
+<h2 id="orgd9cd98a">Standard ML 1</h2>
+<div class="outline-text-2" id="text-orgd9cd98a">
 </div>
-<div id="outline-container-org530237a" class="outline-3">
-<h3 id="org530237a">Week 2 Section 1</h3>
-<div class="outline-text-3" id="text-org530237a">
+<div id="outline-container-orge57af97" class="outline-3">
+<h3 id="orge57af97">Expressions versus commands: the conceptual shift</h3>
+<div class="outline-text-3" id="text-orge57af97">
 </div>
-<div id="outline-container-org648c2f4" class="outline-4">
-<h4 id="org648c2f4">SML Basics</h4>
-<div class="outline-text-4" id="text-org648c2f4">
+<div id="outline-container-org3f63f7f" class="outline-4">
+<h4 id="org3f63f7f">The imperative model (C/C++): controlling the machine</h4>
+<div class="outline-text-4" id="text-org3f63f7f">
 <p>
-This is a <i>sequence of bindings</i>
+C and its sister language C++ (C/C++) are modeled heavily on the
+physical architecture of the computer (specifically, the von Neumann
+architecture). When you program in C/C++ you are effectively issuing
+step-by-step commands to directly change the state of the computer&rsquo;s
+live memory.
+</p>
+
+<ul class="org-ul">
+<li><b><b>Variables as memory boxes:</b></b> In C/C++, a variable is a named
+location, a <i>box</i> in memory.</li>
+<li><b><b>Commands as mutations:</b></b> For example, a line of code such as <code>x =
+  x + 1;</code> is a command.<label id='fnr.1' for='fnr-in.1.8263294' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.8263294' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+In math \(x = x +1\) is an absurdity. Simplifying we would have
+\(0 = 1\). Crazy.
+</span> It means: &ldquo;Go to the memory location
+named <code>x</code>, read the current value, add <code>1</code> to it, and overwrite the
+contents of that exact same box with the new value.&rdquo;</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-c"><code><span style="color: #61afef;">int</span> <span style="color: #61afef;">x</span> = 5;
+x = x + 1;
+<span style="color: #687080; font-style: italic;">// </span><span style="color: #687080; font-style: italic;">The state of 'x' is now permanently altered to 6
+</span><span style="color: #687080; font-style: italic;">// </span><span style="color: #687080; font-style: italic;">The previous state of x = 5 is gone forever</span>
+</code></pre>
+</div>
+
+<p>
+The execution of a C/C++ program is a timeline of state changes. To
+understand what the program is doing at, say, line 50, you have to
+mentally track the current state of all the mutations<label id='fnr.2' for='fnr-in.2.8791831' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.8791831' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+&hellip;all the memory shiftings and  overwrites&hellip;
+</span> carried out from
+lines 1 through 49.
+</p>
+</div>
+</div>
+<div id="outline-container-org8948797" class="outline-4">
+<h4 id="org8948797">The functional model (ML family): reducing expressions</h4>
+<div class="outline-text-4" id="text-org8948797">
+<p>
+SML<label id='fnr.3' for='fnr-in.3.7675764' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.7675764' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+Standard ML is the original functional language based on type
+theory. After SML came Ocaml, Haskell, and F#.
+</span> is not modeled on hardware architecture, rather, on
+mathematical logic. When we program in an ML language we do not write
+commands to change memory; we write expressions to be evaluated, and
+running an SML program is much like simplifying an algebraic equation.
+</p>
+
+<ul class="org-ul">
+<li><b><b>Variables as definitions:</b></b> In SML, a variable is not a box in
+memory; it is a mathematical definition. If you write <code>x = 5</code>, you
+are <i>binding</i> <code>5</code> to <code>x</code>. You are stating a truth: &ldquo;In this scope,
+<code>x</code> is exactly and forever <code>5</code>&hellip;&rdquo;</li>
+<li><b>Evaluation as Substitution:</b> &hellip;then if you have a function <code>f y =
+  y + 1</code> and you evaluate <code>f x</code>, the program simply substitutes <code>x</code>
+with 5, evaluating <code>5 + 1</code> to <code>6</code>. <i>No memory locations change
+state.</i> Consider this ML code</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-sml" id="org651f861"><code><span style="color: #c678dd; font-weight: bold;">let</span>
+  <span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = 5
+  <span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">f</span> y = y + 1
+<span style="color: #c678dd; font-weight: bold;">in</span>
+  print <span style="color: #8c8c8c;">(</span><span style="color: #98be65;">"x = "</span> ^ Int.toString x ^ <span style="color: #98be65;">"\n"</span> ^ <span style="color: #98be65;">"f x = "</span>
+         ^ Int.toString <span style="color: #93a8c6;">(</span>f x<span style="color: #93a8c6;">)</span> ^ <span style="color: #98be65;">"\n"</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">this is just a print statement</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">end</span>
+</code></pre>
+</div>
+
+<pre class="example">
+x = 5
+f x = 6
+val it = () : unit
+</pre>
+
+<p>
+The number <code>5</code> did not mutate into, become <code>6</code>. The original value of
+<code>x</code> was not destroyed or mutated. Instead, a brand new value (<code>6</code>) was
+produced as the result of evaluating the function <code>f</code> with the value
+of <code>x</code> as its argument. This is &ldquo;pure functional statelessness.&rdquo; This
+is immutability. Because values never change once defined, an
+expression evaluated with the same inputs will always yield the exact
+same result, with no hidden dependencies on an external, ever-changing
+memory states.<label id='fnr.4' for='fnr-in.4.7474389' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.7474389' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+Later we&rsquo;ll learn how &ldquo;same inputs always produce same outputs&rdquo;
+is exactly how mathematical functions behave.
+</span>
+</p>
+</div>
+</div>
+<div id="outline-container-orgbec9ad4" class="outline-4">
+<h4 id="orgbec9ad4">The Compiler&rsquo;s Magic Trick</h4>
+<div class="outline-text-4" id="text-orgbec9ad4">
+<p>
+If SML programs are just the computer version of mathematical
+equations, how does the computer actually do the work?
+</p>
+
+<p>
+This is where the compiler and the runtime system come in. The SML
+compiler takes the pure, stateless mathematical logic of the code and
+translates it into the highly stateful, messy, imperative machine code
+required by the CPU. <i>But all of this is abstracted away so we don&rsquo;t
+have to bother with it</i>.
+</p>
+
+<ul class="org-ul">
+<li>When we bind a variable name with a value or evaluate an expression
+to a new value, the SML <i>executive runtime</i> allocates new memory
+behind the scenes&mdash;as opposed to C/C++ where all memory management
+is coded by the programmer.</li>
+<li>Then when old values are no longer needed, the runtime&rsquo;s &ldquo;garbage
+collector&rdquo; silently reclaims that memory.</li>
+</ul>
+
+<p>
+In C, the programmer manages the state. In SML, you work in a pure
+mathematical domain, and the <i>runtime system</i> handles the dirty work
+of managing the physical state of the hardware.
+</p>
+
+<p>
+In SML, <code>fun f y = y + 1</code> is nothing more than convenient syntactic sugar for <code>val f = fn y =&gt; y + 1</code>. Underneath the hood, <b>all functions in SML are just anonymous lambda functions bound to variable names.</b>
+</p>
+
+<p>
+Here is why this design choice is so profound, what its purpose is, and how it forms the direct bridge to mathematical logic.
+</p>
+</div>
+</div>
+<div id="outline-container-org94dc380" class="outline-4">
+<h4 id="org94dc380">1. The Purpose: Complete Uniformity</h4>
+<div class="outline-text-4" id="text-org94dc380">
+<p>
+If you define <code>val x = 5</code>, you are binding the integer value <code>5</code> to the name <code>x</code>. 
+If you define <code>val f = fn y =&gt; y + 1</code>, you are doing the exact same thing: binding a function value (a closure) to the name <code>f</code>. 
+</p>
+
+<p>
+By making <code>fun</code> just a shorthand for <code>val</code> + <code>fn</code>, the language enforces that <b>functions are not special control structures</b> (as they are in C). They are just values, no different from integers, strings, or lists. Because they are just values, you can naturally pass them as arguments to other functions, return them from functions, or store them in data structures. It makes the entire language beautifully uniform.
+</p>
+</div>
+</div>
+<div id="outline-container-org38570f5" class="outline-4">
+<h4 id="org38570f5">2. The Direct Link to Lambda Calculus</h4>
+<div class="outline-text-4" id="text-org38570f5">
+<p>
+You have discovered the exact theoretical foundation of functional programming. Languages like SML, Haskell, and Scheme are not based on the Turing machine model of memory mutation; they are direct, executable implementations of <b>Alonzo Church’s lambda calculus</b>.
+</p>
+
+<p>
+In lambda calculus, there are only three fundamental operations:
+</p>
+<ol class="org-ol">
+<li><b>Variables:</b> \(x, y, z\)</li>
+<li><b>Abstraction (Function creation):</b> \(\lambda y . y + 1\)</li>
+<li><b>Application (Function calling):</b> \((\lambda y . y + 1)\ 5\)</li>
+</ol>
+
+
+
+<p>
+SML&rsquo;s syntax is a nearly 1-to-1 mapping of this logic:
+</p>
+<ul class="org-ul">
+<li>The lambda symbol (\(\lambda\)) becomes the <code>fn</code> keyword.</li>
+<li>The dot ($.$) becomes the thick arrow (=&gt;), establishing the mapping \(y \mapsto y + 1\).</li>
+<li>Function application is just writing them next to each other: <code>f x</code>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7e0b801" class="outline-4">
+<h4 id="org7e0b801">3. Computability and Type Theory</h4>
+<div class="outline-text-4" id="text-org7e0b801">
+<p>
+This is not just an academic curiosity; it dictates what the computer can actually calculate. In computability theory, the lambda calculus is proven to be Turing-complete. This means that merely by substituting variables into anonymous functions, you can compute anything that a C program can compute with pointers and mutable state. 
+</p>
+
+<p>
+Furthermore, when you add a rigorous type system on top of this (like SML&rsquo;s strongly typed integers, lists, and function types), you enter the realm of typed lambda calculi. The expressions you evaluate are no longer just running code; under the Curry-Howard correspondence, they map directly to constructive proofs in first-order logic. Evaluating the expression is equivalent to verifying the proof.
+</p>
+
+<p>
+By treating all functions as anonymous lambdas bound to values, SML strips away the hardware-level mechanics of the computer and lets you program directly in the domain of pure mathematical logic.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc36236b" class="outline-4">
+<h4 id="orgc36236b">4. Tossing a Lambda into Fold (Reduce)</h4>
+<div class="outline-text-4" id="text-orgc36236b">
+<p>
+Now, let us look at how we toss a lambda into a <code>fold</code> (or &ldquo;reduce&rdquo;) function to sum up an entire list of numbers. 
+</p>
+
+<p>
+In SML, <code>fold</code> comes in two main flavors: <code>foldl</code> (fold left) and <code>foldr</code> (fold right). They both take a function, an initial accumulator value, and a list.
+</p>
+
+<p>
+Let&rsquo;s use <code>foldl</code> to sum the list <code>[1, 2, 3, 4, 5]</code>. We will pass in an anonymous lambda function that takes a tuple <code>(element, accumulator)</code> and adds them together:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #c678dd; font-weight: bold;">let</span>
+  <span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">numbers</span> = <span style="color: #8c8c8c;">[</span>1, 2, 3, 4, 5<span style="color: #8c8c8c;">]</span>
+<span style="color: #c678dd; font-weight: bold;">in</span>
+  foldl <span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">fn</span> <span style="color: #93a8c6;">(</span>x, acc<span style="color: #93a8c6;">)</span> =&gt; x + acc<span style="color: #8c8c8c;">)</span> 0 numbers
+<span style="color: #c678dd; font-weight: bold;">end</span>
+</code></pre>
+</div>
+
+
+
+<p>
+Here is what is happening mathematically:
+</p>
+<ol class="org-ol">
+<li>The <code>foldl</code> function takes our initial accumulator <code>0</code> and the first element <code>1</code>. It applies the lambda: \((1, 0) \mapsto 1 + 0 = 1\).</li>
+<li>It takes the new accumulator <code>1</code> and the next element <code>2</code>. Applies the lambda: \((2, 1) \mapsto 2 + 1 = 3\).</li>
+<li>It takes the new accumulator <code>3</code> and the next element <code>3</code>. Applies the lambda: \((3, 3) \mapsto 3 + 3 = 6\).</li>
+</ol>
+<p>
+&hellip;and so on, until the list is empty, returning the final accumulated value of <code>15</code>.
+</p>
+
+<p>
+If we were to write our own <code>foldl</code> from scratch using pattern matching, it would look like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">myFoldl</span> f acc <span style="color: #8c8c8c;">[]</span> = acc
+  | myFoldl f acc <span style="color: #8c8c8c;">(</span>x::xs<span style="color: #8c8c8c;">)</span> = myFoldl f <span style="color: #8c8c8c;">(</span>f <span style="color: #93a8c6;">(</span>x, acc<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span> xs
+</code></pre>
+</div>
+
+<p>
+Notice how our recursive step <code>myFoldl f (f (x, acc)) xs</code> explicitly applies our function <code>f</code> to the current element <code>x</code> and the accumulator <code>acc</code>, and passes that newly evaluated value down as the accumulator for the next recursive call. This completely eliminates the need for stateful, mutating loops!
+</p>
+
+<p>
+&mdash;
+</p>
+
+<p>
+Would you like me to demonstrate how to implement a right-fold (<code>foldr</code>) next, to see how it builds an expression tree compared to <code>foldl</code>&rsquo;s iterative accumulation?
+</p>
+
+
+
+
+
+<p>
+With SML you do not issue commands. Instead we <i>compose</i> expressions,
+we <i>evaluate</i> expressions. The difference between composing
+expressions and issuing commands as with an imperative language is
+like the difference between a <b><b>recipe</b></b>: first do A, then do B, and a
+<b><b>mathematical formula</b></b>: evaluate B and C for a value, then evaluate
+A with that composed value. A command changes the state of the
+computer directly, while evaluating expressions is on a layer of
+abstraction above state changes.
+</p>
+</div>
+</div>
+<div id="outline-container-orge449b50" class="outline-4">
+<h4 id="orge449b50">Definition of an expression in SML</h4>
+<div class="outline-text-4" id="text-orge449b50">
+<p>
+<font color = "#0d3db3"> ⥤ In SML, an <b><b>expression</b></b> is a
+syntactic construct that can be evaluated to produce a <b><b>value</b></b>.
+</font>
+</p>
+
+<p>
+This means programs in SML are made up of expressions that are
+evaluated to give values. What is an expression? Simply put, any
+section of code that can be evaluated to produce a value.<label id='fnr.5' for='fnr-in.5.2765996' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.2765996' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+In the Lisp family, a <b><b>form</b></b> is any part of the code that
+can, taken by itself, produce a value.
+</span>
+</p>
+
+<p>
+SML expressions are related to <a href="https://en.wikipedia.org/wiki/Expression_(mathematics)">mathematical expressions</a>. Consider this
+math equation
+</p>
+
+\begin{align*}
+7x - 5 = 2
+\end{align*}
+
+<p>
+The two parts on either side of the equals sign, \(7x - 5\) as well as
+the \(2\), are expressions, while the whole equation itself, \(7x - 5 =
+2\), is not typically considered an expression, rather, a formula or an
+equation. Why?  Again, per definition, \(7x - 5\) by itself can be
+resolved to a value (if we plug a number into \(x\)), while \(2\) is
+automatically an expression because it resolves to itself.
+</p>
+
+<p>
+<font color = "#0d3db3">⥤ To <i>evaluate</i> an expression means
+to find a value equivalent to the expression.  </font>
+</p>
+
+<p>
+In math this is <i>reducing to simplest form</i>.<label id='fnr.6' for='fnr-in.6.1803119' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.1803119' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+&hellip;also called <b><b>normal form</b></b> in higher math.
+</span> For our \(7x - 5 =
+2\) example, by plugging in \(x = 1\) to the expression \(7x - 5\), it
+evaluates to \(2\). But can&rsquo;t we then say the equation as a whole
+evaluates to the Boolean value of true? Yes and no. In just the form
+of \(7x - 5 = 2\) we have no resolution.
+</p>
+
+<p>
+But why is \(2\) an expression? Because anything in the form of a
+value can be said to evaluate to itself. This is a universal
+convention of mathematics. If we simply feed possible values&mdash;
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml" id="orgf4316c4"><code>47;
+true;
+use;
+</code></pre>
+</div>
+
+<pre class="example">
+val it = 47 : int
+val it = true : bool
+val it = fn : string -&gt; unit
+</pre>
+
+<p>
+Again, a value is an expression that has been fully evaluated to its
+normal (simplest) form. It cannot be reduced any further. For example,
+the expression \(40 + 7\) evaluates to the value \(47\). So if we now
+evaluate \(47\) &mdash; which is already a value because it is in normal
+form &mdash; we must get that normal form value back. Notice the results
+reads <code>val it = 47 : int</code> Here the REPL environment has bound the
+normal form value <code>47</code> to the generic variable <code>it</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml" id="orgca4550f"><code>47;
+</code></pre>
+</div>
+
+<pre class="example">
+val it = 47 : int
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-sml" id="org97f457e"><code>it + 1;
+</code></pre>
+</div>
+
+<pre class="example">
+type: string
+</pre>
+
+
+
+
+<p>
+has a generic variable <code>it</code> to which a value
+</p>
+</div>
+</div>
+<div id="outline-container-orgd15c569" class="outline-4">
+<h4 id="orgd15c569">Composing versus nesting</h4>
+<div class="outline-text-4" id="text-orgd15c569">
+<p>
+Another way of contrasting imperative versus functional programming is
+how code is embedded in code. Imperative programming <i>nests logic</i>
+while functional <i>composes expressions</i>
+</p>
+
+<ul class="org-ul">
+<li><b><b>Nesting Logic:</b></b> Placing procedure code inside procedure code to
+control the flow of execution. The focus is on the order of the
+imperative commands as it changes state.</li>
+<li><b><b>Composing Expressions:</b></b> Building a result by combining smaller
+results. The focus is on the <span class="underline"><span class="underline">result&rsquo;s definition</span></span>. Consider this</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-sml" id="org0037182"><code><span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Composing small expressions into a larger one</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">result</span> = <span style="color: #8c8c8c;">(</span>1 + 2<span style="color: #8c8c8c;">)</span> * <span style="color: #8c8c8c;">(</span>Int.max<span style="color: #93a8c6;">(</span>5, 10<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>;
+</code></pre>
+</div>
+
+<pre class="example">
+val result = 30 : int
+</pre>
+
+<p>
+Here, <code>(1 + 2)</code> is an expression, <code>Int.max(5, 10)</code> is an
+expression,<label id='fnr.7' for='fnr-in.7.4007355' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.4007355' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+<code>Int.max(a, b)</code> is a built-in SML function that takes a tuple
+of two arguments and returns the one with the greater value.
+</span>, while the times operator <code>*</code> <i>composes</i> them into a
+larger expression. Then this value is bound to the variable phrase
+<code>result</code> <i>However, the entire line <code>val result = (1 + 2) * (Int.max(5,
+10));</code> itself is a <b><b>declaration</b></b> that contains expressions</i>. Let&rsquo;s
+take a closer look at this distinction. Unlike the formula above, a
+declaration can never be an expression. Here&rsquo;s a simple SML
+<i>declaration</i>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml" id="org9c1da07"><code><span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = 34;
+</code></pre>
+</div>
+
+<pre class="example">
+val x = 34 : int
+</pre>
+
+<ul class="org-ul">
+<li><b><b>Expressions</b></b> (\(e\)) compute and evaluate to a typed value. They
+<i>do not</i>, by themselves, introduce new names (e.g., <code>x</code>, <code>y</code>,
+<code>result</code>) into the global scope.</li>
+<li><b><b>Declarations</b></b> (\(d\)) modify the environment by binding
+identifiers (e.g., <code>z</code>, <code>f</code>, <code>myvrbl</code>) to the results of evaluated
+expressions. Again, they do not evaluate to a value in the same way an
+expression does; instead, <i>they produce a new environment</i>. Here,
+<code>x</code> is introduced to the SML system as an immutable variable.</li>
+</ul>
+
+<p>
+As we see above, the <code>val x = 34;</code> declaration &ldquo;at the top level&rdquo;,
+i.e., in the REPL, &ldquo;returns&rdquo; <code>val x = 34 : int</code> as a sort of recipe
+for making <code>x</code> available.
+</p>
+
+<p>
+<code>val x = 34</code> is a <i>variable binding</i>. Do not think of this as an
+<i>assignment</i>. In imperative languages like C/C++ an assignment of a
+number <code>34</code> to a variable <code>x</code> establishes <code>x</code> as a name for an
+internal place in memory, which can subsequently be <i>assigned</i> a
+different number by the program, overriding the original <code>34</code>. This is
+not the case with SML. If later in an SML session we declare <code>val x =
+38;</code> we would have literally created a new <code>x</code> that now has the value
+<code>38</code>. This means there are now two completely separate <code>x</code>&rsquo;s. This is
+called &ldquo;shadowing&rdquo;, i.e., some parts of my program might be working
+with the original <code>x</code> while others with the second <code>x</code> &mdash; i.e., this
+is undesirable.
+</p>
+
+<p>
+The code below shows a <i>sequence</i> of bindings
 </p>
 
 <div class="org-src-container">
@@ -309,11 +796,269 @@ val z = 70 : int
 val abs_of_z = 70 : int
 </pre>
 
+<p>
+Do not think of these as statements. Imperative languages (C, Java,
+Python) have statements, while SML has almost none. In imperative
+languages, an <code>if</code> or a <code>for</code> loop is a statement that <b><b><b>does
+something</b></b></b> directly to the state of the program in memory but
+returns nothing. In SML, expressions return values. For example, with
+a <i>conditional</i> <code>if ... then ... else</code>
+</p>
+
+<ul class="org-ul">
+<li><b><b>statement (Imperative):</b></b> <code>if (x &gt; 0) { print("hi"); }</code> &hellip;if <code>(x
+  &gt; 0)</code> is true this carries out the print and returns nothing,</li>
+<li><b><b>expression (SML):</b></b> <code>if x &gt; 0 then "hi" else "bye"</code>  &hellip;returns a
+string, i.e., a value.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9f6b9d4" class="outline-4">
+<h4 id="org9f6b9d4">Connection to Abstract Syntax Trees (AST)</h4>
+<div class="outline-text-4" id="text-org9f6b9d4">
+<p>
+Because SML is expression-oriented, the code maps almost 1-to-1 to an
+<b><b>AST</b></b>.
+</p>
+
+<p>
+In an AST:
+</p>
+
+<ul class="org-ul">
+<li><b><b>Leaves:</b></b> Constants (34, &ldquo;hello&rdquo;) and Variables (x, y).</li>
+<li><b><b>Nodes:</b></b> Operators or Function calls that take child expressions
+as sub-trees and produce a new value.</li>
+</ul>
+
+<p>
+In SML, the &ldquo;program&rdquo; is just one giant AST node that evaluates down
+to a final result. This is why &ldquo;nesting&rdquo; is a misleading term &mdash; you
+aren&rsquo;t nesting instructions; you are building a tree of definitions.
+</p>
+</div>
+</div>
+<div id="outline-container-org4d96662" class="outline-4">
+<h4 id="org4d96662">4. Comparison Table</h4>
+<div class="outline-text-4" id="text-org4d96662">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Feature</th>
+<th scope="col" class="org-left">Imperative Statement</th>
+<th scope="col" class="org-left">SML Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Goal</td>
+<td class="org-left">Change state/action</td>
+<td class="org-left">Produce a value</td>
+</tr>
+
+<tr>
+<td class="org-left">Result</td>
+<td class="org-left"><code>void</code> or <code>unit</code></td>
+<td class="org-left">A specific type</td>
+</tr>
+
+<tr>
+<td class="org-left">Context</td>
+<td class="org-left">Control Flow</td>
+<td class="org-left">Data Transformation</td>
+</tr>
+
+<tr>
+<td class="org-left">AST</td>
+<td class="org-left">Sequential Nodes</td>
+<td class="org-left">Functional Tree</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org43f758c" class="outline-4">
+<h4 id="org43f758c">5. The &ldquo;Everything is an Expression&rdquo; Rule</h4>
+<div class="outline-text-4" id="text-org43f758c">
+<p>
+In SML, even things that look like blocks are expressions:
+</p>
+
 <div class="org-src-container">
-<pre class="src src-sml" id="orgb22ef7e"><code><span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">pow</span> <span style="color: #8c8c8c;">(</span>x:int, y:int<span style="color: #8c8c8c;">)</span> = <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">correct only for y &gt;= 0</span><span style="color: #687080; font-style: italic;"> *)</span>
-<span style="color: #c678dd; font-weight: bold;">if</span> y=0
-<span style="color: #c678dd; font-weight: bold;">then</span> 1
-<span style="color: #c678dd; font-weight: bold;">else</span> x * pow<span style="color: #8c8c8c;">(</span>x,y-1<span style="color: #8c8c8c;">)</span>
+<pre class="src src-sml" id="orgd49c6e7"><code><span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">z</span> = <span style="color: #c678dd; font-weight: bold;">let</span> <span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = 10 <span style="color: #c678dd; font-weight: bold;">in</span> x + x <span style="color: #c678dd; font-weight: bold;">end</span>; 
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">The 'let...in...end' block is a single expression evaluating to 20</span><span style="color: #687080; font-style: italic;"> *)</span>
+</code></pre>
+</div>
+
+<pre class="example">
+val z = 20 : int
+</pre>
+
+
+
+<ul class="org-ul">
+<li><b><b>Immutability</b></b>: A binding creates a fixed link between a name
+(e.g., <code>x</code>) and a value (<code>34</code>). Once bound, the value of that
+specific <code>x</code> cannot be changed.</li>
+<li><b><b>Shadowing</b></b>: If you type val <code>x = 50</code> into the REPL later, you
+aren&rsquo;t changing the old <code>x</code>, you are creating a new binding that
+&ldquo;shadows&rdquo; (hides) the previous one in the current scope.</li>
+<li><b><b>Assignment</b></b>: Actual assignment in SML is only possible using
+reference cells (e.g., <code>val x = ref 34</code>), where you use the :=
+operator to update the contents of a memory location.</li>
+</ul>
+
+<p>
+In SML, <b>binding</b> and <b>assignment</b> are distinct concepts. A standard <code>val</code> 
+binding is immutable; you can only &ldquo;change&rdquo; it by shadowing the name with 
+a completely new binding. Which is confusing, so don&rsquo;t do it.
+</p>
+</div>
+<div id="outline-container-org06d8357" class="outline-6">
+<h6 id="org06d8357">Shadowing (Immutable Bindings)</h6>
+<div class="outline-text-6" id="text-org06d8357">
+<p>
+Shadowing creates a new environment entry rather than updating an existing one.
+Existing functions continue to use the binding that was in scope when they 
+were defined. For example
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml" id="org2ed5839"><code><span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = 10;
+<span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">getX</span> <span style="color: #8c8c8c;">()</span> = x;
+
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Shadowing x with a new binding</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = 20;
+
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">shadowed_result</span> = x;        <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Evaluates to 20</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">function_result</span> = getX <span style="color: #8c8c8c;">()</span>; <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Still evaluates to 10</span><span style="color: #687080; font-style: italic;"> *)</span>
+</code></pre>
+</div>
+
+<pre class="example">
+val x = 10 : int
+val getX = fn : unit -&gt; int
+val x = 20 : int
+val shadowed_result = 20 : int
+val function_result = 10 : int
+</pre>
+</div>
+</div>
+<div id="outline-container-orgac43560" class="outline-6">
+<h6 id="orgac43560">Reference updates&mdash;like with blub languages</h6>
+<div class="outline-text-6" id="text-orgac43560">
+<p>
+Reference cells allow you to update the value stored in a memory location 
+using the <code>:=</code> operator.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">r</span> = ref 10;
+<span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">getR</span> <span style="color: #8c8c8c;">()</span> = !r; <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">The ! operator dereferences the cell</span><span style="color: #687080; font-style: italic;"> *)</span>
+
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Actual assignment/mutation</span><span style="color: #687080; font-style: italic;"> *)</span>
+r := 20;
+
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">assigned_result</span> = !r;      <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Evaluates to 20</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">function_result</span> = getR <span style="color: #8c8c8c;">()</span>; <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Now evaluates to 20</span><span style="color: #687080; font-style: italic;"> *)</span>
+</code></pre>
+</div>
+
+
+<p>
+\(\mathfrak{Fazit}\): Don&rsquo;t bother with reference/dereference updating
+unless you absolutely must. Normal variable immutability is a
+<i>feature</i> of functional programming.<label id='fnr.8' for='fnr-in.8.3259718' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.3259718' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+\(\mathfrak{Fazit}\) (fah-<b><b>tzeet</b></b>, i.e., Mozart z) is German
+for <i>bottom line</i> or <i>all in all</i>, a nod to all the German
+contributions to math.
+</span>
+</p>
+
+<p>
+In functional programming everything is based on functions We&rsquo;ll look
+at
+</p>
+</div>
+</div>
+<div id="outline-container-org4fa171c" class="outline-5">
+<h5 id="org4fa171c">How Recursion Replaces Iteration</h5>
+<div class="outline-text-5" id="text-org4fa171c">
+<p>
+In functional programming, you do not use <code>for</code> or <code>while</code> loops to change a 
+counter. Instead, you use <b><b>recursion</b></b> to pass the &ldquo;new state&rdquo; as an argument 
+to the next function call.
+</p>
+</div>
+<div id="outline-container-orgf77f551" class="outline-6">
+<h6 id="orgf77f551">1. The Anatomy of a Functional &ldquo;Loop&rdquo;</h6>
+<div class="outline-text-6" id="text-orgf77f551">
+<p>
+A recursive function replaces the three parts of a traditional loop:
+</p>
+<ul class="org-ul">
+<li><b><b>Initialization:</b></b> The initial arguments passed to the function.</li>
+<li><b><b>Condition:</b></b> The <b><b>Base Case</b></b> (e.g., checking for an empty list).</li>
+<li><b><b>Advancement:</b></b> The recursive call with a modified value (the &ldquo;step&rdquo;).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org491c8cd" class="outline-6">
+<h6 id="org491c8cd">2. Tail Recursion (The &ldquo;Efficient&rdquo; Loop)</h6>
+<div class="outline-text-6" id="text-org491c8cd">
+<p>
+SML optimized <b><b>tail-recursive</b></b> functions to run as efficiently as 
+imperative loops. A function is tail-recursive if the 
+recursive call is the absolute last action it performs.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-sml" id="org8258019"><code><span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Imperative-style thinking: sum a list</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">In a loop, you'd have: total = 0; for x in list: total += x</span><span style="color: #687080; font-style: italic;"> *)</span>
+
+<span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">sum_list</span> <span style="color: #8c8c8c;">(</span>nums: int list, acc: int<span style="color: #8c8c8c;">)</span> =
+    <span style="color: #c678dd; font-weight: bold;">case</span> nums <span style="color: #c678dd; font-weight: bold;">of</span>
+        <span style="color: #8c8c8c;">[]</span>      =&gt; acc               <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Base Case: Loop is finished</span><span style="color: #687080; font-style: italic;"> *)</span>
+      | <span style="color: #8c8c8c;">(</span>x::xs<span style="color: #8c8c8c;">)</span> =&gt; sum_list <span style="color: #8c8c8c;">(</span>xs, x + acc<span style="color: #8c8c8c;">)</span> <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Advancement: Next "iteration"</span><span style="color: #687080; font-style: italic;"> *)</span>
+
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">result</span> = sum_list <span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">[</span>1, 2, 3, 4<span style="color: #93a8c6;">]</span>, 0<span style="color: #8c8c8c;">)</span>; <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">result is 10</span><span style="color: #687080; font-style: italic;"> *)</span>
+</code></pre>
+</div>
+
+<pre class="example">
+val sum_list = fn : int list * int -&gt; int
+val result = 10 : int
+</pre>
+</div>
+</div>
+<div id="outline-container-orgf2b533c" class="outline-6">
+<h6 id="orgf2b533c">3. Why Recursion?</h6>
+<div class="outline-text-6" id="text-orgf2b533c">
+<ul class="org-ul">
+<li><b><b>No Mutation:</b></b> You never actually change the value of <code>acc</code>; you just 
+provide a <b>new</b> value for the <b>next</b> function&rsquo;s <code>acc</code>.</li>
+<li><b><b>Immutability:</b></b> Each &ldquo;iteration&rdquo; has its own unique, immutable scope.</li>
+<li><b><b>Structural Match:</b></b> Recursion naturally follows the shape of data 
+structures like lists and trees.</li>
+</ul>
+
+
+
+<div class="org-src-container">
+<pre class="src src-sml" id="org60e9411"><code><span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">pow</span> <span style="color: #8c8c8c;">(</span>x:int, y:int<span style="color: #8c8c8c;">)</span> = <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">correct only for y &gt;= 0</span><span style="color: #687080; font-style: italic;"> *)</span>
+    <span style="color: #c678dd; font-weight: bold;">if</span> y=0
+    <span style="color: #c678dd; font-weight: bold;">then</span> 1
+    <span style="color: #c678dd; font-weight: bold;">else</span> x * pow<span style="color: #8c8c8c;">(</span>x,y-1<span style="color: #8c8c8c;">)</span>
 </code></pre>
 </div>
 
@@ -322,7 +1067,7 @@ val pow = fn : int * int -&gt; int
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-sml" id="org8b8830a"><code>pow <span style="color: #8c8c8c;">(</span>3,2<span style="color: #8c8c8c;">)</span>
+<pre class="src src-sml" id="org9e9c835"><code>pow <span style="color: #8c8c8c;">(</span>3,2<span style="color: #8c8c8c;">)</span>
 </code></pre>
 </div>
 
@@ -330,29 +1075,118 @@ val pow = fn : int * int -&gt; int
 val it = 9 : int
 </pre>
 
+
+
 <p>
-<font color = "#0d3db3">
-⥤ The result of evaluating something produces a value.
-</font>
+In Standard ML (and many other functional languages), the <code>*</code> in a
+type signature denotes a <b><b>tuple type</b></b>, which is the direct
+programming equivalent of a mathematical Cartesian product.
 </p>
 
 <p>
-Every value is an expression, but not every expression is a value. So
-certain expressions that are values always evaluate to themselves.
+Here is a breakdown of how the math maps to the code:
+</p>
+
+<ul class="org-ul">
+<li><b>The Math</b> (\(N \times N\)): The Cartesian product of two sets, representing the set of all ordered pairs \((x, y)\) where both \(x\) and \(y\) are natural numbers.</li>
+<li><b>The Code</b> (<code>int * int</code>): The tuple type representing all possible pairs of integers in SML, written as <code>(x, y)</code>.</li>
+</ul>
+
+
+
+<p>
+Because of this Cartesian product, a function with the signature <code>int * int -&gt; int</code> actually only takes <b>one</b> argument. That single argument just happens to be a 2-tuple (a pair) containing two integers.<label id='fnr.9' for='fnr-in.9.1143249' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.1143249' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+Technically, SML functions only ever take one argument at a
+time. It only seems to take multiple arguments by packaging them
+inside a tuple. Read on about <i>currying</i>&hellip;
+</span>
+</p>
+
+<p>
+For example, an addition function with this signature would look like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sml" id="org3f63f7f"><code>47;
-true;
-use;
+<pre class="src src-sml"><code><span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">add</span> <span style="color: #8c8c8c;">(</span>x, y<span style="color: #8c8c8c;">)</span> = x + y;
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">val add = fn : int * int -&gt; int</span><span style="color: #687080; font-style: italic;"> *)</span>
 </code></pre>
 </div>
 
-<pre class="example">
-val it = 47 : int
-val it = true : bool
-val it = fn : string -&gt; unit
-</pre>
+<p>
+When you call <code>add (3, 4)</code>, you are passing a single tuple <code>(3, 4)</code> from the Cartesian product <code>int * int</code> into the function.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb2581f5" class="outline-5">
+<h5 id="orgb2581f5">Uncurried Functions and Cartesian Products</h5>
+<div class="outline-text-5" id="text-orgb2581f5">
+<p>
+In the uncurried approach, a function takes a single argument that happens to be a tuple. 
+</p>
+
+<ul class="org-ul">
+<li><b>SML Type</b>: <code>int * int -&gt; int</code></li>
+<li><b>Mathematical Relation</b>: A mathematical function is a specific type of binary relation. For an uncurried function taking two arguments, we define a mapping \(f: X \times Y \to Z\).</li>
+<li><b>Set Theory Perspective</b>: This function is a subset of the Cartesian product \((X \times Y) \times Z\). Each element of the relation is an ordered pair where the first element is itself an ordered pair \((x, y)\) from \(X \times Y\), and the second is the result \(z\) from \(Z\).</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Uncurried addition</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">add_uncurried</span> <span style="color: #8c8c8c;">(</span>x, y<span style="color: #8c8c8c;">)</span> = x + y;
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">val add_uncurried = fn : int * int -&gt; int</span><span style="color: #687080; font-style: italic;"> *)</span>
+
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">result</span> = add_uncurried <span style="color: #8c8c8c;">(</span>3, 4<span style="color: #8c8c8c;">)</span>;
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org79d85d1" class="outline-5">
+<h5 id="org79d85d1">Curried Functions and Higher-Order Mapping</h5>
+<div class="outline-text-5" id="text-org79d85d1">
+<p>
+Currying (named after logician Haskell Curry) transforms a function that takes a tuple into a sequence of functions, each taking a single argument. This is the default behavior you see in languages like Haskell, but in SML, you define it explicitly.
+</p>
+
+<ul class="org-ul">
+<li><b>SML Type</b>: <code>int -&gt; int -&gt; int</code> (which groups right-associatively as <code>int -&gt; (int -&gt; int)</code>)</li>
+<li><b>Mathematical Relation</b>: Instead of mapping a Cartesian product to a value, a curried function maps a single value to <b>another function</b>. Mathematically, this is \(f: X \to (Y \to Z)\).</li>
+<li><b>Set Theory Perspective</b>: If \(Z^Y\) denotes the set of all functions from \(Y\) to \(Z\), our curried function is an element of \((Z^Y)^X\). When you apply the first argument \(x \in X\), the relation yields a new function \(g: Y \to Z\).</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Curried addition</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">add_curried</span> x y = x + y;
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">val add_curried = fn : int -&gt; int -&gt; int</span><span style="color: #687080; font-style: italic;"> *)</span>
+
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Partial application is now possible</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">add_three</span> = add_curried 3;
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">val add_three = fn : int -&gt; int</span><span style="color: #687080; font-style: italic;"> *)</span>
+
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">result</span> = add_three 4;
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org86c1bc6" class="outline-5">
+<h5 id="org86c1bc6">The Mathematical Isomorphism</h5>
+<div class="outline-text-5" id="text-org86c1bc6">
+<p>
+The relationship between these two approaches is a fundamental isomorphism in set theory and logic. The set of functions from a Cartesian product is in one-to-one correspondence with the set of functions returning functions:
+</p>
+
+<p>
+\[Z^{X \times Y} \cong (Z^Y)^X\]
+</p>
+
+<p>
+This means any uncurried function can be mechanically translated into a curried function, and vice versa, without losing any structural information or expressive power.
+</p>
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
 </div>
 </div>
 </div>

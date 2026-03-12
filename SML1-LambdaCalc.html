@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-03-09 Mon 11:13 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-orgd9cd98a" class="outline-2">
+<h2 id="orgd9cd98a">Standard ML 1: Lambda Calculus</h2>
+<div class="outline-text-2" id="text-orgd9cd98a">
+</div>
+<div id="outline-container-orgb22ef7e" class="outline-3">
+<h3 id="orgb22ef7e">What is the Lambda Calculus?</h3>
+<div class="outline-text-3" id="text-orgb22ef7e">
+<p>
+The lambda calculus is a formal system in mathematical logic created
+by the mathematician Alonzo Church in the 1930s to express
+computation. If the Turing machine is the foundation of imperative
+programming (moving a tape, changing state), the lambda calculus is
+the foundation of functional programming (evaluating expressions).
+</p>
+
+<p>
+At its core, it demonstrates that you only need three concepts to
+represent any computable function: variables, function creation
+(abstraction), and function application.
+</p>
+
+<p>
+The entire syntax of the untyped lambda calculus can be defined as:
+</p>
+
+<p>
+\[t ::= x \mid \lambda x. t \mid t_1\ t_2\]
+</p>
+
+<p>
+Here is what those three terms mean:
+</p>
+
+<ol class="org-ol">
+<li><b><b>Variables (\(x\)):</b></b> A character or string representing a parameter
+or a mathematical value.</li>
+<li><b><b>Abstractions (\(\lambda x. t\)):</b></b> The creation of an anonymous
+function. The \(\lambda\) declares that \(x\) is the parameter, and the dot
+(\(.\)) separates the parameter from the body of the function (\(t\)).</li>
+<li><b><b>Applications (\(t_1\ t_2\)):</b></b> Calling a function. This means
+applying the function \(t_1\) to the argument \(t_2\).</li>
+</ol>
+
+<p>
+Computation in the lambda calculus happens through <b>\(\beta\)-reduction</b> (beta reduction), which is essentially substitution. If you apply an abstraction to an argument, you substitute the argument for the bound variable in the body of the abstraction.
+For example, applying the identity function \(\lambda x. x\) to the variable \(y\):
+</p>
+
+<p>
+\[(\lambda x. x)\ y \mapsto y\]
+</p>
+</div>
+</div>
+<div id="outline-container-org0c96d26" class="outline-3">
+<h3 id="org0c96d26">How SML Creates a Syntax from Lambda Calculus</h3>
+<div class="outline-text-3" id="text-org0c96d26">
+<p>
+SML takes the raw, theoretical lambda calculus and maps it directly to a human-readable syntax, while adding a type system and practical features so you can actually build software with it.
+</p>
+</div>
+<div id="outline-container-org8b8830a" class="outline-4">
+<h4 id="org8b8830a">1. The Direct Translation</h4>
+<div class="outline-text-4" id="text-org8b8830a">
+<p>
+The core of SML&rsquo;s syntax is a direct 1-to-1 mapping of the three lambda calculus terms:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Lambda Calculus Concept</th>
+<th scope="col" class="org-left">Formal Notation</th>
+<th scope="col" class="org-left">SML Syntax</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>Variable</b></td>
+<td class="org-left">\(x\)</td>
+<td class="org-left"><code>x</code></td>
+<td class="org-left">Identifiers bound to values.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Abstraction</b></td>
+<td class="org-left">\(\lambda x. x + 1\)</td>
+<td class="org-left"><code>fn x =&gt; x + 1</code></td>
+<td class="org-left">Anonymous function definition.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Application</b></td>
+<td class="org-left">\(f\ x\)</td>
+<td class="org-left"><code>f x</code></td>
+<td class="org-left">Calling a function by placing the argument next to it.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org3f63f7f" class="outline-4">
+<h4 id="org3f63f7f">2. Syntactic Sugar for Humans</h4>
+<div class="outline-text-4" id="text-org3f63f7f">
+<p>
+Writing everything as raw anonymous functions (<code>fn x =&gt; ...</code>) is tedious, so SML provides syntactic sugar to make the lambda calculus more readable.
+</p>
+
+<p>
+<b>Named Functions:</b>
+Instead of writing an abstraction and binding it to a variable using a <code>val</code> declaration:
+<code>val addOne = fn x =&gt; x + 1</code>
+SML allows you to write:
+<code>fun addOne x = x + 1</code>
+Under the hood, SML treats this <code>fun</code> declaration identically to the <code>fn</code> abstraction. 
+</p>
+
+<p>
+<b>Let Bindings:</b>
+In lambda calculus, if you want to define a local variable to use in an expression, you apply an abstraction to an argument:
+</p>
+
+<p>
+\[(\lambda x. x\ x)\ y\]
+</p>
+
+<p>
+In SML, this same concept is handled with <code>let</code> expressions, which are much easier to read but functionally equivalent to applying an abstraction:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #c678dd; font-weight: bold;">let</span> 
+  <span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = y 
+<span style="color: #c678dd; font-weight: bold;">in</span> 
+  x * x 
+<span style="color: #c678dd; font-weight: bold;">end</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org648c2f4" class="outline-4">
+<h4 id="org648c2f4">3. Turning Theory into a Programming Language</h4>
+<div class="outline-text-4" id="text-org648c2f4">
+<p>
+To turn the lambda calculus from a mathematical model into SML, the language designers had to make a few critical additions:
+</p>
+
+<ul class="org-ul">
+<li><b>A Type System:</b> The pure lambda calculus is untyped, meaning you can apply any function to anything (even itself, which can cause infinite loops). SML applies the Hindley-Milner type system to the lambda calculus. This ensures that a function expecting an integer (\(\lambda x:\text{int}. x + 1\)) cannot be applied to a boolean, catching errors at compile time.</li>
+<li><b>Primitive Data Types:</b> In pure lambda calculus, you have to invent numbers and booleans using functions (called Church encodings). For example, the number 2 is represented as \(\lambda f. \lambda x. f\ (f\ x)\). SML provides hardware-level primitives like <code>int</code>, <code>real</code>, <code>bool</code>, and <code>string</code> for efficiency.</li>
+<li><b>Strict Evaluation (Call-by-Value):</b> The lambda calculus doesn&rsquo;t strictly define the order in which you evaluate expressions. SML establishes a &ldquo;strict&rdquo; evaluation strategy. When you write <code>f (g x)</code>, SML will fully evaluate <code>(g x)</code> to a value before applying <code>f</code> to it.</li>
+</ul>
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

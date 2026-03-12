@@ -1,0 +1,119 @@
+#+TITLE: 
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2026-03-09T16:05:01
+#+LANGUAGE:  en 
+#+EXPORT_FILE_NAME: SML1-LambdaCalc.html
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Bibliography ---
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+# --- Document Content Starts Here ---
+#+INCLUDE: /home/galaxybeing/Dropbox/org/codeismathiscode2/header.org :minlevel 1
+
+
+* Standard ML 1: Lambda Calculus
+:PROPERTIES:
+:TIME:     2020-03-22T19:47:16
+:ID:       0d2b1aaa-acdf-433b-ad0f-d3200246160c
+:EDGES:
+:END:
+
+** Not exported                                                   :noexport:
+
+#+begin_src sml :eval never :exports code :tangle sml1-lambda.sml :noweb yes
+
+
+
+
+#+end_src
+
+** What is the Lambda Calculus?
+
+The lambda calculus is a formal system in mathematical logic created
+by the mathematician Alonzo Church in the 1930s to express
+computation. If the Turing machine is the foundation of imperative
+programming (moving a tape, changing state), the lambda calculus is
+the foundation of functional programming (evaluating expressions).
+
+At its core, it demonstrates that you only need three concepts to
+represent any computable function: variables, function creation
+(abstraction), and function application.
+
+The entire syntax of the untyped lambda calculus can be defined as:
+
+$$t ::= x \mid \lambda x. t \mid t_1\ t_2$$
+
+Here is what those three terms mean:
+
+1. **Variables ($x$):** A character or string representing a parameter
+   or a mathematical value.
+2. **Abstractions ($\lambda x. t$):** The creation of an anonymous
+   function. The $\lambda$ declares that $x$ is the parameter, and the dot
+   (\(.\)) separates the parameter from the body of the function ($t$).
+3. **Applications ($t_1\ t_2$):** Calling a function. This means
+   applying the function $t_1$ to the argument $t_2$.
+
+Computation in the lambda calculus happens through *\(\beta\)-reduction* (beta reduction), which is essentially substitution. If you apply an abstraction to an argument, you substitute the argument for the bound variable in the body of the abstraction.
+For example, applying the identity function $\lambda x. x$ to the variable $y$:
+
+$$(\lambda x. x)\ y \mapsto y$$
+
+** How SML Creates a Syntax from Lambda Calculus
+
+SML takes the raw, theoretical lambda calculus and maps it directly to a human-readable syntax, while adding a type system and practical features so you can actually build software with it.
+
+*** 1. The Direct Translation
+
+The core of SML's syntax is a direct 1-to-1 mapping of the three lambda calculus terms:
+
+| Lambda Calculus Concept | Formal Notation    | SML Syntax      | Description                                                |
+|-------------------------+--------------------+-----------------+------------------------------------------------------------|
+| *Variable* | $x$                | ~x~             | Identifiers bound to values.                               |
+| *Abstraction* | $\lambda x. x + 1$ | ~fn x => x + 1~ | Anonymous function definition.                             |
+| *Application* | $f\ x$             | ~f x~           | Calling a function by placing the argument next to it.     |
+
+*** 2. Syntactic Sugar for Humans
+
+Writing everything as raw anonymous functions (~fn x => ...~) is tedious, so SML provides syntactic sugar to make the lambda calculus more readable.
+
+*Named Functions:*
+Instead of writing an abstraction and binding it to a variable using a ~val~ declaration:
+~val addOne = fn x => x + 1~
+SML allows you to write:
+~fun addOne x = x + 1~
+Under the hood, SML treats this ~fun~ declaration identically to the ~fn~ abstraction. 
+
+*Let Bindings:*
+In lambda calculus, if you want to define a local variable to use in an expression, you apply an abstraction to an argument:
+
+$$(\lambda x. x\ x)\ y$$
+
+In SML, this same concept is handled with ~let~ expressions, which are much easier to read but functionally equivalent to applying an abstraction:
+
+#+BEGIN_SRC sml
+let 
+  val x = y 
+in 
+  x * x 
+end
+#+END_SRC
+
+*** 3. Turning Theory into a Programming Language
+
+To turn the lambda calculus from a mathematical model into SML, the language designers had to make a few critical additions:
+
+- *A Type System:* The pure lambda calculus is untyped, meaning you can apply any function to anything (even itself, which can cause infinite loops). SML applies the Hindley-Milner type system to the lambda calculus. This ensures that a function expecting an integer ($\lambda x:\text{int}. x + 1$) cannot be applied to a boolean, catching errors at compile time.
+- *Primitive Data Types:* In pure lambda calculus, you have to invent numbers and booleans using functions (called Church encodings). For example, the number 2 is represented as $\lambda f. \lambda x. f\ (f\ x)$. SML provides hardware-level primitives like ~int~, ~real~, ~bool~, and ~string~ for efficiency.
+- *Strict Evaluation (Call-by-Value):* The lambda calculus doesn't strictly define the order in which you evaluate expressions. SML establishes a "strict" evaluation strategy. When you write ~f (g x)~, SML will fully evaluate ~(g x)~ to a value before applying ~f~ to it.
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+

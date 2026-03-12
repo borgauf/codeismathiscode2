@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-03-11 Wed 16:26 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-org819e6b8" class="outline-2">
+<h2 id="org819e6b8">Lambda Calculus Evaluation</h2>
+<div class="outline-text-2" id="text-org819e6b8">
+<p>
+Lambda calculus evaluation is the process of simplifying a λ-term by
+repeatedly applying <b>β-reduction</b> (the only real “computation” rule)
+until you can’t simplify any further. It is <b>pure substitution</b> —
+there is no mutable state, no memory cells, no side effects. Each step
+produces a brand-new term; the old one remains unchanged.
+</p>
+</div>
+<div id="outline-container-org496e461" class="outline-3">
+<h3 id="org496e461">The Basic Rule: β-Reduction</h3>
+<div class="outline-text-3" id="text-org496e461">
+<p>
+A <b>redex</b> (reducible expression) is any application whose left-hand side is an abstraction:
+</p>
+
+<p>
+\[
+(\lambda x.M) \, N
+\]
+</p>
+
+<p>
+β-reduction replaces every <b>free</b> occurrence of \(x\) in \(M\) by \(N\):
+</p>
+
+<p>
+\[
+(\lambda x.M) \, N \quad \to_\beta \quad M[x := N]
+\]
+</p>
+
+<p>
+(We write \(M[x := N]\) for “substitute \(N\) for free \(x\) in \(M\)”.)
+</p>
+
+<p>
+𝖟𝕭: Given the <i>redex</i> \((\lambda\ x.x^2)\ 3\), when we replace \(x\) with
+\(3\) we have reduced the redex to \(3^2\) or \(9\).  \(\square\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgb22ef7e" class="outline-3">
+<h3 id="orgb22ef7e">Important Safety Step: α-Conversion (renaming)</h3>
+<div class="outline-text-3" id="text-orgb22ef7e">
+<p>
+If \(N\) contains variables that would be accidentally captured by
+binders inside \(M\), we first rename bound variables in \(M\) (this
+is always allowed and doesn’t change meaning). This is why we
+sometimes write \(\lambda x.M \equiv_\alpha \lambda y.M[y/x]\).<label id='fnr.1' for='fnr-in.1.5913226' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.5913226' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+This just means variable names, if replaced consistently, do
+not change the meaning of a lambda abstraction.
+</span>
+</p>
+
+<p>
+𝖟𝕭: Take the identity function applied to a term:
+</p>
+
+<p>
+\[
+(\lambda x.x) \, (\lambda y.y) \quad \to_\beta \quad \lambda y.y \quad \square
+\]
+</p>
+
+<p>
+The variable \(x\) is replaced by \(\lambda y.y\); nothing is captured, so we’re done. The result is already in <b>normal form</b> (no more redexes).
+</p>
+
+<p>
+Another classic (the K combinator, which discards its second argument):
+</p>
+
+<p>
+\[
+(\lambda x.\lambda y.x) \, a \, b \quad \to_\beta \quad (\lambda y.a) \, b \quad \to_\beta \quad a
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org0c96d26" class="outline-3">
+<h3 id="org0c96d26">Evaluation Strategies</h3>
+<div class="outline-text-3" id="text-org0c96d26">
+<p>
+Order matters for efficiency, not for the final answer. If a lambda
+expression has multiple nested redexes, we can choose <b>which</b> redex to
+reduce first, second, etc. Two main strategies:
+</p>
+</div>
+<div id="outline-container-org8b8830a" class="outline-4">
+<h4 id="org8b8830a">Normal Order (leftmost-outermost, “call-by-name”)</h4>
+<div class="outline-text-4" id="text-org8b8830a">
+<p>
+Always reduce the leftmost redex that is not inside another
+abstraction. This is lazy, i.e., arguments are not evaluated until
+they are actually needed.
+</p>
+
+<p>
+𝖟𝕭:
+\[
+(\lambda x.x) \bigl((\lambda z.z z)(\lambda z.z z)\bigr) \quad \to_\beta \quad (\lambda z.z z)(\lambda z.z z)
+\]
+</p>
+
+<p>
+Here the <i>function argument</i> \(\bigl((\lambda z.z z)(\lambda z.z
+z)\bigr)\) was not reduced to normal form before it became the argument
+for \(\lambda x.x\).
+</p>
+</div>
+</div>
+<div id="outline-container-org50a2617" class="outline-4">
+<h4 id="org50a2617">Applicative Order</h4>
+<div class="outline-text-4" id="text-org50a2617">
+<p>
+Now we first find the <i>innermost-leftmost redex</i> to start. This is
+known as <i>call-by-value</i>. Reduce arguments to normal form before
+substituting. This is what SML, OCaml, Scala, JavaScript, Python,
+etc. actually do.
+</p>
+
+<p>
+𝖟𝕭: (Same as above)
+</p>
+
+<p>
+\[
+(\lambda x.x) \bigl((\lambda z.z z)(\lambda z.z z)\bigr) \quad \to_\beta \quad \text{(loops forever!)}
+\]
+</p>
+
+<p>
+Both strategies, if they terminate, give the <b>same normal form</b> (Church–Rosser theorem). But normal order can terminate on some programs where applicative order loops forever.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3f63f7f" class="outline-3">
+<h3 id="org3f63f7f">Normal Form and Non-Termination</h3>
+<div class="outline-text-3" id="text-org3f63f7f">
+<p>
+<font color = "#0d3db3">
+A term is in <b><b>normal form</b></b> when it contains no β-redexes at all,
+i.e., nothing more to be reduced.
+</font>
+</p>
+
+<p>
+Not every term has one — some reductions never stop.
+</p>
+
+<p>
+The famous counter-example (Ω, “omega”):
+</p>
+
+<p>
+\[
+\omega \equiv \lambda x.x x \qquad \Omega \equiv \omega \, \omega
+\]
+</p>
+
+<p>
+\[
+\Omega \quad \to_\beta \quad \Omega \quad \to_\beta \quad \Omega \quad \to_\beta \quad \dots
+\]
+</p>
+
+<p>
+Pure λ-calculus can loop forever, just like any Turing-complete system.
+</p>
+</div>
+</div>
+<div id="outline-container-org530237a" class="outline-3">
+<h3 id="org530237a">How This Maps to Real Functional Languages (SML Example)</h3>
+<div class="outline-text-3" id="text-org530237a">
+<p>
+When you type into the SML REPL:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">fn</span> x =&gt; x<span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">fn</span> y =&gt; y<span style="color: #8c8c8c;">)</span>;
+</code></pre>
+</div>
+
+<p>
+SML performs <b>applicative-order</b> evaluation (call-by-value) internally, but the mathematical meaning is exactly the β-reduction above. The REPL shows you the final normal form (or a value of the appropriate type). The only difference is that SML also has built-in constants (<code>5</code>, <code>true</code>, <code>+</code>, etc.) and types, but the core reduction engine is still λ-calculus style substitution.
+</p>
+</div>
+</div>
+<div id="outline-container-org651f861" class="outline-3">
+<h3 id="org651f861">Summary in One Picture</h3>
+<div class="outline-text-3" id="text-org651f861">
+<p>
+\[
+</p>
+\begin{array}{c}
+\text{Term} \\
+\downarrow \text{(find a redex)} \\
+(\lambda x.M) N \\
+\downarrow \text{(β-reduce + possible α-renaming)} \\
+M[x := N] \quad \leftarrow \text{new term, old one untouched} \\
+\downarrow \text{repeat until no redexes left} \\
+\text{Normal form (or loop forever)}
+\end{array}
+<p>
+\]
+</p>
+
+<p>
+That single substitution rule, applied over and over, <b>is</b> the entire computational engine of λ-calculus — and therefore of every pure functional language. No mutable state, no “change in place”, just building new terms from old ones by plugging values into functions.
+</p>
+</div>
+</div>
+</section>
+<section id="outline-container-org6ee8555" class="outline-2">
+<h2 id="org6ee8555">Function Constructions in Lambda Calculus</h2>
+<div class="outline-text-2" id="text-org6ee8555">
+<p>
+There are a few more constructions worth naming, and yes &mdash; together
+they are Turing-complete.  Here is the full picture.
+</p>
+</div>
+<div id="outline-container-org8948797" class="outline-3">
+<h3 id="org8948797">The Three You Listed</h3>
+<div class="outline-text-3" id="text-org8948797">
+<ul class="org-ul">
+<li><b>Composition</b>: \(f \circ g\), written <code>f o g</code> in SML.  Defined by
+<code>(f o g) x = f (g x)</code>.  It is actually <i>derived</i> &mdash; it can be
+expressed in terms of abstraction and application alone:
+\[\lambda f.\lambda g.\lambda x.\ f\ (g\ x)\]</li>
+
+<li><b>Application</b>: The explicit applicator \(\lambda f.\lambda a.\ (f\ a)\).
+Again, <i>derived</i> from abstraction, but useful as a first-class combinator.</li>
+
+<li><b>Basic Abstraction</b>: \(\lambda x.\ M\), written <code>fn x =&gt; ...</code> in SML.
+This is the <i>primitive</i> construction; the others reduce to it.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbec9ad4" class="outline-3">
+<h3 id="orgbec9ad4">Additional Constructions</h3>
+<div class="outline-text-3" id="text-orgbec9ad4">
+<ul class="org-ul">
+<li><b>Variables</b>: The atomic case \(x\).  Formally a separate syntactic
+category: every lambda term is a variable, an abstraction, or an
+application &mdash; nothing more.</li>
+
+<li><b>Recursion / Fixed Points</b>: The Y-combinator (or, in a typed setting,
+SML&rsquo;s <code>fun</code> / <code>rec</code> keyword) lets a function refer to itself.
+Bare \(\lambda\)-calculus has no built-in <code>let rec</code>; self-reference
+must be encoded:
+\[Y = \lambda f.\ (\lambda x.\ f\ (x\ x))\ (\lambda x.\ f\ (x\ x))\]
+In SML you write <code>val rec</code> or use <code>fun</code> which desugars to a fixed-point
+combinator under the hood.</li>
+
+<li><b>Let-binding</b>: <code>let val x = e1 in e2 end</code> in SML is syntactic sugar
+for an immediate application:
+\[(\lambda x.\ e_2)\ e_1\]
+No new power, but essential for readable code.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org94dc380" class="outline-3">
+<h3 id="org94dc380">Do These Enable All Calculations?</h3>
+<div class="outline-text-3" id="text-org94dc380">
+<p>
+Yes.  The Church&ndash;Turing thesis tells us that untyped \(\lambda\)-calculus
+is Turing-complete using only <i>abstraction</i> and <i>application</i>.
+Composition, <code>let</code>, and the Y-combinator are all <i>encodable</i>; they add
+expressiveness to the programmer but not to the model.
+</p>
+
+<p>
+Booleans, natural numbers (Church numerals), pairs, and lists can all
+be encoded:
+\[
+  \mathbf{true}  = \lambda t.\lambda f.\ t \qquad
+  \mathbf{false} = \lambda t.\lambda f.\ f \qquad
+  \mathbf{0}     = \lambda f.\lambda x.\ x \qquad
+  \mathbf{succ}\ n = \lambda f.\lambda x.\ f\ (n\ f\ x)
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org38570f5" class="outline-3">
+<h3 id="org38570f5">Beta-Reduction and SML Evaluation</h3>
+<div class="outline-text-3" id="text-org38570f5">
+<p>
+\(\beta\)-reduction is the <i>operational heart</i> of both \(\lambda\)-calculus
+and SML evaluation.  The rule is:
+</p>
+
+<p>
+\[(\lambda x.\ M)\ N \;\longrightarrow_\beta\; M[N/x]\]
+</p>
+
+<p>
+&ldquo;Substitute \(N\) for every free occurrence of \(x\) in \(M\).&rdquo;
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Lambda calculus</th>
+<th scope="col" class="org-left">SML equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(\lambda x.\ M\)</td>
+<td class="org-left"><code>fn x =&gt; M</code></td>
+</tr>
+
+<tr>
+<td class="org-left">\((\lambda x.\ M)\ N\)</td>
+<td class="org-left"><code>(fn x =&gt; M) N</code></td>
+</tr>
+
+<tr>
+<td class="org-left">\(\beta\)-reduction</td>
+<td class="org-left">a single evaluation step</td>
+</tr>
+
+<tr>
+<td class="org-left">normal form</td>
+<td class="org-left">a value (no more <code>fn</code> applications pending)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\alpha\)-conversion</td>
+<td class="org-left">consistent variable renaming (hygienic <code>let</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\eta\)-reduction</td>
+<td class="org-left"><code>(fn x =&gt; f x)</code> \(\equiv\) <code>f</code> (eta-expand/contract)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-org7e0b801" class="outline-4">
+<h4 id="org7e0b801">Evaluation Strategy</h4>
+<div class="outline-text-4" id="text-org7e0b801">
+<ul class="org-ul">
+<li>Pure \(\lambda\)-calculus allows <i>normal-order</i> (outermost-first) or
+<i>applicative-order</i> (innermost-first) reduction.</li>
+<li>SML uses <b>call-by-value</b> (applicative order, strict): arguments are
+reduced to values <i>before</i> substitution.  This matches
+\(\beta\)-reduction with the restriction that \(N\) must already be
+a value.</li>
+<li>Haskell uses <b>call-by-need</b> (lazy / normal-order), closer to the
+theoretical normal form guarantee.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga4ab287" class="outline-4">
+<h4 id="orga4ab287">A Concrete Example</h4>
+<div class="outline-text-4" id="text-orga4ab287">
+<div class="org-src-container">
+<pre class="src src-sml"><code><span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Beta-reduction made visible</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">fn</span> x =&gt; x + 1<span style="color: #8c8c8c;">)</span> 3
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">==&gt; (x + 1)[3/x] ==&gt; 3 + 1 ==&gt; 4</span><span style="color: #687080; font-style: italic;"> *)</span>
+
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">add</span>  = <span style="color: #c678dd; font-weight: bold;">fn</span> x =&gt; <span style="color: #c678dd; font-weight: bold;">fn</span> y =&gt; x + y   <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">curried: &#955;x.&#955;y. x+y</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">add3</span> = add 3                    <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">partial apply: &#955;y. 3+y</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">seven</span> = add3 4                  <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">beta-reduce: 3+4 = 7</span><span style="color: #687080; font-style: italic;">  *)</span>
+</code></pre>
+</div>
+
+<p>
+Each function call in SML <i>is</i> a \(\beta\)-reduction step; the SML
+runtime is, at its core, an engine for performing them in call-by-value
+order.
+</p>
+</div>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

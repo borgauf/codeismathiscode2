@@ -1,0 +1,234 @@
+#+TITLE: 
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2026-03-11T15:08:38Z UTC 
+#+LANGUAGE:  en 
+#+EXPORT_FILE_NAME: SML1-Theory1.html
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Bibliography ---
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+# --- Document Content Starts Here ---
+#+INCLUDE: /home/galaxybeing/Dropbox/org/codeismathiscode2/header.org :minlevel 1
+
+* 
+
+** Is This an Accurate Generalization of Functional Programming?
+
+
+- **Composition** :: \( f \circ g \) (in SML: ~f o g~).  Combines two
+  functions so that ~(f ∘ g) x = f (g x)~.
+
+- **Application** :: The explicit higher-order applicator \( \lambda
+  f.\lambda a.(f\ a) \).  This is the *apply* operator treated as a
+  first-class function: it takes a function ~f~ and an argument ~a~
+  and returns ~f a~.  For example, ~map~ distributes a function over
+  every element of a data structure (e.g., a list).
+
+- **Abstraction** :: Lambda / anonymous functions written as ~fn x =>
+  ...~ in SML).
+
+These three correspond directly to the fundamental operations of the
+(typed) lambda calculus, which is the theoretical bedrock of ML.
+
+**Examples in Standard ML**
+
+*** Composition
+
+#+BEGIN_SRC sml
+val add1 = fn x => x + 1;
+val double = fn x => 2 * x;
+val doubleThenAdd1 = add1 o double;   (* f ∘ g *)
+doubleThenAdd1 5;                     (* → 11 *)
+#+END_SRC
+
+*** Application (the applicator λf.λa.(f a))
+
+#+BEGIN_SRC sml
+fun apply f a = f a;                  (* explicit λf.λa.(f a) *)
+apply double 7;                       (* → 14 *)
+
+(* The "mapping to a list" spirit of generalized application *)
+fun map f [] = []
+  | map f (x::xs) = (f x) :: map f xs;
+map (fn n => n * n) [1, 2, 3];        (* → [1, 4, 9] *)
+#+END_SRC
+
+*** Abstraction
+
+#+BEGIN_SRC sml
+(fn x => x * x) 5;                    (* → 25 *)
+#+END_SRC
+
+*** What else?
+
+While the three operations suffice *in pure theory* to express any
+computable function (the lambda calculus is Turing-complete), they do
+not represent the full paradigm of functional programming in
+ML. Several core features and idioms are missing:
+
+**** Recursion
+
+Pure lambda calculus encodes recursion only via complex fixed-point
+combinators (e.g., the Y combinator built from the three
+primitives). Real ML provides explicit recursion for practicality.
+
+#+BEGIN_SRC sml
+fun factorial 0 = 1
+  | factorial n = n * factorial (n - 1);
+factorial 5;  (* → 120 *)
+#+END_SRC
+
+**** Algebraic Data Types and Pattern Matching
+
+You cannot meaningfully process structured data (lists, trees,
+options, etc.) with only composition, application, and
+abstraction. ML's expressive power comes from its rich type system and
+pattern matching.
+
+#+BEGIN_SRC sml
+datatype 'a tree = Empty
+                 | Node of 'a * 'a tree * 'a tree;
+
+fun inorder Empty = []
+  | inorder (Node(v, left, right)) =
+    inorder left @ [v] @ inorder right;
+#+END_SRC
+
+**** Idiomatic Higher-Order Library Functions
+
+While ~map~, ~foldl~, ~filter~, etc., can be *derived* from the three
+   primitives + recursion, the real day-to-day vocabulary of FP
+   consists of these library combinators (not raw λf.λa.(f a)
+   applications).
+
+**** Immutability, Purity, Strong Static Typing, and Modules
+
+Referential transparency, Hindley-Milner type inference, and the
+   module system (signatures, structures, functors) are central to ML
+   but lie outside the three basic operations.
+
+**Conclusion** The three notions — composition, the explicit
+application operator \( \lambda f.\lambda a.(f\ a) \), and lambda
+abstraction — beautifully summarize the *theoretical core* of how
+functions are defined and combined in the lambda calculus. The class
+notes likely present them this way to give students a clean, minimal
+starting point and to contrast the declarative FP style with
+imperative programming.
+
+However, saying functional programming "can be summed up by" only
+these three is inaccurate. Practical functional programming in ML (and
+similar languages) is about recursive functions over immutable
+algebraic data types, extensive use of higher-order library
+combinators, strong static typing, and writing programs by composing
+meaningful, reusable abstractions.
+
+The lambda-calculus primitives are the engine — but the full ML
+paradigm supplies the bodywork that makes the vehicle actually usable
+and productive.
+
+** Do These Three Variations Cover *Every Possible* Function Evaluation in SML?
+
+**Short Answer**
+**No — not true.**
+
+They describe the *core mechanisms* for defining and combining pure
+functions in the lambda-calculus foundation of SML, but they do
+**not** cover every kind of function evaluation that actually occurs
+in Standard ML (or any practical lambda-calculus-based language).
+
+**Why the Three Operations Are Not Sufficient**
+
+1. *The Three Are Not Even All Primitive in Pure Lambda Calculus*
+   - Pure (typed) lambda calculus only needs *two* syntactic forms:
+     - Abstraction: ~λx.M~ (your ~\f~)
+     - Application: ~M N~
+   - Composition ~f ∘ g~ is *derived*: ~λx. f (g x)~
+   - The explicit applicator ~λf.λa.(f a)~ is also *derived* — it is
+     just the identity function applied in a curried way.
+   - So even in the theoretical core, calling these “three variations”
+     that sum up *everything* is a pedagogical simplification, not the
+     full formal story.
+
+2. *SML Evaluation Includes Many More Reduction Rules* SML’s
+   operational semantics (call-by-value) define function evaluation
+   far beyond simple β-reduction of abstractions and
+   applications. Examples of evaluation steps *not* covered by the
+   three operations:
+
+   ***Recursion (explicit fixed-point)***
+
+   #+BEGIN_SRC sml
+fun fact 0 = 1
+  | fact n = n * fact (n-1);
+fact 5;  (* the recursive call is *not* a plain composition or λf.λa.(f a) *)
+   #+END_SRC
+
+   In pure lambda calculus you would need the Y combinator (built from
+   the primitives in a very convoluted way). SML treats ~fun~
+   recursion as a primitive evaluation rule.
+
+   ***Pattern Matching on Algebraic Data Types***
+   #+BEGIN_SRC sml
+fun length [] = 0
+  | length (x::xs) = 1 + length xs;
+   #+END_SRC
+
+   The ~::~ constructor and the ~|~ clauses trigger *case analysis*
+   during evaluation — this is not simple function application or
+   composition; it is a separate reduction rule in SML’s semantics.
+
+   ***Let-bindings, Sequencing, and Local Definitions***
+   #+BEGIN_SRC sml
+let val x = 42
+    fun f y = x + y
+in f 10 end
+   #+END_SRC
+
+   The ~let~ binding and the scope resolution are extra evaluation
+   steps.
+
+   ***Built-in Primitives and Overloaded Operators***
+   
+   - ~+~, ~@~ (list append), ~ref~, ~!~, exceptions, I/O, etc.
+   - These are not pure λ-applications; they are hard-wired into the
+     language runtime.
+
+3. *Higher-Order Library Functions Are Derived, Not Primitive*
+
+   ~map~, ~foldl~, ~filter~ etc. can be *implemented* using
+   abstraction + application + recursion, but the actual evaluation of
+   ~map f xs~ in the SML compiler/runtime uses optimized,
+   non-pure-lambda rules (and pattern matching).
+
+**When the Claim *Would* Be True**
+
+- If we were talking about the *pure untyped lambda calculus* with
+  only β-reduction (and perhaps η), then yes — every term is
+  ultimately built from abstraction and application, and every
+  reduction step is β-reduction.
+- The notes are almost certainly using the three as a *teaching
+  device* to show students how functions are created, combined, and
+  invoked declaratively, before introducing the full ML machinery.
+
+**Conclusion**
+
+The three variations (composition, explicit applicator
+~λf.λa.(f a)~, and abstraction) beautifully capture the *declarative
+spirit* and the mathematical essence of how you *build* and *invoke*
+pure functions. But they do **not** describe “every possible type of
+function evaluation” that actually happens when you run an SML
+program. Real SML evaluation also involves recursion unfolding,
+pattern matching, let-binding, constructor application, and primitive
+operations — none of which reduce to just those three forms.
+
+If the notes later introduce these extra constructs (which they almost
+certainly do), they are showing how the lambda core is *extended* into
+a usable programming language. The three are the engine — but the full
+language adds the gearbox, steering wheel, and wheels.  ```
+
