@@ -1,0 +1,1160 @@
+#+TITLE: 
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2026-03-21T15:03:08Z UTC 
+#+LANGUAGE:  en 
+#+EXPORT_FILE_NAME: Agda5.html
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Bibliography ---
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+# --- Document Content Starts Here ---
+#+INCLUDE: /home/galaxybeing/Dropbox/org/codeismathiscode2/header.org :minlevel 1
+
+* Peano and Evenness in FOL and Agda
+
+Take a first-order language with:
+
+- constant ~0~
+- unary function symbol ~S~
+- binary function symbol ~+~
+- equality ~=~
+
+In First-Order Logic (FOL), we use these three rules to "trap" the
+natural numbers so that nothing else can pretend to be a number.
+
+** 1. Axiom 1: Zero can never be a Successor
+
+\[ \forall x \neg (S(x) = 0) \]
+
+- **Translation:** "For every $x$, the successor of $x$ is not zero."
+- **The Goal:** This prevents the numbers from forming a **loop**.
+- **Why we need it:** Without this, you could have a system where $S(0) = 0$.
+  That would mean $1 = 0$. /This axiom ensures that $0$ is the absolute
+  "start" and nothing comes before it/.
+
+** 2. Axiom 2: Successor is Injective
+
+\[ \forall x \forall y (S(x) = S(y) \to x = y) \]
+
+- **Translation:** "If the successor of $x$ is the same as the
+  successor of $y$, then $x$ and $y$ must be the same." Injective
+  means one-to-one, or the successor function $S$ never sends two
+  different numbers to the same result. Also, if $x \ne y$ then $S(x)
+  \ne S(y)$, i.e., no two distinct natural numbers have the same
+  successor.
+- **The Goal:** This prevents the numbers from **merging**.
+- **Why we need it:** Imagine if $S(1) = 2$ and $S(5) = 2$. The number
+  line would look like a "Y" shape where two different paths crash
+  into the same number. This axiom ensures the number line is a
+  single, straight path.
+
+** 3. The Induction Schema
+
+\[ (\phi(0) \land \forall x (\phi(x) \to \phi(S(x)))) \to \forall x \phi(x) \]
+
+This is the most powerful rule. It is called a **Schema** because it isn't
+just one axiom; it is a "template" for infinitely many axioms (one for every
+possible property $\phi$).
+
+*** How to read it:
+1. **Base Case:** $\phi(0)$ --- "The property is true for zero."
+2. **Inductive Step:** $\forall x (\phi(x) \to \phi(S(x)))$ --- "If it's true
+   for $x$, it's true for the next one."
+3. **Conclusion:** $\forall x \phi(x)$ --- "Therefore, it's true for EVERY
+   number."
+
+*** The "Domino" Analogy:
+- $\phi(0)$ is like knocking over the first domino.
+- $\forall x (\phi(x) \to \phi(S(x)))$ is like saying "every domino is close
+  enough to the next one to knock it over."
+- If both are true, the whole line falls.
+
+
+*** But what is $\phi$?
+
+In the context of the Peano Induction Schema, $\phi(x)$ is a
+placeholder for any valid "sentence" you can write down using the
+symbols of your logic.
+
+**** It is a "Formula," not a "Function"
+
+In First-Order Logic (FOL), we distinguish between:
+- **Terms:** Objects like $0, S(0), x, y$.
+- **Formulas:** Statements about objects like $x = y$ or $Even(x)$.
+
+$\phi(x)$ represents any formula where $x$ is a "free variable" (a hole).
+You don't "define" $\phi$ as a function; you "plug in" a statement.
+
+𝖟𝕭: If you want to prove /Every number is either zero or a successor,/
+your $\phi(x)$ is the formula: \[ \phi(x) \equiv (x = 0 \lor \exists y
+(x = S(y))) \]
+
+**** The "Schema" vs. the "Axiom"
+
+Because FOL cannot talk about "all possible properties" (that would be
+Second-Order Logic), we use a **Schema**.
+
+A Schema is like a **Copy-Paste Template**.
+- You write a formula $\phi(x)$.
+- You "paste" it into the induction template.
+- The result is a brand new axiom specifically for that formula.
+
+Since there are infinitely many formulas you can write, there are
+infinitely many induction axioms.
+
+**** In Agda: $\phi(x)$ BECOMES a Function
+
+This is where Agda (Type Theory) is different and, in many ways, cleaner.
+In Agda, $\phi(x)$ **is** a function!
+
+Specifically, it is a **Type-Valued Function** (a Predicate):
+#+BEGIN_SRC agda
+phi : ℕ → Set
+#+END_SRC
+
+- It takes a number ~n~.
+- It returns a ~Set~ (a proposition/type) that represents the property.
+
+**** Comparing the "Source" of $\phi$
+
+| System              | What is $\phi(x)$?           | Where does it come from?     |
+|---------------------+------------------------------+------------------------------|
+| **FOL (Peano)**     | A syntactic string/formula   | The grammar of the logic     |
+| **Agda (Type Theory)** | A function (~ℕ → Set~)       | Defined by the programmer    |
+
+**** Why this matters for Induction
+
+In FOL, the induction schema is a "rule of the game" that applies to every
+sentence you can possibly utter.
+
+In Agda, induction is a **Function** (often called ~ind~ or ~elim~) that
+takes the property $\phi$ as an argument:
+
+#+BEGIN_SRC agda
+-- The "Induction Principle" as an Agda function signature:
+ind : (phi : ℕ → Set)             -- The property (the function!)
+    → phi zero                    -- Base case
+    → (∀ n → phi n → phi (suc n)) -- Inductive step
+    → (∀ n → phi n)               -- Conclusion for all n
+#+END_SRC
+
+**** Summary
+
+- **In FOL:** $\phi(x)$ is just a **pattern**. It comes from the language
+  itself. You don't "call" it; you just "state" it.
+- **In Agda:** $\phi(x)$ is a **first-class citizen**. It is a function
+  that you write, pass around, and use to build proofs.
+
+When the textbook says "For every first-order formula $\phi(x)$," it is
+giving you permission to use the induction rule for *anything* you can
+describe using the symbols $0, S, =, \land, \lor, \neg, \forall, \exists$.
+
+
+
+** Why is it a "Schema" in FOL?
+
+In **Second-Order Logic**, you can just say "For all properties
+$P$..."  But in FOL, you are only allowed to talk about *objects*
+(numbers), not *properties*.
+
+To get around this, we say: "For any formula you can write down in our
+language, that formula must obey the induction rule."
+
+**** Summary for the Beginner
+
+- **Axiom 1:** No loops (0 is the start).
+- **Axiom 2:** No merging (the path is straight).
+- **Induction:** No "junk" (there are no "extra" numbers floating around
+  that you can't reach by starting at 0 and counting up).
+
+Together, these three rules force the domain to look exactly like:
+\[ 0, 1, 2, 3, \dots \]
+
+
+** Existence and closure? 
+
+Sometimes people also list the existence/closure ideas informally:
+
+- \(0\) is a natural number
+- if \(x\) is a natural number, then \(S(x)\) is a natural number
+
+But in ordinary first-order logic Peano arithmetic, the domain is
+already “the naturals”, so those are built into the intended
+interpretation rather than stated as **typing judgments**. In FOL, we
+assume a "Universe of Discourse" (a big bag of things) and then use
+axioms to describe them.
+
+*** What is a "Typing Judgment"?
+
+A /typing judgment/ is a formal statement that a specific term belongs
+to a specific type. In Agda, it looks like this:
+
+#+BEGIN_SRC agda
+zero : ℕ
+#+END_SRC
+
+This is not a "fact" we prove; it is a **judgment** we make to define
+the existence of ~zero~.
+
+**** The FOL Approach: "The Bag of Stuff"
+
+In First-Order Logic (FOL), you start with a **Domain** (a set of
+objects).
+
+- You don't say "0 is a number" as a rule.
+- Instead, you assume the domain *is* the numbers.
+- You then use axioms like $\forall x \neg (S(x) = 0)$ to describe how the
+  objects in that domain behave.
+
+In FOL, there are no "types." Everything in the domain is just an "object."
+If you want to distinguish between numbers and, say, colors, you have to
+create a predicate like $IsNumber(x)$.
+
+**** The Agda Approach: "The Typing Judgment"
+
+In Agda, nothing exists until you give it a type. The statement
+~zero : ℕ~ is a **typing judgment**.
+
+It is a "judgment" because:
+
+- It is a **rule of the system**, not a formula inside the logic.
+- It establishes the "identity" of the object.
+
+When we define:
+
+#+BEGIN_SRC agda
+data ℕ : Set where
+  zero : ℕ
+#+END_SRC
+
+we are creating two typing judgments:
+
+1. ~ℕ : Set~ (The judgment that ~ℕ~ is a type).
+2. ~zero : ℕ~ (The judgment that ~zero~ is an inhabitant of that type).
+
+- **In FOL:** The /closure/ (0 is a number, S(x) is a number) is
+  /implicit/.  The logic assumes the symbols $0$ and $S$ already map
+  to the domain.
+- **In Agda:** The "closure" is /explicit/. We use typing judgments to
+  /onstruct/ the domain piece by piece.
+
+**** Comparison Table
+
+| Feature             | FOL (Peano)                  | Agda (Type Theory)           |
+|---------------------+------------------------------+------------------------------|
+| **Existence**       | Assumed in the Domain        | Declared via Judgments       |
+| **Notation**        | $x \in \mathbb{N}$ (Set membership) | ~x : ℕ~ (Typing judgment)    |
+| **Status of ~zero~** | A constant symbol            | A constructor of the type    |
+| **Nature of ~S~**   | A function symbol            | A function type (~ℕ → ℕ~)    |
+
+- **FOL** is like a **map**: It describes a territory (the numbers)
+  that is already there.
+- **Agda** is like a **recipe**: It gives you the instructions (typing
+  judgments) to bake the territory into existence.
+
+Therefore, /typing judgments/ means the formal act of assigning a type
+to a symbol. In Agda, this is how we /build/ the world, whereas in
+FOL, we just /describe/ a world that we assume already exists.
+
+
+** Connecting Peano's world to Agda
+
+Agda handles the Peano Axioms differently because it is
+**constructive**:
+
+- **Axiom 1 & 2:** These are "baked in" to the way Agda handles
+  ~data~.  Constructors in Agda are /disjoint/ (~zero~ is never ~suc~)
+  and /injective/, i.e., if ~suc x~ equals ~suc y~, then ~x~ equals
+  ~y~) by default.
+- **Induction:** In Agda, induction is just /recursion/.
+
+When you write a recursive function over ~ℕ~:
+
+#+BEGIN_SRC agda
+f : (n : ℕ) -> Prop n
+f zero    = ...          -- Base Case (phi 0)
+f (suc n) = ... f n ...  -- Inductive Step (phi n -> phi (suc n))
+#+END_SRC
+
+Agda's compiler checks that your recursion covers all cases. This is
+literally the Induction Schema in action as a programming feature! But
+let's go into just what the Agda function ~f~ is all about
+
+To start, ~Prop n~ above is /not/ built-in Agda syntax. It is
+shorthand for **a property of ~n~**. In real Agda, you would write
+something like:
+
+#+BEGIN_SRC agda
+P : ℕ → Set
+#+END_SRC
+
+Hence,
+
+- ~P n~ is a *type*
+- an element of ~P n~ is a *proof that n has property P*
+
+This corresponds exactly to $\phi(x)$ in
+
+\[ (\phi(0) \land \forall x (\phi(x) \to \phi(S(x)))) \to \forall x \phi(x) \]
+
+- **Property** = how a mathematician thinks about it  
+- **Proposition** = how a logician thinks about it  
+- **Type** = how Agda thinks about it  
+
+Again, in logic, a proposition is a statement that can be true or
+false:
+
+\[ \phi(n) \equiv \text{"n is even"} \]
+  
+To "prove" it means to provide evidence that it holds. But in Agda a
+property is a type-valued function:
+
+#+BEGIN_SRC agda  
+Even : ℕ → Set
+-- etc.
+#+END_SRC  
+  
+To "prove" it means to construct a term of that type. When we write
+  
+#+BEGIN_SRC agda  
+f : (n : ℕ) → P n  
+#+END_SRC  
+  
+We are simultaneously saying:  
+  
+- **Logic view:** For all $n$, the proposition $P(n)$ holds.
+- **Programming view:** ~f~ is a function that takes a number and
+  returns a proof that ~n~ has property ~P~.
+- **Set theory view:** $f$ is a function from $ℕ$ to the set of proofs of $P$. 
+
+** 𝖟𝕭: ~Even~ again
+
+#+BEGIN_SRC agda
+data Even : ℕ → Set where
+  even-zero : Even zero
+  even-suc  : ∀ {n} → Even n → Even (suc (suc n))
+#+END_SRC
+
+Here:
+- ~Even : ℕ → Set~ plays the role of $\phi$
+- ~Even n~ is the proposition “n is even”
+
+So in the earlier sketch:
+
+#+BEGIN_SRC agda
+f : (n : ℕ) → P n
+#+END_SRC
+
+means /for every ~n~, I can produce a proof that ~P(n)~ holds/
+
+which corresponds to:
+\[
+\forall n \; \phi(n)
+\]
+
+*** FOL version of ~Even~
+
+Let's compare as best as possible with FOL. The closest **first-order
+logic** version is:
+  
+\[  
+Even(0)  
+\]  
+  
+and  
+  
+\[  
+\forall x \, (Even(x) \to Even(S(S(x))))  
+\]  
+  
+Here:  
+- $Even$ is a unary predicate symbol  
+- $0$ corresponds to ~zero~  
+- $S$ corresponds to ~suc~
+
+then
+
+- ~even-zero~ says: ~0~ is even  
+- ~even-suc~ says: if ~n~ is even, then ~S(S(n))~ is even  
+  
+| Agda                                          | FOL                                        |  
+|-----------------------------------------------+--------------------------------------------|  
+| ~Even : ℕ → Set~                              | $Even(x)$ is a predicate on naturals       |  
+| ~even-zero : Even zero~                       | $Even(0)$                                  |  
+| ~even-suc : ∀ {n} → Even n → Even (suc (suc n))~ | $\forall x (Even(x) \to Even(S(S(x))))$   | 
+
+⥤ This FOL version captures the **closure rules** for even numbers,
+but not yet the full idea that these are the **only** even numbers.
+  
+In Agda, because ~Even~ is an **inductive family**, it automatically means:  
+  
+#+BEGIN_QUOTE  
+~Even~ is the smallest family generated by those two constructors.  
+#+END_QUOTE  
+  
+So in Agda, a proof of ~Even n~ can only be built by:
+
+- ~even-zero~, or  
+- repeated uses of ~even-suc~  
+  
+Plain FOL does **not** automatically give you this /smallest such set/
+meaning just from the two formulas above. But another FOL approach to
+/evenness/ could be
+
+\[  
+Even(x) \leftrightarrow \exists y \, (x = y + y)  
+\]  
+  
+This says:  
+  
+#+BEGIN_QUOTE  
+$x$ is even if and only if $x$ is **double some natural number**.
+#+END_QUOTE  
+  
+From that definition, you can prove:  
+  
+\[  
+Even(0)  
+\]  
+  
+and  
+  
+\[  
+\forall x (Even(x) \to Even(S(S(x))))  
+\]  
+  
+𝖟𝕭: **Proving 4 is Even**
+  
+In Agda the proof term is:  
+  
+#+BEGIN_SRC agda  
+even-suc (even-suc even-zero)  
+#+END_SRC  
+
+In FOL the analogous derivation is
+  
+1. $Even(0)$  
+2. $Even(0) \to Even(S(S(0)))$  
+3. $\therefore Even(S(S(0)))$  
+4. $Even(S(S(0))) \to Even(S(S(S(S(0)))))$  
+5. $\therefore Even(S(S(S(S(0)))))$  
+
+Agda constructors correspond directly to Gentzen-style rules:
+  
+For ~even-zero~:  
+  
+#+BEGIN_SRC text  
+-----------  
+Even(0)  
+#+END_SRC  
+  
+For ~even-suc~:  
+  
+#+BEGIN_SRC text  
+Even(x)  
+-----------------  
+Even(S(S(x)))  
+#+END_SRC  
+  
+These are exactly the **introduction rules** for the ~Even~ predicate,  
+in the same style as the Peano rules for ~ℕ~ you saw in PLFA.  
+  
+| Goal                          | Use                                              |  
+|-------------------------------+--------------------------------------------------|  
+| Proof-theoretic FOL analogue  | $Even(0)$ and $\forall x(Even(x) \to Even(S(S(x))))$ |  
+| Definitional FOL analogue     | $Even(x) \leftrightarrow \exists y(x = y + y)$  |  
+| Agda inductive family         | ~data Even : ℕ → Set where ...~                  |  
+| Key difference                | Agda gives minimality automatically; FOL does not |  
+
+One big takeaway is ~Even~ is an **inductive family** — a type that is
+**indexed** by a value of ~ℕ~. This is **dependent typing**. Haskell
+could not do this, rather, it would have to simply create a function
+that took numbers and returned a Boolean /true/ or /false/
+
+#+name: 2dd99745-a022-4a04-b7c9-b522f44fb10a
+#+begin_src haskell :eval never :exports code
+isEven : Int -> Bool  
+isEven 0 = True  
+isEven 1 = False  
+isEven n = isEven (n - 2)  
+#+end_src
+
+- In Agda, ~Even n~ is a **type** (a proposition) and this is a
+  stronger guarantee.  
+- In Haskell, ~isEven n~ is a **value** (~True~ or ~False~)  
+
+*** Use Examples of the Agda Type ~Even~
+
+The short version is:
+
+- ~Even n~ is a *type*
+- a value of type ~Even n~ is a *proof* that ~n~ is even
+- if ~n~ is not even, there is *no value* of type ~Even n~
+
+Our definition is:
+
+#+BEGIN_SRC agda
+data Even : ℕ → Set where
+  even-zero : Even zero
+  even-suc  : ∀ {n} → Even n → Even (suc (suc n))
+#+END_SRC
+
+**** 1. How to Read This Logically
+
+This says:
+
+1. ~zero~ is even
+2. if ~n~ is even, then ~suc (suc n)~ is even
+
+In logic notation:
+
+\[
+Even(0)
+\]
+
+and
+
+\[
+\forall n \, (Even(n) \to Even(n+2))
+\]
+
+In Agda, these are not just statements. They are **constructors** for proofs.
+
+**** 2. Example Proofs
+
+***** 0 is even
+
+#+BEGIN_SRC agda
+e0 : Even zero
+e0 = even-zero
+#+END_SRC
+
+Why is this a proof?
+
+Because ~even-zero~ is literally declared to have type ~Even zero~.
+So the term ~even-zero~ is evidence for the proposition ~Even zero~.
+
+***** 2 is even
+
+#+BEGIN_SRC agda
+e2 : Even (suc (suc zero))
+e2 = even-suc even-zero
+#+END_SRC
+
+Why?
+
+- ~even-zero : Even zero~
+- ~even-suc~ says: if you give me ~Even n~, I produce ~Even (suc (suc n))~
+
+So applying ~even-suc~ to ~even-zero~ gives:
+
+#+BEGIN_SRC agda
+even-suc even-zero : Even (suc (suc zero))
+#+END_SRC
+
+That is a proof that 2 is even.
+
+***** 4 is even
+
+#+BEGIN_SRC agda
+e4 : Even (suc (suc (suc (suc zero))))
+e4 = even-suc (even-suc even-zero)
+#+END_SRC
+
+This works in steps:
+
+- ~even-zero : Even 0~
+- ~even-suc even-zero : Even 2~
+- ~even-suc (even-suc even-zero) : Even 4~
+
+**** 3. Why These Count as Proofs
+
+Because of **Propositions as Types**:
+
+- proposition = type
+- proof = term inhabiting that type
+
+So:
+
+| Agda Term                          | Logical Reading              |
+|------------------------------------+------------------------------|
+| ~Even zero~                        | The proposition "0 is even"  |
+| ~Even (suc (suc zero))~            | The proposition "2 is even"  |
+| ~e2 : Even (suc (suc zero))~       | A proof that 2 is even       |
+
+This is not metaphorical. It is the actual formal meaning.
+
+**** 4. What the Proof Object Looks Like
+
+A proof of ~Even 4~ is:
+
+#+BEGIN_SRC agda
+even-suc (even-suc even-zero)
+#+END_SRC
+
+You can think of that as a derivation tree:
+
+#+BEGIN_SRC text
+even-zero
+: Even 0
+
+even-suc even-zero
+: Even 2
+
+even-suc (even-suc even-zero)
+: Even 4
+#+END_SRC
+
+The proof mirrors the arithmetic structure exactly.
+
+**** 5. What if ~n~ is Not Even?
+
+Then there is no constructor chain that can produce ~Even n~.
+
+For example, try 1:
+
+#+BEGIN_SRC agda
+bad1 : Even (suc zero)
+bad1 = ?
+#+END_SRC
+
+There is no way to fill in ~?~.
+
+Why not?
+
+Because the only ways to build an ~Even n~ are:
+
+- ~even-zero~, which gives ~Even zero~
+- ~even-suc p~, which always adds *two* successors
+
+So the only indices you can ever reach are:
+
+\[
+0, 2, 4, 6, \dots
+\]
+
+You can never reach $1, 3, 5, \dots$
+
+**** 6. Agda's Logical Explanation of "Not Even"
+
+In Agda, "not ~P~" means:
+
+#+BEGIN_SRC agda
+¬ P = P → ⊥
+#+END_SRC
+
+where ~⊥~ is the **empty type** (no constructors, no inhabitants).
+
+So "1 is not even" is:
+
+#+BEGIN_SRC agda
+¬ Even (suc zero)
+#+END_SRC
+
+which expands to:
+
+#+BEGIN_SRC agda
+Even (suc zero) → ⊥
+#+END_SRC
+
+In words:
+
+#+BEGIN_QUOTE
+If someone gave me a proof that 1 is even, I could derive a contradiction.
+#+END_QUOTE
+
+**** 7. Example: Proving 1 is Not Even
+
+The empty type:
+
+#+BEGIN_SRC agda
+data ⊥ : Set where
+#+END_SRC
+
+No constructors. So ~⊥~ has no inhabitants.
+
+Negation:
+
+#+BEGIN_SRC agda
+¬_ : Set → Set
+¬ P = P → ⊥
+#+END_SRC
+
+Proof that 1 is not even:
+
+#+BEGIN_SRC agda
+not-even1 : ¬ Even (suc zero)
+not-even1 ()
+#+END_SRC
+
+The pattern ~()~ means:
+
+#+BEGIN_QUOTE
+This case is impossible. There are no constructors that could produce
+a value here.
+#+END_QUOTE
+
+**** 8. Example: Proving 3 is Not Even
+
+#+BEGIN_SRC agda
+not-even3 : ¬ Even (suc (suc (suc zero)))
+not-even3 ()
+#+END_SRC
+
+Same reason: no constructor can produce ~Even 3~.
+
+**** 9. Why Agda Knows Odd Cases are Impossible
+
+Look again at the constructors:
+
+#+BEGIN_SRC agda
+even-zero : Even zero
+even-suc  : ∀ {n} → Even n → Even (suc (suc n))
+#+END_SRC
+
+These generate only even-indexed instances.
+
+This is what an **inductive family** does:
+it defines a family of types together with the *only* ways to construct members.
+
+So ~Even n~ is inhabited exactly when $n$ can be built from $0$ by adding $2$
+repeatedly.
+
+**** 10. A Useful Mental Model
+
+Think of ~Even~ as the set of legal **certificates** for evenness:
+
+- ~even-zero~ is the certificate for $0$
+- ~even-suc~ transforms a certificate for $n$ into a certificate for $n+2$
+
+No certificate generator exists for odd numbers.
+
+So:
+- ~Even 4~ has a certificate
+- ~Even 3~ does not
+
+**** 11. Comparison with Boolean Programming
+
+A Boolean function:
+
+#+BEGIN_SRC agda
+isEven : ℕ → Bool
+isEven zero          = true
+isEven (suc zero)    = false
+isEven (suc (suc n)) = isEven n
+#+END_SRC
+
+This *computes* whether a number is even.
+
+But ~Even : ℕ → Set~ is stronger:
+
+| Feature                  | ~isEven : ℕ → Bool~       | ~Even : ℕ → Set~           |
+|--------------------------+---------------------------+----------------------------|
+| Result                   | A runtime value           | A compile-time type        |
+| Evidence                 | ~true~ or ~false~         | A proof object or nothing  |
+| Checked when?            | At runtime                | At compile time            |
+| Logical status           | Computation               | Proposition                |
+
+So Agda distinguishes between:
+- *deciding* evenness (~Bool~)
+- *proving* evenness (~Set~)
+
+**** 12. The Key Logical Point
+
+Your datatype definition does not merely describe even numbers.
+
+It **defines the proposition** ~Even n~ and simultaneously defines what
+counts as a valid proof of it.
+
+So:
+- ~even-zero~ is a proof of ~Even 0~
+- ~even-suc (even-suc even-zero)~ is a proof of ~Even 4~
+
+And if $n$ is odd, then ~Even n~ has no inhabitants, so the proposition is
+**false** in the propositions-as-types sense.
+
+**** 13. Compact Summary
+
+| Concept                 | Meaning                                            |
+|-------------------------+----------------------------------------------------|
+| ~Even : ℕ → Set~        | A predicate / proposition family                   |
+| ~Even n~                | The proposition "$n$ is even"                      |
+| A term of type ~Even n~ | A proof of that proposition                        |
+| ~even-zero~             | Proves ~Even 0~                                    |
+| ~even-suc~              | Turns proof of ~Even n~ into proof of ~Even (n+2)~ |
+| ~Even n~ for odd $n$    | Uninhabited type (no proof exists)                 |
+| ~¬ Even n~ for odd $n$  | ~Even n → ⊥~ (proof of impossibility)              |
+
+
+
+
+****** 2. Why ~zero~ and ~suc n~?
+
+Because ℕ has exactly two constructors:
+
+#+BEGIN_SRC agda
+data ℕ : Set where
+  zero : ℕ
+  suc  : ℕ → ℕ
+#+END_SRC
+
+This means:
+
+👉 Every natural number is either:
+- ~zero~, or
+- ~suc n~ for some smaller ~n~
+
+This is called **pattern matching on constructors**.
+
+So when you define a function on ℕ, Agda forces you to cover both cases:
+
+#+BEGIN_SRC agda
+f : (n : ℕ) → P n
+
+f zero    = ...         -- handle base case
+f (suc n) = ...         -- handle inductive case
+#+END_SRC
+
+****** 3. Why is this “induction”?
+
+Look at the second clause:
+
+#+BEGIN_SRC agda
+f (suc n) = ... f n ...
+#+END_SRC
+
+You are allowed to use:
+- ~n : ℕ~
+- ~f n : P n~   (the inductive hypothesis!)
+
+So this line corresponds exactly to:
+
+\[
+\phi(n) \to \phi(S(n))
+\]
+
+You are literally *building*:
+- a proof of ~P (suc n)~
+- using a proof of ~P n~
+
+****** 4. Full correspondence to induction schema
+
+FOL:
+\[
+(\phi(0) \land \forall x (\phi(x) \to \phi(S(x)))) \to \forall x \phi(x)
+\]
+
+Agda:
+
+#+BEGIN_SRC agda
+f : (n : ℕ) → P n
+
+f zero    = p0
+f (suc n) = step n (f n)
+#+END_SRC
+
+Where:
+- ~p0 : P zero~         (base case)
+- ~step : (n : ℕ) → P n → P (suc n)~  (inductive step)
+
+So:
+- defining ~f~ *is* proving ∀n P n
+
+****** 5. Concrete example
+
+Let’s prove: “n + 0 = n”
+
+#+BEGIN_SRC agda
+_+_ : ℕ → ℕ → ℕ
+zero  + m = m
+suc n + m = suc (n + m)
+#+END_SRC
+
+Now the proof:
+
+#+BEGIN_SRC agda
+plus-zero : (n : ℕ) → n + zero ≡ n
+
+plus-zero zero =
+  refl
+
+plus-zero (suc n) =
+  cong suc (plus-zero n)
+#+END_SRC
+
+Read this as:
+
+- Base:
+  prove ~0 + 0 = 0~
+
+- Step:
+  assume ~n + 0 = n~
+  prove ~suc n + 0 = suc n~
+
+This is *exactly* induction.
+
+****** 6. Why this feels different from FOL
+
+In FOL:
+- induction is a rule you *apply*
+
+In Agda:
+- induction is a function you *define*
+
+That’s the big shift.
+
+****** 7. One-sentence intuition
+
+- ~P n~ = “property of n”
+- ~f n : P n~ = “proof that n has the property”
+- recursion on ~zero / suc n~ = induction on ℕ
+
+So:
+
+👉 Writing a recursive function over ℕ *is the same thing as* doing induction.
+
+
+
+****** FOL definition of evenness
+
+There are two common ways.
+
+******* Version 1: existential definition
+
+Using addition:
+\[
+Even(x) \;:\!\!\iff\; \exists y \; (x = y + y)
+\]
+
+This says:
+\(x\) is even iff it is double some natural number.
+
+Examples:
+- \(Even(0)\) because \(0 = 0 + 0\)
+- \(Even(S(S(0)))\) because \(2 = 1 + 1\)
+
+******* Version 2: inductive-style characterization inside logic
+
+You can characterize evenness by these two clauses:
+
+1. \(Even(0)\)
+2. \(\forall x \; (Even(x) \to Even(S(S(x))))\)
+
+These clauses say:
+- zero is even
+- if \(x\) is even, then two more than \(x\) is even
+
+By themselves, in plain FOL, these clauses do *not automatically force leastness*.
+They say every number generated this way is even, but they do not by themselves say
+that these are the *only* even numbers unless you add an appropriate minimality or prove equivalence with the existential definition.
+
+So in FOL:
+
+- ~Even(x) := ∃y (x = y + y)~ is a direct definition
+- ~Even(0)~ and ~Even(x) -> Even(S(S(x)))~ are useful theorems / clauses / an inductive characterization
+
+******* Agda naturals
+
+In Agda, we define naturals by constructors:
+
+#+BEGIN_SRC agda
+data ℕ : Set where
+  zero : ℕ
+  suc  : ℕ → ℕ
+#+END_SRC
+
+This means:
+- ~zero~ is a natural number
+- if ~n~ is a natural number, then ~suc n~ is a natural number
+
+Unlike FOL, Agda gives you the *least* such type automatically:
+the only inhabitants of ~ℕ~ are those built from ~zero~ and ~suc~.
+
+******* Agda even predicate as an inductive family
+
+The direct Agda analogue of the inductive characterization is:
+
+#+BEGIN_SRC agda
+data Even : ℕ → Set where
+  even-zero : Even zero
+  even-suc  : ∀ {n} → Even n → Even (suc (suc n))
+#+END_SRC
+
+Read this as:
+
+- ~Even zero~ is inhabited
+- if ~Even n~ is inhabited, then ~Even (suc (suc n))~ is inhabited
+
+This is much stronger than the FOL clauses by themselves, because Agda is defining
+~Even~ as the *least family* closed under those constructors.
+
+So the only proofs of evenness are built from:
+- ~even-zero~
+- repeated applications of ~even-suc~
+
+******* Examples in Agda
+
+******** 0 is even
+
+#+BEGIN_SRC agda
+e0 : Even zero
+e0 = even-zero
+#+END_SRC
+
+******** 2 is even
+
+#+BEGIN_SRC agda
+e2 : Even (suc (suc zero))
+e2 = even-suc even-zero
+#+END_SRC
+
+******** 4 is even
+
+#+BEGIN_SRC agda
+e4 : Even (suc (suc (suc (suc zero))))
+e4 = even-suc (even-suc even-zero)
+#+END_SRC
+
+Each proof mirrors the structure of the number.
+
+******* Side-by-side comparison
+
+******** FOL naturals
+
+You do not “build terms of type ℕ”.
+Instead:
+- the domain is assumed
+- the symbols \(0\), \(S\), \(+\) are interpreted over that domain
+- axioms constrain the interpretation
+
+******** Agda naturals
+
+You literally build inhabitants:
+- ~zero~
+- ~suc zero~
+- ~suc (suc zero)~
+
+So Agda internalizes what FOL leaves semantic.
+
+******* Side-by-side comparison for evenness
+
+******** FOL existential style
+
+\[
+Even(x) \;:\!\!\iff\; \exists y \; (x = y + y)
+\]
+
+This is a predicate defined by a formula.
+
+******** Agda existential-style analogue
+
+You could encode that idea too, using a dependent pair:
+
+#+BEGIN_SRC agda
+Even′ : ℕ → Set
+Even′ n = Σ[ m ∈ ℕ ] (n ≡ m + m)
+#+END_SRC
+
+This says:
+~n~ is even if there exists some ~m~ such that ~n ≡ m + m~.
+
+******** FOL inductive-style clauses
+
+\[
+Even(0)
+\]
+\[
+\forall x \; (Even(x) \to Even(S(S(x))))
+\]
+
+******** Agda inductive family
+
+#+BEGIN_SRC agda
+data Even : ℕ → Set where
+  even-zero : Even zero
+  even-suc  : ∀ {n} → Even n → Even (suc (suc n))
+#+END_SRC
+
+This is the closest proof-theoretic analogue.
+
+******* The deepest conceptual difference
+
+In FOL:
+- ~Even(x)~ is a formula
+- proving ~Even(4)~ means deriving a sentence in a proof system
+
+In Agda:
+- ~Even 4~ is a type
+- proving ~Even 4~ means constructing a term of that type
+
+So:
+
+\[
+\text{formula} \leftrightarrow \text{type}
+\]
+\[
+\text{proof} \leftrightarrow \text{program / term}
+\]
+
+******* Concrete comparison: proving 4 is even
+
+******** In FOL
+
+You might derive:
+\[
+Even(S(S(S(S(0)))))
+\]
+either by:
+- showing \(\exists y \; (4 = y+y)\), taking \(y = 2\), or
+- using:
+  - \(Even(0)\)
+  - \(Even(x) \to Even(S(S(x)))\)
+  - twice
+
+******** In Agda
+
+You write the proof object directly:
+
+#+BEGIN_SRC agda
+e4 : Even (suc (suc (suc (suc zero))))
+e4 = even-suc (even-suc even-zero)
+#+END_SRC
+
+This term *is* the proof.
+
+******* Summary
+
+- Peano axioms in FOL describe the intended structure of naturals semantically.
+- An FOL even predicate can be defined by:
+  \[
+  Even(x) := \exists y (x = y + y)
+  \]
+- Agda defines naturals syntactically via constructors.
+- Agda defines evenness as an inductive family:
+  proofs are built explicitly.
+
+So the closest correspondence is:
+
+- FOL clause:
+  \[
+  Even(0), \quad \forall x(Even(x) \to Even(S(S(x))))
+  \]
+
+- Agda:
+#+BEGIN_SRC agda
+data Even : ℕ → Set where
+  even-zero : Even zero
+  even-suc  : ∀ {n} → Even n → Even (suc (suc n))
+#+END_SRC
+
+That is the proof-relevant, type-theoretic version of the logical predicate.
+
+#+INCLUDE: ./footer.org :minlevel 1
+
+* Footnotes

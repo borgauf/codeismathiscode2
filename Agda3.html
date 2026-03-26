@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-03-20 Fri 22:26 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-orgc025086" class="outline-2">
+<h2 id="orgc025086">\(\Pi\)-type in Agda</h2>
+<div class="outline-text-2" id="text-orgc025086">
+<p>
+In type theory &ndash;— whether you are writing proofs in Agda, studying
+Martin-Löf&rsquo;s foundations, or looking through the topological lens of
+Homotopy Type Theory (HoTT) &mdash; a <b><b>\(\Pi\)-type</b></b> (Pi type) is formally
+known as a <b><b>dependent function type</b></b>.
+</p>
+
+<p>
+It is a generalization of the standard function types used in
+languages like Haskell or Standard ML. In a standard function type \(A
+\to B\), the type of the output \(B\) is fixed. It does not matter
+what specific value of \(A\) you pass to the function; the return type
+is always exactly \(B\).
+</p>
+
+<p>
+A \(\Pi\)-type changes this: <b><b>The type of the output can depend on the
+<i>value</i> of the input.</b></b>
+</p>
+
+<p>
+Formally, if we have a type \(A\) and a family of types \(B\) that depends
+on \(A\) (meaning for every value \(x : A\), there is a valid type
+\(B(x)\)), the \(\Pi\)-type is written as:
+</p>
+
+<p>
+\[\Pi_{x : A} B(x)\]
+</p>
+
+<p>
+Here is how this single concept manifests across the three specific
+domains:
+</p>
+</div>
+<div id="outline-container-orge63ca02" class="outline-3">
+<h3 id="orge63ca02">In Agda (Programming and Verification)</h3>
+<div class="outline-text-3" id="text-orge63ca02">
+<p>
+In Agda, \(\Pi\)-types are the fundamental building blocks of
+dependent typing. You write them using the syntax <code>(x : A) -&gt; B x</code> or
+sometimes using the <code>forall</code> keyword.
+</p>
+
+<p>
+Consider a function that creates a vector of zeros. The length of the
+returned vector directly depends on the natural number you pass in as
+an argument.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>-- Preliminaries
+data Bool : Set where
+true  : Bool
+false : Bool
+
+data Nat : Set where
+zero : Nat
+suc  : Nat → Nat
+
+-- A standard function (fixed return type)
+isEven : Nat -&gt; Bool
+
+-- A dependent function (Pi type)
+zeros : (n : Nat) -&gt; Vec Nat n
+zeros zero    = []
+zeros (suc n) = zero :: zeros n
+</code></pre>
+</div>
+
+<p>
+If you apply <code>zeros</code> to the value <code>3</code>, the type of the result
+evaluates strictly to <code>Vec Nat 3</code>. The value <code>3</code> has crossed the
+boundary from the term level into the type level, effectively allowing
+the compiler to enforce program invariants (like array bounds)
+statically.
+</p>
+</div>
+</div>
+<div id="outline-container-org819e6b8" class="outline-3">
+<h3 id="org819e6b8">In Martin-Löf Type Theory (Logic)</h3>
+<div class="outline-text-3" id="text-org819e6b8">
+<p>
+Under the Curry-Howard correspondence (propositions-as-types), MLTT
+serves as a foundation for constructive logic. In this framework,
+<b><b>\(\Pi\) types correspond exactly to universal quantification
+(\(\forall\)).</b></b>
+</p>
+
+<p>
+If \(A\) is a domain (like natural numbers) and \(B(x)\) is a
+proposition about \(x\) (like &ldquo;\(x\) is even&rdquo;), then the type \(\Pi_{x :
+A} B(x)\) represents the logical proposition \(\forall x \in A,
+B(x)\).
+</p>
+
+<p>
+What constitutes a proof of \(\forall x \in A, B(x)\)? It is precisely
+a dependent function. To prove the statement is true for all \(x\),
+you must provide a function that takes <b>any</b> element \(a : A\) as an
+argument and returns a proof of \(B(a)\). If you can write a total,
+terminating function with this \(\Pi\) type, you have constructively
+proven the universal theorem.
+</p>
+</div>
+</div>
+<div id="outline-container-org496e461" class="outline-3">
+<h3 id="org496e461">3. In Homotopy Type Theory (Topology)</h3>
+<div class="outline-text-3" id="text-org496e461">
+<p>
+HoTT provides a geometric interpretation of Martin-Löf Type Theory, where:
+</p>
+
+<ul class="org-ul">
+<li>Types are spaces.</li>
+<li>Terms are points in those spaces.</li>
+<li>Equalities are continuous paths between points.</li>
+</ul>
+
+<p>
+In this view, a dependent type family \(B(x)\) over a base space \(A\)
+is interpreted as a <b><b>fibration</b></b> (or a fiber bundle). For each point
+\(x\) in the base space \(A\), there is a &ldquo;fiber&rdquo; situated over it,
+which is the space \(B(x)\).
+</p>
+
+<p>
+A \(\Pi\) type \(\Pi_{x : A} B(x)\) is interpreted as the space of
+<b><b>continuous sections</b></b> of this fibration. A section is a mapping that
+assigns to every point \(x\) in the base space \(A\) a specific point
+in the fiber above it, \(B(x)\). It is a topological function that
+&ldquo;chooses&rdquo; a point in each dependent space in a continuous manner.
+</p>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+<div id="outline-container-orgd9cd98a" class="outline-3">
+<h3 id="orgd9cd98a">Summary</h3>
+<div class="outline-text-3" id="text-orgd9cd98a">
+<p>
+To tie it all together, \(\Pi_{x : A} B(x)\) is a single concept viewed from three angles:
+</p>
+
+<ul class="org-ul">
+<li><b><b>Agda:</b></b> A function <code>(x : A) -&gt; B x</code> where the return type is
+computed from the input value.</li>
+<li><b><b>MLTT:</b></b> The universal quantifier \(\forall\), proven by mapping an
+element to a proof about that specific element.</li>
+<li><b><b>HoTT:</b></b> The space of cross-sections of a fiber bundle over a base space.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="outline-container-orgb22ef7e" class="outline-2">
+<h2 id="orgb22ef7e">Propositions as types</h2>
+<div class="outline-text-2" id="text-orgb22ef7e">
+<blockquote>
+<p>
+But if \(\Pi_{x : A} B(x)\) is about <i>types</i>, where \(A\) is a type and
+\(B\) is a &ldquo;family of types&rdquo;, how can \(B\) also be considered a
+proposition? In the creation of a <code>Vec</code> of three elements, i.e., <code>Vec
+Nat 3</code>, the 3-tuple vector of <code>Nat</code> elements is a member of the
+&ldquo;family of <code>Nat</code> vectors&rdquo; But above we have the example of:
+</p>
+
+<p>
+<i>If \(A\) is a domain (like natural numbers) and \(B(x)\) is a proposition
+about \(x\) (like &ldquo;\(x\) is even&rdquo;), then the type \(\Pi_{x : A} B(x)\)
+represents the logical proposition \(\forall x \in A, B(x)\).</i>
+</p>
+
+<p>
+This has \(B\) as a <b><b>proposition</b></b>. This seems to clash with the
+previous \(A \to B\), type\(\to\)type constructors of a type to a
+&ldquo;family of types,&rdquo; i.e., the mapping of the <code>n</code> to a <code>Vec Nat n</code>
+member of the &ldquo;family.&rdquo; Again, this seems to clash with \(B(x)\) as a
+proposition in \(\forall x \in A, B(x)\) How can we resolve this?
+</p>
+</blockquote>
+
+<p>
+This is the conceptual leap that makes dependent type theory so
+powerful and, initially, so mind-bending. This goes to the heart of
+<b><b>Curry-Howard Correspondence</b></b>.
+</p>
+
+<p>
+To resolve this clash, we have to change how we define a
+&ldquo;proposition.&rdquo; In Martin-Löf Type Theory, Agda, and HoTT, the
+foundational rule is: <b><b>Propositions are Types.</b></b> There is no
+distinction between a <i>type</i> (like an integer or a string) and a
+<i>"logical proposition</i> (like <i>\(x\) is even</i>). They are the exact same
+kind of mathematical object.
+</p>
+
+<p>
+Here is how the concepts of &ldquo;families of types&rdquo; and &ldquo;propositions&rdquo;
+perfectly align when viewed through this lens.
+</p>
+</div>
+<div id="outline-container-org8b8830a" class="outline-3">
+<h3 id="org8b8830a">1. Propositions as Types&mdash;the <code>Even(x)</code> example</h3>
+<div class="outline-text-3" id="text-org8b8830a">
+<p>
+In standard classical logic, a proposition is simply evaluated as
+<i>True</i> or <i>False</i>. But in constructive type theory, a proposition is
+treated as a <b><b>Type</b></b>, and the <b>proofs</b> of that proposition are the
+<b><b>Terms</b></b> (or values) that inhabit that type.<label id='fnr.1' for='fnr-in.1.4017446' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.4017446' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+Exactly what is meant by <b><b>term</b></b> is explained below.
+</span>
+</p>
+
+<p>
+The first thing to note is that <code>Even(x)</code> looks like a function. It
+<i>is</i> a function, a <i>type-level</i> function. It takes a value <code>Nat</code> and
+evaluates it to a Type, which is usually called <code>Set</code> by Agda.
+</p>
+
+<p>
+But because we&rsquo;re in the land of <i>Propositions as Types</i> we are not
+defining <code>Even</code> to be some stinking algorithm that merely divides
+numbers by \(2\) and checks the remainder. No, that would be too gauche;
+instead, <i>we define <code>Even</code> inductively by laying out the logical rules
+(axioms) for what makes a number even.</i>
+</p>
+
+<p>
+We&rsquo;ve already established <code>Nat</code> above. Here is the definition of the
+<code>Even</code> <i>type family</i>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>-- takes a Nat, returns a type...
+data Even : Nat → Set where
+
+-- Rule 1: Zero is even.
+-- This constructor is a foundational axiom. It provides an
+-- immediate valid term (a proof) for the type Even zero.
+even-zero : Even zero
+
+-- Rule 2: If n is even, then n + 2 is even.
+-- This constructor is an inductive inference rule.
+-- It is a function that takes a proof that n is even,
+-- and returns a new proof that n + 2 is even.
+even-suc2 : {n : Nat} → Even n → Even (suc (suc n))
+</code></pre>
+</div>
+
+
+<p>
+Let&rsquo;s look at the proposition <i>\(x\) is even</i>, which we can write as the
+type <code>Even(x)</code>.
+</p>
+
+<ul class="org-ul">
+<li>If \(x = 4\), the type \(Even(4)\) is a valid type. Furthermore, it is
+an <b><b>inhabited type</b></b>. The &ldquo;values&rdquo; inside this type are the actual
+mathematical proofs showing that \(4\) is divisible by \(2\).</li>
+<li>If \(x = 5\), the type \(Even(5)\) is still a perfectly valid
+type. However, it is an <b><b>empty type</b></b> (analogous to the bottom type
+\(\bot\)). There are no valid proofs that \(5\) is even, so you can
+never construct a value of type \(Even(5)\).</li>
+</ul>
+
+<p>
+Because \(Even(x)\) takes a value \(x\) and returns a Type, \(Even\) is
+precisely a <b><b>family of types</b></b> indexed by the natural numbers.
+</p>
+</div>
+</div>
+<div id="outline-container-org50a2617" class="outline-3">
+<h3 id="org50a2617">2. Data as Propositions&mdash;the <code>Vec</code> example</h3>
+<div class="outline-text-3" id="text-org50a2617">
+<p>
+Now let&rsquo;s look at <code>Vec Nat n</code>. 
+</p>
+
+<p>
+To be precise: <code>Vec Nat</code> is the <b><b>family of types</b></b>; it takes a number
+and returns a type. <code>Vec Nat 3</code> is a specific <b><b>Type</b></b> within that
+family. A specific array, like <code>1 :: 2 :: 3 :: []</code>, is a <b><b>Term</b></b> (or
+value) of the type <code>Vec Nat 3</code>.
+</p>
+
+<p>
+Under the Curry-Howard Correspondence, the type <code>Vec Nat 3</code> is also a
+proposition! It can be read as the logical statement: <i>There exists a
+sequence of 3 natural numbers.</i>
+</p>
+
+<p>
+When you write the code to create the array <code>1 :: 2 :: 3 :: []</code>, you
+are writing the <b><b>proof</b></b> of that proposition. You proved that a
+vector of length <code>3</code> exists by physically constructing one and handing
+it to the compiler.
+</p>
+</div>
+</div>
+<div id="outline-container-org3f63f7f" class="outline-3">
+<h3 id="org3f63f7f">3. Reconciling the \(\Pi\) Type</h3>
+<div class="outline-text-3" id="text-org3f63f7f">
+<p>
+Now we can bring it back to \(\Pi_{x : A} B(x)\). Because types and
+propositions are the same thing, \(B(x)\) is <b>both</b> a family of types
+<i>and</i> a family of propositions.
+</p>
+
+<ul class="org-ul">
+<li><b><b>Viewed computationally:</b></b> \(\Pi_{n : Nat} Vec(Nat, n)\) is the type
+of a function that takes a number \(n\) and returns an array of length
+\(n\). (Like the <code>zeros</code> function).</li>
+<li><b><b>Viewed logically:</b></b> \(\Pi_{x : Nat} Even(x)\) is the type
+representing the proposition \(\forall x \in Nat, Even(x)\).</li>
+</ul>
+
+<p>
+To &ldquo;prove&rdquo; that all natural numbers are even, you would have to write
+a function that takes <b>any</b> natural number \(x\) as an input, and
+returns a valid term of the type \(Even(x)\). Because \(Even(3)\) and
+\(Even(5)\) are empty types, you will never be able to write a total
+function that satisfies this \(\Pi\) type. Therefore, the \(\Pi\) type
+itself remains empty, which means the universal proposition is
+mathematically unprovable (False).
+</p>
+
+<p>
+<i>The beauty of this system is that verifying a mathematical proof and
+type-checking a program are literally the same algorithm.</i>
+</p>
+
+
+
+
+
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

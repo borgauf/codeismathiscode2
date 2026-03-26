@@ -1,0 +1,73 @@
+#+TITLE: 
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2026-03-23T15:07:32Z UTC 
+#+LANGUAGE:  en 
+#+EXPORT_FILE_NAME: Agda6.html
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Bibliography ---
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+# --- Document Content Starts Here ---
+#+INCLUDE: /home/galaxybeing/Dropbox/org/codeismathiscode2/header.org :minlevel 1
+
+* Adding natural numbers in Agda
+
+The short answer is: *Not exactly, but they are intimately connected by the Curry-Howard correspondence.* The colon syntax ~:~ does not represent the turnstile ($\vdash$) itself. Instead, it represents the *typing judgment* ("has type") from intuitionistic type theory. The compiler's act of successfully type-checking your code is what corresponds to the turnstile.
+
+Let's break down exactly where this syntax originates and how it maps to Gentzen's logic.
+
+/(Note: In Agda, you typically write the type signature with a colon, and the definition with an equals sign. So the syntax usually looks like this:)/
+
+#+BEGIN_SRC agda
+_ : 2 + 3 ≡ 5
+_ = refl
+#+END_SRC
+
+** The Origin: Martin-Löf Type Theory
+The ~:~ syntax originates in the typed $\lambda$-calculi developed by Alonzo Church and later expanded into Constructive Type Theory by Per Martin-Löf. 
+
+In set theory, you have the membership relation, $x \in A$. In type theory, the fundamental primitive is the typing judgment, written as $a : A$, meaning "the term $a$ is of type $A$." 
+
+When you write ~_ : 2 + 3 ≡ 5~ in Agda, you are stating a typing judgment: "There is some anonymous term (~_~) that inhabits the type ~2 + 3 ≡ 5~."
+
+** The Bridge: The Curry-Howard Correspondence
+This is where Gerhard Gentzen comes in. Gentzen's natural deduction and sequent calculus introduced the turnstile $\vdash$ to denote *provability*. 
+- $\vdash A$ means "$A$ is provable" (a tautology in an empty context).
+- $\Gamma \vdash A$ means "$A$ is provable given the assumptions in context $\Gamma$."
+
+Classical proof theory (like Gentzen's) focuses only on /whether/ a proposition is provable. Constructive type theory (like Agda) goes a step further: it demands the actual /evidence/ of the proof. 
+
+Under the Curry-Howard correspondence (Propositions-as-Types), logic and computation are perfectly mirrored:
+- A *Proposition* in logic ($A$) is a *Type* in Agda.
+- A *Proof* in logic is a *Term* (or program) in Agda.
+
+Therefore, Gentzen's assertion that a proposition is provable ($\vdash A$) translates mathematically to the type-theoretic judgment that a type is inhabited:
+$$\vdash a : A$$
+This reads as: "In the empty context, term $a$ has type $A$."
+
+** How Agda Acts as the Turnstile
+In Agda, the syntax you write is the right side of the turnstile ($a : A$). *The compiler itself acts as the turnstile.* When you write your code:
+1. *The Context ($\Gamma$):* All your previous imports and definitions form the context.
+2. *The Proposition ($A$):* ~2 + 3 ≡ 5~ is the type you want to prove.
+3. *The Proof Term ($a$):* ~refl~ (the constructor for the identity type) is the evidence you provide.
+
+When you hit compile, Agda's type-checker attempts to verify the formal logical judgment:
+$$\Gamma \vdash \text{refl} : 2 + 3 \equiv 5$$
+
+If Agda accepts it, the turnstile holds. You have successfully proven the theorem. 
+
+** Summary of the Symbols
+- ~:~ is the object-language syntax for "has type". It tells the compiler what proposition you are aiming to inhabit.
+- $\vdash$ is the meta-language syntax for a derived judgment. You don't type it in Agda; it is the invisible, conceptual action the type-checker performs.
+- ~_~ is simply a hole or a wildcard. In this case, it just means "I don't need to give a name to this proof because I won't reference it later."
+
+
+
+#+INCLUDE: ./footer.org :minlevel 1
+

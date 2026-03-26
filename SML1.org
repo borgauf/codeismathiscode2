@@ -33,6 +33,260 @@
 
 #+end_src
 
+** Functional programming---theoretically speaking
+
+[[https://en.wikipedia.org/wiki/John_Backus][John Backus]]'s 1977 Turing Award lecture, titled /[[https://en.wikipedia.org/wiki/FP_(programming_language)][Can Programming Be
+Liberated from the von Neumann Style]]?/ introduced with great
+mathematical formalism his proto-functional language /FP/. Backus was
+a pioneer who led the team that created [[https://en.wikipedia.org/wiki/Fortran][Fortran]] (one of the first
+major programming languages). After Fortran, Later in his career, he
+realized that traditional programming, relying heavily on changing
+variables and managing a computer's memory state step-by-step, was
+highly error-prone. He sought to make programming more mathematically
+elegant. Here are the five basic ingredients he used to encapsulate
+his FP---with some interpretation for better understanding
+
+@@html:<font color = "#0d3db3">@@
+1. **A set $O$ of objects**: These are your raw materials, which in
+   programming means data. Objects are the numbers, text strings, or
+   lists that you feed into your program, as well as the results you
+   get out of it.
+2. **A set $F$ of functions**: These are your tools or machines. A
+   function's only job is to take an object (an input) and transform
+   it into a new object (an output). For example, a function that
+   doubles numbers evaluates the object $5$ and gets the value $10$.
+3. **An /application/ operation**: This is the act of actually turning
+   the machinery on. /Application/ just means taking a function and
+   feeding an object into it, i.e., applying the double function to
+   the number $5$.
+4. **A set of /functional forms/**: These are the connectors that let
+   you snap smaller machines together to build bigger ones. Instead of
+   just using one tool, you can hook the output pipe of one function
+   directly into the input pipe of another. (Think of function
+   composition $f \circ g$.)
+5. **A set $D$ of definitions**: This is how you label your new,
+   complex machines. Once you have combined several functions to do
+   something useful, you give it a name so you can reuse it later
+   without having to rebuild it from scratch.
+@@html:</font>@@
+   
+**A descriptive breakdown of functional programming**
+
+Backus's definition is foundational, but it is highly theoretical. If
+you ask a modern software engineer to break down what functional
+programming actually is, they usually won't talk about mathematical
+sets. Instead, they'll describe this list of core principles:
+
+- **Immutability**: __Data doesn't change__. Once you create a piece
+  of data, it is locked. If you want to change a list, you do not
+  modify the original list; you create a brand-new copy with the
+  updates. This prevents unexpected bugs where one part of your
+  program accidentally ruins data that another part is trying to use.
+- **Pure Functions**: A function must follow two strict rules. First,
+  the exact same input will always return the exact same output---just
+  like a math function. Second, functions cannot produce "side
+  effects." This means functions cannot change things outside of
+  themselves, e.g., modifying a global variable, writing to a
+  database, or printing to the screen.[fn:1]
+- **First-Class Functions**: Functions are treated just like any other
+  piece of regular data. You can /bind/ a function to a variable (give
+  it a name), pass a function to another function as an argument, or
+  have a function return another function as a result.
+- **Declarative Style**: You describe to the computer what you want to
+  achieve, rather than have to order it step-by-step what to do. For
+  example, instead of writing a manual loop that says "go through this
+  list one by one, add $2$ to each number, and save it into a new
+  list," you simply use a built-in /application/ tool to say, "Apply
+  (~map~) this addition function to each element of the entire list."
+
+But then Backus breaks down what objects $O$ are in more of his
+math-speak. In Backus's system, every piece of data (an object, $O$)
+must fall into one of three categories:
+
+@@html:<font color = "#0d3db3">@@
+1. atoms,
+2. sequences $\langle x_1,...,x_n \rangle$ whose elements $x_i$ are objects,
+3. $\bot$ (**bottom**, the undefined object)
+ @@html:</font>@@ \\
+ \\
+  
+- **Atoms**: Think of an /atom/ in chemistry---it is a fundamental,
+  indivisible building block. In functional programming, an /atom/ is
+  a single, standalone value that cannot be broken down any
+  further.[fn:2] The wording above explicitly mentions two example atoms:
+  $T$ and $F$, which simply stand for /true/ and /false/. Other
+  examples of atoms would be basic numbers or characters.
+- **Sequences**[fn:3] ($\langle x_1,\ldots,x_n \rangle$): A typical example is the
+  humble **list**, one of the most basic programming data
+  structures. The notation $\langle x_1,\ldots,x_n \rangle$ is the mathematical
+  way of saying, "A collection of items in a specific order." Note
+  that the items inside the list ($x_i$) are also /objects/. Because a
+  sequence is an object, and sequences hold objects, this means you
+  can put sequences inside of sequences---over and over
+  recursively---creating lists of lists of lists...[fn:4]
+- **$\boldsymbol{\bot}$**: Called /bottom/,[fn:5] this symbol is the
+  mathematical representation of an error, a crash, or an infinite
+  loop. For example, when a program tries to divide by zero or gets
+  stuck forever, it doesn't evaluate to an atom or a sequence value;
+  it produces $\bot$, meaning the result is /undefined/.
+
+We should note two more specifics about data objects
+
+- **The Empty Sequence (ϕ)**: The symbol ϕ (phi) represents an empty
+  list (a sequence with zero items inside it). One quirk of this
+  specific system: the empty list is considered both an atom (because
+  "nothingness" is a single, indivisible concept) as well as a
+  sequence. As we get started in SML, we'll see the empty list ~[]~
+  often.[fn:6]
+- **Bottom-Preserving Strictness**: The proposition, rule, /If $X$ is
+  a sequence containing $\bot$, then $X=\bot$/ is describing how
+  errors behave in our functional language. Imagine you are packing a
+  box with items. If even one of the items you try to put in the box
+  explodes or causes a fatal error (evaluates to $\bot$), the entire
+  box is destroyed. You cannot have a valid sequence or list where
+  even one item is an error, e.g., ~[1, 2, (⊥), 4]~. The moment an
+  error is introduced, the entire sequence instantly becomes an error
+  itself ($\bot$). In programming language theory, a system that
+  behaves this way is called /strict/ or "bottom-preserving".
+
+Now that we have objects $O$ sorted out---atoms, sequences (e.g.,
+lists), and errors or undefined situations ($\bot$)---we need tools to
+actually do something with them.
+
+In Backus's system, functions are broken down into two main
+categories: **primitive functions**, the basic, standalone tools, and
+**functional forms**, the connectors used to wire those tools together
+into an assembly line.
+
+Here is a breakdown of how they work:
+
+1. **Primitive functions** are the basic tools. These are the
+   built-in, ready-to-use machines. They take one object in, do a
+   simple task, and spit one object out---and always that same return
+   for that same input /guaranteed/.
+
+- **Selectors**: In Backus's mathematical system, numbers are also
+  functions. His function $1$ means "grab the first item out of a
+  sequence," i.e., apply the function $1$ to the sequence $\langle A, B, C
+  \rangle$, the output is the atom $A$. In practice these are simply the
+  functions that evaluate a list and return an element based on its
+  order in the list, e.g., SML's ~hd~, short for /head/ (of list)[fn:7]
+
+  #+name: 8c69f742-d202-4ba2-a9f6-ebb36813a387
+#+begin_src sml :session *sml* :results output :exports both
+hd [1,2,3]
+#+end_src
+
+#+RESULTS:
+: val it = 1 : int
+
+or something fancier to return the second element[fn:8]
+
+  #+name: 6cfc3687-2e95-4ba2-8d46-bf12c13ee460
+#+begin_src sml :session *sml* :results silent :exports both
+(fn (_::x::_) => x) [1,2,3]
+#+end_src
+
+#+begin_example
+val it = 2 : int
+#+end_example
+
+In essence, we have an /indexing/ system to automatically identify and
+retrieve members /without/ the use of loops to march through the
+sequence/list.
+
+Let's take a quick in situ /math holiday/ to see how Backus selectors
+are actually /projection functions/ from higher math
+
+**Definition**
+
+In mathematics, a **projection** is a mapping from a set (or algebraic
+structure) to a subset, which leaves the elements of that subset
+unchanged. It essentially "squashes" a higher-dimensional object into
+a lower-dimensional subspace.
+
+Let \( X_1, X_2, \dots, X_n \) be any sets.  
+Their *Cartesian product* (the set of all n-tuples) is
+\[
+X_1 \times X_2 \times \dots \times X_n = \{ \langle x_1, x_2, \dots, x_n \rangle \mid x_i \in X_i \}
+\]
+
+A *projection function* (also written \( \pi_k \) or \( \mathrm{proj}_k \)) is the function that “projects” onto the k-th coordinate:
+
+\[
+\pi_k : X_1 \times \dots \times X_n \;\to\; X_k
+\]
+
+defined by the rule
+
+\[
+\pi_k(\langle x_1, x_2, \dots, x_n \rangle) = x_k
+\]
+
+This "projecting onto the k-th dimension/coordinate essentially throws
+away every component except the k-th one. That's all there is to it.
+
+- \( \pi_1 \) always returns the first component.  
+- \( \pi_2 \) always returns the second, and so on.
+
+But then higher math has generalized the concept of /projection/ to
+apply it to many other topics 
+
+**Set Theory The Coordinate Picker**
+
+In the context of Cartesian products, a projection function $pr_i$ (or
+$\pi_i$) selects the $i$-th component of an element.
+
+Given a product $X \times Y$, the projection $\pi_1$ is defined as:
+$$\pi_1: X \times Y \to X, \quad \pi_1(x, y) = x$$
+
+
+- *Tail ($tl$):* This chops off the first item of a sequence and
+  returns whatever is left. If you apply $tl$ to $\langle A, B, C \rangle$, the
+  output is $\langle B, C \rangle$.
+- *Identity ($id$):* This is the "do nothing" machine. Whatever you
+  put in, it passes right through unchanged.
+- *Predicates (e.g., $atom$, $eq$):* These are your inspectors. They
+  look at an object and return either $T$ (True) or $F$ (False). For
+  example, the $atom$ function checks if an object is an atom. If you
+  feed it $A$, it returns $T$. If you feed it a sequence like $\langle A, B
+  \rangle$, it returns $F$.
+
+2. Functional Forms (The Connectors)
+This is where the real magic of functional programming
+happens. Functional forms are the rules for snapping basic tools
+together to create complex machines. Backus defined several specific
+ways to combine them:
+
+- *Composition ($f \circ g$):* This is hooking two machines up end-to-end
+  like a single conveyor belt. The notation $f \circ g$ means "run the
+  data through function $g$ first, and then immediately feed that
+  result into function $f$."
+- *Construction ($[f_1, f_2, \dots, f_n]$):* This is parallel
+  processing. You take one piece of input data, duplicate it, and send
+  it through several different functions at the exact same time. The
+  results are then automatically packed into a brand-new sequence. For
+  example, if you have a construction made of the functions $[1, tl]$
+  and you feed it the sequence $\langle A, B, C \rangle$, it will output a new
+  sequence: $\langle A, \langle B, C \rangle \rangle$.
+- *Apply-to-all ($\alpha f$):* In modern programming, this is usually
+  called *map*. It takes a single function ($f$) and applies it
+  individually to every single item inside a sequence. If you have a
+  sequence of numbers and you use $\alpha$ with a "multiply by 2" function,
+  it runs that multiplication on the first number, then the second,
+  then the third, returning a new sequence of doubled numbers.
+- *Condition ($p \rightarrow f ; g$):* This is the functional version of an
+  "if/then" statement. It uses a predicate ($p$) to test the input. If
+  the test is True, it routes the data through function $f$. If the
+  test is False, it routes the data through function $g$.
+
+Notice what is completely missing from this system: *Variables.* In
+traditional programming, you would write code that says "Create a
+variable ~X~, make it equal to 0, add 1 to ~X~, now save the new ~X~."
+In this functional system, there is no storage, no memory states, and
+no variables changing over time. Data just flows continuously through
+a pipeline of connected functions, entering as raw input and exiting
+as a finished result.
 
 
 ** Expressions versus commands: the conceptual shift
@@ -48,7 +302,7 @@ live memory.
 - **Variables as memory boxes:** In C/C++, a variable is a named
   location, a /box/ in memory.
 - **Commands as mutations:** For example, a line of code such as =x =
-  x + 1;= is a command.[fn:1] It means: "Go to the memory location
+  x + 1;= is a command.[fn:9] It means: "Go to the memory location
   named =x=, read the current value, add ~1~ to it, and overwrite the
   contents of that exact same box with the new value."
 
@@ -61,12 +315,12 @@ x = x + 1;
 
 The execution of a C/C++ program is a timeline of state changes. To
 understand what the program is doing at, say, line 50, you have to
-mentally track the current state of all the mutations[fn:2] carried out from
+mentally track the current state of all the mutations[fn:10] carried out from
 lines 1 through 49.
 
 *** The functional model (ML family): reducing expressions
 
-SML[fn:3] is not modeled on hardware architecture, rather, on
+SML[fn:11] is not modeled on hardware architecture, rather, on
 mathematical logic. When we program in an ML language we do not write
 commands to change memory; we write expressions to be evaluated, and
 running an SML program is much like simplifying an algebraic equation.
@@ -104,7 +358,7 @@ of ~x~ as its argument. This is "pure functional statelessness." This
 is immutability. Because values never change once defined, an
 expression evaluated with the same inputs will always yield the exact
 same result, with no hidden dependencies on an external, ever-changing
-memory states.[fn:4]
+memory states.[fn:12]
 
 *** The Compiler's Magic Trick
 
@@ -220,7 +474,7 @@ syntactic construct that can be evaluated to produce a **value**.
 
 This means programs in SML are made up of expressions that are
 evaluated to give values. What is an expression? Simply put, any
-section of code that can be evaluated to produce a value.[fn:5]
+section of code that can be evaluated to produce a value.[fn:13]
 
 SML expressions are related to [[https://en.wikipedia.org/wiki/Expression_(mathematics)][mathematical expressions]]. Consider this
 math equation
@@ -239,7 +493,7 @@ automatically an expression because it resolves to itself.
 @@html:<font color = "#0d3db3">@@⥤ To /evaluate/ an expression means
 to find a value equivalent to the expression.  @@html:</font>@@
 
-In math this is /reducing to simplest form/.[fn:6] For our $7x - 5 =
+In math this is /reducing to simplest form/.[fn:14] For our $7x - 5 =
 2$ example, by plugging in $x = 1$ to the expression $7x - 5$, it
 evaluates to $2$. But can't we then say the equation as a whole
 evaluates to the Boolean value of true? Yes and no. In just the form
@@ -313,7 +567,7 @@ val result = (1 + 2) * (Int.max(5, 10));
 : val result = 30 : int
 
 Here, ~(1 + 2)~ is an expression, ~Int.max(5, 10)~ is an
-expression,[fn:7], while the times operator ~*~ /composes/ them into a
+expression,[fn:15], while the times operator ~*~ /composes/ them into a
 larger expression. Then this value is bound to the variable phrase
 ~result~ /However, the entire line ~val result = (1 + 2) * (Int.max(5,
 10));~ itself is a **declaration** that contains expressions/. Let's
@@ -485,7 +739,7 @@ val function_result = getR (); (* Now evaluates to 20 *)
 
 $\mathfrak{Fazit}$: Don't bother with reference/dereference updating
 unless you absolutely must. Normal variable immutability is a
-/feature/ of functional programming.[fn:8]
+/feature/ of functional programming.[fn:16]
 
 In functional programming everything is based on functions We'll look
 at
@@ -563,7 +817,7 @@ Here is a breakdown of how the math maps to the code:
 
 
 
-Because of this Cartesian product, a function with the signature =int * int -> int= actually only takes *one* argument. That single argument just happens to be a 2-tuple (a pair) containing two integers.[fn:9]
+Because of this Cartesian product, a function with the signature =int * int -> int= actually only takes *one* argument. That single argument just happens to be a 2-tuple (a pair) containing two integers.[fn:17]
 
 For example, an addition function with this signature would look like this:
 
@@ -624,29 +878,61 @@ This means any uncurried function can be mechanically translated into a curried 
 
 * Footnotes
 
-[fn:1] In math $x = x +1$ is an absurdity. Simplifying we would have
+[fn:1] This is true of only the purest functional languages. For the
+sake of usability, there are workarounds.
+
+[fn:2] ...just like solving an equation, getting it into its simplest
+form.
+
+[fn:3] In higher mathematics, a finite sequence can also be viewed as
+an \(n\)-tuple. Both are ordered /lists/ of elements, such as $\langle 𝑎_1,
+a_2,\ldots,a_n \rangle$, where order matters and repeating objects are not
+considered duplicates. While tuples are typically finite, a sequence
+is generally considered to be of infinite length $\langle a_1, a_2, \dots \rangle$
+but can be treated as a tuple when limited to a specific length.
+
+[fn:4] ...which is the actual syntax of the Lisp family of
+languages,i.e., lists of lists of lists...
+
+[fn:5] The bottom symbol (\(\bot \)), also known as /up tack/, is a
+logical constant representing /falsity/, a /contradiction/, or the
+least element in a lattice, commonly used in type theory and computer
+science to indicate a non-terminating computation, i.e., bombed
+operation or program.
+
+[fn:6] In Lisp, this is called ~nil~.
+
+[fn:7] In reality $1$ as a function name /and/ as an atom, an actual
+number doesn't work, hence, programming languages use other names for
+selectors...
+
+[fn:8] This is a pattern-matching anonymous function, all but verbatim
+from /lambda calculus/ --- but it's not considered "safe" since it
+doesn't account for lists of less than two elements. More later...
+
+[fn:9] In math $x = x +1$ is an absurdity. Simplifying we would have
 $0 = 1$. Crazy.
 
-[fn:2] ...all the memory shiftings and  overwrites...
+[fn:10] ...all the memory shiftings and  overwrites...
 
-[fn:3] Standard ML is the original functional language based on type
+[fn:11] Standard ML is the original functional language based on type
 theory. After SML came Ocaml, Haskell, and F#.
 
-[fn:4] Later we'll learn how "same inputs always produce same outputs"
+[fn:12] Later we'll learn how "same inputs always produce same outputs"
 is exactly how mathematical functions behave.
 
-[fn:5] In the Lisp family, a **form** is any part of the code that
+[fn:13] In the Lisp family, a **form** is any part of the code that
 can, taken by itself, produce a value.
 
-[fn:6] ...also called **normal form** in higher math.
+[fn:14] ...also called **normal form** in higher math.
 
-[fn:7] ~Int.max(a, b)~ is a built-in SML function that takes a tuple
+[fn:15] ~Int.max(a, b)~ is a built-in SML function that takes a tuple
 of two arguments and returns the one with the greater value.
 
-[fn:8] $\mathfrak{Fazit}$ (fah-**tzeet**, i.e., Mozart z) is German
+[fn:16] $\mathfrak{Fazit}$ (fah-**tzeet**, i.e., Mozart z) is German
 for /bottom line/ or /all in all/, a nod to all the German
 contributions to math.
 
-[fn:9] Technically, SML functions only ever take one argument at a
+[fn:17] Technically, SML functions only ever take one argument at a
 time. It only seems to take multiple arguments by packaging them
 inside a tuple. Read on about /currying/...

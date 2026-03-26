@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-03-18 Wed 22:48 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-org819e6b8" class="outline-2">
+<h2 id="org819e6b8">Dependent Vector</h2>
+<div class="outline-text-2" id="text-org819e6b8">
+<p>
+The Agda type <code>Vec A n</code> (often called a &ldquo;Dependent Vector&rdquo; or
+&ldquo;Length-indexed List&rdquo;) is expressible in mathematical set theory.
+</p>
+
+<p>
+In set theory, we represent this concept using <b><b>families of sets</b></b>
+and <b><b>Cartesian products</b></b>.
+</p>
+</div>
+<div id="outline-container-org496e461" class="outline-3">
+<h3 id="org496e461">What is an indexed family of sets?</h3>
+<div class="outline-text-3" id="text-org496e461">
+<p>
+The phrase is imported from mathematics, specifically from set theory and
+category theory, and it has a precise meaning worth unpacking.
+</p>
+</div>
+<div id="outline-container-orgd9cd98a" class="outline-4">
+<h4 id="orgd9cd98a">In Mathematics</h4>
+<div class="outline-text-4" id="text-orgd9cd98a">
+<p>
+A <i>family of sets indexed by</i> \(I\) is simply a function \(F : I \to \mathbf{Set}\).
+That is, for each element \(i \in I\), you get a set \(F(i)\). The word &ldquo;family&rdquo;
+just means &ldquo;a collection of things organised by an index.&rdquo; For example:
+</p>
+
+<p>
+\[F(n) = \{ \text{lists of integers of length } n \}\]
+</p>
+
+<p>
+gives you a family of sets indexed by \(\mathbb{N}\). \(F(0)\) is one set
+(containing only the empty list), \(F(1)\) is another set (all singleton lists),
+\(F(2)\) another, and so on. These are genuinely <i>different sets</i>, but they are
+all related by the same pattern — they are the &ldquo;same idea&rdquo; at different
+indices. The whole collection \(\{ F(n) \mid n \in \mathbb{N} \}\) is the family.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb22ef7e" class="outline-4">
+<h4 id="orgb22ef7e">In Agda</h4>
+<div class="outline-text-4" id="text-orgb22ef7e">
+<p>
+<code>Vec A</code> is literally that function. Its type is <code>ℕ → Set</code>, which in Agda
+means: give me a natural number \(n\), and I will return you a <i>type</i> (a <code>Set</code>).
+So:
+</p>
+
+<ul class="org-ul">
+<li><code>Vec A 0</code> is one type — the type whose only inhabitant is <code>[]</code></li>
+<li><code>Vec A 1</code> is another type — inhabited by things like <code>x ∷ []</code></li>
+<li><code>Vec A 2</code> is yet another type — inhabited by things like <code>x ∷ y ∷ []</code></li>
+</ul>
+
+<p>
+These are <b>distinct types</b>. A term of type <code>Vec A 2</code> is not a term of type
+<code>Vec A 3</code>. They are different sets (in the sense of collections of values). But
+they are all produced by the same type constructor <code>Vec A</code>, applied to
+different indices. That whole tower of types, organised by \(\mathbb{N}\), is the
+indexed family.
+</p>
+
+<p>
+So the statement <i>&ldquo;Vec is an indexed family of sets&rdquo;</i> means precisely:
+</p>
+
+<blockquote>
+<p>
+<code>Vec A</code> is a function \(\mathbb{N} \to \mathtt{Set}\). It does not name a single
+type; it names a whole collection of types, one per natural number, and those
+types are organised by — indexed by — their length.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org0c96d26" class="outline-4">
+<h4 id="org0c96d26">Why &ldquo;Sets&rdquo; and not just &ldquo;Types&rdquo;?</h4>
+<div class="outline-text-4" id="text-org0c96d26">
+<p>
+In Agda&rsquo;s type theory (Martin-Löf Type Theory), types <i>are</i> sets in a precise
+sense — <code>Set</code> is Agda&rsquo;s name for the universe of small types, and it
+corresponds to the mathematical notion of a set in the constructive and
+type-theoretic tradition. So &ldquo;indexed family of sets&rdquo; and &ldquo;indexed family of
+types&rdquo; mean the same thing here. The set-theoretic language is older and comes
+from the mathematical foundations; Agda inherits it via the name <code>Set</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-org8b8830a" class="outline-4">
+<h4 id="org8b8830a">The Conceptual Payoff</h4>
+<div class="outline-text-4" id="text-org8b8830a">
+<p>
+In Haskell, <code>[a]</code> is a single type and length is a value you can only inspect
+at runtime. In Agda, there is no single type &ldquo;list of \(A\)&rdquo; — there is an entire
+<b>family</b> of types, one for each possible length, and the type system forces you
+to always say <i>which member of the family</i> you are working with.
+</p>
+
+<p>
+The index \(n\) in <code>Vec A n</code> is not data inside the type; it is a <b>coordinate</b>
+that selects a particular set out of the family:
+</p>
+
+<p>
+\[\mathtt{Vec}\ A : \mathbb{N} \to \mathtt{Set}\]
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(n\)</th>
+<th scope="col" class="org-left">Selected set \(\mathtt{Vec}\ A\ n\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(0\)</td>
+<td class="org-left">\(\{ \mathtt{[]} \}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(1\)</td>
+<td class="org-left">\(\{ x \mathtt{∷} \mathtt{[]} \mid x : A \}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(2\)</td>
+<td class="org-left">\(\{ x \mathtt{∷} y \mathtt{∷} \mathtt{[]} \mid x, y : A \}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\vdots\)</td>
+<td class="org-left">\(\vdots\)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Each row is a distinct set. <code>Vec A</code> is the function that produces all of them.
+That function — the whole tower at once — is the indexed family.
+</p>
+</div>
+</div>
+<div id="outline-container-org50a2617" class="outline-4">
+<h4 id="org50a2617">1. The Mathematical Translation</h4>
+<div class="outline-text-4" id="text-org50a2617">
+<p>
+In Agda, <code>Vec</code> is a function from a natural number to a type: <code>Vec : Set → Nat → Set</code>.
+In Set Theory, for a given set \(A\), the equivalent is a function \(V\) that maps each natural number \(n \in \mathbb{N}\) to a specific set.
+</p>
+</div>
+<div id="outline-container-org3f63f7f" class="outline-5">
+<h5 id="org3f63f7f">The Definition</h5>
+<div class="outline-text-5" id="text-org3f63f7f">
+<p>
+Let \(A\) be a set. We define the family of sets \(V_n\) (representing <code>Vec A n</code>) by induction:
+</p>
+
+<ol class="org-ol">
+<li><b><b>Base Case (\(n = 0\)):</b></b>
+\(V_0 = \{ \emptyset \}\) 
+<b>(The set containing the empty sequence. This corresponds to <code>[]</code>.)</b></li>
+<li><b><b>Inductive Step (\(n + 1\)):</b></b>
+\(V_{n+1} = A \times V_n\)
+<b>(The Cartesian product of \(A\) and the previous set. This corresponds to <code>_::_</code>.)</b></li>
+</ol>
+
+<p>
+Alternatively, in standard set theory, \(V_n\) is simply defined as the set of all functions from the von Neumann ordinal \(n\) to \(A\):
+\[V_n = A^n = \{ f \mid f: \{0, 1, \dots, n-1\} \to A \}\]
+</p>
+
+<p>
+&mdash;
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org648c2f4" class="outline-4">
+<h4 id="org648c2f4">2. Comparison Examples</h4>
+<div class="outline-text-4" id="text-org648c2f4">
+<p>
+Let&rsquo;s look at a vector of natural numbers with a length of 2 containing the elements \(x\) and \(y\).
+</p>
+</div>
+<div id="outline-container-org651f861" class="outline-5">
+<h5 id="org651f861">Agda Example</h5>
+<div class="outline-text-5" id="text-org651f861">
+<blockquote>
+<p>
+Give me a type \(A\), and I will give you the set of all $n$-tuples of
+\(A\)
+</p>
+</blockquote>
+
+<p>
+In Agda, we define the type and the term explicitly. The type system
+enforces that the length matches the index. &ldquo;.&rdquo;
+</p>
+
+<pre class="example" id="org530237a">
+-- The definition (as provided in your prompt)
+data Vec (A : Set) : Nat → Set where
+  []   : Vec A zero
+  _::_ : {n : Nat} → A → Vec A n → Vec A (succ n)
+
+-- An instance: a vector of length 2
+myVec : Vec Nat 2
+myVec = 10 :: 20 :: []
+</pre>
+
+<p>
+When you write <code>myVec : Vec Nat 2</code>, you are telling the Agda compiler:
+&ldquo;I am creating a collection of exactly two natural numbers.&rdquo;
+</p>
+
+<p>
+Mathematically, this is equivalent to saying:
+\[myVec \in \mathbb{N} \times \mathbb{N}\]
+Or, in the function notation:
+\[myVec \in \mathbb{N}^{\{0, 1\}}\]
+</p>
+
+<p>
+Changing the underlying set (\(A\))
+</p>
+
+<p>
+A second example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>myVec : Vec Float 2
+myVec = 10.0 :: 20.0 :: []
+</code></pre>
+</div>
+
+<p>
+By changing <code>Nat</code> to <code>Float</code>, we have changed the <b>codomain</b> of the
+&ldquo;function.&rdquo;
+</p>
+
+<ul class="org-ul">
+<li>In the first case, the &ldquo;function&rdquo; maps indices \(\{0, 1\}\) to the set
+of Natural numbers \(\mathbb{N}\).</li>
+<li>In the second case, the &ldquo;function&rdquo; maps indices \(\{0, 1\}\) to the
+set of Floating point numbers \(\mathbb{F}\).</li>
+</ul>
+
+<p>
+The power of <code>Vec</code> is that the length <code>2</code> is part of the type. If we
+tried to do this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>-- This will cause a COMPILE ERROR
+brokenVec : Vec Nat 2
+brokenVec = 10 :: []
+</code></pre>
+</div>
+
+<p>
+Agda will look at the definition of <code>[]</code> (which has length <code>zero</code>) and
+<code>::</code> (which adds 1 to the length) and realize that <code>10 :: []</code> has type
+<code>Vec Nat 1</code>.  Since <code>Vec Nat 1</code> is not the same type as <code>Vec Nat 2</code>,
+the code will not compile.
+</p>
+
+<p>
+To tie it back to the ZF approach:
+</p>
+
+<ul class="org-ul">
+<li><b><b>The Type</b></b> (<code>Vec Nat 2</code>) is the <b><b>set of all possible functions</b></b>
+from \(\{0, 1\} \to \mathbb{N}\).</li>
+<li><b><b>The Value</b></b> (<code>10::20::[]</code>) is <b><b>one specific function</b></b> in
+that set: the one where \(f(0) = 10\) and \(f(1) = 20\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6ee8555" class="outline-5">
+<h5 id="org6ee8555">Set Theory Example</h5>
+<div class="outline-text-5" id="text-org6ee8555">
+<p>
+In Set Theory (ZF), we usually represent sequences as ordered
+\(n\)-tuples or functions.
+</p>
+
+<p>
+<b><b>As an \(n\)-tuple:</b></b>
+The vector is an element of the \(n\)-fold Cartesian product.
+\[A^2 = A \times A\]
+\[(10, 20) \in \mathbb{N}^2\]
+</p>
+
+<p>
+<b><b>As a function (Formal ZF approach):</b></b>
+A vector is a function where the domain is the length of the vector.
+\[f = \{ (0, 10), (1, 20) \}\]
+Here, \(f \in \mathbb{N}^{\{0, 1\}}\). The &ldquo;type&rdquo; <code>Vec Nat 2</code> is the set of all such functions.
+</p>
+</div>
+</div>
+<div id="outline-container-org8948797" class="outline-5">
+<h5 id="org8948797">3. Key Differences in Philosophy</h5>
+<div class="outline-text-5" id="text-org8948797">
+<p>
+While they represent the same idea, the way they function is different:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Feature</td>
+<td class="org-left">Agda (<code>Vec A n</code>)</td>
+<td class="org-left">Set Theory (\(A^n\))</td>
+</tr>
+
+<tr>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+<td class="org-left">:---</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Nature</b></b></td>
+<td class="org-left">A <b><b>Type family</b></b>. <code>Vec A 3</code> and <code>Vec A 4</code> are distinct types.</td>
+<td class="org-left">A <b><b>Set</b></b>. \(A^3\) and \(A^4\) are distinct sets.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Membership</b></b></td>
+<td class="org-left">Checked via <b><b>Type Checking</b></b>. <code>v :: vs</code> is valid by construction.</td>
+<td class="org-left">Checked via <b><b>Set Membership</b></b> (\(x \in S\)).</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Indexing</b></b></td>
+<td class="org-left">The length \(n\) is a <b><b>term</b></b> inside the type.</td>
+<td class="org-left">The length \(n\) is an <b><b>index</b></b> for a family of sets.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Failure</b></b></td>
+<td class="org-left"><code>head []</code> results in a <b><b>Compile-time error</b></b> because the type doesn&rsquo;t match.</td>
+<td class="org-left"><code>head(Ø)</code> is usually <b><b>undefined</b></b> or requires a precondition (\(S \neq \emptyset\)).</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgbec9ad4" class="outline-5">
+<h5 id="orgbec9ad4">Summary</h5>
+<div class="outline-text-5" id="text-orgbec9ad4">
+<p>
+To express <code>Vec A n</code> in math:
+</p>
+<ol class="org-ol">
+<li>Define \(\mathbb{N}\) (Natural numbers).</li>
+<li>Define \(A^n\) (The set of \(n\)-tuples of \(A\)).</li>
+<li>Define the family \(\mathcal{V} = \{A^n\}_{n \in \mathbb{N}}\).</li>
+</ol>
+
+<p>
+The Agda declaration <code>Vec A n</code> is essentially a constructive, inductive definition of the set of \(n\)-tuples \(A^n\).
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="outline-container-orgf4316c4" class="outline-2">
+<h2 id="orgf4316c4">Agda Vector vs Haskell List</h2>
+<div class="outline-text-2" id="text-orgf4316c4">
+</div>
+<div id="outline-container-org38570f5" class="outline-3">
+<h3 id="org38570f5">Haskell List</h3>
+<div class="outline-text-3" id="text-org38570f5">
+<div class="org-src-container">
+<pre class="src src-haskell"><code><span style="color: #c678dd; font-weight: bold;">data</span> <span style="color: #61afef;">List</span> a <span style="color: #61afef;">=</span> <span style="color: #61afef;">Nil</span> <span style="color: #61afef;">|</span> <span style="color: #61afef;">Cons</span> a <span style="color: #8c8c8c;">(</span><span style="color: #61afef;">List</span> a<span style="color: #8c8c8c;">)</span>
+</code></pre>
+</div>
+
+<p>
+Or using built-in syntax: <code>data [a] = [] | a : [a]</code>
+</p>
+
+<p>
+This is a simple <b>inductive type</b> with two constructors. The type
+carries no information about its length — a <code>[Int]</code> list could be
+empty or have a million elements; the type alone doesn&rsquo;t give us any
+indication.
+</p>
+</div>
+</div>
+<div id="outline-container-org7e0b801" class="outline-3">
+<h3 id="org7e0b801">Agda Vector (length-indexed)</h3>
+<div class="outline-text-3" id="text-org7e0b801">
+<div class="org-src-container">
+<pre class="src src-agda"><code>data Vec (A : Set) : ℕ → Set where
+  []  : Vec A zero
+  _::_ : A → Vec A n → Vec A (suc n)
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9c54a6f" class="outline-3">
+<h3 id="org9c54a6f">Key Differences</h3>
+<div class="outline-text-3" id="text-org9c54a6f">
+</div>
+<div id="outline-container-org37a066c" class="outline-4">
+<h4 id="org37a066c">1. Kind/Sort difference</h4>
+<div class="outline-text-4" id="text-org37a066c">
+<p>
+In Haskell, a list has kind \(* \to *\), taking one type parameter. In Agda,
+<code>Vec</code> has type \(\mathtt{Set} \to \mathbb{N} \to \mathtt{Set}\), indexed by both
+a type <i>and</i> a natural number.
+</p>
+
+<p>
+In Agda, <code>Vec A n</code> lives in <code>Set</code>, but <code>Vec A</code> has type <code>ℕ → Set</code> — it is a
+<b>family of types indexed by a natural number</b>. This is a <i>dependent type</i>: the
+type depends on a value. Haskell&rsquo;s type system separates the type and value
+levels, whereas in Agda they live in the same universe and can freely intermix.
+</p>
+</div>
+</div>
+<div id="outline-container-orga4ab287" class="outline-4">
+<h4 id="orga4ab287">2. Length is tracked statically</h4>
+<div class="outline-text-4" id="text-orga4ab287">
+<ul class="org-ul">
+<li><code>Vec A zero</code> is provably the empty vector</li>
+<li><code>Vec A (suc (suc zero))</code> is provably a 2-element vector</li>
+<li>A function like <code>head</code> can have type \(\mathtt{Vec}\ A\ (\mathtt{suc}\ n) \to A\),
+making it <b>total</b> — the empty case is ruled out by the type, so no <code>Maybe</code>
+wrapper or runtime error is needed</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc36236b" class="outline-4">
+<h4 id="orgc36236b">3. Constructor return types differ</h4>
+<div class="outline-text-4" id="text-orgc36236b">
+<p>
+In Haskell, both constructors return <code>List a</code>. In Agda:
+</p>
+
+<ul class="org-ul">
+<li><code>[]</code> returns <code>Vec A zero</code> — it <i>refines</i> the index to \(0\)</li>
+<li><code>_∷_</code> returns <code>Vec A (suc n)</code> — it increments the index by \(1\)</li>
+</ul>
+
+<p>
+This resembles a <b>generalised algebraic data type (GADT)</b>, but in Agda it is
+the norm rather than a language extension.
+</p>
+</div>
+</div>
+<div id="outline-container-org39af42c" class="outline-4">
+<h4 id="org39af42c">4. Dependent pattern matching</h4>
+<div class="outline-text-4" id="text-org39af42c">
+<p>
+When you pattern match on a <code>Vec</code>, Agda learns information about \(n\). Matching
+on <code>[]</code> tells Agda \(n = 0\); matching on <code>_∷_</code> tells it \(n = \mathtt{suc}\ k\)
+for some \(k\). This lets the type checker verify properties such as
+concatenation preserving length:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>_++_ : Vec A m → Vec A n → Vec A (m + n)
+[]       ++ ys = ys
+(x ∷ xs) ++ ys = x ∷ (xs ++ ys)
+</code></pre>
+</div>
+
+<p>
+The return type \(\mathtt{Vec}\ A\ (m + n)\) is <i>checked</i> by Agda — you could
+not accidentally return a vector of the wrong length.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb7d0ae3" class="outline-3">
+<h3 id="orgb7d0ae3">Summary</h3>
+<div class="outline-text-3" id="text-orgb7d0ae3">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Property</th>
+<th scope="col" class="org-left">Haskell <code>[a]</code></th>
+<th scope="col" class="org-left">Agda <code>Vec A n</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Kind / Sort</td>
+<td class="org-left">\(* \to *\)</td>
+<td class="org-left">\(\mathtt{Set} \to \mathbb{N} \to \mathtt{Set}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Length in type</td>
+<td class="org-left">No</td>
+<td class="org-left">Yes, as index \(n\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>head</code> total?</td>
+<td class="org-left">No</td>
+<td class="org-left">Yes</td>
+</tr>
+
+<tr>
+<td class="org-left">Dependent types</td>
+<td class="org-left">No (without extensions)</td>
+<td class="org-left">Yes, natively</td>
+</tr>
+
+<tr>
+<td class="org-left">Constructor refinement</td>
+<td class="org-left">No</td>
+<td class="org-left">Yes</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The Haskell list is a simple recursive sum type where the length is a runtime
+value. The Agda <code>Vec</code> is a <b>dependent type</b> where the length is promoted into
+the type itself, enabling compile-time guarantees about size that are simply
+inexpressible in vanilla Haskell&rsquo;s type system.
+</p>
+</div>
+</div>
+</section>
+<section id="outline-container-orgca4550f" class="outline-2">
+<h2 id="orgca4550f">Dependent types and set theory</h2>
+<div class="outline-text-2" id="text-orgca4550f">
+<p>
+Translating dependent types into standard mathematical set theory is
+the standard way mathematicians build semantic models of type theory.
+</p>
+
+<p>
+When you look at Agda&rsquo;s <code>Vec</code>, you are looking at an <b>indexed family
+of sets</b>.
+</p>
+
+<pre class="example" id="org288531e">
+data Vec (A : Set) : Nat → Set where
+[]   : Vec A zero
+_::_ : {n : Nat} → A → Vec A n → Vec A (succ n)
+</pre>
+
+<p>
+Here is exactly how Agda&rsquo;s definition of a vector maps into the
+language of classical set theory (like Zermelo-Fraenkel set theory).
+</p>
+</div>
+<div id="outline-container-org3cb68a9" class="outline-3">
+<h3 id="org3cb68a9">1. The Type Family:</h3>
+<div class="outline-text-3" id="text-org3cb68a9">
+<p>
+<code>Vec A : Nat → Set</code>
+</p>
+
+<p>
+In Agda, <code>Vec A</code> is a function from a natural number to a Type. 
+</p>
+
+<p>
+In set theory, let \(A\) be a set, and let \(\mathbb{N}\) be the set of
+natural numbers. The type family <code>Vec A</code> corresponds to an indexed
+family of sets. Specifically, it maps each natural number \(n \in
+\mathbb{N}\) to the \(n\)-fold Cartesian product of \(A\), universally
+denoted as \(A^n\).
+</p>
+
+<p>
+We can define this family recursively in set theory:
+\[A^0 = \{\emptyset\}\]
+\[A^{n+1} = A \times A^n\]
+</p>
+
+<p>
+So, the Agda signature <code>Vec (A : Set) : Nat → Set</code> simply declares the existence of a mapping:
+\[V_A : \mathbb{N} \to \mathcal{U}\]
+(where \(\mathcal{U}\) is the universe of sets), such that \(V_A(n) = A^n\).
+</p>
+</div>
+</div>
+<div id="outline-container-org97f457e" class="outline-3">
+<h3 id="org97f457e">2. The Base Constructor:</h3>
+<div class="outline-text-3" id="text-org97f457e">
+<p>
+<code>[] : Vec A zero</code>
+</p>
+
+<p>
+In Agda, <code>[]</code> is the sole inhabitant of the type <code>Vec A zero</code>. 
+</p>
+
+<p>
+In set theory, we look at the set \(A^0\). By definition, \(A^0\) is a set containing exactly one element: the empty sequence (or empty tuple), which is formally represented as the empty set \(\emptyset\). 
+</p>
+
+<p>
+Therefore, the constructor <code>[]</code> corresponds precisely to that unique element:
+\[[\;] \iff \emptyset \in A^0\]
+</p>
+</div>
+</div>
+<div id="outline-container-orge449b50" class="outline-3">
+<h3 id="orge449b50">3. The Inductive Constructor:</h3>
+<div class="outline-text-3" id="text-orge449b50">
+<p>
+<code>_::_ : {n : Nat} → A → Vec A n → Vec A (succ n)</code>
+</p>
+
+<p>
+In Agda, this constructor takes an element, a vector of length \(n\),
+and builds a vector of length \(n+1\).
+</p>
+
+<p>
+In set theory, a function signature with arrows translates to a
+Cartesian product serving as the domain of a standard function. The
+implicit <code>{n : Nat}</code> means this is actually a <b>family</b> of functions,
+one for every \(n \in \mathbb{N}\).
+</p>
+
+<p>
+For any given \(n\), the constructor <code>_::_</code> translates to a function
+\(cons_n\): \[cons_n : A \times A^n \to A^{n+1}\]
+</p>
+
+<p>
+Because \(A^{n+1}\) is defined as \(A \times A^n\), the action of this
+function is mathematically trivial. It simply takes an element \(x \in
+A\) and an \(n\)-tuple \(v \in A^n\) and forms an ordered pair:
+\[cons_n(x, v) = (x, v)\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgdf201f6" class="outline-3">
+<h3 id="orgdf201f6">The Crucial Distinction: Inductive vs. Extensional</h3>
+<div class="outline-text-3" id="text-orgdf201f6">
+<p>
+While the translation is exact, the <b>philosophy</b> behind how the two
+systems treat this construction is different:
+</p>
+
+<ul class="org-ul">
+<li><b>Set Theory is Extensional:</b> In set theory, \(A^n\) is just a
+collection of tuples. Set theory doesn&rsquo;t care <i>how</i> the tuples were
+built; it only cares about what elements are inside them.</li>
+<li><b>Agda (Type Theory) is Intensional/Constructive:</b> Agda defines <code>Vec</code>
+purely by its constructors (rules for building it). <code>Vec A n</code> is not
+a pre-existing bucket of tuples; it is the type of all trees that
+can be built by using <code>[]</code> exactly once and <code>_::_</code> exactly \(n\)
+times.</li>
+</ul>
+
+<p>
+Dependent type theory is often considered a foundational alternative
+to set theory entirely, leaning heavily into constructive mathematics
+rather than classical logic.
+</p>
+</div>
+</div>
+</section>
+<section id="outline-container-org0fa2dbb" class="outline-2">
+<h2 id="org0fa2dbb">List vs. Vec in Agda</h2>
+<div class="outline-text-2" id="text-org0fa2dbb">
+<blockquote>
+<p>
+So if Agda prefers a `Vec A n` data type instead of a Haskell-like
+list `data List a = [] | Cons List a`, how would one make a
+Haskell-like list in Agda? I just found it done this way:
+</p>
+
+<pre class="example" id="org0037182">
+data List ( X : Set) : Set where
+  [ ] : List X
+  _::_ : X -&gt; List X -&gt; List X
+</pre>
+
+<p>
+but I see no indexing like with the Vec. In other words, there is no
+dependent typing. Is this correct?
+</p>
+</blockquote>
+
+<p>
+The definition is the standard &ldquo;Haskell-style&rdquo; list.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>data List (X : Set) : Set where
+  []   : List X
+  _::_ : X -&gt; List X -&gt; List X
+</code></pre>
+</div>
+</div>
+<div id="outline-container-org049cd7c" class="outline-3">
+<h3 id="org049cd7c">1. Is it dependently typed?</h3>
+<div class="outline-text-3" id="text-org049cd7c">
+<p>
+Technically, <code>List</code> is a <b>parameterized</b> type, but it is <b>not</b> a &ldquo;dependent type&rdquo;
+in the way <code>Vec</code> is.
+</p>
+
+<ul class="org-ul">
+<li>In <code>List X</code>, the type only cares about <b>what</b> is inside (the <code>X</code>).</li>
+<li>In <code>Vec X n</code>, the type cares about <b>what</b> is inside AND <b>how many</b> there are (<code>n</code>).</li>
+</ul>
+
+<p>
+In the <code>List</code> definition, we establish that
+</p>
+</div>
+</div>
+<div id="outline-container-org9c1da07" class="outline-3">
+<h3 id="org9c1da07">2. The &ldquo;Index&rdquo; vs. the &ldquo;Parameter&rdquo;</h3>
+<div class="outline-text-3" id="text-org9c1da07">
+<p>
+Look closely at the first line of each definition:
+</p>
+</div>
+<div id="outline-container-org5dc7041" class="outline-4">
+<h4 id="org5dc7041">The List (Non-Dependent)</h4>
+<div class="outline-text-4" id="text-org5dc7041">
+<p>
+<code>data List (X : Set) : Set where</code>
+</p>
+<ul class="org-ul">
+<li>Everything after the colon (<code>: Set</code>) is the &ldquo;return type.&rdquo;</li>
+<li>It just returns a <code>Set</code>. It doesn&rsquo;t &ldquo;carry&rdquo; any extra information.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd15c569" class="outline-4">
+<h4 id="orgd15c569">The Vec (Dependent)</h4>
+<div class="outline-text-4" id="text-orgd15c569">
+<p>
+<code>data Vec (A : Set) : Nat -&gt; Set where</code>
+</p>
+<ul class="org-ul">
+<li>Notice the <code>Nat -&gt; Set</code>.</li>
+<li>This means <code>Vec</code> is a function that takes a <code>Nat</code> and <b>then</b> returns a <code>Set</code>.</li>
+<li>The <code>Nat</code> is an <b>index</b>. It is baked into the identity of the type.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org9f6b9d4" class="outline-3">
+<h3 id="org9f6b9d4">3. Why use List instead of Vec?</h3>
+<div class="outline-text-3" id="text-org9f6b9d4">
+<p>
+If <code>Vec</code> is &ldquo;smarter,&rdquo; why ever use <code>List</code>?
+</p>
+
+<ul class="org-ul">
+<li><b><b>Unknown Lengths:</b></b> If you are reading lines from a file or filtering a
+collection, you don&rsquo;t know the length at compile time. <code>List</code> is perfect for
+this.</li>
+<li><b><b>Simplicity:</b></b> You don&rsquo;t have to prove to the compiler that the lengths
+match up in every function.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4d96662" class="outline-3">
+<h3 id="org4d96662">4. Comparison Table</h3>
+<div class="outline-text-3" id="text-org4d96662">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Feature</th>
+<th scope="col" class="org-left"><code>List X</code></th>
+<th scope="col" class="org-left"><code>Vec X n</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Type depends on</td>
+<td class="org-left">Only the element type <code>X</code></td>
+<td class="org-left">Element <code>X</code> AND length <code>n</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Agda Category</td>
+<td class="org-left">Parameterized Type</td>
+<td class="org-left">Inductive Family (Dependent)</td>
+</tr>
+
+<tr>
+<td class="org-left">Haskell Equiv.</td>
+<td class="org-left"><code>[a]</code></td>
+<td class="org-left"><code>GHC.TypeLits.FixedList</code></td>
+</tr>
+
+<tr>
+<td class="org-left">ZF Analogy</td>
+<td class="org-left">\(\bigcup_{n \in \mathbb{N}} A^n\)</td>
+<td class="org-left">\(A^n\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org4a63c07" class="outline-3">
+<h3 id="org4a63c07">5. Summary</h3>
+<div class="outline-text-3" id="text-org4a63c07">
+<p>
+In Agda:
+</p>
+<ul class="org-ul">
+<li><code>List Nat</code> is the set of <b>all</b> possible finite sequences of naturals.</li>
+<li><code>Vec Nat 2</code> is <b>only</b> the set of functions from \(\{0, 1\} \to \mathbb{N}\).</li>
+</ul>
+
+<p>
+The <code>List</code> definition you found is exactly how you do &ldquo;normal&rdquo; functional
+programming in Agda when you don&rsquo;t need (or want) the compiler to track the
+exact length of your data.
+</p>
+</div>
+</div>
+</section>
+<section id="outline-container-orgd49c6e7" class="outline-2">
+<h2 id="orgd49c6e7">Polymorphic vs. Monomorphic Vectors</h2>
+<div class="outline-text-2" id="text-orgd49c6e7">
+<p>
+Two versions below are examples of polymorphic vs. monomorphic
+</p>
+</div>
+<div id="outline-container-org43f758c" class="outline-3">
+<h3 id="org43f758c">1. Version 1: The Polymorphic Vector</h3>
+<div class="outline-text-3" id="text-org43f758c">
+<div class="org-src-container">
+<pre class="src src-agda"><code>data Vec (A : Set) : ℕ → Set where
+  []   : Vec A zero
+  _::_ : A → Vec A n → Vec A (suc n)
+</code></pre>
+</div>
+
+<ul class="org-ul">
+<li><b><b>Parameter:</b></b> <code>(A : Set)</code> is a <b>parameter</b>. It is declared once at the top.</li>
+<li><b><b>Scope:</b></b> Because it is on the left of the colon, <code>A</code> is available inside
+every constructor (<code>[]</code> and <code>::</code>).</li>
+<li><b><b>Usage:</b></b> You can make a <code>Vec Nat 2</code>, a <code>Vec Float 2</code>, or a <code>Vec Bool 2</code>.</li>
+<li><b><b>ZF Analogy:</b></b> This represents the family of sets \(A^n\) for <b>any</b> set \(A\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1def633" class="outline-3">
+<h3 id="org1def633">2. Version 2: The Monomorphic Vector</h3>
+<div class="outline-text-3" id="text-org1def633">
+<div class="org-src-container">
+<pre class="src src-agda"><code>data Vec : ℕ → Set where
+  []  : Vec zero
+  _∷_ : ∀ {n} → ℕ → Vec n → Vec (suc n)
+</code></pre>
+</div>
+
+<ul class="org-ul">
+<li><b><b>No Parameter:</b></b> There is no <code>(A : Set)</code> at the top.</li>
+<li><b><b>Hard-coded:</b></b> Look at the <code>_∷_</code> constructor. It explicitly takes a <code>ℕ</code>
+as its first argument.</li>
+<li><b><b>Usage:</b></b> You can <b>only</b> make a vector of natural numbers. You cannot use
+this definition to store <code>Float</code> or <code>Bool</code>.</li>
+<li><b><b>ZF Analogy:</b></b> This represents specifically \(\mathbb{N}^n\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2ed5839" class="outline-3">
+<h3 id="org2ed5839">3. How to &ldquo;Polymorphic-ize&rdquo; the second version?</h3>
+<div class="outline-text-3" id="text-org2ed5839">
+<p>
+If you wanted the second style but still wanted it to be polymorphic, you
+would have to move the type <code>A</code> into the constructors as an <b><b>index</b></b>.
+</p>
+
+<p>
+It would look like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>data Vec : Set → ℕ → Set where
+  []  : ∀ {A} → Vec A zero
+  _∷_ : ∀ {A n} → A → Vec A n → Vec A (suc n)
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org06d8357" class="outline-3">
+<h3 id="org06d8357">4. Why the difference? (Parameters vs. Indices)</h3>
+<div class="outline-text-3" id="text-org06d8357">
+<p>
+In Agda, there is a technical distinction:
+</p>
+
+<ul class="org-ul">
+<li><b><b>Parameters</b></b> (like <code>(A : Set)</code> in Version 1): These are &ldquo;fixed&rdquo; for the
+whole structure. They are more efficient for the compiler.</li>
+<li><b><b>Indices</b></b> (like <code>ℕ</code> in both versions): These can &ldquo;change&rdquo; in the
+constructors (from <code>n</code> to <code>suc n</code>).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgef04619" class="outline-3">
+<h3 id="orgef04619">5. Summary</h3>
+<div class="outline-text-3" id="text-orgef04619">
+<ul class="org-ul">
+<li><b><b>Version 1</b></b> is a <b><b>Generic Container</b></b>. It says: &ldquo;Give me a type \(A\), and
+I will give you the set of all $n$-tuples of \(A\).&rdquo;</li>
+<li><b><b>Version 2</b></b> is a <b><b>Specific Mathematical Object</b></b>. It says: &ldquo;I am the
+set of all $n$-tuples of Natural Numbers.&rdquo;</li>
+</ul>
+
+<p>
+If you are writing a library, you almost always want <b><b>Version 1</b></b>. If you are
+doing a specific proof about number theory, you might see <b><b>Version 2</b></b>.
+</p>
+</div>
+</div>
+</section>
+<section id="outline-container-org908c1c6" class="outline-2">
+<h2 id="org908c1c6">Agda&rsquo;s <code>Set</code> and set theory set?</h2>
+<div class="outline-text-2" id="text-org908c1c6">
+<blockquote>
+<p>
+If types in Agda are members of <code>Set</code>, how is <code>Set</code> meant here? Is it
+in any way like a set theory set?
+</p>
+</blockquote>
+
+<p>
+The short answer is: <b><b>Conceptually yes, but technically no.</b></b>
+</p>
+</div>
+<div id="outline-container-orgac43560" class="outline-3">
+<h3 id="orgac43560">1. The Agda Definition: <code>Set</code> as a &ldquo;Type of Types&rdquo;</h3>
+<div class="outline-text-3" id="text-orgac43560">
+<p>
+In Agda, <code>Set</code> is the name for the collection of all &ldquo;small&rdquo; types.
+</p>
+<ul class="org-ul">
+<li><code>Nat</code> is a type, so we say <code>Nat : Set</code>.</li>
+<li><code>Bool</code> is a type, so we say <code>Bool : Set</code>.</li>
+<li><code>List Nat</code> is a type, so we say <code>List Nat : Set</code>.</li>
+</ul>
+
+<p>
+In Type Theory, we call <code>Set</code> a <b>Universe</b>.
+</p>
+</div>
+</div>
+<div id="outline-container-org4fa171c" class="outline-3">
+<h3 id="org4fa171c">2. Comparison to ZF Set Theory</h3>
+<div class="outline-text-3" id="text-org4fa171c">
+<p>
+In ZF Set Theory, a &ldquo;set&rdquo; is a collection of elements.
+In Agda, a &ldquo;Set&rdquo; is a collection of <b>types</b>.
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Concept</th>
+<th scope="col" class="org-left">ZF Set Theory</th>
+<th scope="col" class="org-left">Agda Type Theory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Basic Unit</td>
+<td class="org-left">The Set</td>
+<td class="org-left">The Type</td>
+</tr>
+
+<tr>
+<td class="org-left">Membership</td>
+<td class="org-left">\(x \in A\)</td>
+<td class="org-left"><code>x : A</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Collection of&hellip;</td>
+<td class="org-left">Elements (numbers, sets)</td>
+<td class="org-left">Values (terms)</td>
+</tr>
+
+<tr>
+<td class="org-left">The &ldquo;Big&rdquo; Container</td>
+<td class="org-left">There is no &ldquo;Set of all Sets&rdquo;</td>
+<td class="org-left"><code>Set</code> (The Universe)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgf77f551" class="outline-3">
+<h3 id="orgf77f551">3. The Russell&rsquo;s Paradox Problem</h3>
+<div class="outline-text-3" id="text-orgf77f551">
+<p>
+In ZF Set Theory, you cannot have a &ldquo;Set of all Sets&rdquo; because it leads to
+Russell&rsquo;s Paradox.
+</p>
+
+<p>
+Agda avoids this by having a hierarchy of universes:
+</p>
+<ul class="org-ul">
+<li><code>Nat : Set</code> (also called <code>Set0</code>)</li>
+<li><code>Set : Set1</code></li>
+<li><code>Set1 : Set2</code></li>
+</ul>
+
+<p>
+This prevents the paradox where a set contains itself.
+</p>
+</div>
+</div>
+<div id="outline-container-org13b1d79" class="outline-3">
+<h3 id="org13b1d79">4. Why did Agda name it <code>Set</code>?</h3>
+<div class="outline-text-3" id="text-org13b1d79">
+<p>
+The creators of Agda (and Martin-Löf Type Theory) used the name <code>Set</code> to appeal
+to mathematical intuition.
+</p>
+<ul class="org-ul">
+<li>When you write <code>A : Set</code>, you are saying &ldquo;A is a mathematical set.&rdquo;</li>
+<li>When you write <code>x : A</code>, you are saying &ldquo;x is an element of that set.&rdquo;</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8258019" class="outline-3">
+<h3 id="org8258019">5. The &ldquo;Function&rdquo; View Revisited</h3>
+<div class="outline-text-3" id="text-org8258019">
+<p>
+Remember your textbook&rsquo;s definition:
+\[V_n = A^n = \{ f \mid f: \{0, 1, \dots, n-1\} \to A \}\]
+</p>
+
+<p>
+In Agda, this translates to:
+</p>
+<ul class="org-ul">
+<li>\(A\) is a <code>Set</code>.</li>
+<li>\(\{0, \dots, n-1\}\) is the type <code>Fin n</code>.</li>
+<li>The &ldquo;set of all functions&rdquo; is the type <code>Fin n -&gt; A</code>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org491c8cd" class="outline-3">
+<h3 id="org491c8cd">6. Summary</h3>
+<div class="outline-text-3" id="text-org491c8cd">
+<p>
+In Agda, <code>Set</code> is a <b><b>keyword</b></b> that means &ldquo;This thing is a Type.&rdquo;
+</p>
+
+<p>
+When you see <code>data List (X : Set) : Set</code>, read it as:
+&ldquo;I am defining a new type called <code>List</code>. It takes a type (<code>X</code>) as input and
+produces a new type (<code>List X</code>) as output.&rdquo;
+</p>
+
+<p>
+It is &ldquo;like&rdquo; set theory because it groups things together, but it is governed
+by the rules of <b><b>Logic and Functions</b></b> rather than the axioms of <b><b>ZF</b></b>.
+</p>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

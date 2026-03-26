@@ -1,0 +1,84 @@
+#+TITLE: 
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2026-03-22T20:49:59Z UTC 
+#+LANGUAGE:  en 
+#+EXPORT_FILE_NAME: ProofsAndTypes1.html
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Bibliography ---
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+# --- Document Content Starts Here ---
+#+INCLUDE: /home/galaxybeing/Dropbox/org/codeismathiscode2/header.org :minlevel 1
+
+* admin :noexport:
+
+[[cite:&girard1989proofs]]
+
+
+* ...the Cantorian sense of a graph...
+
+#+begin_quote
+$27 × 37 = 999$ \\
+\\
+This equality makes sense in the mainstream of mathematics by saying
+that the two sides **denote** the same integer and that $\times$ is a
+function **in the Cantorian sense of a graph.**
+#+end_quote
+
+
+It helps to look at the strict, foundational definition of a function
+in mainstream mathematics and contrast it with how functions behave in
+logic and computation.
+
+When Girard refers to "the Cantorian sense of a graph," he is talking
+about how functions are formalized in standard set theory (building on
+the work of Georg Cantor).
+
+@@html:<font color = "#0d3db3">@@ In this mainstream view, a function
+is not a process, a set of instructions, or an algorithm. It is
+defined entirely as a static collection of input-output
+mappings---literally a set of ordered pairs. This set of pairs is
+called the *graph* of the function.  @@html:</font>@@
+
+** The Set-Theoretic (Cantorian) View
+
+If we define the multiplication function $\times$ in this framework,
+it is an infinitely large set containing pairs where the first element
+is the input (a pair of numbers) and the second element is the output:
+
+$$ \times = \{ \dots, ((2, 3), 6), \dots, ((27, 37), 999), \dots \} $$
+
+Because $\times$ is just this massive, pre-existing lookup table,
+writing $27 \times 37$ is mathematically no different than writing
+$999$. They are perfectly synonymous names for the exact same
+underlying mathematical object. In this extensional view, there is no
+concept of "work," "time," or "computation." The pair $((27, 37),
+999)$ simply exists in the set, timelessly.
+
+** Girard's Contrast: The Computational View
+
+Girard is pointing this out to contrast it with the perspective of
+structural proof theory and computer science.
+
+If you view mathematics through the lens of computation (such as in the $\lambda$-calculus or when evaluating expressions in a language like Haskell or Standard ML), $27 \times 37$ and $999$ are *not* the same thing. 
+
+- *$27 \times 37$* is an unevaluated expression (a redex). It represents a /demand/ for computation.
+- *$999$* is a value in normal form. It is the /result/ of a computation.
+
+In a constructive or proof-theoretic framework, equality isn't just a static fact; it is a dynamic process of reduction. You have to actually apply rules to transform the expression $27 \times 37$ step-by-step until it normalizes to $999$. 
+
+Girard uses this simple arithmetic example to set up a much deeper point about proofs. In mainstream mathematics, if two proofs prove the same theorem, they are often considered equivalent. But in proof theory (and by extension, the Curry-Howard correspondence), the /process/ of the proof matters just as much as the conclusion. Just as $27 \times 37$ is intensionally different from $999$ because of the computational steps required to connect them, a complex, unoptimized proof is intensionally different from a direct, normalized proof, even if they reach the same "Cantorian" conclusion.
+
+
+
+#+INCLUDE: ./footer.org :minlevel 1
+
+* References
+\\
+bibliography:/home/galaxybeing/Dropbox/org/biblio/ref.bib

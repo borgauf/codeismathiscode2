@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-03-20 Fri 23:20 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-org530237a" class="outline-2">
+<h2 id="org530237a">Parity in first-order logic via Peano&rsquo;s Axioms</h2>
+<div class="outline-text-2" id="text-org530237a">
+</div>
+<div id="outline-container-orgd9cd98a" class="outline-3">
+<h3 id="orgd9cd98a">The Foundation: Peano&rsquo;s Axioms (relevant subset)</h3>
+<div class="outline-text-3" id="text-orgd9cd98a">
+<p>
+We work in a <b><b>signature</b></b> with a constant \(0\), a unary successor
+function \(S\), and two predicates we will define: \(\text{Even}(x)\)
+and \(\text{Odd}(x)\).
+</p>
+
+<p>
+⥤ Now a quick in situ <i>math holiday</i> to explain what is meant by a
+<b><b>signature</b></b> 
+</p>
+
+<p>
+<font color = "#0d3db3">
+In mathematical logic, a <b><b>signature</b></b> (also called a <b>vocabulary</b> or
+<b>language</b>) is simply the inventory of symbols you declare before
+writing any formulas. It tells you what the non-logical building
+blocks of your theory are, sorted into three kinds:
+</p>
+
+<ul class="org-ul">
+<li><b><b>Constants</b></b> — named individuals, here just `0`</li>
+<li><b><b>Function symbols</b></b> — operations that take arguments and return a
+term, here `S` (which takes one argument, making it &ldquo;unary&rdquo;)</li>
+<li><b><b>Predicate symbols</b></b> — relations that take arguments and return
+true/false, here `Even` and `Odd`</li>
+</ul>
+
+<p>
+The signature is essentially the type signature of your theory before
+any axioms are stated. It says nothing about what these symbols <i>mean</i>
+&mdash; that is the job of the axioms. The signature just declares that
+these symbols exist and how many arguments each one takes (this is
+called the <b>arity</b>).
+</p>
+
+<p>
+So when we say, &ldquo;We work in a signature with&hellip;&rdquo;, it is doing the same
+thing a programmer does when declaring types or interfaces before
+writing any logic: establishing the alphabet of the formal language
+within which all the subsequent formulas will be written.
+</p>
+
+<p>
+In more formal presentations you will sometimes see this written as a
+tuple like \(L = ⟨0, S, Even, Odd⟩\) or broken into \(L = ⟨{0}, {S/1},
+{Even/1, Odd/1}⟩\) where the \(/1\) denotes arity 1. Below, the axioms
+P1–P5 and E1–E4 are then all formulas <b>in</b> this language L, and any
+model of the theory is a set together with an interpretation of each
+symbol in \(L\) that satisfies all the axioms.
+</font>
+</p>
+
+<p>
+The natural numbers are the smallest set closed
+under these axioms.
+</p>
+
+<ul class="org-ul">
+<li><b>P1</b> &mdash; Zero is a natural number: \(N(0)\)</li>
+<li><b>P2</b> &mdash; Successor closure: \(\forall x\,[\,N(x) \rightarrow N(S(x))\,]\)</li>
+<li><b>P3</b> &mdash; Zero is not a successor: \(\forall x\,[\,\neg(S(x) = 0)\,]\)</li>
+<li><b>P4</b> &mdash; Successor injectivity:
+\(\forall x\,\forall y\,[\,S(x) = S(y) \rightarrow x = y\,]\)</li>
+<li><b>P5</b> &mdash; Induction schema: for any predicate \(\varphi\)
+\[
+  \bigl[\,\varphi(0) \;\wedge\; \forall x\,(\varphi(x) \rightarrow \varphi(S(x)))\,\bigr]
+  \;\rightarrow\;
+  \forall x\,\varphi(x)
+  \]</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb22ef7e" class="outline-3">
+<h3 id="orgb22ef7e">Defining Even and Odd by Structural Recursion</h3>
+<div class="outline-text-3" id="text-orgb22ef7e">
+<p>
+Rather than importing division or multiplication, we define parity purely in
+terms of the successor structure. These four axioms are the core of the
+&ldquo;algorithm&rdquo;:
+</p>
+
+<ul class="org-ul">
+<li><b>E1</b> &mdash; Zero is even:
+\[
+  \text{Even}(0)
+  \]</li>
+
+<li><b>E2</b> &mdash; Odd is the successor of even:
+\[
+  \forall x\,[\,\text{Even}(x) \rightarrow \text{Odd}(S(x))\,]
+  \]</li>
+
+<li><b>E3</b> &mdash; Even is the successor of odd:
+\[
+  \forall x\,[\,\text{Odd}(x) \rightarrow \text{Even}(S(x))\,]
+  \]</li>
+
+<li><b>E4</b> &mdash; Parity is exhaustive and exclusive:
+\[
+  \forall x\,[\,N(x) \rightarrow (\text{Even}(x) \leftrightarrow \neg\,\text{Odd}(x))\,]
+  \]</li>
+</ul>
+
+<p>
+Axiom E4 is derivable from E1&ndash;E3 plus induction, but stating it explicitly
+makes the system self-contained without needing to invoke P5 at the object level.
+</p>
+</div>
+</div>
+<div id="outline-container-org8b8830a" class="outline-3">
+<h3 id="org8b8830a">Derived Theorems</h3>
+<div class="outline-text-3" id="text-org8b8830a">
+<p>
+From these axioms alone, by applying P5 (induction) with
+\(\varphi(x) = \text{Even}(x) \vee \text{Odd}(x)\):
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Numeral</th>
+<th scope="col" class="org-left">Term</th>
+<th scope="col" class="org-left">Derivation</th>
+<th scope="col" class="org-left">Parity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(0\)</td>
+<td class="org-left">\(0\)</td>
+<td class="org-left">E1 directly</td>
+<td class="org-left">Even</td>
+</tr>
+
+<tr>
+<td class="org-left">\(1\)</td>
+<td class="org-left">\(S(0)\)</td>
+<td class="org-left">E2 applied to E1</td>
+<td class="org-left">Odd</td>
+</tr>
+
+<tr>
+<td class="org-left">\(2\)</td>
+<td class="org-left">\(S(S(0))\)</td>
+<td class="org-left">E3 applied to row above</td>
+<td class="org-left">Even</td>
+</tr>
+
+<tr>
+<td class="org-left">\(3\)</td>
+<td class="org-left">\(S(S(S(0)))\)</td>
+<td class="org-left">E2 applied to row above</td>
+<td class="org-left">Odd</td>
+</tr>
+
+<tr>
+<td class="org-left">\(4\)</td>
+<td class="org-left">\(S^4(0)\)</td>
+<td class="org-left">E3 applied to row above</td>
+<td class="org-left">Even</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\vdots\)</td>
+<td class="org-left">\(\vdots\)</td>
+<td class="org-left">\(\vdots\)</td>
+<td class="org-left">\(\vdots\)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+To &ldquo;test&rdquo; whether a concrete numeral \(n\) is even, unfold its \(S\)-chain
+and apply E1&ndash;E3 alternately: parity is read off at the end. This is the FOL
+analogue of the recursive algorithm:
+</p>
+
+<pre class="example" id="org0c96d26">
+isEven(0) = true
+isEven(n) = isOdd(n - 1)
+isOdd(0)  = false
+isOdd(n)  = isEven(n - 1)
+</pre>
+</div>
+</div>
+<div id="outline-container-org3f63f7f" class="outline-3">
+<h3 id="org3f63f7f">Axiom Structure Diagram</h3>
+<div class="outline-text-3" id="text-org3f63f7f">
+
+<figure id="org50a2617">
+<img src="./images/peano_parity_axioms.png" alt="peano_parity_axioms.png">
+
+<figcaption><span class="figure-number">Figure 1: </span>How the Peano foundation and parity axioms interlock.</figcaption>
+</figure>
+</div>
+</div>
+<div id="outline-container-org648c2f4" class="outline-3">
+<h3 id="org648c2f4">A Note on Completeness</h3>
+<div class="outline-text-3" id="text-org648c2f4">
+<p>
+This system is complete for parity testing in the following sense: for any
+closed term \(t\) built from \(0\) and \(S\), exactly one of \(\text{Even}(t)\)
+or \(\text{Odd}(t)\) is provable, and which one is determined in a finite number
+of steps equal to the value of \(t\). It is, in this sense, a decision
+procedure&mdash;just expressed as logical derivation rather than as a loop or
+conditional branch.
+</p>
+
+<p>
+The deep connection to computation is that E1&ndash;E3 are essentially the
+definition of a two-state finite automaton:
+</p>
+
+<ul class="org-ul">
+<li><b>States</b>: \(\{\text{Even},\, \text{Odd}\}\)</li>
+<li><b>Start state</b>: \(\text{Even}\)</li>
+<li><b>Transition</b>: flip state on every application of \(S\)</li>
+</ul>
+
+<p>
+\[
+\text{Even} \xrightarrow{S} \text{Odd} \xrightarrow{S} \text{Even}
+\xrightarrow{S} \text{Odd} \xrightarrow{S} \cdots
+\]
+</p>
+
+<p>
+Peano induction (P5) is what guarantees the automaton terminates and covers
+every natural number.
+</p>
+</div>
+</div>
+</section>
+<section id="outline-container-orgb7d0ae3" class="outline-2">
+<h2 id="orgb7d0ae3">Signatures, Agda, and First-Order Logic</h2>
+<div class="outline-text-2" id="text-orgb7d0ae3">
+</div>
+<div id="outline-container-org651f861" class="outline-3">
+<h3 id="org651f861">What a Signature Is in FOL</h3>
+<div class="outline-text-3" id="text-org651f861">
+<p>
+In classical first-order logic, a <b>signature</b> (also called a <i>vocabulary</i>
+or <i>language</i>) is the declared inventory of non-logical symbols, sorted
+into three kinds:
+</p>
+
+<ul class="org-ul">
+<li><b>Constants</b> &mdash; named individuals, e.g. \(0\)</li>
+<li><b>Function symbols</b> &mdash; operations returning a term, e.g. \(S\) (arity 1)</li>
+<li><b>Predicate symbols</b> &mdash; relations returning true/false, e.g. \(Even\), \(Odd\)</li>
+</ul>
+
+<p>
+Formally one writes this as a tuple
+</p>
+
+<p>
+\[
+L \;=\; \langle\, \{0\},\; \{S^{(1)}\},\; \{\text{Even}^{(1)},\, \text{Odd}^{(1)}\} \,\rangle
+\]
+</p>
+
+<p>
+where the superscript denotes arity. The signature says nothing about
+<i>meaning</i>; that is the job of the axioms. It is purely the alphabet of
+well-formed terms and formulas.
+</p>
+</div>
+</div>
+<div id="outline-container-org6ee8555" class="outline-3">
+<h3 id="org6ee8555">The Agda Analogue</h3>
+<div class="outline-text-3" id="text-org6ee8555">
+<p>
+Agda is a dependently typed programming language and proof assistant. It
+does not have a separate notion called &ldquo;signature&rdquo;, but the same
+conceptual job is done &mdash; in a richer way &mdash; by a combination of
+language features.
+</p>
+</div>
+<div id="outline-container-org8948797" class="outline-4">
+<h4 id="org8948797">Constants become values or constructors</h4>
+<div class="outline-text-4" id="text-org8948797">
+<p>
+In FOL the constant \(0\) is simply declared to exist. In Agda you give it
+a type, and it exists as the first constructor of the <code>ℕ</code> data type:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>data ℕ : Set where
+  zero : ℕ
+  suc  : ℕ → ℕ
+</code></pre>
+</div>
+
+<p>
+This single block does the work of both the FOL signature entry for \(0\)
+(and \(S\)) <i>and</i> axioms P1 and P2 simultaneously. The declaration is not
+separate from the meaning &mdash; the constructors <code>zero</code> and <code>suc</code> <i>are</i> the
+canonical proof that these things exist.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbec9ad4" class="outline-4">
+<h4 id="orgbec9ad4">Function symbols become typed function declarations</h4>
+<div class="outline-text-4" id="text-orgbec9ad4">
+<p>
+In FOL, \(S\) is declared as a unary function symbol in the signature, with
+no further content. In Agda, every function must be given a full type:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>suc : ℕ → ℕ
+</code></pre>
+</div>
+
+<p>
+The type <code>ℕ → ℕ</code> plays the role of the arity annotation \(S^{(1)}\), but it
+is strictly more informative: it states the <i>domain</i> and <i>codomain</i>, not
+just a count. In a dependently typed setting the type can express
+arbitrarily rich constraints that FOL arity cannot.
+</p>
+</div>
+</div>
+<div id="outline-container-org94dc380" class="outline-4">
+<h4 id="org94dc380">Predicate symbols become types (propositions-as-types)</h4>
+<div class="outline-text-4" id="text-org94dc380">
+<p>
+This is where the deepest difference lies. In FOL, \(\text{Even}\) is a
+predicate symbol declared in the signature; its meaning is given by axioms
+E1&ndash;E3 and a model. In Agda, under the
+<i>propositions-as-types</i> (Curry&ndash;Howard) correspondence, a predicate is a
+function into <code>Set</code> (the universe of types):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>data Even : ℕ → Set where
+  even-zero : Even zero
+  even-suc  : ∀ {n} → Odd n → Even (suc n)
+
+data Odd : ℕ → Set where
+  odd-suc : ∀ {n} → Even n → Odd (suc n)
+</code></pre>
+</div>
+
+<p>
+A value of type <code>Even n</code> is not merely a truth value &mdash; it is a
+<i>proof object</i>, a concrete witness that <code>n</code> is even. The FOL axioms
+E1, E2, E3 have become the constructors <code>even-zero</code>, <code>even-suc</code>, and
+<code>odd-suc</code>. There is no separate axiom layer; the constructors carry the
+content directly.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org38570f5" class="outline-3">
+<h3 id="org38570f5">Side-by-Side Comparison</h3>
+<div class="outline-text-3" id="text-org38570f5">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Concept</th>
+<th scope="col" class="org-left">FOL signature + axioms</th>
+<th scope="col" class="org-left">Agda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Constant \(0\)</td>
+<td class="org-left">Symbol declared in \(L\); P1 axiom</td>
+<td class="org-left">Constructor <code>zero : ℕ</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Function \(S\)</td>
+<td class="org-left">Symbol \(S^{(1)}\) in \(L\); P2 axiom</td>
+<td class="org-left">Constructor <code>suc : ℕ → ℕ</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Predicate \(Even\)</td>
+<td class="org-left">Symbol \(\text{Even}^{(1)}\) in \(L\)</td>
+<td class="org-left">Type family <code>Even : ℕ → Set</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Axiom E1</td>
+<td class="org-left">\(\text{Even}(0)\)</td>
+<td class="org-left">Constructor <code>even-zero : Even zero</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Axiom E2</td>
+<td class="org-left">\(\forall x[\text{Even}(x) \rightarrow \text{Odd}(S(x))]\)</td>
+<td class="org-left">Constructor <code>odd-suc : Even n → Odd (suc n)</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Axiom E3</td>
+<td class="org-left">\(\forall x[\text{Odd}(x) \rightarrow \text{Even}(S(x))]\)</td>
+<td class="org-left">Constructor <code>even-suc : Odd n → Even (suc n)</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Axiom P5 (induction)</td>
+<td class="org-left">Separate schema over all \(\varphi\)</td>
+<td class="org-left">Built into <code>data</code> recursion and structural induction</td>
+</tr>
+
+<tr>
+<td class="org-left">Proof of \(Even(2)\)</td>
+<td class="org-left">Derivation: E1 then E3</td>
+<td class="org-left">Term: <code>even-suc (odd-suc even-zero)</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Excluded middle</td>
+<td class="org-left">Assumed (classical FOL)</td>
+<td class="org-left">Not assumed; must be proved or postulated</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org39af42c" class="outline-3">
+<h3 id="org39af42c">The Key Conceptual Differences</h3>
+<div class="outline-text-3" id="text-org39af42c">
+</div>
+<div id="outline-container-org7e0b801" class="outline-4">
+<h4 id="org7e0b801">Separation vs. fusion</h4>
+<div class="outline-text-4" id="text-org7e0b801">
+<p>
+In FOL, the signature and the axioms are strictly separated. The signature
+declares symbols; the axioms constrain them. You could in principle
+interpret \(\text{Even}\) as any unary predicate and check whether it
+satisfies the axioms. In Agda, declaration and meaning are fused: writing
+the <code>data</code> block simultaneously introduces the type, its constructors, and
+the induction principle. There is no room for an &ldquo;unintended model&rdquo;.
+</p>
+</div>
+</div>
+<div id="outline-container-org37a066c" class="outline-4">
+<h4 id="org37a066c">Arity vs. type</h4>
+<div class="outline-text-4" id="text-org37a066c">
+<p>
+FOL records only a natural number (the arity) for each symbol:
+\(S^{(1)}\) means &ldquo;takes one argument&rdquo;. Agda records a full dependent
+type. For the simple Peano case the difference is small &mdash; <code>suc : ℕ → ℕ</code>
+carries little more than arity 1 does. But for richer theories the
+difference is enormous: an Agda type can enforce that a function only
+accepts even numbers, or that a vector has a specific length, in a way
+that a bare arity annotation cannot.
+</p>
+</div>
+</div>
+<div id="outline-container-orga4ab287" class="outline-4">
+<h4 id="orga4ab287">Truth values vs. proof objects</h4>
+<div class="outline-text-4" id="text-orga4ab287">
+<p>
+In FOL, \(\text{Even}(4)\) is a <i>proposition</i> &mdash; a sentence that is either
+true or false in a given model. In Agda, <code>Even 4</code> is a <i>type</i>, and to
+assert it you must produce a term of that type:
+</p>
+
+<p>
+#+BEGIN_SRC agda
+proof-4-even : Even (suc (suc (suc (suc zero))))
+proof-4-even = even-suc (odd-suc (even-suc (odd-suc even-zero)))
+\end{SRC}
+</p>
+
+<p>
+The proof is not a certificate attached to a truth value &mdash; it <i>is</i> the
+value, in the sense of the Curry&ndash;Howard correspondence:
+</p>
+
+<p>
+\[
+\text{propositions} \;\longleftrightarrow\; \text{types}
+\qquad
+\text{proofs} \;\longleftrightarrow\; \text{terms}
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgc36236b" class="outline-4">
+<h4 id="orgc36236b">Classical vs. constructive logic</h4>
+<div class="outline-text-4" id="text-orgc36236b">
+<p>
+FOL as standardly used is <i>classical</i>: the law of excluded middle
+\(\varphi \vee \neg\varphi\) holds for free. Agda is <i>constructive</i> by
+default. The statement
+</p>
+
+<p>
+\[
+\forall n,\; \text{Even}(n) \vee \text{Odd}(n)
+\]
+</p>
+
+<p>
+is an axiom schema in the FOL treatment (derivable from E1&ndash;E4 plus P5).
+In Agda it must be proved by explicit recursion:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>parity : ∀ (n : ℕ) → Even n ⊎ Odd n
+parity zero        = inj₁ even-zero
+parity (suc n)     with parity n
+... | inj₁ e      = inj₂ (odd-suc e)
+... | inj₂ o      = inj₁ (even-suc o)
+</code></pre>
+</div>
+
+<p>
+Here <code>⊎</code> is the disjoint sum type (the constructive reading of &ldquo;or&rdquo;),
+and each branch of <code>with</code> provides a concrete witness. The FOL induction
+schema P5 has become the structural recursion on <code>n</code> that Agda&rsquo;s
+termination checker verifies automatically.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org9c54a6f" class="outline-3">
+<h3 id="org9c54a6f">Summary</h3>
+<div class="outline-text-3" id="text-org9c54a6f">
+<p>
+The FOL notion of a signature is the <i>declared interface</i> of a theory &mdash;
+a minimal, meaning-free list of symbols and arities. Agda collapses this
+interface into the type system itself: every symbol carries a type,
+constructors encode axioms, and proofs are first-class computational
+objects. The price is that Agda demands more from the user (explicit proof
+terms, constructive witnesses); the gain is that the type checker
+<i>enforces</i> consistency, making an unintended model impossible by
+construction.
+</p>
+
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

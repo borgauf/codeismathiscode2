@@ -1,0 +1,478 @@
+#+TITLE: 
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2026-03-03T05:34:13Z UTC 
+#+LANGUAGE:  en 
+#+EXPORT_FILE_NAME: SMLSelectors1.html
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Bibliography ---
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+# --- Document Content Starts Here ---
+#+INCLUDE: /home/galaxybeing/Dropbox/org/codeismathiscode2/header.org :minlevel 1
+
+
+
+* Backus selector versus higher-math projections
+
+** Bibliography :noexport:
+:PROPERTIES:
+:header-args: :dir "/home/galaxybeing/Dropbox/org/codeismathiscode2"
+:END:
+:RESOURCES:
+- [[bibliography:~/Dropbox/org/biblio/ref.bib][Bibliography]]
+- [[cite:&friedman1995little]]
+:END:
+
+** Definition
+
+In mathematics, a **[[https://en.wikipedia.org/wiki/Projection_(mathematics)][projection]]** is a mapping from a set or algebraic
+structure to a subset, which leaves the elements of that subset
+unchanged. It essentially "squashes" a higher-dimensional object into
+a lower-dimensional subspace. The Wikipedia article on mathematical
+projection states
+
+@@html:<font color = "#0d3db3">@@ A /projection/ is a mapping from a
+set to itself---or an endomorphism of a mathematical structure---which
+is idempotent, i.e., equals its composition with itself. The image of
+a point or a subset $S$ under a projection is called the /projection/
+of $S$.  @@html:</font>@@
+
+What does all this math-speak mean? Let's analyze it in detail
+
+- **"...a mapping from a set to itself..."**: This just means we have
+  a function that takes an input from a specific universe (like 3D
+  space, or a list of numbers) and returns an answer that lives in
+  that exact same universe.
+- **"...or an endomorphism of a mathematical structure..."**:
+  Initially, let's ignore /endomorphism/. It just means the mapping
+  plays nicely with the structural rules of whatever mathematical
+  space in which we are working. More later...
+- **"...which is idempotent, i.e., equals its composition with
+  itself."**: This is the golden rule of a projection. Idempotency is
+  doing something twice or more being the same as doing it just once,
+  e.g., push an /on/ button to start a machine---but pushing the
+  button again having no effect---because it's already on!
+  Mathematically, if our projection function is $p$, and our input is
+  $x$, then:
+
+  \begin{align*}
+  p(p(x)) &= p(x) \\
+  p \circ p &= p
+  \end{align*}
+
+  A projection is any function you can apply as many times as you want
+  and it only does its work on the first application; every extra
+  application is a non-operation. That is exactly what $p = p ∘ p$ is
+  saying.
+
+- **"The image of a point... is called the /projection/"**: The /image/
+  is just the math term for the final landing spot or output. Think of
+  the /image/ of a function.[fn:1]
+
+** The shadow analogy
+
+Imagine holding up a ball, an opaque sphere in a room. Above the ball
+on the ceiling is a light shining straight down on it. The shadow cast
+on the floor is a 2D /projection/ of the 3D object. Obviously, the
+projection on the floor shows no depth, just the circumference of the
+sphere at its widest. What happened?
+
+1. **The Mapping:** The light acts like a function taking the 3D object
+   and /projecting/ it straight down onto the 2D floor.
+2. **Idempotence:** Why is it idempotent? If you were to take a point
+   that is /already/ on the floor (inside the shadow itself) and apply
+   the mapping to it again---no change. We'll simply get back that
+   projected point. It's already perfectly flattened into 2D.
+
+𝖟𝕭: **Coordinate Geometry**
+
+Again, take a function that maps 3D coordinates $(x, y, z)$ (e.g., a
+ball) onto the flat xy-plane (e.g., a floor). We define our projection
+function $p$ as:
+
+$$p(x, y, z) = (x, y, 0)$$
+
+That is, if we /project/ the point $(3, 5, 8)$, it becomes $(3, 5,
+0)$. Then, if we run that exact output through the function again, we
+get
+
+$$p(3, 5, 0) = (3, 5, 0)$$
+
+Because $p$ has turned the $z$ coordinate to $0$, we see no new output
+with the second function evaluation, i.e., the function is
+/idempotent/, which is a definitional requirement of a true
+projection. And this can be generalized-abstracted as we'll soon see.
+
+𝖟𝕭: **Functional Programming**
+
+In SML if we have a complex data type (~Employee~) representing an
+employee with many data fields, but you want to "project away" an
+employee's sensitive data, we write code that takes an ~Employee~
+record, blanks out the field ~password_hash~, and returns the modified
+~Employee~ record. Then if we pass that already-scrubbed ~Employee~
+record back through the same function, nothing happens, the password
+field is already blank. The mapping is still from the set of
+~Employee~ to the set of ~Employee~, and doing it twice is no
+different than doing it just once.
+
+𝖟𝕭: **Rounding Numbers**
+
+The /floor/ function maps real numbers to real numbers by rounding
+them down to the nearest whole number integer. If we take the number
+$4.7$ and apply the /floor/ function, we get $4.0$. If we apply the
+function again to $4.0$, it stays $4.0$. Again, we reduced, flattened,
+simplified, but we remain in the realm of real numbers.[fn:2]
+
+*** Deeper mathematically...
+
+The following is probably the most "out-there" higher-math definition
+of a projection. It comes from /category theory/, which is an exciting
+new "theory of everything" in mathematics today. But let's see what we
+can do with it
+
+@@html:<font color = "#0d3db3">@@ A projection is a morphism
+
+\begin{align}
+\pi_i : \prod_{j∈J }X_j \to X_i
+\end{align}
+
+defined by the universal property of the product --- specifically, it
+is the unique family of morphisms such that for any object $T$ and any
+family of morphisms $f_j : T → X_j$​, the induced morphism $\langle f_j \rangle : T
+→ \prod X_j$ satisfies $π_i \circ ⟨f_j⟩ = f_i$.  @@html:</font>@@
+
+**** Cartesian product $\iff$ tuples
+
+With ~(1)~ above we're looking at a /type signature/ of a function
+that would seem to be based around a /Cartesian product/, $X_1 \times X_2 \times
+\ldots \times X_j$, which is then mapped ($\to$) to a specific set,
+$X_i$. But first, let's firm up what we mean by a /Cartesian product/
+in the realm of type theory and functional programming
+
+**Generalized Cartesian Product in SML**
+
+In functional programming languages like Standard ML (SML), the
+generalized mathematical Cartesian product
+
+\begin{align*}
+\prod_{i=1}^{n} X_i = X_1 \times X_2 \times \dots \times X_n
+\end{align*}
+
+is directly represented by **tuple types**. If you have a sequence of
+sets (or types), $X_1, X_2, \dots, X_n$, their Cartesian product is formed
+in SML using the =*= operator, which denotes the cross product ($\times$)
+to separate the types.
+
+Mathematical notation:
+
+\begin{align*}
+X_1 \times X_2 \times \dots \times X_n
+\end{align*}
+
+SML Type notation: =X1 * X2 * ... * Xn=
+
+Let's say we want to represent the Cartesian product of an integer, a
+string, and a boolean, i.e., we want to work with tuples (or lists)
+with the ordered elements, e.g., ~[5,"cat", true]~. Mathematically,
+this is $\text{int} \times \text{string} \times \text{bool}$.
+
+In SML, this is defined as follows:
+
+#+name: fe7f6f57-70a2-4471-bfe0-85a42e6fad43
+#+begin_src sml :session *sml* :results silent :exports code
+(* This is an explicit type alias
+ for our Cartesian product *)
+type isb_product = int * string * bool;
+
+(* This is a value of that type, representing
+ a single element of the product *)
+val isb_element : isb_product = (42, "Hello World", true);
+#+END_SRC
+
+- **Type Constructor**: The asterisk =*= acts as the Cartesian product
+ type constructor joining the individual types.
+- **Value Construction**: The parentheses =()= with comma-separated
+  values construct an element (a tuple) inhabiting that product type.
+- **Arity**: The $n$ in the mathematical product corresponds to the
+  length (arity) of the tuple. For $n=3$, it is a 3-tuple (or triple).
+
+
+
+
+
+This belongs in a universal algebra or category theory text and, for
+now at least, can stay there, waiting for us to discover it. But
+here's another higher-math wording
+
+@@html:<font color = "#0d3db3">@@ A projection is a canonical
+surjection from a product onto one factor.@@html:</font>@@
+
+Here's how we break this down:
+
+- *The Product:* This refers to the Cartesian cross product of two or
+  more sets. For example, the product of sets \(A\) and \(B\) is
+  denoted as \(A \times B\), which produces a set of ordered pairs \((a,
+  b)\). Think of a Euclidean plane from Algebra.
+- *The Factor:* These are the individual, constituent sets that were
+  multiplied together to create the product. In \(A \times B\), both \(A\)
+  and \(B\) are the factors.
+- *The Projection:* This is the function that takes an element from
+  the product (the ordered pair) and "projects" it down to one of the
+  factors. For example, the first projection function \(\pi_1 : A \times B \to
+  A\) is defined simply as \(\pi_1(a, b) = a\).
+
+But what is meant by /canonical/ and /surjection/ in this context?
+
+- *Canonical:* It is called canonical because it is the natural,
+  standard choice that arises inherently from the very structure of
+  the product itself, without requiring any arbitrary decisions or
+  extra information.
+- *Surjection:* A projection function is surjective (meaning its image
+  covers every element of the target factor set) with one minor
+  caveat: the /other/ factors in the product cannot be empty. If \(B\)
+  is the empty set \(\emptyset\), then \(A \times \emptyset = \emptyset\). In that specific edge
+  case, there are no pairs to project, so the projection onto \(A\)
+  cannot be surjective unless \(A\) is also empty.
+
+Remember, a /codomain/ is the set of /all possible/ output values. In
+$f: A \to B$, the set $B$ is the entire world where any outputs are
+allowed to be from, regardless of whether they are actually connected
+to the domain by the mapping function. What domain elements the
+function actually maps to its codomain is the subset of the codomain
+called the /range/ or the function's /image/.
+
+𝖟𝕭: Consider the function $f: \mathbb{R} \to \mathbb{R}$ (a mapping $f$
+from real numbers to real numbers) defined by $f(x) = x^2$. The
+/codomain/ is all real numbers $\mathbb{R}$ because $f$ is defined as
+taking real numbers and mapping to real numbers. But the /range/ of
+$f$ will be the set $\{y \in \mathbb{R}: y \ge 0 \}$ (non-negative real
+numbers) because $x^2$ can never be negative, even though the codomain
+(all real numbers) has negative numbers.
+
+Now we're really to go deeper into what a surjection means to us
+here. Given domain \( A \) and codomain \( B \)):
+
+- *Injective* (one-to-one): different inputs /always/ give different
+  outputs.  \( f(a_1) = f(a_2) \) implies \( a_1 = a_2 \).
+- *Surjective* (onto): every possible output value is actually
+  connected to by the function mapping. For every \( b \in B \) there
+  exists at least one \( a \in A \) such that \( f(a) = b \).  In other
+  words, the image of \( f \) equals the entire codomain \( B \).
+
+A function can be:
+  - surjective but not injective, i.e., many inputs → same output, yet
+    everything in \( B \) is reached,
+  - injective but not surjective,
+  - both (bijective),
+  - neither.
+
+**How this applies directly to our projections/selectors**
+
+Take the simplest case: A projection $\pi_1$ onto the first coordinate \(
+\pi_1 : X_1 \times X_2 \to X_1 \), \( \pi_1(\langle x, y \rangle) = x \).
+
+- *It is surjective*: for any value \( j \in X_1 \), the tuple $\langle j, k
+  \rangle$ maps to $j \in X_1$. No matter what element $k$ from \( X_2 \)) we pick
+  along with whatever $j$, it maps to \( j \). So every possible
+  output in the codomain is achieved.
+- *It is not injective*: both \( \langle 5, 3 \rangle \) and \( \langle 5, 7 \rangle \) map
+  to 5.
+
+But wait! \( \langle 5, 3 \rangle \) and \( \langle 5, 7 \rangle \) map to $5$?! Doesn't that
+mean $\pi_1$ is not a real function?
+
+Let's not get confused here. $\pi_1 : \mathbb{R}^2 \to \mathbb{R}$ (if we
+take $X_1 = X_2 = \mathbb{R}$), or more generally $\pi_1 : \mathbb{R}_1
+\times \mathbb{R}_2 \to \mathbb{R}_1$.
+
+The distinction matters:
+
+- A function $f : \mathbb{R} \to \mathbb{R}$ takes a *single real number* as input.
+- $\pi_1 : \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ takes an *ordered pair*
+  of real numbers as input, and returns the first component.
+
+So the domain is $\mathbb{R}^2$ (the plane), not $\mathbb{R}$ (the
+line). When you write $\pi_1(5, 3) = 5$, the input is the single object
+$\langle 5, 3 \rangle \in \mathbb{R}^2$ --- a point in the plane --- and the output
+is $5 \in \mathbb{R}$.
+
+This is also why non-injectivity is completely unsurprising: the
+entire vertical line
+
+$$\{5\} \times \mathbb{R} = \{(5, y) \mid y \in \mathbb{R}\}$$
+
+collapses to the single point $5$. Geometrically, $\pi_1$ is just
+*orthogonal projection onto the \(x\)-axis* --- you are crushing a 2D
+plane down onto a 1D line, so of course many points merge.
+
+The same holds for Backus’s selector =1=: it is always surjective onto
+whatever set the first component lives in, and (unless the tuple has
+length 1) it is never injective.
+
+So in short:
+- Tuple = element of Cartesian product ✓  
+- Selector \( k \) = canonical projection/surjection onto the k-th factor ✓  
+- “Multiple inputs → same output” = not injective (not the definition of surjective) ✗
+
+This set-theoretic concept bridges directly into type theory and
+programming. In SML, these canonical projections are exactly what
+power tuple operations, expressed as the fundamental ~#1~ and ~#2~
+functions that extract elements from a product type. Here's some SML
+code that follows in spirit Backus's "numbers as functions"
+
+#+name: 94fe2e4a-f28f-45d1-aa58-cc86a68475d9
+#+begin_src sml :session *sml* :results output :exports both
+#2 (1,2,3,4)
+(* return the 2nd element of the 4-tuple *)
+#+end_src
+
+#+RESULTS: 94fe2e4a-f28f-45d1-aa58-cc86a68475d9
+: val it = 2 : int
+
+
+*** Relating to selectors
+
+Our functional language selectors, or in higher math $\pi_k$, are not
+/endomorphisms/, because they map an entire sequence/tuple $\langle
+x_1,x_2,\ldots,x_n \rangle$ to just a single element $x_k$. That is, we've
+lost all but that one returned dimension. An /endomorphic/ projection,
+however, keeps domain and codomain the same, e.g., coordinate pair
+$(a,b)$ and its projection $(a,0)$ are both still understood as in
+two-dimensional space.
+
+@@html:<font color = "#0d3db3">@@ A selector is always /surjective/
+and "selects" a coordinate of a tuple or element of a linst on which
+to "project."  @@html:</font>@@
+
+
+
+
+
+Let \( X_1, X_2, \dots, X_n \) be any sets.  
+Their *Cartesian product* (the set of all n-tuples) is
+\[
+X_1 \times X_2 \times \dots \times X_n = \{ \langle x_1, x_2, \dots, x_n \rangle \mid x_i \in X_i \}
+\]
+
+A *projection function* (also written \( \pi_k \) or \( \mathrm{proj}_k \)) is the function that “projects” onto the k-th coordinate:
+
+\[
+\pi_k : X_1 \times \dots \times X_n \;\to\; X_k
+\]
+
+defined by the rule
+
+\[
+\pi_k(\langle x_1, x_2, \dots, x_n \rangle) = x_k
+\]
+
+This "projecting onto the k-th dimension/coordinate essentially throws
+away every component except the k-th one. That's all there is to it.
+
+- \( \pi_1 \) always returns the first component.  
+- \( \pi_2 \) always returns the second, and so on.
+
+But then higher math has generalized the concept of /projection/ to
+apply it to many other topics 
+
+**Set Theory The Coordinate Picker**
+
+In the context of Cartesian products, a projection function $pr_i$ (or
+$\pi_i$) selects the $i$-th component of an element.
+
+Given a product $X \times Y$, the projection $\pi_1$ is defined as:
+$$\pi_1: X \times Y \to X, \quad \pi_1(x, y) = x$$
+
+*** Canonical Surjection and Surjectivity Explained
+
+Yes — exactly that.
+
+In the context I used earlier (“the canonical surjection from a product onto one factor”), here is what it means, step by step:
+
+- A *sequence* (Backus’s term) or *list* or *tuple* of length \( n \) is mathematically an *ordered n-tuple*  
+  \( \langle x_1, x_2, \dots, x_n \rangle \).
+
+- Any such n-tuple is an *element of the Cartesian product* (also called cross product) of n sets.  
+  If the components come from sets \( X_1, X_2, \dots, X_n \), then  
+  \[
+  \langle x_1, x_2, \dots, x_n \rangle \in X_1 \times X_2 \times \dots \times X_n.
+  \]
+  (If all components are from the same set \( X \), people often write \( X^n \).)
+
+- The *canonical projection* (or selector) \( \pi_k \) (Backus writes it as the number \( k \)) is the function  
+  \[
+  \pi_k : X_1 \times X_2 \times \dots \times X_n \;\to\; X_k
+  \]
+  defined by  
+  \[
+  \pi_k(\langle x_1, x_2, \dots, x_n \rangle) = x_k.
+  \]
+  It is called the *canonical surjection onto the k-th factor* because:
+  - it comes directly from the definition of the product (no extra choices),
+  - its codomain is exactly one of the original sets (the “factor”),
+  - and it is a surjection (see below).
+
+So yes: every sequence/tuple you ever use in FP *is* an element of a Cartesian product, and every selector *is* the natural projection map out of that product.
+
+**Second question — important correction**
+
+No, that is *not* what “surjective” means.
+
+You said: “a function where more than one element maps to one element in a range is surjective”.
+
+That actually describes a function that is *not injective* (many-to-one), which is a completely different property.
+
+Correct definitions (domain \( A \), codomain \( B \)):
+
+- *Injective* (one-to-one): different inputs give different outputs.  
+  \( f(a_1) = f(a_2) \) implies \( a_1 = a_2 \).
+
+- *Surjective* (onto): every possible output value is actually hit.  
+  For every \( b \in B \) there exists at least one \( a \in A \) such that \( f(a) = b \).  
+  In other words, the image of \( f \) equals the entire codomain \( B \).
+
+- A function can be:
+  - surjective but not injective (many inputs → same output, yet everything in \( B \) is reached),
+  - injective but not surjective,
+  - both (bijective),
+  - neither.
+
+**How this applies directly to our projections/selectors**
+
+Take the simplest case: projection onto the first coordinate  
+\( \pi_1 : X_1 \times X_2 \to X_1 \),  
+\( \pi_1(\langle x, y \rangle) = x \).
+
+- *It is surjective*: for any value \( z \in X_1 \), the tuple \( \langle z, \text{anything} \rangle \) (pick any element from \( X_2 \)) maps to \( z \). So every possible output in the codomain is achieved.
+
+- *It is not injective*: both \( \langle 5, 3 \rangle \) and \( \langle 5, 7 \rangle \) map to 5.  
+  That is exactly the “more than one element maps to one output” you mentioned — but that property does *not* make it surjective; surjectivity is the separate fact that every possible output is reached at least once.
+
+The same holds for Backus’s selector =1=: it is always surjective onto whatever set the first component lives in, and (unless the tuple has length 1) it is never injective.
+
+So in short:
+- Tuple = element of Cartesian product ✓  
+- Selector \( k \) = canonical projection/surjection onto the k-th factor ✓  
+- “Multiple inputs → same output” = not injective (not the definition of surjective) ✗
+
+That clears up the two points! Let me know if you’d like concrete FP code examples or more set-theory diagrams. 
+
+
+#+INCLUDE: "./footer.org" :minlevel 1
+
+* Footnotes
+
+[fn:1] The image or /range/ of a function is the set of all actual
+output values a function produces. For example, for $f(x) = x^2$ where
+$x$ is any real number, the image is all non-negative real numbers:
+$[\,0,\infty)$.
+
+[fn:2] ...the /floor/ function does not take us from the reals to the
+integers, e.g., $4.7 \to 4$, rather we stay with the reals: $4.7 \to
+4.0$. This is key!

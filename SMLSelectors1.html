@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-03-15 Sun 15:49 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-orga4ab287" class="outline-2">
+<h2 id="orga4ab287">Backus selector versus higher-math projections</h2>
+<div class="outline-text-2" id="text-orga4ab287">
+</div>
+<div id="outline-container-org3f63f7f" class="outline-3">
+<h3 id="org3f63f7f">Definition</h3>
+<div class="outline-text-3" id="text-org3f63f7f">
+<p>
+In mathematics, a <b><b><a href="https://en.wikipedia.org/wiki/Projection_(mathematics)">projection</a></b></b> is a mapping from a set or algebraic
+structure to a subset, which leaves the elements of that subset
+unchanged. It essentially &ldquo;squashes&rdquo; a higher-dimensional object into
+a lower-dimensional subspace. The Wikipedia article on mathematical
+projection states
+</p>
+
+<p>
+<font color = "#0d3db3"> A <i>projection</i> is a mapping from a
+set to itself&mdash;or an endomorphism of a mathematical structure&mdash;which
+is idempotent, i.e., equals its composition with itself. The image of
+a point or a subset \(S\) under a projection is called the <i>projection</i>
+of \(S\).  </font>
+</p>
+
+<p>
+What does all this math-speak mean? Let&rsquo;s analyze it in detail
+</p>
+
+<ul class="org-ul">
+<li><b><b>&ldquo;&hellip;a mapping from a set to itself&hellip;&rdquo;</b></b>: This just means we have
+a function that takes an input from a specific universe (like 3D
+space, or a list of numbers) and returns an answer that lives in
+that exact same universe.</li>
+<li><b><b>&ldquo;&hellip;or an endomorphism of a mathematical structure&hellip;&rdquo;</b></b>:
+Initially, let&rsquo;s ignore <i>endomorphism</i>. It just means the mapping
+plays nicely with the structural rules of whatever mathematical
+space in which we are working. More later&hellip;</li>
+<li><p>
+<b><b>&ldquo;&hellip;which is idempotent, i.e., equals its composition with
+itself.&rdquo;</b></b>: This is the golden rule of a projection. Idempotency is
+doing something twice or more being the same as doing it just once,
+e.g., push an <i>on</i> button to start a machine&mdash;but pushing the
+button again having no effect&mdash;because it&rsquo;s already on!
+Mathematically, if our projection function is \(p\), and our input is
+\(x\), then:
+</p>
+
+\begin{align*}
+p(p(x)) &= p(x) \\
+p \circ p &= p
+\end{align*}
+
+<p>
+A projection is any function you can apply as many times as you want
+and it only does its work on the first application; every extra
+application is a non-operation. That is exactly what \(p = p ∘ p\) is
+saying.
+</p></li>
+
+<li><b><b>&ldquo;The image of a point&hellip; is called the <i>projection</i>&rdquo;</b></b>: The <i>image</i>
+is just the math term for the final landing spot or output. Think of
+the <i>image</i> of a function.<label id='fnr.1' for='fnr-in.1.8791831' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.8791831' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+The image or <i>range</i> of a function is the set of all actual
+output values a function produces. For example, for \(f(x) = x^2\) where
+\(x\) is any real number, the image is all non-negative real numbers:
+\([\,0,\infty)\).
+</span></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org530237a" class="outline-3">
+<h3 id="org530237a">The shadow analogy</h3>
+<div class="outline-text-3" id="text-org530237a">
+<p>
+Imagine holding up a ball, an opaque sphere in a room. Above the ball
+on the ceiling is a light shining straight down on it. The shadow cast
+on the floor is a 2D <i>projection</i> of the 3D object. Obviously, the
+projection on the floor shows no depth, just the circumference of the
+sphere at its widest. What happened?
+</p>
+
+<ol class="org-ol">
+<li><b><b>The Mapping:</b></b> The light acts like a function taking the 3D object
+and <i>projecting</i> it straight down onto the 2D floor.</li>
+<li><b><b>Idempotence:</b></b> Why is it idempotent? If you were to take a point
+that is <i>already</i> on the floor (inside the shadow itself) and apply
+the mapping to it again&mdash;no change. We&rsquo;ll simply get back that
+projected point. It&rsquo;s already perfectly flattened into 2D.</li>
+</ol>
+
+<p>
+𝖟𝕭: <b><b>Coordinate Geometry</b></b>
+</p>
+
+<p>
+Again, take a function that maps 3D coordinates \((x, y, z)\) (e.g., a
+ball) onto the flat xy-plane (e.g., a floor). We define our projection
+function \(p\) as:
+</p>
+
+<p>
+\[p(x, y, z) = (x, y, 0)\]
+</p>
+
+<p>
+That is, if we <i>project</i> the point \((3, 5, 8)\), it becomes \((3, 5,
+0)\). Then, if we run that exact output through the function again, we
+get
+</p>
+
+<p>
+\[p(3, 5, 0) = (3, 5, 0)\]
+</p>
+
+<p>
+Because \(p\) has turned the \(z\) coordinate to \(0\), we see no new output
+with the second function evaluation, i.e., the function is
+<i>idempotent</i>, which is a definitional requirement of a true
+projection. And this can be generalized-abstracted as we&rsquo;ll soon see.
+</p>
+
+<p>
+𝖟𝕭: <b><b>Functional Programming</b></b>
+</p>
+
+<p>
+In SML if we have a complex data type (<code>Employee</code>) representing an
+employee with many data fields, but you want to &ldquo;project away&rdquo; an
+employee&rsquo;s sensitive data, we write code that takes an <code>Employee</code>
+record, blanks out the field <code>password_hash</code>, and returns the modified
+<code>Employee</code> record. Then if we pass that already-scrubbed <code>Employee</code>
+record back through the same function, nothing happens, the password
+field is already blank. The mapping is still from the set of
+<code>Employee</code> to the set of <code>Employee</code>, and doing it twice is no
+different than doing it just once.
+</p>
+
+<p>
+𝖟𝕭: <b><b>Rounding Numbers</b></b>
+</p>
+
+<p>
+The <i>floor</i> function maps real numbers to real numbers by rounding
+them down to the nearest whole number integer. If we take the number
+\(4.7\) and apply the <i>floor</i> function, we get \(4.0\). If we apply the
+function again to \(4.0\), it stays \(4.0\). Again, we reduced, flattened,
+simplified, but we remain in the realm of real numbers.<label id='fnr.2' for='fnr-in.2.7675764' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.7675764' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+&hellip;the <i>floor</i> function does not take us from the reals to the
+integers, e.g., \(4.7 \to 4\), rather we stay with the reals: \(4.7 \to
+4.0\). This is key!
+</span>
+</p>
+</div>
+<div id="outline-container-org651f861" class="outline-4">
+<h4 id="org651f861">Deeper mathematically&hellip;</h4>
+<div class="outline-text-4" id="text-org651f861">
+<p>
+The following is probably the most &ldquo;out-there&rdquo; higher-math definition
+of a projection. It comes from <i>category theory</i>, which is an exciting
+new &ldquo;theory of everything&rdquo; in mathematics today. But let&rsquo;s see what we
+can do with it
+</p>
+
+<p>
+<font color = "#0d3db3"> A projection is a morphism
+</p>
+
+\begin{align}
+\pi_i : \prod_{j∈J }X_j \to X_i
+\end{align}
+
+<p>
+defined by the universal property of the product &mdash; specifically, it
+is the unique family of morphisms such that for any object \(T\) and any
+family of morphisms \(f_j : T → X_j\)​, the induced morphism \(\langle f_j \rangle : T
+→ \prod X_j\) satisfies \(π_i \circ ⟨f_j⟩ = f_i\).  </font>
+</p>
+</div>
+<div id="outline-container-org38570f5" class="outline-5">
+<h5 id="org38570f5">Cartesian product \(\iff\) tuples</h5>
+<div class="outline-text-5" id="text-org38570f5">
+<p>
+With <code>(1)</code> above we&rsquo;re looking at a <i>type signature</i> of a function
+that would seem to be based around a <i>Cartesian product</i>, \(X_1 \times X_2 \times
+\ldots \times X_j\), which is then mapped (\(\to\)) to a specific set,
+\(X_i\). But first, let&rsquo;s firm up what we mean by a <i>Cartesian product</i>
+in the realm of type theory and functional programming
+</p>
+
+<p>
+<b><b>Generalized Cartesian Product in SML</b></b>
+</p>
+
+<p>
+In functional programming languages like Standard ML (SML), the
+generalized mathematical Cartesian product
+</p>
+
+\begin{align*}
+\prod_{i=1}^{n} X_i = X_1 \times X_2 \times \dots \times X_n
+\end{align*}
+
+<p>
+is directly represented by <b><b>tuple types</b></b>. If you have a sequence of
+sets (or types), \(X_1, X_2, \dots, X_n\), their Cartesian product is formed
+in SML using the <code>*</code> operator, which denotes the cross product (\(\times\))
+to separate the types.
+</p>
+
+<p>
+Mathematical notation:
+</p>
+
+\begin{align*}
+X_1 \times X_2 \times \dots \times X_n
+\end{align*}
+
+<p>
+SML Type notation: <code>X1 * X2 * ... * Xn</code>
+</p>
+
+<p>
+Let&rsquo;s say we want to represent the Cartesian product of an integer, a
+string, and a boolean, i.e., we want to work with tuples (or lists)
+with the ordered elements, e.g., <code>[5,"cat", true]</code>. Mathematically,
+this is \(\text{int} \times \text{string} \times \text{bool}\).
+</p>
+
+<p>
+In SML, this is defined as follows:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml" id="org8948797"><code><span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">This is an explicit type alias
+ for our Cartesian product</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">type</span> <span style="font-weight: bold;">isb_product</span> = int * string * bool;
+
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">This is a value of that type, representing
+ a single element of the product</span><span style="color: #687080; font-style: italic;"> *)</span>
+<span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">isb_element</span> : isb_product = <span style="color: #8c8c8c;">(</span>42, <span style="color: #98be65;">"Hello World"</span>, true<span style="color: #8c8c8c;">)</span>;
+</code></pre>
+</div>
+
+<ul class="org-ul">
+<li><b><b>Type Constructor</b></b>: The asterisk <code>*</code> acts as the Cartesian product
+type constructor joining the individual types.</li>
+<li><b><b>Value Construction</b></b>: The parentheses <code>()</code> with comma-separated
+values construct an element (a tuple) inhabiting that product type.</li>
+<li><b><b>Arity</b></b>: The \(n\) in the mathematical product corresponds to the
+length (arity) of the tuple. For \(n=3\), it is a 3-tuple (or triple).</li>
+</ul>
+
+
+
+
+
+<p>
+This belongs in a universal algebra or category theory text and, for
+now at least, can stay there, waiting for us to discover it. But
+here&rsquo;s another higher-math wording
+</p>
+
+<p>
+<font color = "#0d3db3"> A projection is a canonical
+surjection from a product onto one factor.</font>
+</p>
+
+<p>
+Here&rsquo;s how we break this down:
+</p>
+
+<ul class="org-ul">
+<li><b>The Product:</b> This refers to the Cartesian cross product of two or
+more sets. For example, the product of sets \(A\) and \(B\) is
+denoted as \(A \times B\), which produces a set of ordered pairs \((a,
+  b)\). Think of a Euclidean plane from Algebra.</li>
+<li><b>The Factor:</b> These are the individual, constituent sets that were
+multiplied together to create the product. In \(A \times B\), both \(A\)
+and \(B\) are the factors.</li>
+<li><b>The Projection:</b> This is the function that takes an element from
+the product (the ordered pair) and &ldquo;projects&rdquo; it down to one of the
+factors. For example, the first projection function \(\pi_1 : A \times B \to
+  A\) is defined simply as \(\pi_1(a, b) = a\).</li>
+</ul>
+
+<p>
+But what is meant by <i>canonical</i> and <i>surjection</i> in this context?
+</p>
+
+<ul class="org-ul">
+<li><b>Canonical:</b> It is called canonical because it is the natural,
+standard choice that arises inherently from the very structure of
+the product itself, without requiring any arbitrary decisions or
+extra information.</li>
+<li><b>Surjection:</b> A projection function is surjective (meaning its image
+covers every element of the target factor set) with one minor
+caveat: the <i>other</i> factors in the product cannot be empty. If \(B\)
+is the empty set \(\emptyset\), then \(A \times \emptyset = \emptyset\). In that specific edge
+case, there are no pairs to project, so the projection onto \(A\)
+cannot be surjective unless \(A\) is also empty.</li>
+</ul>
+
+<p>
+Remember, a <i>codomain</i> is the set of <i>all possible</i> output values. In
+\(f: A \to B\), the set \(B\) is the entire world where any outputs are
+allowed to be from, regardless of whether they are actually connected
+to the domain by the mapping function. What domain elements the
+function actually maps to its codomain is the subset of the codomain
+called the <i>range</i> or the function&rsquo;s <i>image</i>.
+</p>
+
+<p>
+𝖟𝕭: Consider the function \(f: \mathbb{R} \to \mathbb{R}\) (a mapping \(f\)
+from real numbers to real numbers) defined by \(f(x) = x^2\). The
+<i>codomain</i> is all real numbers \(\mathbb{R}\) because \(f\) is defined as
+taking real numbers and mapping to real numbers. But the <i>range</i> of
+\(f\) will be the set \(\{y \in \mathbb{R}: y \ge 0 \}\) (non-negative real
+numbers) because \(x^2\) can never be negative, even though the codomain
+(all real numbers) has negative numbers.
+</p>
+
+<p>
+Now we&rsquo;re really to go deeper into what a surjection means to us
+here. Given domain \( A \) and codomain \( B \)):
+</p>
+
+<ul class="org-ul">
+<li><b>Injective</b> (one-to-one): different inputs <i>always</i> give different
+outputs.  \( f(a_1) = f(a_2) \) implies \( a_1 = a_2 \).</li>
+<li><b>Surjective</b> (onto): every possible output value is actually
+connected to by the function mapping. For every \( b \in B \) there
+exists at least one \( a \in A \) such that \( f(a) = b \).  In other
+words, the image of \( f \) equals the entire codomain \( B \).</li>
+</ul>
+
+<p>
+A function can be:
+</p>
+<ul class="org-ul">
+<li>surjective but not injective, i.e., many inputs → same output, yet
+everything in \( B \) is reached,</li>
+<li>injective but not surjective,</li>
+<li>both (bijective),</li>
+<li>neither.</li>
+</ul>
+
+<p>
+<b><b>How this applies directly to our projections/selectors</b></b>
+</p>
+
+<p>
+Take the simplest case: A projection \(\pi_1\) onto the first coordinate \(
+\pi_1 : X_1 \times X_2 \to X_1 \), \( \pi_1(\langle x, y \rangle) = x \).
+</p>
+
+<ul class="org-ul">
+<li><b>It is surjective</b>: for any value \( j \in X_1 \), the tuple \(\langle j, k
+  \rangle\) maps to \(j \in X_1\). No matter what element \(k\) from \( X_2 \)) we pick
+along with whatever \(j\), it maps to \( j \). So every possible
+output in the codomain is achieved.</li>
+<li><b>It is not injective</b>: both \( \langle 5, 3 \rangle \) and \( \langle 5, 7 \rangle \) map
+to 5.</li>
+</ul>
+
+<p>
+But wait! \( \langle 5, 3 \rangle \) and \( \langle 5, 7 \rangle \) map to \(5\)?! Doesn&rsquo;t that
+mean \(\pi_1\) is not a real function?
+</p>
+
+<p>
+Let&rsquo;s not get confused here. \(\pi_1 : \mathbb{R}^2 \to \mathbb{R}\) (if we
+take \(X_1 = X_2 = \mathbb{R}\)), or more generally \(\pi_1 : \mathbb{R}_1
+\times \mathbb{R}_2 \to \mathbb{R}_1\).
+</p>
+
+<p>
+The distinction matters:
+</p>
+
+<ul class="org-ul">
+<li>A function \(f : \mathbb{R} \to \mathbb{R}\) takes a <b>single real number</b> as input.</li>
+<li>\(\pi_1 : \mathbb{R} \times \mathbb{R} \to \mathbb{R}\) takes an <b>ordered pair</b>
+of real numbers as input, and returns the first component.</li>
+</ul>
+
+<p>
+So the domain is \(\mathbb{R}^2\) (the plane), not \(\mathbb{R}\) (the
+line). When you write \(\pi_1(5, 3) = 5\), the input is the single object
+\(\langle 5, 3 \rangle \in \mathbb{R}^2\) &mdash; a point in the plane &mdash; and the output
+is \(5 \in \mathbb{R}\).
+</p>
+
+<p>
+This is also why non-injectivity is completely unsurprising: the
+entire vertical line
+</p>
+
+<p>
+\[\{5\} \times \mathbb{R} = \{(5, y) \mid y \in \mathbb{R}\}\]
+</p>
+
+<p>
+collapses to the single point \(5\). Geometrically, \(\pi_1\) is just
+<b>orthogonal projection onto the \(x\)-axis</b> &mdash; you are crushing a 2D
+plane down onto a 1D line, so of course many points merge.
+</p>
+
+<p>
+The same holds for Backus’s selector <code>1</code>: it is always surjective onto
+whatever set the first component lives in, and (unless the tuple has
+length 1) it is never injective.
+</p>
+
+<p>
+So in short:
+</p>
+<ul class="org-ul">
+<li>Tuple = element of Cartesian product ✓</li>
+<li>Selector \( k \) = canonical projection/surjection onto the k-th factor ✓</li>
+<li>“Multiple inputs → same output” = not injective (not the definition of surjective) ✗</li>
+</ul>
+
+<p>
+This set-theoretic concept bridges directly into type theory and
+programming. In SML, these canonical projections are exactly what
+power tuple operations, expressed as the fundamental <code>#1</code> and <code>#2</code>
+functions that extract elements from a product type. Here&rsquo;s some SML
+code that follows in spirit Backus&rsquo;s &ldquo;numbers as functions&rdquo;
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml" id="org94dc380"><code>#2 <span style="color: #8c8c8c;">(</span>1,2,3,4<span style="color: #8c8c8c;">)</span>
+<span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">return the 2nd element of the 4-tuple</span><span style="color: #687080; font-style: italic;"> *)</span>
+</code></pre>
+</div>
+
+<pre class="example">
+val it = 2 : int
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7e0b801" class="outline-4">
+<h4 id="org7e0b801">Relating to selectors</h4>
+<div class="outline-text-4" id="text-org7e0b801">
+<p>
+Our functional language selectors, or in higher math \(\pi_k\), are not
+<i>endomorphisms</i>, because they map an entire sequence/tuple \(\langle
+x_1,x_2,\ldots,x_n \rangle\) to just a single element \(x_k\). That is, we&rsquo;ve
+lost all but that one returned dimension. An <i>endomorphic</i> projection,
+however, keeps domain and codomain the same, e.g., coordinate pair
+\((a,b)\) and its projection \((a,0)\) are both still understood as in
+two-dimensional space.
+</p>
+
+<p>
+<font color = "#0d3db3"> A selector is always <i>surjective</i>
+and &ldquo;selects&rdquo; a coordinate of a tuple or element of a linst on which
+to &ldquo;project.&rdquo;  </font>
+</p>
+
+
+
+
+
+<p>
+Let \( X_1, X_2, \dots, X_n \) be any sets.  
+Their <b>Cartesian product</b> (the set of all n-tuples) is
+\[
+X_1 \times X_2 \times \dots \times X_n = \{ \langle x_1, x_2, \dots, x_n \rangle \mid x_i \in X_i \}
+\]
+</p>
+
+<p>
+A <b>projection function</b> (also written \( \pi_k \) or \( \mathrm{proj}_k \)) is the function that “projects” onto the k-th coordinate:
+</p>
+
+<p>
+\[
+\pi_k : X_1 \times \dots \times X_n \;\to\; X_k
+\]
+</p>
+
+<p>
+defined by the rule
+</p>
+
+<p>
+\[
+\pi_k(\langle x_1, x_2, \dots, x_n \rangle) = x_k
+\]
+</p>
+
+<p>
+This "projecting onto the k-th dimension/coordinate essentially throws
+away every component except the k-th one. That&rsquo;s all there is to it.
+</p>
+
+<ul class="org-ul">
+<li>\( \pi_1 \) always returns the first component.</li>
+<li>\( \pi_2 \) always returns the second, and so on.</li>
+</ul>
+
+<p>
+But then higher math has generalized the concept of <i>projection</i> to
+apply it to many other topics 
+</p>
+
+<p>
+<b><b>Set Theory The Coordinate Picker</b></b>
+</p>
+
+<p>
+In the context of Cartesian products, a projection function \(pr_i\) (or
+\(\pi_i\)) selects the $i$-th component of an element.
+</p>
+
+<p>
+Given a product \(X \times Y\), the projection \(\pi_1\) is defined as:
+\[\pi_1: X \times Y \to X, \quad \pi_1(x, y) = x\]
+</p>
+</div>
+</div>
+<div id="outline-container-org37a066c" class="outline-4">
+<h4 id="org37a066c">Canonical Surjection and Surjectivity Explained</h4>
+<div class="outline-text-4" id="text-org37a066c">
+<p>
+Yes — exactly that.
+</p>
+
+<p>
+In the context I used earlier (“the canonical surjection from a product onto one factor”), here is what it means, step by step:
+</p>
+
+<ul class="org-ul">
+<li>A <b>sequence</b> (Backus’s term) or <b>list</b> or <b>tuple</b> of length \( n \) is mathematically an <b>ordered n-tuple</b>  
+\( \langle x_1, x_2, \dots, x_n \rangle \).</li>
+
+<li>Any such n-tuple is an <b>element of the Cartesian product</b> (also called cross product) of n sets.  
+If the components come from sets \( X_1, X_2, \dots, X_n \), then  
+\[
+  \langle x_1, x_2, \dots, x_n \rangle \in X_1 \times X_2 \times \dots \times X_n.
+  \]
+(If all components are from the same set \( X \), people often write \( X^n \).)</li>
+
+<li>The <b>canonical projection</b> (or selector) \( \pi_k \) (Backus writes it as the number \( k \)) is the function  
+\[
+  \pi_k : X_1 \times X_2 \times \dots \times X_n \;\to\; X_k
+  \]
+defined by  
+\[
+  \pi_k(\langle x_1, x_2, \dots, x_n \rangle) = x_k.
+  \]
+It is called the <b>canonical surjection onto the k-th factor</b> because:
+<ul class="org-ul">
+<li>it comes directly from the definition of the product (no extra choices),</li>
+<li>its codomain is exactly one of the original sets (the “factor”),</li>
+<li>and it is a surjection (see below).</li>
+</ul></li>
+</ul>
+
+<p>
+So yes: every sequence/tuple you ever use in FP <b>is</b> an element of a Cartesian product, and every selector <b>is</b> the natural projection map out of that product.
+</p>
+
+<p>
+<b><b>Second question — important correction</b></b>
+</p>
+
+<p>
+No, that is <b>not</b> what “surjective” means.
+</p>
+
+<p>
+You said: “a function where more than one element maps to one element in a range is surjective”.
+</p>
+
+<p>
+That actually describes a function that is <b>not injective</b> (many-to-one), which is a completely different property.
+</p>
+
+<p>
+Correct definitions (domain \( A \), codomain \( B \)):
+</p>
+
+<ul class="org-ul">
+<li><b>Injective</b> (one-to-one): different inputs give different outputs.  
+\( f(a_1) = f(a_2) \) implies \( a_1 = a_2 \).</li>
+
+<li><b>Surjective</b> (onto): every possible output value is actually hit.  
+For every \( b \in B \) there exists at least one \( a \in A \) such that \( f(a) = b \).  
+In other words, the image of \( f \) equals the entire codomain \( B \).</li>
+
+<li>A function can be:
+<ul class="org-ul">
+<li>surjective but not injective (many inputs → same output, yet everything in \( B \) is reached),</li>
+<li>injective but not surjective,</li>
+<li>both (bijective),</li>
+<li>neither.</li>
+</ul></li>
+</ul>
+
+<p>
+<b><b>How this applies directly to our projections/selectors</b></b>
+</p>
+
+<p>
+Take the simplest case: projection onto the first coordinate  
+\( \pi_1 : X_1 \times X_2 \to X_1 \),  
+\( \pi_1(\langle x, y \rangle) = x \).
+</p>
+
+<ul class="org-ul">
+<li><b>It is surjective</b>: for any value \( z \in X_1 \), the tuple \( \langle z, \text{anything} \rangle \) (pick any element from \( X_2 \)) maps to \( z \). So every possible output in the codomain is achieved.</li>
+
+<li><b>It is not injective</b>: both \( \langle 5, 3 \rangle \) and \( \langle 5, 7 \rangle \) map to 5.  
+That is exactly the “more than one element maps to one output” you mentioned — but that property does <b>not</b> make it surjective; surjectivity is the separate fact that every possible output is reached at least once.</li>
+</ul>
+
+<p>
+The same holds for Backus’s selector <code>1</code>: it is always surjective onto whatever set the first component lives in, and (unless the tuple has length 1) it is never injective.
+</p>
+
+<p>
+So in short:
+</p>
+<ul class="org-ul">
+<li>Tuple = element of Cartesian product ✓</li>
+<li>Selector \( k \) = canonical projection/surjection onto the k-th factor ✓</li>
+<li>“Multiple inputs → same output” = not injective (not the definition of surjective) ✗</li>
+</ul>
+
+<p>
+That clears up the two points! Let me know if you’d like concrete FP code examples or more set-theory diagrams. 
+</p>
+
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

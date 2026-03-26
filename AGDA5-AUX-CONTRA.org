@@ -1,0 +1,181 @@
+#+TITLE: 
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2026-03-22T15:25:13Z UTC 
+#+LANGUAGE:  en 
+#+EXPORT_FILE_NAME: Agda5-Aux-Contrapositive.html
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Bibliography ---
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+# --- Document Content Starts Here ---
+#+INCLUDE: /home/galaxybeing/Dropbox/org/codeismathiscode2/header.org :minlevel 1
+
+* Injective successor and its contrapositive
+
+In first-order logic, the contrapositive of an implication $P \to Q$
+is $\neg Q \to \neg P$.
+
+Here is how that breaks down for the second Peano axiom:
+
+- *Original Premise* ($P$): $S(x) = S(y)$
+- *Original Conclusion* ($Q$): $x = y$
+- *Implication* ($P \to Q$): $S(x) = S(y) \to x = y$
+
+To form the contrapositive, /negate both statements and reverse the
+direction of the implication/:
+
+- *Negated Conclusion* ($\neg Q$): $x \ne y$ (which is shorthand for
+  $\neg(x = y)$)
+- *Negated Premise* ($\neg P$): $S(x) \ne S(y)$
+- *Contrapositive* ($\neg Q \to \neg P$): $x \ne y \to S(x) \ne S(y)$
+
+Because a conditional statement and its contrapositive are logically
+equivalent, the axiom $\forall x \forall y (S(x) = S(y) \to x = y)$
+can be perfectly swapped with $\forall x \forall y (x \ne y \to S(x)
+\ne S(y))$ in any formal proof.
+
+** Gentzen warmup: the turnstile: $\vdash$ in Sequent Calculus
+
+In Gentzen's sequent calculus,the $\vdash$ symbol is called
+*turnstile*, and it appears in expressions of the form:[fn:1]
+
+$$\Gamma \vdash \Delta$$
+
+This is called a *sequent*, and it has the following meaning:
+
+@@html:<font color = "#0d3db3">@@ ⥤ If all the formulas in $\Gamma$
+hold, then at least one formula in $\Delta$ holds.  @@html:</font>@@
+
+*** The Components
+
+- *$\Gamma$ (the antecedent)* --- a finite list of formulas representing
+  /assumptions/ or /hypotheses/
+- *$\Delta$ (the succedent/consequent)* --- a finite list of formulas
+  representing /conclusions/
+- *$\vdash$* --- separates the two sides, expressing a /derivability/ or
+  /entailment/ relation between them
+
+*** Intuitive Reading
+
+| Sequent          | Reading                                                                 |
+|------------------+-------------------------------------------------------------------------|
+| $A, B \vdash C$  | "From $A$ and $B$, we can derive $C$"                                   |
+| $\vdash A$       | "$A$ is a tautology / provable with no assumptions"                     |
+| $A \vdash$       | "$A$ is a contradiction (it entails anything, including the empty set)" |
+| $\vdash$         | The empty sequent --- unprovable (deriving nothing from nothing)        |
+
+*** Classical vs. Intuitionistic Reading (optional)
+
+In *classical logic (LK)*, $\Delta$ may contain multiple formulas, and the
+sequent $\Gamma \vdash \Delta$ means:
+
+$$\bigwedge \Gamma \;\Rightarrow\; \bigvee \Delta$$
+
+the conjunction of all hypotheses implies the /disjunction/ of all conclusions.
+
+In *intuitionistic logic (LJ)*, $\Delta$ is restricted to /at most one/
+formula, which forces a constructive reading: you must explicitly /produce/
+the single conclusion, not merely rule out all alternatives.
+
+*** Why it Matters
+
+The turnstile is the engine of the calculus. Gentzen's key insight was to make
+the /structure of proofs/ explicit by treating $\vdash$ not as a semantic truth
+relation (as in model theory) but as a *syntactic derivability relation*, built
+up step by step via inference rules (like /cut/, /weakening/, /contraction/,
+and the introduction rules for each connective). His *Cut-Elimination Theorem*
+(/Hauptsatz/) then shows that any proof can be transformed into one with no
+"detours," giving logic a kind of canonical proof structure.
+
+Now, is "logically entails" the right gloss for $\vdash$? It's close,
+but worth being precise about the distinction --- it depends on
+whether you're working *syntactically* or *semantically*.
+
+Technically we want the /two turnstiles/ symbol.
+
+*"Logically entails"* ($\models$) is the /semantic/ double-turnstile:
+it means "in every model where $A$ is true, $B$ is also true." This is
+a statement about /truth in interpretations/.
+
+*$\vdash$* is the /syntactic/ single-turnstile: it means "there exists
+a /proof/ of $B$ from $A$ using the inference rules." This is a
+statement about /derivability in a formal system/.
+
+- *$A \models B$* --- "$A$ logically entails $B$" / "$B$ is a semantic
+  consequence of $A$"
+- *$A \vdash B$* --- "$A$ proves $B$" / "$B$ is derivable from $A$" / "$B$
+  is a syntactic consequence of $A$"
+
+In practice, people do sometimes say "entails" loosely for $\vdash$, and in
+systems that are *sound and complete* (like classical propositional logic),
+
+$$A \vdash B \iff A \models B$$
+
+so the distinction collapses extensionally. But conceptually they are different
+things --- one lives in proof theory, the other in model theory --- and
+Gentzen's sequent calculus is specifically about the /syntactic/ side. So
+"proves" or "derives" is the more accurate gloss for $\vdash$.
+
+** Gentzen Sequent Formulation
+
+To formalize /why/ these are logically equivalent, we can use
+Gentzen's sequent calculus (specifically, classical system LK). We
+want to prove that the contrapositive follows from the original
+implication:
+
+$$P \to Q \vdash \neg Q \to \neg P$$
+
+Letting $P$ represent $S(x) = S(y)$ and $Q$ represent $x = y$, the
+derivation tree using standard left and right rules looks like
+this
+
+$$
+\dfrac{
+  \dfrac{
+    \dfrac{
+      \dfrac{ P \vdash P \qquad Q \vdash Q }{ P \to Q, P \vdash Q } ({\to}L)
+    }{
+      P \to Q, P, \neg Q \vdash
+    } (\neg L)
+  }{
+    P \to Q, \neg Q \vdash \neg P
+  } (\neg R)
+}{
+  P \to Q \vdash \neg Q \to \neg P
+} ({\to}R)
+$$
+
+Here is the step-by-step breakdown of that derivation:
+1. *Axioms*: We start with the identity sequents $P \vdash P$ and $Q
+   \vdash Q$.
+2. *Left Implication* (${\to}L$): We introduce the implication $P \to
+   Q$ on the left side. This bridges our axioms, essentially stating
+   that with $P \to Q$ and $P$, we can derive $Q$.
+3. *Left Negation* ($\neg L$): We introduce $\neg Q$ to the left side
+   context. Because we already have $Q$ on the right, this results in
+   an empty right side (representing a contradiction or falsum).
+4. *Right Negation* ($\neg R$): We resolve the contradiction by moving
+   $P$ from the left context to the right side by negating it,
+   yielding $\neg P$.
+5. *Right Implication* (${\to}R$): Finally, we discharge the
+   assumption $\neg Q$ from the left context to form the final
+   implication $\neg Q \to \neg P$ on the right.
+
+While the original implication is how the axiom is usually formalized,
+the contrapositive is often the more intuitive way to think about what
+the axiom actually /means/: *the successor function is injective
+(one-to-one)*. It guarantees that two different numbers will always
+have two different successors, ensuring the natural numbers stretch
+out infinitely without ever looping back onto themselves.
+
+#+INCLUDE: ./footer.org :minlevel 1
+
+* Footnotes
+
+[fn:1] Read "Gamma turnstile Delta."

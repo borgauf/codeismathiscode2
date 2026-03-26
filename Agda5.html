@@ -1,0 +1,2353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-03-22 Sun 10:19 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-euler',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-orgd9cd98a" class="outline-2">
+<h2 id="orgd9cd98a">Peano and Evenness in FOL and Agda</h2>
+<div class="outline-text-2" id="text-orgd9cd98a">
+<p>
+Take a first-order language with:
+</p>
+
+<ul class="org-ul">
+<li>constant <code>0</code></li>
+<li>unary function symbol <code>S</code></li>
+<li>binary function symbol <code>+</code></li>
+<li>equality <code>=</code></li>
+</ul>
+
+<p>
+In First-Order Logic (FOL), we use these three rules to &ldquo;trap&rdquo; the
+natural numbers so that nothing else can pretend to be a number.
+</p>
+</div>
+<div id="outline-container-orgb22ef7e" class="outline-3">
+<h3 id="orgb22ef7e">1. Axiom 1: Zero can never be a Successor</h3>
+<div class="outline-text-3" id="text-orgb22ef7e">
+<p>
+\[ \forall x \neg (S(x) = 0) \]
+</p>
+
+<ul class="org-ul">
+<li><b><b>Translation:</b></b> &ldquo;For every \(x\), the successor of \(x\) is not zero.&rdquo;</li>
+<li><b><b>The Goal:</b></b> This prevents the numbers from forming a <b><b>loop</b></b>.</li>
+<li><b><b>Why we need it:</b></b> Without this, you could have a system where \(S(0) = 0\).
+That would mean \(1 = 0\). <i>This axiom ensures that \(0\) is the absolute
+&ldquo;start&rdquo; and nothing comes before it</i>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0c96d26" class="outline-3">
+<h3 id="org0c96d26">2. Axiom 2: Successor is Injective</h3>
+<div class="outline-text-3" id="text-org0c96d26">
+<p>
+\[ \forall x \forall y (S(x) = S(y) \to x = y) \]
+</p>
+
+<ul class="org-ul">
+<li><b><b>Translation:</b></b> &ldquo;If the successor of \(x\) is the same as the
+successor of \(y\), then \(x\) and \(y\) must be the same.&rdquo; Injective
+means one-to-one, or the successor function \(S\) never sends two
+different numbers to the same result. Also, if \(x \ne y\) then \(S(x)
+  \ne S(y)\), i.e., no two distinct natural numbers have the same
+successor.</li>
+<li><b><b>The Goal:</b></b> This prevents the numbers from <b><b>merging</b></b>.</li>
+<li><b><b>Why we need it:</b></b> Imagine if \(S(1) = 2\) and \(S(5) = 2\). The number
+line would look like a &ldquo;Y&rdquo; shape where two different paths crash
+into the same number. This axiom ensures the number line is a
+single, straight path.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8b8830a" class="outline-3">
+<h3 id="org8b8830a">3. The Induction Schema</h3>
+<div class="outline-text-3" id="text-org8b8830a">
+<p>
+\[ (\phi(0) \land \forall x (\phi(x) \to \phi(S(x)))) \to \forall x \phi(x) \]
+</p>
+
+<p>
+This is the most powerful rule. It is called a <b><b>Schema</b></b> because it isn&rsquo;t
+just one axiom; it is a &ldquo;template&rdquo; for infinitely many axioms (one for every
+possible property \(\phi\)).
+</p>
+</div>
+<div id="outline-container-org50a2617" class="outline-4">
+<h4 id="org50a2617">How to read it:</h4>
+<div class="outline-text-4" id="text-org50a2617">
+<ol class="org-ol">
+<li><b><b>Base Case:</b></b> \(\phi(0)\) &mdash; &ldquo;The property is true for zero.&rdquo;</li>
+<li><b><b>Inductive Step:</b></b> \(\forall x (\phi(x) \to \phi(S(x)))\) &mdash; &ldquo;If it&rsquo;s true
+for \(x\), it&rsquo;s true for the next one.&rdquo;</li>
+<li><b><b>Conclusion:</b></b> \(\forall x \phi(x)\) &mdash; &ldquo;Therefore, it&rsquo;s true for EVERY
+number.&rdquo;</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org3f63f7f" class="outline-4">
+<h4 id="org3f63f7f">The &ldquo;Domino&rdquo; Analogy:</h4>
+<div class="outline-text-4" id="text-org3f63f7f">
+<ul class="org-ul">
+<li>\(\phi(0)\) is like knocking over the first domino.</li>
+<li>\(\forall x (\phi(x) \to \phi(S(x)))\) is like saying &ldquo;every domino is close
+enough to the next one to knock it over.&rdquo;</li>
+<li>If both are true, the whole line falls.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org648c2f4" class="outline-4">
+<h4 id="org648c2f4">But what is \(\phi\)?</h4>
+<div class="outline-text-4" id="text-org648c2f4">
+<p>
+In the context of the Peano Induction Schema, \(\phi(x)\) is a
+placeholder for any valid &ldquo;sentence&rdquo; you can write down using the
+symbols of your logic.
+</p>
+</div>
+<div id="outline-container-org530237a" class="outline-5">
+<h5 id="org530237a">It is a &ldquo;Formula,&rdquo; not a &ldquo;Function&rdquo;</h5>
+<div class="outline-text-5" id="text-org530237a">
+<p>
+In First-Order Logic (FOL), we distinguish between:
+</p>
+<ul class="org-ul">
+<li><b><b>Terms:</b></b> Objects like \(0, S(0), x, y\).</li>
+<li><b><b>Formulas:</b></b> Statements about objects like \(x = y\) or \(Even(x)\).</li>
+</ul>
+
+<p>
+\(\phi(x)\) represents any formula where \(x\) is a &ldquo;free variable&rdquo; (a hole).
+You don&rsquo;t &ldquo;define&rdquo; \(\phi\) as a function; you &ldquo;plug in&rdquo; a statement.
+</p>
+
+<p>
+𝖟𝕭: If you want to prove <i>Every number is either zero or a successor,</i>
+your \(\phi(x)\) is the formula: \[ \phi(x) \equiv (x = 0 \lor \exists y
+(x = S(y))) \]
+</p>
+</div>
+</div>
+<div id="outline-container-org651f861" class="outline-5">
+<h5 id="org651f861">The &ldquo;Schema&rdquo; vs. the &ldquo;Axiom&rdquo;</h5>
+<div class="outline-text-5" id="text-org651f861">
+<p>
+Because FOL cannot talk about &ldquo;all possible properties&rdquo; (that would be
+Second-Order Logic), we use a <b><b>Schema</b></b>.
+</p>
+
+<p>
+A Schema is like a <b><b>Copy-Paste Template</b></b>.
+</p>
+<ul class="org-ul">
+<li>You write a formula \(\phi(x)\).</li>
+<li>You &ldquo;paste&rdquo; it into the induction template.</li>
+<li>The result is a brand new axiom specifically for that formula.</li>
+</ul>
+
+<p>
+Since there are infinitely many formulas you can write, there are
+infinitely many induction axioms.
+</p>
+</div>
+</div>
+<div id="outline-container-org6ee8555" class="outline-5">
+<h5 id="org6ee8555">In Agda: \(\phi(x)\) BECOMES a Function</h5>
+<div class="outline-text-5" id="text-org6ee8555">
+<p>
+This is where Agda (Type Theory) is different and, in many ways, cleaner.
+In Agda, \(\phi(x)\) <b><b>is</b></b> a function!
+</p>
+
+<p>
+Specifically, it is a <b><b>Type-Valued Function</b></b> (a Predicate):
+</p>
+<div class="org-src-container">
+<pre class="src src-agda"><code>phi : ℕ → Set
+</code></pre>
+</div>
+
+<ul class="org-ul">
+<li>It takes a number <code>n</code>.</li>
+<li>It returns a <code>Set</code> (a proposition/type) that represents the property.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8948797" class="outline-5">
+<h5 id="org8948797">Comparing the &ldquo;Source&rdquo; of \(\phi\)</h5>
+<div class="outline-text-5" id="text-org8948797">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">System</th>
+<th scope="col" class="org-left">What is \(\phi(x)\)?</th>
+<th scope="col" class="org-left">Where does it come from?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b><b>FOL (Peano)</b></b></td>
+<td class="org-left">A syntactic string/formula</td>
+<td class="org-left">The grammar of the logic</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Agda (Type Theory)</b></b></td>
+<td class="org-left">A function (<code>ℕ → Set</code>)</td>
+<td class="org-left">Defined by the programmer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgbec9ad4" class="outline-5">
+<h5 id="orgbec9ad4">Why this matters for Induction</h5>
+<div class="outline-text-5" id="text-orgbec9ad4">
+<p>
+In FOL, the induction schema is a &ldquo;rule of the game&rdquo; that applies to every
+sentence you can possibly utter.
+</p>
+
+<p>
+In Agda, induction is a <b><b>Function</b></b> (often called <code>ind</code> or <code>elim</code>) that
+takes the property \(\phi\) as an argument:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>-- The "Induction Principle" as an Agda function signature:
+ind : (phi : ℕ → Set)             -- The property (the function!)
+    → phi zero                    -- Base case
+    → (∀ n → phi n → phi (suc n)) -- Inductive step
+    → (∀ n → phi n)               -- Conclusion for all n
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org94dc380" class="outline-5">
+<h5 id="org94dc380">Summary</h5>
+<div class="outline-text-5" id="text-org94dc380">
+<ul class="org-ul">
+<li><b><b>In FOL:</b></b> \(\phi(x)\) is just a <b><b>pattern</b></b>. It comes from the language
+itself. You don&rsquo;t &ldquo;call&rdquo; it; you just &ldquo;state&rdquo; it.</li>
+<li><b><b>In Agda:</b></b> \(\phi(x)\) is a <b><b>first-class citizen</b></b>. It is a function
+that you write, pass around, and use to build proofs.</li>
+</ul>
+
+<p>
+When the textbook says &ldquo;For every first-order formula \(\phi(x)\),&rdquo; it is
+giving you permission to use the induction rule for <b>anything</b> you can
+describe using the symbols \(0, S, =, \land, \lor, \neg, \forall, \exists\).
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org38570f5" class="outline-3">
+<h3 id="org38570f5">Why is it a &ldquo;Schema&rdquo; in FOL?</h3>
+<div class="outline-text-3" id="text-org38570f5">
+<p>
+In <b><b>Second-Order Logic</b></b>, you can just say &ldquo;For all properties
+\(P\)&hellip;&rdquo;  But in FOL, you are only allowed to talk about <b>objects</b>
+(numbers), not <b>properties</b>.
+</p>
+
+<p>
+To get around this, we say: &ldquo;For any formula you can write down in our
+language, that formula must obey the induction rule.&rdquo;
+</p>
+</div>
+<div id="outline-container-org7e0b801" class="outline-5">
+<h5 id="org7e0b801">Summary for the Beginner</h5>
+<div class="outline-text-5" id="text-org7e0b801">
+<ul class="org-ul">
+<li><b><b>Axiom 1:</b></b> No loops (0 is the start).</li>
+<li><b><b>Axiom 2:</b></b> No merging (the path is straight).</li>
+<li><b><b>Induction:</b></b> No &ldquo;junk&rdquo; (there are no &ldquo;extra&rdquo; numbers floating around
+that you can&rsquo;t reach by starting at 0 and counting up).</li>
+</ul>
+
+<p>
+Together, these three rules force the domain to look exactly like:
+\[ 0, 1, 2, 3, \dots \]
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org37a066c" class="outline-3">
+<h3 id="org37a066c">Existence and closure?</h3>
+<div class="outline-text-3" id="text-org37a066c">
+<p>
+Sometimes people also list the existence/closure ideas informally:
+</p>
+
+<ul class="org-ul">
+<li>\(0\) is a natural number</li>
+<li>if \(x\) is a natural number, then \(S(x)\) is a natural number</li>
+</ul>
+
+<p>
+But in ordinary first-order logic Peano arithmetic, the domain is
+already “the naturals”, so those are built into the intended
+interpretation rather than stated as <b><b>typing judgments</b></b>. In FOL, we
+assume a &ldquo;Universe of Discourse&rdquo; (a big bag of things) and then use
+axioms to describe them.
+</p>
+</div>
+<div id="outline-container-orga4ab287" class="outline-4">
+<h4 id="orga4ab287">What is a &ldquo;Typing Judgment&rdquo;?</h4>
+<div class="outline-text-4" id="text-orga4ab287">
+<p>
+A <i>typing judgment</i> is a formal statement that a specific term belongs
+to a specific type. In Agda, it looks like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>zero : ℕ
+</code></pre>
+</div>
+
+<p>
+This is not a &ldquo;fact&rdquo; we prove; it is a <b><b>judgment</b></b> we make to define
+the existence of <code>zero</code>.
+</p>
+</div>
+<div id="outline-container-orgc36236b" class="outline-5">
+<h5 id="orgc36236b">The FOL Approach: &ldquo;The Bag of Stuff&rdquo;</h5>
+<div class="outline-text-5" id="text-orgc36236b">
+<p>
+In First-Order Logic (FOL), you start with a <b><b>Domain</b></b> (a set of
+objects).
+</p>
+
+<ul class="org-ul">
+<li>You don&rsquo;t say &ldquo;0 is a number&rdquo; as a rule.</li>
+<li>Instead, you assume the domain <b>is</b> the numbers.</li>
+<li>You then use axioms like \(\forall x \neg (S(x) = 0)\) to describe how the
+objects in that domain behave.</li>
+</ul>
+
+<p>
+In FOL, there are no &ldquo;types.&rdquo; Everything in the domain is just an &ldquo;object.&rdquo;
+If you want to distinguish between numbers and, say, colors, you have to
+create a predicate like \(IsNumber(x)\).
+</p>
+</div>
+</div>
+<div id="outline-container-org39af42c" class="outline-5">
+<h5 id="org39af42c">The Agda Approach: &ldquo;The Typing Judgment&rdquo;</h5>
+<div class="outline-text-5" id="text-org39af42c">
+<p>
+In Agda, nothing exists until you give it a type. The statement
+<code>zero : ℕ</code> is a <b><b>typing judgment</b></b>.
+</p>
+
+<p>
+It is a &ldquo;judgment&rdquo; because:
+</p>
+
+<ul class="org-ul">
+<li>It is a <b><b>rule of the system</b></b>, not a formula inside the logic.</li>
+<li>It establishes the &ldquo;identity&rdquo; of the object.</li>
+</ul>
+
+<p>
+When we define:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>data ℕ : Set where
+  zero : ℕ
+</code></pre>
+</div>
+
+<p>
+we are creating two typing judgments:
+</p>
+
+<ol class="org-ol">
+<li><code>ℕ : Set</code> (The judgment that <code>ℕ</code> is a type).</li>
+<li><code>zero : ℕ</code> (The judgment that <code>zero</code> is an inhabitant of that type).</li>
+
+<li><b><b>In FOL:</b></b> The <i>closure</i> (0 is a number, S(x) is a number) is
+<i>implicit</i>.  The logic assumes the symbols \(0\) and \(S\) already map
+to the domain.</li>
+<li><b><b>In Agda:</b></b> The &ldquo;closure&rdquo; is <i>explicit</i>. We use typing judgments to
+<i>onstruct</i> the domain piece by piece.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org9c54a6f" class="outline-5">
+<h5 id="org9c54a6f">Comparison Table</h5>
+<div class="outline-text-5" id="text-org9c54a6f">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Feature</th>
+<th scope="col" class="org-left">FOL (Peano)</th>
+<th scope="col" class="org-left">Agda (Type Theory)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b><b>Existence</b></b></td>
+<td class="org-left">Assumed in the Domain</td>
+<td class="org-left">Declared via Judgments</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Notation</b></b></td>
+<td class="org-left">\(x \in \mathbb{N}\) (Set membership)</td>
+<td class="org-left"><code>x : ℕ</code> (Typing judgment)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Status of <code>zero</code></b></b></td>
+<td class="org-left">A constant symbol</td>
+<td class="org-left">A constructor of the type</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Nature of <code>S</code></b></b></td>
+<td class="org-left">A function symbol</td>
+<td class="org-left">A function type (<code>ℕ → ℕ</code>)</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li><b><b>FOL</b></b> is like a <b><b>map</b></b>: It describes a territory (the numbers)
+that is already there.</li>
+<li><b><b>Agda</b></b> is like a <b><b>recipe</b></b>: It gives you the instructions (typing
+judgments) to bake the territory into existence.</li>
+</ul>
+
+<p>
+Therefore, <i>typing judgments</i> means the formal act of assigning a type
+to a symbol. In Agda, this is how we <i>build</i> the world, whereas in
+FOL, we just <i>describe</i> a world that we assume already exists.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb7d0ae3" class="outline-3">
+<h3 id="orgb7d0ae3">Connecting Peano&rsquo;s world to Agda</h3>
+<div class="outline-text-3" id="text-orgb7d0ae3">
+<p>
+Agda handles the Peano Axioms differently because it is
+<b><b>constructive</b></b>:
+</p>
+
+<ul class="org-ul">
+<li><b><b>Axiom 1 &amp; 2:</b></b> These are &ldquo;baked in&rdquo; to the way Agda handles
+<code>data</code>.  Constructors in Agda are <i>disjoint</i> (<code>zero</code> is never <code>suc</code>)
+and <i>injective</i>, i.e., if <code>suc x</code> equals <code>suc y</code>, then <code>x</code> equals
+<code>y</code>) by default.</li>
+<li><b><b>Induction:</b></b> In Agda, induction is just <i>recursion</i>.</li>
+</ul>
+
+<p>
+When you write a recursive function over <code>ℕ</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>f : (n : ℕ) -&gt; Prop n
+f zero    = ...          -- Base Case (phi 0)
+f (suc n) = ... f n ...  -- Inductive Step (phi n -&gt; phi (suc n))
+</code></pre>
+</div>
+
+<p>
+Agda&rsquo;s compiler checks that your recursion covers all cases. This is
+literally the Induction Schema in action as a programming feature! But
+let&rsquo;s go into just what the Agda function <code>f</code> is all about
+</p>
+
+<p>
+To start, <code>Prop n</code> above is <i>not</i> built-in Agda syntax. It is
+shorthand for <b><b>a property of <code>n</code></b></b>. In real Agda, you would write
+something like:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>P : ℕ → Set
+</code></pre>
+</div>
+
+<p>
+Hence,
+</p>
+
+<ul class="org-ul">
+<li><code>P n</code> is a <b>type</b></li>
+<li>an element of <code>P n</code> is a <b>proof that n has property P</b></li>
+</ul>
+
+<p>
+This corresponds exactly to \(\phi(x)\) in
+</p>
+
+<p>
+\[ (\phi(0) \land \forall x (\phi(x) \to \phi(S(x)))) \to \forall x \phi(x) \]
+</p>
+
+<ul class="org-ul">
+<li><b><b>Property</b></b> = how a mathematician thinks about it</li>
+<li><b><b>Proposition</b></b> = how a logician thinks about it</li>
+<li><b><b>Type</b></b> = how Agda thinks about it</li>
+</ul>
+
+<p>
+Again, in logic, a proposition is a statement that can be true or
+false:
+</p>
+
+<p>
+\[ \phi(n) \equiv \text{"n is even"} \]
+</p>
+
+<p>
+To &ldquo;prove&rdquo; it means to provide evidence that it holds. But in Agda a
+property is a type-valued function:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>Even : ℕ → Set
+-- etc.
+</code></pre>
+</div>
+
+<p>
+To &ldquo;prove&rdquo; it means to construct a term of that type. When we write
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>f : (n : ℕ) → P n  
+</code></pre>
+</div>
+
+<p>
+We are simultaneously saying:  
+</p>
+
+<ul class="org-ul">
+<li><b><b>Logic view:</b></b> For all \(n\), the proposition \(P(n)\) holds.</li>
+<li><b><b>Programming view:</b></b> <code>f</code> is a function that takes a number and
+returns a proof that <code>n</code> has property <code>P</code>.</li>
+<li><b><b>Set theory view:</b></b> \(f\) is a function from \(ℕ\) to the set of proofs of \(P\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf4316c4" class="outline-3">
+<h3 id="orgf4316c4">𝖟𝕭: <code>Even</code> again</h3>
+<div class="outline-text-3" id="text-orgf4316c4">
+<div class="org-src-container">
+<pre class="src src-agda"><code>data Even : ℕ → Set where
+  even-zero : Even zero
+  even-suc  : ∀ {n} → Even n → Even (suc (suc n))
+</code></pre>
+</div>
+
+<p>
+Here:
+</p>
+<ul class="org-ul">
+<li><code>Even : ℕ → Set</code> plays the role of \(\phi\)</li>
+<li><code>Even n</code> is the proposition “n is even”</li>
+</ul>
+
+<p>
+So in the earlier sketch:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>f : (n : ℕ) → P n
+</code></pre>
+</div>
+
+<p>
+means <i>for every <code>n</code>, I can produce a proof that <code>P(n)</code> holds</i>
+</p>
+
+<p>
+which corresponds to:
+\[
+\forall n \; \phi(n)
+\]
+</p>
+</div>
+<div id="outline-container-orge449b50" class="outline-4">
+<h4 id="orge449b50">FOL version of <code>Even</code></h4>
+<div class="outline-text-4" id="text-orge449b50">
+<p>
+Let&rsquo;s compare as best as possible with FOL. The closest <b><b>first-order
+logic</b></b> version is:
+</p>
+
+<p>
+\[  
+Even(0)  
+\]  
+</p>
+
+<p>
+and  
+</p>
+
+<p>
+\[  
+\forall x \, (Even(x) \to Even(S(S(x))))  
+\]  
+</p>
+
+<p>
+Here:  
+</p>
+<ul class="org-ul">
+<li>\(Even\) is a unary predicate symbol</li>
+<li>\(0\) corresponds to <code>zero</code></li>
+<li>\(S\) corresponds to <code>suc</code></li>
+</ul>
+
+<p>
+then
+</p>
+
+<ul class="org-ul">
+<li><code>even-zero</code> says: <code>0</code> is even</li>
+<li><code>even-suc</code> says: if <code>n</code> is even, then <code>S(S(n))</code> is even</li>
+</ul>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Agda</th>
+<th scope="col" class="org-left">FOL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>Even : ℕ → Set</code></td>
+<td class="org-left">\(Even(x)\) is a predicate on naturals</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>even-zero : Even zero</code></td>
+<td class="org-left">\(Even(0)\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>even-suc : ∀ {n} → Even n → Even (suc (suc n))</code></td>
+<td class="org-left">\(\forall x (Even(x) \to Even(S(S(x))))\)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+⥤ This FOL version captures the <b><b>closure rules</b></b> for even numbers,
+but not yet the full idea that these are the <b><b>only</b></b> even numbers.
+</p>
+
+<p>
+In Agda, because <code>Even</code> is an <b><b>inductive family</b></b>, it automatically means:  
+</p>
+
+<blockquote>
+<p>
+<code>Even</code> is the smallest family generated by those two constructors.  
+</p>
+</blockquote>
+
+<p>
+So in Agda, a proof of <code>Even n</code> can only be built by:
+</p>
+
+<ul class="org-ul">
+<li><code>even-zero</code>, or</li>
+<li>repeated uses of <code>even-suc</code></li>
+</ul>
+
+<p>
+Plain FOL does <b><b>not</b></b> automatically give you this <i>smallest such set</i>
+meaning just from the two formulas above. But another FOL approach to
+<i>evenness</i> could be
+</p>
+
+<p>
+\[  
+Even(x) \leftrightarrow \exists y \, (x = y + y)  
+\]  
+</p>
+
+<p>
+This says:  
+</p>
+
+<blockquote>
+<p>
+\(x\) is even if and only if \(x\) is <b><b>double some natural number</b></b>.
+</p>
+</blockquote>
+
+<p>
+From that definition, you can prove:  
+</p>
+
+<p>
+\[  
+Even(0)  
+\]  
+</p>
+
+<p>
+and  
+</p>
+
+<p>
+\[  
+\forall x (Even(x) \to Even(S(S(x))))  
+\]  
+</p>
+
+<p>
+𝖟𝕭: <b><b>Proving 4 is Even</b></b>
+</p>
+
+<p>
+In Agda the proof term is:  
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>even-suc (even-suc even-zero)  
+</code></pre>
+</div>
+
+<p>
+In FOL the analogous derivation is
+</p>
+
+<ol class="org-ol">
+<li>\(Even(0)\)</li>
+<li>\(Even(0) \to Even(S(S(0)))\)</li>
+<li>\(\therefore Even(S(S(0)))\)</li>
+<li>\(Even(S(S(0))) \to Even(S(S(S(S(0)))))\)</li>
+<li>\(\therefore Even(S(S(S(S(0)))))\)</li>
+</ol>
+
+<p>
+Agda constructors correspond directly to Gentzen-style rules:
+</p>
+
+<p>
+For <code>even-zero</code>:  
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>-----------  
+Even(0)  
+</code></pre>
+</div>
+
+<p>
+For <code>even-suc</code>:  
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>Even(x)  
+-----------------  
+Even(S(S(x)))  
+</code></pre>
+</div>
+
+<p>
+These are exactly the <b><b>introduction rules</b></b> for the <code>Even</code> predicate,  
+in the same style as the Peano rules for <code>ℕ</code> you saw in PLFA.  
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Goal</th>
+<th scope="col" class="org-left">Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Proof-theoretic FOL analogue</td>
+<td class="org-left">\(Even(0)\) and \(\forall x(Even(x) \to Even(S(S(x))))\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Definitional FOL analogue</td>
+<td class="org-left">\(Even(x) \leftrightarrow \exists y(x = y + y)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Agda inductive family</td>
+<td class="org-left"><code>data Even : ℕ → Set where ...</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Key difference</td>
+<td class="org-left">Agda gives minimality automatically; FOL does not</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+One big takeaway is <code>Even</code> is an <b><b>inductive family</b></b> — a type that is
+<b><b>indexed</b></b> by a value of <code>ℕ</code>. This is <b><b>dependent typing</b></b>. Haskell
+could not do this, rather, it would have to simply create a function
+that took numbers and returned a Boolean <i>true</i> or <i>false</i>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell" id="org97f457e"><code>isEven <span style="color: #61afef;">:</span> <span style="color: #61afef;">Int</span> <span style="color: #61afef;">-&gt;</span> <span style="color: #61afef;">Bool</span>  
+<span style="color: #61afef;">isEven</span> 0 <span style="color: #61afef;">=</span> <span style="color: #61afef;">True</span>  
+<span style="color: #61afef;">isEven</span> 1 <span style="color: #61afef;">=</span> <span style="color: #61afef;">False</span>  
+<span style="color: #61afef;">isEven</span> n <span style="color: #61afef;">=</span> isEven <span style="color: #8c8c8c;">(</span>n <span style="color: #61afef;">-</span> 2<span style="color: #8c8c8c;">)</span>  
+</code></pre>
+</div>
+
+<ul class="org-ul">
+<li>In Agda, <code>Even n</code> is a <b><b>type</b></b> (a proposition) and this is a
+stronger guarantee.</li>
+<li>In Haskell, <code>isEven n</code> is a <b><b>value</b></b> (<code>True</code> or <code>False</code>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdf201f6" class="outline-4">
+<h4 id="orgdf201f6">Use Examples of the Agda Type <code>Even</code></h4>
+<div class="outline-text-4" id="text-orgdf201f6">
+<p>
+The short version is:
+</p>
+
+<ul class="org-ul">
+<li><code>Even n</code> is a <b>type</b></li>
+<li>a value of type <code>Even n</code> is a <b>proof</b> that <code>n</code> is even</li>
+<li>if <code>n</code> is not even, there is <b>no value</b> of type <code>Even n</code></li>
+</ul>
+
+<p>
+Our definition is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>data Even : ℕ → Set where
+  even-zero : Even zero
+  even-suc  : ∀ {n} → Even n → Even (suc (suc n))
+</code></pre>
+</div>
+</div>
+<div id="outline-container-org0037182" class="outline-5">
+<h5 id="org0037182">1. How to Read This Logically</h5>
+<div class="outline-text-5" id="text-org0037182">
+<p>
+This says:
+</p>
+
+<ol class="org-ol">
+<li><code>zero</code> is even</li>
+<li>if <code>n</code> is even, then <code>suc (suc n)</code> is even</li>
+</ol>
+
+<p>
+In logic notation:
+</p>
+
+<p>
+\[
+Even(0)
+\]
+</p>
+
+<p>
+and
+</p>
+
+<p>
+\[
+\forall n \, (Even(n) \to Even(n+2))
+\]
+</p>
+
+<p>
+In Agda, these are not just statements. They are <b><b>constructors</b></b> for proofs.
+</p>
+</div>
+</div>
+<div id="outline-container-org5dc7041" class="outline-5">
+<h5 id="org5dc7041">2. Example Proofs</h5>
+<div class="outline-text-5" id="text-org5dc7041">
+</div>
+<div id="outline-container-org0fa2dbb" class="outline-6">
+<h6 id="org0fa2dbb">0 is even</h6>
+<div class="outline-text-6" id="text-org0fa2dbb">
+<div class="org-src-container">
+<pre class="src src-agda"><code>e0 : Even zero
+e0 = even-zero
+</code></pre>
+</div>
+
+<p>
+Why is this a proof?
+</p>
+
+<p>
+Because <code>even-zero</code> is literally declared to have type <code>Even zero</code>.
+So the term <code>even-zero</code> is evidence for the proposition <code>Even zero</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-org049cd7c" class="outline-6">
+<h6 id="org049cd7c">2 is even</h6>
+<div class="outline-text-6" id="text-org049cd7c">
+<div class="org-src-container">
+<pre class="src src-agda"><code>e2 : Even (suc (suc zero))
+e2 = even-suc even-zero
+</code></pre>
+</div>
+
+<p>
+Why?
+</p>
+
+<ul class="org-ul">
+<li><code>even-zero : Even zero</code></li>
+<li><code>even-suc</code> says: if you give me <code>Even n</code>, I produce <code>Even (suc (suc n))</code></li>
+</ul>
+
+<p>
+So applying <code>even-suc</code> to <code>even-zero</code> gives:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>even-suc even-zero : Even (suc (suc zero))
+</code></pre>
+</div>
+
+<p>
+That is a proof that 2 is even.
+</p>
+</div>
+</div>
+<div id="outline-container-org9c1da07" class="outline-6">
+<h6 id="org9c1da07">4 is even</h6>
+<div class="outline-text-6" id="text-org9c1da07">
+<div class="org-src-container">
+<pre class="src src-agda"><code>e4 : Even (suc (suc (suc (suc zero))))
+e4 = even-suc (even-suc even-zero)
+</code></pre>
+</div>
+
+<p>
+This works in steps:
+</p>
+
+<ul class="org-ul">
+<li><code>even-zero : Even 0</code></li>
+<li><code>even-suc even-zero : Even 2</code></li>
+<li><code>even-suc (even-suc even-zero) : Even 4</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd15c569" class="outline-5">
+<h5 id="orgd15c569">3. Why These Count as Proofs</h5>
+<div class="outline-text-5" id="text-orgd15c569">
+<p>
+Because of <b><b>Propositions as Types</b></b>:
+</p>
+
+<ul class="org-ul">
+<li>proposition = type</li>
+<li>proof = term inhabiting that type</li>
+</ul>
+
+<p>
+So:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Agda Term</th>
+<th scope="col" class="org-left">Logical Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>Even zero</code></td>
+<td class="org-left">The proposition &ldquo;0 is even&rdquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Even (suc (suc zero))</code></td>
+<td class="org-left">The proposition &ldquo;2 is even&rdquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>e2 : Even (suc (suc zero))</code></td>
+<td class="org-left">A proof that 2 is even</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+This is not metaphorical. It is the actual formal meaning.
+</p>
+</div>
+</div>
+<div id="outline-container-org4d96662" class="outline-5">
+<h5 id="org4d96662">4. What the Proof Object Looks Like</h5>
+<div class="outline-text-5" id="text-org4d96662">
+<p>
+A proof of <code>Even 4</code> is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>even-suc (even-suc even-zero)
+</code></pre>
+</div>
+
+<p>
+You can think of that as a derivation tree:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>even-zero
+: Even 0
+
+even-suc even-zero
+: Even 2
+
+even-suc (even-suc even-zero)
+: Even 4
+</code></pre>
+</div>
+
+<p>
+The proof mirrors the arithmetic structure exactly.
+</p>
+</div>
+</div>
+<div id="outline-container-org4a63c07" class="outline-5">
+<h5 id="org4a63c07">5. What if <code>n</code> is Not Even?</h5>
+<div class="outline-text-5" id="text-org4a63c07">
+<p>
+Then there is no constructor chain that can produce <code>Even n</code>.
+</p>
+
+<p>
+For example, try 1:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>bad1 : Even (suc zero)
+bad1 = ?
+</code></pre>
+</div>
+
+<p>
+There is no way to fill in <code>?</code>.
+</p>
+
+<p>
+Why not?
+</p>
+
+<p>
+Because the only ways to build an <code>Even n</code> are:
+</p>
+
+<ul class="org-ul">
+<li><code>even-zero</code>, which gives <code>Even zero</code></li>
+<li><code>even-suc p</code>, which always adds <b>two</b> successors</li>
+</ul>
+
+<p>
+So the only indices you can ever reach are:
+</p>
+
+<p>
+\[
+0, 2, 4, 6, \dots
+\]
+</p>
+
+<p>
+You can never reach \(1, 3, 5, \dots\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgd49c6e7" class="outline-5">
+<h5 id="orgd49c6e7">6. Agda&rsquo;s Logical Explanation of &ldquo;Not Even&rdquo;</h5>
+<div class="outline-text-5" id="text-orgd49c6e7">
+<p>
+In Agda, &ldquo;not <code>P</code>&rdquo; means:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>¬ P = P → ⊥
+</code></pre>
+</div>
+
+<p>
+where <code>⊥</code> is the <b><b>empty type</b></b> (no constructors, no inhabitants).
+</p>
+
+<p>
+So &ldquo;1 is not even&rdquo; is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>¬ Even (suc zero)
+</code></pre>
+</div>
+
+<p>
+which expands to:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>Even (suc zero) → ⊥
+</code></pre>
+</div>
+
+<p>
+In words:
+</p>
+
+<blockquote>
+<p>
+If someone gave me a proof that 1 is even, I could derive a contradiction.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org43f758c" class="outline-5">
+<h5 id="org43f758c">7. Example: Proving 1 is Not Even</h5>
+<div class="outline-text-5" id="text-org43f758c">
+<p>
+The empty type:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>data ⊥ : Set where
+</code></pre>
+</div>
+
+<p>
+No constructors. So <code>⊥</code> has no inhabitants.
+</p>
+
+<p>
+Negation:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>¬_ : Set → Set
+¬ P = P → ⊥
+</code></pre>
+</div>
+
+<p>
+Proof that 1 is not even:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>not-even1 : ¬ Even (suc zero)
+not-even1 ()
+</code></pre>
+</div>
+
+<p>
+The pattern <code>()</code> means:
+</p>
+
+<blockquote>
+<p>
+This case is impossible. There are no constructors that could produce
+a value here.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org1def633" class="outline-5">
+<h5 id="org1def633">8. Example: Proving 3 is Not Even</h5>
+<div class="outline-text-5" id="text-org1def633">
+<div class="org-src-container">
+<pre class="src src-agda"><code>not-even3 : ¬ Even (suc (suc (suc zero)))
+not-even3 ()
+</code></pre>
+</div>
+
+<p>
+Same reason: no constructor can produce <code>Even 3</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-org2ed5839" class="outline-5">
+<h5 id="org2ed5839">9. Why Agda Knows Odd Cases are Impossible</h5>
+<div class="outline-text-5" id="text-org2ed5839">
+<p>
+Look again at the constructors:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>even-zero : Even zero
+even-suc  : ∀ {n} → Even n → Even (suc (suc n))
+</code></pre>
+</div>
+
+<p>
+These generate only even-indexed instances.
+</p>
+
+<p>
+This is what an <b><b>inductive family</b></b> does:
+it defines a family of types together with the <b>only</b> ways to construct members.
+</p>
+
+<p>
+So <code>Even n</code> is inhabited exactly when \(n\) can be built from \(0\) by adding \(2\)
+repeatedly.
+</p>
+</div>
+</div>
+<div id="outline-container-org06d8357" class="outline-5">
+<h5 id="org06d8357">10. A Useful Mental Model</h5>
+<div class="outline-text-5" id="text-org06d8357">
+<p>
+Think of <code>Even</code> as the set of legal <b><b>certificates</b></b> for evenness:
+</p>
+
+<ul class="org-ul">
+<li><code>even-zero</code> is the certificate for \(0\)</li>
+<li><code>even-suc</code> transforms a certificate for \(n\) into a certificate for \(n+2\)</li>
+</ul>
+
+<p>
+No certificate generator exists for odd numbers.
+</p>
+
+<p>
+So:
+</p>
+<ul class="org-ul">
+<li><code>Even 4</code> has a certificate</li>
+<li><code>Even 3</code> does not</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgef04619" class="outline-5">
+<h5 id="orgef04619">11. Comparison with Boolean Programming</h5>
+<div class="outline-text-5" id="text-orgef04619">
+<p>
+A Boolean function:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>isEven : ℕ → Bool
+isEven zero          = true
+isEven (suc zero)    = false
+isEven (suc (suc n)) = isEven n
+</code></pre>
+</div>
+
+<p>
+This <b>computes</b> whether a number is even.
+</p>
+
+<p>
+But <code>Even : ℕ → Set</code> is stronger:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Feature</th>
+<th scope="col" class="org-left"><code>isEven : ℕ → Bool</code></th>
+<th scope="col" class="org-left"><code>Even : ℕ → Set</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Result</td>
+<td class="org-left">A runtime value</td>
+<td class="org-left">A compile-time type</td>
+</tr>
+
+<tr>
+<td class="org-left">Evidence</td>
+<td class="org-left"><code>true</code> or <code>false</code></td>
+<td class="org-left">A proof object or nothing</td>
+</tr>
+
+<tr>
+<td class="org-left">Checked when?</td>
+<td class="org-left">At runtime</td>
+<td class="org-left">At compile time</td>
+</tr>
+
+<tr>
+<td class="org-left">Logical status</td>
+<td class="org-left">Computation</td>
+<td class="org-left">Proposition</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+So Agda distinguishes between:
+</p>
+<ul class="org-ul">
+<li><b>deciding</b> evenness (<code>Bool</code>)</li>
+<li><b>proving</b> evenness (<code>Set</code>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org908c1c6" class="outline-5">
+<h5 id="org908c1c6">12. The Key Logical Point</h5>
+<div class="outline-text-5" id="text-org908c1c6">
+<p>
+Your datatype definition does not merely describe even numbers.
+</p>
+
+<p>
+It <b><b>defines the proposition</b></b> <code>Even n</code> and simultaneously defines what
+counts as a valid proof of it.
+</p>
+
+<p>
+So:
+</p>
+<ul class="org-ul">
+<li><code>even-zero</code> is a proof of <code>Even 0</code></li>
+<li><code>even-suc (even-suc even-zero)</code> is a proof of <code>Even 4</code></li>
+</ul>
+
+<p>
+And if \(n\) is odd, then <code>Even n</code> has no inhabitants, so the proposition is
+<b><b>false</b></b> in the propositions-as-types sense.
+</p>
+</div>
+</div>
+<div id="outline-container-orgac43560" class="outline-5">
+<h5 id="orgac43560">13. Compact Summary</h5>
+<div class="outline-text-5" id="text-orgac43560">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Concept</th>
+<th scope="col" class="org-left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>Even : ℕ → Set</code></td>
+<td class="org-left">A predicate / proposition family</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Even n</code></td>
+<td class="org-left">The proposition &ldquo;\(n\) is even&rdquo;</td>
+</tr>
+
+<tr>
+<td class="org-left">A term of type <code>Even n</code></td>
+<td class="org-left">A proof of that proposition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>even-zero</code></td>
+<td class="org-left">Proves <code>Even 0</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>even-suc</code></td>
+<td class="org-left">Turns proof of <code>Even n</code> into proof of <code>Even (n+2)</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Even n</code> for odd \(n\)</td>
+<td class="org-left">Uninhabited type (no proof exists)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>¬ Even n</code> for odd \(n\)</td>
+<td class="org-left"><code>Even n → ⊥</code> (proof of impossibility)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-org4fa171c" class="outline-7">
+<h7 id="org4fa171c">2. Why <code>zero</code> and <code>suc n</code>?</h7>
+<div class="outline-text-7" id="text-org4fa171c">
+<p>
+Because ℕ has exactly two constructors:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>data ℕ : Set where
+  zero : ℕ
+  suc  : ℕ → ℕ
+</code></pre>
+</div>
+
+<p>
+This means:
+</p>
+
+<p>
+👉 Every natural number is either:
+</p>
+<ul class="org-ul">
+<li><code>zero</code>, or</li>
+<li><code>suc n</code> for some smaller <code>n</code></li>
+</ul>
+
+<p>
+This is called <b><b>pattern matching on constructors</b></b>.
+</p>
+
+<p>
+So when you define a function on ℕ, Agda forces you to cover both cases:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>f : (n : ℕ) → P n
+
+f zero    = ...         -- handle base case
+f (suc n) = ...         -- handle inductive case
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf77f551" class="outline-7">
+<h7 id="orgf77f551">3. Why is this “induction”?</h7>
+<div class="outline-text-7" id="text-orgf77f551">
+<p>
+Look at the second clause:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>f (suc n) = ... f n ...
+</code></pre>
+</div>
+
+<p>
+You are allowed to use:
+</p>
+<ul class="org-ul">
+<li><code>n : ℕ</code></li>
+<li><code>f n : P n</code>   (the inductive hypothesis!)</li>
+</ul>
+
+<p>
+So this line corresponds exactly to:
+</p>
+
+<p>
+\[
+\phi(n) \to \phi(S(n))
+\]
+</p>
+
+<p>
+You are literally <b>building</b>:
+</p>
+<ul class="org-ul">
+<li>a proof of <code>P (suc n)</code></li>
+<li>using a proof of <code>P n</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org13b1d79" class="outline-7">
+<h7 id="org13b1d79">4. Full correspondence to induction schema</h7>
+<div class="outline-text-7" id="text-org13b1d79">
+<p>
+FOL:
+\[
+(\phi(0) \land \forall x (\phi(x) \to \phi(S(x)))) \to \forall x \phi(x)
+\]
+</p>
+
+<p>
+Agda:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>f : (n : ℕ) → P n
+
+f zero    = p0
+f (suc n) = step n (f n)
+</code></pre>
+</div>
+
+<p>
+Where:
+</p>
+<ul class="org-ul">
+<li><code>p0 : P zero</code>         (base case)</li>
+<li><code>step : (n : ℕ) → P n → P (suc n)</code>  (inductive step)</li>
+</ul>
+
+<p>
+So:
+</p>
+<ul class="org-ul">
+<li>defining <code>f</code> <b>is</b> proving ∀n P n</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8258019" class="outline-7">
+<h7 id="org8258019">5. Concrete example</h7>
+<div class="outline-text-7" id="text-org8258019">
+<p>
+Let’s prove: “n + 0 = n”
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>_+_ : ℕ → ℕ → ℕ
+zero  + m = m
+suc n + m = suc (n + m)
+</code></pre>
+</div>
+
+<p>
+Now the proof:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>plus-zero : (n : ℕ) → n + zero ≡ n
+
+plus-zero zero =
+  refl
+
+plus-zero (suc n) =
+  cong suc (plus-zero n)
+</code></pre>
+</div>
+
+<p>
+Read this as:
+</p>
+
+<ul class="org-ul">
+<li>Base:
+prove <code>0 + 0 = 0</code></li>
+
+<li>Step:
+assume <code>n + 0 = n</code>
+prove <code>suc n + 0 = suc n</code></li>
+</ul>
+
+<p>
+This is <b>exactly</b> induction.
+</p>
+</div>
+</div>
+<div id="outline-container-org491c8cd" class="outline-7">
+<h7 id="org491c8cd">6. Why this feels different from FOL</h7>
+<div class="outline-text-7" id="text-org491c8cd">
+<p>
+In FOL:
+</p>
+<ul class="org-ul">
+<li>induction is a rule you <b>apply</b></li>
+</ul>
+
+<p>
+In Agda:
+</p>
+<ul class="org-ul">
+<li>induction is a function you <b>define</b></li>
+</ul>
+
+<p>
+That’s the big shift.
+</p>
+</div>
+</div>
+<div id="outline-container-org5b32323" class="outline-7">
+<h7 id="org5b32323">7. One-sentence intuition</h7>
+<div class="outline-text-7" id="text-org5b32323">
+<ul class="org-ul">
+<li><code>P n</code> = “property of n”</li>
+<li><code>f n : P n</code> = “proof that n has the property”</li>
+<li>recursion on <code>zero / suc n</code> = induction on ℕ</li>
+</ul>
+
+<p>
+So:
+</p>
+
+<p>
+👉 Writing a recursive function over ℕ <b>is the same thing as</b> doing induction.
+</p>
+</div>
+</div>
+<div id="outline-container-org60e9411" class="outline-7">
+<h7 id="org60e9411">FOL definition of evenness</h7>
+<div class="outline-text-7" id="text-org60e9411">
+<p>
+There are two common ways.
+</p>
+</div>
+<div id="outline-container-orgac01944" class="outline-8">
+<h8 id="orgac01944">Version 1: existential definition</h8>
+<div class="outline-text-8" id="text-orgac01944">
+<p>
+Using addition:
+\[
+Even(x) \;:\!\!\iff\; \exists y \; (x = y + y)
+\]
+</p>
+
+<p>
+This says:
+\(x\) is even iff it is double some natural number.
+</p>
+
+<p>
+Examples:
+</p>
+<ul class="org-ul">
+<li>\(Even(0)\) because \(0 = 0 + 0\)</li>
+<li>\(Even(S(S(0)))\) because \(2 = 1 + 1\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9e9c835" class="outline-8">
+<h8 id="org9e9c835">Version 2: inductive-style characterization inside logic</h8>
+<div class="outline-text-8" id="text-org9e9c835">
+<p>
+You can characterize evenness by these two clauses:
+</p>
+
+<ol class="org-ol">
+<li>\(Even(0)\)</li>
+<li>\(\forall x \; (Even(x) \to Even(S(S(x))))\)</li>
+</ol>
+
+<p>
+These clauses say:
+</p>
+<ul class="org-ul">
+<li>zero is even</li>
+<li>if \(x\) is even, then two more than \(x\) is even</li>
+</ul>
+
+<p>
+By themselves, in plain FOL, these clauses do <b>not automatically force leastness</b>.
+They say every number generated this way is even, but they do not by themselves say
+that these are the <b>only</b> even numbers unless you add an appropriate minimality or prove equivalence with the existential definition.
+</p>
+
+<p>
+So in FOL:
+</p>
+
+<ul class="org-ul">
+<li><code>Even(x) := ∃y (x = y + y)</code> is a direct definition</li>
+<li><code>Even(0)</code> and <code>Even(x) -&gt; Even(S(S(x)))</code> are useful theorems / clauses / an inductive characterization</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org53652d1" class="outline-8">
+<h8 id="org53652d1">Agda naturals</h8>
+<div class="outline-text-8" id="text-org53652d1">
+<p>
+In Agda, we define naturals by constructors:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>data ℕ : Set where
+  zero : ℕ
+  suc  : ℕ → ℕ
+</code></pre>
+</div>
+
+<p>
+This means:
+</p>
+<ul class="org-ul">
+<li><code>zero</code> is a natural number</li>
+<li>if <code>n</code> is a natural number, then <code>suc n</code> is a natural number</li>
+</ul>
+
+<p>
+Unlike FOL, Agda gives you the <b>least</b> such type automatically:
+the only inhabitants of <code>ℕ</code> are those built from <code>zero</code> and <code>suc</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-org05f9cc3" class="outline-8">
+<h8 id="org05f9cc3">Agda even predicate as an inductive family</h8>
+<div class="outline-text-8" id="text-org05f9cc3">
+<p>
+The direct Agda analogue of the inductive characterization is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>data Even : ℕ → Set where
+  even-zero : Even zero
+  even-suc  : ∀ {n} → Even n → Even (suc (suc n))
+</code></pre>
+</div>
+
+<p>
+Read this as:
+</p>
+
+<ul class="org-ul">
+<li><code>Even zero</code> is inhabited</li>
+<li>if <code>Even n</code> is inhabited, then <code>Even (suc (suc n))</code> is inhabited</li>
+</ul>
+
+<p>
+This is much stronger than the FOL clauses by themselves, because Agda is defining
+<code>Even</code> as the <b>least family</b> closed under those constructors.
+</p>
+
+<p>
+So the only proofs of evenness are built from:
+</p>
+<ul class="org-ul">
+<li><code>even-zero</code></li>
+<li>repeated applications of <code>even-suc</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge0e0487" class="outline-8">
+<h8 id="orge0e0487">Examples in Agda</h8>
+<div class="outline-text-8" id="text-orge0e0487">
+</div>
+<div id="outline-container-orgf2b533c" class="outline-9">
+<h9 id="orgf2b533c">0 is even</h9>
+<div class="outline-text-9" id="text-orgf2b533c">
+<div class="org-src-container">
+<pre class="src src-agda"><code>e0 : Even zero
+e0 = even-zero
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf4d1ff3" class="outline-9">
+<h9 id="orgf4d1ff3">2 is even</h9>
+<div class="outline-text-9" id="text-orgf4d1ff3">
+<div class="org-src-container">
+<pre class="src src-agda"><code>e2 : Even (suc (suc zero))
+e2 = even-suc even-zero
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb2581f5" class="outline-9">
+<h9 id="orgb2581f5">4 is even</h9>
+<div class="outline-text-9" id="text-orgb2581f5">
+<div class="org-src-container">
+<pre class="src src-agda"><code>e4 : Even (suc (suc (suc (suc zero))))
+e4 = even-suc (even-suc even-zero)
+</code></pre>
+</div>
+
+<p>
+Each proof mirrors the structure of the number.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge57af97" class="outline-8">
+<h8 id="orge57af97">Side-by-side comparison</h8>
+<div class="outline-text-8" id="text-orge57af97">
+</div>
+<div id="outline-container-org79d85d1" class="outline-9">
+<h9 id="org79d85d1">FOL naturals</h9>
+<div class="outline-text-9" id="text-org79d85d1">
+<p>
+You do not “build terms of type ℕ”.
+Instead:
+</p>
+<ul class="org-ul">
+<li>the domain is assumed</li>
+<li>the symbols \(0\), \(S\), \(+\) are interpreted over that domain</li>
+<li>axioms constrain the interpretation</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org86c1bc6" class="outline-9">
+<h9 id="org86c1bc6">Agda naturals</h9>
+<div class="outline-text-9" id="text-org86c1bc6">
+<p>
+You literally build inhabitants:
+</p>
+<ul class="org-ul">
+<li><code>zero</code></li>
+<li><code>suc zero</code></li>
+<li><code>suc (suc zero)</code></li>
+</ul>
+
+<p>
+So Agda internalizes what FOL leaves semantic.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org8bbe013" class="outline-8">
+<h8 id="org8bbe013">Side-by-side comparison for evenness</h8>
+<div class="outline-text-8" id="text-org8bbe013">
+</div>
+<div id="outline-container-orgc8c7c33" class="outline-9">
+<h9 id="orgc8c7c33">FOL existential style</h9>
+<div class="outline-text-9" id="text-orgc8c7c33">
+<p>
+\[
+Even(x) \;:\!\!\iff\; \exists y \; (x = y + y)
+\]
+</p>
+
+<p>
+This is a predicate defined by a formula.
+</p>
+</div>
+</div>
+<div id="outline-container-org1d483d0" class="outline-9">
+<h9 id="org1d483d0">Agda existential-style analogue</h9>
+<div class="outline-text-9" id="text-org1d483d0">
+<p>
+You could encode that idea too, using a dependent pair:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>Even′ : ℕ → Set
+Even′ n = Σ[ m ∈ ℕ ] (n ≡ m + m)
+</code></pre>
+</div>
+
+<p>
+This says:
+<code>n</code> is even if there exists some <code>m</code> such that <code>n ≡ m + m</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbea751c" class="outline-9">
+<h9 id="orgbea751c">FOL inductive-style clauses</h9>
+<div class="outline-text-9" id="text-orgbea751c">
+<p>
+\[
+Even(0)
+\]
+\[
+\forall x \; (Even(x) \to Even(S(S(x))))
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org17cae38" class="outline-9">
+<h9 id="org17cae38">Agda inductive family</h9>
+<div class="outline-text-9" id="text-org17cae38">
+<div class="org-src-container">
+<pre class="src src-agda"><code>data Even : ℕ → Set where
+  even-zero : Even zero
+  even-suc  : ∀ {n} → Even n → Even (suc (suc n))
+</code></pre>
+</div>
+
+<p>
+This is the closest proof-theoretic analogue.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org72340b8" class="outline-8">
+<h8 id="org72340b8">The deepest conceptual difference</h8>
+<div class="outline-text-8" id="text-org72340b8">
+<p>
+In FOL:
+</p>
+<ul class="org-ul">
+<li><code>Even(x)</code> is a formula</li>
+<li>proving <code>Even(4)</code> means deriving a sentence in a proof system</li>
+</ul>
+
+<p>
+In Agda:
+</p>
+<ul class="org-ul">
+<li><code>Even 4</code> is a type</li>
+<li>proving <code>Even 4</code> means constructing a term of that type</li>
+</ul>
+
+<p>
+So:
+</p>
+
+<p>
+\[
+\text{formula} \leftrightarrow \text{type}
+\]
+\[
+\text{proof} \leftrightarrow \text{program / term}
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org0a55420" class="outline-8">
+<h8 id="org0a55420">Concrete comparison: proving 4 is even</h8>
+<div class="outline-text-8" id="text-org0a55420">
+</div>
+<div id="outline-container-org31501e3" class="outline-9">
+<h9 id="org31501e3">In FOL</h9>
+<div class="outline-text-9" id="text-org31501e3">
+<p>
+You might derive:
+\[
+Even(S(S(S(S(0)))))
+\]
+either by:
+</p>
+<ul class="org-ul">
+<li>showing \(\exists y \; (4 = y+y)\), taking \(y = 2\), or</li>
+<li>using:
+<ul class="org-ul">
+<li>\(Even(0)\)</li>
+<li>\(Even(x) \to Even(S(S(x)))\)</li>
+<li>twice</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org976864b" class="outline-9">
+<h9 id="org976864b">In Agda</h9>
+<div class="outline-text-9" id="text-org976864b">
+<p>
+You write the proof object directly:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-agda"><code>e4 : Even (suc (suc (suc (suc zero))))
+e4 = even-suc (even-suc even-zero)
+</code></pre>
+</div>
+
+<p>
+This term <b>is</b> the proof.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org7648beb" class="outline-8">
+<h8 id="org7648beb">Summary</h8>
+<div class="outline-text-8" id="text-org7648beb">
+<ul class="org-ul">
+<li>Peano axioms in FOL describe the intended structure of naturals semantically.</li>
+<li>An FOL even predicate can be defined by:
+\[
+  Even(x) := \exists y (x = y + y)
+  \]</li>
+<li>Agda defines naturals syntactically via constructors.</li>
+<li>Agda defines evenness as an inductive family:
+proofs are built explicitly.</li>
+</ul>
+
+<p>
+So the closest correspondence is:
+</p>
+
+<ul class="org-ul">
+<li>FOL clause:
+\[
+  Even(0), \quad \forall x(Even(x) \to Even(S(S(x))))
+  \]</li>
+
+<li>Agda:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-agda"><code>data Even : ℕ → Set where
+  even-zero : Even zero
+  even-suc  : ∀ {n} → Even n → Even (suc (suc n))
+</code></pre>
+</div>
+
+<p>
+That is the proof-relevant, type-theoretic version of the logical predicate.
+</p>
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

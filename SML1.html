@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2026-03-09 Mon 10:51 -->
+<!-- 2026-03-13 Fri 15:19 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -314,13 +314,370 @@ pre.example {clear: none; }
 <h2 id="orgd9cd98a">Standard ML 1</h2>
 <div class="outline-text-2" id="text-orgd9cd98a">
 </div>
-<div id="outline-container-orge57af97" class="outline-3">
-<h3 id="orge57af97">Expressions versus commands: the conceptual shift</h3>
-<div class="outline-text-3" id="text-orge57af97">
+<div id="outline-container-org38570f5" class="outline-3">
+<h3 id="org38570f5">Functional programming&mdash;theoretically speaking</h3>
+<div class="outline-text-3" id="text-org38570f5">
+<p>
+<a href="https://en.wikipedia.org/wiki/John_Backus">John Backus</a>&rsquo;s 1977 Turing Award lecture, titled <i><a href="https://en.wikipedia.org/wiki/FP_(programming_language)">Can Programming Be
+Liberated from the von Neumann Style</a>?</i> introduced with great
+mathematical formalism his proto-functional language <i>FP</i>. Backus was
+a pioneer who led the team that created <a href="https://en.wikipedia.org/wiki/Fortran">Fortran</a> (one of the first
+major programming languages). After Fortran, Later in his career, he
+realized that traditional programming, relying heavily on changing
+variables and managing a computer&rsquo;s memory state step-by-step, was
+highly error-prone. He sought to make programming more mathematically
+elegant. Here are the five basic ingredients he used to encapsulate
+his FP&mdash;with some interpretation for better understanding
+</p>
+
+<p>
+<font color = "#0d3db3">
+</p>
+<ol class="org-ol">
+<li><b><b>A set \(O\) of objects</b></b>: These are your raw materials, which in
+programming means data. Objects are the numbers, text strings, or
+lists that you feed into your program, as well as the results you
+get out of it.</li>
+<li><b><b>A set \(F\) of functions</b></b>: These are your tools or machines. A
+function&rsquo;s only job is to take an object (an input) and transform
+it into a new object (an output). For example, a function that
+doubles numbers evaluates the object \(5\) and gets the value \(10\).</li>
+<li><b><b>An <i>application</i> operation</b></b>: This is the act of actually turning
+the machinery on. <i>Application</i> just means taking a function and
+feeding an object into it, i.e., applying the double function to
+the number \(5\).</li>
+<li><b><b>A set of <i>functional forms</i></b></b>: These are the connectors that let
+you snap smaller machines together to build bigger ones. Instead of
+just using one tool, you can hook the output pipe of one function
+directly into the input pipe of another. (Think of function
+composition \(f \circ g\).)</li>
+<li><b><b>A set \(D\) of definitions</b></b>: This is how you label your new,
+complex machines. Once you have combined several functions to do
+something useful, you give it a name so you can reuse it later
+without having to rebuild it from scratch.</li>
+</ol>
+<p>
+</font>
+</p>
+
+<p>
+<b><b>A descriptive breakdown of functional programming</b></b>
+</p>
+
+<p>
+Backus&rsquo;s definition is foundational, but it is highly theoretical. If
+you ask a modern software engineer to break down what functional
+programming actually is, they usually won&rsquo;t talk about mathematical
+sets. Instead, they&rsquo;ll describe this list of core principles:
+</p>
+
+<ul class="org-ul">
+<li><b><b>Immutability</b></b>: <span class="underline"><span class="underline">Data doesn&rsquo;t change</span></span>. Once you create a piece
+of data, it is locked. If you want to change a list, you do not
+modify the original list; you create a brand-new copy with the
+updates. This prevents unexpected bugs where one part of your
+program accidentally ruins data that another part is trying to use.</li>
+<li><b><b>Pure Functions</b></b>: A function must follow two strict rules. First,
+the exact same input will always return the exact same output&mdash;just
+like a math function. Second, functions cannot produce &ldquo;side
+effects.&rdquo; This means functions cannot change things outside of
+themselves, e.g., modifying a global variable, writing to a
+database, or printing to the screen.<label id='fnr.1' for='fnr-in.1.8263294' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.8263294' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+This is true of only the purest functional languages. For the
+sake of usability, there are workarounds.
+</span></li>
+<li><b><b>First-Class Functions</b></b>: Functions are treated just like any other
+piece of regular data. You can <i>bind</i> a function to a variable (give
+it a name), pass a function to another function as an argument, or
+have a function return another function as a result.</li>
+<li><b><b>Declarative Style</b></b>: You describe to the computer what you want to
+achieve, rather than have to order it step-by-step what to do. For
+example, instead of writing a manual loop that says &ldquo;go through this
+list one by one, add \(2\) to each number, and save it into a new
+list,&rdquo; you simply use a built-in <i>application</i> tool to say, &ldquo;Apply
+(<code>map</code>) this addition function to each element of the entire list.&rdquo;</li>
+</ul>
+
+<p>
+But then Backus breaks down what objects \(O\) are in more of his
+math-speak. In Backus&rsquo;s system, every piece of data (an object, \(O\))
+must fall into one of three categories:
+</p>
+
+<p>
+<font color = "#0d3db3">
+</p>
+<ol class="org-ol">
+<li>atoms,</li>
+<li>sequences \(\langle x_1,...,x_n \rangle\) whose elements \(x_i\) are objects,</li>
+<li>\(\bot\) (<b><b>bottom</b></b>, the undefined object)
+</font> <br>
+<br></li>
+
+<li><b><b>Atoms</b></b>: Think of an <i>atom</i> in chemistry&mdash;it is a fundamental,
+indivisible building block. In functional programming, an <i>atom</i> is
+a single, standalone value that cannot be broken down any
+further.<label id='fnr.2' for='fnr-in.2.4017446' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.4017446' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+&hellip;just like solving an equation, getting it into its simplest
+form.
+</span> The wording above explicitly mentions two example atoms:
+\(T\) and \(F\), which simply stand for <i>true</i> and <i>false</i>. Other
+examples of atoms would be basic numbers or characters.</li>
+<li><b><b>Sequences</b></b><label id='fnr.3' for='fnr-in.3.4849930' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.4849930' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+In higher mathematics, a finite sequence can also be viewed as
+an \(n\)-tuple. Both are ordered <i>lists</i> of elements, such as \(\langle 𝑎_1,
+a_2,\ldots,a_n \rangle\), where order matters and repeating objects are not
+considered duplicates. While tuples are typically finite, a sequence
+is generally considered to be of infinite length \(\langle a_1, a_2, \dots \rangle\)
+but can be treated as a tuple when limited to a specific length.
+</span> (\(\langle x_1,\ldots,x_n \rangle\)): A typical example is the
+humble <b><b>list</b></b>, one of the most basic programming data
+structures. The notation \(\langle x_1,\ldots,x_n \rangle\) is the mathematical
+way of saying, &ldquo;A collection of items in a specific order.&rdquo; Note
+that the items inside the list (\(x_i\)) are also <i>objects</i>. Because a
+sequence is an object, and sequences hold objects, this means you
+can put sequences inside of sequences&mdash;over and over
+recursively&mdash;creating lists of lists of lists&hellip;<label id='fnr.4' for='fnr-in.4.8791831' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.8791831' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+&hellip;which is the actual syntax of the Lisp family of
+languages,i.e., lists of lists of lists&hellip;
+</span></li>
+<li><b><b>\(\boldsymbol{\bot}\)</b></b>: Called <i>bottom</i>,<label id='fnr.5' for='fnr-in.5.6439167' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.6439167' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+The bottom symbol (\(\bot \)), also known as <i>up tack</i>, is a
+logical constant representing <i>falsity</i>, a <i>contradiction</i>, or the
+least element in a lattice, commonly used in type theory and computer
+science to indicate a non-terminating computation, i.e., bombed
+operation or program.
+</span> this symbol is the
+mathematical representation of an error, a crash, or an infinite
+loop. For example, when a program tries to divide by zero or gets
+stuck forever, it doesn&rsquo;t evaluate to an atom or a sequence value;
+it produces \(\bot\), meaning the result is <i>undefined</i>.</li>
+</ol>
+
+<p>
+We should note two more specifics about data objects
+</p>
+
+<ul class="org-ul">
+<li><b><b>The Empty Sequence (ϕ)</b></b>: The symbol ϕ (phi) represents an empty
+list (a sequence with zero items inside it). One quirk of this
+specific system: the empty list is considered both an atom (because
+&ldquo;nothingness&rdquo; is a single, indivisible concept) as well as a
+sequence. As we get started in SML, we&rsquo;ll see the empty list <code>[]</code>
+often.<label id='fnr.6' for='fnr-in.6.7675764' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.7675764' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+In Lisp, this is called <code>nil</code>.
+</span></li>
+<li><b><b>Bottom-Preserving Strictness</b></b>: The proposition, rule, <i>If \(X\) is
+a sequence containing \(\bot\), then \(X=\bot\)</i> is describing how
+errors behave in our functional language. Imagine you are packing a
+box with items. If even one of the items you try to put in the box
+explodes or causes a fatal error (evaluates to \(\bot\)), the entire
+box is destroyed. You cannot have a valid sequence or list where
+even one item is an error, e.g., <code>[1, 2, (⊥), 4]</code>. The moment an
+error is introduced, the entire sequence instantly becomes an error
+itself (\(\bot\)). In programming language theory, a system that
+behaves this way is called <i>strict</i> or &ldquo;bottom-preserving&rdquo;.</li>
+</ul>
+
+<p>
+Now that we have objects \(O\) sorted out&mdash;atoms, sequences (e.g.,
+lists), and errors or undefined situations (\(\bot\))&mdash;we need tools to
+actually do something with them.
+</p>
+
+<p>
+In Backus&rsquo;s system, functions are broken down into two main
+categories: <b><b>primitive functions</b></b>, the basic, standalone tools, and
+<b><b>functional forms</b></b>, the connectors used to wire those tools together
+into an assembly line.
+</p>
+
+<p>
+Here is a breakdown of how they work:
+</p>
+
+<ol class="org-ol">
+<li><b><b>Primitive functions</b></b> are the basic tools. These are the
+built-in, ready-to-use machines. They take one object in, do a
+simple task, and spit one object out&mdash;and always that same return
+for that same input <i>guaranteed</i>.</li>
+
+<li><p>
+<b><b>Selectors</b></b>: In Backus&rsquo;s mathematical system, numbers are also
+functions. His function \(1\) means &ldquo;grab the first item out of a
+sequence,&rdquo; i.e., apply the function \(1\) to the sequence \(\langle A, B, C
+  \rangle\), the output is the atom \(A\). In practice these are simply the
+functions that evaluate a list and return an element based on its
+order in the list, e.g., SML&rsquo;s <code>hd</code>, short for <i>head</i> (of list)<label id='fnr.7' for='fnr-in.7.8811130' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.8811130' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+In reality \(1\) as a function name <i>and</i> as an atom, an actual
+number doesn&rsquo;t work, hence, programming languages use other names for
+selectors&hellip;
+</span>
+</p></li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-sml"><code>hd <span style="color: #8c8c8c;">[</span>1,2,3<span style="color: #8c8c8c;">]</span>
+</code></pre>
 </div>
-<div id="outline-container-org3f63f7f" class="outline-4">
-<h4 id="org3f63f7f">The imperative model (C/C++): controlling the machine</h4>
-<div class="outline-text-4" id="text-org3f63f7f">
+
+<pre class="example">
+val it = 1 : int
+</pre>
+
+<p>
+or something fancier to return the second element<label id='fnr.8' for='fnr-in.8.7474389' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.7474389' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+This is a pattern-matching anonymous function, all but verbatim
+from <i>lambda calculus</i> &mdash; but it&rsquo;s not considered &ldquo;safe&rdquo; since it
+doesn&rsquo;t account for lists of less than two elements. More later&hellip;
+</span>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sml" id="orgbec9ad4"><code><span style="color: #8c8c8c;">(</span><span style="color: #c678dd; font-weight: bold;">fn</span> <span style="color: #93a8c6;">(</span>_::x::_<span style="color: #93a8c6;">)</span> =&gt; x<span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">[</span>1,2,3<span style="color: #8c8c8c;">]</span>
+</code></pre>
+</div>
+
+<pre class="example" id="org94dc380">
+val it = 2 : int
+</pre>
+
+<p>
+In essence, we have an <i>indexing</i> system to automatically identify and
+retrieve members <i>without</i> the use of loops to march through the
+sequence/list.
+</p>
+
+<p>
+Let&rsquo;s take a quick in situ <i>math holiday</i> to see how Backus selectors
+are actually <i>projection functions</i> from higher math
+</p>
+
+<p>
+<b><b>Definition</b></b>
+</p>
+
+<p>
+In mathematics, a <b><b>projection</b></b> is a mapping from a set (or algebraic
+structure) to a subset, which leaves the elements of that subset
+unchanged. It essentially &ldquo;squashes&rdquo; a higher-dimensional object into
+a lower-dimensional subspace.
+</p>
+
+<p>
+Let \( X_1, X_2, \dots, X_n \) be any sets.  
+Their <b>Cartesian product</b> (the set of all n-tuples) is
+\[
+X_1 \times X_2 \times \dots \times X_n = \{ \langle x_1, x_2, \dots, x_n \rangle \mid x_i \in X_i \}
+\]
+</p>
+
+<p>
+A <b>projection function</b> (also written \( \pi_k \) or \( \mathrm{proj}_k \)) is the function that “projects” onto the k-th coordinate:
+</p>
+
+<p>
+\[
+\pi_k : X_1 \times \dots \times X_n \;\to\; X_k
+\]
+</p>
+
+<p>
+defined by the rule
+</p>
+
+<p>
+\[
+\pi_k(\langle x_1, x_2, \dots, x_n \rangle) = x_k
+\]
+</p>
+
+<p>
+It throws away every component except the k-th one. That is all there is to it.
+</p>
+
+<ul class="org-ul">
+<li>\( \pi_1 \) always returns the first component.</li>
+<li>\( \pi_2 \) always returns the second, and so on.</li>
+</ul>
+
+<p>
+<b><b>Set Theory The Coordinate Picker</b></b>
+</p>
+
+<p>
+In the context of Cartesian products, a projection function \(pr_i\) (or
+\(\pi_i\)) selects the $i$-th component of an element.
+</p>
+
+<p>
+Given a product \(X \times Y\), the projection \(\pi_1\) is defined as:
+\[\pi_1: X \times Y \to X, \quad \pi_1(x, y) = x\]
+</p>
+
+
+<ul class="org-ul">
+<li><b>Tail (\(tl\)):</b> This chops off the first item of a sequence and
+returns whatever is left. If you apply \(tl\) to \(\langle A, B, C \rangle\), the
+output is \(\langle B, C \rangle\).</li>
+<li><b>Identity (\(id\)):</b> This is the &ldquo;do nothing&rdquo; machine. Whatever you
+put in, it passes right through unchanged.</li>
+<li><b>Predicates (e.g., \(atom\), \(eq\)):</b> These are your inspectors. They
+look at an object and return either \(T\) (True) or \(F\) (False). For
+example, the \(atom\) function checks if an object is an atom. If you
+feed it \(A\), it returns \(T\). If you feed it a sequence like \(\langle A, B
+  \rangle\), it returns \(F\).</li>
+
+<li>Functional Forms (The Connectors)</li>
+</ul>
+<p>
+This is where the real magic of functional programming
+happens. Functional forms are the rules for snapping basic tools
+together to create complex machines. Backus defined several specific
+ways to combine them:
+</p>
+
+<ul class="org-ul">
+<li><b>Composition (\(f \circ g\)):</b> This is hooking two machines up end-to-end
+like a single conveyor belt. The notation \(f \circ g\) means &ldquo;run the
+data through function \(g\) first, and then immediately feed that
+result into function \(f\).&rdquo;</li>
+<li><b>Construction (\([f_1, f_2, \dots, f_n]\)):</b> This is parallel
+processing. You take one piece of input data, duplicate it, and send
+it through several different functions at the exact same time. The
+results are then automatically packed into a brand-new sequence. For
+example, if you have a construction made of the functions \([1, tl]\)
+and you feed it the sequence \(\langle A, B, C \rangle\), it will output a new
+sequence: \(\langle A, \langle B, C \rangle \rangle\).</li>
+<li><b>Apply-to-all (\(\alpha f\)):</b> In modern programming, this is usually
+called <b>map</b>. It takes a single function (\(f\)) and applies it
+individually to every single item inside a sequence. If you have a
+sequence of numbers and you use \(\alpha\) with a &ldquo;multiply by 2&rdquo; function,
+it runs that multiplication on the first number, then the second,
+then the third, returning a new sequence of doubled numbers.</li>
+<li><b>Condition (\(p \rightarrow f ; g\)):</b> This is the functional version of an
+&ldquo;if/then&rdquo; statement. It uses a predicate (\(p\)) to test the input. If
+the test is True, it routes the data through function \(f\). If the
+test is False, it routes the data through function \(g\).</li>
+</ul>
+
+<p>
+Notice what is completely missing from this system: <b>Variables.</b> In
+traditional programming, you would write code that says &ldquo;Create a
+variable <code>X</code>, make it equal to 0, add 1 to <code>X</code>, now save the new <code>X</code>.&rdquo;
+In this functional system, there is no storage, no memory states, and
+no variables changing over time. Data just flows continuously through
+a pipeline of connected functions, entering as raw input and exiting
+as a finished result.
+</p>
+</div>
+</div>
+<div id="outline-container-org6efda25" class="outline-3">
+<h3 id="org6efda25">Expressions versus commands: the conceptual shift</h3>
+<div class="outline-text-3" id="text-org6efda25">
+</div>
+<div id="outline-container-org39af42c" class="outline-4">
+<h4 id="org39af42c">The imperative model (C/C++): controlling the machine</h4>
+<div class="outline-text-4" id="text-org39af42c">
 <p>
 C and its sister language C++ (C/C++) are modeled heavily on the
 physical architecture of the computer (specifically, the von Neumann
@@ -333,7 +690,7 @@ live memory.
 <li><b><b>Variables as memory boxes:</b></b> In C/C++, a variable is a named
 location, a <i>box</i> in memory.</li>
 <li><b><b>Commands as mutations:</b></b> For example, a line of code such as <code>x =
-  x + 1;</code> is a command.<label id='fnr.1' for='fnr-in.1.8263294' class='margin-toggle sidenote-number'><sup class='numeral'>1</sup></label><input type='checkbox' id='fnr-in.1.8263294' class='margin-toggle'><span class='sidenote'><sup class='numeral'>1</sup>
+  x + 1;</code> is a command.<label id='fnr.9' for='fnr-in.9.7288065' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.7288065' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
 In math \(x = x +1\) is an absurdity. Simplifying we would have
 \(0 = 1\). Crazy.
 </span> It means: &ldquo;Go to the memory location
@@ -352,18 +709,18 @@ x = x + 1;
 <p>
 The execution of a C/C++ program is a timeline of state changes. To
 understand what the program is doing at, say, line 50, you have to
-mentally track the current state of all the mutations<label id='fnr.2' for='fnr-in.2.8791831' class='margin-toggle sidenote-number'><sup class='numeral'>2</sup></label><input type='checkbox' id='fnr-in.2.8791831' class='margin-toggle'><span class='sidenote'><sup class='numeral'>2</sup>
+mentally track the current state of all the mutations<label id='fnr.10' for='fnr-in.10.600043' class='margin-toggle sidenote-number'><sup class='numeral'>10</sup></label><input type='checkbox' id='fnr-in.10.600043' class='margin-toggle'><span class='sidenote'><sup class='numeral'>10</sup>
 &hellip;all the memory shiftings and  overwrites&hellip;
 </span> carried out from
 lines 1 through 49.
 </p>
 </div>
 </div>
-<div id="outline-container-org8948797" class="outline-4">
-<h4 id="org8948797">The functional model (ML family): reducing expressions</h4>
-<div class="outline-text-4" id="text-org8948797">
+<div id="outline-container-orgca4550f" class="outline-4">
+<h4 id="orgca4550f">The functional model (ML family): reducing expressions</h4>
+<div class="outline-text-4" id="text-orgca4550f">
 <p>
-SML<label id='fnr.3' for='fnr-in.3.7675764' class='margin-toggle sidenote-number'><sup class='numeral'>3</sup></label><input type='checkbox' id='fnr-in.3.7675764' class='margin-toggle'><span class='sidenote'><sup class='numeral'>3</sup>
+SML<label id='fnr.11' for='fnr-in.11.1803119' class='margin-toggle sidenote-number'><sup class='numeral'>11</sup></label><input type='checkbox' id='fnr-in.11.1803119' class='margin-toggle'><span class='sidenote'><sup class='numeral'>11</sup>
 Standard ML is the original functional language based on type
 theory. After SML came Ocaml, Haskell, and F#.
 </span> is not modeled on hardware architecture, rather, on
@@ -384,7 +741,7 @@ state.</i> Consider this ML code</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-sml" id="org651f861"><code><span style="color: #c678dd; font-weight: bold;">let</span>
+<pre class="src src-sml" id="orgf4316c4"><code><span style="color: #c678dd; font-weight: bold;">let</span>
   <span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = 5
   <span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">f</span> y = y + 1
 <span style="color: #c678dd; font-weight: bold;">in</span>
@@ -396,9 +753,7 @@ state.</i> Consider this ML code</li>
 </div>
 
 <pre class="example">
-x = 5
-f x = 6
-val it = () : unit
+val it = 2 : int
 </pre>
 
 <p>
@@ -409,16 +764,16 @@ of <code>x</code> as its argument. This is &ldquo;pure functional statelessness.
 is immutability. Because values never change once defined, an
 expression evaluated with the same inputs will always yield the exact
 same result, with no hidden dependencies on an external, ever-changing
-memory states.<label id='fnr.4' for='fnr-in.4.7474389' class='margin-toggle sidenote-number'><sup class='numeral'>4</sup></label><input type='checkbox' id='fnr-in.4.7474389' class='margin-toggle'><span class='sidenote'><sup class='numeral'>4</sup>
+memory states.<label id='fnr.12' for='fnr-in.12.8478366' class='margin-toggle sidenote-number'><sup class='numeral'>12</sup></label><input type='checkbox' id='fnr-in.12.8478366' class='margin-toggle'><span class='sidenote'><sup class='numeral'>12</sup>
 Later we&rsquo;ll learn how &ldquo;same inputs always produce same outputs&rdquo;
 is exactly how mathematical functions behave.
 </span>
 </p>
 </div>
 </div>
-<div id="outline-container-orgbec9ad4" class="outline-4">
-<h4 id="orgbec9ad4">The Compiler&rsquo;s Magic Trick</h4>
-<div class="outline-text-4" id="text-orgbec9ad4">
+<div id="outline-container-org3cb68a9" class="outline-4">
+<h4 id="org3cb68a9">The Compiler&rsquo;s Magic Trick</h4>
+<div class="outline-text-4" id="text-org3cb68a9">
 <p>
 If SML programs are just the computer version of mathematical
 equations, how does the computer actually do the work?
@@ -448,17 +803,20 @@ of managing the physical state of the hardware.
 </p>
 
 <p>
-In SML, <code>fun f y = y + 1</code> is nothing more than convenient syntactic sugar for <code>val f = fn y =&gt; y + 1</code>. Underneath the hood, <b>all functions in SML are just anonymous lambda functions bound to variable names.</b>
+In SML, <code>fun f y = y + 1</code> is nothing more than convenient syntactic
+sugar for <code>val f = fn y =&gt; y + 1</code>. Underneath the hood, <b>all functions
+in SML are just anonymous lambda functions bound to variable names.</b>
 </p>
 
 <p>
-Here is why this design choice is so profound, what its purpose is, and how it forms the direct bridge to mathematical logic.
+Here is why this design choice is so profound, what its purpose is,
+and how it forms the direct bridge to mathematical logic.
 </p>
 </div>
 </div>
-<div id="outline-container-org94dc380" class="outline-4">
-<h4 id="org94dc380">1. The Purpose: Complete Uniformity</h4>
-<div class="outline-text-4" id="text-org94dc380">
+<div id="outline-container-org97f457e" class="outline-4">
+<h4 id="org97f457e">1. The Purpose: Complete Uniformity</h4>
+<div class="outline-text-4" id="text-org97f457e">
 <p>
 If you define <code>val x = 5</code>, you are binding the integer value <code>5</code> to the name <code>x</code>. 
 If you define <code>val f = fn y =&gt; y + 1</code>, you are doing the exact same thing: binding a function value (a closure) to the name <code>f</code>. 
@@ -469,9 +827,9 @@ By making <code>fun</code> just a shorthand for <code>val</code> + <code>fn</cod
 </p>
 </div>
 </div>
-<div id="outline-container-org38570f5" class="outline-4">
-<h4 id="org38570f5">2. The Direct Link to Lambda Calculus</h4>
-<div class="outline-text-4" id="text-org38570f5">
+<div id="outline-container-orge449b50" class="outline-4">
+<h4 id="orge449b50">2. The Direct Link to Lambda Calculus</h4>
+<div class="outline-text-4" id="text-orge449b50">
 <p>
 You have discovered the exact theoretical foundation of functional programming. Languages like SML, Haskell, and Scheme are not based on the Turing machine model of memory mutation; they are direct, executable implementations of <b>Alonzo Church’s lambda calculus</b>.
 </p>
@@ -497,9 +855,9 @@ SML&rsquo;s syntax is a nearly 1-to-1 mapping of this logic:
 </ul>
 </div>
 </div>
-<div id="outline-container-org7e0b801" class="outline-4">
-<h4 id="org7e0b801">3. Computability and Type Theory</h4>
-<div class="outline-text-4" id="text-org7e0b801">
+<div id="outline-container-orgdf201f6" class="outline-4">
+<h4 id="orgdf201f6">3. Computability and Type Theory</h4>
+<div class="outline-text-4" id="text-orgdf201f6">
 <p>
 This is not just an academic curiosity; it dictates what the computer can actually calculate. In computability theory, the lambda calculus is proven to be Turing-complete. This means that merely by substituting variables into anonymous functions, you can compute anything that a C program can compute with pointers and mutable state. 
 </p>
@@ -513,9 +871,9 @@ By treating all functions as anonymous lambdas bound to values, SML strips away 
 </p>
 </div>
 </div>
-<div id="outline-container-orgc36236b" class="outline-4">
-<h4 id="orgc36236b">4. Tossing a Lambda into Fold (Reduce)</h4>
-<div class="outline-text-4" id="text-orgc36236b">
+<div id="outline-container-org049cd7c" class="outline-4">
+<h4 id="org049cd7c">4. Tossing a Lambda into Fold (Reduce)</h4>
+<div class="outline-text-4" id="text-org049cd7c">
 <p>
 Now, let us look at how we toss a lambda into a <code>fold</code> (or &ldquo;reduce&rdquo;) function to sum up an entire list of numbers. 
 </p>
@@ -589,9 +947,9 @@ abstraction above state changes.
 </p>
 </div>
 </div>
-<div id="outline-container-orge449b50" class="outline-4">
-<h4 id="orge449b50">Definition of an expression in SML</h4>
-<div class="outline-text-4" id="text-orge449b50">
+<div id="outline-container-org1def633" class="outline-4">
+<h4 id="org1def633">Definition of an expression in SML</h4>
+<div class="outline-text-4" id="text-org1def633">
 <p>
 <font color = "#0d3db3"> ⥤ In SML, an <b><b>expression</b></b> is a
 syntactic construct that can be evaluated to produce a <b><b>value</b></b>.
@@ -601,7 +959,7 @@ syntactic construct that can be evaluated to produce a <b><b>value</b></b>.
 <p>
 This means programs in SML are made up of expressions that are
 evaluated to give values. What is an expression? Simply put, any
-section of code that can be evaluated to produce a value.<label id='fnr.5' for='fnr-in.5.2765996' class='margin-toggle sidenote-number'><sup class='numeral'>5</sup></label><input type='checkbox' id='fnr-in.5.2765996' class='margin-toggle'><span class='sidenote'><sup class='numeral'>5</sup>
+section of code that can be evaluated to produce a value.<label id='fnr.13' for='fnr-in.13.893959' class='margin-toggle sidenote-number'><sup class='numeral'>13</sup></label><input type='checkbox' id='fnr-in.13.893959' class='margin-toggle'><span class='sidenote'><sup class='numeral'>13</sup>
 In the Lisp family, a <b><b>form</b></b> is any part of the code that
 can, taken by itself, produce a value.
 </span>
@@ -631,7 +989,7 @@ to find a value equivalent to the expression.  </font>
 </p>
 
 <p>
-In math this is <i>reducing to simplest form</i>.<label id='fnr.6' for='fnr-in.6.1803119' class='margin-toggle sidenote-number'><sup class='numeral'>6</sup></label><input type='checkbox' id='fnr-in.6.1803119' class='margin-toggle'><span class='sidenote'><sup class='numeral'>6</sup>
+In math this is <i>reducing to simplest form</i>.<label id='fnr.14' for='fnr-in.14.6902977' class='margin-toggle sidenote-number'><sup class='numeral'>14</sup></label><input type='checkbox' id='fnr-in.14.6902977' class='margin-toggle'><span class='sidenote'><sup class='numeral'>14</sup>
 &hellip;also called <b><b>normal form</b></b> in higher math.
 </span> For our \(7x - 5 =
 2\) example, by plugging in \(x = 1\) to the expression \(7x - 5\), it
@@ -647,16 +1005,16 @@ convention of mathematics. If we simply feed possible values&mdash;
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sml" id="orgf4316c4"><code>47;
+<pre class="src src-sml" id="org9f6b9d4"><code>47;
 true;
 use;
 </code></pre>
 </div>
 
 <pre class="example">
-val it = 47 : int
-val it = true : bool
-val it = fn : string -&gt; unit
+x = 5
+f x = 6
+val it = () : unit
 </pre>
 
 <p>
@@ -670,21 +1028,23 @@ normal form value <code>47</code> to the generic variable <code>it</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sml" id="orgca4550f"><code>47;
+<pre class="src src-sml" id="org4a63c07"><code>47;
 </code></pre>
 </div>
 
 <pre class="example">
 val it = 47 : int
+val it = true : bool
+val it = fn : string -&gt; unit
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-sml" id="org97f457e"><code>it + 1;
+<pre class="src src-sml" id="org43f758c"><code>it + 1;
 </code></pre>
 </div>
 
 <pre class="example">
-type: string
+val it = 47 : int
 </pre>
 
 
@@ -695,9 +1055,9 @@ has a generic variable <code>it</code> to which a value
 </p>
 </div>
 </div>
-<div id="outline-container-orgd15c569" class="outline-4">
-<h4 id="orgd15c569">Composing versus nesting</h4>
-<div class="outline-text-4" id="text-orgd15c569">
+<div id="outline-container-orgf77f551" class="outline-4">
+<h4 id="orgf77f551">Composing versus nesting</h4>
+<div class="outline-text-4" id="text-orgf77f551">
 <p>
 Another way of contrasting imperative versus functional programming is
 how code is embedded in code. Imperative programming <i>nests logic</i>
@@ -713,18 +1073,25 @@ results. The focus is on the <span class="underline"><span class="underline">res
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-sml" id="org0037182"><code><span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Composing small expressions into a larger one</span><span style="color: #687080; font-style: italic;"> *)</span>
+<pre class="src src-sml" id="org06d8357"><code><span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Composing small expressions into a larger one</span><span style="color: #687080; font-style: italic;"> *)</span>
 <span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">result</span> = <span style="color: #8c8c8c;">(</span>1 + 2<span style="color: #8c8c8c;">)</span> * <span style="color: #8c8c8c;">(</span>Int.max<span style="color: #93a8c6;">(</span>5, 10<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>;
 </code></pre>
 </div>
 
 <pre class="example">
-val result = 30 : int
+stdIn:849.1-849.7 Error: operator and operand do not agree [overload - bad instantiation]
+  operator domain: string * string
+  operand:         string * 'Z[INT]
+  in expression:
+    it + 1
+stdIn:849.4 Error: overloaded variable not defined at type
+  symbol: +
+  type: string
 </pre>
 
 <p>
 Here, <code>(1 + 2)</code> is an expression, <code>Int.max(5, 10)</code> is an
-expression,<label id='fnr.7' for='fnr-in.7.4007355' class='margin-toggle sidenote-number'><sup class='numeral'>7</sup></label><input type='checkbox' id='fnr-in.7.4007355' class='margin-toggle'><span class='sidenote'><sup class='numeral'>7</sup>
+expression,<label id='fnr.15' for='fnr-in.15.768281' class='margin-toggle sidenote-number'><sup class='numeral'>15</sup></label><input type='checkbox' id='fnr-in.15.768281' class='margin-toggle'><span class='sidenote'><sup class='numeral'>15</sup>
 <code>Int.max(a, b)</code> is a built-in SML function that takes a tuple
 of two arguments and returns the one with the greater value.
 </span>, while the times operator <code>*</code> <i>composes</i> them into a
@@ -737,12 +1104,12 @@ declaration can never be an expression. Here&rsquo;s a simple SML
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sml" id="org9c1da07"><code><span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = 34;
+<pre class="src src-sml" id="orgac43560"><code><span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = 34;
 </code></pre>
 </div>
 
 <pre class="example">
-val x = 34 : int
+val result = 30 : int
 </pre>
 
 <ul class="org-ul">
@@ -791,9 +1158,6 @@ The code below shows a <i>sequence</i> of bindings
 
 <pre class="example">
 val x = 34 : int
-val y = 17 : int
-val z = 70 : int
-val abs_of_z = 70 : int
 </pre>
 
 <p>
@@ -813,9 +1177,9 @@ string, i.e., a value.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9f6b9d4" class="outline-4">
-<h4 id="org9f6b9d4">Connection to Abstract Syntax Trees (AST)</h4>
-<div class="outline-text-4" id="text-org9f6b9d4">
+<div id="outline-container-org13b1d79" class="outline-4">
+<h4 id="org13b1d79">Connection to Abstract Syntax Trees (AST)</h4>
+<div class="outline-text-4" id="text-org13b1d79">
 <p>
 Because SML is expression-oriented, the code maps almost 1-to-1 to an
 <b><b>AST</b></b>.
@@ -838,9 +1202,9 @@ aren&rsquo;t nesting instructions; you are building a tree of definitions.
 </p>
 </div>
 </div>
-<div id="outline-container-org4d96662" class="outline-4">
-<h4 id="org4d96662">4. Comparison Table</h4>
-<div class="outline-text-4" id="text-org4d96662">
+<div id="outline-container-org8258019" class="outline-4">
+<h4 id="org8258019">4. Comparison Table</h4>
+<div class="outline-text-4" id="text-org8258019">
 <table>
 
 
@@ -886,21 +1250,24 @@ aren&rsquo;t nesting instructions; you are building a tree of definitions.
 </table>
 </div>
 </div>
-<div id="outline-container-org43f758c" class="outline-4">
-<h4 id="org43f758c">5. The &ldquo;Everything is an Expression&rdquo; Rule</h4>
-<div class="outline-text-4" id="text-org43f758c">
+<div id="outline-container-org60e9411" class="outline-4">
+<h4 id="org60e9411">5. The &ldquo;Everything is an Expression&rdquo; Rule</h4>
+<div class="outline-text-4" id="text-org60e9411">
 <p>
 In SML, even things that look like blocks are expressions:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sml" id="orgd49c6e7"><code><span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">z</span> = <span style="color: #c678dd; font-weight: bold;">let</span> <span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = 10 <span style="color: #c678dd; font-weight: bold;">in</span> x + x <span style="color: #c678dd; font-weight: bold;">end</span>; 
+<pre class="src src-sml" id="org5b32323"><code><span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">z</span> = <span style="color: #c678dd; font-weight: bold;">let</span> <span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = 10 <span style="color: #c678dd; font-weight: bold;">in</span> x + x <span style="color: #c678dd; font-weight: bold;">end</span>; 
 <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">The 'let...in...end' block is a single expression evaluating to 20</span><span style="color: #687080; font-style: italic;"> *)</span>
 </code></pre>
 </div>
 
 <pre class="example">
-val z = 20 : int
+val x = 34 : int
+val y = 17 : int
+val z = 70 : int
+val abs_of_z = 70 : int
 </pre>
 
 
@@ -923,9 +1290,9 @@ binding is immutable; you can only &ldquo;change&rdquo; it by shadowing the name
 a completely new binding. Which is confusing, so don&rsquo;t do it.
 </p>
 </div>
-<div id="outline-container-org06d8357" class="outline-6">
-<h6 id="org06d8357">Shadowing (Immutable Bindings)</h6>
-<div class="outline-text-6" id="text-org06d8357">
+<div id="outline-container-org53652d1" class="outline-6">
+<h6 id="org53652d1">Shadowing (Immutable Bindings)</h6>
+<div class="outline-text-6" id="text-org53652d1">
 <p>
 Shadowing creates a new environment entry rather than updating an existing one.
 Existing functions continue to use the binding that was in scope when they 
@@ -933,7 +1300,7 @@ were defined. For example
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sml" id="org2ed5839"><code><span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = 10;
+<pre class="src src-sml" id="org9e9c835"><code><span style="color: #c678dd; font-weight: bold;">val</span> <span style="color: #61afef;">x</span> = 10;
 <span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">getX</span> <span style="color: #8c8c8c;">()</span> = x;
 
 <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Shadowing x with a new binding</span><span style="color: #687080; font-style: italic;"> *)</span>
@@ -945,17 +1312,13 @@ were defined. For example
 </div>
 
 <pre class="example">
-val x = 10 : int
-val getX = fn : unit -&gt; int
-val x = 20 : int
-val shadowed_result = 20 : int
-val function_result = 10 : int
+val z = 20 : int
 </pre>
 </div>
 </div>
-<div id="outline-container-orgac43560" class="outline-6">
-<h6 id="orgac43560">Reference updates&mdash;like with blub languages</h6>
-<div class="outline-text-6" id="text-orgac43560">
+<div id="outline-container-orgf4d1ff3" class="outline-6">
+<h6 id="orgf4d1ff3">Reference updates&mdash;like with blub languages</h6>
+<div class="outline-text-6" id="text-orgf4d1ff3">
 <p>
 Reference cells allow you to update the value stored in a memory location 
 using the <code>:=</code> operator.
@@ -977,7 +1340,7 @@ r := 20;
 <p>
 \(\mathfrak{Fazit}\): Don&rsquo;t bother with reference/dereference updating
 unless you absolutely must. Normal variable immutability is a
-<i>feature</i> of functional programming.<label id='fnr.8' for='fnr-in.8.3259718' class='margin-toggle sidenote-number'><sup class='numeral'>8</sup></label><input type='checkbox' id='fnr-in.8.3259718' class='margin-toggle'><span class='sidenote'><sup class='numeral'>8</sup>
+<i>feature</i> of functional programming.<label id='fnr.16' for='fnr-in.16.2964668' class='margin-toggle sidenote-number'><sup class='numeral'>16</sup></label><input type='checkbox' id='fnr-in.16.2964668' class='margin-toggle'><span class='sidenote'><sup class='numeral'>16</sup>
 \(\mathfrak{Fazit}\) (fah-<b><b>tzeet</b></b>, i.e., Mozart z) is German
 for <i>bottom line</i> or <i>all in all</i>, a nod to all the German
 contributions to math.
@@ -990,18 +1353,18 @@ at
 </p>
 </div>
 </div>
-<div id="outline-container-org4fa171c" class="outline-5">
-<h5 id="org4fa171c">How Recursion Replaces Iteration</h5>
-<div class="outline-text-5" id="text-org4fa171c">
+<div id="outline-container-orgb2581f5" class="outline-5">
+<h5 id="orgb2581f5">How Recursion Replaces Iteration</h5>
+<div class="outline-text-5" id="text-orgb2581f5">
 <p>
 In functional programming, you do not use <code>for</code> or <code>while</code> loops to change a 
 counter. Instead, you use <b><b>recursion</b></b> to pass the &ldquo;new state&rdquo; as an argument 
 to the next function call.
 </p>
 </div>
-<div id="outline-container-orgf77f551" class="outline-6">
-<h6 id="orgf77f551">1. The Anatomy of a Functional &ldquo;Loop&rdquo;</h6>
-<div class="outline-text-6" id="text-orgf77f551">
+<div id="outline-container-orge0e0487" class="outline-6">
+<h6 id="orge0e0487">1. The Anatomy of a Functional &ldquo;Loop&rdquo;</h6>
+<div class="outline-text-6" id="text-orge0e0487">
 <p>
 A recursive function replaces the three parts of a traditional loop:
 </p>
@@ -1012,9 +1375,9 @@ A recursive function replaces the three parts of a traditional loop:
 </ul>
 </div>
 </div>
-<div id="outline-container-org491c8cd" class="outline-6">
-<h6 id="org491c8cd">2. Tail Recursion (The &ldquo;Efficient&rdquo; Loop)</h6>
-<div class="outline-text-6" id="text-org491c8cd">
+<div id="outline-container-orge57af97" class="outline-6">
+<h6 id="orge57af97">2. Tail Recursion (The &ldquo;Efficient&rdquo; Loop)</h6>
+<div class="outline-text-6" id="text-orge57af97">
 <p>
 SML optimized <b><b>tail-recursive</b></b> functions to run as efficiently as 
 imperative loops. A function is tail-recursive if the 
@@ -1023,7 +1386,7 @@ recursive call is the absolute last action it performs.
 
 
 <div class="org-src-container">
-<pre class="src src-sml" id="org8258019"><code><span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Imperative-style thinking: sum a list</span><span style="color: #687080; font-style: italic;"> *)</span>
+<pre class="src src-sml" id="org86c1bc6"><code><span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">Imperative-style thinking: sum a list</span><span style="color: #687080; font-style: italic;"> *)</span>
 <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">In a loop, you'd have: total = 0; for x in list: total += x</span><span style="color: #687080; font-style: italic;"> *)</span>
 
 <span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">sum_list</span> <span style="color: #8c8c8c;">(</span>nums: int list, acc: int<span style="color: #8c8c8c;">)</span> =
@@ -1036,14 +1399,17 @@ recursive call is the absolute last action it performs.
 </div>
 
 <pre class="example">
-val sum_list = fn : int list * int -&gt; int
-val result = 10 : int
+val x = 10 : int
+val getX = fn : unit -&gt; int
+val x = 20 : int
+val shadowed_result = 20 : int
+val function_result = 10 : int
 </pre>
 </div>
 </div>
-<div id="outline-container-orgf2b533c" class="outline-6">
-<h6 id="orgf2b533c">3. Why Recursion?</h6>
-<div class="outline-text-6" id="text-orgf2b533c">
+<div id="outline-container-org31501e3" class="outline-6">
+<h6 id="org31501e3">3. Why Recursion?</h6>
+<div class="outline-text-6" id="text-org31501e3">
 <ul class="org-ul">
 <li><b><b>No Mutation:</b></b> You never actually change the value of <code>acc</code>; you just 
 provide a <b>new</b> value for the <b>next</b> function&rsquo;s <code>acc</code>.</li>
@@ -1055,7 +1421,7 @@ structures like lists and trees.</li>
 
 
 <div class="org-src-container">
-<pre class="src src-sml" id="org60e9411"><code><span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">pow</span> <span style="color: #8c8c8c;">(</span>x:int, y:int<span style="color: #8c8c8c;">)</span> = <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">correct only for y &gt;= 0</span><span style="color: #687080; font-style: italic;"> *)</span>
+<pre class="src src-sml" id="org1d483d0"><code><span style="color: #c678dd; font-weight: bold;">fun</span> <span style="color: #61afef;">pow</span> <span style="color: #8c8c8c;">(</span>x:int, y:int<span style="color: #8c8c8c;">)</span> = <span style="color: #687080; font-style: italic;">(* </span><span style="color: #687080; font-style: italic;">correct only for y &gt;= 0</span><span style="color: #687080; font-style: italic;"> *)</span>
     <span style="color: #c678dd; font-weight: bold;">if</span> y=0
     <span style="color: #c678dd; font-weight: bold;">then</span> 1
     <span style="color: #c678dd; font-weight: bold;">else</span> x * pow<span style="color: #8c8c8c;">(</span>x,y-1<span style="color: #8c8c8c;">)</span>
@@ -1063,16 +1429,17 @@ structures like lists and trees.</li>
 </div>
 
 <pre class="example">
-val pow = fn : int * int -&gt; int
+val sum_list = fn : int list * int -&gt; int
+val result = 10 : int
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-sml" id="org9e9c835"><code>pow <span style="color: #8c8c8c;">(</span>3,2<span style="color: #8c8c8c;">)</span>
+<pre class="src src-sml" id="org17cae38"><code>pow <span style="color: #8c8c8c;">(</span>3,2<span style="color: #8c8c8c;">)</span>
 </code></pre>
 </div>
 
 <pre class="example">
-val it = 9 : int
+val pow = fn : int * int -&gt; int
 </pre>
 
 
@@ -1095,7 +1462,7 @@ Here is a breakdown of how the math maps to the code:
 
 
 <p>
-Because of this Cartesian product, a function with the signature <code>int * int -&gt; int</code> actually only takes <b>one</b> argument. That single argument just happens to be a 2-tuple (a pair) containing two integers.<label id='fnr.9' for='fnr-in.9.1143249' class='margin-toggle sidenote-number'><sup class='numeral'>9</sup></label><input type='checkbox' id='fnr-in.9.1143249' class='margin-toggle'><span class='sidenote'><sup class='numeral'>9</sup>
+Because of this Cartesian product, a function with the signature <code>int * int -&gt; int</code> actually only takes <b>one</b> argument. That single argument just happens to be a 2-tuple (a pair) containing two integers.<label id='fnr.17' for='fnr-in.17.8520723' class='margin-toggle sidenote-number'><sup class='numeral'>17</sup></label><input type='checkbox' id='fnr-in.17.8520723' class='margin-toggle'><span class='sidenote'><sup class='numeral'>17</sup>
 Technically, SML functions only ever take one argument at a
 time. It only seems to take multiple arguments by packaging them
 inside a tuple. Read on about <i>currying</i>&hellip;
@@ -1118,9 +1485,9 @@ When you call <code>add (3, 4)</code>, you are passing a single tuple <code>(3, 
 </div>
 </div>
 </div>
-<div id="outline-container-orgb2581f5" class="outline-5">
-<h5 id="orgb2581f5">Uncurried Functions and Cartesian Products</h5>
-<div class="outline-text-5" id="text-orgb2581f5">
+<div id="outline-container-org0a55420" class="outline-5">
+<h5 id="org0a55420">Uncurried Functions and Cartesian Products</h5>
+<div class="outline-text-5" id="text-org0a55420">
 <p>
 In the uncurried approach, a function takes a single argument that happens to be a tuple. 
 </p>
@@ -1141,9 +1508,9 @@ In the uncurried approach, a function takes a single argument that happens to be
 </div>
 </div>
 </div>
-<div id="outline-container-org79d85d1" class="outline-5">
-<h5 id="org79d85d1">Curried Functions and Higher-Order Mapping</h5>
-<div class="outline-text-5" id="text-org79d85d1">
+<div id="outline-container-org5bfa658" class="outline-5">
+<h5 id="org5bfa658">Curried Functions and Higher-Order Mapping</h5>
+<div class="outline-text-5" id="text-org5bfa658">
 <p>
 Currying (named after logician Haskell Curry) transforms a function that takes a tuple into a sequence of functions, each taking a single argument. This is the default behavior you see in languages like Haskell, but in SML, you define it explicitly.
 </p>
@@ -1168,9 +1535,9 @@ Currying (named after logician Haskell Curry) transforms a function that takes a
 </div>
 </div>
 </div>
-<div id="outline-container-org86c1bc6" class="outline-5">
-<h5 id="org86c1bc6">The Mathematical Isomorphism</h5>
-<div class="outline-text-5" id="text-org86c1bc6">
+<div id="outline-container-orgd237ecc" class="outline-5">
+<h5 id="orgd237ecc">The Mathematical Isomorphism</h5>
+<div class="outline-text-5" id="text-orgd237ecc">
 <p>
 The relationship between these two approaches is a fundamental isomorphism in set theory and logic. The set of functions from a Cartesian product is in one-to-one correspondence with the set of functions returning functions:
 </p>
