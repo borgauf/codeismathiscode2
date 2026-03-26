@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2026-03-18 Wed 22:48 -->
+<!-- 2026-03-26 Thu 11:03 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -328,7 +328,7 @@ and <b><b>Cartesian products</b></b>.
 <div class="outline-text-3" id="text-org496e461">
 <p>
 The phrase is imported from mathematics, specifically from set theory and
-category theory, and it has a precise meaning worth unpacking.
+category theory, and it has a precise meaning worth unpacking here.
 </p>
 </div>
 <div id="outline-container-orgd9cd98a" class="outline-4">
@@ -701,15 +701,15 @@ The Agda declaration <code>Vec A n</code> is essentially a constructive, inducti
 </div>
 </div>
 </section>
-<section id="outline-container-orgf4316c4" class="outline-2">
-<h2 id="orgf4316c4">Agda Vector vs Haskell List</h2>
-<div class="outline-text-2" id="text-orgf4316c4">
+<section id="outline-container-org05f9cc3" class="outline-2">
+<h2 id="org05f9cc3">Agda Vector vs Haskell List</h2>
+<div class="outline-text-2" id="text-org05f9cc3">
 </div>
-<div id="outline-container-org38570f5" class="outline-3">
-<h3 id="org38570f5">Haskell List</h3>
-<div class="outline-text-3" id="text-org38570f5">
+<div id="outline-container-org13b1d79" class="outline-3">
+<h3 id="org13b1d79">Haskell List</h3>
+<div class="outline-text-3" id="text-org13b1d79">
 <div class="org-src-container">
-<pre class="src src-haskell"><code><span style="color: #c678dd; font-weight: bold;">data</span> <span style="color: #61afef;">List</span> a <span style="color: #61afef;">=</span> <span style="color: #61afef;">Nil</span> <span style="color: #61afef;">|</span> <span style="color: #61afef;">Cons</span> a <span style="color: #8c8c8c;">(</span><span style="color: #61afef;">List</span> a<span style="color: #8c8c8c;">)</span>
+<pre class="src src-haskell"><code><span style="color: #d787d7; font-weight: bold;">data</span> <span style="color: #5fafff;">List</span> a <span style="color: #5fafff;">=</span> <span style="color: #5fafff;">Nil</span> <span style="color: #5fafff;">|</span> <span style="color: #5fafff;">Cons</span> a <span style="color: #8c8c8c;">(</span><span style="color: #5fafff;">List</span> a<span style="color: #8c8c8c;">)</span>
 </code></pre>
 </div>
 
@@ -725,9 +725,9 @@ indication.
 </p>
 </div>
 </div>
-<div id="outline-container-org7e0b801" class="outline-3">
-<h3 id="org7e0b801">Agda Vector (length-indexed)</h3>
-<div class="outline-text-3" id="text-org7e0b801">
+<div id="outline-container-org8258019" class="outline-3">
+<h3 id="org8258019">Agda Vector (length-indexed)</h3>
+<div class="outline-text-3" id="text-org8258019">
 <div class="org-src-container">
 <pre class="src src-agda"><code>data Vec (A : Set) : ℕ → Set where
   []  : Vec A zero
@@ -736,13 +736,13 @@ indication.
 </div>
 </div>
 </div>
-<div id="outline-container-org9c54a6f" class="outline-3">
-<h3 id="org9c54a6f">Key Differences</h3>
-<div class="outline-text-3" id="text-org9c54a6f">
+<div id="outline-container-org9e9c835" class="outline-3">
+<h3 id="org9e9c835">Key Differences</h3>
+<div class="outline-text-3" id="text-org9e9c835">
 </div>
-<div id="outline-container-org37a066c" class="outline-4">
-<h4 id="org37a066c">1. Kind/Sort difference</h4>
-<div class="outline-text-4" id="text-org37a066c">
+<div id="outline-container-org491c8cd" class="outline-4">
+<h4 id="org491c8cd">1. Kind/Sort difference</h4>
+<div class="outline-text-4" id="text-org491c8cd">
 <p>
 In Haskell, a list has kind \(* \to *\), taking one type parameter. In Agda,
 <code>Vec</code> has type \(\mathtt{Set} \to \mathbb{N} \to \mathtt{Set}\), indexed by both
@@ -757,9 +757,9 @@ levels, whereas in Agda they live in the same universe and can freely intermix.
 </p>
 </div>
 </div>
-<div id="outline-container-orga4ab287" class="outline-4">
-<h4 id="orga4ab287">2. Length is tracked statically</h4>
-<div class="outline-text-4" id="text-orga4ab287">
+<div id="outline-container-org5b32323" class="outline-4">
+<h4 id="org5b32323">2. Length is tracked statically</h4>
+<div class="outline-text-4" id="text-org5b32323">
 <ul class="org-ul">
 <li><code>Vec A zero</code> is provably the empty vector</li>
 <li><code>Vec A (suc (suc zero))</code> is provably a 2-element vector</li>
@@ -769,9 +769,9 @@ wrapper or runtime error is needed</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc36236b" class="outline-4">
-<h4 id="orgc36236b">3. Constructor return types differ</h4>
-<div class="outline-text-4" id="text-orgc36236b">
+<div id="outline-container-org60e9411" class="outline-4">
+<h4 id="org60e9411">3. Constructor return types differ</h4>
+<div class="outline-text-4" id="text-org60e9411">
 <p>
 In Haskell, both constructors return <code>List a</code>. In Agda:
 </p>
@@ -787,9 +787,9 @@ the norm rather than a language extension.
 </p>
 </div>
 </div>
-<div id="outline-container-org39af42c" class="outline-4">
-<h4 id="org39af42c">4. Dependent pattern matching</h4>
-<div class="outline-text-4" id="text-org39af42c">
+<div id="outline-container-orgac01944" class="outline-4">
+<h4 id="orgac01944">4. Dependent pattern matching</h4>
+<div class="outline-text-4" id="text-orgac01944">
 <p>
 When you pattern match on a <code>Vec</code>, Agda learns information about \(n\). Matching
 on <code>[]</code> tells Agda \(n = 0\); matching on <code>_∷_</code> tells it \(n = \mathtt{suc}\ k\)
@@ -811,9 +811,9 @@ not accidentally return a vector of the wrong length.
 </div>
 </div>
 </div>
-<div id="outline-container-orgb7d0ae3" class="outline-3">
-<h3 id="orgb7d0ae3">Summary</h3>
-<div class="outline-text-3" id="text-orgb7d0ae3">
+<div id="outline-container-org53652d1" class="outline-3">
+<h3 id="org53652d1">Summary</h3>
+<div class="outline-text-3" id="text-org53652d1">
 <table>
 
 
@@ -873,9 +873,9 @@ inexpressible in vanilla Haskell&rsquo;s type system.
 </div>
 </div>
 </section>
-<section id="outline-container-orgca4550f" class="outline-2">
-<h2 id="orgca4550f">Dependent types and set theory</h2>
-<div class="outline-text-2" id="text-orgca4550f">
+<section id="outline-container-orgf4d1ff3" class="outline-2">
+<h2 id="orgf4d1ff3">Dependent types and set theory</h2>
+<div class="outline-text-2" id="text-orgf4d1ff3">
 <p>
 Translating dependent types into standard mathematical set theory is
 the standard way mathematicians build semantic models of type theory.
@@ -886,7 +886,7 @@ When you look at Agda&rsquo;s <code>Vec</code>, you are looking at an <b>indexed
 of sets</b>.
 </p>
 
-<pre class="example" id="org288531e">
+<pre class="example" id="orgf2b533c">
 data Vec (A : Set) : Nat → Set where
 []   : Vec A zero
 _::_ : {n : Nat} → A → Vec A n → Vec A (succ n)
@@ -897,9 +897,9 @@ Here is exactly how Agda&rsquo;s definition of a vector maps into the
 language of classical set theory (like Zermelo-Fraenkel set theory).
 </p>
 </div>
-<div id="outline-container-org3cb68a9" class="outline-3">
-<h3 id="org3cb68a9">1. The Type Family:</h3>
-<div class="outline-text-3" id="text-org3cb68a9">
+<div id="outline-container-orgb2581f5" class="outline-3">
+<h3 id="orgb2581f5">1. The Type Family:</h3>
+<div class="outline-text-3" id="text-orgb2581f5">
 <p>
 <code>Vec A : Nat → Set</code>
 </p>
@@ -929,9 +929,9 @@ So, the Agda signature <code>Vec (A : Set) : Nat → Set</code> simply declares 
 </p>
 </div>
 </div>
-<div id="outline-container-org97f457e" class="outline-3">
-<h3 id="org97f457e">2. The Base Constructor:</h3>
-<div class="outline-text-3" id="text-org97f457e">
+<div id="outline-container-orge0e0487" class="outline-3">
+<h3 id="orge0e0487">2. The Base Constructor:</h3>
+<div class="outline-text-3" id="text-orge0e0487">
 <p>
 <code>[] : Vec A zero</code>
 </p>
@@ -950,9 +950,9 @@ Therefore, the constructor <code>[]</code> corresponds precisely to that unique 
 </p>
 </div>
 </div>
-<div id="outline-container-orge449b50" class="outline-3">
-<h3 id="orge449b50">3. The Inductive Constructor:</h3>
-<div class="outline-text-3" id="text-orge449b50">
+<div id="outline-container-org79d85d1" class="outline-3">
+<h3 id="org79d85d1">3. The Inductive Constructor:</h3>
+<div class="outline-text-3" id="text-org79d85d1">
 <p>
 <code>_::_ : {n : Nat} → A → Vec A n → Vec A (succ n)</code>
 </p>
@@ -982,9 +982,9 @@ A\) and an \(n\)-tuple \(v \in A^n\) and forms an ordered pair:
 </p>
 </div>
 </div>
-<div id="outline-container-orgdf201f6" class="outline-3">
-<h3 id="orgdf201f6">The Crucial Distinction: Inductive vs. Extensional</h3>
-<div class="outline-text-3" id="text-orgdf201f6">
+<div id="outline-container-org86c1bc6" class="outline-3">
+<h3 id="org86c1bc6">The Crucial Distinction: Inductive vs. Extensional</h3>
+<div class="outline-text-3" id="text-org86c1bc6">
 <p>
 While the translation is exact, the <b>philosophy</b> behind how the two
 systems treat this construction is different:
@@ -1009,9 +1009,9 @@ rather than classical logic.
 </div>
 </div>
 </section>
-<section id="outline-container-org0fa2dbb" class="outline-2">
-<h2 id="org0fa2dbb">List vs. Vec in Agda</h2>
-<div class="outline-text-2" id="text-org0fa2dbb">
+<section id="outline-container-orgc8c7c33" class="outline-2">
+<h2 id="orgc8c7c33">List vs. Vec in Agda</h2>
+<div class="outline-text-2" id="text-orgc8c7c33">
 <blockquote>
 <p>
 So if Agda prefers a `Vec A n` data type instead of a Haskell-like
@@ -1019,7 +1019,7 @@ list `data List a = [] | Cons List a`, how would one make a
 Haskell-like list in Agda? I just found it done this way:
 </p>
 
-<pre class="example" id="org0037182">
+<pre class="example" id="orge57af97">
 data List ( X : Set) : Set where
   [ ] : List X
   _::_ : X -&gt; List X -&gt; List X
@@ -1042,9 +1042,9 @@ The definition is the standard &ldquo;Haskell-style&rdquo; list.
 </code></pre>
 </div>
 </div>
-<div id="outline-container-org049cd7c" class="outline-3">
-<h3 id="org049cd7c">1. Is it dependently typed?</h3>
-<div class="outline-text-3" id="text-org049cd7c">
+<div id="outline-container-org1d483d0" class="outline-3">
+<h3 id="org1d483d0">1. Is it dependently typed?</h3>
+<div class="outline-text-3" id="text-org1d483d0">
 <p>
 Technically, <code>List</code> is a <b>parameterized</b> type, but it is <b>not</b> a &ldquo;dependent type&rdquo;
 in the way <code>Vec</code> is.
@@ -1060,16 +1060,16 @@ In the <code>List</code> definition, we establish that
 </p>
 </div>
 </div>
-<div id="outline-container-org9c1da07" class="outline-3">
-<h3 id="org9c1da07">2. The &ldquo;Index&rdquo; vs. the &ldquo;Parameter&rdquo;</h3>
-<div class="outline-text-3" id="text-org9c1da07">
+<div id="outline-container-orgbea751c" class="outline-3">
+<h3 id="orgbea751c">2. The &ldquo;Index&rdquo; vs. the &ldquo;Parameter&rdquo;</h3>
+<div class="outline-text-3" id="text-orgbea751c">
 <p>
 Look closely at the first line of each definition:
 </p>
 </div>
-<div id="outline-container-org5dc7041" class="outline-4">
-<h4 id="org5dc7041">The List (Non-Dependent)</h4>
-<div class="outline-text-4" id="text-org5dc7041">
+<div id="outline-container-org17cae38" class="outline-4">
+<h4 id="org17cae38">The List (Non-Dependent)</h4>
+<div class="outline-text-4" id="text-org17cae38">
 <p>
 <code>data List (X : Set) : Set where</code>
 </p>
@@ -1079,9 +1079,9 @@ Look closely at the first line of each definition:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd15c569" class="outline-4">
-<h4 id="orgd15c569">The Vec (Dependent)</h4>
-<div class="outline-text-4" id="text-orgd15c569">
+<div id="outline-container-org8bbe013" class="outline-4">
+<h4 id="org8bbe013">The Vec (Dependent)</h4>
+<div class="outline-text-4" id="text-org8bbe013">
 <p>
 <code>data Vec (A : Set) : Nat -&gt; Set where</code>
 </p>
@@ -1093,9 +1093,9 @@ Look closely at the first line of each definition:
 </div>
 </div>
 </div>
-<div id="outline-container-org9f6b9d4" class="outline-3">
-<h3 id="org9f6b9d4">3. Why use List instead of Vec?</h3>
-<div class="outline-text-3" id="text-org9f6b9d4">
+<div id="outline-container-org72340b8" class="outline-3">
+<h3 id="org72340b8">3. Why use List instead of Vec?</h3>
+<div class="outline-text-3" id="text-org72340b8">
 <p>
 If <code>Vec</code> is &ldquo;smarter,&rdquo; why ever use <code>List</code>?
 </p>
@@ -1109,9 +1109,9 @@ match up in every function.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4d96662" class="outline-3">
-<h3 id="org4d96662">4. Comparison Table</h3>
-<div class="outline-text-3" id="text-org4d96662">
+<div id="outline-container-org31501e3" class="outline-3">
+<h3 id="org31501e3">4. Comparison Table</h3>
+<div class="outline-text-3" id="text-org31501e3">
 <table>
 
 
@@ -1157,9 +1157,9 @@ match up in every function.</li>
 </table>
 </div>
 </div>
-<div id="outline-container-org4a63c07" class="outline-3">
-<h3 id="org4a63c07">5. Summary</h3>
-<div class="outline-text-3" id="text-org4a63c07">
+<div id="outline-container-org976864b" class="outline-3">
+<h3 id="org976864b">5. Summary</h3>
+<div class="outline-text-3" id="text-org976864b">
 <p>
 In Agda:
 </p>
@@ -1176,16 +1176,16 @@ exact length of your data.
 </div>
 </div>
 </section>
-<section id="outline-container-orgd49c6e7" class="outline-2">
-<h2 id="orgd49c6e7">Polymorphic vs. Monomorphic Vectors</h2>
-<div class="outline-text-2" id="text-orgd49c6e7">
+<section id="outline-container-org0a55420" class="outline-2">
+<h2 id="org0a55420">Polymorphic vs. Monomorphic Vectors</h2>
+<div class="outline-text-2" id="text-org0a55420">
 <p>
 Two versions below are examples of polymorphic vs. monomorphic
 </p>
 </div>
-<div id="outline-container-org43f758c" class="outline-3">
-<h3 id="org43f758c">1. Version 1: The Polymorphic Vector</h3>
-<div class="outline-text-3" id="text-org43f758c">
+<div id="outline-container-org7648beb" class="outline-3">
+<h3 id="org7648beb">1. Version 1: The Polymorphic Vector</h3>
+<div class="outline-text-3" id="text-org7648beb">
 <div class="org-src-container">
 <pre class="src src-agda"><code>data Vec (A : Set) : ℕ → Set where
   []   : Vec A zero
@@ -1202,9 +1202,9 @@ every constructor (<code>[]</code> and <code>::</code>).</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org1def633" class="outline-3">
-<h3 id="org1def633">2. Version 2: The Monomorphic Vector</h3>
-<div class="outline-text-3" id="text-org1def633">
+<div id="outline-container-org5bfa658" class="outline-3">
+<h3 id="org5bfa658">2. Version 2: The Monomorphic Vector</h3>
+<div class="outline-text-3" id="text-org5bfa658">
 <div class="org-src-container">
 <pre class="src src-agda"><code>data Vec : ℕ → Set where
   []  : Vec zero
@@ -1222,9 +1222,9 @@ this definition to store <code>Float</code> or <code>Bool</code>.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2ed5839" class="outline-3">
-<h3 id="org2ed5839">3. How to &ldquo;Polymorphic-ize&rdquo; the second version?</h3>
-<div class="outline-text-3" id="text-org2ed5839">
+<div id="outline-container-orgd237ecc" class="outline-3">
+<h3 id="orgd237ecc">3. How to &ldquo;Polymorphic-ize&rdquo; the second version?</h3>
+<div class="outline-text-3" id="text-orgd237ecc">
 <p>
 If you wanted the second style but still wanted it to be polymorphic, you
 would have to move the type <code>A</code> into the constructors as an <b><b>index</b></b>.
@@ -1242,9 +1242,9 @@ It would look like this:
 </div>
 </div>
 </div>
-<div id="outline-container-org06d8357" class="outline-3">
-<h3 id="org06d8357">4. Why the difference? (Parameters vs. Indices)</h3>
-<div class="outline-text-3" id="text-org06d8357">
+<div id="outline-container-org6efda25" class="outline-3">
+<h3 id="org6efda25">4. Why the difference? (Parameters vs. Indices)</h3>
+<div class="outline-text-3" id="text-org6efda25">
 <p>
 In Agda, there is a technical distinction:
 </p>
@@ -1257,9 +1257,9 @@ constructors (from <code>n</code> to <code>suc n</code>).</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgef04619" class="outline-3">
-<h3 id="orgef04619">5. Summary</h3>
-<div class="outline-text-3" id="text-orgef04619">
+<div id="outline-container-org4c5d452" class="outline-3">
+<h3 id="org4c5d452">5. Summary</h3>
+<div class="outline-text-3" id="text-org4c5d452">
 <ul class="org-ul">
 <li><b><b>Version 1</b></b> is a <b><b>Generic Container</b></b>. It says: &ldquo;Give me a type \(A\), and
 I will give you the set of all $n$-tuples of \(A\).&rdquo;</li>
@@ -1274,9 +1274,9 @@ doing a specific proof about number theory, you might see <b><b>Version 2</b></b
 </div>
 </div>
 </section>
-<section id="outline-container-org908c1c6" class="outline-2">
-<h2 id="org908c1c6">Agda&rsquo;s <code>Set</code> and set theory set?</h2>
-<div class="outline-text-2" id="text-org908c1c6">
+<section id="outline-container-org964b83c" class="outline-2">
+<h2 id="org964b83c">Agda&rsquo;s <code>Set</code> and set theory set?</h2>
+<div class="outline-text-2" id="text-org964b83c">
 <blockquote>
 <p>
 If types in Agda are members of <code>Set</code>, how is <code>Set</code> meant here? Is it
@@ -1288,9 +1288,9 @@ in any way like a set theory set?
 The short answer is: <b><b>Conceptually yes, but technically no.</b></b>
 </p>
 </div>
-<div id="outline-container-orgac43560" class="outline-3">
-<h3 id="orgac43560">1. The Agda Definition: <code>Set</code> as a &ldquo;Type of Types&rdquo;</h3>
-<div class="outline-text-3" id="text-orgac43560">
+<div id="outline-container-org70a3ad1" class="outline-3">
+<h3 id="org70a3ad1">1. The Agda Definition: <code>Set</code> as a &ldquo;Type of Types&rdquo;</h3>
+<div class="outline-text-3" id="text-org70a3ad1">
 <p>
 In Agda, <code>Set</code> is the name for the collection of all &ldquo;small&rdquo; types.
 </p>
@@ -1305,9 +1305,9 @@ In Type Theory, we call <code>Set</code> a <b>Universe</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-org4fa171c" class="outline-3">
-<h3 id="org4fa171c">2. Comparison to ZF Set Theory</h3>
-<div class="outline-text-3" id="text-org4fa171c">
+<div id="outline-container-org81c074c" class="outline-3">
+<h3 id="org81c074c">2. Comparison to ZF Set Theory</h3>
+<div class="outline-text-3" id="text-org81c074c">
 <p>
 In ZF Set Theory, a &ldquo;set&rdquo; is a collection of elements.
 In Agda, a &ldquo;Set&rdquo; is a collection of <b>types</b>.
@@ -1358,9 +1358,9 @@ In Agda, a &ldquo;Set&rdquo; is a collection of <b>types</b>.
 </table>
 </div>
 </div>
-<div id="outline-container-orgf77f551" class="outline-3">
-<h3 id="orgf77f551">3. The Russell&rsquo;s Paradox Problem</h3>
-<div class="outline-text-3" id="text-orgf77f551">
+<div id="outline-container-org52569d6" class="outline-3">
+<h3 id="org52569d6">3. The Russell&rsquo;s Paradox Problem</h3>
+<div class="outline-text-3" id="text-org52569d6">
 <p>
 In ZF Set Theory, you cannot have a &ldquo;Set of all Sets&rdquo; because it leads to
 Russell&rsquo;s Paradox.
@@ -1380,9 +1380,9 @@ This prevents the paradox where a set contains itself.
 </p>
 </div>
 </div>
-<div id="outline-container-org13b1d79" class="outline-3">
-<h3 id="org13b1d79">4. Why did Agda name it <code>Set</code>?</h3>
-<div class="outline-text-3" id="text-org13b1d79">
+<div id="outline-container-orgd2ce4f6" class="outline-3">
+<h3 id="orgd2ce4f6">4. Why did Agda name it <code>Set</code>?</h3>
+<div class="outline-text-3" id="text-orgd2ce4f6">
 <p>
 The creators of Agda (and Martin-Löf Type Theory) used the name <code>Set</code> to appeal
 to mathematical intuition.
@@ -1393,9 +1393,9 @@ to mathematical intuition.
 </ul>
 </div>
 </div>
-<div id="outline-container-org8258019" class="outline-3">
-<h3 id="org8258019">5. The &ldquo;Function&rdquo; View Revisited</h3>
-<div class="outline-text-3" id="text-org8258019">
+<div id="outline-container-orgb7be17e" class="outline-3">
+<h3 id="orgb7be17e">5. The &ldquo;Function&rdquo; View Revisited</h3>
+<div class="outline-text-3" id="text-orgb7be17e">
 <p>
 Remember your textbook&rsquo;s definition:
 \[V_n = A^n = \{ f \mid f: \{0, 1, \dots, n-1\} \to A \}\]
@@ -1411,9 +1411,9 @@ In Agda, this translates to:
 </ul>
 </div>
 </div>
-<div id="outline-container-org491c8cd" class="outline-3">
-<h3 id="org491c8cd">6. Summary</h3>
-<div class="outline-text-3" id="text-org491c8cd">
+<div id="outline-container-orgbbba6e1" class="outline-3">
+<h3 id="orgbbba6e1">6. Summary</h3>
+<div class="outline-text-3" id="text-orgbbba6e1">
 <p>
 In Agda, <code>Set</code> is a <b><b>keyword</b></b> that means &ldquo;This thing is a Type.&rdquo;
 </p>

@@ -27,7 +27,7 @@ and **Cartesian products**.
 ** What is an indexed family of sets?
 
 The phrase is imported from mathematics, specifically from set theory and
-category theory, and it has a precise meaning worth unpacking.
+category theory, and it has a precise meaning worth unpacking here.
 
 *** In Mathematics
 
@@ -462,11 +462,11 @@ If ~Vec~ is "smarter," why ever use ~List~?
 
 ** 4. Comparison Table
 
-| Feature         | ~List X~                     | ~Vec X n~                    |
-|-----------------+------------------------------+------------------------------|
-| Type depends on | Only the element type ~X~    | Element ~X~ AND length ~n~   |
-| Agda Category   | Parameterized Type           | Inductive Family (Dependent) |
-| Haskell Equiv.  | ~[a]~                        | ~GHC.TypeLits.FixedList~     |
+| Feature         | ~List X~                    | ~Vec X n~                    |
+|-----------------+-----------------------------+------------------------------|
+| Type depends on | Only the element type ~X~   | Element ~X~ AND length ~n~   |
+| Agda Category   | Parameterized Type          | Inductive Family (Dependent) |
+| Haskell Equiv.  | ~[a]~                       | ~GHC.TypeLits.FixedList~     |
 | ZF Analogy      | $\bigcup_{n \in \mathbb{N}} A^n$ | $A^n$                        |
 
 ** 5. Summary
@@ -568,12 +568,12 @@ In Type Theory, we call ~Set~ a *Universe*.
 In ZF Set Theory, a "set" is a collection of elements.
 In Agda, a "Set" is a collection of *types*.
 
-| Concept          | ZF Set Theory                | Agda Type Theory             |
-|------------------+------------------------------+------------------------------|
-| Basic Unit       | The Set                      | The Type                     |
-| Membership       | $x \in A$                    | ~x : A~                      |
-| Collection of... | Elements (numbers, sets)     | Values (terms)               |
-| The "Big" Container | There is no "Set of all Sets" | ~Set~ (The Universe)         |
+| Concept             | ZF Set Theory                 | Agda Type Theory     |
+|---------------------+-------------------------------+----------------------|
+| Basic Unit          | The Set                       | The Type             |
+| Membership          | $x \in A$                       | ~x : A~              |
+| Collection of...    | Elements (numbers, sets)      | Values (terms)       |
+| The "Big" Container | There is no "Set of all Sets" | ~Set~ (The Universe) |
 
 ** 3. The Russell's Paradox Problem
 
