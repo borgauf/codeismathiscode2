@@ -92,7 +92,7 @@ Caveman #2: **How** many?
 @@html:</font>@@
 
 ...but why is /How many?/ inviting us, /compelling/ us to /count/ the
-birds? Hold that thought...
+birds? Hold that thought...[fn:1]
 
 
 @@html:<label for="mn-demo" class="margin-toggle"></label>
@@ -110,7 +110,7 @@ ground. Ironically, they know how to get the capsule into orbit, /but
 they don't know how to get it back down to the ground again/. And so
 they need to come up with the math to transition the vehicle from an
 /elliptical orbit/ around planet Earth into a (half) parabolic-shaped
-descent path[fn:1] back down on the ground. This is a rare moment in a
+descent path[fn:2] back down on the ground. This is a rare moment in a
 popular Hollywood film where the filmmakers actually get the science
 right. That is to say, there is no magic, no special effects, no
 superheroes with super-human powers, no brainiac grade-schooler who
@@ -145,7 +145,7 @@ very fast machines in our modern world.
 
 Learning the skills necessary to run math and science on computing
 devices will only increase in importance as we advance into the
-future. Our mission: see the math, /grok/[fn:2] the math, then get the
+future. Our mission: see the math, /grok/[fn:3] the math, then get the
 math going on the computer.
 
 ** What about AI?
@@ -166,7 +166,7 @@ examples
 - I didn't go nowhere today.
 
 These are three examples of the /double negative/, a notoriously gray
-area of language.[fn:3] When we say, e.g., /It's not that I didn't
+area of language.[fn:4] When we say, e.g., /It's not that I didn't
 want to come to your birthday party.../, we're not saying outright /I
 wanted to come to your birthday party/, are we? No, to be sure, we're
 being "nuanced" about what we really wanted to do about the birthday
@@ -201,7 +201,7 @@ logical consequence, which is indeed purely logic consequences-based,
 where we do in fact tell the computer, through logic-based programming
 techniques, exactly what means what. For example, Levesque feeds a
 coded version of the following /conditional/ statement into a running
-Prolog session[fn:4]
+Prolog session[fn:5]
 
 #+begin_quote
 If X is a child of Y then Y is a parent of X.
@@ -249,7 +249,7 @@ mathematicians like Cantor, Frege, Peano, Dedekind, Whitehead and
 Russell, and many others. For example in mathematician Tom Apostol's
 book /Introduction to Analytic Number Theory/ (1976) he discusses the
 details and derivation of the **[[https://en.wikipedia.org/wiki/Greatest_common_divisor][greatest common divisor]]** of two or
-more numbers. As an exercise he asks the reader to /prove/[fn:5]
+more numbers. As an exercise he asks the reader to /prove/[fn:6]
 
 @@html:<font color = "#0d3db3">@@
 If $(a,b) = 1$, then $(a+b, a-b)$ is either $1$ or $2$.
@@ -258,7 +258,7 @@ If $(a,b) = 1$, then $(a+b, a-b)$ is either $1$ or $2$.
 If we started unpacking the above statement---we'd be deep in a
 **Number Theory** lecture reaching back thousands of years to a Greek
 named Euclid. And yet much of AI research has been devoted to getting
-computers to take in, to /grok/ math axioms and theorems[fn:6] to the point
+computers to take in, to /grok/ math axioms and theorems[fn:7] to the point
 that they can solve and prove just such a problem. In general, it has
 long been known /there is great correspondence between formal math and
 computer algorithms/, which is why discrete math emphasizes formal,
@@ -268,7 +268,7 @@ Early AI was solely based on logic as mathematics sees it. But
 recently another type of AI has roared to the front. Today we are in
 the middle of what is called **[[https://en.wikipedia.org/wiki/Generative_artificial_intelligence][generative artificial intelligence]]**
 based on **[[https://en.wikipedia.org/wiki/Large_language_model][large language modeling]]** (LLM). You've no doubt heard of
-/ChatGPT/, /Gemini/, and /Grok/, no?[fn:7] Here's a good quote from
+/ChatGPT/, /Gemini/, and /Grok/, no?[fn:8] Here's a good quote from
 computer consultant Eugene Asahara
 
 #+begin_quote
@@ -306,7 +306,7 @@ primesUpTo n = sieve [2..n]
 #+end_src
 
 ...followed by a lengthy explanation of the code almost simple enough
-for a layperson to understand.[fn:8] Now, does this mean Grok was
+for a layperson to understand.[fn:9] Now, does this mean Grok was
 taught all the logical entailment of programming Haskell? Does it mean
 all Haskell computer programmers are out of a job? No and no. Somehow
 Grok "learned to code" even though it didn't really---at least in any
@@ -338,7 +338,7 @@ used a forklift to move pallets of bricks rather than hand-carry
 them. All in all, that last point, i.e., taking responsibility for
 what you've "sub-contracted" out to AI, will require top computer
 science knowledge more than ever. The pace will increase, and you, the
-/Informatiker/[fn:9] will have to keep up.
+/Informatiker/[fn:10] will have to keep up.
 
 Finally, today's generative AI is /not/ conscious as humans are
 conscious and perceptive. The vast majority of experts in the computer
@@ -356,7 +356,7 @@ is a programming language.@@html:</font>@@
 #+end_quote
 
 and, yes, giving a computer "instructions" is what we're doing with
-programming[fn:10]. But still to this day we do not fully understand
+programming[fn:11]. But still to this day we do not fully understand
 how we humans convey knowledge, instructions to one another. We don't
 really know how one human teaches math to another. No surprise, but
 it's likewise not obvious how we should "do math" on a computer. Yes,
@@ -378,23 +378,23 @@ meaning the transfer, the syncing up of math must happen alongside
 producing representative code, i.e., we'll combine learning math with
 learning to /code/ that math.
 
-Contrary to what various "learn to code" promoters[fn:11] might say,
+Contrary to what various "learn to code" promoters[fn:12] might say,
 the programming part of this puzzle cannot simply be a stand-alone
 boot camp-style cram session. /Oh no,/ you might say, /there's already
 so much math to learn, and here's yet more to learn!/ Yes and no. Yes,
 it will be challenging, but we believe teaching math with code and the
 code with math will make both realms come alive and be fun to
 learn. We've seen this pairing make beautiful music together, and we
-want to build on this winning combination[fn:12].
+want to build on this winning combination[fn:13].
 
 So if computer programs are written in computer programming languages,
 what language shall we write our code in? This may seem a
 controversial choice to some, but we'll start out with Scheme (a Lisp
 dialect), which is a functional language, then transition to [[https://en.wikipedia.org/wiki/Haskell_(programming_language)][Haskell]],
-a /typed, purely functional/ [fn:13] language. One big reason Haskell
+a /typed, purely functional/ [fn:14] language. One big reason Haskell
 is our choice is that it is, beyond any doubt, the most math-centric,
 math-conscious language there is. Pick up Haskell and it /oozes/
-mathematical elegance[fn:14]. But why choose Haskell with its rather
+mathematical elegance[fn:15]. But why choose Haskell with its rather
 steep learning curve? Why not learn, say, an easier "blub" language?
 [[https://en.wikipedia.org/wiki/Paul_Graham_(programmer)#Blub][Blub]] languages have earned this not-so-flattering name by /not/ being
 /functional/ languages. What does that mean? Let's begin to unpack
@@ -414,7 +414,7 @@ instruction.
 
 A functional language, on the other hand, is based primarily on the
 mathematical concept of a /function/. Functional languages are
-/declarative/[fn:15] where /code can be considered mathematical
+/declarative/[fn:16] where /code can be considered mathematical
 statements in the form of true mathematical functions/. One main
 advantage of being declarative and function-based programming is that
 our code will conform to math function behavior, that is, when we put
@@ -437,10 +437,10 @@ line test]].  \\
 This might seem too hair-splittingly abstract so early in our
 discussion, but functional programming's only-one-output,
 side-effects-free feature is an absolute necessity for computational
-predictability.[fn:16] Being able to know and trust your code helps
+predictability.[fn:17] Being able to know and trust your code helps
 reduce bugs and errors that may crop up as rude surprises when your
 program suddenly does something other than what you were expecting it
-to do[fn:17]. By the way, there's a very big push these days to make
+to do[fn:18]. By the way, there's a very big push these days to make
 code "provable," i.e., guaranteed to do what it's supposed to and not
 what it's not supposed to do. Typed functional languages like Haskell
 are the base camp of this mountain.
@@ -451,7 +451,7 @@ can be seen in how math defines functions. We'll soon take a
 higher-math dive into exactly what a math function is and why it's so
 important in functional programming.
 
-So if not Blub, why not a CAS[fn:18], i.e., a math software package
+So if not Blub, why not a CAS[fn:19], i.e., a math software package
 like /MatLab/, /Wolfram Mathematica/, or /Maxima/, or a numerical
 package available with Python such as /SymPy/? The short answer is we
 really should learn to do hands-on programming. Why? Because software
@@ -471,16 +471,16 @@ Learning Scheme and Haskell will fall into two categories:
 A deep dive will take us on an exploration of just how and why Scheme
 or Haskell is doing something the way they do, i.e., based on
 math. Again, functional is math-friendly, especially
-Haskell[fn:19]. Toolbox-building, on the other hand, will be more
+Haskell[fn:20]. Toolbox-building, on the other hand, will be more
 "learn to code," only with Scheme and Haskell, we're learning syntax,
 semantics, /first principles/ hands-on. So yes, with Scheme or Haskell
 we may build our own calculator, our own CAS, but we'll go beyond
-calculation into concepts.[fn:20]
+calculation into concepts.[fn:21]
 
 ** Math is abstraction
 
 We believe anyone can do math, not because we're cheery, sunny booster
-optimists, but because it's just a fact.[fn:21] But why then is math so
+optimists, but because it's just a fact.[fn:22] But why then is math so
 difficult to learn for so many people? We believe the learning
 problems arise because
 
@@ -492,15 +492,15 @@ human mind deals with abstraction.@@html:</font>@@
 Since [[https://en.wikipedia.org/wiki/Alexander_Luria][Alexander Luria]]'s groundbreaking studies of the IQs of
 pre-literate people in the Caucus Mountains, we've gradually come to
 see abstraction as a much more complicated beast than
-before[fn:22]. Long story shortened, math can be a very imposing
+before[fn:23]. Long story shortened, math can be a very imposing
 vertical wall of abstraction. And, as Luria discovered, there may even
 exist social and cultural barriers, actual social-psychological
 resistance /against/ abstraction and symbolism that our milieu has
 imbued us with. We cannot simply assume that any and all abstraction
 and symbolism can and will be instantly grokked by our math
-audience[fn:23]. But if we approach the abstraction curve with respect
+audience[fn:24]. But if we approach the abstraction curve with respect
 for its difficulty and steepness /and/ we don't resort to force or
-hand-waving,[fn:24] we can master deeper symbolism and abstraction. We
+hand-waving,[fn:25] we can master deeper symbolism and abstraction. We
 must build up the abstraction receptor sites in our brains, so to
 speak.
 
@@ -588,7 +588,7 @@ wonderful thing. Is math difficult? Very. But we should not cringe
 away from this fact. One technique is to start at some finished piece
 of math---daunting as it may be---and methodically unpack it, go down
 all the rabbit holes, take into account the history, the people behind
-the supporting ideas.[fn:25] This is all about not being afraid to
+the supporting ideas.[fn:26] This is all about not being afraid to
 dive into the deep end. As mentioned above, the real world (starting
 at the university) is /all/ deep end, so let's start getting used to
 it.
@@ -607,10 +607,10 @@ students for the ever-growing, evermore-important sector of
 computational math and computer science. Today's incoming college
 Freshmen choosing computer science are confronted with many strange
 and alien concepts they've never seen before, the main one being
-/discrete/ mathematics[fn:26]. Without any previous exposure to the
+/discrete/ mathematics[fn:27]. Without any previous exposure to the
 specialized math of computer science, the first two, three, four
 semesters of a college comp-sci degree are typically a quick-time
-march to catch up[fn:27]. The result is, nation-wide, high
+march to catch up[fn:28]. The result is, nation-wide, high
 drop-out/flunk-out rates in CS departments...
 
 ...but not necessarily at the elite universities with their
@@ -623,7 +623,7 @@ sometimes nothing but a vocational school version of CS. Here we will
 attempt to build an on-ramp to computer-centric math alongside,
 complimented by coding that is, in turn, grounded back into solid math
 and computer science. To accomplish this we'll explore the world of
-discrete math, algorithms,[fn:28] data structures, and numerical
+discrete math, algorithms,[fn:29] data structures, and numerical
 applications parallel to their underlying mathematics.
 
 ** A project-based, real-world approach
@@ -640,11 +640,11 @@ everything about, something you can simply shake out of your sleeve in
 no time then go home early. Rather, the STEM real world is all about
 being baffled, out of your depth, overwhelmed --- until you back off,
 take a few breaths, begin to think it through, pick it apart, try this
-and that, do some rabbit-holing and woodshedding[fn:29], ask around if
+and that, do some rabbit-holing and woodshedding[fn:30], ask around if
 anybody else has seen anything similar ... which leads to failures
 then minor successes, followed again by more failures and
 successes... This is how the real STEM world works, and it's up to you
-to set the pace and deadlines[fn:30].
+to set the pace and deadlines[fn:31].
 
 ** The journey ahead; where are we going?
 
@@ -667,7 +667,7 @@ This site employs the style of book layout and information display
 developed and popularized by the statistician and all-around science
 guy [[https://en.wikipedia.org/wiki/Edward_Tufte][Edward Tufte]], best known for his series of books on statistical
 information display starting with [[https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/][The Visual Display of Quantitative
-Information]]. This is a modified [[https://orgmode.org/][org-mode]] version[fn:31] of the [[https://edwardtufte.github.io/tufte-css/][Tufte
+Information]]. This is a modified [[https://orgmode.org/][org-mode]] version[fn:32] of the [[https://edwardtufte.github.io/tufte-css/][Tufte
 CSS]], which was developed for producing LaTeX books and websites in the
 Tufte style.
 
@@ -715,40 +715,45 @@ rewarded.
 
 * Footnotes
 
-[fn:1] Technically speaking, a spacecraft orbiting the Earth is in an
+[fn:1] Hold also the though that we /count/ by establishing a
+one-to-one /relationship/ with the objects we're counting and the
+/natural/ or /counting/ numbers, $1,2,3,\ldots$. Relationships are big
+in math.
+
+[fn:2] Technically speaking, a spacecraft orbiting the Earth is in an
 /elliptic/, not a perfectly circular orbit. And the path back to Earth
 after breaking this orbit will resemble half of a parabola turned on
 its side, hence, the adjective parabolic.
 
-[fn:2] To **grok** something is to understand it at its deepest level,
+[fn:3] To **grok** something is to understand it at its deepest level,
 to /get it/ so thoroughly that you merge with it and it with you,
 coined by the sci-fi writer Robert Heinlein in his classic novel
 /Stranger in a Strange Land/.
 
-[fn:3] If we said $a = a$ and $\lnot\; a = \lnot\; a\;$ and $\lnot\;a
+[fn:4] If we said $a = a$ and $\lnot\; a = \lnot\; a\;$ and $\lnot\;a
 \ne a$ and that $\lnot\; \lnot\;a = a\;$ what can we infer the $\lnot$
 symbol is doing? More later.
 
-[fn:4] *[[https://en.wikipedia.org/wiki/Prolog][Prolog]]* is a programming language in which rules, facts, and
+[fn:5] *[[https://en.wikipedia.org/wiki/Prolog][Prolog]]* is a programming language in which rules, facts, and
 relational /predicates/ are given, then logic /deductions/ can be
 made. More about all this upcoming.
 
-[fn:5] ...below, the tuple form $(a,b)$ means /the greatest common
+[fn:6] ...below, the tuple form $(a,b)$ means /the greatest common
 divisor of $a$ and $b$./
 
-[fn:6] We'll explore **[[https://en.wikipedia.org/wiki/Axiomatic_system][axiomatic mathematics]]** in great detail as we
+[fn:7] We'll explore **[[https://en.wikipedia.org/wiki/Axiomatic_system][axiomatic mathematics]]** in great detail as we
 go. For now just understand that **axioms** are basic, given truths
 and facts, and **theorems** are derived using the basic axioms to
 explain and justify them.
 
-[fn:7] By the way, [[file:gcdproof1.html][here]] is a math proof generated by Google's
+[fn:8] By the way, [[file:gcdproof1.html][here]] is a math proof generated by Google's
 Gemini. Ironically, we've essentially asked something not
 logically-based to do, simulate logic...
 
-[fn:8] See [[file:primesUpTo.html][primesUpTo]], the Grok answer converted into a plain org
+[fn:9] See [[file:primesUpTo.html][primesUpTo]], the Grok answer converted into a plain org
 file.
 
-[fn:9] /Informatik/ is the German term for /computer science/. Edsger
+[fn:10] /Informatik/ is the German term for /computer science/. Edsger
 Dijkstra, the famous Dutch "computer scientist" said, "Computer
 science is no more about computers than astronomy is about
 telescopes," emphasizing that computer science is about the underlying
@@ -756,39 +761,39 @@ principles and methods, not just the machines themselves. Dijkstra
 considered himself an applied mathematician and hardly ever used an
 actual computer.
 
-[fn:10] There are two general categories of "giving instructions" to a
+[fn:11] There are two general categories of "giving instructions" to a
 computer in the form of computer programming: /imperative/ programming with
 statements and /declarative/ programming with expressions. Read on.
 
-[fn:11] Most "learn to code" initiatives are rushed oversimplifications
+[fn:12] Most "learn to code" initiatives are rushed oversimplifications
 primarily geared towards only a narrow part of the huge and diverse IT
 world. User-interface (UI) coding is emphasized, while the other
 branches, e.g., data management, systems programming, and especially
 computational-numerical programming aren't covered or are given
 short-shrift.
 
-[fn:12] One huge inspiration for CIMIC is the book /[[https://en.wikipedia.org/wiki/Structure_and_Interpretation_of_Classical_Mechanics][Structure and
+[fn:13] One huge inspiration for CIMIC is the book /[[https://en.wikipedia.org/wiki/Structure_and_Interpretation_of_Classical_Mechanics][Structure and
 Interpretation of Classical Mechanics]]/ by Gerald Jay Sussman, Jack
 Wisdom, and Meinhard E. Mayer. And this was based in part on Donald
 Knuth's /[[https://en.wikipedia.org/wiki/Literate_programming][literate programming]]/ initiative, also championed by Timothy
 Daly.
 
-[fn:13] We'll dive into what /typed/ and /functional/ languages are
+[fn:14] We'll dive into what /typed/ and /functional/ languages are
 later...
 
-[fn:14] Often enough, you can open a higher-level math text, e.g.,
+[fn:15] Often enough, you can open a higher-level math text, e.g.,
 abstract algebra, pick a topic, then google Haskell and your obscure
 abstract algebra topic and, chances are, somebody has explored a
 code-is-math-is-code treatment of it, written libraries for it.
 
-[fn:15] Maybe peruse [[https://en.wikipedia.org/wiki/Declarative_programming][this article]] on declarative programming. Don't
+[fn:16] Maybe peruse [[https://en.wikipedia.org/wiki/Declarative_programming][this article]] on declarative programming. Don't
 worry, we'll cover all this in depth as we go.
 
-[fn:16] We'll discuss no side effects or /referential transparency/,
+[fn:17] We'll discuss no side effects or /referential transparency/,
 the technical term for this idea, later, but in the meantime you might
 want to take a crack at the Wikipedia article [[https://en.wikipedia.org/wiki/Referential_transparency][here]].
 
-[fn:17] It might be hard to get all of what Charles Scalfani is saying
+[fn:18] It might be hard to get all of what Charles Scalfani is saying
 in his [[https://spectrum.ieee.org/functional-programming][IEEE Spectrum]] article [[https://spectrum.ieee.org/functional-programming][Why Functional Programming Should Be the
 Future of Software Development]], but one easy take-away is that
 non-functional languages don't scale well due to lack of referential
@@ -797,33 +802,33 @@ project without referential transparency must rely in extensive
 testing and debugging --- which can't always find all the worst-case
 scenarios where an input produces the wrong output.
 
-[fn:18] CAS is short for /computer algebra system/. Wikipedia has a good
+[fn:19] CAS is short for /computer algebra system/. Wikipedia has a good
 article [[https://en.wikipedia.org/wiki/Computer_algebra_system][here]].
 
-[fn:19] ...as well as its very worthy siblings in the typed functional
+[fn:20] ...as well as its very worthy siblings in the typed functional
 sphere: SML, Ocaml, Purescript, and F#.
 
-[fn:20] Perhaps watch [[https://youtu.be/6APBx0WsgeQ?si=Hpl1zLcdjkuDtHDP][Why does Cambridge teach OCaml as the first
+[fn:21] Perhaps watch [[https://youtu.be/6APBx0WsgeQ?si=Hpl1zLcdjkuDtHDP][Why does Cambridge teach OCaml as the first
 programming language?]] to better understand why functional.
 
-[fn:21] Watch [[https://youtu.be/-MTRxRO5SRA?si=3nvDTCra6MV2rJTj][Let's teach for mastery, not test scores; Sal Khan]]. A
+[fn:22] Watch [[https://youtu.be/-MTRxRO5SRA?si=3nvDTCra6MV2rJTj][Let's teach for mastery, not test scores; Sal Khan]]. A
 real game-changer.
 
-[fn:22] See [[https://youtu.be/9vpqilhW9uI][James Flynn]]'s TED talk, and read the first chapter of James
+[fn:23] See [[https://youtu.be/9vpqilhW9uI][James Flynn]]'s TED talk, and read the first chapter of James
 Gleick's /[[https://en.wikipedia.org/wiki/The_Information:_A_History,_a_Theory,_a_Flood][The Information: A History, a Theory, a Flood]]/.
 
-[fn:23] The classic line, "What is this for? Why are we doing this?"
+[fn:24] The classic line, "What is this for? Why are we doing this?"
 is the elephant in the middle of the math classroom.
 
-[fn:24] To /hand-wave/ in science is to dismiss or downplay
+[fn:25] To /hand-wave/ in science is to dismiss or downplay
 complexity, to skip over or sweep something difficult under the
 rug. We will avoid hand-waving at all costs.
 
-[fn:25] Watch Sabine Hossenfelder's video on the [[https://youtu.be/A0da8TEeaeE][Principle of Least
+[fn:26] Watch Sabine Hossenfelder's video on the [[https://youtu.be/A0da8TEeaeE][Principle of Least
 Action]]. It's a bit beyond our level, but you get the "unpack, trace it
 back" idea.
 
-[fn:26] We'll learn plenty about discrete math as we go. But for a
+[fn:27] We'll learn plenty about discrete math as we go. But for a
 quick introduction, consider a light switch that goes on or
 off. That's two /discrete/ states. Consider an elevator: You go to
 floors with whole numbers, not, e.g., floor 17.0032. The opposite of
@@ -832,26 +837,26 @@ floor. It is in /continuous/ contact with the floor. Or think of a
 volume control knob on your radio, /continually/ changes, i.e., one
 /continuous/, uninterrupted sweep from soft to loud.
 
-[fn:27] Imagine wanting to study math in college after having seen
+[fn:28] Imagine wanting to study math in college after having seen
 absolutely /no/ math K-12. The [[https://en.wikipedia.org/wiki/Common_Core_State_Standards_Initiative][Common Core State Standards Initiative]]
 has taken steps to introduce discrete math ideas, to expose kids to a
 discrete math, if not a computer algorithmic way of seeing math. But
 in our humble opinion it's far too little.
 
-[fn:28] You've no doubt heard of /algorithms/. Very simply put, an
+[fn:29] You've no doubt heard of /algorithms/. Very simply put, an
 algorithm is a set of instructions, imagine perhaps a baking recipe,
 that produces a mathematical cake. In computational math, we're
 basically redoing, reimagining math formulae as algorithms which then
 can run on computers. Lots and lots more about algorithms as we move
 along.
 
-[fn:29] /Woodshedding/ is a jazz music term meaning to learn and
+[fn:30] /Woodshedding/ is a jazz music term meaning to learn and
 practice.
 
-[fn:30] One motivational speaker said there are two kinds of
+[fn:31] One motivational speaker said there are two kinds of
 people. Those who self-motivate, self-educate, and create their own
 future; and those who wait around for events, circumstances, more
 powerful people to tell, force them what to do.
 
-[fn:31] Org-mode is a text management system app of the mighty Emacs
+[fn:32] Org-mode is a text management system app of the mighty Emacs
 text editing world.

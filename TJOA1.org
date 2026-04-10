@@ -1,0 +1,53 @@
+#+TITLE: 
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE: 2026-03-28T14:58:36Z UTC 
+#+LANGUAGE:  en 
+#+EXPORT_FILE_NAME: TheJoyOfAbstraction1.html
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Configurations ---
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/tufte-html-setup.org
+#+SETUPFILE: /home/galaxybeing/Dropbox/org/math-latex-setup.org
+# --- Bibliography ---
+#+bibliography: /home/galaxybeing/Dropbox/org/biblio/ref.bib
+#+cite_export: csl
+# --- Document Content Starts Here ---
+#+INCLUDE: /home/galaxybeing/Dropbox/org/codeismathiscode2/header.org :minlevel 1
+
+#+begin_quote
+The imagination recognizes the infinite by not understanding it.\\
+---Proclus
+#+end_quote
+
+* admin :noexport:
+
+[[cite:&cheng2022joy]]
+
+* The Joy of Abstraction teardown 1
+\\
+#+begin_quote
+I like to think of category theory as the mathematics of mathematics.
+#+end_quote
+
+This is the first sentence of the first chapter **Categories: the
+idea**. But then she asserts we don't need to know all of math to go
+ahead and learn about **metamathematics**, i.e., the mathematics of
+mathematics.
+
+Abstraction is an endless march of ever-higher generalizations, i.e.,
+quasi-simplifications.
+
+Multiplication is dimensional $3 \times 3 \times 5$ can be seen as a 3D
+construction, but the "answer" is $45$, some sort of volume conclusion
+of this 3D space.
+
+
+
+
+#+INCLUDE: ./footer.org :minlevel 1
+
+* References
+\\
+bibliography:/home/galaxybeing/Dropbox/org/biblio/ref.bib

@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-04-01 Wed 15:55 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<link rel="stylesheet" href="./tufte.css" type="text/css">
+<link rel="stylesheet" href=".//ox-tufte.css" type="text/css">
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+<style>
+article > div.org-src-container {
+width: var(--ox-tufte-content-width);
+max-width: var(--ox-tufte-content-width);
+clear: none;
+}
+article > section .org-src-container {
+width: var(--ox-tufte-src-code-width);
+max-width: var(--ox-tufte-src-code-width);
+clear: none;
+}
+div.org-src-container > pre { clear: none; }
+pre.example {clear: none; }
+</style>
+<style> .title { display: none; } </style>
+<style> caption.t-bottom { caption-side: bottom; } </style>
+</head>
+<body>
+<article id="content" class="content">
+<div class="header">
+<link rel="stylesheet" href="hamb.css">
+<link rel="stylesheet" href="tufte.css">
+<link rel="stylesheet" href="ox-tufte.css">
+<a href="https://youtu.be/se84vG6bzoA?si=C530cRXffg2Apcuw" target="_blank"><img src="./images/UNPendulumTop.png"  style="padding: 0px 0px 0px 0px" alt="United Nations pedulum" class="left"></a>
+
+
+<p>
+
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu">
+      <a href="index.html" target="_blank"><li>Home</li></a>
+      <a href="blog.html" target="_blank"><li>Blog</li></a>
+      <a href="preface.html" target="_blank"><li>Preface</li></a>
+      <a href="preliminaries.html" target="_blank"><li>Rabbit Holes</li></a>
+      <li>Numbers</li>
+      <ul>
+         <a href="HRGettingStarted1.html" target="_blank"><li>Getting Started 1</li></a>
+         <a href="HRGettingStarted2.html" target="_blank"><li>Getting Started 2</li></a>
+         <a href="numbers1.html" target="_blank"><li>Numbers 1</li></a>
+         <a href="numbers2.html" target="_blank"><li>Numbers 2</li></a>
+      </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+</p>
+<section id="outline-container-categories-the-idea" class="outline-2">
+<h2 id="categories-the-idea">Categories: the idea</h2>
+<div class="outline-text-2" id="text-categories-the-idea">
+<p>
+<i>An overview of what the point of category theory is, without
+formality.</i>
+</p>
+
+<p>
+I like to think of category theory as the mathematics of mathematics.
+</p>
+
+<p>
+I admit this phrase sounds a bit self-important, and it comes with
+another problem, which is the widespread misunderstandings about what
+mathematics actually is. This problem is multiplied (or possibly raised
+to the power of infinity) here by the reference of math to itself.
+</p>
+
+<p>
+Another problem is that it might make it seem like you need to
+understand the whole of mathematics before you could possibly understand
+category theory. Indeed, that is not far from what the prevailing wisdom
+has been about studying category theory in the past: that you have to,
+if not understand <i>all</i> of math, at least understand a large amount of
+it, say up to a graduate level, before you can tackle category theory.
+This is why category theory has traditionally only been taught at a
+graduate level, and more recently sometimes to upper level
+undergraduates who already have a solid background in upper level pure
+mathematics. The received wisdom is that all the motivating examples
+come from other branches of pure mathematics, so you need to understand
+those first before you can attempt to understand category theory.
+</p>
+
+<p>
+Questioning “received wisdom” is one of my favorite pastimes. I don&rsquo;t
+advocate just blindly going against it, but the trouble with received
+wisdom, like “common sense”, is that it too often goes unquestioned.
+</p>
+
+<p>
+My experience of learning and teaching category theory has been
+different from that received wisdom. I did first learn category theory
+in the traditional way, that is, only after many undergraduate courses
+in pure math. However, those other subjects didn&rsquo;t help me to understand
+category theory, but the other way round: category theory was much more
+compelling to me and I loved and understood it in its own right,
+whereupon it helped me to understand all those other parts of pure math
+that I had never really understood before.
+</p>
+
+<p>
+I eventually decided to start teaching category theory directly as well,
+to students with essentially no background in pure mathematics. I am
+convinced that the ideas are interesting in their own right and that
+examples illustrating those ideas can be found in life, not just in pure
+math. That&rsquo;s why I&rsquo;m starting this book with a chapter about those
+ideas.
+</p>
+
+<p>
+I think we can sometimes unintentionally fall into an educational scheme
+of believing that we need to learn and teach math in the order in which
+it was developed historically, because surely that is the logical order
+in which ideas develop. This idea is summed up in the phrase “ontogeny
+recapitulates phylogeny”, although that is really talking about
+biological development rather than learning.† I think this has merit at
+some levels. The way in which children grasp concepts of numbers
+probably does follow the history of how numbers developed, starting with
+the counting numbers 1, 2, 3, and so on, then zero, then negative
+numbers and fractions (maybe the other way round) and eventually
+irrational numbers. However, some parts of math developed because of a
+lack of technology, and are now somewhat redundant. It is no longer
+important to know how to use a slide rule. I know very few ruler and
+compass constructions, but this has not hindered my ability to do
+category theory, just like my poor skills in horse riding have not
+hindered my ability to drive a car. Of course, horse riding can be
+enjoyable, and even crucial in some walks of life, and by the same token
+there are some specific situations in which mental arithmetic and long
+division might be useful. Indeed some people simply enjoy multiplying
+large numbers together. However, none of those things is truly a
+prerequisite for meeting and benefiting from category theory.
+</p>
+
+<p>
+Crucially, I think we can benefit from the ideas and techniques of
+category theory even outside research math and aside from direct
+technical applications. Mathematics is among other things a field of
+research, a language, and a set of specific tools for solving specific
+problems. But it is also a way of thinking. Category theory is a way of
+thinking about mathematics, thus it is a way of thinking about thinking.
+Thinking about how we think might sound a bit like convoluted
+navel-gazing, but I believe it&rsquo;s a good way of working out how to think
+better. And in a world of fake news, catchy but contentless memes, and
+short attention spans, I think it&rsquo;s rather important for those who do
+want to think better to find better and better ways of doing it, and
+share them as widely as possible rather than keeping people under a
+mistaken belief that you have to learn a huge quantity of pure math
+first.
+</p>
+
+<p>
+I have gradually realized that I use the ideas and principles of
+category theory in all my thinking about the world, far beyond my
+research, and in areas that probably wouldn&rsquo;t be officially considered
+to be applications. It is these ideas and principles that I want to
+describe in this first chapter, before starting to delve into how
+category theory implements those ideas and how it trains us
+</p>
+
+<p>
+† Also the phrase was coined by Ernst Haeckel who had some repugnant
+views on race and eugenics, so I&rsquo;m reluctant to quote him, but
+technically obliged to credit him for this phrase.
+</p>
+
+<p>
+in the discipline of using them all the time. This chapter is in a way
+an informal overview of the entire book; it might seem a little vague
+but I hope the ideas will become clearer as the book progresses.
+</p>
+
+<p>
+We are going to build up to the definitions very gradually, so if you&rsquo;re
+feeling impatient you might want to glance at Chapter 8 in advance, but
+I urge you to read the chapters of build-up to get into the spirit of
+this way of thinking. In the Epilogue I will come back to the ideas and
+spirit of category theory, but from a more technical point of view after
+we have met and explored the formalism.
+</p>
+</div>
+<div id="outline-container-abstraction-and-analogies" class="outline-5">
+<h5 id="abstraction-and-analogies">1.1 Abstraction and analogies</h5>
+<div class="outline-text-5" id="text-abstraction-and-analogies">
+<p>
+Mathematics relies heavily on abstraction to get it going. Its arguments
+are all based on rigorous logic, and rigorous logic only works properly
+in abstract settings. We can try and use rigorous logic in less abstract
+settings, but we will probably always† run into problems of ambiguity:
+ambiguity of definitions, ambiguity of interpretations, ambiguity of
+behavior, and so on.
+</p>
+
+<p>
+In normal life situations there is always the possibility that something
+will get in the way of logic working perfectly. We might think that,
+logically, one plus one is always two, but in real life some aspect of
+the objects in question might get in the way. If someone gives you one
+cookie and then another cookie you might have two cookies but it depends
+if you ate them. If you had one flower and you buy another then you
+might have two, but perhaps you bought another because the first one
+died.
+</p>
+
+<p>
+Abstraction is the process of deciding on some details to ignore in
+order to ensure that our logic does work perfectly. In the situations
+above this might consist of specifying that we don&rsquo;t eat the cookies, or
+that the flowers don&rsquo;t die (or reproduce). This is an important part of
+the process of doing mathematics because one of the aims is to eliminate
+ambiguity from our arguments. This doesn&rsquo;t mean that ambiguity is bad;
+indeed ambiguity is one of the things that can make human life rich and
+beautiful. However, it can also make arguments frustrating and
+unproductive. Math is a world in which one of the aims is to make
+arguments unambiguous in order to reach agreement on something. We will
+go into detail about how abstraction works and what its advantages and
+disadvantages are in the next chapter. The idea is that abstraction
+itself has the potential to be ambiguous, and category theory provides a
+secure framework for performing abstractions.
+</p>
+
+<p>
+† I am tempted to say “always” but my precise mathematical brain
+prevents me from making absolute statements without some sort of
+qualification such as “probably” or “I believe” or “it is almost
+certainly true that”.
+</p>
+</div>
+</div>
+<div id="outline-container-connections-and-unification" class="outline-3">
+<h3 id="connections-and-unification">1.2 Connections and unification</h3>
+<div class="outline-text-3" id="text-connections-and-unification">
+<p>
+One of the aims and advantages of abstraction is to make connections
+between different situations that might previously have seemed very
+different. It might seem that abstraction takes us further away from
+“real” situations. This is superficially true, but at the same time
+abstraction enables us to make connections between situations that are
+further apart from one another. This is one of the ways in which math
+helps us understand more things in a more powerful way, by making
+connections between different situations so that we can study them all
+at once instead of having to do the work over and over again. Once we&rsquo;ve
+understood that one plus one is two (abstractly) we don&rsquo;t have to keep
+asking ourselves that question for different objects. Spotting
+similarities in our thought processes enables us to make more efficient
+use of our brain power.
+</p>
+
+<p>
+One way in which this arises is in pattern spotting. A pattern can arise
+as a connection within a single situation, such as when we use a
+repeating pattern to tile a floor or wall. Or it can arise as a
+connection between different situations, such as when we see a pattern
+of certain types of people dominating conversations or belittling
+others, whether it&rsquo;s at work or in our personal lives, in “real life” or
+online.
+</p>
+
+<p>
+Making connections between different situations is a step in the
+direction of unification. In math this doesn&rsquo;t mean making everything
+the same, but it is more about making an abstract theory that can
+encompass and illuminate many different things. Category theory is a
+unifying theory that can simultaneously encompass a broad range of
+topics and also a broad range of scales by zooming in and out, as we&rsquo;ll
+see. Chapter 3 will be about patterns, and how this gives us a start at
+recognizing abstract structures.
+</p>
+</div>
+<div id="outline-container-context" class="outline-4">
+<h4 id="context">1.3 Context</h4>
+<div class="outline-text-4" id="text-context">
+<p>
+One of the starting points of category theory is the idea that we should
+always study things in context rather than in isolation. It&rsquo;s a bit like
+always setting a frame of reference first. This is one crucial way to
+eliminate ambiguity right from the start, because things can take on
+very different meanings and different characteristics in different
+contexts. Our example of one plus one giving different results was
+really a case of context getting in the way of our logical outcomes. One
+plus one does always equal two provided we are in a context of things
+behaving like ordinary numbers and not like some other kind of number.
+But there are plenty of contexts in which things behave differently, as
+we&rsquo;ll see in Chapter 4. One of the disciplines and driving principles of
+category theory is to make sure we are always aware of and specific
+about what context we&rsquo;re considering. This is relevant in all aspects of
+life as well. For example, the context of someone&rsquo;s life situation, how
+they grew up, what is going on for them in their personal life, and so
+on, has a big effect on how they behave, and what their achievements
+represent. The same achievement is much more impressive to me when
+someone has struggled against many obstructions in life, because of
+race, gender, gender expression, sexual orientation, poverty, family
+circumstance, or any number of other struggles. Sometimes this is
+controversially referred to as “positive discrimination” but I prefer to
+think of it as contextual evaluation.
+</p>
+</div>
+</div>
+<div id="outline-container-relationships" class="outline-4">
+<h4 id="relationships">1.4 Relationships</h4>
+<div class="outline-text-4" id="text-relationships">
+<p>
+One of the crucial ways in which category theory specifies and defines
+context is via relationships. It takes the view that what is important
+in a given context is the ways in which things are related to one
+another, not their intrinsic characteristics. The types of relationship
+we consider are often key to determining what context we&rsquo;re in or should
+be in. For example, in some contexts it matters how old people are
+relative to one another, but in other contexts it matters what their
+family relationships are, or how much they earn. But if we&rsquo;re thinking
+about, say, how good different people will be at running a country, then
+it might not seem relevant how much money they have relative to one
+another. Except that in some political systems (notably the US) being
+very rich seems quite important in getting elected to political office.
+</p>
+
+<p>
+There can also be different types of relationship between the same
+things in mathematics, and we might only want to focus on certain types
+of relationship at any given moment. It doesn&rsquo;t mean that the others are
+useless, it just means that we don&rsquo;t think they are relevant to the
+situation at hand. Or perhaps we want to study something else for now,
+in something a bit like a controlled experiment. Numbers themselves have
+various types of relationship with each other. The most obvious
+relationship between numbers is about size, and so we put numbers on a
+number line in order of size. But we could put numbers in a different
+diagram by indicating which numbers are divisible by others. In category
+theory those are two different ways of putting a category structure on
+the same set of numbers, by using a different type of relationship. We
+will go into more detail about this in Chapter 5.
+</p>
+
+<p>
+The relationships used in category theory can essentially be anything,
+as long as they satisfy some basic principles ensuring that they can be
+organized in a mildly tractable way. This will guide us to the formal
+definition of a category. To build up to that we will look at the idea
+of formalism in Chapter 6, to ease into this aspect of mathematics that
+can sometimes be so offputting. In Chapter 7 we&rsquo;ll look at a particular
+type of relationship called equivalence relations, which satisfy many
+good properties making them exceedingly tractable. In fact, they satisfy
+too many good properties, so they are too restrictive to be broadly
+expressive in the way that category theory seeks.
+</p>
+
+<p>
+We will see that category theory is a framework that achieves a
+remarkable trade-off between good behavior and expressive possibilities.
+If a framework demands too much good behavior then expressivity is
+limited, as in a totalitarian state with very strict laws. On the other
+hand if there are too <i>few</i> demands, then there is great potential for
+expressivity, but also for chaos and anarchy. Category theory achieves a
+productive balance between those, in the way it specifies what type of
+relationship it is going to study.
+</p>
+
+<p>
+Part One of the book will build up to the formal definition of a
+category. We will then take an Interlude which will be a tour of
+mathematics, presenting various mathematical structures as examples of
+categories. The usual way of doing this is to assume that a student of
+category theory is already familiar with these examples and that this
+will help them feel comfortable with the definition of category theory.
+I will not do that, but will introduce those examples from scratch,
+taking the ideas of category theory as a starting point for introducing
+these mathematical topics instead. In Part Two of the book we will then
+look more deeply into the sorts of things we do with category theory.
+</p>
+</div>
+<div id="outline-container-sameness" class="outline-5">
+<h5 id="sameness">1.5 Sameness</h5>
+<div class="outline-text-5" id="text-sameness">
+<p>
+One of the main principles and aims of category theory is to have more
+nuanced ways of describing sameness. Sameness is a key concept in math
+and at a basic level this arises as equality, along with the concept of
+equations. Indeed, many people get the impression that math is <i>all</i>
+about numbers and equations. This is very far from true, especially for
+a category theorist. First of all, while numbers are an example of
+something that can be organized into a category, the whole point is to
+be able to study a much, much broader range of things than numbers.
+Secondly, category theory specifically does not deal in equations
+because equality is much too strong a notion of sameness in category
+theory.
+</p>
+
+<p>
+The point is, many things that we write with an equals sign in basic
+math aren&rsquo;t really equal deep down. For example when we say 5 + 1 = 1 +
+5 we really mean that the outcomes are the same, not that the two sides
+of the equation are actually completely the same. Indeed, if the two
+sides were completely the same there would be no point writing down the
+equation. The whole point is that there is a sense in which the two
+sides are different and a sense in which the two sides are the same, and
+we use the sense in which they&rsquo;re the same to pivot between the senses
+in which they&rsquo;re different in order to make progress and build up more
+complex thoughts. We will go into this in Chapter 14.
+</p>
+
+<p>
+Numbers and equations go together because numbers are quite
+straightforward concepts,† so equality is an appropriate notion of
+“sameness” for them. However, when we study ideas that are more complex
+than numbers, much more subtle notions of sameness are possible. To take
+a very far opposite extreme, if we are thinking about people then the
+notion of “equality” becomes rather complicated. When we talk about
+equality of people we don&rsquo;t mean that any two people are actually the
+same person (which would make no sense) but we mean something more
+subtle about how they should be treated, or what opportunities they
+deserve, or how much say they should have in our democracy. Arguments
+often become heated around what different people mean by “equality” for
+people, as there are so many possible interpretations.
+</p>
+
+<p>
+Math is about trying to iron out ambiguity and have more sensible
+arguments. Category theory seeks to study notions of sameness that are
+more subtle and complex than direct equality, but still unambiguous
+enough to be discussed in rigorous logical arguments. Sometimes a much
+better question isn&rsquo;t to ask whether two things are equal or not, but
+<i>in what ways</i> they are and aren&rsquo;t equal, and furthermore, if we look at
+some way in which they&rsquo;re not equal, how much and in what ways do they
+fail to be equal? This is a level of subtlety provided by category
+theory which we sorely need in life too.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-characterizing-things-by-the-role-they-play" class="outline-3">
+<h3 id="characterizing-things-by-the-role-they-play">1.6 Characterizing things by the role they play</h3>
+<div class="outline-text-3" id="text-characterizing-things-by-the-role-they-play">
+<p>
+Category theory seeks to characterize things by the role they play in
+context rather than by some intrinsic characteristics. This is related
+to the idea of context and relationships being so important. Once we
+understand that objects take on very different characteristics in
+different contexts it becomes clearer that the whole idea of intrinsic
+characteristics is rather shaky.
+</p>
+
+<p>
+I think this applies to people as well. I don&rsquo;t think I have an
+intrinsic personality because I behave very differently depending on
+what sort of situation I&rsquo;m in. In some situations I&rsquo;m confident and
+talkative, and in other situations I&rsquo;m nervous and shy. Even
+mathematical objects do something similar, although in that case the
+characteristics we&rsquo;re thinking about aren&rsquo;t personality traits, but
+mathematical behaviors.
+</p>
+
+<p>
+† Actually they&rsquo;re very profound, but once they&rsquo;re defined there&rsquo;s not
+much nuance to them.
+</p>
+
+<p>
+For example, we might think the number 5 is prime “because it&rsquo;s only
+divisible by 1 and itself”, but we really ought to point out that the
+context we&rsquo;re thinking of here is the whole numbers, because if we allow
+fractions then 5 is divisible by everything really (except 0).†
+</p>
+
+<p>
+In normal life we often mix up when we&rsquo;re characterizing things by role
+and by property in the way that we use language. For example “pumpkin
+spice” is named after the role that this spice combination plays in
+classic American pumpkin pie, but it has now come to be used as a
+flavoring in its own right in any number of things that are not actually
+pumpkin pie, but it&rsquo;s still called pumpkin spice, which is quite
+confusing for non-Americans. Conversely “pound cake” is named after the
+fact that it&rsquo;s a recipe consisting of a pound each of basic cake
+ingredients. So it&rsquo;s named after an intrinsic property, and it&rsquo;s still
+called pound cake even if you change the quantity that you use. I,
+personally, have never made such an enormous cake.
+</p>
+
+<p>
+One of the advantages of characterizing things by the role they play in
+context is that you can then make comparisons across different contexts,
+by finding things that play analogous roles in other contexts. We will
+talk about this when we discuss universal properties in Chapter 16. This
+might sound like the opposite of what I just described, as it sounds a
+bit like properties that are universal regardless of context, but what
+it actually refers to is the property of being somehow extreme or
+canonical within a context. This can tell us something about the objects
+with that property, but it can also tell us something about the context
+itself. If we go round looking at the highest and lowest paid employees
+in different companies, that tells us something about those companies,
+not just about the employees. It is only one piece of information (as
+opposed to a whole distribution of salaries across the company) but it
+still tells us something.
+</p>
+</div>
+</div>
+<div id="outline-container-zooming-in-and-out" class="outline-3">
+<h3 id="zooming-in-and-out">1.7 Zooming in and out</h3>
+<div class="outline-text-3" id="text-zooming-in-and-out">
+<p>
+One of the powerful aspects of category theory&rsquo;s level of abstraction is
+that it enables us to zoom in and out and look at large and small scale
+mathematical structures in a similar light. It&rsquo;s like a theory that
+unifies the sub-atomic level with the level of galaxies. This is one of
+my favorite aspects of category theory.
+</p>
+
+<p>
+If we study birds then we might need to make a theory of birds in order
+to make our study rigorous. However, that theory of birds is not itself
+a bird &mdash; it&rsquo;s one level more abstract. On the other hand if we study
+mathematical objects then we similarly might need a theory of them. I
+find it enormously
+</p>
+
+<p>
+† Also this is more of a characterization than a definition.
+</p>
+
+<p>
+satisfying that that theory is itself also a mathematical object, which
+we can then study using the same theory. Category theory is a theory of
+mathematics, but is itself a piece of mathematics, and so it can be used
+to study itself. This sounds self-referential, but what ends up
+happening is that although we are still in category theory we find
+ourselves in a slightly higher dimension of category theory. Dimensions
+in this case refer to levels of relationship. In basic category theory
+our insight begins by saying we should study relationships between
+objects, not just the objects themselves. But what about the
+relationships? If we consider those to be new mathematical objects,
+shouldn&rsquo;t we also study relationships between those? This gives us one
+more dimension.
+</p>
+
+<p>
+Then, of course, why stop there? What about relationships between
+relationships between relationships? This gives us a third dimension.
+And really there is no logically determined place to stop, so we might
+keep going and end up with infinite dimensions. This is essentially
+where my research is, in the field of higher-dimensional category
+theory, and we will see a glimpse of this to finish the book. To me this
+is the ultimate “fixed point” of theories. If category theory is a
+theory of mathematics, then higher-dimensional category theory is a
+theory of categories. But a theory of higher-dimensional category theory
+is still higher-dimensional category theory.
+</p>
+
+<p>
+This is not just about abstraction for the sake of it, although I do
+find abstraction fun in its own right. It is about subtlety. Category
+theory is about having more subtle ways of expressing things while still
+maintaining rigor, and every extra dimension gives us another layer of
+possible subtlety.
+</p>
+
+<p>
+Subtlety and nuance are aspects of thinking that I find myself missing
+and longing for in daily life. So much of our discourse has become
+black-and-white in futile attempts to be decisive, or to grab attention,
+or to make devastating arguments, or to shout down the opposition.
+Higher-dimensional category theory trains us in balancing nuance with
+rigor so that we don&rsquo;t need to resort to black-and-white, and so that we
+don&rsquo;t <i>want</i> to either.
+</p>
+
+<p>
+I think mathematics is a spectacular controlled environment in which to
+practice this kind of thinking. The aim is that even if the theory is
+not directly applicable in the rest of our lives, the thinking becomes
+second nature. This is how I have found category theory to help me in
+everyday life, surprising though it may sound.
+</p>
+</div>
+</div>
+<div id="outline-container-framework-and-techniques" class="outline-3">
+<h3 id="framework-and-techniques">1.8 Framework and techniques</h3>
+<div class="outline-text-3" id="text-framework-and-techniques">
+<p>
+As I have described it so far, category theory might sound like a
+philosophy more than anything else. But the point is that it is only
+<i>guided</i> by these various philosophies. It is still entirely rigorous
+technical mathematics. It sets up a framework for implementing these
+philosophies and pursuing these goals rigorously. The framework consists
+of a formal definition of a category as an algebraic structure, and then
+techniques for studying these structures and for constructing and
+investigating particular features that might arise in them.
+</p>
+
+<p>
+To this end, a certain amount of formal mathematics is needed if we are
+ever going to get very far into the theory itself, rather than
+poetically exploring the ideas behind it. This is one of the things that
+can be offputting about mathematics, and I do advocate the idea of
+seeing and appreciating the ideas of math even if you can&rsquo;t or don&rsquo;t
+want to follow the formality. However that is not the aim of this book.
+(It was, in a way, the aim of my book <i>How to Bake</i> π.) I do think that
+way of appreciating mathematics is under-rated. It is a bit like going
+to visit a country without learning to speak the language. I think it
+would be culturally limiting for us to decide we should never visit a
+country without learning the language first. However, I also think that
+if we can learn at least some of the language then even if we&rsquo;re not
+fluent we will get much more out of a visit. This is what this book is
+for.
+</p>
+
+<p>
+Mathematics is sometimes taught as if the only valid interaction with it
+is to be able to do it. As I said in the Prologue, languages are taught
+with a “productive” and a “receptive” component (as well as a cultural
+component, in my experience not examinable). When we talk about basic
+education we sometimes talk about “reading, writing and arithmetic”.
+Aside from the over-emphasis on boring arithmetic (for which we
+basically all have phone calculators now), there is again the idea that
+for language the skills of reading and writing are separate, but math is
+just math.
+</p>
+
+<p>
+In this book I&rsquo;m not going to expect readers to become fluent in all
+aspects of category theory. My aim isn&rsquo;t to be able to get you to be
+able to do research in category theory, but mainly to be able to read
+and appreciate it, and have some build-up into the formality of it in
+case you do want to go further. Tourism is sometimes used as a
+derogatory word, tourists thought of as superficial visitors who take
+selfies and then leave. But well-informed and curious tourists are a
+valuable part of cultural exchange. I have always appreciated living in
+places that are interesting enough to attract tourists from around the
+world. And tourists do sometimes become long-term visitors, permanent
+residents, or even citizens. One way to learn a language is to be
+deposited in a foreign country where nobody speaks your native tongue,
+but I want to do something more gentle than that. The next few chapters
+will build up to the formal language gradually.
+</p>
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="./images/by-nc-sa.png" width="125px" style="padding: 100px 0px 0px 0px" alt="License-disense"</a>
+</p>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>

@@ -29,13 +29,13 @@ version:            0.1.0.0
 -- description:
 
 -- The license under which the package is released.
-license:            MIT
+license:            BSD-3-Clause
 
 -- The file containing the license text.
 license-file:       LICENSE
 
 -- The package author(s).
-author:             Galaxy Being
+author:             Laurence von Bottorff
 
 -- An email address to which users can send suggestions, bug reports, and patches.
 maintainer:         borgauf@gmail.com
@@ -51,7 +51,7 @@ extra-doc-files:    CHANGELOG.md
 -- extra-source-files:
 
 common warnings
-    ghc-options: -Wall -Wno-type-defaults
+    ghc-options: -Wall
 
 library
     -- Import common warning flags.
@@ -67,10 +67,8 @@ library
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:
-    --	base ^>=4.17.2.1,
-    	base >= 4.17 && < 4.19,
-        containers
+    build-depends:    base ^>=4.18.3.0,
+    containers
 
     -- Directories containing source files.
     hs-source-dirs:   src
@@ -93,16 +91,15 @@ executable codeismathiscode2
 
     -- Other library packages from which modules are imported.
     build-depends:
-    --  base ^>=4.17.2.1,
-    	base >= 4.17 && < 4.19,
+        base ^>=4.18.3.0,
         text >=2.1.1,
         algebra >=4.3.1,
         hmatrix >=0.20.2,
+        containers,
         algebraic-graphs >=0.7,
         diagrams >=1.4.1,
         QuickCheck >=2.14.3,
         extra >=1.7.14,
-        containers,
         codeismathiscode2
 
     -- Directories containing source files.
@@ -135,6 +132,5 @@ test-suite codeismathiscode2-test
 
     -- Test dependencies.
     build-depends:
-     --   base ^>=4.17.2.1,
-     	base >= 4.17 && < 4.19,
+        base ^>=4.18.3.0,
         codeismathiscode2
